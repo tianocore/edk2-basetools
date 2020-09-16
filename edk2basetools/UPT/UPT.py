@@ -20,7 +20,7 @@ encoding = locale.getdefaultlocale()[1]
 if encoding:
     reload(sys)
     sys.setdefaultencoding(encoding)
-from Core import FileHook
+from edk2basetools.UPT.Core import FileHook
 import os.path
 from sys import platform
 import platform as pf
@@ -28,18 +28,18 @@ from optparse import OptionParser
 from traceback import format_exc
 from platform import python_version
 
-from Logger import StringTable as ST
-import Logger.Log as Logger
-from Logger.StringTable import MSG_VERSION
-from Logger.StringTable import MSG_DESCRIPTION
-from Logger.StringTable import MSG_USAGE
-from Logger.ToolError import FILE_NOT_FOUND
-from Logger.ToolError import OPTION_MISSING
-from Logger.ToolError import FILE_TYPE_MISMATCH
-from Logger.ToolError import OPTION_CONFLICT
-from Logger.ToolError import FatalError
-from Logger.ToolError import UPT_ALREADY_INSTALLED_ERROR
-from Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.UPT.Logger import StringTable as ST
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger.StringTable import MSG_VERSION
+from edk2basetools.UPT.Logger.StringTable import MSG_DESCRIPTION
+from edk2basetools.UPT.Logger.StringTable import MSG_USAGE
+from edk2basetools.UPT.Logger.ToolError import FILE_NOT_FOUND
+from edk2basetools.UPT.Logger.ToolError import OPTION_MISSING
+from edk2basetools.UPT.Logger.ToolError import FILE_TYPE_MISMATCH
+from edk2basetools.UPT.Logger.ToolError import OPTION_CONFLICT
+from edk2basetools.UPT.Logger.ToolError import FatalError
+from edk2basetools.UPT.Logger.ToolError import UPT_ALREADY_INSTALLED_ERROR
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
 import MkPkg
 import InstallPkg
@@ -47,9 +47,9 @@ import RmPkg
 import InventoryWs
 import ReplacePkg
 import TestInstall
-from Library.Misc import GetWorkspace
-from Library import GlobalData
-from Core.IpiDb import IpiDatabase
+from edk2basetools.UPT.Library.Misc import GetWorkspace
+from edk2basetools.UPT.Library import GlobalData
+from edk2basetools.UPT.Core.IpiDb import IpiDatabase
 from BuildVersion import gBUILD_VERSION
 
 ## CheckConflictOption

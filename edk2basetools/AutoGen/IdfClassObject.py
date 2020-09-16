@@ -8,14 +8,14 @@
 # Import Modules
 #
 from __future__ import absolute_import
-import Common.EdkLogger as EdkLogger
-from Common.BuildToolError import *
-from Common.StringUtils import GetLineNo
-from Common.Misc import PathClass
-from Common.LongFilePathSupport import LongFilePath
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.StringUtils import GetLineNo
+from edk2basetools.Common.Misc import PathClass
+from edk2basetools.Common.LongFilePathSupport import LongFilePath
 import re
 import os
-from Common.GlobalData import gIdentifierPattern
+from edk2basetools.Common.GlobalData import gIdentifierPattern
 from .UniClassObject import StripComments
 
 IMAGE_TOKEN = re.compile('IMAGE_TOKEN *\(([A-Z0-9_]+) *\)', re.MULTILINE | re.UNICODE)

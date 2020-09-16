@@ -14,16 +14,16 @@ DecObject
 #
 import os.path
 
-from Library.Misc import Sdict
-from Library.DataType import TAB_GUIDS
-from Library.DataType import TAB_PPIS
-from Library.DataType import TAB_PROTOCOLS
-from Library.DataType import TAB_DEC_DEFINES
-from Library.DataType import TAB_INCLUDES
-from Library.DataType import TAB_LIBRARY_CLASSES
-from Library.DataType import TAB_USER_EXTENSIONS
-from Library.DataType import TAB_PCDS
-from Library.DataType import TAB_ARCH_COMMON
+from edk2basetools.UPT.Library.Misc import Sdict
+from edk2basetools.UPT.Library.DataType import TAB_GUIDS
+from edk2basetools.UPT.Library.DataType import TAB_PPIS
+from edk2basetools.UPT.Library.DataType import TAB_PROTOCOLS
+from edk2basetools.UPT.Library.DataType import TAB_DEC_DEFINES
+from edk2basetools.UPT.Library.DataType import TAB_INCLUDES
+from edk2basetools.UPT.Library.DataType import TAB_LIBRARY_CLASSES
+from edk2basetools.UPT.Library.DataType import TAB_USER_EXTENSIONS
+from edk2basetools.UPT.Library.DataType import TAB_PCDS
+from edk2basetools.UPT.Library.DataType import TAB_ARCH_COMMON
 
 ## _DecComments
 #

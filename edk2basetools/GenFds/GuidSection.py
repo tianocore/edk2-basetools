@@ -14,16 +14,16 @@ from __future__ import absolute_import
 from . import Section
 import subprocess
 from .Ffs import SectionSuffix
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
 from .GenFdsGlobalVariable import FindExtendTool
-from CommonDataClass.FdfClass import GuidSectionClassObject
+from edk2basetools.CommonDataClass.FdfClass import GuidSectionClassObject
 import sys
-from Common import EdkLogger
-from Common.BuildToolError import *
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.BuildToolError import *
 from .FvImageSection import FvImageSection
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.DataType import *
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.DataType import *
 
 ## generate GUIDed section
 #

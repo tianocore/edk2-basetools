@@ -6,7 +6,7 @@
 #
 
 from collections import OrderedDict
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 gEFI_SOURCE = ''
 gEDK_SOURCE = ''

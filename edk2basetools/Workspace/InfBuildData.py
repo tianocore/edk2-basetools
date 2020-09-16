@@ -7,13 +7,13 @@
 #
 
 from __future__ import absolute_import
-from Common.DataType import *
-from Common.Misc import *
-from Common.caching import cached_property, cached_class_function
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.Misc import *
+from edk2basetools.Common.caching import cached_property, cached_class_function
 from types import *
 from .MetaFileParser import *
 from collections import OrderedDict
-from Workspace.BuildClassObject import ModuleBuildClassObject, LibraryClassObject, PcdClassObject
+from edk2basetools.Workspace.BuildClassObject import ModuleBuildClassObject, LibraryClassObject, PcdClassObject
 
 ## Get Protocol value from given packages
 #

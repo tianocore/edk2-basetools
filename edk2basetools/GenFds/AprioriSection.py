@@ -11,15 +11,15 @@
 #
 from __future__ import absolute_import
 from struct import pack
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 from io import BytesIO
 from .FfsFileStatement import FileStatement
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
-from Common.StringUtils import NormPath
-from Common.Misc import SaveFileOnChange, PathClass
-from Common.EdkLogger import error as EdkLoggerError
-from Common.BuildToolError import RESOURCE_NOT_AVAILABLE
-from Common.DataType import TAB_COMMON
+from edk2basetools.Common.StringUtils import NormPath
+from edk2basetools.Common.Misc import SaveFileOnChange, PathClass
+from edk2basetools.Common.EdkLogger import error as EdkLoggerError
+from edk2basetools.Common.BuildToolError import RESOURCE_NOT_AVAILABLE
+from edk2basetools.Common.DataType import TAB_COMMON
 
 DXE_APRIORI_GUID = "FC510EE7-FFDC-11D4-BD41-0080C73C8881"
 PEI_APRIORI_GUID = "1B45CC0A-156A-428A-AF62-49864DA0E6E6"

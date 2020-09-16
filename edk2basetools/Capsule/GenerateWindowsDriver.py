@@ -21,8 +21,8 @@ import platform
 import re
 import logging
 from WindowsCapsuleSupportHelper import WindowsCapsuleSupportHelper
-from Common.Uefi.Capsule.FmpCapsuleHeader  import FmpCapsuleHeaderClass
-from Common.Uefi.Capsule.UefiCapsuleHeader import UefiCapsuleHeaderClass
+from edk2basetools.Common.Uefi.Capsule.FmpCapsuleHeader  import FmpCapsuleHeaderClass
+from edk2basetools.Common.Uefi.Capsule.UefiCapsuleHeader import UefiCapsuleHeaderClass
 
 #
 # Globals for help information

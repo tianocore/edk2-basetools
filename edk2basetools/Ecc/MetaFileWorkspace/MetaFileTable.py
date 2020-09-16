@@ -11,12 +11,12 @@
 from __future__ import absolute_import
 import uuid
 
-import Common.EdkLogger as EdkLogger
-import Ecc.EccGlobalData as EccGlobalData
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.Ecc.EccGlobalData as EccGlobalData
 
-from Ecc.MetaFileWorkspace.MetaDataTable import Table
-from Ecc.MetaFileWorkspace.MetaDataTable import ConvertToSqlString
-from CommonDataClass.DataClass import MODEL_FILE_DSC, MODEL_FILE_DEC, MODEL_FILE_INF, \
+from edk2basetools.Ecc.MetaFileWorkspace.MetaDataTable import Table
+from edk2basetools.Ecc.MetaFileWorkspace.MetaDataTable import ConvertToSqlString
+from edk2basetools.CommonDataClass.DataClass import MODEL_FILE_DSC, MODEL_FILE_DEC, MODEL_FILE_INF, \
                                       MODEL_FILE_OTHERS
 
 class MetaFileTable(Table):

@@ -11,26 +11,26 @@
 #
 from __future__ import print_function
 from __future__ import absolute_import
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import re
 import time
 import copy
 from hashlib import md5
 
-import Common.EdkLogger as EdkLogger
-import Common.GlobalData as GlobalData
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.Common.GlobalData as GlobalData
 
-from CommonDataClass.DataClass import *
-from Common.DataType import *
-from Common.StringUtils import *
-from Common.Misc import GuidStructureStringToGuidString, CheckPcdDatum, PathClass, AnalyzePcdData, AnalyzeDscPcd, AnalyzePcdExpression, ParseFieldValue, StructPattern
-from Common.Expression import *
-from CommonDataClass.Exceptions import *
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.CommonDataClass.DataClass import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.StringUtils import *
+from edk2basetools.Common.Misc import GuidStructureStringToGuidString, CheckPcdDatum, PathClass, AnalyzePcdData, AnalyzeDscPcd, AnalyzePcdExpression, ParseFieldValue, StructPattern
+from edk2basetools.Common.Expression import *
+from edk2basetools.CommonDataClass.Exceptions import *
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 from collections import defaultdict
 from .MetaFileTable import MetaFileStorage
 from .MetaFileCommentParser import CheckInfComment
-from Common.DataType import TAB_COMMENT_EDK_START, TAB_COMMENT_EDK_END
+from edk2basetools.Common.DataType import TAB_COMMENT_EDK_START, TAB_COMMENT_EDK_END
 
 ## RegEx for finding file versions
 hexVersionPattern = re.compile(r'0[xX][\da-f-A-F]{5,8}')

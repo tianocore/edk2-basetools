@@ -8,17 +8,17 @@
 ##
 # Import Modules
 #
-import Common.LongFilePathOs as os
-from Common.LongFilePathSupport import OpenLongFilePath as open
+import edk2basetools.Common.LongFilePathOs as os
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 import sys
 
 from optparse import OptionParser
 from optparse import make_option
-from Common.BuildToolError import *
-import Common.EdkLogger as EdkLogger
-from Common.BuildVersion import gBUILD_VERSION
+from edk2basetools.Common.BuildToolError import *
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Common.BuildVersion import gBUILD_VERSION
 import array
-from Common.DataType import *
+from edk2basetools.Common.DataType import *
 
 # Version and Copyright
 __version_number__ = ("0.10" + " " + gBUILD_VERSION)

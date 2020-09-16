@@ -9,29 +9,29 @@
 # Import Modules
 #
 from __future__ import absolute_import
-import Common.LongFilePathOs as os, time, glob
-import Common.EdkLogger as EdkLogger
-import Eot.EotGlobalData as EotGlobalData
+import edk2basetools.Common.LongFilePathOs as os, time, glob
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.Eot.EotGlobalData as EotGlobalData
 from optparse import OptionParser
-from Common.StringUtils import NormPath
-from Common import BuildToolError
-from Common.Misc import GuidStructureStringToGuidString
+from edk2basetools.Common.StringUtils import NormPath
+from edk2basetools.Common import BuildToolError
+from edk2basetools.Common.Misc import GuidStructureStringToGuidString
 from collections import OrderedDict as sdict
-from Eot.Parser import *
-from Eot.InfParserLite import EdkInfParser
-from Common.StringUtils import GetSplitValueList
-from Eot import c
-from Eot import Database
+from edk2basetools.Eot.Parser import *
+from edk2basetools.Eot.InfParserLite import EdkInfParser
+from edk2basetools.Common.StringUtils import GetSplitValueList
+from edk2basetools.Eot import c
+from edk2basetools.Eot import Database
 from array import array
-from Eot.Report import Report
-from Common.BuildVersion import gBUILD_VERSION
-from Eot.Parser import ConvertGuid
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Eot.Report import Report
+from edk2basetools.Common.BuildVersion import gBUILD_VERSION
+from edk2basetools.Eot.Parser import ConvertGuid
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 import struct
 import uuid
 import copy
 import codecs
-from GenFds.AprioriSection import DXE_APRIORI_GUID, PEI_APRIORI_GUID
+from edk2basetools.GenFds.AprioriSection import DXE_APRIORI_GUID, PEI_APRIORI_GUID
 
 gGuidStringFormat = "%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X"
 gIndention = -4

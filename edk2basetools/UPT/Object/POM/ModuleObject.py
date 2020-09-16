@@ -12,12 +12,12 @@ ModuleObject
 ##
 # Import Modules
 #
-from Object.POM.CommonObject import CommonPropertiesObject
-from Object.POM.CommonObject import IdentificationObject
-from Object.POM.CommonObject import CommonHeaderObject
-from Object.POM.CommonObject import BinaryHeaderObject
-from Object.POM.CommonObject import HelpTextListObject
-from Object.POM.CommonObject import GuidVersionObject
+from edk2basetools.UPT.Object.POM.CommonObject import CommonPropertiesObject
+from edk2basetools.UPT.Object.POM.CommonObject import IdentificationObject
+from edk2basetools.UPT.Object.POM.CommonObject import CommonHeaderObject
+from edk2basetools.UPT.Object.POM.CommonObject import BinaryHeaderObject
+from edk2basetools.UPT.Object.POM.CommonObject import HelpTextListObject
+from edk2basetools.UPT.Object.POM.CommonObject import GuidVersionObject
 
 
 ##

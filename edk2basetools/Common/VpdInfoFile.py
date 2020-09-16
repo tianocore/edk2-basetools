@@ -10,15 +10,15 @@
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 #
 from __future__ import print_function
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import re
-import Common.EdkLogger as EdkLogger
-import Common.BuildToolError as BuildToolError
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.Common.BuildToolError as BuildToolError
 import subprocess
-import Common.GlobalData as GlobalData
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.Misc import SaveFileOnChange
-from Common.DataType import *
+import edk2basetools.Common.GlobalData as GlobalData
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.Misc import SaveFileOnChange
+from edk2basetools.Common.DataType import *
 
 FILE_COMMENT_TEMPLATE = \
 """

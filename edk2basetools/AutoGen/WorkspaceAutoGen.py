@@ -12,17 +12,17 @@ from __future__ import absolute_import
 import os.path as path
 import hashlib
 from collections import defaultdict
-from GenFds.FdfParser import FdfParser
-from Workspace.WorkspaceCommon import GetModuleLibInstances
-from AutoGen import GenMake
-from AutoGen.AutoGen import AutoGen
-from AutoGen.PlatformAutoGen import PlatformAutoGen
-from AutoGen.BuildEngine import gDefaultBuildRuleFile
-from Common.ToolDefClassObject import gDefaultToolsDefFile
-from Common.StringUtils import NormPath
-from Common.BuildToolError import *
-from Common.DataType import *
-from Common.Misc import *
+from edk2basetools.GenFds.FdfParser import FdfParser
+from edk2basetools.Workspace.WorkspaceCommon import GetModuleLibInstances
+from edk2basetools.AutoGen import GenMake
+from edk2basetools.AutoGen.AutoGen import AutoGen
+from edk2basetools.AutoGen.PlatformAutoGen import PlatformAutoGen
+from edk2basetools.AutoGen.BuildEngine import gDefaultBuildRuleFile
+from edk2basetools.Common.ToolDefClassObject import gDefaultToolsDefFile
+from edk2basetools.Common.StringUtils import NormPath
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.Misc import *
 import json
 
 ## Regular expression for splitting Dependency Expression string into tokens

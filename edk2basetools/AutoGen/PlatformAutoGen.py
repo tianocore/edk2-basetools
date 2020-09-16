@@ -17,19 +17,19 @@ from collections import defaultdict
 from .BuildEngine import BuildRule,gDefaultBuildRuleFile,AutoGenReqBuildRuleVerNum
 from .GenVar import VariableMgr, var_info
 from . import GenMake
-from AutoGen.DataPipe import MemoryDataPipe
-from AutoGen.ModuleAutoGen import ModuleAutoGen
-from AutoGen.AutoGen import AutoGen
-from AutoGen.AutoGen import CalculatePriorityValue
-from Workspace.WorkspaceCommon import GetModuleLibInstances
-from CommonDataClass.CommonClass import SkuInfoClass
-from Common.caching import cached_class_function
-from Common.Expression import ValueExpressionEx
-from Common.StringUtils import StringToArray,NormPath
-from Common.BuildToolError import *
-from Common.DataType import *
-from Common.Misc import *
-import Common.VpdInfoFile as VpdInfoFile
+from edk2basetools.AutoGen.DataPipe import MemoryDataPipe
+from edk2basetools.AutoGen.ModuleAutoGen import ModuleAutoGen
+from edk2basetools.AutoGen.AutoGen import AutoGen
+from edk2basetools.AutoGen.AutoGen import CalculatePriorityValue
+from edk2basetools.Workspace.WorkspaceCommon import GetModuleLibInstances
+from edk2basetools.CommonDataClass.CommonClass import SkuInfoClass
+from edk2basetools.Common.caching import cached_class_function
+from edk2basetools.Common.Expression import ValueExpressionEx
+from edk2basetools.Common.StringUtils import StringToArray,NormPath
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.Misc import *
+import edk2basetools.Common.VpdInfoFile as VpdInfoFile
 
 ## Split command line option string to list
 #

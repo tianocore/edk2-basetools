@@ -14,11 +14,11 @@ from . import Section
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
 import subprocess
 from .Ffs import SectionSuffix
-import Common.LongFilePathOs as os
-from CommonDataClass.FdfClass import DataSectionClassObject
-from Common.Misc import PeImageClass
-from Common.LongFilePathSupport import CopyLongFilePath
-from Common.DataType import *
+import edk2basetools.Common.LongFilePathOs as os
+from edk2basetools.CommonDataClass.FdfClass import DataSectionClassObject
+from edk2basetools.Common.Misc import PeImageClass
+from edk2basetools.Common.LongFilePathSupport import CopyLongFilePath
+from edk2basetools.Common.DataType import *
 
 ## generate data section
 #

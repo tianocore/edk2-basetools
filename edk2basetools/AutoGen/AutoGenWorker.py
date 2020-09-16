@@ -7,22 +7,22 @@
 from __future__ import absolute_import
 import multiprocessing as mp
 import threading
-from Common.Misc import PathClass
-from AutoGen.ModuleAutoGen import ModuleAutoGen
-from AutoGen.ModuleAutoGenHelper import WorkSpaceInfo,AutoGenInfo
-import Common.GlobalData as GlobalData
-import Common.EdkLogger as EdkLogger
+from edk2basetools.Common.Misc import PathClass
+from edk2basetools.AutoGen.ModuleAutoGen import ModuleAutoGen
+from edk2basetools.AutoGen.ModuleAutoGenHelper import WorkSpaceInfo,AutoGenInfo
+import edk2basetools.Common.GlobalData as GlobalData
+import edk2basetools.Common.EdkLogger as EdkLogger
 import os
-from Common.MultipleWorkspace import MultipleWorkspace as mws
-from AutoGen.AutoGen import AutoGen
-from Workspace.WorkspaceDatabase import BuildDB
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.AutoGen.AutoGen import AutoGen
+from edk2basetools.Workspace.WorkspaceDatabase import BuildDB
 try:
     from queue import Empty
 except:
     from Queue import Empty
 import traceback
 import sys
-from AutoGen.DataPipe import MemoryDataPipe
+from edk2basetools.AutoGen.DataPipe import MemoryDataPipe
 import logging
 import time
 

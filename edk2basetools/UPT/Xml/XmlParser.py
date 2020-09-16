@@ -15,35 +15,35 @@ XmlParser
 #
 import re
 
-from Library.Xml.XmlRoutines import XmlNode
-from Library.Xml.XmlRoutines import CreateXmlElement
-from Library.Xml.XmlRoutines import XmlList
-from Library.Xml.XmlRoutines import XmlParseFile
-from Core.DistributionPackageClass import DistributionPackageClass
-from Object.POM.ModuleObject import DepexObject
-from Library.ParserValidate import IsValidInfMoudleType
-from Library.ParserValidate import IsValidInstallPath
-from Library.Misc import IsEqualList
-from Library.Misc import Sdict
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlNode
+from edk2basetools.UPT.Library.Xml.XmlRoutines import CreateXmlElement
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlList
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlParseFile
+from edk2basetools.UPT.Core.DistributionPackageClass import DistributionPackageClass
+from edk2basetools.UPT.Object.POM.ModuleObject import DepexObject
+from edk2basetools.UPT.Library.ParserValidate import IsValidInfMoudleType
+from edk2basetools.UPT.Library.ParserValidate import IsValidInstallPath
+from edk2basetools.UPT.Library.Misc import IsEqualList
+from edk2basetools.UPT.Library.Misc import Sdict
 
-from Logger.StringTable import ERR_XML_INVALID_VARIABLENAME
-from Logger.StringTable import ERR_XML_INVALID_LIB_SUPMODLIST
-from Logger.StringTable import ERR_XML_INVALID_EXTERN_SUPARCHLIST
-from Logger.StringTable import ERR_XML_INVALID_EXTERN_SUPMODLIST
-from Logger.StringTable import ERR_XML_INVALID_EXTERN_SUPMODLIST_NOT_LIB
-from Logger.StringTable import ERR_FILE_NAME_INVALIDE
-from Logger.ToolError import PARSER_ERROR
-from Logger.ToolError import FORMAT_INVALID
+from edk2basetools.UPT.Logger.StringTable import ERR_XML_INVALID_VARIABLENAME
+from edk2basetools.UPT.Logger.StringTable import ERR_XML_INVALID_LIB_SUPMODLIST
+from edk2basetools.UPT.Logger.StringTable import ERR_XML_INVALID_EXTERN_SUPARCHLIST
+from edk2basetools.UPT.Logger.StringTable import ERR_XML_INVALID_EXTERN_SUPMODLIST
+from edk2basetools.UPT.Logger.StringTable import ERR_XML_INVALID_EXTERN_SUPMODLIST_NOT_LIB
+from edk2basetools.UPT.Logger.StringTable import ERR_FILE_NAME_INVALIDE
+from edk2basetools.UPT.Logger.ToolError import PARSER_ERROR
+from edk2basetools.UPT.Logger.ToolError import FORMAT_INVALID
 
-from Xml.CommonXml import DistributionPackageHeaderXml
-from Xml.CommonXml import MiscellaneousFileXml
-from Xml.CommonXml import UserExtensionsXml
-from Xml.XmlParserMisc import ConvertVariableName
-from Xml.XmlParserMisc import IsRequiredItemListNull
-from Xml.ModuleSurfaceAreaXml import ModuleSurfaceAreaXml
-from Xml.PackageSurfaceAreaXml import PackageSurfaceAreaXml
+from edk2basetools.UPT.Xml.CommonXml import DistributionPackageHeaderXml
+from edk2basetools.UPT.Xml.CommonXml import MiscellaneousFileXml
+from edk2basetools.UPT.Xml.CommonXml import UserExtensionsXml
+from edk2basetools.UPT.Xml.XmlParserMisc import ConvertVariableName
+from edk2basetools.UPT.Xml.XmlParserMisc import IsRequiredItemListNull
+from edk2basetools.UPT.Xml.ModuleSurfaceAreaXml import ModuleSurfaceAreaXml
+from edk2basetools.UPT.Xml.PackageSurfaceAreaXml import PackageSurfaceAreaXml
 
-import Logger.Log as Logger
+import edk2basetools.UPT.Logger.Log as Logger
 
 ##
 # DistributionPackageXml

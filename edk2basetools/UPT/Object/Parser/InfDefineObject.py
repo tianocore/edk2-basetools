@@ -13,36 +13,36 @@ InfDefineObject
 import os
 import re
 
-from Logger import StringTable as ST
-from Logger import ToolError
-from Library import GlobalData
-from Library import DataType as DT
-from Library.StringUtils import GetSplitValueList
-from Library.Misc import CheckGuidRegFormat
-from Library.Misc import Sdict
-from Library.Misc import ConvPathFromAbsToRel
-from Library.Misc import ValidateUNIFilePath
-from Library.ExpressionValidate import IsValidFeatureFlagExp
-from Library.ParserValidate import IsValidWord
-from Library.ParserValidate import IsValidInfMoudleType
-from Library.ParserValidate import IsValidHex
-from Library.ParserValidate import IsValidHexVersion
-from Library.ParserValidate import IsValidDecVersion
-from Library.ParserValidate import IsValidCVariableName
-from Library.ParserValidate import IsValidBoolType
-from Library.ParserValidate import IsValidPath
-from Library.ParserValidate import IsValidFamily
-from Library.ParserValidate import IsValidIdentifier
-from Library.ParserValidate import IsValidDecVersionVal
-from Object.Parser.InfCommonObject import InfLineCommentObject
-from Object.Parser.InfCommonObject import CurrentLine
-from Object.Parser.InfCommonObject import InfSectionCommonDef
-from Object.Parser.InfMisc import ErrorInInf
-from Object.Parser.InfDefineCommonObject import InfDefineLibraryItem
-from Object.Parser.InfDefineCommonObject import InfDefineEntryPointItem
-from Object.Parser.InfDefineCommonObject import InfDefineUnloadImageItem
-from Object.Parser.InfDefineCommonObject import InfDefineConstructorItem
-from Object.Parser.InfDefineCommonObject import InfDefineDestructorItem
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger import ToolError
+from edk2basetools.UPT.Library import GlobalData
+from edk2basetools.UPT.Library import DataType as DT
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.Misc import CheckGuidRegFormat
+from edk2basetools.UPT.Library.Misc import Sdict
+from edk2basetools.UPT.Library.Misc import ConvPathFromAbsToRel
+from edk2basetools.UPT.Library.Misc import ValidateUNIFilePath
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidFeatureFlagExp
+from edk2basetools.UPT.Library.ParserValidate import IsValidWord
+from edk2basetools.UPT.Library.ParserValidate import IsValidInfMoudleType
+from edk2basetools.UPT.Library.ParserValidate import IsValidHex
+from edk2basetools.UPT.Library.ParserValidate import IsValidHexVersion
+from edk2basetools.UPT.Library.ParserValidate import IsValidDecVersion
+from edk2basetools.UPT.Library.ParserValidate import IsValidCVariableName
+from edk2basetools.UPT.Library.ParserValidate import IsValidBoolType
+from edk2basetools.UPT.Library.ParserValidate import IsValidPath
+from edk2basetools.UPT.Library.ParserValidate import IsValidFamily
+from edk2basetools.UPT.Library.ParserValidate import IsValidIdentifier
+from edk2basetools.UPT.Library.ParserValidate import IsValidDecVersionVal
+from edk2basetools.UPT.Object.Parser.InfCommonObject import InfLineCommentObject
+from edk2basetools.UPT.Object.Parser.InfCommonObject import CurrentLine
+from edk2basetools.UPT.Object.Parser.InfCommonObject import InfSectionCommonDef
+from edk2basetools.UPT.Object.Parser.InfMisc import ErrorInInf
+from edk2basetools.UPT.Object.Parser.InfDefineCommonObject import InfDefineLibraryItem
+from edk2basetools.UPT.Object.Parser.InfDefineCommonObject import InfDefineEntryPointItem
+from edk2basetools.UPT.Object.Parser.InfDefineCommonObject import InfDefineUnloadImageItem
+from edk2basetools.UPT.Object.Parser.InfDefineCommonObject import InfDefineConstructorItem
+from edk2basetools.UPT.Object.Parser.InfDefineCommonObject import InfDefineDestructorItem
 
 class InfDefSectionOptionRomInfo():
     def __init__(self):

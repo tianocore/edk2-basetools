@@ -13,15 +13,15 @@
 #======================================  External Libraries ========================================
 from __future__ import print_function
 import optparse
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import re
 import array
 
-from Common.BuildToolError import *
-import Common.EdkLogger as EdkLogger
-from Common.Misc import PeImageClass, startPatternGeneral, addressPatternGeneral, valuePatternGcc, pcdPatternGcc, secReGeneral
-from Common.BuildVersion import gBUILD_VERSION
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.BuildToolError import *
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Common.Misc import PeImageClass, startPatternGeneral, addressPatternGeneral, valuePatternGcc, pcdPatternGcc, secReGeneral
+from edk2basetools.Common.BuildVersion import gBUILD_VERSION
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 # Version and Copyright
 __version_number__ = ("0.10" + " " + gBUILD_VERSION)

@@ -12,25 +12,25 @@
 from __future__ import print_function
 from __future__ import absolute_import
 
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import sys
 from sys import stdout
 from subprocess import PIPE,Popen
 from struct import Struct
 from array import array
 
-from Common.BuildToolError import COMMAND_FAILURE,GENFDS_ERROR
-from Common import EdkLogger
-from Common.Misc import SaveFileOnChange
+from edk2basetools.Common.BuildToolError import COMMAND_FAILURE,GENFDS_ERROR
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.Misc import SaveFileOnChange
 
-from Common.TargetTxtClassObject import TargetTxtDict
-from Common.ToolDefClassObject import ToolDefDict
-from AutoGen.BuildEngine import ToolBuildRule
-import Common.DataType as DataType
-from Common.Misc import PathClass
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.MultipleWorkspace import MultipleWorkspace as mws
-import Common.GlobalData as GlobalData
+from edk2basetools.Common.TargetTxtClassObject import TargetTxtDict
+from edk2basetools.Common.ToolDefClassObject import ToolDefDict
+from edk2basetools.AutoGen.BuildEngine import ToolBuildRule
+import edk2basetools.Common.DataType as DataType
+from edk2basetools.Common.Misc import PathClass
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
+import edk2basetools.Common.GlobalData as GlobalData
 
 ## Global variables
 #

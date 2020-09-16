@@ -9,11 +9,11 @@
 # Import Modules
 #
 from __future__ import print_function
-import Common.LongFilePathOs as os
-import Common.EdkLogger as EdkLogger
-from Common.DataType import *
-from Common.StringUtils import *
-from Common.LongFilePathSupport import OpenLongFilePath as open
+import edk2basetools.Common.LongFilePathOs as os
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.StringUtils import *
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 _ConfigFileToInternalTranslation = {
     # not same

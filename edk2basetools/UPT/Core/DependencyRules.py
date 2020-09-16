@@ -16,16 +16,16 @@ Dependency
 from os.path import dirname
 import os
 
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Library.Parsing import GetWorkspacePackage
-from Library.Parsing import GetWorkspaceModule
-from Library.Parsing import GetPkgInfoFromDec
-from Library.Misc import GetRelativePath
-from Library import GlobalData
-from Logger.ToolError import FatalError
-from Logger.ToolError import EDK1_INF_ERROR
-from Logger.ToolError import UNKNOWN_ERROR
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Library.Parsing import GetWorkspacePackage
+from edk2basetools.UPT.Library.Parsing import GetWorkspaceModule
+from edk2basetools.UPT.Library.Parsing import GetPkgInfoFromDec
+from edk2basetools.UPT.Library.Misc import GetRelativePath
+from edk2basetools.UPT.Library import GlobalData
+from edk2basetools.UPT.Logger.ToolError import FatalError
+from edk2basetools.UPT.Logger.ToolError import EDK1_INF_ERROR
+from edk2basetools.UPT.Logger.ToolError import UNKNOWN_ERROR
 (DEPEX_CHECK_SUCCESS, DEPEX_CHECK_MODULE_NOT_FOUND, \
 DEPEX_CHECK_PACKAGE_NOT_FOUND, DEPEX_CHECK_DP_NOT_FOUND) = (0, 1, 2, 3)
 

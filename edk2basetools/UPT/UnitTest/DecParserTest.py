@@ -9,13 +9,13 @@ from __future__ import print_function
 import os
 import unittest
 
-from Parser.DecParserMisc import \
+from edk2basetools.UPT.Parser.DecParserMisc import \
     IsValidCArray, \
     IsValidPcdDatum
 
-from Parser.DecParser import Dec
+from edk2basetools.UPT.Parser.DecParser import Dec
 
-from Library.ParserValidate import IsValidCFormatGuid
+from edk2basetools.UPT.Library.ParserValidate import IsValidCFormatGuid
 
 #
 # Test tool function

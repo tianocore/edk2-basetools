@@ -19,19 +19,19 @@ import zipfile
 import tempfile
 import platform
 
-from Logger.ToolError import FILE_OPEN_FAILURE
-from Logger.ToolError import FILE_CHECKSUM_FAILURE
-from Logger.ToolError import FILE_NOT_FOUND
-from Logger.ToolError import FILE_DECOMPRESS_FAILURE
-from Logger.ToolError import FILE_UNKNOWN_ERROR
-from Logger.ToolError import FILE_WRITE_FAILURE
-from Logger.ToolError import FILE_COMPRESS_FAILURE
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Library.Misc import CreateDirectory
-from Library.Misc import RemoveDirectory
-from Core.FileHook import __FileHookOpen__
-from Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.UPT.Logger.ToolError import FILE_OPEN_FAILURE
+from edk2basetools.UPT.Logger.ToolError import FILE_CHECKSUM_FAILURE
+from edk2basetools.UPT.Logger.ToolError import FILE_NOT_FOUND
+from edk2basetools.UPT.Logger.ToolError import FILE_DECOMPRESS_FAILURE
+from edk2basetools.UPT.Logger.ToolError import FILE_UNKNOWN_ERROR
+from edk2basetools.UPT.Logger.ToolError import FILE_WRITE_FAILURE
+from edk2basetools.UPT.Logger.ToolError import FILE_COMPRESS_FAILURE
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Library.Misc import CreateDirectory
+from edk2basetools.UPT.Library.Misc import RemoveDirectory
+from edk2basetools.UPT.Core.FileHook import __FileHookOpen__
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
 
 class PackageFile:

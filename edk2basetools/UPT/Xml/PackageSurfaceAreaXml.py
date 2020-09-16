@@ -11,26 +11,26 @@ PackageSurfaceAreaXml
 '''
 from xml.dom import minidom
 
-from Library.StringUtils import GetStringOfList
-from Library.Xml.XmlRoutines import XmlElement
-from Library.Xml.XmlRoutines import XmlNode
-from Library.Xml.XmlRoutines import XmlList
-from Library.Xml.XmlRoutines import CreateXmlElement
-from Object.POM.CommonObject import IncludeObject
-from Object.POM.CommonObject import TextObject
-from Object.POM.PackageObject import PackageObject
-from Xml.CommonXml import ClonedFromXml
-from Xml.CommonXml import PackageHeaderXml
-from Xml.CommonXml import HelpTextXml
-from Xml.CommonXml import CommonDefinesXml
-from Xml.CommonXml import LibraryClassXml
-from Xml.CommonXml import UserExtensionsXml
-from Xml.CommonXml import MiscellaneousFileXml
-from Xml.GuidProtocolPpiXml import GuidXml
-from Xml.GuidProtocolPpiXml import ProtocolXml
-from Xml.GuidProtocolPpiXml import PpiXml
-from Xml.ModuleSurfaceAreaXml import ModuleSurfaceAreaXml
-from Xml.PcdXml import PcdEntryXml
+from edk2basetools.UPT.Library.StringUtils import GetStringOfList
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlElement
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlNode
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlList
+from edk2basetools.UPT.Library.Xml.XmlRoutines import CreateXmlElement
+from edk2basetools.UPT.Object.POM.CommonObject import IncludeObject
+from edk2basetools.UPT.Object.POM.CommonObject import TextObject
+from edk2basetools.UPT.Object.POM.PackageObject import PackageObject
+from edk2basetools.UPT.Xml.CommonXml import ClonedFromXml
+from edk2basetools.UPT.Xml.CommonXml import PackageHeaderXml
+from edk2basetools.UPT.Xml.CommonXml import HelpTextXml
+from edk2basetools.UPT.Xml.CommonXml import CommonDefinesXml
+from edk2basetools.UPT.Xml.CommonXml import LibraryClassXml
+from edk2basetools.UPT.Xml.CommonXml import UserExtensionsXml
+from edk2basetools.UPT.Xml.CommonXml import MiscellaneousFileXml
+from edk2basetools.UPT.Xml.GuidProtocolPpiXml import GuidXml
+from edk2basetools.UPT.Xml.GuidProtocolPpiXml import ProtocolXml
+from edk2basetools.UPT.Xml.GuidProtocolPpiXml import PpiXml
+from edk2basetools.UPT.Xml.ModuleSurfaceAreaXml import ModuleSurfaceAreaXml
+from edk2basetools.UPT.Xml.PcdXml import PcdEntryXml
 
 ##
 # IndustryStandardHeaderXml

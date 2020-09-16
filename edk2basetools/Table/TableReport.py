@@ -9,13 +9,13 @@
 # Import Modules
 #
 from __future__ import absolute_import
-import Common.EdkLogger as EdkLogger
-import Common.LongFilePathOs as os, time
-from Table.Table import Table
-from Common.StringUtils import ConvertToSqlString2
-import Ecc.EccToolError as EccToolError
-import Ecc.EccGlobalData as EccGlobalData
-from Common.LongFilePathSupport import OpenLongFilePath as open
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.Common.LongFilePathOs as os, time
+from edk2basetools.Table.Table import Table
+from edk2basetools.Common.StringUtils import ConvertToSqlString2
+import edk2basetools.Ecc.EccToolError as EccToolError
+import edk2basetools.Ecc.EccGlobalData as EccGlobalData
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 ## TableReport
 #

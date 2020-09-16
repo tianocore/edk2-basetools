@@ -10,7 +10,7 @@
 
 ## Import Modules
 #
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import re
 import platform
 import textwrap
@@ -23,24 +23,24 @@ import subprocess
 import threading
 from datetime import datetime
 from io import BytesIO
-from Common import EdkLogger
-from Common.Misc import SaveFileOnChange
-from Common.Misc import GuidStructureByteArrayToGuidString
-from Common.Misc import GuidStructureStringToGuidString
-from Common.BuildToolError import FILE_WRITE_FAILURE
-from Common.BuildToolError import CODE_ERROR
-from Common.BuildToolError import COMMAND_FAILURE
-from Common.BuildToolError import FORMAT_INVALID
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.MultipleWorkspace import MultipleWorkspace as mws
-import Common.GlobalData as GlobalData
-from AutoGen.ModuleAutoGen import ModuleAutoGen
-from Common.Misc import PathClass
-from Common.StringUtils import NormPath
-from Common.DataType import *
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.Misc import SaveFileOnChange
+from edk2basetools.Common.Misc import GuidStructureByteArrayToGuidString
+from edk2basetools.Common.Misc import GuidStructureStringToGuidString
+from edk2basetools.Common.BuildToolError import FILE_WRITE_FAILURE
+from edk2basetools.Common.BuildToolError import CODE_ERROR
+from edk2basetools.Common.BuildToolError import COMMAND_FAILURE
+from edk2basetools.Common.BuildToolError import FORMAT_INVALID
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
+import edk2basetools.Common.GlobalData as GlobalData
+from edk2basetools.AutoGen.ModuleAutoGen import ModuleAutoGen
+from edk2basetools.Common.Misc import PathClass
+from edk2basetools.Common.StringUtils import NormPath
+from edk2basetools.Common.DataType import *
 import collections
-from Common.Expression import *
-from GenFds.AprioriSection import DXE_APRIORI_GUID, PEI_APRIORI_GUID
+from edk2basetools.Common.Expression import *
+from edk2basetools.GenFds.AprioriSection import DXE_APRIORI_GUID, PEI_APRIORI_GUID
 
 ## Pattern to extract contents in EDK DXS files
 gDxsDependencyPattern = re.compile(r"DEPENDENCY_START(.+)DEPENDENCY_END", re.DOTALL)

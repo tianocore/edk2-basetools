@@ -12,13 +12,13 @@
 from __future__ import absolute_import
 from . import Section
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
-import Common.LongFilePathOs as os
-from CommonDataClass.FdfClass import DepexSectionClassObject
-from AutoGen.GenDepex import DependencyExpression
-from Common import EdkLogger
-from Common.BuildToolError import *
-from Common.Misc import PathClass
-from Common.DataType import *
+import edk2basetools.Common.LongFilePathOs as os
+from edk2basetools.CommonDataClass.FdfClass import DepexSectionClassObject
+from edk2basetools.AutoGen.GenDepex import DependencyExpression
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.Misc import PathClass
+from edk2basetools.Common.DataType import *
 
 ## generate data section
 #

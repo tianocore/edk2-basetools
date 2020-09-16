@@ -5,13 +5,13 @@
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 #
 from __future__ import absolute_import
-from Workspace.WorkspaceDatabase import BuildDB
-from Workspace.WorkspaceCommon import GetModuleLibInstances
-import Common.GlobalData as GlobalData
+from edk2basetools.Workspace.WorkspaceDatabase import BuildDB
+from edk2basetools.Workspace.WorkspaceCommon import GetModuleLibInstances
+import edk2basetools.Common.GlobalData as GlobalData
 import os
 import pickle
 from pickle import HIGHEST_PROTOCOL
-from Common import EdkLogger
+from edk2basetools.Common import EdkLogger
 
 class PCD_DATA():
     def __init__(self,TokenCName,TokenSpaceGuidCName,Type,DatumType,SkuInfoList,DefaultValue,

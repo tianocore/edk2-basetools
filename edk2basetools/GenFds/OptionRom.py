@@ -10,15 +10,15 @@
 # Import Modules
 #
 from __future__ import absolute_import
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import subprocess
 
 from . import OptRomInfStatement
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
-from CommonDataClass.FdfClass import OptionRomClassObject
-from Common.Misc import SaveFileOnChange
-from Common import EdkLogger
-from Common.BuildToolError import *
+from edk2basetools.CommonDataClass.FdfClass import OptionRomClassObject
+from edk2basetools.Common.Misc import SaveFileOnChange
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.BuildToolError import *
 
 ##
 #

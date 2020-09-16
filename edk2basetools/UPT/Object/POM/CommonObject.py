@@ -8,7 +8,7 @@
 '''
 Common Object
 '''
-from Library.DataType import TAB_LANGUAGE_EN_US
+from edk2basetools.UPT.Library.DataType import TAB_LANGUAGE_EN_US
 
 ## HelpTextObject
 #

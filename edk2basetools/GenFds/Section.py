@@ -10,12 +10,12 @@
 # Import Modules
 #
 from __future__ import absolute_import
-from CommonDataClass.FdfClass import SectionClassObject
+from edk2basetools.CommonDataClass.FdfClass import SectionClassObject
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
-import Common.LongFilePathOs as os, glob
-from Common import EdkLogger
-from Common.BuildToolError import *
-from Common.DataType import *
+import edk2basetools.Common.LongFilePathOs as os, glob
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.DataType import *
 
 ## section base class
 #

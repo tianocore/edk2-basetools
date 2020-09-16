@@ -9,11 +9,11 @@
 # Import Modules
 #
 import os
-from Common.RangeExpression import RangeExpression
-from Common.Misc import *
+from edk2basetools.Common.RangeExpression import RangeExpression
+from edk2basetools.Common.Misc import *
 from io import BytesIO
 from struct import pack
-from Common.DataType import *
+from edk2basetools.Common.DataType import *
 
 class VAR_CHECK_PCD_VARIABLE_TAB_CONTAINER(object):
     def __init__(self):

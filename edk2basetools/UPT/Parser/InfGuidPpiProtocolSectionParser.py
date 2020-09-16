@@ -12,18 +12,18 @@ InfGuidPpiProtocolSectionParser
 # Import Modules
 #
 
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Logger.ToolError import FORMAT_INVALID
-from Parser.InfParserMisc import InfExpandMacro
-from Library import DataType as DT
-from Library import GlobalData
-from Library.Parsing import MacroParser
-from Library.Misc import GetSplitValueList
-from Library.ParserValidate import IsValidIdString
-from Library.ParserValidate import IsValidUserId
-from Library.ParserValidate import IsValidArch
-from Parser.InfParserMisc import InfParserSectionRoot
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger.ToolError import FORMAT_INVALID
+from edk2basetools.UPT.Parser.InfParserMisc import InfExpandMacro
+from edk2basetools.UPT.Library import DataType as DT
+from edk2basetools.UPT.Library import GlobalData
+from edk2basetools.UPT.Library.Parsing import MacroParser
+from edk2basetools.UPT.Library.Misc import GetSplitValueList
+from edk2basetools.UPT.Library.ParserValidate import IsValidIdString
+from edk2basetools.UPT.Library.ParserValidate import IsValidUserId
+from edk2basetools.UPT.Library.ParserValidate import IsValidArch
+from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
 class InfGuidPpiProtocolSectionParser(InfParserSectionRoot):
     ## InfGuidParser

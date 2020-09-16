@@ -9,11 +9,11 @@
 # Import Modules
 #
 from __future__ import absolute_import
-import Common.EdkLogger as EdkLogger
-from Table.Table import Table
-from Common.StringUtils import ConvertToSqlString
-import Common.LongFilePathOs as os
-from CommonDataClass.DataClass import FileClass
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Table.Table import Table
+from edk2basetools.Common.StringUtils import ConvertToSqlString
+import edk2basetools.Common.LongFilePathOs as os
+from edk2basetools.CommonDataClass.DataClass import FileClass
 
 ## TableFile
 #

@@ -10,16 +10,16 @@
 # Import Modules
 #
 from __future__ import absolute_import
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import subprocess
 from io import BytesIO
 from struct import *
 from . import FfsFileStatement
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
-from Common.Misc import SaveFileOnChange, PackGUID
-from Common.LongFilePathSupport import CopyLongFilePath
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.DataType import *
+from edk2basetools.Common.Misc import SaveFileOnChange, PackGUID
+from edk2basetools.Common.LongFilePathSupport import CopyLongFilePath
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.DataType import *
 
 FV_UI_EXT_ENTY_GUID = 'A67DF1FA-8DE8-4E98-AF09-4BDF2EFFBC7C'
 

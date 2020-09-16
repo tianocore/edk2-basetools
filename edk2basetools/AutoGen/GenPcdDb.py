@@ -6,19 +6,19 @@
 #
 from __future__ import absolute_import
 from io import BytesIO
-from Common.Misc import *
-from Common.StringUtils import StringToArray
+from edk2basetools.Common.Misc import *
+from edk2basetools.Common.StringUtils import StringToArray
 from struct import pack
 from .ValidCheckingInfoObject import VAR_CHECK_PCD_VARIABLE_TAB_CONTAINER
 from .ValidCheckingInfoObject import VAR_CHECK_PCD_VARIABLE_TAB
 from .ValidCheckingInfoObject import GetValidationObject
-from Common.VariableAttributes import VariableAttributes
+from edk2basetools.Common.VariableAttributes import VariableAttributes
 import copy
 from struct import unpack
-from Common.DataType import *
-from Common import GlobalData
-from Common import EdkLogger
-import Common.LongFilePathOs as os
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common import GlobalData
+from edk2basetools.Common import EdkLogger
+import edk2basetools.Common.LongFilePathOs as os
 
 DATABASE_VERSION = 7
 

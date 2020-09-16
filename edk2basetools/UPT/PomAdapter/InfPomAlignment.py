@@ -12,40 +12,40 @@ InfPomAlignment
 # Import modules
 #
 import os.path
-from Logger import StringTable as ST
-import Logger.Log as Logger
-from Library.StringUtils import FORMAT_INVALID
-from Library.StringUtils import PARSER_ERROR
-from Library.StringUtils import NormPath
-from Library.StringUtils import GetSplitValueList
-from Library.Misc import ConvertVersionToDecimal
-from Library.Misc import GetHelpStringByRemoveHashKey
-from Library.Misc import ConvertArchList
-from Library.Misc import GetRelativePath
-from Library.Misc import PathClass
-from Library.Parsing import GetPkgInfoFromDec
-from Library.UniClassObject import UniFileClassObject
-from Library.UniClassObject import ConvertSpecialUnicodes
-from Library.UniClassObject import GetLanguageCode1766
-from Library import DataType as DT
-from Library import GlobalData
-from Library.ParserValidate import IsValidPath
-from Object.POM import CommonObject
-from Object.POM.ModuleObject import ModuleObject
-from Object.POM.ModuleObject import ExternObject
-from Object.POM.ModuleObject import HobObject
-from Object.POM.ModuleObject import EventObject
-from Object.POM.ModuleObject import BootModeObject
-from Object.POM.ModuleObject import PackageDependencyObject
-from Object.POM.ModuleObject import SourceFileObject
-from Object.POM.ModuleObject import DepexObject
-from Object.POM.ModuleObject import AsBuildLibraryClassObject
-from Object.POM.ModuleObject import AsBuiltObject
-from PomAdapter.InfPomAlignmentMisc import GenModuleHeaderUserExt
-from PomAdapter.InfPomAlignmentMisc import GenBinaryData
-from Parser import InfParser
-from PomAdapter.DecPomAlignment import DecPomAlignment
-from Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.UPT.Logger import StringTable as ST
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Library.StringUtils import FORMAT_INVALID
+from edk2basetools.UPT.Library.StringUtils import PARSER_ERROR
+from edk2basetools.UPT.Library.StringUtils import NormPath
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.Misc import ConvertVersionToDecimal
+from edk2basetools.UPT.Library.Misc import GetHelpStringByRemoveHashKey
+from edk2basetools.UPT.Library.Misc import ConvertArchList
+from edk2basetools.UPT.Library.Misc import GetRelativePath
+from edk2basetools.UPT.Library.Misc import PathClass
+from edk2basetools.UPT.Library.Parsing import GetPkgInfoFromDec
+from edk2basetools.UPT.Library.UniClassObject import UniFileClassObject
+from edk2basetools.UPT.Library.UniClassObject import ConvertSpecialUnicodes
+from edk2basetools.UPT.Library.UniClassObject import GetLanguageCode1766
+from edk2basetools.UPT.Library import DataType as DT
+from edk2basetools.UPT.Library import GlobalData
+from edk2basetools.UPT.Library.ParserValidate import IsValidPath
+from edk2basetools.UPT.Object.POM import CommonObject
+from edk2basetools.UPT.Object.POM.ModuleObject import ModuleObject
+from edk2basetools.UPT.Object.POM.ModuleObject import ExternObject
+from edk2basetools.UPT.Object.POM.ModuleObject import HobObject
+from edk2basetools.UPT.Object.POM.ModuleObject import EventObject
+from edk2basetools.UPT.Object.POM.ModuleObject import BootModeObject
+from edk2basetools.UPT.Object.POM.ModuleObject import PackageDependencyObject
+from edk2basetools.UPT.Object.POM.ModuleObject import SourceFileObject
+from edk2basetools.UPT.Object.POM.ModuleObject import DepexObject
+from edk2basetools.UPT.Object.POM.ModuleObject import AsBuildLibraryClassObject
+from edk2basetools.UPT.Object.POM.ModuleObject import AsBuiltObject
+from edk2basetools.UPT.PomAdapter.InfPomAlignmentMisc import GenModuleHeaderUserExt
+from edk2basetools.UPT.PomAdapter.InfPomAlignmentMisc import GenBinaryData
+from edk2basetools.UPT.Parser import InfParser
+from edk2basetools.UPT.PomAdapter.DecPomAlignment import DecPomAlignment
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
 ## InfPomAlignment
 #

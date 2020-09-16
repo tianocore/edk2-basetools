@@ -13,14 +13,14 @@ InfPomAlignmentMisc
 ##
 # Import modules
 #
-import Logger.Log as Logger
-from Library import DataType as DT
-from Library.Misc import ConvertArchList
-from Object.POM.ModuleObject import BinaryFileObject
-from Object.POM import CommonObject
-from Library.StringUtils import FORMAT_INVALID
-from Library.Misc import CheckGuidRegFormat
-from Logger import StringTable as ST
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Library import DataType as DT
+from edk2basetools.UPT.Library.Misc import ConvertArchList
+from edk2basetools.UPT.Object.POM.ModuleObject import BinaryFileObject
+from edk2basetools.UPT.Object.POM import CommonObject
+from edk2basetools.UPT.Library.StringUtils import FORMAT_INVALID
+from edk2basetools.UPT.Library.Misc import CheckGuidRegFormat
+from edk2basetools.UPT.Logger import StringTable as ST
 
 
 ## GenModuleHeaderUserExt

@@ -22,7 +22,7 @@ import os
 import sys
 import argparse
 import subprocess
-from Common.BuildVersion import gBUILD_VERSION
+from edk2basetools.Common.BuildVersion import gBUILD_VERSION
 
 #
 # Globals for help information

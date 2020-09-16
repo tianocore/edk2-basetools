@@ -10,7 +10,7 @@
 ToolError
 '''
 
-import Logger.StringTable as ST
+import edk2basetools.UPT.Logger.StringTable as ST
 
 FILE_OPEN_FAILURE = 1
 FILE_WRITE_FAILURE = 2

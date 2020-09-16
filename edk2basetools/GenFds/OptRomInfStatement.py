@@ -13,10 +13,10 @@ from __future__ import absolute_import
 from . import RuleSimpleFile
 from . import RuleComplexFile
 from . import Section
-import Common.GlobalData as GlobalData
+import edk2basetools.Common.GlobalData as GlobalData
 
-from Common.DataType import *
-from Common.StringUtils import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.StringUtils import *
 from .FfsInfStatement import FfsInfStatement
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
 

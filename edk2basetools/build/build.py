@@ -29,39 +29,39 @@ from linecache import getlines
 from subprocess import Popen,PIPE, STDOUT
 from collections import OrderedDict, defaultdict
 
-from AutoGen.PlatformAutoGen import PlatformAutoGen
-from AutoGen.ModuleAutoGen import ModuleAutoGen
-from AutoGen.WorkspaceAutoGen import WorkspaceAutoGen
-from AutoGen.AutoGenWorker import AutoGenWorkerInProcess,AutoGenManager,\
+from edk2basetools.AutoGen.PlatformAutoGen import PlatformAutoGen
+from edk2basetools.AutoGen.ModuleAutoGen import ModuleAutoGen
+from edk2basetools.AutoGen.WorkspaceAutoGen import WorkspaceAutoGen
+from edk2basetools.AutoGen.AutoGenWorker import AutoGenWorkerInProcess,AutoGenManager,\
     LogAgent
-from AutoGen import GenMake
-from Common import Misc as Utils
+from edk2basetools.AutoGen import GenMake
+from edk2basetools.Common import Misc as Utils
 
-from Common.TargetTxtClassObject import TargetTxtDict
-from Common.ToolDefClassObject import ToolDefDict
-from buildoptions import MyOptionParser
-from Common.Misc import PathClass,SaveFileOnChange,RemoveDirectory
-from Common.StringUtils import NormPath
-from Common.MultipleWorkspace import MultipleWorkspace as mws
-from Common.BuildToolError import *
-from Common.DataType import *
-import Common.EdkLogger as EdkLogger
+from edk2basetools.Common.TargetTxtClassObject import TargetTxtDict
+from edk2basetools.Common.ToolDefClassObject import ToolDefDict
+from edk2basetools.build.buildoptions import MyOptionParser
+from edk2basetools.Common.Misc import PathClass,SaveFileOnChange,RemoveDirectory
+from edk2basetools.Common.StringUtils import NormPath
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.DataType import *
+import edk2basetools.Common.EdkLogger as EdkLogger
 
-from Workspace.WorkspaceDatabase import BuildDB
+from edk2basetools.Workspace.WorkspaceDatabase import BuildDB
 
-from BuildReport import BuildReport
-from GenPatchPcdTable.GenPatchPcdTable import PeImageClass,parsePcdInfoFromMapFile
-from PatchPcdValue.PatchPcdValue import PatchBinaryFile
+from edk2basetools.build.BuildReport import BuildReport
+from edk2basetools.GenPatchPcdTable.GenPatchPcdTable import PeImageClass,parsePcdInfoFromMapFile
+from edk2basetools.PatchPcdValue.PatchPcdValue import PatchBinaryFile
 
-import Common.GlobalData as GlobalData
-from GenFds.GenFds import GenFds, GenFdsApi
+import edk2basetools.Common.GlobalData as GlobalData
+from edk2basetools.GenFds.GenFds import GenFds, GenFdsApi
 import multiprocessing as mp
 from multiprocessing import Manager
-from AutoGen.DataPipe import MemoryDataPipe
-from AutoGen.ModuleAutoGenHelper import WorkSpaceInfo, PlatformInfo
-from GenFds.FdfParser import FdfParser
-from AutoGen.IncludesAutoGen import IncludesAutoGen
-from GenFds.GenFds import resetFdsGlobalVariable
+from edk2basetools.AutoGen.DataPipe import MemoryDataPipe
+from edk2basetools.AutoGen.ModuleAutoGenHelper import WorkSpaceInfo, PlatformInfo
+from edk2basetools.GenFds.FdfParser import FdfParser
+from edk2basetools.AutoGen.IncludesAutoGen import IncludesAutoGen
+from edk2basetools.GenFds.GenFds import resetFdsGlobalVariable
 
 ## standard targets of build command
 gSupportedTarget = ['all', 'genc', 'genmake', 'modules', 'libraries', 'fds', 'clean', 'cleanall', 'cleanlib', 'run']

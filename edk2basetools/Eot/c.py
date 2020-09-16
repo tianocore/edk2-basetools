@@ -12,12 +12,12 @@
 from __future__ import print_function
 from __future__ import absolute_import
 import sys
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import re
 from . import CodeFragmentCollector
 from . import FileProfile
-from CommonDataClass import DataClass
-from Common import EdkLogger
+from edk2basetools.CommonDataClass import DataClass
+from edk2basetools.Common import EdkLogger
 from .EotToolError import *
 from . import EotGlobalData
 

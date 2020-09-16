@@ -7,7 +7,7 @@
 ##
 # Import Modules
 #
-import Common.EdkLogger as EdkLogger
+import edk2basetools.Common.EdkLogger as EdkLogger
 
 ##
 # Static values for data models

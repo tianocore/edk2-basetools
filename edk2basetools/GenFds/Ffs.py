@@ -9,7 +9,7 @@
 ##
 # Import Modules
 #
-from Common.DataType import *
+from edk2basetools.Common.DataType import *
 
 # mapping between FILE type in FDF and file type for GenFfs
 FdfFvFileTypeToFileType = {

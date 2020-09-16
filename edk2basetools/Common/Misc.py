@@ -26,19 +26,19 @@ import subprocess
 import tempfile
 from collections import OrderedDict
 
-import Common.LongFilePathOs as os
-from Common import EdkLogger as EdkLogger
-from Common import GlobalData as GlobalData
-from Common.DataType import *
-from Common.BuildToolError import *
-from CommonDataClass.DataClass import *
-from Common.Parsing import GetSplitValueList
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.LongFilePathSupport import CopyLongFilePath as CopyLong
-from Common.LongFilePathSupport import LongFilePath as LongFilePath
-from Common.MultipleWorkspace import MultipleWorkspace as mws
-from CommonDataClass.Exceptions import BadExpression
-from Common.caching import cached_property
+import edk2basetools.Common.LongFilePathOs as os
+from edk2basetools.Common import EdkLogger as EdkLogger
+from edk2basetools.Common import GlobalData as GlobalData
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.CommonDataClass.DataClass import *
+from edk2basetools.Common.Parsing import GetSplitValueList
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.LongFilePathSupport import CopyLongFilePath as CopyLong
+from edk2basetools.Common.LongFilePathSupport import LongFilePath as LongFilePath
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.CommonDataClass.Exceptions import BadExpression
+from edk2basetools.Common.caching import cached_property
 import struct
 
 ArrayIndex = re.compile("\[\s*[0-9a-fA-FxX]*\s*\]")

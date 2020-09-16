@@ -16,17 +16,17 @@ from re import compile, DOTALL
 from string import hexdigits
 from uuid import UUID
 
-from Common.BuildToolError import *
-from Common import EdkLogger
-from Common.Misc import PathClass, tdict, ProcessDuplicatedInf, GuidStructureStringToGuidString
-from Common.StringUtils import NormPath, ReplaceMacro
-from Common import GlobalData
-from Common.Expression import *
-from Common.DataType import *
-from Common.MultipleWorkspace import MultipleWorkspace as mws
-import Common.LongFilePathOs as os
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.RangeExpression import RangeExpression
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.Misc import PathClass, tdict, ProcessDuplicatedInf, GuidStructureStringToGuidString
+from edk2basetools.Common.StringUtils import NormPath, ReplaceMacro
+from edk2basetools.Common import GlobalData
+from edk2basetools.Common.Expression import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
+import edk2basetools.Common.LongFilePathOs as os
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.RangeExpression import RangeExpression
 from collections import OrderedDict
 
 from .Fd import FD

@@ -7,15 +7,15 @@
 
 import unittest
 
-import Logger.Log as Logger
-from Library.CommentParsing import ParseHeaderCommentSection, \
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Library.CommentParsing import ParseHeaderCommentSection, \
                                    ParseGenericComment, \
                                    ParseDecPcdGenericComment, \
                                    ParseDecPcdTailComment
-from Library.CommentParsing import _IsCopyrightLine
-from Library.StringUtils import GetSplitValueList
-from Library.DataType import TAB_SPACE_SPLIT
-from Library.DataType import TAB_LANGUAGE_EN_US
+from edk2basetools.UPT.Library.CommentParsing import _IsCopyrightLine
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.DataType import TAB_SPACE_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_LANGUAGE_EN_US
 
 #
 # Test ParseHeaderCommentSection

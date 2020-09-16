@@ -14,7 +14,7 @@ from __future__ import print_function
 # Import Modules
 #
 import re
-from Logger import StringTable as ST
+from edk2basetools.UPT.Logger import StringTable as ST
 
 ## IsValidBareCString
 #

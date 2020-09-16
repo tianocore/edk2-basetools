@@ -11,15 +11,15 @@
 # Import Modules
 #
 from __future__ import print_function
-import Common.LongFilePathOs as os, codecs, re
+import edk2basetools.Common.LongFilePathOs as os, codecs, re
 import distutils.util
-import Common.EdkLogger as EdkLogger
+import edk2basetools.Common.EdkLogger as EdkLogger
 from io import BytesIO
-from Common.BuildToolError import *
-from Common.StringUtils import GetLineNo
-from Common.Misc import PathClass
-from Common.LongFilePathSupport import LongFilePath
-from Common.GlobalData import *
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.StringUtils import GetLineNo
+from edk2basetools.Common.Misc import PathClass
+from edk2basetools.Common.LongFilePathSupport import LongFilePath
+from edk2basetools.Common.GlobalData import *
 ##
 # Static definitions
 #

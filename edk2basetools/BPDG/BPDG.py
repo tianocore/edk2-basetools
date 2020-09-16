@@ -16,14 +16,14 @@
 #
 from __future__ import print_function
 from __future__ import absolute_import
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import sys
 import encodings.ascii
 
 from optparse import OptionParser
-from Common import EdkLogger
-from Common.BuildToolError import *
-from Common.BuildVersion import gBUILD_VERSION
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.BuildVersion import gBUILD_VERSION
 
 from . import StringTable as st
 from . import GenVpd

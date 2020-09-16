@@ -12,7 +12,7 @@
 from __future__ import print_function
 from __future__ import absolute_import
 import re
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import sys
 
 if sys.version_info.major == 3:
@@ -25,9 +25,9 @@ else:
     from Eot.CParser3.CLexer import CLexer
     from Eot.CParser3.CParser import CParser
 
-from Eot import FileProfile
-from Eot.CodeFragment import PP_Directive
-from Eot.ParserWarning import Warning
+from edk2basetools.Eot import FileProfile
+from edk2basetools.Eot.CodeFragment import PP_Directive
+from edk2basetools.Eot.ParserWarning import Warning
 
 
 ##define T_CHAR_SPACE                ' '

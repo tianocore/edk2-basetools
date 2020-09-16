@@ -12,7 +12,7 @@
 #
 from __future__ import absolute_import
 from . import Rule
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 from io import BytesIO
 from struct import *
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
@@ -22,29 +22,29 @@ import sys
 from . import Section
 from . import RuleSimpleFile
 from . import RuleComplexFile
-from CommonDataClass.FdfClass import FfsInfStatementClassObject
-from Common.MultipleWorkspace import MultipleWorkspace as mws
-from Common.DataType import SUP_MODULE_USER_DEFINED
-from Common.DataType import SUP_MODULE_HOST_APPLICATION
-from Common.StringUtils import *
-from Common.Misc import PathClass
-from Common.Misc import GuidStructureByteArrayToGuidString
-from Common.Misc import ProcessDuplicatedInf
-from Common.Misc import GetVariableOffset
-from Common import EdkLogger
-from Common.BuildToolError import *
+from edk2basetools.CommonDataClass.FdfClass import FfsInfStatementClassObject
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.Common.DataType import SUP_MODULE_USER_DEFINED
+from edk2basetools.Common.DataType import SUP_MODULE_HOST_APPLICATION
+from edk2basetools.Common.StringUtils import *
+from edk2basetools.Common.Misc import PathClass
+from edk2basetools.Common.Misc import GuidStructureByteArrayToGuidString
+from edk2basetools.Common.Misc import ProcessDuplicatedInf
+from edk2basetools.Common.Misc import GetVariableOffset
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.BuildToolError import *
 from .GuidSection import GuidSection
 from .FvImageSection import FvImageSection
-from Common.Misc import PeImageClass
-from AutoGen.GenDepex import DependencyExpression
-from PatchPcdValue.PatchPcdValue import PatchBinaryFile
-from Common.LongFilePathSupport import CopyLongFilePath
-from Common.LongFilePathSupport import OpenLongFilePath as open
-import Common.GlobalData as GlobalData
+from edk2basetools.Common.Misc import PeImageClass
+from edk2basetools.AutoGen.GenDepex import DependencyExpression
+from edk2basetools.PatchPcdValue.PatchPcdValue import PatchBinaryFile
+from edk2basetools.Common.LongFilePathSupport import CopyLongFilePath
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+import edk2basetools.Common.GlobalData as GlobalData
 from .DepexSection import DepexSection
-from Common.Misc import SaveFileOnChange
-from Common.Expression import *
-from Common.DataType import *
+from edk2basetools.Common.Misc import SaveFileOnChange
+from edk2basetools.Common.Expression import *
+from edk2basetools.Common.DataType import *
 
 ## generate FFS from INF
 #

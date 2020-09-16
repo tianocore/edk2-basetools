@@ -8,13 +8,13 @@
 #
 from __future__ import print_function
 from __future__ import absolute_import
-from Common.GlobalData import *
-from CommonDataClass.Exceptions import BadExpression
-from CommonDataClass.Exceptions import WrnExpression
+from edk2basetools.Common.GlobalData import *
+from edk2basetools.CommonDataClass.Exceptions import BadExpression
+from edk2basetools.CommonDataClass.Exceptions import WrnExpression
 from .Misc import GuidStringToGuidStructureString, ParseFieldValue,CopyDict
-import Common.EdkLogger as EdkLogger
+import edk2basetools.Common.EdkLogger as EdkLogger
 import copy
-from Common.DataType import *
+from edk2basetools.Common.DataType import *
 import sys
 from random import sample
 import string

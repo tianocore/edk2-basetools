@@ -12,11 +12,11 @@
 from __future__ import absolute_import
 from io import BytesIO
 from struct import pack
-from CommonDataClass.FdfClass import FileStatementClassObject
-from Common import EdkLogger
-from Common.BuildToolError import GENFDS_ERROR
-from Common.Misc import GuidStructureByteArrayToGuidString, SaveFileOnChange
-import Common.LongFilePathOs as os
+from edk2basetools.CommonDataClass.FdfClass import FileStatementClassObject
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.BuildToolError import GENFDS_ERROR
+from edk2basetools.Common.Misc import GuidStructureByteArrayToGuidString, SaveFileOnChange
+import edk2basetools.Common.LongFilePathOs as os
 from .GuidSection import GuidSection
 from .FvImageSection import FvImageSection
 from .Ffs import FdfFvFileTypeToFileType

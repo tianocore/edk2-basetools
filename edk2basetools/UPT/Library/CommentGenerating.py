@@ -13,23 +13,23 @@ CommentGenerating
 ##
 # Import Modules
 #
-from Library.StringUtils import GetSplitValueList
-from Library.DataType import TAB_SPACE_SPLIT
-from Library.DataType import TAB_INF_GUIDTYPE_VAR
-from Library.DataType import USAGE_ITEM_NOTIFY
-from Library.DataType import ITEM_UNDEFINED
-from Library.DataType import TAB_HEADER_COMMENT
-from Library.DataType import TAB_BINARY_HEADER_COMMENT
-from Library.DataType import TAB_COMMENT_SPLIT
-from Library.DataType import TAB_SPECIAL_COMMENT
-from Library.DataType import END_OF_LINE
-from Library.DataType import TAB_COMMENT_EDK1_SPLIT
-from Library.DataType import TAB_COMMENT_EDK1_START
-from Library.DataType import TAB_COMMENT_EDK1_END
-from Library.DataType import TAB_STAR
-from Library.DataType import TAB_PCD_PROMPT
-from Library.UniClassObject import ConvertSpecialUnicodes
-from Library.Misc import GetLocalValue
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.DataType import TAB_SPACE_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_INF_GUIDTYPE_VAR
+from edk2basetools.UPT.Library.DataType import USAGE_ITEM_NOTIFY
+from edk2basetools.UPT.Library.DataType import ITEM_UNDEFINED
+from edk2basetools.UPT.Library.DataType import TAB_HEADER_COMMENT
+from edk2basetools.UPT.Library.DataType import TAB_BINARY_HEADER_COMMENT
+from edk2basetools.UPT.Library.DataType import TAB_COMMENT_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_SPECIAL_COMMENT
+from edk2basetools.UPT.Library.DataType import END_OF_LINE
+from edk2basetools.UPT.Library.DataType import TAB_COMMENT_EDK1_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_COMMENT_EDK1_START
+from edk2basetools.UPT.Library.DataType import TAB_COMMENT_EDK1_END
+from edk2basetools.UPT.Library.DataType import TAB_STAR
+from edk2basetools.UPT.Library.DataType import TAB_PCD_PROMPT
+from edk2basetools.UPT.Library.UniClassObject import ConvertSpecialUnicodes
+from edk2basetools.UPT.Library.Misc import GetLocalValue
 ## GenTailCommentLines
 #
 # @param TailCommentLines:  the tail comment lines that need to be generated

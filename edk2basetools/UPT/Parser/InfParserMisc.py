@@ -16,13 +16,13 @@ InfParserMisc
 import re
 
 
-from Library import DataType as DT
+from edk2basetools.UPT.Library import DataType as DT
 
 
-from Library.StringUtils import gMACRO_PATTERN
-from Library.StringUtils import ReplaceMacro
-from Object.Parser.InfMisc import ErrorInInf
-from Logger.StringTable import ERR_MARCO_DEFINITION_MISS_ERROR
+from edk2basetools.UPT.Library.StringUtils import gMACRO_PATTERN
+from edk2basetools.UPT.Library.StringUtils import ReplaceMacro
+from edk2basetools.UPT.Object.Parser.InfMisc import ErrorInInf
+from edk2basetools.UPT.Logger.StringTable import ERR_MARCO_DEFINITION_MISS_ERROR
 
 #
 # Global variable
