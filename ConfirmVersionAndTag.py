@@ -31,7 +31,7 @@ version = str(v)
 print("version: " + version)
 
 # create a git tag at this point if we are running this on the server
-if "AGENT_ID" in os.environ or "SYSTEM_JOBID" in os.environ :  # check if we're actually running on the server
+if "AGENT_ID" in os.environ or "SYSTEM_JOBID" in os.environ:  # check if we're actually running on the server
     from edk2toollib.utility_functions import RunCmd
     print("Creating tag and pushing")
     ret = RunCmd("git", f"tag v{version}")

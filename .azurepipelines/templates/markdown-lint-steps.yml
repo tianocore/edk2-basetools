@@ -16,4 +16,4 @@ steps:
 
 - script: markdownlint "**/*.md"
   displayName: "Lint md files"
-  continueOnError: true
+  enabled: false

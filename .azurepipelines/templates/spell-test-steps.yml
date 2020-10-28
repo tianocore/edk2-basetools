@@ -20,4 +20,4 @@ steps:
 
 - script: cspell -c .cspell.json "**/*.py" "**/*.md"
   displayName: run spell check test
-  continueOnError: true
+  enabled: false

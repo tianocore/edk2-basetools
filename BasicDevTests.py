@@ -48,8 +48,8 @@ def TestRequiredLicense(apath):
         with open(apath, "rb") as fobj:
             contents = fobj.read().decode()
             found = False
-            for l in lic:
-                if l in contents:
+            for line in lic:
+                if line in contents:
                     found = True
                     break
             if not found:

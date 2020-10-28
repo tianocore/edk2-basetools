@@ -18,7 +18,8 @@ from setuptools.command.develop import develop
 # figure out what the current version is
 version_parts = ["0", "1"]
 # query pypi to see what the 
-pypi_results = str(subprocess.check_output([sys.executable, '-m', 'pip', 'search', 'edk2-basetools']).decode('UTF-8')).strip().splitlines()
+pip_cmds = [sys.executable, '-m', 'pip', 'search', 'edk2-basetools']
+pypi_results = str(subprocess.check_output(pip_cmds).decode('UTF-8')).strip().splitlines()
 short_version = "0"
 for pypi_package in pypi_results:
     if not pypi_package.strip().lower().startswith("edk2-basetools "):
@@ -62,6 +63,7 @@ class PostDevCommand(develop):
 
     def run(self):
         develop.run(self)
+
 
 with open("readme.md", "r") as fh:
     long_description = fh.read()
