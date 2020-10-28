@@ -66,7 +66,7 @@ class MultipleWorkspace(object):
     @classmethod
     def join(cls, Ws, *p):
         Path = os.path.join(Ws, *p)
-        if not os.path.exists(Path):
+        if not os.path.exists(Path) and cls.PACKAGES_PATH is not None:
             for Pkg in cls.PACKAGES_PATH:
                 Path = os.path.join(Pkg, *p)
                 if os.path.exists(Path):
