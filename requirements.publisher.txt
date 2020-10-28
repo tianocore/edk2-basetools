@@ -1,3 +1,4 @@
 setuptools
 wheel
 twine
+edk2-pytool-library
