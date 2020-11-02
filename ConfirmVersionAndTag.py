@@ -37,10 +37,10 @@ if "AGENT_ID" in os.environ or "SYSTEM_JOBID" in os.environ:  # check if we're a
     ret = RunCmd("git", f"tag v{version}")
     if ret != 0:
         print("error creating tag")
-        sys.exit(1)
+        sys.exit(0)
     ret = RunCmd("git", "push origin --tags")
     if ret != 0:
         print("error pushing")
-        sys.exit(1)
+        sys.exit(0)
 
 sys.exit(0)
