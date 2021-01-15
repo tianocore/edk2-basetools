@@ -15,13 +15,13 @@ from sys import platform
 from traceback import format_exc
 from platform import python_version
 
-from Logger import StringTable as ST
-from Logger.ToolError import FatalError
-from Logger.ToolError import ABORT_ERROR
-from Logger.ToolError import CODE_ERROR
-import Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger.ToolError import FatalError
+from edk2basetools.UPT.Logger.ToolError import ABORT_ERROR
+from edk2basetools.UPT.Logger.ToolError import CODE_ERROR
+import edk2basetools.UPT.Logger.Log as Logger
 
-from Library import GlobalData
+from edk2basetools.UPT.Library import GlobalData
 
 ## InventoryDistInstalled
 #

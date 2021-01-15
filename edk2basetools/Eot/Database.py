@@ -9,21 +9,21 @@
 # Import Modules
 #
 import sqlite3
-import Common.LongFilePathOs as os, time
+import edk2basetools.Common.LongFilePathOs as os, time
 
-import Common.EdkLogger as EdkLogger
-import CommonDataClass.DataClass as DataClass
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.CommonDataClass.DataClass as DataClass
 
-from Table.TableDataModel import TableDataModel
-from Table.TableFile import TableFile
-from Table.TableFunction import TableFunction
-from Table.TableIdentifier import TableIdentifier
-from Table.TableEotReport import TableEotReport
-from Table.TableInf import TableInf
-from Table.TableDec import TableDec
-from Table.TableDsc import TableDsc
-from Table.TableFdf import TableFdf
-from Table.TableQuery import TableQuery
+from edk2basetools.Table.TableDataModel import TableDataModel
+from edk2basetools.Table.TableFile import TableFile
+from edk2basetools.Table.TableFunction import TableFunction
+from edk2basetools.Table.TableIdentifier import TableIdentifier
+from edk2basetools.Table.TableEotReport import TableEotReport
+from edk2basetools.Table.TableInf import TableInf
+from edk2basetools.Table.TableDec import TableDec
+from edk2basetools.Table.TableDsc import TableDsc
+from edk2basetools.Table.TableFdf import TableFdf
+from edk2basetools.Table.TableQuery import TableQuery
 
 ##
 # Static definitions

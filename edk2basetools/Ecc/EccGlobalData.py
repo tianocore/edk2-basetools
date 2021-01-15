@@ -8,7 +8,7 @@
 ##
 # Import Modules
 #
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 
 gWorkspace = ''
 gTarget = ''

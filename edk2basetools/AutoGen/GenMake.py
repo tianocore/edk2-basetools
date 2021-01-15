@@ -9,20 +9,20 @@
 ## Import Modules
 #
 from __future__ import absolute_import
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import sys
 import string
 import re
 import os.path as path
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.MultipleWorkspace import MultipleWorkspace as mws
-from Common.BuildToolError import *
-from Common.Misc import *
-from Common.StringUtils import *
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.Misc import *
+from edk2basetools.Common.StringUtils import *
 from .BuildEngine import *
-import Common.GlobalData as GlobalData
+import edk2basetools.Common.GlobalData as GlobalData
 from collections import OrderedDict
-from Common.DataType import TAB_COMPILER_MSFT
+from edk2basetools.Common.DataType import TAB_COMPILER_MSFT
 
 ## Regular expression for finding header file inclusions
 gIncludePattern = re.compile(r"^[ \t]*[#%]?[ \t]*include(?:[ \t]*(?:\\(?:\r\n|\r|\n))*[ \t]*)*(?:\(?[\"<]?[ \t]*)([-\w.\\/() \t]+)(?:[ \t]*[\">]?\)?)", re.MULTILINE | re.UNICODE | re.IGNORECASE)

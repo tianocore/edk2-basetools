@@ -18,8 +18,8 @@ else:
 #
 ##
 
-import Ecc.CodeFragment as CodeFragment
-import Ecc.FileProfile as FileProfile
+import edk2basetools.Ecc.CodeFragment as CodeFragment
+import edk2basetools.Ecc.FileProfile as FileProfile
 
 
 # This class defines a complete listener for a parse tree produced by CParser.

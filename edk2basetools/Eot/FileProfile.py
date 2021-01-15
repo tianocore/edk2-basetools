@@ -12,9 +12,9 @@
 
 from __future__ import absolute_import
 import re
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 from .ParserWarning import Warning
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 # Profile contents of a file
 PPDirectiveList = []

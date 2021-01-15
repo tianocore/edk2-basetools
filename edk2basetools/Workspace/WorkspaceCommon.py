@@ -7,15 +7,15 @@
 
 from __future__ import absolute_import
 from collections import OrderedDict, defaultdict
-from Common.DataType import SUP_MODULE_USER_DEFINED
-from Common.DataType import SUP_MODULE_HOST_APPLICATION
+from edk2basetools.Common.DataType import SUP_MODULE_USER_DEFINED
+from edk2basetools.Common.DataType import SUP_MODULE_HOST_APPLICATION
 from .BuildClassObject import LibraryClassObject
-import Common.GlobalData as GlobalData
-from Workspace.BuildClassObject import StructurePcd
-from Common.BuildToolError import RESOURCE_NOT_AVAILABLE
-from Common.BuildToolError import OPTION_MISSING
-from Common.BuildToolError import BUILD_ERROR
-import Common.EdkLogger as EdkLogger
+import edk2basetools.Common.GlobalData as GlobalData
+from edk2basetools.Workspace.BuildClassObject import StructurePcd
+from edk2basetools.Common.BuildToolError import RESOURCE_NOT_AVAILABLE
+from edk2basetools.Common.BuildToolError import OPTION_MISSING
+from edk2basetools.Common.BuildToolError import BUILD_ERROR
+import edk2basetools.Common.EdkLogger as EdkLogger
 
 class OrderedListDict(OrderedDict):
     def __init__(self, *args, **kwargs):

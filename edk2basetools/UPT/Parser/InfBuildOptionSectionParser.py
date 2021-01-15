@@ -12,18 +12,18 @@ InfBuildOptionSectionParser
 ##
 # Import Modules
 #
-from Library import DataType as DT
-from Library import GlobalData
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Logger.ToolError import FORMAT_INVALID
-from Parser.InfParserMisc import InfExpandMacro
-from Library.Misc import GetSplitValueList
-from Parser.InfParserMisc import IsAsBuildOptionInfo
-from Library.Misc import GetHelpStringByRemoveHashKey
-from Library.ParserValidate import IsValidFamily
-from Library.ParserValidate import IsValidBuildOptionName
-from Parser.InfParserMisc import InfParserSectionRoot
+from edk2basetools.UPT.Library import DataType as DT
+from edk2basetools.UPT.Library import GlobalData
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger.ToolError import FORMAT_INVALID
+from edk2basetools.UPT.Parser.InfParserMisc import InfExpandMacro
+from edk2basetools.UPT.Library.Misc import GetSplitValueList
+from edk2basetools.UPT.Parser.InfParserMisc import IsAsBuildOptionInfo
+from edk2basetools.UPT.Library.Misc import GetHelpStringByRemoveHashKey
+from edk2basetools.UPT.Library.ParserValidate import IsValidFamily
+from edk2basetools.UPT.Library.ParserValidate import IsValidBuildOptionName
+from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
 class InfBuildOptionSectionParser(InfParserSectionRoot):
     ## InfBuildOptionParser

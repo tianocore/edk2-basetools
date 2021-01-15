@@ -28,11 +28,11 @@ import tempfile
 import shutil
 import platform
 import json
-from Common.Uefi.Capsule.UefiCapsuleHeader import UefiCapsuleHeaderClass
-from Common.Uefi.Capsule.FmpCapsuleHeader  import FmpCapsuleHeaderClass
-from Common.Uefi.Capsule.FmpAuthHeader     import FmpAuthHeaderClass
-from Common.Uefi.Capsule.CapsuleDependency import CapsuleDependencyClass
-from Common.Edk2.Capsule.FmpPayloadHeader  import FmpPayloadHeaderClass
+from edk2basetools.Common.Uefi.Capsule.UefiCapsuleHeader import UefiCapsuleHeaderClass
+from edk2basetools.Common.Uefi.Capsule.FmpCapsuleHeader  import FmpCapsuleHeaderClass
+from edk2basetools.Common.Uefi.Capsule.FmpAuthHeader     import FmpAuthHeaderClass
+from edk2basetools.Common.Uefi.Capsule.CapsuleDependency import CapsuleDependencyClass
+from edk2basetools.Common.Edk2.Capsule.FmpPayloadHeader  import FmpPayloadHeaderClass
 
 #
 # Globals for help information

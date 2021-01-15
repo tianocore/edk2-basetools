@@ -10,9 +10,9 @@
 InfBuildOptionObject
 '''
 
-from Library import GlobalData
+from edk2basetools.UPT.Library import GlobalData
 
-from Object.Parser.InfCommonObject import InfSectionCommonDef
+from edk2basetools.UPT.Object.Parser.InfCommonObject import InfSectionCommonDef
 
 class InfBuildOptionItem():
     def __init__(self):

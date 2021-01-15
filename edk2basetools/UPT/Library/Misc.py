@@ -28,23 +28,23 @@ from os import environ
 import re
 from collections import OrderedDict as Sdict
 
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Logger import ToolError
-from Library import GlobalData
-from Library.DataType import SUP_MODULE_LIST
-from Library.DataType import END_OF_LINE
-from Library.DataType import TAB_SPLIT
-from Library.DataType import TAB_LANGUAGE_EN_US
-from Library.DataType import TAB_LANGUAGE_EN
-from Library.DataType import TAB_LANGUAGE_EN_X
-from Library.DataType import TAB_UNI_FILE_SUFFIXS
-from Library.StringUtils import GetSplitValueList
-from Library.ParserValidate import IsValidHexVersion
-from Library.ParserValidate import IsValidPath
-from Object.POM.CommonObject import TextObject
-from Core.FileHook import __FileHookOpen__
-from Common.MultipleWorkspace import MultipleWorkspace as mws
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger import ToolError
+from edk2basetools.UPT.Library import GlobalData
+from edk2basetools.UPT.Library.DataType import SUP_MODULE_LIST
+from edk2basetools.UPT.Library.DataType import END_OF_LINE
+from edk2basetools.UPT.Library.DataType import TAB_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_LANGUAGE_EN_US
+from edk2basetools.UPT.Library.DataType import TAB_LANGUAGE_EN
+from edk2basetools.UPT.Library.DataType import TAB_LANGUAGE_EN_X
+from edk2basetools.UPT.Library.DataType import TAB_UNI_FILE_SUFFIXS
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.ParserValidate import IsValidHexVersion
+from edk2basetools.UPT.Library.ParserValidate import IsValidPath
+from edk2basetools.UPT.Object.POM.CommonObject import TextObject
+from edk2basetools.UPT.Core.FileHook import __FileHookOpen__
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
 ## Convert GUID string in xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx style to C
 # structure style

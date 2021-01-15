@@ -12,8 +12,8 @@
 #
 
 import argparse
-import Common.EdkLogger as EdkLogger
-from Common.BuildToolError import *
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Common.BuildToolError import *
 import sys
 import os
 

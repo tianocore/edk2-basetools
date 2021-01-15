@@ -14,19 +14,19 @@ DistributionPackageClass
 #
 import os.path
 
-from Library.Misc import Sdict
-from Library.Misc import GetNonMetaDataFiles
-from PomAdapter.InfPomAlignment import InfPomAlignment
-from PomAdapter.DecPomAlignment import DecPomAlignment
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Logger.ToolError import OPTION_VALUE_INVALID
-from Logger.ToolError import FatalError
-from Logger.ToolError import EDK1_INF_ERROR
-from Object.POM.CommonObject import IdentificationObject
-from Object.POM.CommonObject import CommonHeaderObject
-from Object.POM.CommonObject import MiscFileObject
-from Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.UPT.Library.Misc import Sdict
+from edk2basetools.UPT.Library.Misc import GetNonMetaDataFiles
+from edk2basetools.UPT.PomAdapter.InfPomAlignment import InfPomAlignment
+from edk2basetools.UPT.PomAdapter.DecPomAlignment import DecPomAlignment
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger.ToolError import OPTION_VALUE_INVALID
+from edk2basetools.UPT.Logger.ToolError import FatalError
+from edk2basetools.UPT.Logger.ToolError import EDK1_INF_ERROR
+from edk2basetools.UPT.Object.POM.CommonObject import IdentificationObject
+from edk2basetools.UPT.Object.POM.CommonObject import CommonHeaderObject
+from edk2basetools.UPT.Object.POM.CommonObject import MiscFileObject
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
 ## DistributionPackageHeaderClass
 #

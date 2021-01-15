@@ -17,10 +17,10 @@ import sqlite3
 import os.path
 import time
 
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Logger.ToolError import UPT_ALREADY_RUNNING_ERROR
-from Logger.ToolError import UPT_DB_UPDATE_ERROR
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger.ToolError import UPT_ALREADY_RUNNING_ERROR
+from edk2basetools.UPT.Logger.ToolError import UPT_DB_UPDATE_ERROR
 import platform as pf
 
 ## IpiDb

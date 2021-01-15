@@ -9,7 +9,7 @@
 ##
 # Import Modules
 #
-from CommonDataClass.FdfClass import RuleClassObject
+from edk2basetools.CommonDataClass.FdfClass import RuleClassObject
 
 ## Rule base class
 #

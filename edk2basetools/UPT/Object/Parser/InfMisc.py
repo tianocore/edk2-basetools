@@ -10,12 +10,12 @@
 InfMisc
 '''
 
-import Logger.Log as Logger
-from Logger import ToolError
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import ToolError
 
-from Library import DataType as DT
-from Object.Parser.InfCommonObject import InfSectionCommonDef
-from Library.Misc import Sdict
+from edk2basetools.UPT.Library import DataType as DT
+from edk2basetools.UPT.Object.Parser.InfCommonObject import InfSectionCommonDef
+from edk2basetools.UPT.Library.Misc import Sdict
 
 ##
 # BootModeObject

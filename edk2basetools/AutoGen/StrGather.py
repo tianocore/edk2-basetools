@@ -10,12 +10,12 @@
 #
 from __future__ import absolute_import
 import re
-import Common.EdkLogger as EdkLogger
-from Common.BuildToolError import *
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Common.BuildToolError import *
 from .UniClassObject import *
 from io import BytesIO
 from struct import pack, unpack
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 ##
 # Static definitions

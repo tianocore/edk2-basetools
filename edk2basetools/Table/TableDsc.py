@@ -9,10 +9,10 @@ from __future__ import absolute_import
 ##
 # Import Modules
 #
-import Common.EdkLogger as EdkLogger
-import CommonDataClass.DataClass as DataClass
-from Table.Table import Table
-from Common.StringUtils import ConvertToSqlString
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.CommonDataClass.DataClass as DataClass
+from edk2basetools.Table.Table import Table
+from edk2basetools.Common.StringUtils import ConvertToSqlString
 
 ## TableDsc
 #

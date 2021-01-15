@@ -6,7 +6,7 @@
 #
 
 import os
-from Common.LongFilePathSupport import LongFilePath
+from edk2basetools.Common.LongFilePathSupport import LongFilePath
 
 def isfile(path):
     return os.path.isfile(LongFilePath(path))

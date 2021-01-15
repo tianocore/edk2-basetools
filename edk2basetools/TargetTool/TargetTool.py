@@ -7,16 +7,16 @@
 #
 
 from __future__ import print_function
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import sys
 import traceback
 from optparse import OptionParser
 
-import Common.EdkLogger as EdkLogger
-import Common.BuildToolError as BuildToolError
-from Common.DataType import *
-from Common.BuildVersion import gBUILD_VERSION
-from Common.LongFilePathSupport import OpenLongFilePath as open
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.Common.BuildToolError as BuildToolError
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.BuildVersion import gBUILD_VERSION
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 # To Do 1.set clean, 2. add item, if the line is disabled.
 

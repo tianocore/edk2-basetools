@@ -13,7 +13,7 @@
 from __future__ import print_function
 from __future__ import absolute_import
 import re
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import sys
 if sys.version_info.major == 3:
     import antlr4 as antlr
@@ -26,10 +26,10 @@ else:
     from Ecc.CParser3.CParser import CParser
 
 
-from Ecc import FileProfile
-from Ecc.CodeFragment import Comment
-from Ecc.CodeFragment import PP_Directive
-from Ecc.ParserWarning import Warning
+from edk2basetools.Ecc import FileProfile
+from edk2basetools.Ecc.CodeFragment import Comment
+from edk2basetools.Ecc.CodeFragment import PP_Directive
+from edk2basetools.Ecc.ParserWarning import Warning
 
 
 ##define T_CHAR_SPACE                ' '

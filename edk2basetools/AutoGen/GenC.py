@@ -11,12 +11,12 @@ from __future__ import absolute_import
 import string
 import collections
 import struct
-from Common import EdkLogger
-from Common import GlobalData
-from Common.BuildToolError import *
-from Common.DataType import *
-from Common.Misc import *
-from Common.StringUtils import StringToArray
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common import GlobalData
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.Misc import *
+from edk2basetools.Common.StringUtils import StringToArray
 from .StrGather import *
 from .GenPcdDb import CreatePcdDatabaseCode
 from .IdfClassObject import *

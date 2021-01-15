@@ -11,7 +11,7 @@ Install a distribution package
 ##
 # Import Modules
 #
-from Core.FileHook import __FileHookOpen__
+from edk2basetools.UPT.Core.FileHook import __FileHookOpen__
 import os.path
 from os import chmod
 from os import SEEK_SET
@@ -26,30 +26,30 @@ from shutil import copyfile
 from traceback import format_exc
 from platform import python_version
 
-from Logger import StringTable as ST
-from Logger.ToolError import UNKNOWN_ERROR
-from Logger.ToolError import FILE_UNKNOWN_ERROR
-from Logger.ToolError import OPTION_MISSING
-from Logger.ToolError import UPT_ALREADY_INSTALLED_ERROR
-from Logger.ToolError import FatalError
-from Logger.ToolError import ABORT_ERROR
-from Logger.ToolError import CODE_ERROR
-from Logger.ToolError import FORMAT_INVALID
-from Logger.ToolError import FILE_TYPE_MISMATCH
-import Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger.ToolError import UNKNOWN_ERROR
+from edk2basetools.UPT.Logger.ToolError import FILE_UNKNOWN_ERROR
+from edk2basetools.UPT.Logger.ToolError import OPTION_MISSING
+from edk2basetools.UPT.Logger.ToolError import UPT_ALREADY_INSTALLED_ERROR
+from edk2basetools.UPT.Logger.ToolError import FatalError
+from edk2basetools.UPT.Logger.ToolError import ABORT_ERROR
+from edk2basetools.UPT.Logger.ToolError import CODE_ERROR
+from edk2basetools.UPT.Logger.ToolError import FORMAT_INVALID
+from edk2basetools.UPT.Logger.ToolError import FILE_TYPE_MISMATCH
+import edk2basetools.UPT.Logger.Log as Logger
 
-from Library.Misc import Sdict
-from Library.Misc import ConvertPath
-from Library.ParserValidate import IsValidInstallPath
-from Xml.XmlParser import DistributionPackageXml
-from GenMetaFile.GenDecFile import PackageToDec
-from GenMetaFile.GenInfFile import ModuleToInf
-from Core.PackageFile import PackageFile
-from Core.PackageFile import FILE_NOT_FOUND
-from Core.PackageFile import FILE_CHECKSUM_FAILURE
-from Core.PackageFile import CreateDirectory
-from Core.DependencyRules import DependencyRules
-from Library import GlobalData
+from edk2basetools.UPT.Library.Misc import Sdict
+from edk2basetools.UPT.Library.Misc import ConvertPath
+from edk2basetools.UPT.Library.ParserValidate import IsValidInstallPath
+from edk2basetools.UPT.Xml.XmlParser import DistributionPackageXml
+from edk2basetools.UPT.GenMetaFile.GenDecFile import PackageToDec
+from edk2basetools.UPT.GenMetaFile.GenInfFile import ModuleToInf
+from edk2basetools.UPT.Core.PackageFile import PackageFile
+from edk2basetools.UPT.Core.PackageFile import FILE_NOT_FOUND
+from edk2basetools.UPT.Core.PackageFile import FILE_CHECKSUM_FAILURE
+from edk2basetools.UPT.Core.PackageFile import CreateDirectory
+from edk2basetools.UPT.Core.DependencyRules import DependencyRules
+from edk2basetools.UPT.Library import GlobalData
 
 ## InstallNewPackage
 #

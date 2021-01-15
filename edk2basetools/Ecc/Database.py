@@ -10,21 +10,21 @@
 #
 from __future__ import absolute_import
 import sqlite3
-import Common.LongFilePathOs as os, time
+import edk2basetools.Common.LongFilePathOs as os, time
 
-import Common.EdkLogger as EdkLogger
-import CommonDataClass.DataClass as DataClass
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.CommonDataClass.DataClass as DataClass
 
-from Table.TableDataModel import TableDataModel
-from Table.TableFile import TableFile
-from Table.TableFunction import TableFunction
-from Table.TablePcd import TablePcd
-from Table.TableIdentifier import TableIdentifier
-from Table.TableReport import TableReport
-from Ecc.MetaFileWorkspace.MetaFileTable import ModuleTable
-from Ecc.MetaFileWorkspace.MetaFileTable import PackageTable
-from Ecc.MetaFileWorkspace.MetaFileTable import PlatformTable
-from Table.TableFdf import TableFdf
+from edk2basetools.Table.TableDataModel import TableDataModel
+from edk2basetools.Table.TableFile import TableFile
+from edk2basetools.Table.TableFunction import TableFunction
+from edk2basetools.Table.TablePcd import TablePcd
+from edk2basetools.Table.TableIdentifier import TableIdentifier
+from edk2basetools.Table.TableReport import TableReport
+from edk2basetools.Ecc.MetaFileWorkspace.MetaFileTable import ModuleTable
+from edk2basetools.Ecc.MetaFileWorkspace.MetaFileTable import PackageTable
+from edk2basetools.Ecc.MetaFileWorkspace.MetaFileTable import PlatformTable
+from edk2basetools.Table.TableFdf import TableFdf
 
 ##
 # Static definitions

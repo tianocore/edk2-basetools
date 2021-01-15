@@ -14,17 +14,17 @@ InfDefineSectionParser
 #
 import re
 
-from Library import DataType as DT
-from Library import GlobalData
-from Library.Parsing import MacroParser
-from Library.Misc import GetSplitValueList
-from Library.ParserValidate import IsValidArch
-from Object.Parser.InfCommonObject import InfLineCommentObject
-from Object.Parser.InfDefineObject import InfDefMember
-from Parser.InfParserMisc import InfExpandMacro
-from Object.Parser.InfMisc import ErrorInInf
-from Logger import StringTable as ST
-from Parser.InfParserMisc import InfParserSectionRoot
+from edk2basetools.UPT.Library import DataType as DT
+from edk2basetools.UPT.Library import GlobalData
+from edk2basetools.UPT.Library.Parsing import MacroParser
+from edk2basetools.UPT.Library.Misc import GetSplitValueList
+from edk2basetools.UPT.Library.ParserValidate import IsValidArch
+from edk2basetools.UPT.Object.Parser.InfCommonObject import InfLineCommentObject
+from edk2basetools.UPT.Object.Parser.InfDefineObject import InfDefMember
+from edk2basetools.UPT.Parser.InfParserMisc import InfExpandMacro
+from edk2basetools.UPT.Object.Parser.InfMisc import ErrorInInf
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
 ## __GetValidateArchList
 #

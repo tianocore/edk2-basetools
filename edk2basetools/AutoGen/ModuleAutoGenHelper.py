@@ -5,20 +5,20 @@
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 #
 from __future__ import absolute_import
-from Workspace.WorkspaceDatabase import WorkspaceDatabase,BuildDB
-from Common.caching import cached_property
-from AutoGen.BuildEngine import BuildRule,AutoGenReqBuildRuleVerNum
-from AutoGen.AutoGen import CalculatePriorityValue
-from Common.Misc import CheckPcdDatum,GuidValue
-from Common.Expression import ValueExpressionEx
-from Common.DataType import *
-from CommonDataClass.Exceptions import *
-from CommonDataClass.CommonClass import SkuInfoClass
-import Common.EdkLogger as EdkLogger
-from Common.BuildToolError import OPTION_CONFLICT,FORMAT_INVALID,RESOURCE_NOT_AVAILABLE
-from Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.Workspace.WorkspaceDatabase import WorkspaceDatabase,BuildDB
+from edk2basetools.Common.caching import cached_property
+from edk2basetools.AutoGen.BuildEngine import BuildRule,AutoGenReqBuildRuleVerNum
+from edk2basetools.AutoGen.AutoGen import CalculatePriorityValue
+from edk2basetools.Common.Misc import CheckPcdDatum,GuidValue
+from edk2basetools.Common.Expression import ValueExpressionEx
+from edk2basetools.Common.DataType import *
+from edk2basetools.CommonDataClass.Exceptions import *
+from edk2basetools.CommonDataClass.CommonClass import SkuInfoClass
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Common.BuildToolError import OPTION_CONFLICT,FORMAT_INVALID,RESOURCE_NOT_AVAILABLE
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 from collections import defaultdict
-from Common.Misc import PathClass
+from edk2basetools.Common.Misc import PathClass
 import os
 
 

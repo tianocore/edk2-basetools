@@ -12,20 +12,20 @@ InfAsBuiltProcess
 
 import os
 import re
-from Library import GlobalData
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Logger import ToolError
+from edk2basetools.UPT.Library import GlobalData
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger import ToolError
 
-from Library.StringUtils import GetSplitValueList
-from Library.Misc import GetHelpStringByRemoveHashKey
-from Library.Misc import ValidFile
-from Library.Misc import ProcessLineExtender
-from Library.ParserValidate import IsValidPath
-from Library.Parsing import MacroParser
-from Parser.InfParserMisc import InfExpandMacro
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.Misc import GetHelpStringByRemoveHashKey
+from edk2basetools.UPT.Library.Misc import ValidFile
+from edk2basetools.UPT.Library.Misc import ProcessLineExtender
+from edk2basetools.UPT.Library.ParserValidate import IsValidPath
+from edk2basetools.UPT.Library.Parsing import MacroParser
+from edk2basetools.UPT.Parser.InfParserMisc import InfExpandMacro
 
-from Library import DataType as DT
+from edk2basetools.UPT.Library import DataType as DT
 
 ## GetLibInstanceInfo
 #

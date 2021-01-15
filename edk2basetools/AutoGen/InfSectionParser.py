@@ -8,9 +8,9 @@
 ## Import Modules
 #
 
-import Common.EdkLogger as EdkLogger
-from Common.BuildToolError import *
-from Common.DataType import *
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.DataType import *
 
 
 class InfSectionParser():

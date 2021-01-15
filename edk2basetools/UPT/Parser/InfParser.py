@@ -17,26 +17,26 @@ import re
 import os
 from copy import deepcopy
 
-from Library.StringUtils import GetSplitValueList
-from Library.StringUtils import ConvertSpecialChar
-from Library.Misc import ProcessLineExtender
-from Library.Misc import ProcessEdkComment
-from Library.Parsing import NormPath
-from Library.ParserValidate import IsValidInfMoudleTypeList
-from Library.ParserValidate import IsValidArch
-from Library import DataType as DT
-from Library import GlobalData
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.StringUtils import ConvertSpecialChar
+from edk2basetools.UPT.Library.Misc import ProcessLineExtender
+from edk2basetools.UPT.Library.Misc import ProcessEdkComment
+from edk2basetools.UPT.Library.Parsing import NormPath
+from edk2basetools.UPT.Library.ParserValidate import IsValidInfMoudleTypeList
+from edk2basetools.UPT.Library.ParserValidate import IsValidArch
+from edk2basetools.UPT.Library import DataType as DT
+from edk2basetools.UPT.Library import GlobalData
 
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Logger.ToolError import FORMAT_INVALID
-from Logger.ToolError import FILE_READ_FAILURE
-from Logger.ToolError import PARSER_ERROR
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger.ToolError import FORMAT_INVALID
+from edk2basetools.UPT.Logger.ToolError import FILE_READ_FAILURE
+from edk2basetools.UPT.Logger.ToolError import PARSER_ERROR
 
-from Object.Parser.InfCommonObject import InfSectionCommonDef
-from Parser.InfSectionParser import InfSectionParser
-from Parser.InfParserMisc import gINF_SECTION_DEF
-from Parser.InfParserMisc import IsBinaryInf
+from edk2basetools.UPT.Object.Parser.InfCommonObject import InfSectionCommonDef
+from edk2basetools.UPT.Parser.InfSectionParser import InfSectionParser
+from edk2basetools.UPT.Parser.InfParserMisc import gINF_SECTION_DEF
+from edk2basetools.UPT.Parser.InfParserMisc import IsBinaryInf
 
 ## OpenInfFile
 #

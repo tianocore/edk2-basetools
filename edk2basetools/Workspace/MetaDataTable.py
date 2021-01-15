@@ -8,11 +8,11 @@
 ##
 # Import Modules
 #
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 
-import Common.EdkLogger as EdkLogger
-from CommonDataClass import DataClass
-from CommonDataClass.DataClass import FileClass
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.CommonDataClass import DataClass
+from edk2basetools.CommonDataClass.DataClass import FileClass
 
 ## Convert to SQL required string format
 def ConvertToSqlString(StringList):

@@ -12,7 +12,7 @@
 #
 from __future__ import print_function
 from __future__ import absolute_import
-from Common.DataType import TAB_STAR
+from edk2basetools.Common.DataType import TAB_STAR
 ## Base class for AutoGen
 #
 #   This class just implements the cache mechanism of AutoGen objects.

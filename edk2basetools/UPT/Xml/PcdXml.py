@@ -14,22 +14,22 @@ PcdXml
 # Import Modules
 #
 
-from Library.Xml.XmlRoutines import XmlElement
-from Library.Xml.XmlRoutines import XmlAttribute
-from Library.Xml.XmlRoutines import XmlNode
-from Library.Xml.XmlRoutines import CreateXmlElement
-from Library.Xml.XmlRoutines import XmlList
-from Library.StringUtils import GetStringOfList
-from Library.StringUtils import ConvertNEToNOTEQ
-from Library.StringUtils import ConvertNOTEQToNE
-from Library import GlobalData
-from Object.POM.CommonObject import PcdObject
-from Object.POM.CommonObject import PcdErrorObject
-from Xml.CommonXml import HelpTextXml
-from Xml.CommonXml import PromptXml
-from Xml.CommonXml import CommonDefinesXml
-from Xml.XmlParserMisc import GetHelpTextList
-from Xml.XmlParserMisc import GetPromptList
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlElement
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlAttribute
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlNode
+from edk2basetools.UPT.Library.Xml.XmlRoutines import CreateXmlElement
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlList
+from edk2basetools.UPT.Library.StringUtils import GetStringOfList
+from edk2basetools.UPT.Library.StringUtils import ConvertNEToNOTEQ
+from edk2basetools.UPT.Library.StringUtils import ConvertNOTEQToNE
+from edk2basetools.UPT.Library import GlobalData
+from edk2basetools.UPT.Object.POM.CommonObject import PcdObject
+from edk2basetools.UPT.Object.POM.CommonObject import PcdErrorObject
+from edk2basetools.UPT.Xml.CommonXml import HelpTextXml
+from edk2basetools.UPT.Xml.CommonXml import PromptXml
+from edk2basetools.UPT.Xml.CommonXml import CommonDefinesXml
+from edk2basetools.UPT.Xml.XmlParserMisc import GetHelpTextList
+from edk2basetools.UPT.Xml.XmlParserMisc import GetPromptList
 import re
 
 ##

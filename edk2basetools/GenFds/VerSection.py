@@ -11,11 +11,11 @@
 #
 from __future__ import absolute_import
 from .Ffs import SectionSuffix
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
-from CommonDataClass.FdfClass import VerSectionClassObject
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.DataType import SUP_MODULE_SEC
+from edk2basetools.CommonDataClass.FdfClass import VerSectionClassObject
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.DataType import SUP_MODULE_SEC
 
 ## generate version section
 #

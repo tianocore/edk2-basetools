@@ -9,23 +9,23 @@
 '''
 GuidProtocolPpiXml
 '''
-from Library.StringUtils import ConvertNEToNOTEQ
-from Library.StringUtils import ConvertNOTEQToNE
-from Library.StringUtils import GetStringOfList
-from Library.Xml.XmlRoutines import XmlElement
-from Library.Xml.XmlRoutines import XmlAttribute
-from Library.Xml.XmlRoutines import XmlNode
-from Library.Xml.XmlRoutines import XmlList
-from Library.Xml.XmlRoutines import CreateXmlElement
+from edk2basetools.UPT.Library.StringUtils import ConvertNEToNOTEQ
+from edk2basetools.UPT.Library.StringUtils import ConvertNOTEQToNE
+from edk2basetools.UPT.Library.StringUtils import GetStringOfList
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlElement
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlAttribute
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlNode
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlList
+from edk2basetools.UPT.Library.Xml.XmlRoutines import CreateXmlElement
 
-from Object.POM.CommonObject import GuidObject
-from Object.POM.CommonObject import ProtocolObject
-from Object.POM.CommonObject import PpiObject
+from edk2basetools.UPT.Object.POM.CommonObject import GuidObject
+from edk2basetools.UPT.Object.POM.CommonObject import ProtocolObject
+from edk2basetools.UPT.Object.POM.CommonObject import PpiObject
 
-from Xml.CommonXml import CommonDefinesXml
-from Xml.CommonXml import HelpTextXml
+from edk2basetools.UPT.Xml.CommonXml import CommonDefinesXml
+from edk2basetools.UPT.Xml.CommonXml import HelpTextXml
 
-from Xml.XmlParserMisc import GetHelpTextList
+from edk2basetools.UPT.Xml.XmlParserMisc import GetHelpTextList
 
 ##
 #GUID/Protocol/Ppi Common

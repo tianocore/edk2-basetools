@@ -10,16 +10,16 @@
 InfProtocolObject
 '''
 
-from Library.ParserValidate import IsValidCVariableName
-from Library.CommentParsing import ParseComment
-from Library.ExpressionValidate import IsValidFeatureFlagExp
+from edk2basetools.UPT.Library.ParserValidate import IsValidCVariableName
+from edk2basetools.UPT.Library.CommentParsing import ParseComment
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidFeatureFlagExp
 
-from Library.Misc import Sdict
+from edk2basetools.UPT.Library.Misc import Sdict
 
-from Object.Parser.InfMisc import ErrorInInf
+from edk2basetools.UPT.Object.Parser.InfMisc import ErrorInInf
 
-from Library import DataType as DT
-from Logger import StringTable as ST
+from edk2basetools.UPT.Library import DataType as DT
+from edk2basetools.UPT.Logger import StringTable as ST
 
 def ParseProtocolComment(CommentsList, InfProtocolItemObj):
     CommentInsList = []

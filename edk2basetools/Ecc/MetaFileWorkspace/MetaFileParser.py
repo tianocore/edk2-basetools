@@ -9,27 +9,27 @@
 # Import Modules
 #
 from __future__ import absolute_import
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import re
 import time
 import copy
 from hashlib import md5
-import Common.EdkLogger as EdkLogger
-import Common.GlobalData as GlobalData
-import Ecc.EccGlobalData as EccGlobalData
-import Ecc.EccToolError as EccToolError
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.Common.GlobalData as GlobalData
+import edk2basetools.Ecc.EccGlobalData as EccGlobalData
+import edk2basetools.Ecc.EccToolError as EccToolError
 
-from CommonDataClass.DataClass import *
-from Common.DataType import *
-from Common.StringUtils import *
-from Common.Misc import GuidStructureStringToGuidString, CheckPcdDatum, PathClass, AnalyzePcdData
-from Common.Expression import *
-from CommonDataClass.Exceptions import *
+from edk2basetools.CommonDataClass.DataClass import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.StringUtils import *
+from edk2basetools.Common.Misc import GuidStructureStringToGuidString, CheckPcdDatum, PathClass, AnalyzePcdData
+from edk2basetools.Common.Expression import *
+from edk2basetools.CommonDataClass.Exceptions import *
 
-from Ecc.MetaFileWorkspace.MetaFileTable import MetaFileStorage
-from GenFds.FdfParser import FdfParser
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.LongFilePathSupport import CodecOpenLongFilePath
+from edk2basetools.Ecc.MetaFileWorkspace.MetaFileTable import MetaFileStorage
+from edk2basetools.GenFds.FdfParser import FdfParser
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.LongFilePathSupport import CodecOpenLongFilePath
 
 ## A decorator used to parse macro definition
 def ParseMacro(Parser):

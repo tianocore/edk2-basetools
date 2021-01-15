@@ -15,18 +15,18 @@ import re
 from time import strftime
 from time import localtime
 
-import Logger.Log as Logger
-from Logger.ToolError import UPT_INI_PARSE_ERROR
-from Logger.ToolError import FILE_NOT_FOUND
-from Library.Xml.XmlRoutines import CreateXmlElement
-from Library.DataType import TAB_VALUE_SPLIT
-from Library.DataType import TAB_EQUAL_SPLIT
-from Library.DataType import TAB_SECTION_START
-from Library.DataType import TAB_SECTION_END
-from Logger import StringTable as ST
-from Library.StringUtils import ConvertSpecialChar
-from Library.ParserValidate import IsValidPath
-from Library import GlobalData
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger.ToolError import UPT_INI_PARSE_ERROR
+from edk2basetools.UPT.Logger.ToolError import FILE_NOT_FOUND
+from edk2basetools.UPT.Library.Xml.XmlRoutines import CreateXmlElement
+from edk2basetools.UPT.Library.DataType import TAB_VALUE_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_EQUAL_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_SECTION_START
+from edk2basetools.UPT.Library.DataType import TAB_SECTION_END
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Library.StringUtils import ConvertSpecialChar
+from edk2basetools.UPT.Library.ParserValidate import IsValidPath
+from edk2basetools.UPT.Library import GlobalData
 
 ## log error:
 #

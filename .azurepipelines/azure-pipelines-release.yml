@@ -1,0 +1,20 @@
+##
+# Azure Pipeline build file for a releasing to pypi
+
+# Copyright (c) 2019, Microsoft Corporation
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+
+# trigger when a something is pushed to master
+trigger:
+- master
+
+pr: none  # not a pr target
+
+jobs:
+- template: templates/build-test-job.yml
+  parameters:
+    vm_image: 'windows-latest'
+    pypi_auth_feed: 'Pypi-edk2-basetools'
+    root_package_folder: "edk2basetools"
+    name: 'windows'

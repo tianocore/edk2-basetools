@@ -5,14 +5,14 @@
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 #
 from __future__ import absolute_import
-from AutoGen.AutoGen import AutoGen
-from Common.LongFilePathSupport import LongFilePath, CopyLongFilePath
-from Common.BuildToolError import *
-from Common.DataType import *
-from Common.Misc import *
-from Common.StringUtils import NormPath,GetSplitList
+from edk2basetools.AutoGen.AutoGen import AutoGen
+from edk2basetools.Common.LongFilePathSupport import LongFilePath, CopyLongFilePath
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.Misc import *
+from edk2basetools.Common.StringUtils import NormPath,GetSplitList
 from collections import defaultdict
-from Workspace.WorkspaceCommon import OrderedListDict
+from edk2basetools.Workspace.WorkspaceCommon import OrderedListDict
 import os.path as path
 import copy
 import hashlib
@@ -21,11 +21,11 @@ from . import GenC
 from . import GenMake
 from . import GenDepex
 from io import BytesIO
-from GenPatchPcdTable.GenPatchPcdTable import parsePcdInfoFromMapFile
-from Workspace.MetaFileCommentParser import UsageList
+from edk2basetools.GenPatchPcdTable.GenPatchPcdTable import parsePcdInfoFromMapFile
+from edk2basetools.Workspace.MetaFileCommentParser import UsageList
 from .GenPcdDb import CreatePcdDatabaseCode
-from Common.caching import cached_class_function
-from AutoGen.ModuleAutoGenHelper import PlatformInfo,WorkSpaceInfo
+from edk2basetools.Common.caching import cached_class_function
+from edk2basetools.AutoGen.ModuleAutoGenHelper import PlatformInfo,WorkSpaceInfo
 import json
 import tempfile
 

@@ -10,31 +10,31 @@
 # Import Modules
 #
 from __future__ import absolute_import
-import Common.LongFilePathOs as os, time, glob, sys
-import Common.EdkLogger as EdkLogger
-from Ecc import Database
-from Ecc import EccGlobalData
-from Ecc.MetaDataParser import *
+import edk2basetools.Common.LongFilePathOs as os, time, glob, sys
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Ecc import Database
+from edk2basetools.Ecc import EccGlobalData
+from edk2basetools.Ecc.MetaDataParser import *
 from optparse import OptionParser
-from Ecc.Configuration import Configuration
-from Ecc.Check import Check
-import Common.GlobalData as GlobalData
+from edk2basetools.Ecc.Configuration import Configuration
+from edk2basetools.Ecc.Check import Check
+import edk2basetools.Common.GlobalData as GlobalData
 
-from Common.StringUtils import NormPath
-from Common.BuildVersion import gBUILD_VERSION
-from Common import BuildToolError
-from Common.Misc import PathClass
-from Common.Misc import DirCache
-from Ecc.MetaFileWorkspace.MetaFileParser import DscParser
-from Ecc.MetaFileWorkspace.MetaFileParser import DecParser
-from Ecc.MetaFileWorkspace.MetaFileParser import InfParser
-from Ecc.MetaFileWorkspace.MetaFileParser import Fdf
-from Ecc.MetaFileWorkspace.MetaFileTable import MetaFileStorage
-from Ecc import c
+from edk2basetools.Common.StringUtils import NormPath
+from edk2basetools.Common.BuildVersion import gBUILD_VERSION
+from edk2basetools.Common import BuildToolError
+from edk2basetools.Common.Misc import PathClass
+from edk2basetools.Common.Misc import DirCache
+from edk2basetools.Ecc.MetaFileWorkspace.MetaFileParser import DscParser
+from edk2basetools.Ecc.MetaFileWorkspace.MetaFileParser import DecParser
+from edk2basetools.Ecc.MetaFileWorkspace.MetaFileParser import InfParser
+from edk2basetools.Ecc.MetaFileWorkspace.MetaFileParser import Fdf
+from edk2basetools.Ecc.MetaFileWorkspace.MetaFileTable import MetaFileStorage
+from edk2basetools.Ecc import c
 import re, string
-from Ecc.Exception import *
-from Common.LongFilePathSupport import OpenLongFilePath as open
-from Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.Ecc.Exception import *
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
 ## Ecc
 #

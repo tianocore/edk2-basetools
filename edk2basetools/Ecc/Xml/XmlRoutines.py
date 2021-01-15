@@ -12,7 +12,7 @@
 from __future__ import print_function
 import xml.dom.minidom
 import codecs
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 ## Create a element of XML
 #

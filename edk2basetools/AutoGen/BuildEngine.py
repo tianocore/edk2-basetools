@@ -9,22 +9,22 @@
 # Import Modules
 #
 from __future__ import print_function
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 import re
 import copy
 import string
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
-from Common.GlobalData import *
-from Common.BuildToolError import *
-from Common.Misc import tdict, PathClass
-from Common.StringUtils import NormPath
-from Common.DataType import *
-from Common.TargetTxtClassObject import TargetTxtDict
+from edk2basetools.Common.GlobalData import *
+from edk2basetools.Common.BuildToolError import *
+from edk2basetools.Common.Misc import tdict, PathClass
+from edk2basetools.Common.StringUtils import NormPath
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.TargetTxtClassObject import TargetTxtDict
 gDefaultBuildRuleFile = 'build_rule.txt'
 AutoGenReqBuildRuleVerNum = '0.1'
 
-import Common.EdkLogger as EdkLogger
+import edk2basetools.Common.EdkLogger as EdkLogger
 
 ## Convert file type to file list macro name
 #

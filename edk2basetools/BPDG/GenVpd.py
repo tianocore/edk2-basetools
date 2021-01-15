@@ -8,16 +8,16 @@
 #
 
 from __future__ import absolute_import
-import Common.LongFilePathOs as os
+import edk2basetools.Common.LongFilePathOs as os
 from io import BytesIO
 from . import StringTable as st
 import array
 import re
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 from struct import *
-from Common.DataType import MAX_SIZE_TYPE, MAX_VAL_TYPE, TAB_STAR
-import Common.EdkLogger as EdkLogger
-import Common.BuildToolError as BuildToolError
+from edk2basetools.Common.DataType import MAX_SIZE_TYPE, MAX_VAL_TYPE, TAB_STAR
+import edk2basetools.Common.EdkLogger as EdkLogger
+import edk2basetools.Common.BuildToolError as BuildToolError
 
 _FORMAT_CHAR = {1: 'B',
                 2: 'H',

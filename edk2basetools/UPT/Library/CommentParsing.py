@@ -15,34 +15,34 @@ CommentParsing
 #
 import re
 
-from Library.StringUtils import GetSplitValueList
-from Library.StringUtils import CleanString2
-from Library.DataType import HEADER_COMMENT_NOT_STARTED
-from Library.DataType import TAB_COMMENT_SPLIT
-from Library.DataType import HEADER_COMMENT_LICENSE
-from Library.DataType import HEADER_COMMENT_ABSTRACT
-from Library.DataType import HEADER_COMMENT_COPYRIGHT
-from Library.DataType import HEADER_COMMENT_DESCRIPTION
-from Library.DataType import TAB_SPACE_SPLIT
-from Library.DataType import TAB_COMMA_SPLIT
-from Library.DataType import SUP_MODULE_LIST
-from Library.DataType import TAB_VALUE_SPLIT
-from Library.DataType import TAB_PCD_VALIDRANGE
-from Library.DataType import TAB_PCD_VALIDLIST
-from Library.DataType import TAB_PCD_EXPRESSION
-from Library.DataType import TAB_PCD_PROMPT
-from Library.DataType import TAB_CAPHEX_START
-from Library.DataType import TAB_HEX_START
-from Library.DataType import PCD_ERR_CODE_MAX_SIZE
-from Library.ExpressionValidate import IsValidRangeExpr
-from Library.ExpressionValidate import IsValidListExpr
-from Library.ExpressionValidate import IsValidLogicalExpr
-from Object.POM.CommonObject import TextObject
-from Object.POM.CommonObject import PcdErrorObject
-import Logger.Log as Logger
-from Logger.ToolError import FORMAT_INVALID
-from Logger.ToolError import FORMAT_NOT_SUPPORTED
-from Logger import StringTable as ST
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.StringUtils import CleanString2
+from edk2basetools.UPT.Library.DataType import HEADER_COMMENT_NOT_STARTED
+from edk2basetools.UPT.Library.DataType import TAB_COMMENT_SPLIT
+from edk2basetools.UPT.Library.DataType import HEADER_COMMENT_LICENSE
+from edk2basetools.UPT.Library.DataType import HEADER_COMMENT_ABSTRACT
+from edk2basetools.UPT.Library.DataType import HEADER_COMMENT_COPYRIGHT
+from edk2basetools.UPT.Library.DataType import HEADER_COMMENT_DESCRIPTION
+from edk2basetools.UPT.Library.DataType import TAB_SPACE_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_COMMA_SPLIT
+from edk2basetools.UPT.Library.DataType import SUP_MODULE_LIST
+from edk2basetools.UPT.Library.DataType import TAB_VALUE_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_PCD_VALIDRANGE
+from edk2basetools.UPT.Library.DataType import TAB_PCD_VALIDLIST
+from edk2basetools.UPT.Library.DataType import TAB_PCD_EXPRESSION
+from edk2basetools.UPT.Library.DataType import TAB_PCD_PROMPT
+from edk2basetools.UPT.Library.DataType import TAB_CAPHEX_START
+from edk2basetools.UPT.Library.DataType import TAB_HEX_START
+from edk2basetools.UPT.Library.DataType import PCD_ERR_CODE_MAX_SIZE
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidRangeExpr
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidListExpr
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidLogicalExpr
+from edk2basetools.UPT.Object.POM.CommonObject import TextObject
+from edk2basetools.UPT.Object.POM.CommonObject import PcdErrorObject
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger.ToolError import FORMAT_INVALID
+from edk2basetools.UPT.Logger.ToolError import FORMAT_NOT_SUPPORTED
+from edk2basetools.UPT.Logger import StringTable as ST
 
 ## ParseHeaderCommentSection
 #

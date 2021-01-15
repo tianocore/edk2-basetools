@@ -11,15 +11,15 @@
 #
 from __future__ import absolute_import
 from .GenFdsGlobalVariable import GenFdsGlobalVariable, FindExtendTool
-from CommonDataClass.FdfClass import CapsuleClassObject
-import Common.LongFilePathOs as os
+from edk2basetools.CommonDataClass.FdfClass import CapsuleClassObject
+import edk2basetools.Common.LongFilePathOs as os
 from io import BytesIO
-from Common.Misc import SaveFileOnChange, PackGUID
+from edk2basetools.Common.Misc import SaveFileOnChange, PackGUID
 import uuid
 from struct import pack
-from Common import EdkLogger
-from Common.BuildToolError import GENFDS_ERROR
-from Common.DataType import TAB_LINE_BREAK
+from edk2basetools.Common import EdkLogger
+from edk2basetools.Common.BuildToolError import GENFDS_ERROR
+from edk2basetools.Common.DataType import TAB_LINE_BREAK
 
 WIN_CERT_REVISION = 0x0200
 WIN_CERT_TYPE_EFI_GUID = 0x0EF1

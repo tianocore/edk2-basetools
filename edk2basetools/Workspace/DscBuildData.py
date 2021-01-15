@@ -13,29 +13,29 @@
 #
 from __future__ import print_function
 from __future__ import absolute_import
-from Common.StringUtils import *
-from Common.DataType import *
-from Common.Misc import *
+from edk2basetools.Common.StringUtils import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.Misc import *
 from types import *
-from Common.Expression import *
-from CommonDataClass.CommonClass import SkuInfoClass
-from Common.TargetTxtClassObject import TargetTxtDict
-from Common.ToolDefClassObject import ToolDefDict
+from edk2basetools.Common.Expression import *
+from edk2basetools.CommonDataClass.CommonClass import SkuInfoClass
+from edk2basetools.Common.TargetTxtClassObject import TargetTxtDict
+from edk2basetools.Common.ToolDefClassObject import ToolDefDict
 from .MetaDataTable import *
 from .MetaFileTable import *
 from .MetaFileParser import *
 
 from .WorkspaceCommon import GetDeclaredPcd
-from Common.Misc import AnalyzeDscPcd
-from Common.Misc import ProcessDuplicatedInf,RemoveCComments,ArrayIndex
+from edk2basetools.Common.Misc import AnalyzeDscPcd
+from edk2basetools.Common.Misc import ProcessDuplicatedInf,RemoveCComments,ArrayIndex
 import re
-from Common.Parsing import IsValidWord
-from Common.VariableAttributes import VariableAttributes
-import Common.GlobalData as GlobalData
+from edk2basetools.Common.Parsing import IsValidWord
+from edk2basetools.Common.VariableAttributes import VariableAttributes
+import edk2basetools.Common.GlobalData as GlobalData
 import subprocess
 from functools import reduce
-from Common.Misc import SaveFileOnChange
-from Workspace.BuildClassObject import PlatformBuildClassObject, StructurePcd, PcdClassObject, ModuleBuildClassObject
+from edk2basetools.Common.Misc import SaveFileOnChange
+from edk2basetools.Workspace.BuildClassObject import PlatformBuildClassObject, StructurePcd, PcdClassObject, ModuleBuildClassObject
 from collections import OrderedDict, defaultdict
 
 def _IsFieldValueAnArray (Value):
@@ -112,7 +112,7 @@ SkuIdPattern = re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*$')
 Pattern = re.compile('^[1-9]\d*|0$')
 HexPattern = re.compile(r'0[xX][0-9a-fA-F]+$')
 ## Regular expression for finding header file inclusions
-from AutoGen.GenMake import gIncludePattern
+from edk2basetools.AutoGen.GenMake import gIncludePattern
 
 ## Find dependencies for one source file
 #

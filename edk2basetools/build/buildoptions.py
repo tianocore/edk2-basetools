@@ -9,7 +9,7 @@
 #
 
 # Version and Copyright
-from Common.BuildVersion import gBUILD_VERSION
+from edk2basetools.Common.BuildVersion import gBUILD_VERSION
 from optparse import OptionParser
 VersionNumber = "0.60" + ' ' + gBUILD_VERSION
 __version__ = "%prog Version " + VersionNumber

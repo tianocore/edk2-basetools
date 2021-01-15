@@ -7,9 +7,9 @@
 
 import os
 import unittest
-from Logger.Log import FatalError
+from edk2basetools.UPT.Logger.Log import FatalError
 
-from Parser.DecParser import \
+from edk2basetools.UPT.Parser.DecParser import \
     Dec, \
     _DecDefine, \
     _DecLibraryclass, \
@@ -19,7 +19,7 @@ from Parser.DecParser import \
     _DecBase, \
     CleanString
 
-from Object.Parser.DecObject import _DecComments
+from edk2basetools.UPT.Object.Parser.DecObject import _DecComments
 
 #
 # Test CleanString

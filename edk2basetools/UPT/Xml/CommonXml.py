@@ -14,29 +14,29 @@ CommonXml
 # Import Modules
 #
 
-from Core.DistributionPackageClass import DistributionPackageHeaderObject
-from Library.StringUtils import ConvertNEToNOTEQ
-from Library.StringUtils import ConvertNOTEQToNE
-from Library.StringUtils import GetSplitValueList
-from Library.StringUtils import GetStringOfList
-from Library.Xml.XmlRoutines import XmlElement
-from Library.Xml.XmlRoutines import XmlElement2
-from Library.Xml.XmlRoutines import XmlAttribute
-from Library.Xml.XmlRoutines import XmlNode
-from Library.Xml.XmlRoutines import XmlList
-from Library.Xml.XmlRoutines import CreateXmlElement
-from Library.UniClassObject import ConvertSpecialUnicodes
-from Library.UniClassObject import GetLanguageCode1766
-from Object.POM.CommonObject import FileObject
-from Object.POM.CommonObject import MiscFileObject
-from Object.POM.CommonObject import UserExtensionObject
-from Object.POM.CommonObject import ClonedRecordObject
-from Object.POM.CommonObject import LibraryClassObject
-from Object.POM.CommonObject import FileNameObject
-from Object.POM.ModuleObject import ModuleObject
-from Xml.XmlParserMisc import IsRequiredItemListNull
-from Xml.XmlParserMisc import GetHelpTextList
-import Library.DataType as DataType
+from edk2basetools.UPT.Core.DistributionPackageClass import DistributionPackageHeaderObject
+from edk2basetools.UPT.Library.StringUtils import ConvertNEToNOTEQ
+from edk2basetools.UPT.Library.StringUtils import ConvertNOTEQToNE
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.StringUtils import GetStringOfList
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlElement
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlElement2
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlAttribute
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlNode
+from edk2basetools.UPT.Library.Xml.XmlRoutines import XmlList
+from edk2basetools.UPT.Library.Xml.XmlRoutines import CreateXmlElement
+from edk2basetools.UPT.Library.UniClassObject import ConvertSpecialUnicodes
+from edk2basetools.UPT.Library.UniClassObject import GetLanguageCode1766
+from edk2basetools.UPT.Object.POM.CommonObject import FileObject
+from edk2basetools.UPT.Object.POM.CommonObject import MiscFileObject
+from edk2basetools.UPT.Object.POM.CommonObject import UserExtensionObject
+from edk2basetools.UPT.Object.POM.CommonObject import ClonedRecordObject
+from edk2basetools.UPT.Object.POM.CommonObject import LibraryClassObject
+from edk2basetools.UPT.Object.POM.CommonObject import FileNameObject
+from edk2basetools.UPT.Object.POM.ModuleObject import ModuleObject
+from edk2basetools.UPT.Xml.XmlParserMisc import IsRequiredItemListNull
+from edk2basetools.UPT.Xml.XmlParserMisc import GetHelpTextList
+import edk2basetools.UPT.Library.DataType as DataType
 
 ##
 # ClonedFromXml

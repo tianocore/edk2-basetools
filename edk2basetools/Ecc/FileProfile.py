@@ -12,9 +12,9 @@
 
 from __future__ import absolute_import
 import re
-import Common.LongFilePathOs as os
-from Ecc.ParserWarning import Warning
-from Common.LongFilePathSupport import OpenLongFilePath as open
+import edk2basetools.Common.LongFilePathOs as os
+from edk2basetools.Ecc.ParserWarning import Warning
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 CommentList = []
 PPDirectiveList = []

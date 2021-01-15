@@ -10,18 +10,18 @@
 # Import Modules
 #
 from __future__ import absolute_import
-from Common.StringUtils import *
-from Common.DataType import *
-from Common.Misc import *
+from edk2basetools.Common.StringUtils import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.Misc import *
 from types import *
 
 from .MetaDataTable import *
 from .MetaFileTable import *
 from .MetaFileParser import *
 
-from Workspace.DecBuildData import DecBuildData
-from Workspace.DscBuildData import DscBuildData
-from Workspace.InfBuildData import InfBuildData
+from edk2basetools.Workspace.DecBuildData import DecBuildData
+from edk2basetools.Workspace.DscBuildData import DscBuildData
+from edk2basetools.Workspace.InfBuildData import InfBuildData
 
 ## Database
 #

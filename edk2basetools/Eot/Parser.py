@@ -10,14 +10,14 @@
 # Import Modules
 #
 from __future__ import absolute_import
-import Common.LongFilePathOs as os, re
-import Common.EdkLogger as EdkLogger
-from Common.DataType import *
-from CommonDataClass.DataClass import *
-from Common.StringUtils import CleanString, GetSplitValueList, ReplaceMacro
+import edk2basetools.Common.LongFilePathOs as os, re
+import edk2basetools.Common.EdkLogger as EdkLogger
+from edk2basetools.Common.DataType import *
+from edk2basetools.CommonDataClass.DataClass import *
+from edk2basetools.Common.StringUtils import CleanString, GetSplitValueList, ReplaceMacro
 from . import EotGlobalData
-from Common.StringUtils import GetSplitList
-from Common.LongFilePathSupport import OpenLongFilePath as open
+from edk2basetools.Common.StringUtils import GetSplitList
+from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 import subprocess
 

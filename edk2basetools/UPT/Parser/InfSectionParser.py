@@ -15,43 +15,43 @@ InfSectionParser
 from copy import deepcopy
 import re
 
-from Library.StringUtils import GetSplitValueList
-from Library.CommentParsing import ParseHeaderCommentSection
-from Library.CommentParsing import ParseComment
+from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
+from edk2basetools.UPT.Library.CommentParsing import ParseHeaderCommentSection
+from edk2basetools.UPT.Library.CommentParsing import ParseComment
 
-from Library import DataType as DT
+from edk2basetools.UPT.Library import DataType as DT
 
-import Logger.Log as Logger
-from Logger import StringTable as ST
-from Logger.ToolError import FORMAT_INVALID
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger.ToolError import FORMAT_INVALID
 
-from Object.Parser.InfDefineObject import InfDefObject
-from Object.Parser.InfBuildOptionObject import InfBuildOptionsObject
-from Object.Parser.InfLibraryClassesObject import InfLibraryClassObject
-from Object.Parser.InfPackagesObject import InfPackageObject
-from Object.Parser.InfPcdObject import InfPcdObject
-from Object.Parser.InfSoucesObject import InfSourcesObject
-from Object.Parser.InfUserExtensionObject import InfUserExtensionObject
-from Object.Parser.InfProtocolObject import InfProtocolObject
-from Object.Parser.InfPpiObject import InfPpiObject
-from Object.Parser.InfGuidObject import InfGuidObject
-from Object.Parser.InfDepexObject import InfDepexObject
-from Object.Parser.InfBinaryObject import InfBinariesObject
-from Object.Parser.InfHeaderObject import InfHeaderObject
-from Object.Parser.InfMisc import InfSpecialCommentObject
-from Object.Parser.InfMisc import InfHobObject
-from Object.Parser.InfMisc import InfBootModeObject
-from Object.Parser.InfMisc import InfEventObject
-from Parser.InfParserMisc import gINF_SECTION_DEF
-from Parser.InfDefineSectionParser import InfDefinSectionParser
-from Parser.InfBuildOptionSectionParser import InfBuildOptionSectionParser
-from Parser.InfSourceSectionParser import InfSourceSectionParser
-from Parser.InfLibrarySectionParser import InfLibrarySectionParser
-from Parser.InfPackageSectionParser import InfPackageSectionParser
-from Parser.InfGuidPpiProtocolSectionParser import InfGuidPpiProtocolSectionParser
-from Parser.InfBinarySectionParser import InfBinarySectionParser
-from Parser.InfPcdSectionParser import InfPcdSectionParser
-from Parser.InfDepexSectionParser import InfDepexSectionParser
+from edk2basetools.UPT.Object.Parser.InfDefineObject import InfDefObject
+from edk2basetools.UPT.Object.Parser.InfBuildOptionObject import InfBuildOptionsObject
+from edk2basetools.UPT.Object.Parser.InfLibraryClassesObject import InfLibraryClassObject
+from edk2basetools.UPT.Object.Parser.InfPackagesObject import InfPackageObject
+from edk2basetools.UPT.Object.Parser.InfPcdObject import InfPcdObject
+from edk2basetools.UPT.Object.Parser.InfSoucesObject import InfSourcesObject
+from edk2basetools.UPT.Object.Parser.InfUserExtensionObject import InfUserExtensionObject
+from edk2basetools.UPT.Object.Parser.InfProtocolObject import InfProtocolObject
+from edk2basetools.UPT.Object.Parser.InfPpiObject import InfPpiObject
+from edk2basetools.UPT.Object.Parser.InfGuidObject import InfGuidObject
+from edk2basetools.UPT.Object.Parser.InfDepexObject import InfDepexObject
+from edk2basetools.UPT.Object.Parser.InfBinaryObject import InfBinariesObject
+from edk2basetools.UPT.Object.Parser.InfHeaderObject import InfHeaderObject
+from edk2basetools.UPT.Object.Parser.InfMisc import InfSpecialCommentObject
+from edk2basetools.UPT.Object.Parser.InfMisc import InfHobObject
+from edk2basetools.UPT.Object.Parser.InfMisc import InfBootModeObject
+from edk2basetools.UPT.Object.Parser.InfMisc import InfEventObject
+from edk2basetools.UPT.Parser.InfParserMisc import gINF_SECTION_DEF
+from edk2basetools.UPT.Parser.InfDefineSectionParser import InfDefinSectionParser
+from edk2basetools.UPT.Parser.InfBuildOptionSectionParser import InfBuildOptionSectionParser
+from edk2basetools.UPT.Parser.InfSourceSectionParser import InfSourceSectionParser
+from edk2basetools.UPT.Parser.InfLibrarySectionParser import InfLibrarySectionParser
+from edk2basetools.UPT.Parser.InfPackageSectionParser import InfPackageSectionParser
+from edk2basetools.UPT.Parser.InfGuidPpiProtocolSectionParser import InfGuidPpiProtocolSectionParser
+from edk2basetools.UPT.Parser.InfBinarySectionParser import InfBinarySectionParser
+from edk2basetools.UPT.Parser.InfPcdSectionParser import InfPcdSectionParser
+from edk2basetools.UPT.Parser.InfDepexSectionParser import InfDepexSectionParser
 
 ## GetSpecialStr2
 #

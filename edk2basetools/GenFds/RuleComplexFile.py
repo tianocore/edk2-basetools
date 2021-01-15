@@ -11,7 +11,7 @@
 #
 from __future__ import absolute_import
 from . import Rule
-from  CommonDataClass.FdfClass import RuleComplexFileClassObject
+from edk2basetools.CommonDataClass.FdfClass import RuleComplexFileClassObject
 
 ## complex rule
 #

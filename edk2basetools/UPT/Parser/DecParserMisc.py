@@ -12,17 +12,17 @@ DecParserMisc
 ## Import modules
 #
 import os
-import Logger.Log as Logger
-from Logger.ToolError import FILE_PARSE_FAILURE
-from Logger import StringTable as ST
-from Library.DataType import TAB_COMMENT_SPLIT
-from Library.DataType import TAB_COMMENT_EDK1_SPLIT
-from Library.ExpressionValidate import IsValidBareCString
-from Library.ParserValidate import IsValidCFormatGuid
-from Library.ExpressionValidate import IsValidFeatureFlagExp
-from Library.ExpressionValidate import IsValidLogicalExpr
-from Library.ExpressionValidate import IsValidStringTest
-from Library.Misc import CheckGuidRegFormat
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger.ToolError import FILE_PARSE_FAILURE
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Library.DataType import TAB_COMMENT_SPLIT
+from edk2basetools.UPT.Library.DataType import TAB_COMMENT_EDK1_SPLIT
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidBareCString
+from edk2basetools.UPT.Library.ParserValidate import IsValidCFormatGuid
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidFeatureFlagExp
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidLogicalExpr
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidStringTest
+from edk2basetools.UPT.Library.Misc import CheckGuidRegFormat
 
 TOOL_NAME = 'DecParser'
 VERSION_PATTERN = '[0-9]+(\.[0-9]+)?'

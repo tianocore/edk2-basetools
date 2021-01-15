@@ -8,11 +8,11 @@
 from __future__ import print_function
 import os
 #import Object.Parser.InfObject as InfObject
-from Object.Parser.InfCommonObject import CurrentLine
-from Object.Parser.InfCommonObject import InfLineCommentObject
-from Object.Parser.InfBinaryObject import InfBinariesObject
-import Logger.Log as Logger
-import Library.GlobalData as Global
+from edk2basetools.UPT.Object.Parser.InfCommonObject import CurrentLine
+from edk2basetools.UPT.Object.Parser.InfCommonObject import InfLineCommentObject
+from edk2basetools.UPT.Object.Parser.InfBinaryObject import InfBinariesObject
+import edk2basetools.UPT.Logger.Log as Logger
+import edk2basetools.UPT.Library.GlobalData as Global
 ##
 # Test Common binary item
 #

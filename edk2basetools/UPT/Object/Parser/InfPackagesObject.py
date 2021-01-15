@@ -10,14 +10,14 @@
 InfPackageObject
 '''
 
-from Logger import StringTable as ST
-from Logger import ToolError
-import Logger.Log as Logger
-from Library import GlobalData
+from edk2basetools.UPT.Logger import StringTable as ST
+from edk2basetools.UPT.Logger import ToolError
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Library import GlobalData
 
-from Library.Misc import Sdict
-from Library.ParserValidate import IsValidPath
-from Library.ExpressionValidate import IsValidFeatureFlagExp
+from edk2basetools.UPT.Library.Misc import Sdict
+from edk2basetools.UPT.Library.ParserValidate import IsValidPath
+from edk2basetools.UPT.Library.ExpressionValidate import IsValidFeatureFlagExp
 
 class InfPackageItem():
     def __init__(self,

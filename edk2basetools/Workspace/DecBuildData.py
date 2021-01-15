@@ -5,14 +5,14 @@
 # (C) Copyright 2016 Hewlett Packard Enterprise Development LP<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 #
-from Common.StringUtils import *
-from Common.DataType import *
-from Common.Misc import *
+from edk2basetools.Common.StringUtils import *
+from edk2basetools.Common.DataType import *
+from edk2basetools.Common.Misc import *
 from types import *
 from collections import OrderedDict
-from CommonDataClass.DataClass import *
-from Workspace.BuildClassObject import PackageBuildClassObject, StructurePcd, PcdClassObject
-from Common.GlobalData import gGlobalDefines
+from edk2basetools.CommonDataClass.DataClass import *
+from edk2basetools.Workspace.BuildClassObject import PackageBuildClassObject, StructurePcd, PcdClassObject
+from edk2basetools.Common.GlobalData import gGlobalDefines
 from re import compile
 
 ## Platform build information from DEC file

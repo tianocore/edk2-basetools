@@ -8,7 +8,7 @@
 from __future__ import absolute_import
 import os
 from . import LongFilePathOsPath
-from Common.LongFilePathSupport import LongFilePath
+from edk2basetools.Common.LongFilePathSupport import LongFilePath
 import time
 
 path = LongFilePathOsPath

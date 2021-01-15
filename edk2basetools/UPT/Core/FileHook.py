@@ -15,7 +15,7 @@ import stat
 import time
 import zipfile
 from time import sleep
-from Library import GlobalData
+from edk2basetools.UPT.Library import GlobalData
 
 __built_in_remove__ = os.remove
 __built_in_mkdir__  = os.mkdir

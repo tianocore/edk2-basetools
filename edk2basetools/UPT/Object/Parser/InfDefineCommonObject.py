@@ -10,7 +10,7 @@
 InfDefineCommonObject
 '''
 
-from Object.Parser.InfCommonObject import InfLineCommentObject
+from edk2basetools.UPT.Object.Parser.InfCommonObject import InfLineCommentObject
 
 ## InfDefineImageExeParamItem
 #
