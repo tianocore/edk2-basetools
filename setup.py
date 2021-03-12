@@ -14,29 +14,35 @@ from setuptools.command.sdist import sdist
 from setuptools.command.install import install
 from setuptools.command.develop import develop
 
+PACKAGE_NAME = "edk2-basetools"
+
+def versions(package_name):
+    ''' queries pypi for the list of versions published for this package '''
+    import json
+    import urllib
+    from distutils.version import StrictVersion
+    url = "https://pypi.org/pypi/%s/json" % (package_name,)
+    data = json.load(urllib.request.urlopen(url))
+    versions = list(data["releases"].keys())
+    versions.sort(key=StrictVersion, reverse=True)
+    return versions
+
 
 # figure out what the current version is
-version_parts = ["0", "1"]
-# query pypi to see what the 
-pip_cmds = [sys.executable, '-m', 'pip', 'search', 'edk2-basetools']
-pypi_results = str(subprocess.check_output(pip_cmds).decode('UTF-8')).strip().splitlines()
-short_version = "0"
-for pypi_package in pypi_results:
-    if not pypi_package.strip().lower().startswith("edk2-basetools "):
-        continue
-    package_parts = pypi_package.split()
-    package_version = package_parts[1].strip("() ")
-    package_ver_parts = package_version.split(".")
-    if len(package_ver_parts) < 2:
-        print(f"The previous version didn't have a second element {package_version}")
-        raise RuntimeError()
-    elif int(package_ver_parts[0]) != int(version_parts[0]) or int(package_ver_parts[1]) != int(version_parts[1]):
-        print("Upgrading the version")
-        short_version = 0
-    elif len(package_ver_parts) != 3:
-        print(f"The previous version didn't have a third element {package_version}")
-    else:
-        short_version = int(package_ver_parts[2]) + 1
+version_parts = ["0", "1",]
+version = ".".join(version_parts)
+
+prev_version_parts = versions(PACKAGE_NAME)[0].strip().split('.')
+if len(prev_version_parts) < 2:
+    print(f"The previous version didn't have a second element {package_version}")
+    raise RuntimeError()
+elif int(prev_version_parts[0]) != int(version_parts[0]) or int(prev_version_parts[1]) != int(version_parts[1]):
+    print("Upgrading the version")
+    short_version = 0
+elif len(prev_version_parts) != 3:
+    print(f"The previous version didn't have a third element {package_version}")
+else:
+    short_version = int(prev_version_parts[2]) + 1
 if short_version is None:
     raise ValueError("Unable to query pypi for the latest version of edk2-basetools")
 version_parts.append(str(short_version))
@@ -69,7 +75,7 @@ with open("readme.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="edk2-basetools",
+    name=PACKAGE_NAME,
     version=version,
     author="Tianocore Edk2-BaseTool team",
     author_email="edk2-bugs@lists.01.org",
