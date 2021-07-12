@@ -1,3 +1,4 @@
+setuptools
 pytest
 pytest-html
 pytest-cov
