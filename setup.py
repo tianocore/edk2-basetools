@@ -99,7 +99,8 @@ setuptools.setup(
     entry_points={
         'console_scripts': [
             'edk2_build=edk2basetools.build.build:Main',
-            'edk2_ecc=edk2basetools.Ecc.EccMain:Main'
+            'edk2_ecc=edk2basetools.Ecc.EccMain:Main',
+            'FMMT=edk2basetools.FMMT.FMMT:main'
         ]
     },
     classifiers=[
