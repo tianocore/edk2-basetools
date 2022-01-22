@@ -20,7 +20,7 @@ from linecache import getlines
 from io import BytesIO
 
 import edk2basetools.Common.LongFilePathOs as os
-from edk2basetools.Common.TargetTxtClassObject import TargetTxtDict
+from edk2basetools.Common.TargetTxtClassObject import TargetTxtDict,gDefaultTargetTxtFile
 from edk2basetools.Common.DataType import *
 import edk2basetools.Common.GlobalData as GlobalData
 from edk2basetools.Common import EdkLogger
@@ -207,7 +207,7 @@ def GenFdsApi(FdsCommandDict, WorkSpaceDataBase=None):
         GenFdsGlobalVariable.ConfDir = ConfDirectoryPath
         if not GlobalData.gConfDirectory:
             GlobalData.gConfDirectory = GenFdsGlobalVariable.ConfDir
-        BuildConfigurationFile = os.path.normpath(os.path.join(ConfDirectoryPath, "target.txt"))
+        BuildConfigurationFile = os.path.normpath(os.path.join(ConfDirectoryPath, gDefaultTargetTxtFile))
         if os.path.isfile(BuildConfigurationFile) == True:
             # if no build target given in command line, get it from target.txt
             TargetObj = TargetTxtDict()

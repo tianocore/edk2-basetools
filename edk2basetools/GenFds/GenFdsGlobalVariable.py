@@ -24,7 +24,7 @@ from edk2basetools.Common import EdkLogger
 from edk2basetools.Common.Misc import SaveFileOnChange
 
 from edk2basetools.Common.TargetTxtClassObject import TargetTxtDict
-from edk2basetools.Common.ToolDefClassObject import ToolDefDict
+from edk2basetools.Common.ToolDefClassObject import ToolDefDict,gDefaultToolsDefFile
 from edk2basetools.AutoGen.BuildEngine import ToolBuildRule
 import edk2basetools.Common.DataType as DataType
 from edk2basetools.Common.Misc import PathClass,CreateDirectory
@@ -103,7 +103,7 @@ class GenFdsGlobalVariable:
         TargetObj = TargetTxtDict()
         ToolDefinitionFile = TargetObj.Target.TargetTxtDictionary[DataType.TAB_TAT_DEFINES_TOOL_CHAIN_CONF]
         if ToolDefinitionFile == '':
-            ToolDefinitionFile = "Conf/tools_def.txt"
+            ToolDefinitionFile =  os.path.join('Conf', gDefaultToolsDefFile)
         if os.path.isfile(ToolDefinitionFile):
             ToolDefObj = ToolDefDict((os.path.join(os.getenv("WORKSPACE"), "Conf")))
             ToolDefinition = ToolDefObj.ToolDef.ToolsDefTxtDatabase
