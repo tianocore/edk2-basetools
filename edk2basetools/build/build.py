@@ -68,8 +68,6 @@ from edk2basetools.AutoGen.AutoGen import CalculatePriorityValue
 gSupportedTarget = ['all', 'genc', 'genmake', 'modules', 'libraries', 'fds', 'clean', 'cleanall', 'cleanlib', 'run']
 
 ## build configuration file
-gBuildConfiguration = "target.txt"
-gToolsDefinition = "tools_def.txt"
 
 TemporaryTablePattern = re.compile(r'^_\d+_\d+_[a-fA-F0-9]+$')
 TmpTableDict = {}
