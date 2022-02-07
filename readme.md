@@ -3,6 +3,14 @@
 This is a Tianocore maintained project consisting of a the python source files that make up EDK2 basetools. This package's intent is to provide an easy way to organize and share python code to facilitate reuse across environments, tools, and scripts.  Inclusion of this package and dependency management is best managed using Pip/Pypi.
 
 This is a fundamental package and is required to be used for edk2 builds.
+## CI Build Status
+| Host Type & Toolchain | Build Status |
+| --------------------- | ------------ |
+| Windows_VS2019_ | [![Build Status](https://dev.azure.com/bobcfeng/edk2-bob/_apis/build/status/BobCF.edk2-basetools-vs2019-build?repoName=BobCF%2Fedk2-basetools&branchName=newmaster)](https://dev.azure.com/bobcfeng/edk2-bob/_build/latest?definitionId=9&repoName=BobCF%2Fedk2-basetools&branchName=newmaster) |
+| Ubuntu_GCC5_ | [![Build Status](https://dev.azure.com/bobcfeng/edk2-bob/_apis/build/status/BobCF.edk2-basetools-gcc-build?repoName=BobCF%2Fedk2-basetools&branchName=newmaster)](https://dev.azure.com/bobcfeng/edk2-bob/_build/latest?definitionId=10&repoName=BobCF%2Fedk2-basetools&branchName=newmaster) |
+| OvmfPkg_Win_VS2019_ |[![Build Status](https://dev.azure.com/bobcfeng/edk2-bob/_apis/build/status/BobCF.edk2-basetools-ovmf-vs2019?repoName=BobCF%2Fedk2-basetools&branchName=newmaster)](https://dev.azure.com/bobcfeng/edk2-bob/_build/latest?definitionId=11&repoName=BobCF%2Fedk2-basetools&branchName=newmaster)|
+|OvmfPkg_Ubuntu_GCC5_|[![Build Status](https://dev.azure.com/bobcfeng/edk2-bob/_apis/build/status/BobCF.edk2-basetools-ovmf-gcc?repoName=BobCF%2Fedk2-basetools&branchName=newmaster)](https://dev.azure.com/bobcfeng/edk2-bob/_build/latest?definitionId=12&repoName=BobCF%2Fedk2-basetools&branchName=newmaster)|
+
 
 ## How to use it
 
