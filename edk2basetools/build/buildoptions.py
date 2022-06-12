@@ -12,8 +12,9 @@
 from edk2basetools.Common.BuildVersion import gBUILD_VERSION
 from argparse import ArgumentParser
 VersionNumber = "0.60" + ' ' + gBUILD_VERSION
-__version__ = "%prog Version " + VersionNumber
+__version__ = "%(prog)s Version " + VersionNumber
 __copyright__ = "Copyright (c) 2007 - 2018, Intel Corporation  All rights reserved."
+__usage__ = "%(prog)s [options] TARGET"
 
 
 class MyOptionParser():
@@ -29,7 +30,7 @@ class MyOptionParser():
             self.BuildArguments = None
 
     def GetOption(self):
-        Parser = ArgumentParser(description=__copyright__, prog="edk2_build")
+        Parser = ArgumentParser(description=__copyright__, prog="edk2_build", usage=__usage__)
         Parser.add_argument("Target", metavar="TARGET", type=str, choices=['all', 'genc', 'genmake', 'modules', 'libraries', 'fds', 'clean', 'cleanall', 'cleanlib',
                             'run'], help="target is one of the list: all, fds, genc, genmake, clean, cleanall, cleanlib, modules, libraries, run", default="all", nargs='?')
         Parser.add_argument('--version', action='version', version=__version__)

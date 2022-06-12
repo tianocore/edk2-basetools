@@ -376,9 +376,9 @@ class DependencyExpression:
 
 
 versionNumber = ("0.04" + " " + gBUILD_VERSION)
-__version__ = "%prog Version " + versionNumber
+__version__ = "%(prog)s Version " + versionNumber
 __copyright__ = "Copyright (c) 2007-2018, Intel Corporation  All rights reserved."
-__usage__ = "%prog [options] [dependency_expression_file]"
+__usage__ = "%(prog)s [options] [dependency_expression_file]"
 
 # Parse command line options
 #
@@ -387,7 +387,7 @@ __usage__ = "%prog [options] [dependency_expression_file]"
 
 
 def GetOptions():
-    Parser = ArgumentParser(description=__copyright__)
+    Parser = ArgumentParser(description=__copyright__, usage=__usage__)
 
     Parser.add_argument("DependencyExpressionFile", metavar="DEPENDENCY_EXPRESSION_FILE",
                         nargs="?", type=str, help="Dependency Expression File")
