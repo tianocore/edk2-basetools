@@ -185,7 +185,7 @@ __usage__ = "%(prog)s [options] {args} \
 def MyOptionParser():
     parser = ArgumentParser(prog="TargetTool.exe", usage=__usage__, description=__copyright__)
 
-    parser.add_argument("Arg", metavar="ARG", type=str, choices=['clean', 'print', 'set'])
+    parser.add_argument("Arg", metavar="ARG", type=str.lower, choices=['clean', 'print', 'set'])
 
     parser.add_argument('--version', action='version', version=__version__)
     parser.add_argument("-a", "--arch", action="append", dest="TARGET_ARCH", type=str, choices=['IA32', 'X64', 'ARM', 'AARCH64', 'EBC'],
