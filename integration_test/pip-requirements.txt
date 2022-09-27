@@ -1,0 +1,4 @@
+edk2-pytool-library==0.11.2 # Match edk2
+edk2-pytool-extensions~=0.16.0 # Match edk2
+robotframework
+regex 
