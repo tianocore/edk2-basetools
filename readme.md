@@ -2,48 +2,47 @@
 
 This is a Tianocore maintained project consisting of a the python source files that make up EDK2 basetools. This package's intent is to provide an easy way to organize and share python code to facilitate reuse across environments, tools, and scripts.  Inclusion of this package and dependency management is best managed using Pip/Pypi.
 
-This is a fundamental package and is required to be used for edk2 builds.
+## Current Release
 
-## How to use it
+[![PyPI](https://img.shields.io/pypi/v/edk2_basetools.svg)](https://pypi.org/project/edk2-basetools/)
 
-As it stands right now, this isn't hosted on PyPi, so it needs to be installed locally.
-
-1. Clone the repo locally
-2. Run `pip install -e .` (you might need do this from an admin prompt in windows)
-4. Run edk2_build to make sure it works
-3. Switch to an EDK2 basetools that has the necessary hooks
-
-Right now the only EDK2 that supports this package is https://github.com/matthewfcarlson/edk2/tree/feature/pip-basetools
-This commit: https://github.com/matthewfcarlson/edk2/commit/40bb4778f5edb380c38233399507d00dd47df80d gives you a good idea of how to enable it for your repo if need to enable it.
+A minor release occurs for each merged Pull Request, which can be tracked via [commits](https://github.com/tianocore/edk2-basetools/commits/master) or [closed pull requests](https://github.com/tianocore/edk2-basetools/pulls?q=is%3Apr+is%3Aclosed).
 
 ## Content
 
-The package contains classes and modules that can be used as the building blocks of tools that are relevant to UEFI firmware developers.  These modules should attempt to provide generic support and avoid tightly coupling with specific use cases.  It is expected these modules do not provide direct interaction with the user (through command line interfaces) but instead are intended to be wrapped in other scripts/tools which contains the specific usage and interface.
+The package contains all python source files necessary to build an EDK2 project. This is a fundamental package and is required for edk2 builds. These tools are typically called by the build system, however each is independently callable.
 
 Examples:
 
-* File parsers for edk2 specific file types.  These parse the file and provide an object for interacting with the content.
-* UEFI specific services for encoding/decoding binary structures.
-* UEFI defined values and interfaces for usage in python
-* Python wrappers for other system cli tools ( signtool, catalog file generation, inf file generation, etc)
-* Python utilities to provide consistent logging, command invocation, path resolution, etc
+* Build.py
+* Split.py
+* Trim.py
+* AmlToC.py
 
 ## License
 
 All content in this repository is licensed under [BSD-2-Clause Plus Patent License](license.txt).
 
-[![PyPI - License](https://img.shields.io/pypi/l/edk2_pytool_base.svg)](https://pypi.org/project/edk2-pytool-library/)
+[![PyPI - License](https://img.shields.io/pypi/l/edk2_basetools.svg)](https://pypi.org/project/edk2-basetools/)
 
 ## Usage
 
 NOTE: It is strongly recommended that you use python virtual environments.  Virtual environments avoid changing the global python workspace and causing conflicting dependencies.  Virtual environments are lightweight and easy to use.  [Learn more](https://docs.python.org/3/library/venv.html)
 
-* To install run `pip install --upgrade edk2-pytool-base`
+* To install run `pip install --upgrade edk2-basetools`
 * To use in your python code
 
-    ```python
-    from edk2basetools.<module> import <class>
-    ```
+### Building with edk2-pytool-extensions
+
+To perform a build using [edk2-pytool-extensions](https://pypi.org/project/edk2-pytool-extensions/) invocables, add the *pipbuild-win* or *pipbuild-unix* scope to the platform build file.
+
+### Building with edk2
+
+Follow the normal build process; it will automatically detect and use edk2-basetools pip module if available.
+
+### Custom
+
+BaseTools/Bin**Pip**Wrappers/WindowsLike or BaseTools/Bin**Pip**Wrappers/PosixLike path must be set instead of BaseTools/BinWrappers/WindowsLike or BaseTools/BinWrappers/UnixLike
 
 ## Contribution Process
 
@@ -71,4 +70,4 @@ See the [github team](https://github.com/orgs/tianocore/teams/edk-ii-tool-mainta
 
 ## Documentation
 
-See the github repo __docs__ folder
+See the github repo **docs** folder
