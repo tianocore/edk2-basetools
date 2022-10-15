@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of [Defines] section for INF file.
 # It will consumed by InfParser
 #
@@ -44,20 +44,22 @@ from edk2basetools.UPT.Object.Parser.InfDefineCommonObject import InfDefineUnloa
 from edk2basetools.UPT.Object.Parser.InfDefineCommonObject import InfDefineConstructorItem
 from edk2basetools.UPT.Object.Parser.InfDefineCommonObject import InfDefineDestructorItem
 
+
 class InfDefSectionOptionRomInfo():
     def __init__(self):
-        self.PciVendorId                = None
-        self.PciDeviceId                = None
-        self.PciClassCode               = None
-        self.PciRevision                = None
-        self.PciCompress                = None
-        self.CurrentLine                = ['', -1, '']
+        self.PciVendorId = None
+        self.PciDeviceId = None
+        self.PciClassCode = None
+        self.PciRevision = None
+        self.PciCompress = None
+        self.CurrentLine = ['', -1, '']
+
     def SetPciVendorId(self, PciVendorId, Comments):
         #
         # Value has been set before.
         #
         if self.PciVendorId is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND%(DT.TAB_INF_DEFINES_PCI_VENDOR_ID),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND % (DT.TAB_INF_DEFINES_PCI_VENDOR_ID),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -69,7 +71,7 @@ class InfDefSectionOptionRomInfo():
             self.PciVendorId.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(PciVendorId),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (PciVendorId),
                        LineInfo=self.CurrentLine)
             return False
 
@@ -81,7 +83,7 @@ class InfDefSectionOptionRomInfo():
         # Value has been set before.
         #
         if self.PciDeviceId is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND%(DT.TAB_INF_DEFINES_PCI_DEVICE_ID),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND % (DT.TAB_INF_DEFINES_PCI_DEVICE_ID),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -93,7 +95,7 @@ class InfDefSectionOptionRomInfo():
             self.PciDeviceId.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(PciDeviceId),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (PciDeviceId),
                        LineInfo=self.CurrentLine)
             return False
 
@@ -105,7 +107,7 @@ class InfDefSectionOptionRomInfo():
         # Value has been set before.
         #
         if self.PciClassCode is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND%(DT.TAB_INF_DEFINES_PCI_CLASS_CODE),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND % (DT.TAB_INF_DEFINES_PCI_CLASS_CODE),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -117,7 +119,7 @@ class InfDefSectionOptionRomInfo():
             self.PciClassCode.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%\
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID %
                        (PciClassCode),
                        LineInfo=self.CurrentLine)
             return False
@@ -130,7 +132,7 @@ class InfDefSectionOptionRomInfo():
         # Value has been set before.
         #
         if self.PciRevision is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND%(DT.TAB_INF_DEFINES_PCI_REVISION),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND % (DT.TAB_INF_DEFINES_PCI_REVISION),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -142,7 +144,7 @@ class InfDefSectionOptionRomInfo():
             self.PciRevision.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(PciRevision),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (PciRevision),
                        LineInfo=self.CurrentLine)
             return False
 
@@ -154,7 +156,7 @@ class InfDefSectionOptionRomInfo():
         # Value has been set before.
         #
         if self.PciCompress is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND%(DT.TAB_INF_DEFINES_PCI_COMPRESS),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND % (DT.TAB_INF_DEFINES_PCI_COMPRESS),
                        LineInfo=self.CurrentLine)
             return False
 
@@ -167,41 +169,44 @@ class InfDefSectionOptionRomInfo():
             self.PciCompress.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(PciCompress),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (PciCompress),
                        LineInfo=self.CurrentLine)
             return False
+
     def GetPciCompress(self):
         return self.PciCompress
 ##
 # INF [Define] section Object
 #
+
+
 class InfDefSection(InfDefSectionOptionRomInfo):
     def __init__(self):
-        self.BaseName                   = None
-        self.FileGuid                   = None
-        self.ModuleType                 = None
-        self.ModuleUniFileName          = None
-        self.InfVersion                 = None
-        self.EdkReleaseVersion          = None
-        self.UefiSpecificationVersion   = None
-        self.PiSpecificationVersion     = None
-        self.LibraryClass               = []
-        self.Package                    = None
-        self.VersionString              = None
-        self.PcdIsDriver                = None
-        self.EntryPoint                 = []
-        self.UnloadImages               = []
-        self.Constructor                = []
-        self.Destructor                 = []
-        self.Shadow                     = None
-        self.CustomMakefile             = []
-        self.Specification              = []
-        self.UefiHiiResourceSection     = None
-        self.DpxSource                  = []
-        self.CurrentLine                = ['', -1, '']
+        self.BaseName = None
+        self.FileGuid = None
+        self.ModuleType = None
+        self.ModuleUniFileName = None
+        self.InfVersion = None
+        self.EdkReleaseVersion = None
+        self.UefiSpecificationVersion = None
+        self.PiSpecificationVersion = None
+        self.LibraryClass = []
+        self.Package = None
+        self.VersionString = None
+        self.PcdIsDriver = None
+        self.EntryPoint = []
+        self.UnloadImages = []
+        self.Constructor = []
+        self.Destructor = []
+        self.Shadow = None
+        self.CustomMakefile = []
+        self.Specification = []
+        self.UefiHiiResourceSection = None
+        self.DpxSource = []
+        self.CurrentLine = ['', -1, '']
         InfDefSectionOptionRomInfo.__init__(self)
 
-    ## SetHeadComment
+    # SetHeadComment
     #
     # @param BaseName: BaseName
     #
@@ -210,7 +215,7 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.BaseName is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND%(DT.TAB_INF_DEFINES_BASE_NAME),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND % (DT.TAB_INF_DEFINES_BASE_NAME),
                        LineInfo=self.CurrentLine)
             return False
         if not (BaseName == '' or BaseName is None):
@@ -220,16 +225,16 @@ class InfDefSection(InfDefSectionOptionRomInfo):
                 self.BaseName.Comments = Comments
                 return True
             else:
-                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_NAME_INVALID%(BaseName),
+                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_NAME_INVALID % (BaseName),
                            LineInfo=self.CurrentLine)
                 return False
 
-    ## GetBaseName
+    # GetBaseName
     #
     def GetBaseName(self):
         return self.BaseName
 
-    ## SetFileGuid
+    # SetFileGuid
     #
     # @param FileGuid: FileGuid
     #
@@ -238,8 +243,8 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.FileGuid is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND\
-                       %(DT.TAB_INF_DEFINES_FILE_GUID),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND
+                       % (DT.TAB_INF_DEFINES_FILE_GUID),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -251,16 +256,16 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             self.FileGuid.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_GUID_INVALID%(FileGuid),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_GUID_INVALID % (FileGuid),
                        LineInfo=self.CurrentLine)
             return False
 
-    ## GetFileGuid
+    # GetFileGuid
     #
     def GetFileGuid(self):
         return self.FileGuid
 
-    ## SetModuleType
+    # SetModuleType
     #
     # @param ModuleType: ModuleType
     #
@@ -269,8 +274,8 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.ModuleType is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND\
-                       %(DT.TAB_INF_DEFINES_MODULE_TYPE),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND
+                       % (DT.TAB_INF_DEFINES_MODULE_TYPE),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -286,17 +291,17 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             self.ModuleType.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_MODULETYPE_INVALID%\
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_MODULETYPE_INVALID %
                        (ModuleType),
                        LineInfo=self.CurrentLine)
             return False
 
-    ## GetModuleType
+    # GetModuleType
     #
     def GetModuleType(self):
         return self.ModuleType
 
-    ## SetModuleUniFileName
+    # SetModuleUniFileName
     #
     # @param ModuleUniFileName: ModuleUniFileName
     #
@@ -304,16 +309,16 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         if Comments:
             pass
         if self.ModuleUniFileName is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND%(DT.TAB_INF_DEFINES_MODULE_UNI_FILE),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND % (DT.TAB_INF_DEFINES_MODULE_UNI_FILE),
                        LineInfo=self.CurrentLine)
         self.ModuleUniFileName = ModuleUniFileName
 
-    ## GetModuleType
+    # GetModuleType
     #
     def GetModuleUniFileName(self):
         return self.ModuleUniFileName
 
-    ## SetInfVersion
+    # SetInfVersion
     #
     # @param InfVersion: InfVersion
     #
@@ -322,8 +327,8 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.InfVersion is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND\
-                       %(DT.TAB_INF_DEFINES_INF_VERSION),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND
+                       % (DT.TAB_INF_DEFINES_INF_VERSION),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -340,7 +345,7 @@ class InfDefSection(InfDefSectionOptionRomInfo):
                            ErrorCode=ToolError.EDK1_INF_ERROR,
                            LineInfo=self.CurrentLine)
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(InfVersion),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (InfVersion),
                        LineInfo=self.CurrentLine)
             return False
 
@@ -349,12 +354,12 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         self.InfVersion.Comments = Comments
         return True
 
-    ## GetInfVersion
+    # GetInfVersion
     #
     def GetInfVersion(self):
         return self.InfVersion
 
-    ## SetEdkReleaseVersion
+    # SetEdkReleaseVersion
     #
     # @param EdkReleaseVersion: EdkReleaseVersion
     #
@@ -363,8 +368,8 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.EdkReleaseVersion is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND\
-                       %(DT.TAB_INF_DEFINES_EDK_RELEASE_VERSION),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND
+                       % (DT.TAB_INF_DEFINES_EDK_RELEASE_VERSION),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -377,17 +382,17 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             self.EdkReleaseVersion.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID\
-                       %(EdkReleaseVersion),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID
+                       % (EdkReleaseVersion),
                        LineInfo=self.CurrentLine)
             return False
 
-    ## GetEdkReleaseVersion
+    # GetEdkReleaseVersion
     #
     def GetEdkReleaseVersion(self):
         return self.EdkReleaseVersion
 
-    ## SetUefiSpecificationVersion
+    # SetUefiSpecificationVersion
     #
     # @param UefiSpecificationVersion: UefiSpecificationVersion
     #
@@ -396,8 +401,8 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.UefiSpecificationVersion is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND\
-                       %(DT.TAB_INF_DEFINES_UEFI_SPECIFICATION_VERSION),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND
+                       % (DT.TAB_INF_DEFINES_UEFI_SPECIFICATION_VERSION),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -410,17 +415,17 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             self.UefiSpecificationVersion.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID\
-                       %(UefiSpecificationVersion),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID
+                       % (UefiSpecificationVersion),
                        LineInfo=self.CurrentLine)
             return False
 
-    ## GetUefiSpecificationVersion
+    # GetUefiSpecificationVersion
     #
     def GetUefiSpecificationVersion(self):
         return self.UefiSpecificationVersion
 
-    ## SetPiSpecificationVersion
+    # SetPiSpecificationVersion
     #
     # @param PiSpecificationVersion: PiSpecificationVersion
     #
@@ -429,8 +434,8 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.PiSpecificationVersion is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND\
-                       %(DT.TAB_INF_DEFINES_PI_SPECIFICATION_VERSION),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND
+                       % (DT.TAB_INF_DEFINES_PI_SPECIFICATION_VERSION),
                        LineInfo=self.CurrentLine)
             return False
         #
@@ -443,17 +448,17 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             self.PiSpecificationVersion.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID\
-                       %(PiSpecificationVersion),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID
+                       % (PiSpecificationVersion),
                        LineInfo=self.CurrentLine)
             return False
 
-    ## GetPiSpecificationVersion
+    # GetPiSpecificationVersion
     #
     def GetPiSpecificationVersion(self):
         return self.PiSpecificationVersion
 
-    ## SetLibraryClass
+    # SetLibraryClass
     #
     # @param LibraryClass: LibraryClass
     #
@@ -470,13 +475,13 @@ class InfDefSection(InfDefSectionOptionRomInfo):
                 TypeList = [Type for Type in TypeList if Type != '']
                 for Item in TypeList:
                     if Item not in DT.MODULE_LIST:
-                        ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(Item),
+                        ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (Item),
                                    LineInfo=self.CurrentLine)
                         return False
                 InfDefineLibraryItemObj.SetTypes(TypeList)
             self.LibraryClass.append(InfDefineLibraryItemObj)
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(Name),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (Name),
                        LineInfo=self.CurrentLine)
             return False
 
@@ -490,19 +495,18 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.VersionString is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND\
-                       %(DT.TAB_INF_DEFINES_VERSION_STRING),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND
+                       % (DT.TAB_INF_DEFINES_VERSION_STRING),
                        LineInfo=self.CurrentLine)
             return False
         if not IsValidDecVersion(VersionString):
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID\
-                       %(VersionString),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID
+                       % (VersionString),
                        LineInfo=self.CurrentLine)
         self.VersionString = InfDefMember()
         self.VersionString.SetValue(VersionString)
         self.VersionString.Comments = Comments
         return True
-
 
     def GetVersionString(self):
         return self.VersionString
@@ -512,8 +516,8 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.PcdIsDriver is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND\
-                       %(DT.TAB_INF_DEFINES_PCD_IS_DRIVER),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND
+                       % (DT.TAB_INF_DEFINES_PCD_IS_DRIVER),
                        LineInfo=self.CurrentLine)
             return False
         if PcdIsDriver == 'PEI_PCD_DRIVER' or PcdIsDriver == 'DXE_PCD_DRIVER':
@@ -522,7 +526,7 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             self.PcdIsDriver.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(PcdIsDriver),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (PcdIsDriver),
                        LineInfo=self.CurrentLine)
             return False
 
@@ -541,13 +545,13 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         ValueList[0:len(TokenList)] = TokenList
         InfDefineEntryPointItemObj = InfDefineEntryPointItem()
         if not IsValidCVariableName(ValueList[0]):
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%\
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID %
                        (ValueList[0]),
                        LineInfo=self.CurrentLine)
         InfDefineEntryPointItemObj.SetCName(ValueList[0])
         if len(ValueList) == 2:
             if ValueList[1].strip() == '':
-                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%\
+                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID %
                            (ValueList[1]),
                            LineInfo=self.CurrentLine)
             #
@@ -555,12 +559,12 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             #
             FeatureFlagRtv = IsValidFeatureFlagExp(ValueList[1].strip())
             if not FeatureFlagRtv[0]:
-                ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID%\
+                ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID %
                            (FeatureFlagRtv[1]),
                            LineInfo=self.CurrentLine)
             InfDefineEntryPointItemObj.SetFeatureFlagExp(ValueList[1])
         if len(ValueList) > 2:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(EntryPoint),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (EntryPoint),
                        LineInfo=self.CurrentLine)
         InfDefineEntryPointItemObj.Comments = Comments
         self.EntryPoint.append(InfDefineEntryPointItemObj)
@@ -580,24 +584,24 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         ValueList[0:len(TokenList)] = TokenList
         InfDefineUnloadImageItemObj = InfDefineUnloadImageItem()
         if not IsValidCVariableName(ValueList[0]):
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(ValueList[0]),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (ValueList[0]),
                        LineInfo=self.CurrentLine)
         InfDefineUnloadImageItemObj.SetCName(ValueList[0])
         if len(ValueList) == 2:
             if ValueList[1].strip() == '':
-                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(ValueList[1]),
+                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (ValueList[1]),
                            LineInfo=self.CurrentLine)
             #
             # Validate FFE
             #
             FeatureFlagRtv = IsValidFeatureFlagExp(ValueList[1].strip())
             if not FeatureFlagRtv[0]:
-                ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID%(FeatureFlagRtv[1]),
+                ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID % (FeatureFlagRtv[1]),
                            LineInfo=self.CurrentLine)
             InfDefineUnloadImageItemObj.SetFeatureFlagExp(ValueList[1])
 
         if len(ValueList) > 2:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(UnloadImages),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (UnloadImages),
                        LineInfo=self.CurrentLine)
         InfDefineUnloadImageItemObj.Comments = Comments
         self.UnloadImages.append(InfDefineUnloadImageItemObj)
@@ -617,34 +621,34 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         ValueList[0:len(TokenList)] = TokenList
         InfDefineConstructorItemObj = InfDefineConstructorItem()
         if not IsValidCVariableName(ValueList[0]):
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(ValueList[0]),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (ValueList[0]),
                        LineInfo=self.CurrentLine)
         InfDefineConstructorItemObj.SetCName(ValueList[0])
         if len(ValueList) >= 2:
             ModList = GetSplitValueList(ValueList[1], ' ')
             if ValueList[1].strip() == '':
-                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(ValueList[1]),
+                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (ValueList[1]),
                            LineInfo=self.CurrentLine)
             for ModItem in ModList:
                 if ModItem not in DT.MODULE_LIST:
-                    ErrorInInf(ST.ERR_INF_PARSER_DEFINE_MODULETYPE_INVALID%(ModItem),
+                    ErrorInInf(ST.ERR_INF_PARSER_DEFINE_MODULETYPE_INVALID % (ModItem),
                                LineInfo=self.CurrentLine)
             InfDefineConstructorItemObj.SetSupModList(ModList)
         if len(ValueList) == 3:
             if ValueList[2].strip() == '':
-                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(ValueList[2]),
+                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (ValueList[2]),
                            LineInfo=self.CurrentLine)
             #
             # Validate FFE
             #
             FeatureFlagRtv = IsValidFeatureFlagExp(ValueList[2].strip())
             if not FeatureFlagRtv[0]:
-                ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID%(FeatureFlagRtv[2]),
+                ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID % (FeatureFlagRtv[2]),
                            LineInfo=self.CurrentLine)
             InfDefineConstructorItemObj.SetFeatureFlagExp(ValueList[2])
 
         if len(ValueList) > 3:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(Constructor),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (Constructor),
                        LineInfo=self.CurrentLine)
         InfDefineConstructorItemObj.Comments = Comments
         self.Constructor.append(InfDefineConstructorItemObj)
@@ -664,34 +668,34 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         ValueList[0:len(TokenList)] = TokenList
         InfDefineDestructorItemObj = InfDefineDestructorItem()
         if not IsValidCVariableName(ValueList[0]):
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(ValueList[0]),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (ValueList[0]),
                        LineInfo=self.CurrentLine)
         InfDefineDestructorItemObj.SetCName(ValueList[0])
         if len(ValueList) >= 2:
             ModList = GetSplitValueList(ValueList[1].strip(), ' ')
             if ValueList[1].strip() == '':
-                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(ValueList[1]),
+                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (ValueList[1]),
                            LineInfo=self.CurrentLine)
             for ModItem in ModList:
                 if ModItem not in DT.MODULE_LIST:
-                    ErrorInInf(ST.ERR_INF_PARSER_DEFINE_MODULETYPE_INVALID%(ModItem),
+                    ErrorInInf(ST.ERR_INF_PARSER_DEFINE_MODULETYPE_INVALID % (ModItem),
                                LineInfo=self.CurrentLine)
             InfDefineDestructorItemObj.SetSupModList(ModList)
         if len(ValueList) == 3:
             if ValueList[2].strip() == '':
-                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(ValueList[2]),
+                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (ValueList[2]),
                            LineInfo=self.CurrentLine)
             #
             # Validate FFE
             #
             FeatureFlagRtv = IsValidFeatureFlagExp(ValueList[2].strip())
             if not FeatureFlagRtv[0]:
-                ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID%(FeatureFlagRtv[1]),
+                ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID % (FeatureFlagRtv[1]),
                            LineInfo=self.CurrentLine)
             InfDefineDestructorItemObj.SetFeatureFlagExp(ValueList[2])
 
         if len(ValueList) > 3:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(Destructor),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (Destructor),
                        LineInfo=self.CurrentLine)
 
         InfDefineDestructorItemObj.Comments = Comments
@@ -705,7 +709,7 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         # Value has been set before.
         #
         if self.Shadow is not None:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND%(DT.TAB_INF_DEFINES_SHADOW),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND % (DT.TAB_INF_DEFINES_SHADOW),
                        LineInfo=self.CurrentLine)
             return False
         if (IsValidBoolType(Shadow)):
@@ -714,9 +718,10 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             self.Shadow.Comments = Comments
             return True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(Shadow),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (Shadow),
                        LineInfo=self.CurrentLine)
             return False
+
     def GetShadow(self):
         return self.Shadow
 
@@ -736,7 +741,7 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             Family = Family.strip()
             if Family != '':
                 if not IsValidFamily(Family):
-                    ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(Family),
+                    ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (Family),
                                LineInfo=self.CurrentLine)
                     return False
             #
@@ -747,7 +752,7 @@ class InfDefSection(InfDefSectionOptionRomInfo):
             if IsValidPath(FileName, ModulePath):
                 IsValidFileFlag = True
             else:
-                ErrorInInf(ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID%(FileName),
+                ErrorInInf(ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID % (FileName),
                            LineInfo=self.CurrentLine)
                 return False
             if IsValidFileFlag:
@@ -785,11 +790,11 @@ class InfDefSection(InfDefSectionOptionRomInfo):
                 self.Specification.append((Name, Version, Comments))
                 return True
             else:
-                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(Version),
+                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (Version),
                            LineInfo=self.CurrentLine)
                 return False
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(Name),
+            ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (Name),
                        LineInfo=self.CurrentLine)
             return False
         return True
@@ -807,7 +812,7 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         #
         if self.UefiHiiResourceSection is not None:
             ErrorInInf(ST.ERR_INF_PARSER_DEFINE_ITEM_MORE_THAN_ONE_FOUND
-                       %(DT.TAB_INF_DEFINES_UEFI_HII_RESOURCE_SECTION),
+                       % (DT.TAB_INF_DEFINES_UEFI_HII_RESOURCE_SECTION),
                        LineInfo=self.CurrentLine)
             return False
         if not (UefiHiiResourceSection == '' or UefiHiiResourceSection is None):
@@ -817,7 +822,7 @@ class InfDefSection(InfDefSectionOptionRomInfo):
                 self.UefiHiiResourceSection.Comments = Comments
                 return True
             else:
-                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(UefiHiiResourceSection),
+                ErrorInInf(ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (UefiHiiResourceSection),
                            LineInfo=self.CurrentLine)
                 return False
         else:
@@ -835,12 +840,12 @@ class InfDefSection(InfDefSectionOptionRomInfo):
         if IsValidPath(DpxSource, ModulePath):
             IsValidFileFlag = True
         else:
-            ErrorInInf(ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID%(DpxSource),
+            ErrorInInf(ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID % (DpxSource),
                        LineInfo=self.CurrentLine)
             return False
         if IsValidFileFlag:
             DpxSource = ConvPathFromAbsToRel(DpxSource,
-                            GlobalData.gINF_MODULE_DIR)
+                                             GlobalData.gINF_MODULE_DIR)
             self.DpxSource.append((DpxSource, Comments))
             IsValidFileFlag = False
         return True
@@ -848,69 +853,79 @@ class InfDefSection(InfDefSectionOptionRomInfo):
     def GetDpxSource(self):
         return self.DpxSource
 
+
 gFUNCTION_MAPPING_FOR_DEFINE_SECTION = {
     #
     # Required Fields
     #
-    DT.TAB_INF_DEFINES_BASE_NAME                   : InfDefSection.SetBaseName,
-    DT.TAB_INF_DEFINES_FILE_GUID                   : InfDefSection.SetFileGuid,
-    DT.TAB_INF_DEFINES_MODULE_TYPE                 : InfDefSection.SetModuleType,
+    DT.TAB_INF_DEFINES_BASE_NAME: InfDefSection.SetBaseName,
+    DT.TAB_INF_DEFINES_FILE_GUID: InfDefSection.SetFileGuid,
+    DT.TAB_INF_DEFINES_MODULE_TYPE: InfDefSection.SetModuleType,
     #
     # Required by EDKII style INF file
     #
-    DT.TAB_INF_DEFINES_INF_VERSION                 : InfDefSection.SetInfVersion,
+    DT.TAB_INF_DEFINES_INF_VERSION: InfDefSection.SetInfVersion,
     #
     # Optional Fields
     #
-    DT.TAB_INF_DEFINES_MODULE_UNI_FILE             : InfDefSection.SetModuleUniFileName,
-    DT.TAB_INF_DEFINES_EDK_RELEASE_VERSION         : InfDefSection.SetEdkReleaseVersion,
-    DT.TAB_INF_DEFINES_UEFI_SPECIFICATION_VERSION  : InfDefSection.SetUefiSpecificationVersion,
-    DT.TAB_INF_DEFINES_PI_SPECIFICATION_VERSION    : InfDefSection.SetPiSpecificationVersion,
-    DT.TAB_INF_DEFINES_LIBRARY_CLASS               : InfDefSection.SetLibraryClass,
-    DT.TAB_INF_DEFINES_VERSION_STRING              : InfDefSection.SetVersionString,
-    DT.TAB_INF_DEFINES_PCD_IS_DRIVER               : InfDefSection.SetPcdIsDriver,
-    DT.TAB_INF_DEFINES_ENTRY_POINT                 : InfDefSection.SetEntryPoint,
-    DT.TAB_INF_DEFINES_UNLOAD_IMAGE                : InfDefSection.SetUnloadImages,
-    DT.TAB_INF_DEFINES_CONSTRUCTOR                 : InfDefSection.SetConstructor,
-    DT.TAB_INF_DEFINES_DESTRUCTOR                  : InfDefSection.SetDestructor,
-    DT.TAB_INF_DEFINES_SHADOW                      : InfDefSection.SetShadow,
-    DT.TAB_INF_DEFINES_PCI_VENDOR_ID               : InfDefSection.SetPciVendorId,
-    DT.TAB_INF_DEFINES_PCI_DEVICE_ID               : InfDefSection.SetPciDeviceId,
-    DT.TAB_INF_DEFINES_PCI_CLASS_CODE              : InfDefSection.SetPciClassCode,
-    DT.TAB_INF_DEFINES_PCI_REVISION                : InfDefSection.SetPciRevision,
-    DT.TAB_INF_DEFINES_PCI_COMPRESS                : InfDefSection.SetPciCompress,
-    DT.TAB_INF_DEFINES_CUSTOM_MAKEFILE             : InfDefSection.SetCustomMakefile,
-    DT.TAB_INF_DEFINES_SPEC                        : InfDefSection.SetSpecification,
-    DT.TAB_INF_DEFINES_UEFI_HII_RESOURCE_SECTION   : InfDefSection.SetUefiHiiResourceSection,
-    DT.TAB_INF_DEFINES_DPX_SOURCE                  : InfDefSection.SetDpxSource
+    DT.TAB_INF_DEFINES_MODULE_UNI_FILE: InfDefSection.SetModuleUniFileName,
+    DT.TAB_INF_DEFINES_EDK_RELEASE_VERSION: InfDefSection.SetEdkReleaseVersion,
+    DT.TAB_INF_DEFINES_UEFI_SPECIFICATION_VERSION: InfDefSection.SetUefiSpecificationVersion,
+    DT.TAB_INF_DEFINES_PI_SPECIFICATION_VERSION: InfDefSection.SetPiSpecificationVersion,
+    DT.TAB_INF_DEFINES_LIBRARY_CLASS: InfDefSection.SetLibraryClass,
+    DT.TAB_INF_DEFINES_VERSION_STRING: InfDefSection.SetVersionString,
+    DT.TAB_INF_DEFINES_PCD_IS_DRIVER: InfDefSection.SetPcdIsDriver,
+    DT.TAB_INF_DEFINES_ENTRY_POINT: InfDefSection.SetEntryPoint,
+    DT.TAB_INF_DEFINES_UNLOAD_IMAGE: InfDefSection.SetUnloadImages,
+    DT.TAB_INF_DEFINES_CONSTRUCTOR: InfDefSection.SetConstructor,
+    DT.TAB_INF_DEFINES_DESTRUCTOR: InfDefSection.SetDestructor,
+    DT.TAB_INF_DEFINES_SHADOW: InfDefSection.SetShadow,
+    DT.TAB_INF_DEFINES_PCI_VENDOR_ID: InfDefSection.SetPciVendorId,
+    DT.TAB_INF_DEFINES_PCI_DEVICE_ID: InfDefSection.SetPciDeviceId,
+    DT.TAB_INF_DEFINES_PCI_CLASS_CODE: InfDefSection.SetPciClassCode,
+    DT.TAB_INF_DEFINES_PCI_REVISION: InfDefSection.SetPciRevision,
+    DT.TAB_INF_DEFINES_PCI_COMPRESS: InfDefSection.SetPciCompress,
+    DT.TAB_INF_DEFINES_CUSTOM_MAKEFILE: InfDefSection.SetCustomMakefile,
+    DT.TAB_INF_DEFINES_SPEC: InfDefSection.SetSpecification,
+    DT.TAB_INF_DEFINES_UEFI_HII_RESOURCE_SECTION: InfDefSection.SetUefiHiiResourceSection,
+    DT.TAB_INF_DEFINES_DPX_SOURCE: InfDefSection.SetDpxSource
 }
 
-## InfDefMember
+# InfDefMember
 #
 #
+
+
 class InfDefMember():
     def __init__(self, Name='', Value=''):
         self.Comments = InfLineCommentObject()
-        self.Name  = Name
+        self.Name = Name
         self.Value = Value
         self.CurrentLine = CurrentLine()
+
     def GetName(self):
         return self.Name
+
     def SetName(self, Name):
         self.Name = Name
+
     def GetValue(self):
         return self.Value
+
     def SetValue(self, Value):
         self.Value = Value
 
-## InfDefObject
+# InfDefObject
 #
 #
+
+
 class InfDefObject(InfSectionCommonDef):
     def __init__(self):
         self.Defines = Sdict()
         InfSectionCommonDef.__init__(self)
-    def SetDefines(self, DefineContent, Arch = None):
+
+    def SetDefines(self, DefineContent, Arch=None):
         #
         # Validate Arch
         #
@@ -931,8 +946,8 @@ class InfDefObject(InfSectionCommonDef):
                     LineInfo[0] = InfDefMemberObj.CurrentLine.GetFileName()
                     LineInfo[1] = InfDefMemberObj.CurrentLine.GetLineNo()
                     LineInfo[2] = InfDefMemberObj.CurrentLine.GetLineString()
-                    ErrorInInf(ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID%(Name),
-                                   LineInfo=LineInfo)
+                    ErrorInInf(ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID % (Name),
+                               LineInfo=LineInfo)
             InfLineCommentObj = InfLineCommentObject()
             InfLineCommentObj.SetHeaderComments(InfDefMemberObj.Comments.GetHeaderComments())
             InfLineCommentObj.SetTailComments(InfDefMemberObj.Comments.GetTailComments())
@@ -961,7 +976,7 @@ class InfDefObject(InfSectionCommonDef):
                     # Found the process function from mapping table.
                     #
                     if Name not in gFUNCTION_MAPPING_FOR_DEFINE_SECTION.keys():
-                        ErrorInInf(ST.ERR_INF_PARSER_DEFINE_SECTION_KEYWORD_INVALID%(Name),
+                        ErrorInInf(ST.ERR_INF_PARSER_DEFINE_SECTION_KEYWORD_INVALID % (Name),
                                    LineInfo=LineInfo)
                     else:
                         ProcessFunc = gFUNCTION_MAPPING_FOR_DEFINE_SECTION[Name]
@@ -978,7 +993,7 @@ class InfDefObject(InfSectionCommonDef):
                     # Found the process function from mapping table.
                     #
                     if Name not in gFUNCTION_MAPPING_FOR_DEFINE_SECTION.keys():
-                        ErrorInInf(ST.ERR_INF_PARSER_DEFINE_SECTION_KEYWORD_INVALID%(Name),
+                        ErrorInInf(ST.ERR_INF_PARSER_DEFINE_SECTION_KEYWORD_INVALID % (Name),
                                    LineInfo=LineInfo)
                     #
                     # Found the process function from mapping table.
@@ -999,4 +1014,3 @@ class InfDefObject(InfSectionCommonDef):
 
     def GetDefines(self):
         return self.Defines
-

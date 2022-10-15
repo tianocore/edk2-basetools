@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the parser for [Libraries] sections in INF file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -25,8 +25,9 @@ from edk2basetools.UPT.Parser.InfParserMisc import IsLibInstanceInfo
 from edk2basetools.UPT.Parser.InfAsBuiltProcess import GetLibInstanceInfo
 from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
+
 class InfLibrarySectionParser(InfParserSectionRoot):
-    ## InfLibraryParser
+    # InfLibraryParser
     #
     #
     def InfLibraryParser(self, SectionString, InfSectionObject, FileName):
@@ -115,7 +116,7 @@ class InfLibrarySectionParser(InfParserSectionRoot):
                 #
                 ValueList = [InfExpandMacro(Value, (FileName, LibLineContent, LibLineNo),
                                             self.FileLocalMacros, SectionMacros, True)
-                                            for Value in ValueList]
+                             for Value in ValueList]
 
                 LibraryList.append((ValueList, LibLineComment,
                                     (LibLineContent, LibLineNo, FileName)))
@@ -159,11 +160,11 @@ class InfLibrarySectionParser(InfParserSectionRoot):
 
             if not LineContent.strip().startswith("#"):
                 Logger.Error('InfParser',
-                            FORMAT_INVALID,
-                            ST.ERR_LIB_CONTATIN_ASBUILD_AND_COMMON,
-                            File=FileName,
-                            Line=LineNo,
-                            ExtraData=LineContent)
+                             FORMAT_INVALID,
+                             ST.ERR_LIB_CONTATIN_ASBUILD_AND_COMMON,
+                             File=FileName,
+                             Line=LineNo,
+                             ExtraData=LineContent)
 
             if IsLibInstanceInfo(LineContent):
                 LibInsFlag = True

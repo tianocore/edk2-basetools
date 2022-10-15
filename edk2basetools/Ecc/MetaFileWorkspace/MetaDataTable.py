@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase table for files
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -15,11 +15,13 @@ import edk2basetools.Common.EdkLogger as EdkLogger
 from edk2basetools.CommonDataClass import DataClass
 from edk2basetools.CommonDataClass.DataClass import FileClass
 
-## Convert to SQL required string format
+# Convert to SQL required string format
+
+
 def ConvertToSqlString(StringList):
     return map(lambda s: "'" + s.replace("'", "''") + "'", StringList)
 
-## TableFile
+# TableFile
 #
 # This class defined a common table
 #
@@ -28,6 +30,8 @@ def ConvertToSqlString(StringList):
 # @param Cursor:     Cursor of the database
 # @param TableName:  Name of the table
 #
+
+
 class Table(object):
     _COLUMN_ = ''
     _ID_STEP_ = 1
@@ -44,7 +48,7 @@ class Table(object):
     def __str__(self):
         return self.Table
 
-    ## Create table
+    # Create table
     #
     # Create a table
     #
@@ -60,7 +64,7 @@ class Table(object):
         self.Cur.execute(SqlCommand)
         self.ID = self.GetId()
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into a table
     #
@@ -74,7 +78,7 @@ class Table(object):
         self.Cur.execute(SqlCommand)
         return self.ID
 
-    ## Query table
+    # Query table
     #
     # Query all records of the table
     #
@@ -85,7 +89,7 @@ class Table(object):
             EdkLogger.verbose(str(Rs))
         TotalCount = self.GetId()
 
-    ## Drop a table
+    # Drop a table
     #
     # Drop the table
     #
@@ -96,7 +100,7 @@ class Table(object):
         except Exception as e:
             print("An error occurred when Drop a table:", e.args[0])
 
-    ## Get count
+    # Get count
     #
     # Get a count of all records of the table
     #
@@ -115,14 +119,14 @@ class Table(object):
             Id = self.IdBase
         return Id
 
-    ## Init the ID of the table
+    # Init the ID of the table
     #
     # Init the ID of the table
     #
     def InitID(self):
         self.ID = self.GetId()
 
-    ## Exec
+    # Exec
     #
     # Exec Sql Command, return result
     #
@@ -149,7 +153,7 @@ class Table(object):
         return self.Exec("select * from %s where ID > 0 order by ID" % (self.Table))
 
 
-## TableDataModel
+# TableDataModel
 #
 # This class defined a table used for data model
 #
@@ -163,10 +167,11 @@ class TableDataModel(Table):
         Name VARCHAR NOT NULL,
         Description VARCHAR
         """
+
     def __init__(self, Cursor):
         Table.__init__(self, Cursor, 'DataModel')
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table DataModel
     #
@@ -179,7 +184,7 @@ class TableDataModel(Table):
         (Name, Description) = ConvertToSqlString((Name, Description))
         return Table.Insert(self, CrossIndex, Name, Description)
 
-    ## Init table
+    # Init table
     #
     # Create all default records of table DataModel
     #
@@ -195,7 +200,7 @@ class TableDataModel(Table):
             self.Insert(CrossIndex, Name, Description)
         EdkLogger.verbose("Initialize table DataModel ... DONE!")
 
-    ## Get CrossIndex
+    # Get CrossIndex
     #
     # Get a model's cross index from its name
     #
@@ -210,4 +215,3 @@ class TableDataModel(Table):
             CrossIndex = Item[0]
 
         return CrossIndex
-

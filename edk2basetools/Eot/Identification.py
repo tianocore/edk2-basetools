@@ -1,10 +1,10 @@
-## @file
+# @file
 # This file is used to define the identification of INF/DEC/DSC files
 #
 # Copyright (c) 2007, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 
-## Identification
+# Identification
 #
 # This class defined basic Identification information structure which is used by INF/DEC/DSC files
 #
@@ -22,26 +22,27 @@ class Identification(object):
         self.FileRelativePath = ''
         self.PackagePath = ''
 
-    ## GetFileName
+    # GetFileName
     #
     # Reserved
     #
     def GetFileName(self, FileFullPath, FileRelativePath):
         pass
 
-    ## GetFileName
+    # GetFileName
     #
     # Reserved
     #
     def GetFileFullPath(self, FileName, FileRelativePath):
         pass
 
-    ## GetFileName
+    # GetFileName
     #
     # Reserved
     #
     def GetFileRelativePath(self, FileName, FileFullPath):
         pass
+
 
 ##
 #

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define the Bios layout tree structure and related operations.
 #
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
@@ -27,6 +27,7 @@ FvType = [FV_TREE, SEC_FV_TREE]
 FfsType = FFS_TREE
 SecType = SECTION_TREE
 
+
 class BIOSTREE:
     def __init__(self, NodeName: str) -> None:
         self.key = NodeName
@@ -52,7 +53,7 @@ class BIOSTREE:
         return False
 
     # FvTree.insertChild()
-    def insertChild(self, newNode, pos: int=None) -> None:
+    def insertChild(self, newNode, pos: int = None) -> None:
         if len(self.Child) == 0:
             self.Child.append(newNode)
         else:
@@ -62,9 +63,9 @@ class BIOSTREE:
                 LastTree.NextRel = newNode
                 newNode.LastRel = LastTree
             else:
-                newNode.NextRel = self.Child[pos-1].NextRel
+                newNode.NextRel = self.Child[pos - 1].NextRel
                 newNode.LastRel = self.Child[pos].LastRel
-                self.Child[pos-1].NextRel = newNode
+                self.Child[pos - 1].NextRel = newNode
                 self.Child[pos].LastRel = newNode
                 self.Child.insert(pos, newNode)
         newNode.Parent = self
@@ -112,7 +113,7 @@ class BIOSTREE:
             self = self.Parent
         return BiosTreePath
 
-    def parserTree(self, TargetDict: dict=None, Info: list=None, space: int=0, ParFvId="") -> None:
+    def parserTree(self, TargetDict: dict = None, Info: list = None, space: int = 0, ParFvId="") -> None:
         Key = list(TargetDict.keys())[0]
         if TargetDict[Key]["Type"] in RootType:
             Info.append("Image File: {}".format(Key))
@@ -121,30 +122,30 @@ class BIOSTREE:
         elif TargetDict[Key]["Type"] in FvType:
             space += 2
             if TargetDict[Key]["Type"] == SEC_FV_TREE:
-                Info.append("{}Child FV named {} of {}".format(space*" ", Key, ParFvId))
+                Info.append("{}Child FV named {} of {}".format(space * " ", Key, ParFvId))
                 space += 2
             else:
                 Info.append("FvId: {}".format(Key))
                 ParFvId = Key
-            Info.append("{}FvNameGuid: {}".format(space*" ", TargetDict.get(Key).get('FvNameGuid')))
-            Info.append("{}Attributes: {}".format(space*" ", TargetDict.get(Key).get('Attributes')))
-            Info.append("{}Total Volume Size: {}".format(space*" ", TargetDict.get(Key).get('Size')))
-            Info.append("{}Free Volume Size: {}".format(space*" ", TargetDict.get(Key).get('FreeSize')))
-            Info.append("{}Volume Offset: {}".format(space*" ", TargetDict.get(Key).get('Offset')))
-            Info.append("{}FilesNum: {}".format(space*" ", TargetDict.get(Key).get('FilesNum')))
+            Info.append("{}FvNameGuid: {}".format(space * " ", TargetDict.get(Key).get('FvNameGuid')))
+            Info.append("{}Attributes: {}".format(space * " ", TargetDict.get(Key).get('Attributes')))
+            Info.append("{}Total Volume Size: {}".format(space * " ", TargetDict.get(Key).get('Size')))
+            Info.append("{}Free Volume Size: {}".format(space * " ", TargetDict.get(Key).get('FreeSize')))
+            Info.append("{}Volume Offset: {}".format(space * " ", TargetDict.get(Key).get('Offset')))
+            Info.append("{}FilesNum: {}".format(space * " ", TargetDict.get(Key).get('FilesNum')))
         elif TargetDict[Key]["Type"] in FfsType:
             space += 2
             if TargetDict.get(Key).get('UiName') != "b''":
-                Info.append("{}File: {} / {}".format(space*" ", Key, TargetDict.get(Key).get('UiName')))
+                Info.append("{}File: {} / {}".format(space * " ", Key, TargetDict.get(Key).get('UiName')))
             else:
-                Info.append("{}File: {}".format(space*" ", Key))
+                Info.append("{}File: {}".format(space * " ", Key))
         if "Files" in list(TargetDict[Key].keys()):
             for item in TargetDict[Key]["Files"]:
                 self.parserTree(item, Info, space, ParFvId)
 
-    def ExportTree(self,TreeInfo: dict=None) -> dict:
+    def ExportTree(self, TreeInfo: dict = None) -> dict:
         if TreeInfo is None:
-            TreeInfo =collections.OrderedDict()
+            TreeInfo = collections.OrderedDict()
 
         if self.type == ROOT_TREE or self.type == ROOT_FV_TREE or self.type == ROOT_FFS_TREE or self.type == ROOT_SECTION_TREE:
             key = str(self.key)
@@ -152,7 +153,7 @@ class BIOSTREE:
             TreeInfo[self.key]["Name"] = key
             TreeInfo[self.key]["Type"] = self.type
             TreeInfo[self.key]["FilesNum"] = len(self.Child)
-        elif self.type == FV_TREE or  self.type == SEC_FV_TREE:
+        elif self.type == FV_TREE or self.type == SEC_FV_TREE:
             key = str(self.Data.FvId)
             TreeInfo[key] = collections.OrderedDict()
             TreeInfo[key]["Name"] = key
@@ -193,6 +194,6 @@ class BIOSTREE:
             TreeInfo[key]["FilesNum"] = len(self.Child)
 
         for item in self.Child:
-            TreeInfo[key].setdefault('Files',[]).append( item.ExportTree())
+            TreeInfo[key].setdefault('Files', []).append(item.ExportTree())
 
-        return TreeInfo
+        return TreeInfo

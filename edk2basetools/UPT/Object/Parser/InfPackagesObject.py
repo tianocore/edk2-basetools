@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file [Packages] section.
 # It will consumed by InfParser.
 #
@@ -19,38 +19,43 @@ from edk2basetools.UPT.Library.Misc import Sdict
 from edk2basetools.UPT.Library.ParserValidate import IsValidPath
 from edk2basetools.UPT.Library.ExpressionValidate import IsValidFeatureFlagExp
 
+
 class InfPackageItem():
     def __init__(self,
-                 PackageName = '',
-                 FeatureFlagExp = '',
-                 HelpString = ''):
-        self.PackageName    = PackageName
+                 PackageName='',
+                 FeatureFlagExp='',
+                 HelpString=''):
+        self.PackageName = PackageName
         self.FeatureFlagExp = FeatureFlagExp
-        self.HelpString     = HelpString
-        self.SupArchList    = []
+        self.HelpString = HelpString
+        self.SupArchList = []
 
     def SetPackageName(self, PackageName):
         self.PackageName = PackageName
+
     def GetPackageName(self):
         return self.PackageName
 
     def SetFeatureFlagExp(self, FeatureFlagExp):
         self.FeatureFlagExp = FeatureFlagExp
+
     def GetFeatureFlagExp(self):
         return self.FeatureFlagExp
 
     def SetHelpString(self, HelpString):
         self.HelpString = HelpString
+
     def GetHelpString(self):
         return self.HelpString
 
     def SetSupArchList(self, SupArchList):
         self.SupArchList = SupArchList
+
     def GetSupArchList(self):
         return self.SupArchList
 
 
-## INF package section
+# INF package section
 #
 #
 #
@@ -60,11 +65,11 @@ class InfPackageObject():
         #
         # Macro defined in this section should be only used in this section.
         #
-        self.Macros         = {}
+        self.Macros = {}
 
-    def SetPackages(self, PackageData, Arch = None):
+    def SetPackages(self, PackageData, Arch=None):
         IsValidFileFlag = False
-        SupArchList     = []
+        SupArchList = []
         for ArchItem in Arch:
             #
             # Validate Arch
@@ -94,7 +99,7 @@ class InfPackageObject():
                 else:
                     Logger.Error("InfParser",
                                  ToolError.FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID%(PackageItem[0]),
+                                 ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID % (PackageItem[0]),
                                  File=CurrentLineOfPackItem[2],
                                  Line=CurrentLineOfPackItem[1],
                                  ExtraData=CurrentLineOfPackItem[0])
@@ -119,7 +124,7 @@ class InfPackageObject():
                 if not FeatureFlagRtv[0]:
                     Logger.Error("InfParser",
                                  ToolError.FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID%(FeatureFlagRtv[1]),
+                                 ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID % (FeatureFlagRtv[1]),
                                  File=CurrentLineOfPackItem[2],
                                  Line=CurrentLineOfPackItem[1],
                                  ExtraData=CurrentLineOfPackItem[0])
@@ -176,6 +181,6 @@ class InfPackageObject():
 
         return True
 
-    def GetPackages(self, Arch = None):
+    def GetPackages(self, Arch=None):
         if Arch is None:
             return self.Packages

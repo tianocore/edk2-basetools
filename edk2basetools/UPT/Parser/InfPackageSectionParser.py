@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the parser for [Packages] sections in INF file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -22,8 +22,9 @@ from edk2basetools.UPT.Library.Misc import GetSplitValueList
 from edk2basetools.UPT.Object.Parser.InfCommonObject import InfLineCommentObject
 from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
+
 class InfPackageSectionParser(InfParserSectionRoot):
-    ## InfPackageParser
+    # InfPackageParser
     #
     #
     def InfPackageParser(self, SectionString, InfSectionObject, FileName):
@@ -31,17 +32,17 @@ class InfPackageSectionParser(InfParserSectionRoot):
         # Macro defined in this section
         #
         SectionMacros = {}
-        ValueList     = []
-        PackageList   = []
-        StillCommentFalg  = False
-        HeaderComments    = []
-        LineComment       = None
+        ValueList = []
+        PackageList = []
+        StillCommentFalg = False
+        HeaderComments = []
+        LineComment = None
         #
         # Parse section content
         #
         for Line in SectionString:
             PkgLineContent = Line[0]
-            PkgLineNo      = Line[1]
+            PkgLineNo = Line[1]
 
             if PkgLineContent.strip() == '':
                 continue
@@ -107,7 +108,7 @@ class InfPackageSectionParser(InfParserSectionRoot):
             #
             ValueList = [InfExpandMacro(Value, (FileName, PkgLineContent, PkgLineNo),
                                         self.FileLocalMacros, SectionMacros, True)
-                                        for Value in ValueList]
+                         for Value in ValueList]
 
             PackageList.append((ValueList, LineComment,
                                 (PkgLineContent, PkgLineNo, FileName)))
@@ -125,10 +126,10 @@ class InfPackageSectionParser(InfParserSectionRoot):
             if Item[1] not in ArchList:
                 ArchList.append(Item[1])
 
-        if not InfSectionObject.SetPackages(PackageList, Arch = ArchList):
+        if not InfSectionObject.SetPackages(PackageList, Arch=ArchList):
             Logger.Error('InfParser',
                          FORMAT_INVALID,
-                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR\
-                         %("[Packages]"),
+                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR
+                         % ("[Packages]"),
                          File=FileName,
                          Line=Item[3])

@@ -1,4 +1,4 @@
-## @file
+# @file
 # process OptionROM generation from INF statement
 #
 #  Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -23,8 +23,10 @@ from .GenFdsGlobalVariable import GenFdsGlobalVariable
 ##
 #
 #
+
+
 class OptRomInfStatement (FfsInfStatement):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -32,7 +34,7 @@ class OptRomInfStatement (FfsInfStatement):
         FfsInfStatement.__init__(self)
         self.OverrideAttribs = None
 
-    ## __GetOptRomParams() method
+    # __GetOptRomParams() method
     #
     #   Parse inf file to get option ROM related parameters
     #
@@ -43,31 +45,31 @@ class OptRomInfStatement (FfsInfStatement):
             self.OverrideAttribs = OverrideAttribs()
 
         if self.OverrideAttribs.NeedCompress is None:
-            self.OverrideAttribs.NeedCompress = self.OptRomDefs.get ('PCI_COMPRESS')
+            self.OverrideAttribs.NeedCompress = self.OptRomDefs.get('PCI_COMPRESS')
             if self.OverrideAttribs.NeedCompress is not None:
                 if self.OverrideAttribs.NeedCompress.upper() not in ('TRUE', 'FALSE'):
-                    GenFdsGlobalVariable.ErrorLogger( "Expected TRUE/FALSE for PCI_COMPRESS: %s" %self.InfFileName)
+                    GenFdsGlobalVariable.ErrorLogger("Expected TRUE/FALSE for PCI_COMPRESS: %s" % self.InfFileName)
                 self.OverrideAttribs.NeedCompress = \
                     self.OverrideAttribs.NeedCompress.upper() == 'TRUE'
 
         if self.OverrideAttribs.PciVendorId is None:
-            self.OverrideAttribs.PciVendorId = self.OptRomDefs.get ('PCI_VENDOR_ID')
+            self.OverrideAttribs.PciVendorId = self.OptRomDefs.get('PCI_VENDOR_ID')
 
         if self.OverrideAttribs.PciClassCode is None:
-            self.OverrideAttribs.PciClassCode = self.OptRomDefs.get ('PCI_CLASS_CODE')
+            self.OverrideAttribs.PciClassCode = self.OptRomDefs.get('PCI_CLASS_CODE')
 
         if self.OverrideAttribs.PciDeviceId is None:
-            self.OverrideAttribs.PciDeviceId = self.OptRomDefs.get ('PCI_DEVICE_ID')
+            self.OverrideAttribs.PciDeviceId = self.OptRomDefs.get('PCI_DEVICE_ID')
 
         if self.OverrideAttribs.PciRevision is None:
-            self.OverrideAttribs.PciRevision = self.OptRomDefs.get ('PCI_REVISION')
+            self.OverrideAttribs.PciRevision = self.OptRomDefs.get('PCI_REVISION')
 
 #        InfObj = GenFdsGlobalVariable.WorkSpace.BuildObject[self.PathClassObj, self.CurrentArch]
 #        RecordList = InfObj._RawData[MODEL_META_DATA_HEADER, InfObj._Arch, InfObj._Platform]
 #        for Record in RecordList:
 #            Record = ReplaceMacros(Record, GlobalData.gEdkGlobal, False)
 #            Name = Record[0]
-    ## GenFfs() method
+    # GenFfs() method
     #
     #   Generate FFS
     #
@@ -85,11 +87,11 @@ class OptRomInfStatement (FfsInfStatement):
         # Get the rule of how to generate Ffs file
         #
         Rule = self.__GetRule__()
-        GenFdsGlobalVariable.VerboseLogger( "Packing binaries from inf file : %s" %self.InfFileName)
+        GenFdsGlobalVariable.VerboseLogger("Packing binaries from inf file : %s" % self.InfFileName)
         #
         # For the rule only has simpleFile
         #
-        if isinstance (Rule, RuleSimpleFile.RuleSimpleFile) :
+        if isinstance(Rule, RuleSimpleFile.RuleSimpleFile):
             EfiOutputList = self.__GenSimpleFileSection__(Rule, IsMakefile=IsMakefile)
             return EfiOutputList
         #
@@ -99,7 +101,7 @@ class OptRomInfStatement (FfsInfStatement):
             EfiOutputList = self.__GenComplexFileSection__(Rule, IsMakefile=IsMakefile)
             return EfiOutputList
 
-    ## __GenSimpleFileSection__() method
+    # __GenSimpleFileSection__() method
     #
     #   Get .efi files according to simple rule.
     #
@@ -107,7 +109,7 @@ class OptRomInfStatement (FfsInfStatement):
     #   @param  Rule        The rule object used to generate section
     #   @retval string      File name of the generated section file
     #
-    def __GenSimpleFileSection__(self, Rule, IsMakefile = False):
+    def __GenSimpleFileSection__(self, Rule, IsMakefile=False):
         #
         # Prepare the parameter of GenSection
         #
@@ -121,8 +123,7 @@ class OptRomInfStatement (FfsInfStatement):
 
         return OutputFileList
 
-
-    ## __GenComplexFileSection__() method
+    # __GenComplexFileSection__() method
     #
     #   Get .efi by sections in complex Rule
     #
@@ -130,6 +131,7 @@ class OptRomInfStatement (FfsInfStatement):
     #   @param  Rule        The rule object used to generate section
     #   @retval string      File name of the generated section file
     #
+
     def __GenComplexFileSection__(self, Rule, IsMakefile=False):
 
         OutputFileList = []
@@ -144,9 +146,10 @@ class OptRomInfStatement (FfsInfStatement):
 
         return OutputFileList
 
+
 class OverrideAttribs:
 
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #

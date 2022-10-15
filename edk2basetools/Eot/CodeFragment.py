@@ -1,4 +1,4 @@
-## @file
+# @file
 # fragments of source file
 #
 #  Copyright (c) 2007 - 2010, Intel Corporation. All rights reserved.<BR>
@@ -7,11 +7,11 @@
 #
 
 
-## The description of comment contents and start & end position
+# The description of comment contents and start & end position
 #
 #
-class Comment :
-    ## The constructor
+class Comment:
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record
@@ -25,11 +25,13 @@ class Comment :
         self.EndPos = End
         self.Type = CommentType
 
-## The description of preprocess directives and start & end position
+# The description of preprocess directives and start & end position
 #
 #
-class PP_Directive :
-    ## The constructor
+
+
+class PP_Directive:
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record
@@ -41,11 +43,13 @@ class PP_Directive :
         self.StartPos = Begin
         self.EndPos = End
 
-## The description of assignment expression and start & end position
+# The description of assignment expression and start & end position
 #
 #
-class AssignmentExpression :
-    ## The constructor
+
+
+class AssignmentExpression:
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record
@@ -59,11 +63,13 @@ class AssignmentExpression :
         self.StartPos = Begin
         self.EndPos = End
 
-## The description of predicate expression and start & end position
+# The description of predicate expression and start & end position
 #
 #
-class PredicateExpression :
-    ## The constructor
+
+
+class PredicateExpression:
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record
@@ -75,11 +81,13 @@ class PredicateExpression :
         self.StartPos = Begin
         self.EndPos = End
 
-## The description of function definition and start & end position
+# The description of function definition and start & end position
 #
 #
-class FunctionDefinition :
-    ## The constructor
+
+
+class FunctionDefinition:
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record
@@ -95,11 +103,13 @@ class FunctionDefinition :
         self.LeftBracePos = LBPos
         self.NamePos = NamePos
 
-## The description of variable declaration and start & end position
+# The description of variable declaration and start & end position
 #
 #
-class VariableDeclaration :
-    ## The constructor
+
+
+class VariableDeclaration:
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record
@@ -112,11 +122,13 @@ class VariableDeclaration :
         self.StartPos = Begin
         self.EndPos = End
 
-## The description of enum definition and start & end position
+# The description of enum definition and start & end position
 #
 #
-class EnumerationDefinition :
-    ## The constructor
+
+
+class EnumerationDefinition:
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record
@@ -128,11 +140,13 @@ class EnumerationDefinition :
         self.StartPos = Begin
         self.EndPos = End
 
-## The description of struct/union definition and start & end position
+# The description of struct/union definition and start & end position
 #
 #
-class StructUnionDefinition :
-    ## The constructor
+
+
+class StructUnionDefinition:
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record
@@ -144,11 +158,13 @@ class StructUnionDefinition :
         self.StartPos = Begin
         self.EndPos = End
 
-## The description of 'Typedef' definition and start & end position
+# The description of 'Typedef' definition and start & end position
 #
 #
-class TypedefDefinition :
-    ## The constructor
+
+
+class TypedefDefinition:
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record
@@ -161,11 +177,13 @@ class TypedefDefinition :
         self.StartPos = Begin
         self.EndPos = End
 
-## The description of function calling definition and start & end position
+# The description of function calling definition and start & end position
 #
 #
+
+
 class FunctionCalling:
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  Str         The message to record

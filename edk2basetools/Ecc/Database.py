@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create a database used by ECC tool
 #
 # Copyright (c) 2007 - 2014, Intel Corporation. All rights reserved.<BR>
@@ -10,7 +10,8 @@
 #
 from __future__ import absolute_import
 import sqlite3
-import edk2basetools.Common.LongFilePathOs as os, time
+import edk2basetools.Common.LongFilePathOs as os
+import time
 
 import edk2basetools.Common.EdkLogger as EdkLogger
 import edk2basetools.CommonDataClass.DataClass as DataClass
@@ -31,7 +32,7 @@ from edk2basetools.Table.TableFdf import TableFdf
 #
 DATABASE_PATH = "Ecc.db"
 
-## Database
+# Database
 #
 # This class defined the ECC database
 # During the phase of initialization, the database will create all tables and
@@ -44,6 +45,8 @@ DATABASE_PATH = "Ecc.db"
 # @var Cur:         Cursor of the connection
 # @var TblDataModel:  Local instance for TableDataModel
 #
+
+
 class Database(object):
     def __init__(self, DbPath):
         self.DbPath = DbPath
@@ -60,13 +63,13 @@ class Database(object):
         self.TblDsc = None
         self.TblFdf = None
 
-    ## Initialize ECC database
+    # Initialize ECC database
     #
     # 1. Delete all old existing tables
     # 2. Create new tables
     # 3. Initialize table DataModel
     #
-    def InitDatabase(self, NewDatabase = True):
+    def InitDatabase(self, NewDatabase=True):
         EdkLogger.verbose("\nInitialize ECC database started ...")
         #
         # Drop all old existing tables
@@ -74,7 +77,7 @@ class Database(object):
         if NewDatabase:
             if os.path.exists(self.DbPath):
                 os.remove(self.DbPath)
-        self.Conn = sqlite3.connect(self.DbPath, isolation_level = 'DEFERRED')
+        self.Conn = sqlite3.connect(self.DbPath, isolation_level='DEFERRED')
         self.Conn.execute("PRAGMA page_size=4096")
         self.Conn.execute("PRAGMA synchronous=OFF")
         # to avoid non-ascii character conversion error
@@ -127,14 +130,14 @@ class Database(object):
 
         EdkLogger.verbose("Initialize ECC database ... DONE!")
 
-    ## Query a table
+    # Query a table
     #
     # @param Table:  The instance of the table to be queried
     #
     def QueryTable(self, Table):
         Table.Query()
 
-    ## Close entire database
+    # Close entire database
     #
     # Commit all first
     # Close the connection and cursor
@@ -151,7 +154,7 @@ class Database(object):
         self.Cur.close()
         self.Conn.close()
 
-    ## Insert one file information
+    # Insert one file information
     #
     # Insert one file's information to the database
     # 1. Create a record in TableFile
@@ -165,7 +168,8 @@ class Database(object):
         #
         # Insert a record for file
         #
-        FileID = self.TblFile.Insert(File.Name, File.ExtName, File.Path, File.FullPath, Model = File.Model, TimeStamp = File.TimeStamp)
+        FileID = self.TblFile.Insert(File.Name, File.ExtName, File.Path, File.FullPath,
+                                     Model=File.Model, TimeStamp=File.TimeStamp)
 
         if File.Model == DataClass.MODEL_FILE_C or File.Model == DataClass.MODEL_FILE_H:
             IdTable = TableIdentifier(self.Cur)
@@ -175,38 +179,38 @@ class Database(object):
             # Insert function of file
             #
             for Function in File.FunctionList:
-                FunctionID = self.TblFunction.Insert(Function.Header, Function.Modifier, Function.Name, Function.ReturnStatement, \
-                                        Function.StartLine, Function.StartColumn, Function.EndLine, Function.EndColumn, \
-                                        Function.BodyStartLine, Function.BodyStartColumn, FileID, \
-                                        Function.FunNameStartLine, Function.FunNameStartColumn)
+                FunctionID = self.TblFunction.Insert(Function.Header, Function.Modifier, Function.Name, Function.ReturnStatement,
+                                                     Function.StartLine, Function.StartColumn, Function.EndLine, Function.EndColumn,
+                                                     Function.BodyStartLine, Function.BodyStartColumn, FileID,
+                                                     Function.FunNameStartLine, Function.FunNameStartColumn)
                 #
                 # Insert Identifier of function
                 #
                 for Identifier in Function.IdentifierList:
-                    IdentifierID = IdTable.Insert(Identifier.Modifier, Identifier.Type, Identifier.Name, Identifier.Value, Identifier.Model, \
-                                            FileID, FunctionID, Identifier.StartLine, Identifier.StartColumn, Identifier.EndLine, Identifier.EndColumn)
+                    IdentifierID = IdTable.Insert(Identifier.Modifier, Identifier.Type, Identifier.Name, Identifier.Value, Identifier.Model,
+                                                  FileID, FunctionID, Identifier.StartLine, Identifier.StartColumn, Identifier.EndLine, Identifier.EndColumn)
                 #
                 # Insert Pcd of function
                 #
                 for Pcd in Function.PcdList:
-                    PcdID = self.TblPcd.Insert(Pcd.CName, Pcd.TokenSpaceGuidCName, Pcd.Token, Pcd.DatumType, Pcd.Model, \
-                                       FileID, FunctionID, Pcd.StartLine, Pcd.StartColumn, Pcd.EndLine, Pcd.EndColumn)
+                    PcdID = self.TblPcd.Insert(Pcd.CName, Pcd.TokenSpaceGuidCName, Pcd.Token, Pcd.DatumType, Pcd.Model,
+                                               FileID, FunctionID, Pcd.StartLine, Pcd.StartColumn, Pcd.EndLine, Pcd.EndColumn)
             #
             # Insert Identifier of file
             #
             for Identifier in File.IdentifierList:
-                IdentifierID = IdTable.Insert(Identifier.Modifier, Identifier.Type, Identifier.Name, Identifier.Value, Identifier.Model, \
-                                        FileID, -1, Identifier.StartLine, Identifier.StartColumn, Identifier.EndLine, Identifier.EndColumn)
+                IdentifierID = IdTable.Insert(Identifier.Modifier, Identifier.Type, Identifier.Name, Identifier.Value, Identifier.Model,
+                                              FileID, -1, Identifier.StartLine, Identifier.StartColumn, Identifier.EndLine, Identifier.EndColumn)
             #
             # Insert Pcd of file
             #
             for Pcd in File.PcdList:
-                PcdID = self.TblPcd.Insert(Pcd.CName, Pcd.TokenSpaceGuidCName, Pcd.Token, Pcd.DatumType, Pcd.Model, \
-                                   FileID, -1, Pcd.StartLine, Pcd.StartColumn, Pcd.EndLine, Pcd.EndColumn)
+                PcdID = self.TblPcd.Insert(Pcd.CName, Pcd.TokenSpaceGuidCName, Pcd.Token, Pcd.DatumType, Pcd.Model,
+                                           FileID, -1, Pcd.StartLine, Pcd.StartColumn, Pcd.EndLine, Pcd.EndColumn)
 
         EdkLogger.verbose("Insert information from file %s ... DONE!" % File.FullPath)
 
-    ## UpdateIdentifierBelongsToFunction
+    # UpdateIdentifierBelongsToFunction
     #
     # Update the field "BelongsToFunction" for each Identifier
     #
@@ -215,7 +219,7 @@ class Database(object):
         EdkLogger.verbose("Update 'BelongsToFunction' for Identifiers started ...")
 
         SqlCommand = """select ID, BelongsToFile, StartLine, EndLine, Model from Identifier"""
-        EdkLogger.debug(4, "SqlCommand: %s" %SqlCommand)
+        EdkLogger.debug(4, "SqlCommand: %s" % SqlCommand)
         self.Cur.execute(SqlCommand)
         Records = self.Cur.fetchall()
         for Record in Records:
@@ -232,12 +236,12 @@ class Database(object):
             SqlCommand = """select ID from Function
                         where StartLine < %s and EndLine > %s
                         and BelongsToFile = %s""" % (StartLine, EndLine, BelongsToFile)
-            EdkLogger.debug(4, "SqlCommand: %s" %SqlCommand)
+            EdkLogger.debug(4, "SqlCommand: %s" % SqlCommand)
             self.Cur.execute(SqlCommand)
             IDs = self.Cur.fetchall()
             for ID in IDs:
                 SqlCommand = """Update Identifier set BelongsToFunction = %s where ID = %s""" % (ID[0], IdentifierID)
-                EdkLogger.debug(4, "SqlCommand: %s" %SqlCommand)
+                EdkLogger.debug(4, "SqlCommand: %s" % SqlCommand)
                 self.Cur.execute(SqlCommand)
 
             #
@@ -248,22 +252,23 @@ class Database(object):
                 SqlCommand = """select ID from Function
                         where StartLine = %s + 1
                         and BelongsToFile = %s""" % (EndLine, BelongsToFile)
-                EdkLogger.debug(4, "SqlCommand: %s" %SqlCommand)
+                EdkLogger.debug(4, "SqlCommand: %s" % SqlCommand)
                 self.Cur.execute(SqlCommand)
                 IDs = self.Cur.fetchall()
                 for ID in IDs:
-                    SqlCommand = """Update Identifier set BelongsToFunction = %s, Model = %s where ID = %s""" % (ID[0], DataClass.MODEL_IDENTIFIER_FUNCTION_HEADER, IdentifierID)
-                    EdkLogger.debug(4, "SqlCommand: %s" %SqlCommand)
+                    SqlCommand = """Update Identifier set BelongsToFunction = %s, Model = %s where ID = %s""" % (
+                        ID[0], DataClass.MODEL_IDENTIFIER_FUNCTION_HEADER, IdentifierID)
+                    EdkLogger.debug(4, "SqlCommand: %s" % SqlCommand)
                     self.Cur.execute(SqlCommand)
 
         EdkLogger.verbose("Update 'BelongsToFunction' for Identifiers ... DONE")
 
-
-    ## UpdateIdentifierBelongsToFunction
+    # UpdateIdentifierBelongsToFunction
     #
     # Update the field "BelongsToFunction" for each Identifier
     #
     #
+
     def UpdateIdentifierBelongsToFunction(self):
         EdkLogger.verbose("Update 'BelongsToFunction' for Identifiers started ...")
 
@@ -280,11 +285,12 @@ class Database(object):
             #Data2.append(("'file%s'" % BelongsToFile, FunctionID, DataClass.MODEL_IDENTIFIER_FUNCTION_HEADER, BelongsToFile, DataClass.MODEL_IDENTIFIER_COMMENT, StartLine - 1))
 
             SqlCommand = """Update Identifier%s set BelongsToFunction = %s where BelongsToFile = %s and StartLine > %s and EndLine < %s""" % \
-                        (BelongsToFile, FunctionID, BelongsToFile, StartLine, EndLine)
+                (BelongsToFile, FunctionID, BelongsToFile, StartLine, EndLine)
             self.TblIdentifier.Exec(SqlCommand)
 
             SqlCommand = """Update Identifier%s set BelongsToFunction = %s, Model = %s where BelongsToFile = %s and Model = %s and EndLine = %s""" % \
-                         (BelongsToFile, FunctionID, DataClass.MODEL_IDENTIFIER_FUNCTION_HEADER, BelongsToFile, DataClass.MODEL_IDENTIFIER_COMMENT, StartLine - 1)
+                         (BelongsToFile, FunctionID, DataClass.MODEL_IDENTIFIER_FUNCTION_HEADER,
+                          BelongsToFile, DataClass.MODEL_IDENTIFIER_COMMENT, StartLine - 1)
             self.TblIdentifier.Exec(SqlCommand)
 #       #
 #       # Check whether an identifier belongs to a function
@@ -313,7 +319,7 @@ class Database(object):
 #
 if __name__ == '__main__':
     EdkLogger.Initialize()
-    #EdkLogger.SetLevel(EdkLogger.VERBOSE)
+    # EdkLogger.SetLevel(EdkLogger.VERBOSE)
     EdkLogger.SetLevel(EdkLogger.DEBUG_0)
     EdkLogger.verbose("Start at " + time.strftime('%H:%M:%S', time.localtime()))
 
@@ -321,12 +327,17 @@ if __name__ == '__main__':
     Db.InitDatabase()
     Db.QueryTable(Db.TblDataModel)
 
-    identifier1 = DataClass.IdentifierClass(-1, '', '', "i''1", 'aaa', DataClass.MODEL_IDENTIFIER_COMMENT, 1, -1, 32,  43,  54,  43)
-    identifier2 = DataClass.IdentifierClass(-1, '', '', 'i1', 'aaa', DataClass.MODEL_IDENTIFIER_COMMENT, 1, -1, 15,  43,  20,  43)
-    identifier3 = DataClass.IdentifierClass(-1, '', '', 'i1', 'aaa', DataClass.MODEL_IDENTIFIER_COMMENT, 1, -1, 55,  43,  58,  43)
-    identifier4 = DataClass.IdentifierClass(-1, '', '', "i1'", 'aaa', DataClass.MODEL_IDENTIFIER_COMMENT, 1, -1, 77,  43,  88,  43)
-    fun1 = DataClass.FunctionClass(-1, '', '', 'fun1', '', 21, 2, 60,  45, 1, 23, 0, [], [])
-    file = DataClass.FileClass(-1, 'F1', 'c', 'C:\\', 'C:\\F1.exe', DataClass.MODEL_FILE_C, '2007-12-28', [fun1], [identifier1, identifier2, identifier3, identifier4], [])
+    identifier1 = DataClass.IdentifierClass(-1, '', '', "i''1", 'aaa',
+                                            DataClass.MODEL_IDENTIFIER_COMMENT, 1, -1, 32, 43, 54, 43)
+    identifier2 = DataClass.IdentifierClass(-1, '', '', 'i1', 'aaa',
+                                            DataClass.MODEL_IDENTIFIER_COMMENT, 1, -1, 15, 43, 20, 43)
+    identifier3 = DataClass.IdentifierClass(-1, '', '', 'i1', 'aaa',
+                                            DataClass.MODEL_IDENTIFIER_COMMENT, 1, -1, 55, 43, 58, 43)
+    identifier4 = DataClass.IdentifierClass(-1, '', '', "i1'", 'aaa',
+                                            DataClass.MODEL_IDENTIFIER_COMMENT, 1, -1, 77, 43, 88, 43)
+    fun1 = DataClass.FunctionClass(-1, '', '', 'fun1', '', 21, 2, 60, 45, 1, 23, 0, [], [])
+    file = DataClass.FileClass(-1, 'F1', 'c', 'C:\\', 'C:\\F1.exe', DataClass.MODEL_FILE_C,
+                               '2007-12-28', [fun1], [identifier1, identifier2, identifier3, identifier4], [])
     Db.InsertOneFile(file)
     Db.UpdateIdentifierBelongsToFunction()
 
@@ -337,4 +348,3 @@ if __name__ == '__main__':
 
     Db.Close()
     EdkLogger.verbose("End at " + time.strftime('%H:%M:%S', time.localtime()))
-

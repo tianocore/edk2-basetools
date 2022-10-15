@@ -1,4 +1,4 @@
-## @file InfPomAlignment.py
+# @file InfPomAlignment.py
 # This file contained the adapter for convert INF parser object to POM Object
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -47,12 +47,14 @@ from edk2basetools.UPT.Parser import InfParser
 from edk2basetools.UPT.PomAdapter.DecPomAlignment import DecPomAlignment
 from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
-## InfPomAlignment
+# InfPomAlignment
 #
 # Inherit from ModuleObject
 #
+
+
 class InfPomAlignment(ModuleObject):
-    ## Construct of InfPomAlignment
+    # Construct of InfPomAlignment
     # Skip means that UPT don't care the syntax of INF, this may be the not
     # distributed INF files during creation or the INF files checked for
     # dependency rule during remove.
@@ -110,7 +112,7 @@ class InfPomAlignment(ModuleObject):
         self._GenGuidProtocolPpis(DT.TAB_PPIS)
         self._GenDepexes()
 
-    ## Convert [Defines] section content to InfDefObject
+    # Convert [Defines] section content to InfDefObject
     #
     # Convert [Defines] section content to InfDefObject
     #
@@ -319,7 +321,7 @@ class InfPomAlignment(ModuleObject):
         if InfBinaryHeaderObj.GetLicense():
             self.SetBinaryHeaderLicense(('', InfBinaryHeaderObj.GetLicense()))
 
-    ## GenModuleHeaderLibClass
+    # GenModuleHeaderLibClass
     #
     #
     def _GenModuleHeaderLibClass(self, DefineObj, ArchList):
@@ -336,7 +338,7 @@ class InfPomAlignment(ModuleObject):
             self.SetIsLibrary(True)
             self.SetIsLibraryModList(self.GetIsLibraryModList() + SupModuleList)
 
-    ## GenModuleHeaderExterns
+    # GenModuleHeaderExterns
     #
     #
     def _GenModuleHeaderExterns(self, DefineObj):
@@ -382,7 +384,7 @@ class InfPomAlignment(ModuleObject):
             Image.SetDestructor(DestructorItem.GetCName())
             self.SetExternList(self.GetExternList() + [Image])
 
-    ## GenModuleHeaderExterns
+    # GenModuleHeaderExterns
     # BootMode/HOB/Event
     #
     def _GenSpecialComments(self):
@@ -432,7 +434,7 @@ class InfPomAlignment(ModuleObject):
                     BootModeList.append(BootMode)
                 self.SetBootModeList(BootModeList)
 
-    ## GenBuildOptions
+    # GenBuildOptions
     #
     # Gen BuildOptions of Inf
     # [<Family>:]<ToolFlag>=Flag
@@ -467,7 +469,7 @@ class InfPomAlignment(ModuleObject):
             #
             pass
 
-    ## GenLibraryClasses
+    # GenLibraryClasses
     #
     # Get LibraryClass of Inf
     # <LibraryClassKeyWord>|<LibraryInstance>
@@ -500,7 +502,7 @@ class InfPomAlignment(ModuleObject):
                         LibraryClass.SetHelpTextList([HelpTextHeaderObj])
                     self.SetLibraryClassList(self.GetLibraryClassList() + [LibraryClass])
 
-    ## GenPackages
+    # GenPackages
     #
     # Gen Packages of Inf
     #
@@ -539,7 +541,7 @@ class InfPomAlignment(ModuleObject):
             PackageDependencyList.append(PackageDependency)
             self.SetPackageDependencyList(PackageDependencyList)
 
-    ## GenPcds
+    # GenPcds
     #
     # Gen Pcds of Inf
     # <TokenSpaceGuidCName>.<PcdCName>[|<Value> [|<FFE>]]
@@ -580,7 +582,7 @@ class InfPomAlignment(ModuleObject):
                             PcdList.append(Pcd)
                 self.SetPcdList(PcdList)
 
-    ## GenSources
+    # GenSources
     #
     # Gen Sources of Inf
     # <Filename>[|<Family>[|<TagName>[|<ToolCode>[|<PcdFeatureFlag>]]]]
@@ -615,11 +617,11 @@ class InfPomAlignment(ModuleObject):
 
         self.SetSourceFileList(self.GetSourceFileList() + SourceList)
 
-
-    ## GenUserExtensions
+    # GenUserExtensions
     #
     # Gen UserExtensions of Inf
     #
+
     def _GenUserExtensions(self):
         #
         # UserExtensions
@@ -652,12 +654,12 @@ class InfPomAlignment(ModuleObject):
         #  Gen UserExtensions of TianoCore."BinaryHeader"
         #
 
-        #Get Binary header from INF file
+        # Get Binary header from INF file
         BinaryAbstractList = self.BinaryHeaderAbstractList
         BinaryDescriptionList = self.BinaryHeaderDescriptionList
         BinaryCopyrightList = self.BinaryHeaderCopyrightList
         BinaryLicenseList = self.BinaryHeaderLicenseList
-        #Get Binary header from UNI file
+        # Get Binary header from UNI file
         # Initialize UniStrDict, the top keys are language codes
         UniStrDict = {}
         if self.UniFileClassObject:
@@ -687,7 +689,7 @@ class InfPomAlignment(ModuleObject):
         if PeiDepexList:
             self.SetPeiDepex(PeiDepexList)
 
-    ## GenDepexes
+    # GenDepexes
     #
     # Gen Depex of Inf
     #
@@ -773,11 +775,11 @@ class InfPomAlignment(ModuleObject):
                         Logger.Error("\nMkPkg", PARSER_ERROR, ST.ERR_INF_PARSER_DEPEX_SECTION_INVALID_FOR_DRIVER,
                                      self.GetFullPath(), RaiseError=True)
 
-            #End of for ModuleType in ModuleTypeList
+            # End of for ModuleType in ModuleTypeList
             self._GenDepexesList(SmmDepexList, DxeDepexList, PeiDepexList)
-        #End of for Depex in DepexData
+        # End of for Depex in DepexData
 
-    ## GenBinaries
+    # GenBinaries
     #
     # Gen Binary of Inf, must be called after Pcd/Library is generated
     # <FileType>|<Filename>|<Target>[|<TokenSpaceGuidCName>.<PcdCName>]
@@ -850,7 +852,6 @@ class InfPomAlignment(ModuleObject):
                         DecFileFullPath = os.path.normpath(os.path.join(DecFilePath, File))
                         DecObjList.append(DecPomAlignment(DecFileFullPath, self.WorkSpace))
 
-
         BinariesDict, AsBuildIns, BinaryFileObjectList = GenBinaryData(BinaryData, BinaryObj,
                                                                        BinariesDict,
                                                                        AsBuildIns,
@@ -884,7 +885,7 @@ class InfPomAlignment(ModuleObject):
             UserExtension.SetUserID('EDK2')
             self.SetUserExtensionList(self.GetUserExtensionList() + [UserExtension])
 
-    ## GenAsBuiltPcds
+    # GenAsBuiltPcds
     #
     #
     def _GenAsBuiltPcds(self, PcdList, AsBuildIns):
@@ -902,7 +903,7 @@ class InfPomAlignment(ModuleObject):
                 if PcdItemObj.GetTokenSpaceGuidValue() == '' and self.BinaryModule:
                     Logger.Error("\nMkPkg",
                                  PARSER_ERROR,
-                                 ST.ERR_ASBUILD_PCD_TOKENSPACE_GUID_VALUE_MISS % \
+                                 ST.ERR_ASBUILD_PCD_TOKENSPACE_GUID_VALUE_MISS %
                                  (PcdItemObj.GetTokenSpaceGuidCName()),
                                  self.GetFullPath(), RaiseError=True)
                 else:
@@ -910,7 +911,7 @@ class InfPomAlignment(ModuleObject):
                 if (PcdItemObj.GetToken() == '' or PcdItemObj.GetDatumType() == '') and self.BinaryModule:
                     Logger.Error("\nMkPkg",
                                  PARSER_ERROR,
-                                 ST.ERR_ASBUILD_PCD_DECLARITION_MISS % \
+                                 ST.ERR_ASBUILD_PCD_DECLARITION_MISS %
                                  (PcdItemObj.GetTokenSpaceGuidCName() + '.' + PcdItemObj.GetCName()),
                                  self.GetFullPath(), RaiseError=True)
                 Pcd.SetToken(PcdItemObj.GetToken())
@@ -953,7 +954,7 @@ class InfPomAlignment(ModuleObject):
 
         return AsBuildIns
 
-    ## GenGuidProtocolPpis
+    # GenGuidProtocolPpis
     #
     # Gen Guids/Protocol/Ppis of INF
     # <CName>=<GuidValue>
@@ -1042,7 +1043,7 @@ class InfPomAlignment(ModuleObject):
         elif Type == DT.TAB_PPIS:
             self.SetPpiList(self.GetPpiList() + GuidProtocolPpiList)
 
-    ## GenMiscFiles
+    # GenMiscFiles
     #
     # Gen MiscellaneousFiles of Inf
     #
@@ -1060,12 +1061,11 @@ class InfPomAlignment(ModuleObject):
                 if IsValidPath(FileName, GlobalData.gINF_MODULE_DIR):
                     FileObj = CommonObject.FileObject()
                     FileObj.SetURI(FileName)
-                    MiscFileObj.SetFileList(MiscFileObj.GetFileList()+[FileObj])
+                    MiscFileObj.SetFileList(MiscFileObj.GetFileList() + [FileObj])
                 else:
                     Logger.Error("InfParser",
                                  FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID%(Line),
+                                 ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID % (Line),
                                  File=GlobalData.gINF_MODULE_NAME,
                                  ExtraData=Line)
-        self.SetMiscFileList(self.GetMiscFileList()+[MiscFileObj])
-
+        self.SetMiscFileList(self.GetMiscFileList() + [MiscFileObj])

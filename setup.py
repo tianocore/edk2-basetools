@@ -16,6 +16,7 @@ from setuptools.command.develop import develop
 
 PACKAGE_NAME = "edk2-basetools"
 
+
 def versions(package_name):
     ''' queries pypi for the list of versions published for this package '''
     import json
@@ -29,7 +30,7 @@ def versions(package_name):
 
 
 # figure out what the current version is
-version_parts = ["0", "1",]
+version_parts = ["0", "1", ]
 version = ".".join(version_parts)
 
 prev_version_parts = versions(PACKAGE_NAME)[0].strip().split('.')

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the parser for INF file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -38,9 +38,11 @@ from edk2basetools.UPT.Parser.InfSectionParser import InfSectionParser
 from edk2basetools.UPT.Parser.InfParserMisc import gINF_SECTION_DEF
 from edk2basetools.UPT.Parser.InfParserMisc import IsBinaryInf
 
-## OpenInfFile
+# OpenInfFile
 #
 #
+
+
 def OpenInfFile(Filename):
     FileLinesList = []
 
@@ -63,7 +65,7 @@ def OpenInfFile(Filename):
 
     return FileLinesList
 
-## InfParser
+# InfParser
 #
 # This class defined the structure used in InfParser object
 #
@@ -73,19 +75,21 @@ def OpenInfFile(Filename):
 # @param WorkspaceDir:      Input value for current workspace directory,
 #                           default is None
 #
+
+
 class InfParser(InfSectionParser):
 
-    def __init__(self, Filename = None, WorkspaceDir = None):
+    def __init__(self, Filename=None, WorkspaceDir=None):
 
         #
         # Call parent class construct function
         #
         InfSectionParser.__init__()
 
-        self.WorkspaceDir    = WorkspaceDir
-        self.SupArchList     = DT.ARCH_LIST
-        self.EventList    = []
-        self.HobList      = []
+        self.WorkspaceDir = WorkspaceDir
+        self.SupArchList = DT.ARCH_LIST
+        self.EventList = []
+        self.HobList = []
         self.BootModeList = []
 
         #
@@ -94,7 +98,7 @@ class InfParser(InfSectionParser):
         if Filename is not None:
             self.ParseInfFile(Filename)
 
-    ## Parse INF file
+    # Parse INF file
     #
     # Parse the file if it exists
     #
@@ -113,18 +117,18 @@ class InfParser(InfSectionParser):
         #
         # Initialize common data
         #
-        LineNo             = 0
-        CurrentSection     = DT.MODEL_UNKNOWN
-        SectionLines       = []
+        LineNo = 0
+        CurrentSection = DT.MODEL_UNKNOWN
+        SectionLines = []
 
         #
         # Flags
         #
         HeaderCommentStart = False
-        HeaderCommentEnd   = False
+        HeaderCommentEnd = False
         HeaderStarLineNo = -1
         BinaryHeaderCommentStart = False
-        BinaryHeaderCommentEnd   = False
+        BinaryHeaderCommentEnd = False
         BinaryHeaderStarLineNo = -1
 
         #
@@ -136,17 +140,17 @@ class InfParser(InfSectionParser):
         #
         # Parse file content
         #
-        CommentBlock       = []
+        CommentBlock = []
 
         #
         # Variables for Event/Hob/BootMode
         #
-        self.EventList    = []
-        self.HobList      = []
+        self.EventList = []
+        self.HobList = []
         self.BootModeList = []
         SectionType = ''
 
-        FileLinesList = OpenInfFile (Filename)
+        FileLinesList = OpenInfFile(Filename)
 
         #
         # One INF file can only has one [Defines] section.
@@ -178,8 +182,8 @@ class InfParser(InfSectionParser):
         InfSectionCommonDefObj = None
 
         for Line in FileLinesList:
-            LineNo   = LineNo + 1
-            Line     = Line.strip()
+            LineNo = LineNo + 1
+            Line = Line.strip()
             if (LineNo < len(FileLinesList) - 1):
                 NextLine = FileLinesList[LineNo].strip()
 
@@ -209,18 +213,18 @@ class InfParser(InfSectionParser):
             # Collect Header content.
             #
             if (Line.startswith(DT.TAB_COMMENT_SPLIT) and CurrentSection == DT.MODEL_META_DATA_FILE_HEADER) and\
-                HeaderCommentStart and not Line.startswith(DT.TAB_SPECIAL_COMMENT) and not\
-                HeaderCommentEnd and NextLine != '':
+                    HeaderCommentStart and not Line.startswith(DT.TAB_SPECIAL_COMMENT) and not\
+                    HeaderCommentEnd and NextLine != '':
                 SectionLines.append((Line, LineNo))
                 continue
             #
             # Header content end
             #
             if (Line.startswith(DT.TAB_SPECIAL_COMMENT) or not Line.strip().startswith("#")) and HeaderCommentStart \
-                and not HeaderCommentEnd:
+                    and not HeaderCommentEnd:
                 HeaderCommentEnd = True
                 BinaryHeaderCommentStart = False
-                BinaryHeaderCommentEnd   = False
+                BinaryHeaderCommentEnd = False
                 HeaderCommentStart = False
                 if Line.find(DT.TAB_BINARY_HEADER_COMMENT) > -1:
                     self.InfHeaderParser(SectionLines, self.InfHeader, self.FileName)
@@ -239,7 +243,7 @@ class InfParser(InfSectionParser):
             #
             if Line.startswith(DT.TAB_SPECIAL_COMMENT) and \
                 (Line.find(DT.TAB_BINARY_HEADER_COMMENT) > -1) and \
-                not BinaryHeaderCommentStart:
+                    not BinaryHeaderCommentStart:
                 SectionLines = []
                 CurrentSection = DT.MODEL_META_DATA_FILE_HEADER
                 #
@@ -255,7 +259,7 @@ class InfParser(InfSectionParser):
             # check whether there are more than one binary header exist
             #
             if Line.startswith(DT.TAB_SPECIAL_COMMENT) and BinaryHeaderCommentStart and \
-                not BinaryHeaderCommentEnd and (Line.find(DT.TAB_BINARY_HEADER_COMMENT) > -1):
+                    not BinaryHeaderCommentEnd and (Line.find(DT.TAB_BINARY_HEADER_COMMENT) > -1):
                 Logger.Error('Parser',
                              FORMAT_INVALID,
                              ST.ERR_MULTIPLE_BINARYHEADER_EXIST,
@@ -265,15 +269,15 @@ class InfParser(InfSectionParser):
             # Collect Binary Header content.
             #
             if (Line.startswith(DT.TAB_COMMENT_SPLIT) and CurrentSection == DT.MODEL_META_DATA_FILE_HEADER) and\
-                BinaryHeaderCommentStart and not Line.startswith(DT.TAB_SPECIAL_COMMENT) and not\
-                BinaryHeaderCommentEnd and NextLine != '':
+                    BinaryHeaderCommentStart and not Line.startswith(DT.TAB_SPECIAL_COMMENT) and not\
+                    BinaryHeaderCommentEnd and NextLine != '':
                 SectionLines.append((Line, LineNo))
                 continue
             #
             # Binary Header content end
             #
             if (Line.startswith(DT.TAB_SPECIAL_COMMENT) or not Line.strip().startswith(DT.TAB_COMMENT_SPLIT)) and \
-                BinaryHeaderCommentStart and not BinaryHeaderCommentEnd:
+                    BinaryHeaderCommentStart and not BinaryHeaderCommentEnd:
                 SectionLines.append((Line, LineNo))
                 BinaryHeaderCommentStart = False
                 #
@@ -281,7 +285,7 @@ class InfParser(InfSectionParser):
                 #
                 self.InfHeaderParser(SectionLines, self.InfBinaryHeader, self.FileName, True)
                 SectionLines = []
-                BinaryHeaderCommentEnd   = True
+                BinaryHeaderCommentEnd = True
                 continue
             #
             # Find a new section tab
@@ -300,7 +304,7 @@ class InfParser(InfSectionParser):
             #
             # Encountered a section. start with '[' and end with ']'
             #
-            if (Line.startswith(DT.TAB_SECTION_START) and \
+            if (Line.startswith(DT.TAB_SECTION_START) and
                Line.find(DT.TAB_SECTION_END) > -1) or LastSectionFalg:
 
                 HeaderCommentEnd = True
@@ -330,7 +334,7 @@ class InfParser(InfSectionParser):
                     #
                     TailComments = ''
                     CommentIndex = Line.find(DT.TAB_COMMENT_SPLIT)
-                    if  CommentIndex > -1:
+                    if CommentIndex > -1:
                         TailComments = Line[CommentIndex:]
                         Line = Line[:CommentIndex]
 
@@ -345,8 +349,8 @@ class InfParser(InfSectionParser):
                     #
                     if CurrentSection == DT.MODEL_META_DATA_DEFINE:
                         DefineSectionParsedFlag = self._CallSectionParsers(CurrentSection,
-                                                                   DefineSectionParsedFlag, SectionLines,
-                                                                   InfSectionCommonDefObj, LineNo)
+                                                                           DefineSectionParsedFlag, SectionLines,
+                                                                           InfSectionCommonDefObj, LineNo)
                     #
                     # Compare the new section name with current
                     #
@@ -374,7 +378,7 @@ class InfParser(InfSectionParser):
             #
             if NewSectionStartFlag or LastSectionFalg:
                 if CurrentSection != DT.MODEL_META_DATA_DEFINE or \
-                    (LastSectionFalg and CurrentSection == DT.MODEL_META_DATA_DEFINE):
+                        (LastSectionFalg and CurrentSection == DT.MODEL_META_DATA_DEFINE):
                     DefineSectionParsedFlag = self._CallSectionParsers(CurrentSection,
                                                                        DefineSectionParsedFlag, SectionLines,
                                                                        InfSectionCommonDefObj, LineNo)
@@ -387,14 +391,14 @@ class InfParser(InfSectionParser):
 
         if HeaderStarLineNo == -1:
             Logger.Error("InfParser",
-                        FORMAT_INVALID,
-                        ST.ERR_NO_SOURCE_HEADER,
-                        File=self.FullPath)
-        if BinaryHeaderStarLineNo > -1 and HeaderStarLineNo > -1  and HeaderStarLineNo > BinaryHeaderStarLineNo:
+                         FORMAT_INVALID,
+                         ST.ERR_NO_SOURCE_HEADER,
+                         File=self.FullPath)
+        if BinaryHeaderStarLineNo > -1 and HeaderStarLineNo > -1 and HeaderStarLineNo > BinaryHeaderStarLineNo:
             Logger.Error("InfParser",
-                        FORMAT_INVALID,
-                        ST.ERR_BINARY_HEADER_ORDER,
-                        File=self.FullPath)
+                         FORMAT_INVALID,
+                         ST.ERR_BINARY_HEADER_ORDER,
+                         File=self.FullPath)
         #
         # EDKII INF should not have EDKI style comment
         #
@@ -411,7 +415,7 @@ class InfParser(InfSectionParser):
         #
         self._ExtractEventHobBootMod(FileLinesList)
 
-    ## _CheckSectionHeaders
+    # _CheckSectionHeaders
     #
     #
     def _CheckSectionHeaders(self, Line, LineNo):
@@ -429,10 +433,10 @@ class InfParser(InfSectionParser):
                 # check.
                 #
                 if SectionItem[0].strip().upper() == DT.TAB_INF_FIXED_PCD.upper() or \
-                    SectionItem[0].strip().upper() == DT.TAB_INF_PATCH_PCD.upper() or \
-                    SectionItem[0].strip().upper() == DT.TAB_INF_PCD_EX.upper() or \
-                    SectionItem[0].strip().upper() == DT.TAB_INF_PCD.upper() or \
-                    SectionItem[0].strip().upper() == DT.TAB_INF_FEATURE_PCD.upper():
+                        SectionItem[0].strip().upper() == DT.TAB_INF_PATCH_PCD.upper() or \
+                        SectionItem[0].strip().upper() == DT.TAB_INF_PCD_EX.upper() or \
+                        SectionItem[0].strip().upper() == DT.TAB_INF_PCD.upper() or \
+                        SectionItem[0].strip().upper() == DT.TAB_INF_FEATURE_PCD.upper():
                     ArchList = GetSplitValueList(SectionItem[1].strip(), ' ')
                 else:
                     ArchList = [SectionItem[1].strip()]
@@ -441,10 +445,10 @@ class InfParser(InfSectionParser):
                     if (not IsValidArch(Arch)) and \
                         (SectionItem[0].strip().upper() != DT.TAB_DEPEX.upper()) and \
                         (SectionItem[0].strip().upper() != DT.TAB_USER_EXTENSIONS.upper()) and \
-                        (SectionItem[0].strip().upper() != DT.TAB_COMMON_DEFINES.upper()):
+                            (SectionItem[0].strip().upper() != DT.TAB_COMMON_DEFINES.upper()):
                         Logger.Error("InfParser",
                                      FORMAT_INVALID,
-                                     ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(SectionItem[1]),
+                                     ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (SectionItem[1]),
                                      File=self.FullPath,
                                      Line=LineNo, ExtraData=Line)
                 #
@@ -454,15 +458,15 @@ class InfParser(InfSectionParser):
                 if (self.SectionHeaderContent[0][0].upper() in ChkModSectionList):
                     if SectionItem[2].strip().upper():
                         MoudleTypeList = GetSplitValueList(
-                                    SectionItem[2].strip().upper())
+                            SectionItem[2].strip().upper())
                         if (not IsValidInfMoudleTypeList(MoudleTypeList)):
                             Logger.Error("InfParser",
                                          FORMAT_INVALID,
-                                         ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID%(SectionItem[2]),
+                                         ST.ERR_INF_PARSER_DEFINE_FROMAT_INVALID % (SectionItem[2]),
                                          File=self.FullPath, Line=LineNo,
                                          ExtraData=Line)
 
-    ## _CallSectionParsers
+    # _CallSectionParsers
     #
     #
     def _CallSectionParsers(self, CurrentSection, DefineSectionParsedFlag,
@@ -479,7 +483,7 @@ class InfParser(InfSectionParser):
                              PARSER_ERROR,
                              ST.ERR_INF_PARSER_MULTI_DEFINE_SECTION,
                              File=self.FullPath,
-                             RaiseError = Logger.IS_RAISE_ERROR)
+                             RaiseError=Logger.IS_RAISE_ERROR)
 
         elif CurrentSection == DT.MODEL_META_DATA_BUILD_OPTION:
             self.InfBuildOptionParser(SectionLines,
@@ -499,10 +503,10 @@ class InfParser(InfSectionParser):
         # [Pcd] Sections, put it together
         #
         elif CurrentSection == DT.MODEL_PCD_FIXED_AT_BUILD or \
-             CurrentSection == DT.MODEL_PCD_PATCHABLE_IN_MODULE or \
-             CurrentSection == DT.MODEL_PCD_FEATURE_FLAG or \
-             CurrentSection == DT.MODEL_PCD_DYNAMIC_EX or \
-             CurrentSection == DT.MODEL_PCD_DYNAMIC:
+                CurrentSection == DT.MODEL_PCD_PATCHABLE_IN_MODULE or \
+                CurrentSection == DT.MODEL_PCD_FEATURE_FLAG or \
+                CurrentSection == DT.MODEL_PCD_DYNAMIC_EX or \
+                CurrentSection == DT.MODEL_PCD_DYNAMIC:
             self.InfPcdParser(SectionLines,
                               self.InfPcdSection,
                               self.FullPath)
@@ -550,13 +554,13 @@ class InfParser(InfSectionParser):
                              PARSER_ERROR,
                              ST.ERR_INF_PARSER_UNKNOWN_SECTION,
                              File=self.FullPath, Line=LineNo,
-                             RaiseError = Logger.IS_RAISE_ERROR)
+                             RaiseError=Logger.IS_RAISE_ERROR)
             else:
                 Logger.Error("Parser",
                              PARSER_ERROR,
                              ST.ERR_INF_PARSER_NO_SECTION_ERROR,
                              File=self.FullPath, Line=LineNo,
-                             RaiseError = Logger.IS_RAISE_ERROR)
+                             RaiseError=Logger.IS_RAISE_ERROR)
 
         return DefineSectionParsedFlag
 
@@ -564,9 +568,9 @@ class InfParser(InfSectionParser):
         SpecialSectionStart = False
         CheckLocation = False
         GFindSpecialCommentRe = \
-        re.compile(r"""#(?:\s*)\[(.*?)\](?:.*)""", re.DOTALL)
+            re.compile(r"""#(?:\s*)\[(.*?)\](?:.*)""", re.DOTALL)
         GFindNewSectionRe2 = \
-        re.compile(r"""#?(\s*)\[(.*?)\](.*)""", re.DOTALL)
+            re.compile(r"""#?(\s*)\[(.*?)\](.*)""", re.DOTALL)
         LineNum = 0
         Element = []
         for Line in FileLinesList:
@@ -605,8 +609,8 @@ class InfParser(InfSectionParser):
                     else:
                         if not Line.startswith(DT.TAB_COMMENT_SPLIT):
                             Logger.Warn("Parser",
-                                         ST.WARN_SPECIAL_SECTION_LOCATION_WRONG,
-                                         File=self.FullPath, Line=LineNum)
+                                        ST.WARN_SPECIAL_SECTION_LOCATION_WRONG,
+                                        File=self.FullPath, Line=LineNum)
                             SpecialSectionStart = False
                             CheckLocation = False
                             Element = []
@@ -618,8 +622,8 @@ class InfParser(InfSectionParser):
                             CheckLocation = False
                         elif Line:
                             Logger.Warn("Parser",
-                                         ST.WARN_SPECIAL_SECTION_LOCATION_WRONG,
-                                         File=self.FullPath, Line=LineNum)
+                                        ST.WARN_SPECIAL_SECTION_LOCATION_WRONG,
+                                        File=self.FullPath, Line=LineNum)
                             CheckLocation = False
 
         if len(self.BootModeList) >= 1:
@@ -639,9 +643,10 @@ class InfParser(InfSectionParser):
                                          self.InfSpecialCommentSection,
                                          self.FileName,
                                          DT.TYPE_HOB_SECTION)
-    ## _ProcessLastSection
+    # _ProcessLastSection
     #
     #
+
     def _ProcessLastSection(self, SectionLines, Line, LineNo, CurrentSection):
         #
         # The last line is a section header. will discard it.
@@ -658,7 +663,7 @@ class InfParser(InfSectionParser):
                              File=self.FullPath,
                              Line=LineNo,
                              ExtraData=Line,
-                             RaiseError = Logger.IS_RAISE_ERROR
+                             RaiseError=Logger.IS_RAISE_ERROR
                              )
             else:
                 CurrentSection = gINF_SECTION_DEF[TemSectionName]
@@ -666,9 +671,11 @@ class InfParser(InfSectionParser):
 
         return SectionLines, CurrentSection
 
-## _ConvertSecNameToType
+# _ConvertSecNameToType
 #
 #
+
+
 def _ConvertSecNameToType(SectionName):
     SectionType = ''
     if SectionName.upper() not in gINF_SECTION_DEF.keys():
@@ -677,4 +684,3 @@ def _ConvertSecNameToType(SectionName):
         SectionType = gINF_SECTION_DEF[SectionName.upper()]
 
     return SectionType
-

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the parser for define sections in INF file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -26,9 +26,11 @@ from edk2basetools.UPT.Object.Parser.InfMisc import ErrorInInf
 from edk2basetools.UPT.Logger import StringTable as ST
 from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
-## __GetValidateArchList
+# __GetValidateArchList
 #
 #
+
+
 def GetValidateArchList(LineContent):
 
     TempArch = ''
@@ -50,6 +52,7 @@ def GetValidateArchList(LineContent):
 
     return ArchList
 
+
 class InfDefinSectionParser(InfParserSectionRoot):
     def InfDefineParser(self, SectionString, InfSectionObject, FileName, SectionComment):
 
@@ -58,12 +61,12 @@ class InfDefinSectionParser(InfParserSectionRoot):
         #
         # Parser Defines section content and fill self._ContentList dict.
         #
-        StillCommentFalg  = False
+        StillCommentFalg = False
         HeaderComments = []
         SectionContent = ''
-        ArchList       = []
-        _ContentList   = []
-        _ValueList     = []
+        ArchList = []
+        _ContentList = []
+        _ValueList = []
         #
         # Add WORKSPACE to global Marco dict.
         #
@@ -71,14 +74,14 @@ class InfDefinSectionParser(InfParserSectionRoot):
 
         for Line in SectionString:
             LineContent = Line[0]
-            LineNo      = Line[1]
-            TailComments   = ''
-            LineComment    = None
+            LineNo = Line[1]
+            TailComments = ''
+            LineComment = None
 
-            LineInfo       = ['', -1, '']
-            LineInfo[0]    = FileName
-            LineInfo[1]    = LineNo
-            LineInfo[2]    = LineContent
+            LineInfo = ['', -1, '']
+            LineInfo[0] = FileName
+            LineInfo[1] = LineNo
+            LineInfo[2] = LineContent
 
             if LineContent.strip() == '':
                 continue
@@ -188,4 +191,3 @@ class InfDefinSectionParser(InfParserSectionRoot):
         InfSectionObject.SetAllContent(SectionContent)
 
         InfSectionObject.SetDefines(_ContentList, Arch=ArchList)
-

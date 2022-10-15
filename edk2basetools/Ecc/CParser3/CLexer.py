@@ -3,7 +3,7 @@
 from antlr3 import *
 from antlr3.compat import set, frozenset
 
-## @file
+# @file
 # The file defines the Lexer for C source files.
 #
 # THIS FILE IS AUTO-GENERATED. PLEASE DO NOT MODIFY THIS FILE.
@@ -17,127 +17,127 @@ from antlr3.compat import set, frozenset
 ##
 
 
-
 # for convenience in actions
 HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
-T114=114
-T115=115
-T116=116
-T117=117
-FloatTypeSuffix=16
-LETTER=11
-T29=29
-T28=28
-T27=27
-T26=26
-T25=25
-EOF=-1
-STRING_LITERAL=9
-FLOATING_POINT_LITERAL=10
-T38=38
-T37=37
-T39=39
-T34=34
-COMMENT=22
-T33=33
-T36=36
-T35=35
-T30=30
-T32=32
-T31=31
-LINE_COMMENT=23
-IntegerTypeSuffix=14
-CHARACTER_LITERAL=8
-T49=49
-T48=48
-T100=100
-T43=43
-T42=42
-T102=102
-T41=41
-T101=101
-T40=40
-T47=47
-T46=46
-T45=45
-T44=44
-T109=109
-T107=107
-T108=108
-T105=105
-WS=19
-T106=106
-T103=103
-T104=104
-T50=50
-LINE_COMMAND=24
-T59=59
-T113=113
-T52=52
-T112=112
-T51=51
-T111=111
-T54=54
-T110=110
-EscapeSequence=12
-DECIMAL_LITERAL=7
-T53=53
-T56=56
-T55=55
-T58=58
-T57=57
-T75=75
-T76=76
-T73=73
-T74=74
-T79=79
-T77=77
-T78=78
-Exponent=15
-HexDigit=13
-T72=72
-T71=71
-T70=70
-T62=62
-T63=63
-T64=64
-T65=65
-T66=66
-T67=67
-T68=68
-T69=69
-IDENTIFIER=4
-UnicodeVocabulary=21
-HEX_LITERAL=5
-T61=61
-T60=60
-T99=99
-T97=97
-BS=20
-T98=98
-T95=95
-T96=96
-OCTAL_LITERAL=6
-T94=94
-Tokens=118
-T93=93
-T92=92
-T91=91
-T90=90
-T88=88
-T89=89
-T84=84
-T85=85
-T86=86
-T87=87
-UnicodeEscape=18
-T81=81
-T80=80
-T83=83
-OctalEscape=17
-T82=82
+T114 = 114
+T115 = 115
+T116 = 116
+T117 = 117
+FloatTypeSuffix = 16
+LETTER = 11
+T29 = 29
+T28 = 28
+T27 = 27
+T26 = 26
+T25 = 25
+EOF = -1
+STRING_LITERAL = 9
+FLOATING_POINT_LITERAL = 10
+T38 = 38
+T37 = 37
+T39 = 39
+T34 = 34
+COMMENT = 22
+T33 = 33
+T36 = 36
+T35 = 35
+T30 = 30
+T32 = 32
+T31 = 31
+LINE_COMMENT = 23
+IntegerTypeSuffix = 14
+CHARACTER_LITERAL = 8
+T49 = 49
+T48 = 48
+T100 = 100
+T43 = 43
+T42 = 42
+T102 = 102
+T41 = 41
+T101 = 101
+T40 = 40
+T47 = 47
+T46 = 46
+T45 = 45
+T44 = 44
+T109 = 109
+T107 = 107
+T108 = 108
+T105 = 105
+WS = 19
+T106 = 106
+T103 = 103
+T104 = 104
+T50 = 50
+LINE_COMMAND = 24
+T59 = 59
+T113 = 113
+T52 = 52
+T112 = 112
+T51 = 51
+T111 = 111
+T54 = 54
+T110 = 110
+EscapeSequence = 12
+DECIMAL_LITERAL = 7
+T53 = 53
+T56 = 56
+T55 = 55
+T58 = 58
+T57 = 57
+T75 = 75
+T76 = 76
+T73 = 73
+T74 = 74
+T79 = 79
+T77 = 77
+T78 = 78
+Exponent = 15
+HexDigit = 13
+T72 = 72
+T71 = 71
+T70 = 70
+T62 = 62
+T63 = 63
+T64 = 64
+T65 = 65
+T66 = 66
+T67 = 67
+T68 = 68
+T69 = 69
+IDENTIFIER = 4
+UnicodeVocabulary = 21
+HEX_LITERAL = 5
+T61 = 61
+T60 = 60
+T99 = 99
+T97 = 97
+BS = 20
+T98 = 98
+T95 = 95
+T96 = 96
+OCTAL_LITERAL = 6
+T94 = 94
+Tokens = 118
+T93 = 93
+T92 = 92
+T91 = 91
+T90 = 90
+T88 = 88
+T89 = 89
+T84 = 84
+T85 = 85
+T86 = 86
+T87 = 87
+UnicodeEscape = 18
+T81 = 81
+T80 = 80
+T83 = 83
+OctalEscape = 17
+T82 = 82
+
 
 class CLexer(Lexer):
 
@@ -147,31 +147,27 @@ class CLexer(Lexer):
         Lexer.__init__(self, input)
         self.dfa25 = self.DFA25(
             self, 25,
-            eot = self.DFA25_eot,
-            eof = self.DFA25_eof,
-            min = self.DFA25_min,
-            max = self.DFA25_max,
-            accept = self.DFA25_accept,
-            special = self.DFA25_special,
-            transition = self.DFA25_transition
-            )
+            eot=self.DFA25_eot,
+            eof=self.DFA25_eof,
+            min=self.DFA25_min,
+            max=self.DFA25_max,
+            accept=self.DFA25_accept,
+            special=self.DFA25_special,
+            transition=self.DFA25_transition
+        )
         self.dfa35 = self.DFA35(
             self, 35,
-            eot = self.DFA35_eot,
-            eof = self.DFA35_eof,
-            min = self.DFA35_min,
-            max = self.DFA35_max,
-            accept = self.DFA35_accept,
-            special = self.DFA35_special,
-            transition = self.DFA35_transition
-            )
-
-
-
-
-
+            eot=self.DFA35_eot,
+            eof=self.DFA35_eof,
+            min=self.DFA35_min,
+            max=self.DFA35_max,
+            accept=self.DFA35_accept,
+            special=self.DFA35_special,
+            transition=self.DFA35_transition
+        )
 
     # $ANTLR start T25
+
     def mT25(self, ):
 
         try:
@@ -181,19 +177,14 @@ class CLexer(Lexer):
             # C.g:27:7: ';'
             self.match(u';')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T25
 
-
-
     # $ANTLR start T26
+
     def mT26(self, ):
 
         try:
@@ -203,20 +194,14 @@ class CLexer(Lexer):
             # C.g:28:7: 'typedef'
             self.match("typedef")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T26
 
-
-
     # $ANTLR start T27
+
     def mT27(self, ):
 
         try:
@@ -226,19 +211,14 @@ class CLexer(Lexer):
             # C.g:29:7: ','
             self.match(u',')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T27
 
-
-
     # $ANTLR start T28
+
     def mT28(self, ):
 
         try:
@@ -248,19 +228,14 @@ class CLexer(Lexer):
             # C.g:30:7: '='
             self.match(u'=')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T28
 
-
-
     # $ANTLR start T29
+
     def mT29(self, ):
 
         try:
@@ -270,20 +245,14 @@ class CLexer(Lexer):
             # C.g:31:7: 'extern'
             self.match("extern")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T29
 
-
-
     # $ANTLR start T30
+
     def mT30(self, ):
 
         try:
@@ -293,20 +262,14 @@ class CLexer(Lexer):
             # C.g:32:7: 'static'
             self.match("static")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T30
 
-
-
     # $ANTLR start T31
+
     def mT31(self, ):
 
         try:
@@ -316,20 +279,14 @@ class CLexer(Lexer):
             # C.g:33:7: 'auto'
             self.match("auto")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T31
 
-
-
     # $ANTLR start T32
+
     def mT32(self, ):
 
         try:
@@ -339,20 +296,14 @@ class CLexer(Lexer):
             # C.g:34:7: 'register'
             self.match("register")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T32
 
-
-
     # $ANTLR start T33
+
     def mT33(self, ):
 
         try:
@@ -362,20 +313,14 @@ class CLexer(Lexer):
             # C.g:35:7: 'STATIC'
             self.match("STATIC")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T33
 
-
-
     # $ANTLR start T34
+
     def mT34(self, ):
 
         try:
@@ -385,20 +330,14 @@ class CLexer(Lexer):
             # C.g:36:7: 'void'
             self.match("void")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T34
 
-
-
     # $ANTLR start T35
+
     def mT35(self, ):
 
         try:
@@ -408,20 +347,14 @@ class CLexer(Lexer):
             # C.g:37:7: 'char'
             self.match("char")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T35
 
-
-
     # $ANTLR start T36
+
     def mT36(self, ):
 
         try:
@@ -431,20 +364,14 @@ class CLexer(Lexer):
             # C.g:38:7: 'short'
             self.match("short")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T36
 
-
-
     # $ANTLR start T37
+
     def mT37(self, ):
 
         try:
@@ -454,20 +381,14 @@ class CLexer(Lexer):
             # C.g:39:7: 'int'
             self.match("int")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T37
 
-
-
     # $ANTLR start T38
+
     def mT38(self, ):
 
         try:
@@ -477,20 +398,14 @@ class CLexer(Lexer):
             # C.g:40:7: 'long'
             self.match("long")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T38
 
-
-
     # $ANTLR start T39
+
     def mT39(self, ):
 
         try:
@@ -500,20 +415,14 @@ class CLexer(Lexer):
             # C.g:41:7: 'float'
             self.match("float")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T39
 
-
-
     # $ANTLR start T40
+
     def mT40(self, ):
 
         try:
@@ -523,20 +432,14 @@ class CLexer(Lexer):
             # C.g:42:7: 'double'
             self.match("double")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T40
 
-
-
     # $ANTLR start T41
+
     def mT41(self, ):
 
         try:
@@ -546,20 +449,14 @@ class CLexer(Lexer):
             # C.g:43:7: 'signed'
             self.match("signed")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T41
 
-
-
     # $ANTLR start T42
+
     def mT42(self, ):
 
         try:
@@ -569,20 +466,14 @@ class CLexer(Lexer):
             # C.g:44:7: 'unsigned'
             self.match("unsigned")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T42
 
-
-
     # $ANTLR start T43
+
     def mT43(self, ):
 
         try:
@@ -592,19 +483,14 @@ class CLexer(Lexer):
             # C.g:45:7: '{'
             self.match(u'{')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T43
 
-
-
     # $ANTLR start T44
+
     def mT44(self, ):
 
         try:
@@ -614,19 +500,14 @@ class CLexer(Lexer):
             # C.g:46:7: '}'
             self.match(u'}')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T44
 
-
-
     # $ANTLR start T45
+
     def mT45(self, ):
 
         try:
@@ -636,20 +517,14 @@ class CLexer(Lexer):
             # C.g:47:7: 'struct'
             self.match("struct")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T45
 
-
-
     # $ANTLR start T46
+
     def mT46(self, ):
 
         try:
@@ -659,20 +534,14 @@ class CLexer(Lexer):
             # C.g:48:7: 'union'
             self.match("union")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T46
 
-
-
     # $ANTLR start T47
+
     def mT47(self, ):
 
         try:
@@ -682,19 +551,14 @@ class CLexer(Lexer):
             # C.g:49:7: ':'
             self.match(u':')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T47
 
-
-
     # $ANTLR start T48
+
     def mT48(self, ):
 
         try:
@@ -704,20 +568,14 @@ class CLexer(Lexer):
             # C.g:50:7: 'enum'
             self.match("enum")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T48
 
-
-
     # $ANTLR start T49
+
     def mT49(self, ):
 
         try:
@@ -727,20 +585,14 @@ class CLexer(Lexer):
             # C.g:51:7: 'const'
             self.match("const")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T49
 
-
-
     # $ANTLR start T50
+
     def mT50(self, ):
 
         try:
@@ -750,20 +602,14 @@ class CLexer(Lexer):
             # C.g:52:7: 'volatile'
             self.match("volatile")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T50
 
-
-
     # $ANTLR start T51
+
     def mT51(self, ):
 
         try:
@@ -773,20 +619,14 @@ class CLexer(Lexer):
             # C.g:53:7: 'IN'
             self.match("IN")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T51
 
-
-
     # $ANTLR start T52
+
     def mT52(self, ):
 
         try:
@@ -796,20 +636,14 @@ class CLexer(Lexer):
             # C.g:54:7: 'OUT'
             self.match("OUT")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T52
 
-
-
     # $ANTLR start T53
+
     def mT53(self, ):
 
         try:
@@ -819,20 +653,14 @@ class CLexer(Lexer):
             # C.g:55:7: 'OPTIONAL'
             self.match("OPTIONAL")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T53
 
-
-
     # $ANTLR start T54
+
     def mT54(self, ):
 
         try:
@@ -842,20 +670,14 @@ class CLexer(Lexer):
             # C.g:56:7: 'CONST'
             self.match("CONST")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T54
 
-
-
     # $ANTLR start T55
+
     def mT55(self, ):
 
         try:
@@ -865,20 +687,14 @@ class CLexer(Lexer):
             # C.g:57:7: 'UNALIGNED'
             self.match("UNALIGNED")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T55
 
-
-
     # $ANTLR start T56
+
     def mT56(self, ):
 
         try:
@@ -888,20 +704,14 @@ class CLexer(Lexer):
             # C.g:58:7: 'VOLATILE'
             self.match("VOLATILE")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T56
 
-
-
     # $ANTLR start T57
+
     def mT57(self, ):
 
         try:
@@ -911,20 +721,14 @@ class CLexer(Lexer):
             # C.g:59:7: 'GLOBAL_REMOVE_IF_UNREFERENCED'
             self.match("GLOBAL_REMOVE_IF_UNREFERENCED")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T57
 
-
-
     # $ANTLR start T58
+
     def mT58(self, ):
 
         try:
@@ -934,20 +738,14 @@ class CLexer(Lexer):
             # C.g:60:7: 'EFIAPI'
             self.match("EFIAPI")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T58
 
-
-
     # $ANTLR start T59
+
     def mT59(self, ):
 
         try:
@@ -957,20 +755,14 @@ class CLexer(Lexer):
             # C.g:61:7: 'EFI_BOOTSERVICE'
             self.match("EFI_BOOTSERVICE")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T59
 
-
-
     # $ANTLR start T60
+
     def mT60(self, ):
 
         try:
@@ -980,20 +772,14 @@ class CLexer(Lexer):
             # C.g:62:7: 'EFI_RUNTIMESERVICE'
             self.match("EFI_RUNTIMESERVICE")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T60
 
-
-
     # $ANTLR start T61
+
     def mT61(self, ):
 
         try:
@@ -1003,20 +789,14 @@ class CLexer(Lexer):
             # C.g:63:7: 'PACKED'
             self.match("PACKED")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T61
 
-
-
     # $ANTLR start T62
+
     def mT62(self, ):
 
         try:
@@ -1026,19 +806,14 @@ class CLexer(Lexer):
             # C.g:64:7: '('
             self.match(u'(')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T62
 
-
-
     # $ANTLR start T63
+
     def mT63(self, ):
 
         try:
@@ -1048,19 +823,14 @@ class CLexer(Lexer):
             # C.g:65:7: ')'
             self.match(u')')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T63
 
-
-
     # $ANTLR start T64
+
     def mT64(self, ):
 
         try:
@@ -1070,19 +840,14 @@ class CLexer(Lexer):
             # C.g:66:7: '['
             self.match(u'[')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T64
 
-
-
     # $ANTLR start T65
+
     def mT65(self, ):
 
         try:
@@ -1092,19 +857,14 @@ class CLexer(Lexer):
             # C.g:67:7: ']'
             self.match(u']')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T65
 
-
-
     # $ANTLR start T66
+
     def mT66(self, ):
 
         try:
@@ -1114,19 +874,14 @@ class CLexer(Lexer):
             # C.g:68:7: '*'
             self.match(u'*')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T66
 
-
-
     # $ANTLR start T67
+
     def mT67(self, ):
 
         try:
@@ -1136,20 +891,14 @@ class CLexer(Lexer):
             # C.g:69:7: '...'
             self.match("...")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T67
 
-
-
     # $ANTLR start T68
+
     def mT68(self, ):
 
         try:
@@ -1159,19 +908,14 @@ class CLexer(Lexer):
             # C.g:70:7: '+'
             self.match(u'+')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T68
 
-
-
     # $ANTLR start T69
+
     def mT69(self, ):
 
         try:
@@ -1181,19 +925,14 @@ class CLexer(Lexer):
             # C.g:71:7: '-'
             self.match(u'-')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T69
 
-
-
     # $ANTLR start T70
+
     def mT70(self, ):
 
         try:
@@ -1203,19 +942,14 @@ class CLexer(Lexer):
             # C.g:72:7: '/'
             self.match(u'/')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T70
 
-
-
     # $ANTLR start T71
+
     def mT71(self, ):
 
         try:
@@ -1225,19 +959,14 @@ class CLexer(Lexer):
             # C.g:73:7: '%'
             self.match(u'%')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T71
 
-
-
     # $ANTLR start T72
+
     def mT72(self, ):
 
         try:
@@ -1247,20 +976,14 @@ class CLexer(Lexer):
             # C.g:74:7: '++'
             self.match("++")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T72
 
-
-
     # $ANTLR start T73
+
     def mT73(self, ):
 
         try:
@@ -1270,20 +993,14 @@ class CLexer(Lexer):
             # C.g:75:7: '--'
             self.match("--")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T73
 
-
-
     # $ANTLR start T74
+
     def mT74(self, ):
 
         try:
@@ -1293,20 +1010,14 @@ class CLexer(Lexer):
             # C.g:76:7: 'sizeof'
             self.match("sizeof")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T74
 
-
-
     # $ANTLR start T75
+
     def mT75(self, ):
 
         try:
@@ -1316,19 +1027,14 @@ class CLexer(Lexer):
             # C.g:77:7: '.'
             self.match(u'.')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T75
 
-
-
     # $ANTLR start T76
+
     def mT76(self, ):
 
         try:
@@ -1338,20 +1044,14 @@ class CLexer(Lexer):
             # C.g:78:7: '->'
             self.match("->")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T76
 
-
-
     # $ANTLR start T77
+
     def mT77(self, ):
 
         try:
@@ -1361,19 +1061,14 @@ class CLexer(Lexer):
             # C.g:79:7: '&'
             self.match(u'&')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T77
 
-
-
     # $ANTLR start T78
+
     def mT78(self, ):
 
         try:
@@ -1383,19 +1078,14 @@ class CLexer(Lexer):
             # C.g:80:7: '~'
             self.match(u'~')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T78
 
-
-
     # $ANTLR start T79
+
     def mT79(self, ):
 
         try:
@@ -1405,19 +1095,14 @@ class CLexer(Lexer):
             # C.g:81:7: '!'
             self.match(u'!')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T79
 
-
-
     # $ANTLR start T80
+
     def mT80(self, ):
 
         try:
@@ -1427,20 +1112,14 @@ class CLexer(Lexer):
             # C.g:82:7: '*='
             self.match("*=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T80
 
-
-
     # $ANTLR start T81
+
     def mT81(self, ):
 
         try:
@@ -1450,20 +1129,14 @@ class CLexer(Lexer):
             # C.g:83:7: '/='
             self.match("/=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T81
 
-
-
     # $ANTLR start T82
+
     def mT82(self, ):
 
         try:
@@ -1473,20 +1146,14 @@ class CLexer(Lexer):
             # C.g:84:7: '%='
             self.match("%=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T82
 
-
-
     # $ANTLR start T83
+
     def mT83(self, ):
 
         try:
@@ -1496,20 +1163,14 @@ class CLexer(Lexer):
             # C.g:85:7: '+='
             self.match("+=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T83
 
-
-
     # $ANTLR start T84
+
     def mT84(self, ):
 
         try:
@@ -1519,20 +1180,14 @@ class CLexer(Lexer):
             # C.g:86:7: '-='
             self.match("-=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T84
 
-
-
     # $ANTLR start T85
+
     def mT85(self, ):
 
         try:
@@ -1542,20 +1197,14 @@ class CLexer(Lexer):
             # C.g:87:7: '<<='
             self.match("<<=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T85
 
-
-
     # $ANTLR start T86
+
     def mT86(self, ):
 
         try:
@@ -1565,20 +1214,14 @@ class CLexer(Lexer):
             # C.g:88:7: '>>='
             self.match(">>=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T86
 
-
-
     # $ANTLR start T87
+
     def mT87(self, ):
 
         try:
@@ -1588,20 +1231,14 @@ class CLexer(Lexer):
             # C.g:89:7: '&='
             self.match("&=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T87
 
-
-
     # $ANTLR start T88
+
     def mT88(self, ):
 
         try:
@@ -1611,20 +1248,14 @@ class CLexer(Lexer):
             # C.g:90:7: '^='
             self.match("^=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T88
 
-
-
     # $ANTLR start T89
+
     def mT89(self, ):
 
         try:
@@ -1634,20 +1265,14 @@ class CLexer(Lexer):
             # C.g:91:7: '|='
             self.match("|=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T89
 
-
-
     # $ANTLR start T90
+
     def mT90(self, ):
 
         try:
@@ -1657,19 +1282,14 @@ class CLexer(Lexer):
             # C.g:92:7: '?'
             self.match(u'?')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T90
 
-
-
     # $ANTLR start T91
+
     def mT91(self, ):
 
         try:
@@ -1679,20 +1299,14 @@ class CLexer(Lexer):
             # C.g:93:7: '||'
             self.match("||")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T91
 
-
-
     # $ANTLR start T92
+
     def mT92(self, ):
 
         try:
@@ -1702,20 +1316,14 @@ class CLexer(Lexer):
             # C.g:94:7: '&&'
             self.match("&&")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T92
 
-
-
     # $ANTLR start T93
+
     def mT93(self, ):
 
         try:
@@ -1725,19 +1333,14 @@ class CLexer(Lexer):
             # C.g:95:7: '|'
             self.match(u'|')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T93
 
-
-
     # $ANTLR start T94
+
     def mT94(self, ):
 
         try:
@@ -1747,19 +1350,14 @@ class CLexer(Lexer):
             # C.g:96:7: '^'
             self.match(u'^')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T94
 
-
-
     # $ANTLR start T95
+
     def mT95(self, ):
 
         try:
@@ -1769,20 +1367,14 @@ class CLexer(Lexer):
             # C.g:97:7: '=='
             self.match("==")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T95
 
-
-
     # $ANTLR start T96
+
     def mT96(self, ):
 
         try:
@@ -1792,20 +1384,14 @@ class CLexer(Lexer):
             # C.g:98:7: '!='
             self.match("!=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T96
 
-
-
     # $ANTLR start T97
+
     def mT97(self, ):
 
         try:
@@ -1815,19 +1401,14 @@ class CLexer(Lexer):
             # C.g:99:7: '<'
             self.match(u'<')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T97
 
-
-
     # $ANTLR start T98
+
     def mT98(self, ):
 
         try:
@@ -1837,19 +1418,14 @@ class CLexer(Lexer):
             # C.g:100:7: '>'
             self.match(u'>')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T98
 
-
-
     # $ANTLR start T99
+
     def mT99(self, ):
 
         try:
@@ -1859,20 +1435,14 @@ class CLexer(Lexer):
             # C.g:101:7: '<='
             self.match("<=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T99
 
-
-
     # $ANTLR start T100
+
     def mT100(self, ):
 
         try:
@@ -1882,20 +1452,14 @@ class CLexer(Lexer):
             # C.g:102:8: '>='
             self.match(">=")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T100
 
-
-
     # $ANTLR start T101
+
     def mT101(self, ):
 
         try:
@@ -1905,20 +1469,14 @@ class CLexer(Lexer):
             # C.g:103:8: '<<'
             self.match("<<")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T101
 
-
-
     # $ANTLR start T102
+
     def mT102(self, ):
 
         try:
@@ -1928,20 +1486,14 @@ class CLexer(Lexer):
             # C.g:104:8: '>>'
             self.match(">>")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T102
 
-
-
     # $ANTLR start T103
+
     def mT103(self, ):
 
         try:
@@ -1951,20 +1503,14 @@ class CLexer(Lexer):
             # C.g:105:8: '__asm__'
             self.match("__asm__")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T103
 
-
-
     # $ANTLR start T104
+
     def mT104(self, ):
 
         try:
@@ -1974,20 +1520,14 @@ class CLexer(Lexer):
             # C.g:106:8: '_asm'
             self.match("_asm")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T104
 
-
-
     # $ANTLR start T105
+
     def mT105(self, ):
 
         try:
@@ -1997,20 +1537,14 @@ class CLexer(Lexer):
             # C.g:107:8: '__asm'
             self.match("__asm")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T105
 
-
-
     # $ANTLR start T106
+
     def mT106(self, ):
 
         try:
@@ -2020,20 +1554,14 @@ class CLexer(Lexer):
             # C.g:108:8: 'case'
             self.match("case")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T106
 
-
-
     # $ANTLR start T107
+
     def mT107(self, ):
 
         try:
@@ -2043,20 +1571,14 @@ class CLexer(Lexer):
             # C.g:109:8: 'default'
             self.match("default")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T107
 
-
-
     # $ANTLR start T108
+
     def mT108(self, ):
 
         try:
@@ -2066,20 +1588,14 @@ class CLexer(Lexer):
             # C.g:110:8: 'if'
             self.match("if")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T108
 
-
-
     # $ANTLR start T109
+
     def mT109(self, ):
 
         try:
@@ -2089,20 +1605,14 @@ class CLexer(Lexer):
             # C.g:111:8: 'else'
             self.match("else")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T109
 
-
-
     # $ANTLR start T110
+
     def mT110(self, ):
 
         try:
@@ -2112,20 +1622,14 @@ class CLexer(Lexer):
             # C.g:112:8: 'switch'
             self.match("switch")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T110
 
-
-
     # $ANTLR start T111
+
     def mT111(self, ):
 
         try:
@@ -2135,20 +1639,14 @@ class CLexer(Lexer):
             # C.g:113:8: 'while'
             self.match("while")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T111
 
-
-
     # $ANTLR start T112
+
     def mT112(self, ):
 
         try:
@@ -2158,20 +1656,14 @@ class CLexer(Lexer):
             # C.g:114:8: 'do'
             self.match("do")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T112
 
-
-
     # $ANTLR start T113
+
     def mT113(self, ):
 
         try:
@@ -2181,20 +1673,14 @@ class CLexer(Lexer):
             # C.g:115:8: 'for'
             self.match("for")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T113
 
-
-
     # $ANTLR start T114
+
     def mT114(self, ):
 
         try:
@@ -2204,20 +1690,14 @@ class CLexer(Lexer):
             # C.g:116:8: 'goto'
             self.match("goto")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T114
 
-
-
     # $ANTLR start T115
+
     def mT115(self, ):
 
         try:
@@ -2227,20 +1707,14 @@ class CLexer(Lexer):
             # C.g:117:8: 'continue'
             self.match("continue")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T115
 
-
-
     # $ANTLR start T116
+
     def mT116(self, ):
 
         try:
@@ -2250,20 +1724,14 @@ class CLexer(Lexer):
             # C.g:118:8: 'break'
             self.match("break")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T116
 
-
-
     # $ANTLR start T117
+
     def mT117(self, ):
 
         try:
@@ -2273,20 +1741,14 @@ class CLexer(Lexer):
             # C.g:119:8: 'return'
             self.match("return")
 
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end T117
 
-
-
     # $ANTLR start IDENTIFIER
+
     def mIDENTIFIER(self, ):
 
         try:
@@ -2297,34 +1759,25 @@ class CLexer(Lexer):
             self.mLETTER()
 
             # C.g:586:11: ( LETTER | '0' .. '9' )*
-            while True: #loop1
+            while True:  # loop1
                 alt1 = 2
                 LA1_0 = self.input.LA(1)
 
-                if (LA1_0 == u'$' or (u'0' <= LA1_0 <= u'9') or (u'A' <= LA1_0 <= u'Z') or LA1_0 == u'_' or (u'a' <= LA1_0 <= u'z')) :
+                if (LA1_0 == u'$' or (u'0' <= LA1_0 <= u'9') or (u'A' <= LA1_0 <= u'Z') or LA1_0 == u'_' or (u'a' <= LA1_0 <= u'z')):
                     alt1 = 1
-
 
                 if alt1 == 1:
                     # C.g:
                     if self.input.LA(1) == u'$' or (u'0' <= self.input.LA(1) <= u'9') or (u'A' <= self.input.LA(1) <= u'Z') or self.input.LA(1) == u'_' or (u'a' <= self.input.LA(1) <= u'z'):
-                        self.input.consume();
+                        self.input.consume()
 
                     else:
                         mse = MismatchedSetException(None, self.input)
                         self.recover(mse)
                         raise mse
 
-
-
-
                 else:
-                    break #loop1
-
-
-
-
-
+                    break  # loop1
 
         finally:
 
@@ -2332,26 +1785,20 @@ class CLexer(Lexer):
 
     # $ANTLR end IDENTIFIER
 
-
-
     # $ANTLR start LETTER
+
     def mLETTER(self, ):
 
         try:
             # C.g:591:2: ( '$' | 'A' .. 'Z' | 'a' .. 'z' | '_' )
             # C.g:
             if self.input.LA(1) == u'$' or (u'A' <= self.input.LA(1) <= u'Z') or self.input.LA(1) == u'_' or (u'a' <= self.input.LA(1) <= u'z'):
-                self.input.consume();
+                self.input.consume()
 
             else:
                 mse = MismatchedSetException(None, self.input)
                 self.recover(mse)
                 raise mse
-
-
-
-
-
 
         finally:
 
@@ -2359,9 +1806,8 @@ class CLexer(Lexer):
 
     # $ANTLR end LETTER
 
-
-
     # $ANTLR start CHARACTER_LITERAL
+
     def mCHARACTER_LITERAL(self, ):
 
         try:
@@ -2373,14 +1819,11 @@ class CLexer(Lexer):
             alt2 = 2
             LA2_0 = self.input.LA(1)
 
-            if (LA2_0 == u'L') :
+            if (LA2_0 == u'L'):
                 alt2 = 1
             if alt2 == 1:
                 # C.g:598:10: 'L'
                 self.match(u'L')
-
-
-
 
             self.match(u'\'')
 
@@ -2388,9 +1831,9 @@ class CLexer(Lexer):
             alt3 = 2
             LA3_0 = self.input.LA(1)
 
-            if (LA3_0 == u'\\') :
+            if (LA3_0 == u'\\'):
                 alt3 = 1
-            elif ((u'\u0000' <= LA3_0 <= u'&') or (u'(' <= LA3_0 <= u'[') or (u']' <= LA3_0 <= u'\uFFFE')) :
+            elif ((u'\u0000' <= LA3_0 <= u'&') or (u'(' <= LA3_0 <= u'[') or (u']' <= LA3_0 <= u'\uFFFE')):
                 alt3 = 2
             else:
                 nvae = NoViableAltException("598:21: ( EscapeSequence | ~ ( '\\'' | '\\\\' ) )", 3, 0, self.input)
@@ -2401,27 +1844,17 @@ class CLexer(Lexer):
                 # C.g:598:23: EscapeSequence
                 self.mEscapeSequence()
 
-
-
             elif alt3 == 2:
                 # C.g:598:40: ~ ( '\\'' | '\\\\' )
                 if (u'\u0000' <= self.input.LA(1) <= u'&') or (u'(' <= self.input.LA(1) <= u'[') or (u']' <= self.input.LA(1) <= u'\uFFFE'):
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
 
-
-
-
-
             self.match(u'\'')
-
-
-
-
 
         finally:
 
@@ -2429,9 +1862,8 @@ class CLexer(Lexer):
 
     # $ANTLR end CHARACTER_LITERAL
 
-
-
     # $ANTLR start STRING_LITERAL
+
     def mSTRING_LITERAL(self, ):
 
         try:
@@ -2443,56 +1875,42 @@ class CLexer(Lexer):
             alt4 = 2
             LA4_0 = self.input.LA(1)
 
-            if (LA4_0 == u'L') :
+            if (LA4_0 == u'L'):
                 alt4 = 1
             if alt4 == 1:
                 # C.g:602:9: 'L'
                 self.match(u'L')
 
-
-
-
             self.match(u'"')
 
             # C.g:602:19: ( EscapeSequence | ~ ( '\\\\' | '\"' ) )*
-            while True: #loop5
+            while True:  # loop5
                 alt5 = 3
                 LA5_0 = self.input.LA(1)
 
-                if (LA5_0 == u'\\') :
+                if (LA5_0 == u'\\'):
                     alt5 = 1
-                elif ((u'\u0000' <= LA5_0 <= u'!') or (u'#' <= LA5_0 <= u'[') or (u']' <= LA5_0 <= u'\uFFFE')) :
+                elif ((u'\u0000' <= LA5_0 <= u'!') or (u'#' <= LA5_0 <= u'[') or (u']' <= LA5_0 <= u'\uFFFE')):
                     alt5 = 2
-
 
                 if alt5 == 1:
                     # C.g:602:21: EscapeSequence
                     self.mEscapeSequence()
 
-
-
                 elif alt5 == 2:
                     # C.g:602:38: ~ ( '\\\\' | '\"' )
                     if (u'\u0000' <= self.input.LA(1) <= u'!') or (u'#' <= self.input.LA(1) <= u'[') or (u']' <= self.input.LA(1) <= u'\uFFFE'):
-                        self.input.consume();
+                        self.input.consume()
 
                     else:
                         mse = MismatchedSetException(None, self.input)
                         self.recover(mse)
                         raise mse
 
-
-
-
                 else:
-                    break #loop5
-
+                    break  # loop5
 
             self.match(u'"')
-
-
-
-
 
         finally:
 
@@ -2500,9 +1918,8 @@ class CLexer(Lexer):
 
     # $ANTLR end STRING_LITERAL
 
-
-
     # $ANTLR start HEX_LITERAL
+
     def mHEX_LITERAL(self, ):
 
         try:
@@ -2513,56 +1930,44 @@ class CLexer(Lexer):
             self.match(u'0')
 
             if self.input.LA(1) == u'X' or self.input.LA(1) == u'x':
-                self.input.consume();
+                self.input.consume()
 
             else:
                 mse = MismatchedSetException(None, self.input)
                 self.recover(mse)
                 raise mse
 
-
             # C.g:605:29: ( HexDigit )+
             cnt6 = 0
-            while True: #loop6
+            while True:  # loop6
                 alt6 = 2
                 LA6_0 = self.input.LA(1)
 
-                if ((u'0' <= LA6_0 <= u'9') or (u'A' <= LA6_0 <= u'F') or (u'a' <= LA6_0 <= u'f')) :
+                if ((u'0' <= LA6_0 <= u'9') or (u'A' <= LA6_0 <= u'F') or (u'a' <= LA6_0 <= u'f')):
                     alt6 = 1
-
 
                 if alt6 == 1:
                     # C.g:605:29: HexDigit
                     self.mHexDigit()
 
-
-
                 else:
                     if cnt6 >= 1:
-                        break #loop6
+                        break  # loop6
 
                     eee = EarlyExitException(6, self.input)
                     raise eee
 
                 cnt6 += 1
 
-
             # C.g:605:39: ( IntegerTypeSuffix )?
             alt7 = 2
             LA7_0 = self.input.LA(1)
 
-            if (LA7_0 == u'L' or LA7_0 == u'U' or LA7_0 == u'l' or LA7_0 == u'u') :
+            if (LA7_0 == u'L' or LA7_0 == u'U' or LA7_0 == u'l' or LA7_0 == u'u'):
                 alt7 = 1
             if alt7 == 1:
                 # C.g:605:39: IntegerTypeSuffix
                 self.mIntegerTypeSuffix()
-
-
-
-
-
-
-
 
         finally:
 
@@ -2570,9 +1975,8 @@ class CLexer(Lexer):
 
     # $ANTLR end HEX_LITERAL
 
-
-
     # $ANTLR start DECIMAL_LITERAL
+
     def mDECIMAL_LITERAL(self, ):
 
         try:
@@ -2584,9 +1988,9 @@ class CLexer(Lexer):
             alt9 = 2
             LA9_0 = self.input.LA(1)
 
-            if (LA9_0 == u'0') :
+            if (LA9_0 == u'0'):
                 alt9 = 1
-            elif ((u'1' <= LA9_0 <= u'9')) :
+            elif ((u'1' <= LA9_0 <= u'9')):
                 alt9 = 2
             else:
                 nvae = NoViableAltException("607:19: ( '0' | '1' .. '9' ( '0' .. '9' )* )", 9, 0, self.input)
@@ -2597,50 +2001,34 @@ class CLexer(Lexer):
                 # C.g:607:20: '0'
                 self.match(u'0')
 
-
-
             elif alt9 == 2:
                 # C.g:607:26: '1' .. '9' ( '0' .. '9' )*
                 self.matchRange(u'1', u'9')
 
                 # C.g:607:35: ( '0' .. '9' )*
-                while True: #loop8
+                while True:  # loop8
                     alt8 = 2
                     LA8_0 = self.input.LA(1)
 
-                    if ((u'0' <= LA8_0 <= u'9')) :
+                    if ((u'0' <= LA8_0 <= u'9')):
                         alt8 = 1
-
 
                     if alt8 == 1:
                         # C.g:607:35: '0' .. '9'
                         self.matchRange(u'0', u'9')
 
-
-
                     else:
-                        break #loop8
-
-
-
-
+                        break  # loop8
 
             # C.g:607:46: ( IntegerTypeSuffix )?
             alt10 = 2
             LA10_0 = self.input.LA(1)
 
-            if (LA10_0 == u'L' or LA10_0 == u'U' or LA10_0 == u'l' or LA10_0 == u'u') :
+            if (LA10_0 == u'L' or LA10_0 == u'U' or LA10_0 == u'l' or LA10_0 == u'u'):
                 alt10 = 1
             if alt10 == 1:
                 # C.g:607:46: IntegerTypeSuffix
                 self.mIntegerTypeSuffix()
-
-
-
-
-
-
-
 
         finally:
 
@@ -2648,9 +2036,8 @@ class CLexer(Lexer):
 
     # $ANTLR end DECIMAL_LITERAL
 
-
-
     # $ANTLR start OCTAL_LITERAL
+
     def mOCTAL_LITERAL(self, ):
 
         try:
@@ -2662,46 +2049,35 @@ class CLexer(Lexer):
 
             # C.g:609:21: ( '0' .. '7' )+
             cnt11 = 0
-            while True: #loop11
+            while True:  # loop11
                 alt11 = 2
                 LA11_0 = self.input.LA(1)
 
-                if ((u'0' <= LA11_0 <= u'7')) :
+                if ((u'0' <= LA11_0 <= u'7')):
                     alt11 = 1
-
 
                 if alt11 == 1:
                     # C.g:609:22: '0' .. '7'
                     self.matchRange(u'0', u'7')
 
-
-
                 else:
                     if cnt11 >= 1:
-                        break #loop11
+                        break  # loop11
 
                     eee = EarlyExitException(11, self.input)
                     raise eee
 
                 cnt11 += 1
 
-
             # C.g:609:33: ( IntegerTypeSuffix )?
             alt12 = 2
             LA12_0 = self.input.LA(1)
 
-            if (LA12_0 == u'L' or LA12_0 == u'U' or LA12_0 == u'l' or LA12_0 == u'u') :
+            if (LA12_0 == u'L' or LA12_0 == u'U' or LA12_0 == u'l' or LA12_0 == u'u'):
                 alt12 = 1
             if alt12 == 1:
                 # C.g:609:33: IntegerTypeSuffix
                 self.mIntegerTypeSuffix()
-
-
-
-
-
-
-
 
         finally:
 
@@ -2709,26 +2085,20 @@ class CLexer(Lexer):
 
     # $ANTLR end OCTAL_LITERAL
 
-
-
     # $ANTLR start HexDigit
+
     def mHexDigit(self, ):
 
         try:
             # C.g:612:10: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
             # C.g:612:12: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
             if (u'0' <= self.input.LA(1) <= u'9') or (u'A' <= self.input.LA(1) <= u'F') or (u'a' <= self.input.LA(1) <= u'f'):
-                self.input.consume();
+                self.input.consume()
 
             else:
                 mse = MismatchedSetException(None, self.input)
                 self.recover(mse)
                 raise mse
-
-
-
-
-
 
         finally:
 
@@ -2736,9 +2106,8 @@ class CLexer(Lexer):
 
     # $ANTLR end HexDigit
 
-
-
     # $ANTLR start IntegerTypeSuffix
+
     def mIntegerTypeSuffix(self, ):
 
         try:
@@ -2746,104 +2115,89 @@ class CLexer(Lexer):
             alt13 = 4
             LA13_0 = self.input.LA(1)
 
-            if (LA13_0 == u'U' or LA13_0 == u'u') :
+            if (LA13_0 == u'U' or LA13_0 == u'u'):
                 LA13_1 = self.input.LA(2)
 
-                if (LA13_1 == u'L' or LA13_1 == u'l') :
+                if (LA13_1 == u'L' or LA13_1 == u'l'):
                     LA13_3 = self.input.LA(3)
 
-                    if (LA13_3 == u'L' or LA13_3 == u'l') :
+                    if (LA13_3 == u'L' or LA13_3 == u'l'):
                         alt13 = 4
                     else:
                         alt13 = 3
                 else:
                     alt13 = 1
-            elif (LA13_0 == u'L' or LA13_0 == u'l') :
+            elif (LA13_0 == u'L' or LA13_0 == u'l'):
                 alt13 = 2
             else:
-                nvae = NoViableAltException("614:1: fragment IntegerTypeSuffix : ( ( 'u' | 'U' ) | ( 'l' | 'L' ) | ( 'u' | 'U' ) ( 'l' | 'L' ) | ( 'u' | 'U' ) ( 'l' | 'L' ) ( 'l' | 'L' ) );", 13, 0, self.input)
+                nvae = NoViableAltException(
+                    "614:1: fragment IntegerTypeSuffix : ( ( 'u' | 'U' ) | ( 'l' | 'L' ) | ( 'u' | 'U' ) ( 'l' | 'L' ) | ( 'u' | 'U' ) ( 'l' | 'L' ) ( 'l' | 'L' ) );", 13, 0, self.input)
 
                 raise nvae
 
             if alt13 == 1:
                 # C.g:616:4: ( 'u' | 'U' )
                 if self.input.LA(1) == u'U' or self.input.LA(1) == u'u':
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
-
-
-
 
             elif alt13 == 2:
                 # C.g:617:4: ( 'l' | 'L' )
                 if self.input.LA(1) == u'L' or self.input.LA(1) == u'l':
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
-
-
-
 
             elif alt13 == 3:
                 # C.g:618:4: ( 'u' | 'U' ) ( 'l' | 'L' )
                 if self.input.LA(1) == u'U' or self.input.LA(1) == u'u':
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
-
 
                 if self.input.LA(1) == u'L' or self.input.LA(1) == u'l':
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
-
-
-
 
             elif alt13 == 4:
                 # C.g:619:4: ( 'u' | 'U' ) ( 'l' | 'L' ) ( 'l' | 'L' )
                 if self.input.LA(1) == u'U' or self.input.LA(1) == u'u':
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
-
 
                 if self.input.LA(1) == u'L' or self.input.LA(1) == u'l':
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
-
 
                 if self.input.LA(1) == u'L' or self.input.LA(1) == u'l':
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
-
-
-
-
 
         finally:
 
@@ -2851,9 +2205,8 @@ class CLexer(Lexer):
 
     # $ANTLR end IntegerTypeSuffix
 
-
-
     # $ANTLR start FLOATING_POINT_LITERAL
+
     def mFLOATING_POINT_LITERAL(self, ):
 
         try:
@@ -2866,78 +2219,62 @@ class CLexer(Lexer):
                 # C.g:623:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )?
                 # C.g:623:9: ( '0' .. '9' )+
                 cnt14 = 0
-                while True: #loop14
+                while True:  # loop14
                     alt14 = 2
                     LA14_0 = self.input.LA(1)
 
-                    if ((u'0' <= LA14_0 <= u'9')) :
+                    if ((u'0' <= LA14_0 <= u'9')):
                         alt14 = 1
-
 
                     if alt14 == 1:
                         # C.g:623:10: '0' .. '9'
                         self.matchRange(u'0', u'9')
 
-
-
                     else:
                         if cnt14 >= 1:
-                            break #loop14
+                            break  # loop14
 
                         eee = EarlyExitException(14, self.input)
                         raise eee
 
                     cnt14 += 1
 
-
                 self.match(u'.')
 
                 # C.g:623:25: ( '0' .. '9' )*
-                while True: #loop15
+                while True:  # loop15
                     alt15 = 2
                     LA15_0 = self.input.LA(1)
 
-                    if ((u'0' <= LA15_0 <= u'9')) :
+                    if ((u'0' <= LA15_0 <= u'9')):
                         alt15 = 1
-
 
                     if alt15 == 1:
                         # C.g:623:26: '0' .. '9'
                         self.matchRange(u'0', u'9')
 
-
-
                     else:
-                        break #loop15
-
+                        break  # loop15
 
                 # C.g:623:37: ( Exponent )?
                 alt16 = 2
                 LA16_0 = self.input.LA(1)
 
-                if (LA16_0 == u'E' or LA16_0 == u'e') :
+                if (LA16_0 == u'E' or LA16_0 == u'e'):
                     alt16 = 1
                 if alt16 == 1:
                     # C.g:623:37: Exponent
                     self.mExponent()
 
-
-
-
                 # C.g:623:47: ( FloatTypeSuffix )?
                 alt17 = 2
                 LA17_0 = self.input.LA(1)
 
-                if (LA17_0 == u'D' or LA17_0 == u'F' or LA17_0 == u'd' or LA17_0 == u'f') :
+                if (LA17_0 == u'D' or LA17_0 == u'F' or LA17_0 == u'd' or LA17_0 == u'f'):
                     alt17 = 1
                 if alt17 == 1:
                     # C.g:623:47: FloatTypeSuffix
                     self.mFloatTypeSuffix()
-
-
-
-
-
 
             elif alt25 == 2:
                 # C.g:624:9: '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )?
@@ -2945,85 +2282,69 @@ class CLexer(Lexer):
 
                 # C.g:624:13: ( '0' .. '9' )+
                 cnt18 = 0
-                while True: #loop18
+                while True:  # loop18
                     alt18 = 2
                     LA18_0 = self.input.LA(1)
 
-                    if ((u'0' <= LA18_0 <= u'9')) :
+                    if ((u'0' <= LA18_0 <= u'9')):
                         alt18 = 1
-
 
                     if alt18 == 1:
                         # C.g:624:14: '0' .. '9'
                         self.matchRange(u'0', u'9')
 
-
-
                     else:
                         if cnt18 >= 1:
-                            break #loop18
+                            break  # loop18
 
                         eee = EarlyExitException(18, self.input)
                         raise eee
 
                     cnt18 += 1
 
-
                 # C.g:624:25: ( Exponent )?
                 alt19 = 2
                 LA19_0 = self.input.LA(1)
 
-                if (LA19_0 == u'E' or LA19_0 == u'e') :
+                if (LA19_0 == u'E' or LA19_0 == u'e'):
                     alt19 = 1
                 if alt19 == 1:
                     # C.g:624:25: Exponent
                     self.mExponent()
 
-
-
-
                 # C.g:624:35: ( FloatTypeSuffix )?
                 alt20 = 2
                 LA20_0 = self.input.LA(1)
 
-                if (LA20_0 == u'D' or LA20_0 == u'F' or LA20_0 == u'd' or LA20_0 == u'f') :
+                if (LA20_0 == u'D' or LA20_0 == u'F' or LA20_0 == u'd' or LA20_0 == u'f'):
                     alt20 = 1
                 if alt20 == 1:
                     # C.g:624:35: FloatTypeSuffix
                     self.mFloatTypeSuffix()
 
-
-
-
-
-
             elif alt25 == 3:
                 # C.g:625:9: ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )?
                 # C.g:625:9: ( '0' .. '9' )+
                 cnt21 = 0
-                while True: #loop21
+                while True:  # loop21
                     alt21 = 2
                     LA21_0 = self.input.LA(1)
 
-                    if ((u'0' <= LA21_0 <= u'9')) :
+                    if ((u'0' <= LA21_0 <= u'9')):
                         alt21 = 1
-
 
                     if alt21 == 1:
                         # C.g:625:10: '0' .. '9'
                         self.matchRange(u'0', u'9')
 
-
-
                     else:
                         if cnt21 >= 1:
-                            break #loop21
+                            break  # loop21
 
                         eee = EarlyExitException(21, self.input)
                         raise eee
 
                     cnt21 += 1
-
 
                 self.mExponent()
 
@@ -3031,62 +2352,47 @@ class CLexer(Lexer):
                 alt22 = 2
                 LA22_0 = self.input.LA(1)
 
-                if (LA22_0 == u'D' or LA22_0 == u'F' or LA22_0 == u'd' or LA22_0 == u'f') :
+                if (LA22_0 == u'D' or LA22_0 == u'F' or LA22_0 == u'd' or LA22_0 == u'f'):
                     alt22 = 1
                 if alt22 == 1:
                     # C.g:625:30: FloatTypeSuffix
                     self.mFloatTypeSuffix()
 
-
-
-
-
-
             elif alt25 == 4:
                 # C.g:626:9: ( '0' .. '9' )+ ( Exponent )? FloatTypeSuffix
                 # C.g:626:9: ( '0' .. '9' )+
                 cnt23 = 0
-                while True: #loop23
+                while True:  # loop23
                     alt23 = 2
                     LA23_0 = self.input.LA(1)
 
-                    if ((u'0' <= LA23_0 <= u'9')) :
+                    if ((u'0' <= LA23_0 <= u'9')):
                         alt23 = 1
-
 
                     if alt23 == 1:
                         # C.g:626:10: '0' .. '9'
                         self.matchRange(u'0', u'9')
 
-
-
                     else:
                         if cnt23 >= 1:
-                            break #loop23
+                            break  # loop23
 
                         eee = EarlyExitException(23, self.input)
                         raise eee
 
                     cnt23 += 1
 
-
                 # C.g:626:21: ( Exponent )?
                 alt24 = 2
                 LA24_0 = self.input.LA(1)
 
-                if (LA24_0 == u'E' or LA24_0 == u'e') :
+                if (LA24_0 == u'E' or LA24_0 == u'e'):
                     alt24 = 1
                 if alt24 == 1:
                     # C.g:626:21: Exponent
                     self.mExponent()
 
-
-
-
                 self.mFloatTypeSuffix()
-
-
-
 
         finally:
 
@@ -3094,72 +2400,58 @@ class CLexer(Lexer):
 
     # $ANTLR end FLOATING_POINT_LITERAL
 
-
-
     # $ANTLR start Exponent
+
     def mExponent(self, ):
 
         try:
             # C.g:630:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
             # C.g:630:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
             if self.input.LA(1) == u'E' or self.input.LA(1) == u'e':
-                self.input.consume();
+                self.input.consume()
 
             else:
                 mse = MismatchedSetException(None, self.input)
                 self.recover(mse)
                 raise mse
 
-
             # C.g:630:22: ( '+' | '-' )?
             alt26 = 2
             LA26_0 = self.input.LA(1)
 
-            if (LA26_0 == u'+' or LA26_0 == u'-') :
+            if (LA26_0 == u'+' or LA26_0 == u'-'):
                 alt26 = 1
             if alt26 == 1:
                 # C.g:
                 if self.input.LA(1) == u'+' or self.input.LA(1) == u'-':
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
 
-
-
-
-
             # C.g:630:33: ( '0' .. '9' )+
             cnt27 = 0
-            while True: #loop27
+            while True:  # loop27
                 alt27 = 2
                 LA27_0 = self.input.LA(1)
 
-                if ((u'0' <= LA27_0 <= u'9')) :
+                if ((u'0' <= LA27_0 <= u'9')):
                     alt27 = 1
-
 
                 if alt27 == 1:
                     # C.g:630:34: '0' .. '9'
                     self.matchRange(u'0', u'9')
 
-
-
                 else:
                     if cnt27 >= 1:
-                        break #loop27
+                        break  # loop27
 
                     eee = EarlyExitException(27, self.input)
                     raise eee
 
                 cnt27 += 1
-
-
-
-
-
 
         finally:
 
@@ -3167,26 +2459,20 @@ class CLexer(Lexer):
 
     # $ANTLR end Exponent
 
-
-
     # $ANTLR start FloatTypeSuffix
+
     def mFloatTypeSuffix(self, ):
 
         try:
             # C.g:633:17: ( ( 'f' | 'F' | 'd' | 'D' ) )
             # C.g:633:19: ( 'f' | 'F' | 'd' | 'D' )
             if self.input.LA(1) == u'D' or self.input.LA(1) == u'F' or self.input.LA(1) == u'd' or self.input.LA(1) == u'f':
-                self.input.consume();
+                self.input.consume()
 
             else:
                 mse = MismatchedSetException(None, self.input)
                 self.recover(mse)
                 raise mse
-
-
-
-
-
 
         finally:
 
@@ -3194,9 +2480,8 @@ class CLexer(Lexer):
 
     # $ANTLR end FloatTypeSuffix
 
-
-
     # $ANTLR start EscapeSequence
+
     def mEscapeSequence(self, ):
 
         try:
@@ -3204,20 +2489,22 @@ class CLexer(Lexer):
             alt28 = 2
             LA28_0 = self.input.LA(1)
 
-            if (LA28_0 == u'\\') :
+            if (LA28_0 == u'\\'):
                 LA28_1 = self.input.LA(2)
 
-                if (LA28_1 == u'"' or LA28_1 == u'\'' or LA28_1 == u'\\' or LA28_1 == u'b' or LA28_1 == u'f' or LA28_1 == u'n' or LA28_1 == u'r' or LA28_1 == u't') :
+                if (LA28_1 == u'"' or LA28_1 == u'\'' or LA28_1 == u'\\' or LA28_1 == u'b' or LA28_1 == u'f' or LA28_1 == u'n' or LA28_1 == u'r' or LA28_1 == u't'):
                     alt28 = 1
-                elif ((u'0' <= LA28_1 <= u'7')) :
+                elif ((u'0' <= LA28_1 <= u'7')):
                     alt28 = 2
                 else:
-                    nvae = NoViableAltException("635:1: fragment EscapeSequence : ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | OctalEscape );", 28, 1, self.input)
+                    nvae = NoViableAltException(
+                        "635:1: fragment EscapeSequence : ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | OctalEscape );", 28, 1, self.input)
 
                     raise nvae
 
             else:
-                nvae = NoViableAltException("635:1: fragment EscapeSequence : ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | OctalEscape );", 28, 0, self.input)
+                nvae = NoViableAltException(
+                    "635:1: fragment EscapeSequence : ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | OctalEscape );", 28, 0, self.input)
 
                 raise nvae
 
@@ -3226,22 +2513,16 @@ class CLexer(Lexer):
                 self.match(u'\\')
 
                 if self.input.LA(1) == u'"' or self.input.LA(1) == u'\'' or self.input.LA(1) == u'\\' or self.input.LA(1) == u'b' or self.input.LA(1) == u'f' or self.input.LA(1) == u'n' or self.input.LA(1) == u'r' or self.input.LA(1) == u't':
-                    self.input.consume();
+                    self.input.consume()
 
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
 
-
-
-
             elif alt28 == 2:
                 # C.g:638:9: OctalEscape
                 self.mOctalEscape()
-
-
-
 
         finally:
 
@@ -3249,9 +2530,8 @@ class CLexer(Lexer):
 
     # $ANTLR end EscapeSequence
 
-
-
     # $ANTLR start OctalEscape
+
     def mOctalEscape(self, ):
 
         try:
@@ -3259,35 +2539,37 @@ class CLexer(Lexer):
             alt29 = 3
             LA29_0 = self.input.LA(1)
 
-            if (LA29_0 == u'\\') :
+            if (LA29_0 == u'\\'):
                 LA29_1 = self.input.LA(2)
 
-                if ((u'0' <= LA29_1 <= u'3')) :
+                if ((u'0' <= LA29_1 <= u'3')):
                     LA29_2 = self.input.LA(3)
 
-                    if ((u'0' <= LA29_2 <= u'7')) :
+                    if ((u'0' <= LA29_2 <= u'7')):
                         LA29_4 = self.input.LA(4)
 
-                        if ((u'0' <= LA29_4 <= u'7')) :
+                        if ((u'0' <= LA29_4 <= u'7')):
                             alt29 = 1
                         else:
                             alt29 = 2
                     else:
                         alt29 = 3
-                elif ((u'4' <= LA29_1 <= u'7')) :
+                elif ((u'4' <= LA29_1 <= u'7')):
                     LA29_3 = self.input.LA(3)
 
-                    if ((u'0' <= LA29_3 <= u'7')) :
+                    if ((u'0' <= LA29_3 <= u'7')):
                         alt29 = 2
                     else:
                         alt29 = 3
                 else:
-                    nvae = NoViableAltException("641:1: fragment OctalEscape : ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) );", 29, 1, self.input)
+                    nvae = NoViableAltException(
+                        "641:1: fragment OctalEscape : ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) );", 29, 1, self.input)
 
                     raise nvae
 
             else:
-                nvae = NoViableAltException("641:1: fragment OctalEscape : ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) );", 29, 0, self.input)
+                nvae = NoViableAltException(
+                    "641:1: fragment OctalEscape : ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) );", 29, 0, self.input)
 
                 raise nvae
 
@@ -3299,24 +2581,13 @@ class CLexer(Lexer):
                 # C.g:643:15: '0' .. '3'
                 self.matchRange(u'0', u'3')
 
-
-
-
                 # C.g:643:25: ( '0' .. '7' )
                 # C.g:643:26: '0' .. '7'
                 self.matchRange(u'0', u'7')
 
-
-
-
                 # C.g:643:36: ( '0' .. '7' )
                 # C.g:643:37: '0' .. '7'
                 self.matchRange(u'0', u'7')
-
-
-
-
-
 
             elif alt29 == 2:
                 # C.g:644:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
@@ -3326,17 +2597,9 @@ class CLexer(Lexer):
                 # C.g:644:15: '0' .. '7'
                 self.matchRange(u'0', u'7')
 
-
-
-
                 # C.g:644:25: ( '0' .. '7' )
                 # C.g:644:26: '0' .. '7'
                 self.matchRange(u'0', u'7')
-
-
-
-
-
 
             elif alt29 == 3:
                 # C.g:645:9: '\\\\' ( '0' .. '7' )
@@ -3346,21 +2609,14 @@ class CLexer(Lexer):
                 # C.g:645:15: '0' .. '7'
                 self.matchRange(u'0', u'7')
 
-
-
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end OctalEscape
 
-
-
     # $ANTLR start UnicodeEscape
+
     def mUnicodeEscape(self, ):
 
         try:
@@ -3378,19 +2634,14 @@ class CLexer(Lexer):
 
             self.mHexDigit()
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end UnicodeEscape
 
-
-
     # $ANTLR start WS
+
     def mWS(self, ):
 
         try:
@@ -3399,20 +2650,16 @@ class CLexer(Lexer):
             # C.g:653:5: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
             # C.g:653:8: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             if (u'\t' <= self.input.LA(1) <= u'\n') or (u'\f' <= self.input.LA(1) <= u'\r') or self.input.LA(1) == u' ':
-                self.input.consume();
+                self.input.consume()
 
             else:
                 mse = MismatchedSetException(None, self.input)
                 self.recover(mse)
                 raise mse
 
-
-            #action start
-            self.channel=HIDDEN;
-            #action end
-
-
-
+            # action start
+            self.channel = HIDDEN
+            # action end
 
         finally:
 
@@ -3420,9 +2667,8 @@ class CLexer(Lexer):
 
     # $ANTLR end WS
 
-
-
     # $ANTLR start BS
+
     def mBS(self, ):
 
         try:
@@ -3434,15 +2680,9 @@ class CLexer(Lexer):
             # C.g:657:8: '\\\\'
             self.match(u'\\')
 
-
-
-
-            #action start
-            self.channel=HIDDEN;
-            #action end
-
-
-
+            # action start
+            self.channel = HIDDEN
+            # action end
 
         finally:
 
@@ -3450,9 +2690,8 @@ class CLexer(Lexer):
 
     # $ANTLR end BS
 
-
-
     # $ANTLR start UnicodeVocabulary
+
     def mUnicodeVocabulary(self, ):
 
         try:
@@ -3462,19 +2701,14 @@ class CLexer(Lexer):
             # C.g:665:7: '\\u0003' .. '\\uFFFE'
             self.matchRange(u'\u0003', u'\uFFFE')
 
-
-
-
-
         finally:
 
             pass
 
     # $ANTLR end UnicodeVocabulary
 
-
-
     # $ANTLR start COMMENT
+
     def mCOMMENT(self, ):
 
         try:
@@ -3484,44 +2718,34 @@ class CLexer(Lexer):
             # C.g:668:9: '/*' ( options {greedy=false; } : . )* '*/'
             self.match("/*")
 
-
             # C.g:668:14: ( options {greedy=false; } : . )*
-            while True: #loop30
+            while True:  # loop30
                 alt30 = 2
                 LA30_0 = self.input.LA(1)
 
-                if (LA30_0 == u'*') :
+                if (LA30_0 == u'*'):
                     LA30_1 = self.input.LA(2)
 
-                    if (LA30_1 == u'/') :
+                    if (LA30_1 == u'/'):
                         alt30 = 2
-                    elif ((u'\u0000' <= LA30_1 <= u'.') or (u'0' <= LA30_1 <= u'\uFFFE')) :
+                    elif ((u'\u0000' <= LA30_1 <= u'.') or (u'0' <= LA30_1 <= u'\uFFFE')):
                         alt30 = 1
 
-
-                elif ((u'\u0000' <= LA30_0 <= u')') or (u'+' <= LA30_0 <= u'\uFFFE')) :
+                elif ((u'\u0000' <= LA30_0 <= u')') or (u'+' <= LA30_0 <= u'\uFFFE')):
                     alt30 = 1
-
 
                 if alt30 == 1:
                     # C.g:668:42: .
                     self.matchAny()
 
-
-
                 else:
-                    break #loop30
-
+                    break  # loop30
 
             self.match("*/")
 
-
-            #action start
-            self.channel=HIDDEN;
-            #action end
-
-
-
+            # action start
+            self.channel = HIDDEN
+            # action end
 
         finally:
 
@@ -3529,9 +2753,8 @@ class CLexer(Lexer):
 
     # $ANTLR end COMMENT
 
-
-
     # $ANTLR start LINE_COMMENT
+
     def mLINE_COMMENT(self, ):
 
         try:
@@ -3541,54 +2764,42 @@ class CLexer(Lexer):
             # C.g:673:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
             self.match("//")
 
-
             # C.g:673:12: (~ ( '\\n' | '\\r' ) )*
-            while True: #loop31
+            while True:  # loop31
                 alt31 = 2
                 LA31_0 = self.input.LA(1)
 
-                if ((u'\u0000' <= LA31_0 <= u'\t') or (u'\u000B' <= LA31_0 <= u'\f') or (u'\u000E' <= LA31_0 <= u'\uFFFE')) :
+                if ((u'\u0000' <= LA31_0 <= u'\t') or (u'\u000B' <= LA31_0 <= u'\f') or (u'\u000E' <= LA31_0 <= u'\uFFFE')):
                     alt31 = 1
-
 
                 if alt31 == 1:
                     # C.g:673:12: ~ ( '\\n' | '\\r' )
                     if (u'\u0000' <= self.input.LA(1) <= u'\t') or (u'\u000B' <= self.input.LA(1) <= u'\f') or (u'\u000E' <= self.input.LA(1) <= u'\uFFFE'):
-                        self.input.consume();
+                        self.input.consume()
 
                     else:
                         mse = MismatchedSetException(None, self.input)
                         self.recover(mse)
                         raise mse
 
-
-
-
                 else:
-                    break #loop31
-
+                    break  # loop31
 
             # C.g:673:26: ( '\\r' )?
             alt32 = 2
             LA32_0 = self.input.LA(1)
 
-            if (LA32_0 == u'\r') :
+            if (LA32_0 == u'\r'):
                 alt32 = 1
             if alt32 == 1:
                 # C.g:673:26: '\\r'
                 self.match(u'\r')
 
-
-
-
             self.match(u'\n')
 
-            #action start
-            self.channel=HIDDEN;
-            #action end
-
-
-
+            # action start
+            self.channel = HIDDEN
+            # action end
 
         finally:
 
@@ -3596,9 +2807,8 @@ class CLexer(Lexer):
 
     # $ANTLR end LINE_COMMENT
 
-
-
     # $ANTLR start LINE_COMMAND
+
     def mLINE_COMMAND(self, ):
 
         try:
@@ -3609,60 +2819,47 @@ class CLexer(Lexer):
             self.match(u'#')
 
             # C.g:678:11: (~ ( '\\n' | '\\r' ) )*
-            while True: #loop33
+            while True:  # loop33
                 alt33 = 2
                 LA33_0 = self.input.LA(1)
 
-                if ((u'\u0000' <= LA33_0 <= u'\t') or (u'\u000B' <= LA33_0 <= u'\f') or (u'\u000E' <= LA33_0 <= u'\uFFFE')) :
+                if ((u'\u0000' <= LA33_0 <= u'\t') or (u'\u000B' <= LA33_0 <= u'\f') or (u'\u000E' <= LA33_0 <= u'\uFFFE')):
                     alt33 = 1
-
 
                 if alt33 == 1:
                     # C.g:678:11: ~ ( '\\n' | '\\r' )
                     if (u'\u0000' <= self.input.LA(1) <= u'\t') or (u'\u000B' <= self.input.LA(1) <= u'\f') or (u'\u000E' <= self.input.LA(1) <= u'\uFFFE'):
-                        self.input.consume();
+                        self.input.consume()
 
                     else:
                         mse = MismatchedSetException(None, self.input)
                         self.recover(mse)
                         raise mse
 
-
-
-
                 else:
-                    break #loop33
-
+                    break  # loop33
 
             # C.g:678:25: ( '\\r' )?
             alt34 = 2
             LA34_0 = self.input.LA(1)
 
-            if (LA34_0 == u'\r') :
+            if (LA34_0 == u'\r'):
                 alt34 = 1
             if alt34 == 1:
                 # C.g:678:25: '\\r'
                 self.match(u'\r')
 
-
-
-
             self.match(u'\n')
 
-            #action start
-            self.channel=HIDDEN;
-            #action end
-
-
-
+            # action start
+            self.channel = HIDDEN
+            # action end
 
         finally:
 
             pass
 
     # $ANTLR end LINE_COMMAND
-
-
 
     def mTokens(self):
         # C.g:1:8: ( T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | T52 | T53 | T54 | T55 | T56 | T57 | T58 | T59 | T60 | T61 | T62 | T63 | T64 | T65 | T66 | T67 | T68 | T69 | T70 | T71 | T72 | T73 | T74 | T75 | T76 | T77 | T78 | T79 | T80 | T81 | T82 | T83 | T84 | T85 | T86 | T87 | T88 | T89 | T90 | T91 | T92 | T93 | T94 | T95 | T96 | T97 | T98 | T99 | T100 | T101 | T102 | T103 | T104 | T105 | T106 | T107 | T108 | T109 | T110 | T111 | T112 | T113 | T114 | T115 | T116 | T117 | IDENTIFIER | CHARACTER_LITERAL | STRING_LITERAL | HEX_LITERAL | DECIMAL_LITERAL | OCTAL_LITERAL | FLOATING_POINT_LITERAL | WS | BS | UnicodeVocabulary | COMMENT | LINE_COMMENT | LINE_COMMAND )
@@ -3672,681 +2869,463 @@ class CLexer(Lexer):
             # C.g:1:10: T25
             self.mT25()
 
-
-
         elif alt35 == 2:
             # C.g:1:14: T26
             self.mT26()
-
-
 
         elif alt35 == 3:
             # C.g:1:18: T27
             self.mT27()
 
-
-
         elif alt35 == 4:
             # C.g:1:22: T28
             self.mT28()
-
-
 
         elif alt35 == 5:
             # C.g:1:26: T29
             self.mT29()
 
-
-
         elif alt35 == 6:
             # C.g:1:30: T30
             self.mT30()
-
-
 
         elif alt35 == 7:
             # C.g:1:34: T31
             self.mT31()
 
-
-
         elif alt35 == 8:
             # C.g:1:38: T32
             self.mT32()
-
-
 
         elif alt35 == 9:
             # C.g:1:42: T33
             self.mT33()
 
-
-
         elif alt35 == 10:
             # C.g:1:46: T34
             self.mT34()
-
-
 
         elif alt35 == 11:
             # C.g:1:50: T35
             self.mT35()
 
-
-
         elif alt35 == 12:
             # C.g:1:54: T36
             self.mT36()
-
-
 
         elif alt35 == 13:
             # C.g:1:58: T37
             self.mT37()
 
-
-
         elif alt35 == 14:
             # C.g:1:62: T38
             self.mT38()
-
-
 
         elif alt35 == 15:
             # C.g:1:66: T39
             self.mT39()
 
-
-
         elif alt35 == 16:
             # C.g:1:70: T40
             self.mT40()
-
-
 
         elif alt35 == 17:
             # C.g:1:74: T41
             self.mT41()
 
-
-
         elif alt35 == 18:
             # C.g:1:78: T42
             self.mT42()
-
-
 
         elif alt35 == 19:
             # C.g:1:82: T43
             self.mT43()
 
-
-
         elif alt35 == 20:
             # C.g:1:86: T44
             self.mT44()
-
-
 
         elif alt35 == 21:
             # C.g:1:90: T45
             self.mT45()
 
-
-
         elif alt35 == 22:
             # C.g:1:94: T46
             self.mT46()
-
-
 
         elif alt35 == 23:
             # C.g:1:98: T47
             self.mT47()
 
-
-
         elif alt35 == 24:
             # C.g:1:102: T48
             self.mT48()
-
-
 
         elif alt35 == 25:
             # C.g:1:106: T49
             self.mT49()
 
-
-
         elif alt35 == 26:
             # C.g:1:110: T50
             self.mT50()
-
-
 
         elif alt35 == 27:
             # C.g:1:114: T51
             self.mT51()
 
-
-
         elif alt35 == 28:
             # C.g:1:118: T52
             self.mT52()
-
-
 
         elif alt35 == 29:
             # C.g:1:122: T53
             self.mT53()
 
-
-
         elif alt35 == 30:
             # C.g:1:126: T54
             self.mT54()
-
-
 
         elif alt35 == 31:
             # C.g:1:130: T55
             self.mT55()
 
-
-
         elif alt35 == 32:
             # C.g:1:134: T56
             self.mT56()
-
-
 
         elif alt35 == 33:
             # C.g:1:138: T57
             self.mT57()
 
-
-
         elif alt35 == 34:
             # C.g:1:142: T58
             self.mT58()
-
-
 
         elif alt35 == 35:
             # C.g:1:146: T59
             self.mT59()
 
-
-
         elif alt35 == 36:
             # C.g:1:150: T60
             self.mT60()
-
-
 
         elif alt35 == 37:
             # C.g:1:154: T61
             self.mT61()
 
-
-
         elif alt35 == 38:
             # C.g:1:158: T62
             self.mT62()
-
-
 
         elif alt35 == 39:
             # C.g:1:162: T63
             self.mT63()
 
-
-
         elif alt35 == 40:
             # C.g:1:166: T64
             self.mT64()
-
-
 
         elif alt35 == 41:
             # C.g:1:170: T65
             self.mT65()
 
-
-
         elif alt35 == 42:
             # C.g:1:174: T66
             self.mT66()
-
-
 
         elif alt35 == 43:
             # C.g:1:178: T67
             self.mT67()
 
-
-
         elif alt35 == 44:
             # C.g:1:182: T68
             self.mT68()
-
-
 
         elif alt35 == 45:
             # C.g:1:186: T69
             self.mT69()
 
-
-
         elif alt35 == 46:
             # C.g:1:190: T70
             self.mT70()
-
-
 
         elif alt35 == 47:
             # C.g:1:194: T71
             self.mT71()
 
-
-
         elif alt35 == 48:
             # C.g:1:198: T72
             self.mT72()
-
-
 
         elif alt35 == 49:
             # C.g:1:202: T73
             self.mT73()
 
-
-
         elif alt35 == 50:
             # C.g:1:206: T74
             self.mT74()
-
-
 
         elif alt35 == 51:
             # C.g:1:210: T75
             self.mT75()
 
-
-
         elif alt35 == 52:
             # C.g:1:214: T76
             self.mT76()
-
-
 
         elif alt35 == 53:
             # C.g:1:218: T77
             self.mT77()
 
-
-
         elif alt35 == 54:
             # C.g:1:222: T78
             self.mT78()
-
-
 
         elif alt35 == 55:
             # C.g:1:226: T79
             self.mT79()
 
-
-
         elif alt35 == 56:
             # C.g:1:230: T80
             self.mT80()
-
-
 
         elif alt35 == 57:
             # C.g:1:234: T81
             self.mT81()
 
-
-
         elif alt35 == 58:
             # C.g:1:238: T82
             self.mT82()
-
-
 
         elif alt35 == 59:
             # C.g:1:242: T83
             self.mT83()
 
-
-
         elif alt35 == 60:
             # C.g:1:246: T84
             self.mT84()
-
-
 
         elif alt35 == 61:
             # C.g:1:250: T85
             self.mT85()
 
-
-
         elif alt35 == 62:
             # C.g:1:254: T86
             self.mT86()
-
-
 
         elif alt35 == 63:
             # C.g:1:258: T87
             self.mT87()
 
-
-
         elif alt35 == 64:
             # C.g:1:262: T88
             self.mT88()
-
-
 
         elif alt35 == 65:
             # C.g:1:266: T89
             self.mT89()
 
-
-
         elif alt35 == 66:
             # C.g:1:270: T90
             self.mT90()
-
-
 
         elif alt35 == 67:
             # C.g:1:274: T91
             self.mT91()
 
-
-
         elif alt35 == 68:
             # C.g:1:278: T92
             self.mT92()
-
-
 
         elif alt35 == 69:
             # C.g:1:282: T93
             self.mT93()
 
-
-
         elif alt35 == 70:
             # C.g:1:286: T94
             self.mT94()
-
-
 
         elif alt35 == 71:
             # C.g:1:290: T95
             self.mT95()
 
-
-
         elif alt35 == 72:
             # C.g:1:294: T96
             self.mT96()
-
-
 
         elif alt35 == 73:
             # C.g:1:298: T97
             self.mT97()
 
-
-
         elif alt35 == 74:
             # C.g:1:302: T98
             self.mT98()
-
-
 
         elif alt35 == 75:
             # C.g:1:306: T99
             self.mT99()
 
-
-
         elif alt35 == 76:
             # C.g:1:310: T100
             self.mT100()
-
-
 
         elif alt35 == 77:
             # C.g:1:315: T101
             self.mT101()
 
-
-
         elif alt35 == 78:
             # C.g:1:320: T102
             self.mT102()
-
-
 
         elif alt35 == 79:
             # C.g:1:325: T103
             self.mT103()
 
-
-
         elif alt35 == 80:
             # C.g:1:330: T104
             self.mT104()
-
-
 
         elif alt35 == 81:
             # C.g:1:335: T105
             self.mT105()
 
-
-
         elif alt35 == 82:
             # C.g:1:340: T106
             self.mT106()
-
-
 
         elif alt35 == 83:
             # C.g:1:345: T107
             self.mT107()
 
-
-
         elif alt35 == 84:
             # C.g:1:350: T108
             self.mT108()
-
-
 
         elif alt35 == 85:
             # C.g:1:355: T109
             self.mT109()
 
-
-
         elif alt35 == 86:
             # C.g:1:360: T110
             self.mT110()
-
-
 
         elif alt35 == 87:
             # C.g:1:365: T111
             self.mT111()
 
-
-
         elif alt35 == 88:
             # C.g:1:370: T112
             self.mT112()
-
-
 
         elif alt35 == 89:
             # C.g:1:375: T113
             self.mT113()
 
-
-
         elif alt35 == 90:
             # C.g:1:380: T114
             self.mT114()
-
-
 
         elif alt35 == 91:
             # C.g:1:385: T115
             self.mT115()
 
-
-
         elif alt35 == 92:
             # C.g:1:390: T116
             self.mT116()
-
-
 
         elif alt35 == 93:
             # C.g:1:395: T117
             self.mT117()
 
-
-
         elif alt35 == 94:
             # C.g:1:400: IDENTIFIER
             self.mIDENTIFIER()
-
-
 
         elif alt35 == 95:
             # C.g:1:411: CHARACTER_LITERAL
             self.mCHARACTER_LITERAL()
 
-
-
         elif alt35 == 96:
             # C.g:1:429: STRING_LITERAL
             self.mSTRING_LITERAL()
-
-
 
         elif alt35 == 97:
             # C.g:1:444: HEX_LITERAL
             self.mHEX_LITERAL()
 
-
-
         elif alt35 == 98:
             # C.g:1:456: DECIMAL_LITERAL
             self.mDECIMAL_LITERAL()
-
-
 
         elif alt35 == 99:
             # C.g:1:472: OCTAL_LITERAL
             self.mOCTAL_LITERAL()
 
-
-
         elif alt35 == 100:
             # C.g:1:486: FLOATING_POINT_LITERAL
             self.mFLOATING_POINT_LITERAL()
-
-
 
         elif alt35 == 101:
             # C.g:1:509: WS
             self.mWS()
 
-
-
         elif alt35 == 102:
             # C.g:1:512: BS
             self.mBS()
-
-
 
         elif alt35 == 103:
             # C.g:1:515: UnicodeVocabulary
             self.mUnicodeVocabulary()
 
-
-
         elif alt35 == 104:
             # C.g:1:533: COMMENT
             self.mCOMMENT()
-
-
 
         elif alt35 == 105:
             # C.g:1:541: LINE_COMMENT
             self.mLINE_COMMENT()
 
-
-
         elif alt35 == 106:
             # C.g:1:554: LINE_COMMAND
             self.mLINE_COMMAND()
-
-
-
-
-
-
-
 
     # lookup tables for DFA #25
 
     DFA25_eot = DFA.unpack(
         u"\7\uffff\1\10\2\uffff"
-        )
+    )
 
     DFA25_eof = DFA.unpack(
         u"\12\uffff"
-        )
+    )
 
     DFA25_min = DFA.unpack(
         u"\2\56\2\uffff\1\53\1\uffff\2\60\2\uffff"
-        )
+    )
 
     DFA25_max = DFA.unpack(
         u"\1\71\1\146\2\uffff\1\71\1\uffff\1\71\1\146\2\uffff"
-        )
+    )
 
     DFA25_accept = DFA.unpack(
         u"\2\uffff\1\2\1\1\1\uffff\1\4\2\uffff\2\3"
-        )
+    )
 
     DFA25_special = DFA.unpack(
         u"\12\uffff"
-        )
-
+    )
 
     DFA25_transition = [
         DFA.unpack(u"\1\2\1\uffff\12\1"),
         DFA.unpack(u"\1\3\1\uffff\12\1\12\uffff\1\5\1\4\1\5\35\uffff\1\5"
-        u"\1\4\1\5"),
+                   u"\1\4\1\5"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"\1\6\1\uffff\1\6\2\uffff\12\7"),
         DFA.unpack(u""),
         DFA.unpack(u"\12\7"),
         DFA.unpack(u"\12\7\12\uffff\1\11\1\uffff\1\11\35\uffff\1\11\1\uffff"
-        u"\1\11"),
+                   u"\1\11"),
         DFA.unpack(u""),
         DFA.unpack(u"")
     ]
@@ -4376,11 +3355,11 @@ class CLexer(Lexer):
         u"\uffff\1\u0164\1\u0165\1\76\1\u0167\3\76\6\uffff\1\u016b\1\uffff"
         u"\3\76\1\uffff\21\76\1\u0180\2\76\1\uffff\3\76\1\u0186\1\76\1\uffff"
         u"\11\76\1\u0191\1\uffff"
-        )
+    )
 
     DFA35_eof = DFA.unpack(
         u"\u0192\uffff"
-        )
+    )
 
     DFA35_min = DFA.unpack(
         u"\1\3\1\uffff\1\171\1\uffff\1\75\1\154\1\150\1\165\1\145\1\124\1"
@@ -4413,7 +3392,7 @@ class CLexer(Lexer):
         u"\1\111\1\137\1\122\1\103\1\111\1\126\1\105\1\106\1\111\1\44\1\137"
         u"\1\103\1\uffff\1\125\1\105\1\116\1\44\1\122\1\uffff\1\105\1\106"
         u"\1\105\1\122\1\105\1\116\1\103\1\105\1\104\1\44\1\uffff"
-        )
+    )
 
     DFA35_max = DFA.unpack(
         u"\1\ufffe\1\uffff\1\171\1\uffff\1\75\1\170\1\167\1\165\1\145\1\124"
@@ -4447,7 +3426,7 @@ class CLexer(Lexer):
         u"\1\106\1\111\1\172\1\137\1\103\1\uffff\1\125\1\105\1\116\1\172"
         u"\1\122\1\uffff\1\105\1\106\1\105\1\122\1\105\1\116\1\103\1\105"
         u"\1\104\1\172\1\uffff"
-        )
+    )
 
     DFA35_accept = DFA.unpack(
         u"\1\uffff\1\1\1\uffff\1\3\15\uffff\1\23\1\24\1\27\10\uffff\1\46"
@@ -4467,21 +3446,20 @@ class CLexer(Lexer):
         u"\uffff\1\42\1\45\1\uffff\1\2\3\uffff\1\123\7\uffff\1\117\1\10\1"
         u"\32\1\133\1\22\1\35\1\uffff\1\40\3\uffff\1\37\24\uffff\1\43\5\uffff"
         u"\1\44\12\uffff\1\41"
-        )
+    )
 
     DFA35_special = DFA.unpack(
         u"\u0192\uffff"
-        )
-
+    )
 
     DFA35_transition = [
         DFA.unpack(u"\6\73\2\70\1\73\2\70\22\73\1\70\1\50\1\65\1\72\1\63"
-        u"\1\45\1\46\1\64\1\34\1\35\1\40\1\42\1\3\1\43\1\41\1\44\1\66\11"
-        u"\67\1\23\1\1\1\51\1\4\1\52\1\55\1\73\2\63\1\26\1\63\1\32\1\63\1"
-        u"\31\1\63\1\24\2\63\1\62\2\63\1\25\1\33\2\63\1\11\1\63\1\27\1\30"
-        u"\4\63\1\36\1\71\1\37\1\53\1\56\1\73\1\7\1\61\1\13\1\17\1\5\1\16"
-        u"\1\60\1\63\1\14\2\63\1\15\5\63\1\10\1\6\1\2\1\20\1\12\1\57\3\63"
-        u"\1\21\1\54\1\22\1\47\uff80\73"),
+                   u"\1\45\1\46\1\64\1\34\1\35\1\40\1\42\1\3\1\43\1\41\1\44\1\66\11"
+                   u"\67\1\23\1\1\1\51\1\4\1\52\1\55\1\73\2\63\1\26\1\63\1\32\1\63\1"
+                   u"\31\1\63\1\24\2\63\1\62\2\63\1\25\1\33\2\63\1\11\1\63\1\27\1\30"
+                   u"\4\63\1\36\1\71\1\37\1\53\1\56\1\73\1\7\1\61\1\13\1\17\1\5\1\16"
+                   u"\1\60\1\63\1\14\2\63\1\15\5\63\1\10\1\6\1\2\1\20\1\12\1\57\3\63"
+                   u"\1\21\1\54\1\22\1\47\uff80\73"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\75"),
         DFA.unpack(u""),
@@ -4536,7 +3514,7 @@ class CLexer(Lexer):
         DFA.unpack(u"\47\u0092\1\uffff\uffd7\u0092"),
         DFA.unpack(u"\uffff\u0091"),
         DFA.unpack(u"\1\154\1\uffff\10\u0094\2\154\12\uffff\3\154\21\uffff"
-        u"\1\u0093\13\uffff\3\154\21\uffff\1\u0093"),
+                   u"\1\u0093\13\uffff\3\154\21\uffff\1\u0093"),
         DFA.unpack(u"\1\154\1\uffff\12\u0096\12\uffff\3\154\35\uffff\3\154"),
         DFA.unpack(u""),
         DFA.unpack(u""),
@@ -4563,20 +3541,20 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u00ab"),
         DFA.unpack(u"\1\u00ac"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u00ae"),
         DFA.unpack(u"\1\u00af"),
         DFA.unpack(u"\1\u00b0"),
         DFA.unpack(u"\1\u00b1"),
         DFA.unpack(u"\1\u00b2"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\24\76\1\u00b3\5\76"),
+                   u"\24\76\1\u00b3\5\76"),
         DFA.unpack(u"\1\u00b6\11\uffff\1\u00b5"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u00b8"),
         DFA.unpack(u"\1\u00b9"),
         DFA.unpack(u"\1\u00ba"),
@@ -4634,7 +3612,7 @@ class CLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"\1\154\1\uffff\10\u0094\2\154\12\uffff\3\154\35\uffff"
-        u"\3\154"),
+                   u"\3\154"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\154\1\uffff\12\u0096\12\uffff\3\154\35\uffff\3\154"),
         DFA.unpack(u""),
@@ -4661,10 +3639,10 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u00dd"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u00df"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u00e1"),
         DFA.unpack(u"\1\u00e2"),
         DFA.unpack(u"\1\u00e3"),
@@ -4674,7 +3652,7 @@ class CLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u"\1\u00e6"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u00e8"),
         DFA.unpack(u"\1\u00e9"),
         DFA.unpack(u"\1\u00ea"),
@@ -4693,10 +3671,10 @@ class CLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u"\1\u00f4"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u00f6"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u00f8"),
         DFA.unpack(u"\1\u00f9"),
         DFA.unpack(u"\1\u00fa"),
@@ -4704,22 +3682,22 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u00fc"),
         DFA.unpack(u"\1\u00fd"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u00ff"),
         DFA.unpack(u"\1\u0100"),
         DFA.unpack(u"\1\u0101"),
         DFA.unpack(u"\1\u0102"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u0105"),
         DFA.unpack(u"\1\u0106"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\u0109"),
         DFA.unpack(u"\1\u010a"),
@@ -4737,10 +3715,10 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u0116"),
         DFA.unpack(u"\1\u0117"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u0119"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u011b"),
         DFA.unpack(u"\1\u011c"),
         DFA.unpack(u""),
@@ -4752,7 +3730,7 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u0121"),
         DFA.unpack(u"\1\u0122"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\u0124"),
         DFA.unpack(u"\1\u0125"),
@@ -4762,19 +3740,19 @@ class CLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u"\1\u0128"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u012b"),
         DFA.unpack(u"\1\u012c"),
         DFA.unpack(u"\1\u012d"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u012f"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u0131"),
         DFA.unpack(u"\1\u0132"),
         DFA.unpack(u"\1\u0133"),
@@ -4783,39 +3761,39 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u0136"),
         DFA.unpack(u"\1\u0137"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\u0138\1"
-        u"\uffff\32\76"),
+                   u"\uffff\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u013c"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\u0143"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u0146"),
         DFA.unpack(u"\1\u0147"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"\1\u0148"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u014a"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\u014b"),
@@ -4826,15 +3804,15 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u014f"),
         DFA.unpack(u"\1\u0150"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u0153"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u""),
@@ -4847,7 +3825,7 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u0156"),
         DFA.unpack(u"\1\u0157"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\u0159"),
         DFA.unpack(u"\1\u015a"),
@@ -4859,22 +3837,22 @@ class CLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u0166"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u0168"),
         DFA.unpack(u"\1\u0169"),
         DFA.unpack(u"\1\u016a"),
@@ -4885,7 +3863,7 @@ class CLexer(Lexer):
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\u016c"),
         DFA.unpack(u"\1\u016d"),
@@ -4909,7 +3887,7 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u017e"),
         DFA.unpack(u"\1\u017f"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u0181"),
         DFA.unpack(u"\1\u0182"),
         DFA.unpack(u""),
@@ -4917,7 +3895,7 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u0184"),
         DFA.unpack(u"\1\u0185"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"\1\u0187"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\u0188"),
@@ -4930,12 +3908,10 @@ class CLexer(Lexer):
         DFA.unpack(u"\1\u018f"),
         DFA.unpack(u"\1\u0190"),
         DFA.unpack(u"\1\76\13\uffff\12\76\7\uffff\32\76\4\uffff\1\76\1\uffff"
-        u"\32\76"),
+                   u"\32\76"),
         DFA.unpack(u"")
     ]
 
     # class definition for DFA #35
 
     DFA35 = DFA
-
-

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to parse a xml file of .PKG file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -14,7 +14,7 @@ from edk2basetools.UPT.Logger.StringTable import ERR_XML_PARSER_REQUIRED_ITEM_MI
 from edk2basetools.UPT.Logger.ToolError import PARSER_ERROR
 import edk2basetools.UPT.Logger.Log as Logger
 
-## ConvertVariableName()
+# ConvertVariableName()
 # Convert VariableName to be L"string",
 # input of UCS-2 format Hex Array or L"string" (C style.) could be converted successfully,
 # others will not.
@@ -22,6 +22,8 @@ import edk2basetools.UPT.Logger.Log as Logger
 # @param VariableName: string need to be converted
 # @retval: the L quoted string converted if success, else None will be returned
 #
+
+
 def ConvertVariableName(VariableName):
     VariableName = VariableName.strip()
     #
@@ -34,7 +36,7 @@ def ConvertVariableName(VariableName):
     # check for Hex Array, it should be little endian even number of hex numbers
     #
     ValueList = VariableName.split(' ')
-    if len(ValueList)%2 == 1:
+    if len(ValueList) % 2 == 1:
         return None
 
     TransferedStr = ''
@@ -49,18 +51,20 @@ def ConvertVariableName(VariableName):
 
         if FirstByte not in range(0x20, 0x7F):
             return None
-        TransferedStr += ('%c')%FirstByte
+        TransferedStr += ('%c') % FirstByte
         Index = Index + 2
 
     return 'L"' + TransferedStr + '"'
 
-## IsRequiredItemListNull
+# IsRequiredItemListNull
 #
 # Check if a required XML section item/attribue is NULL
 #
 # @param ItemList:     The list of items to be checked
 # @param XmlTreeLevel: The error message tree level
 #
+
+
 def IsRequiredItemListNull(ItemDict, XmlTreeLevel):
     for Key in ItemDict:
         if not ItemDict[Key]:
@@ -68,10 +72,12 @@ def IsRequiredItemListNull(ItemDict, XmlTreeLevel):
             ErrorMsg = ERR_XML_PARSER_REQUIRED_ITEM_MISSING % (Key, Msg)
             Logger.Error('\nUPT', PARSER_ERROR, ErrorMsg, RaiseError=True)
 
-## Get help text
+# Get help text
 #
 # @param HelpText
 #
+
+
 def GetHelpTextList(HelpText):
     HelpTextList = []
     for HelT in HelpText:
@@ -81,10 +87,12 @@ def GetHelpTextList(HelpText):
         HelpTextList.append(HelpTextObj)
     return HelpTextList
 
-## Get Prompt text
+# Get Prompt text
 #
 # @param Prompt
 #
+
+
 def GetPromptList(Prompt):
     PromptList = []
     for SubPrompt in Prompt:

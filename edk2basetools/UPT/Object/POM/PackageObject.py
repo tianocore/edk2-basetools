@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define a class object to describe a package
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -18,8 +18,10 @@ from edk2basetools.UPT.Object.POM.CommonObject import CommonHeaderObject
 from edk2basetools.UPT.Object.POM.CommonObject import BinaryHeaderObject
 from edk2basetools.UPT.Library.Misc import Sdict
 
-## StandardIncludeFileObject
+# StandardIncludeFileObject
 #
+
+
 class StandardIncludeFileObject(CommonPropertiesObject):
     def __init__(self):
         CommonPropertiesObject.__init__(self)
@@ -31,14 +33,18 @@ class StandardIncludeFileObject(CommonPropertiesObject):
     def GetIncludeFile(self):
         return self.IncludeFile
 
-## PackageIncludeFileObject
+# PackageIncludeFileObject
 #
+
+
 class PackageIncludeFileObject(StandardIncludeFileObject):
     pass
 
 ##
 # PackageObject
 #
+
+
 class PackageObject(IdentificationObject, CommonHeaderObject, BinaryHeaderObject):
     def __init__(self):
         IdentificationObject.__init__(self)
@@ -189,4 +195,3 @@ class PackageObject(IdentificationObject, CommonHeaderObject, BinaryHeaderObject
 
     def GetModuleFileList(self):
         return self.ModuleFileList
-

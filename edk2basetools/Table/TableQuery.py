@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase table for Queries
 #
 # Copyright (c) 2008, Intel Corporation. All rights reserved.<BR>
@@ -13,19 +13,21 @@ import edk2basetools.Common.EdkLogger as EdkLogger
 from edk2basetools.Common.StringUtils import ConvertToSqlString
 from edk2basetools.Table.Table import Table
 
-## TableQuery
+# TableQuery
 #
 # This class defined a table used for Query
 #
 # @param object:       Inherited from object class
 #
 #
+
+
 class TableQuery(Table):
     def __init__(self, Cursor):
         Table.__init__(self, Cursor)
         self.Table = 'Query'
 
-    ## Create table
+    # Create table
     #
     # Create table Query
     #
@@ -44,7 +46,7 @@ class TableQuery(Table):
                                                      )""" % self.Table
         Table.Create(self, SqlCommand)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Query
     #
@@ -57,7 +59,7 @@ class TableQuery(Table):
     def Insert(self, Name, Modifier, Value, Model):
         self.ID = self.ID + 1
         SqlCommand = """insert into %s values(%s, '%s', '%s', '%s', %s)""" \
-                                           % (self.Table, self.ID, Name, Modifier, Value, Model)
+            % (self.Table, self.ID, Name, Modifier, Value, Model)
         Table.Insert(self, SqlCommand)
 
         return self.ID

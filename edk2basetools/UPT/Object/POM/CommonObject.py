@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define common items of class object
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -10,10 +10,12 @@ Common Object
 '''
 from edk2basetools.UPT.Library.DataType import TAB_LANGUAGE_EN_US
 
-## HelpTextObject
+# HelpTextObject
 #
 # @param object:       Inherited from object class
 #
+
+
 class HelpTextObject(object):
     def __init__(self):
         self.HelpText = TextObject()
@@ -24,10 +26,12 @@ class HelpTextObject(object):
     def GetHelpText(self):
         return self.HelpText
 
-## HelpTextListObject
+# HelpTextListObject
 #
 # @param object:       Inherited from object class
 #
+
+
 class HelpTextListObject(object):
     def __init__(self):
         self.HelpTextList = []
@@ -38,10 +42,12 @@ class HelpTextListObject(object):
     def GetHelpTextList(self):
         return self.HelpTextList
 
-## PromptListObject
+# PromptListObject
 #
 # @param object:       Inherited from object class
 #
+
+
 class PromptListObject(object):
     def __init__(self):
         self.PromptList = []
@@ -52,7 +58,7 @@ class PromptListObject(object):
     def GetPromptList(self):
         return self.PromptList
 
-## CommonPropertiesObject
+# CommonPropertiesObject
 #
 # This class defined common attribution used in Module/Platform/Package files
 #
@@ -63,6 +69,8 @@ class PromptListObject(object):
 # @param HelpText:     Input value for HelpText, default is ''
 # @param HelpTextList: Input value for HelpTextList, default is []
 #
+
+
 class CommonPropertiesObject(HelpTextObject, HelpTextListObject):
     def __init__(self):
         self.Usage = []
@@ -96,12 +104,14 @@ class CommonPropertiesObject(HelpTextObject, HelpTextListObject):
     def GetGuidValue(self):
         return self.GuidValue
 
-## CommonHeaderObject
+# CommonHeaderObject
 #
 # This class defined common header items used in Module/Platform/Package files
 #
 # @param object:          Inherited from object class
 #
+
+
 class CommonHeaderObject(object):
     def __init__(self):
         self.AbstractList = []
@@ -145,12 +155,14 @@ class CommonHeaderObject(object):
     def GetLicense(self):
         return self.LicenseList
 
-## BinaryHeaderObject
+# BinaryHeaderObject
 #
 # This class defined Binary header items used in Module/Platform/Package files
 #
 # @param object:          Inherited from object class
 #
+
+
 class BinaryHeaderObject(object):
     def __init__(self):
         self.BinaryHeaderAbstractList = []
@@ -194,12 +206,14 @@ class BinaryHeaderObject(object):
     def GetBinaryHeaderLicense(self):
         return self.BinaryHeaderLicenseList
 
-## ClonedRecordObject
+# ClonedRecordObject
 #
 # This class defined ClonedRecord items used in Module/Platform/Package files
 #
 # @param object:        Inherited from object class
 #
+
+
 class ClonedRecordObject(object):
     def __init__(self):
         self.IdNum = 0
@@ -245,12 +259,14 @@ class ClonedRecordObject(object):
     def GetModuleVersion(self):
         return self.ModuleVersion
 
-## TextObject
+# TextObject
 #
 # This class defined Text item used in PKG file
 #
 # @param object:     Inherited from object class
 #
+
+
 class TextObject(object):
     def __init__(self):
         self.Lang = TAB_LANGUAGE_EN_US
@@ -268,12 +284,14 @@ class TextObject(object):
     def GetString(self):
         return self.String
 
-## FileNameObject
+# FileNameObject
 #
 # This class defined File item used in module, for binary files
 #
 # @param CommonPropertiesObject:   Inherited from CommonPropertiesObject class
 #
+
+
 class FileNameObject(CommonPropertiesObject):
     def __init__(self):
         self.FileType = ''
@@ -292,12 +310,14 @@ class FileNameObject(CommonPropertiesObject):
     def GetFilename(self):
         return self.Filename
 
-## FileObject
+# FileObject
 #
 # This class defined File item used in PKG file
 #
 # @param object:   Inherited from object class
 #
+
+
 class FileObject(object):
     def __init__(self):
         self.Executable = ''
@@ -327,6 +347,8 @@ class FileObject(object):
 #
 # @param CommonHeaderObject:   Inherited from CommonHeaderObject class
 #
+
+
 class MiscFileObject(CommonHeaderObject):
     def __init__(self):
         self.Name = ''
@@ -348,15 +370,19 @@ class MiscFileObject(CommonHeaderObject):
 ##
 # ToolsObject
 #
+
+
 class ToolsObject(MiscFileObject):
     pass
 
-## GuidVersionObject
+# GuidVersionObject
 #
 # This class defined GUID/Version items used in PKG file
 #
 # @param object:     Inherited from object class
 #
+
+
 class GuidVersionObject(object):
     def __init__(self):
         self.Guid = ''
@@ -374,12 +400,14 @@ class GuidVersionObject(object):
     def GetVersion(self):
         return self.Version
 
-## IdentificationObject
+# IdentificationObject
 #
 # This class defined Identification items used in Module/Platform/Package files
 #
 # @param object:    Inherited from object class
 #
+
+
 class IdentificationObject(GuidVersionObject):
     def __init__(self):
         self.Name = ''
@@ -440,13 +468,15 @@ class IdentificationObject(GuidVersionObject):
     def GetCombinePath(self):
         return self.CombinePath
 
-## GuidProtocolPpiCommonObject
+# GuidProtocolPpiCommonObject
 #
 # This class defined Guid, Protocol and Ppi like items used in
 # Module/Platform/Package files
 #
 # @param CommonPropertiesObject:    Inherited from CommonPropertiesObject class
 #
+
+
 class GuidProtocolPpiCommonObject(CommonPropertiesObject):
     def __init__(self):
         self.Name = ''
@@ -479,17 +509,20 @@ class GuidProtocolPpiCommonObject(CommonPropertiesObject):
     def GetSupModuleList(self):
         return self.SupModuleList
 
-## GuidObject
+# GuidObject
 #
 # This class defined Guid item used in Module/Platform/Package files
 #
 # @param GuidProtocolPpiCommonObject:  GuidProtocolPpiCommonObject
 #
+
+
 class GuidObject(GuidProtocolPpiCommonObject):
     def __init__(self):
         self.VariableName = ''
         self.GuidTypeList = []
         GuidProtocolPpiCommonObject.__init__(self)
+
     def SetVariableName(self, VariableName):
         self.VariableName = VariableName
 
@@ -502,54 +535,64 @@ class GuidObject(GuidProtocolPpiCommonObject):
     def GetGuidTypeList(self):
         return self.GuidTypeList
 
-## ProtocolObject
+# ProtocolObject
 #
 # This class defined Protocol item used in Module/Platform/Package files
 #
 # @param GuidProtocolPpiCommonObject:  Inherited from
 #                                      GuidProtocolPpiCommonObject
 #
+
+
 class ProtocolObject(GuidProtocolPpiCommonObject):
     def __init__(self):
         self.Notify = False
         GuidProtocolPpiCommonObject.__init__(self)
+
     def SetNotify(self, Notify):
         self.Notify = Notify
 
     def GetNotify(self):
         return self.Notify
 
-## PpiObject
+# PpiObject
 #
 # This class defined Ppi item used in Module/Platform/Package files
 #
 # @param GuidProtocolPpiCommonObject:  Inherited from
 #                                      GuidProtocolPpiCommonObject
 #
+
+
 class PpiObject(GuidProtocolPpiCommonObject):
     def __init__(self):
         self.Notify = False
         GuidProtocolPpiCommonObject.__init__(self)
+
     def SetNotify(self, Notify):
         self.Notify = Notify
 
     def GetNotify(self):
         return self.Notify
 
-## DefineObject
+# DefineObject
 #
 # This class defined item DEFINE used in Module/Platform/Package files
 #
 # @param object:  Inherited from object class
 #
+
+
 class DefineClass(object):
     def __init__(self):
         self.Define = {}
 
-## UserExtensionObject
+# UserExtensionObject
 #
 # @param object:  Inherited from object class
 #
+
+
 class UserExtensionObject(object):
     def __init__(self):
         self.UserID = ''
@@ -684,12 +727,14 @@ class UserExtensionObject(object):
     def GetBinariesDict(self):
         return self.BinariesDict
 
-## LibraryClassObject
+# LibraryClassObject
 #
 # This class defined Library item used in Module/Platform/Package files
 #
 # @param CommonPropertiesObject:  Inherited from CommonPropertiesObject class
 #
+
+
 class LibraryClassObject(CommonPropertiesObject):
     def __init__(self):
         self.LibraryClass = ''
@@ -723,7 +768,7 @@ class LibraryClassObject(CommonPropertiesObject):
         return self.RecommendedInstance
 
 
-## PcdErrorObject
+# PcdErrorObject
 #
 # @param object:  Inherited from object class
 #
@@ -801,7 +846,7 @@ class PcdErrorObject(object):
         return self.LineNum
 
 
-## IncludeObject
+# IncludeObject
 #
 # This class defined Include item used in Module/Platform/Package files
 #
@@ -839,7 +884,7 @@ class IncludeObject(CommonPropertiesObject):
     def GetComment(self):
         return self.Comment
 
-## PcdObject
+# PcdObject
 #
 # This class defined Pcd item used in Module/Platform/Package files
 #
@@ -855,6 +900,8 @@ class IncludeObject(CommonPropertiesObject):
 # @param SkuInfoList:          Input value for SkuInfoList, default is {}
 # @param SupModuleList:        Input value for SupModuleList, default is []
 #
+
+
 class PcdObject(CommonPropertiesObject, HelpTextListObject, PromptListObject):
     def __init__(self):
         self.PcdCName = ''

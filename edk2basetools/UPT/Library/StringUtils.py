@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define common string related functions used in parsing
 # process
 #
@@ -25,7 +25,7 @@ from edk2basetools.UPT.Logger import StringTable as ST
 #
 gMACRO_PATTERN = re.compile("\$\(([_A-Z][_A-Z0-9]*)\)", re.UNICODE)
 
-## GetSplitValueList
+# GetSplitValueList
 #
 # Get a value list from a string with multiple values split with SplitTag
 # The default SplitTag is DataType.TAB_VALUE_SPLIT
@@ -36,10 +36,12 @@ gMACRO_PATTERN = re.compile("\$\(([_A-Z][_A-Z0-9]*)\)", re.UNICODE)
 # @param MaxSplit:  The max number of split values, default is -1
 #
 #
-def GetSplitValueList(String, SplitTag=DataType.TAB_VALUE_SPLIT, MaxSplit= -1):
+
+
+def GetSplitValueList(String, SplitTag=DataType.TAB_VALUE_SPLIT, MaxSplit=-1):
     return list(map(lambda l: l.strip(), String.split(SplitTag, MaxSplit)))
 
-## MergeArches
+# MergeArches
 #
 # Find a key's all arches in dict, add the new arch to the list
 # If not exist any arch, set the arch directly
@@ -48,13 +50,15 @@ def GetSplitValueList(String, SplitTag=DataType.TAB_VALUE_SPLIT, MaxSplit= -1):
 # @param Key:   The input value for Key
 # @param Arch:  The Arch to be added or merged
 #
+
+
 def MergeArches(Dict, Key, Arch):
     if Key in Dict.keys():
         Dict[Key].append(Arch)
     else:
         Dict[Key] = Arch.split()
 
-## GenDefines
+# GenDefines
 #
 # Parse a string with format "DEFINE <VarName> = <PATH>"
 # Generate a map Defines[VarName] = PATH
@@ -64,10 +68,12 @@ def MergeArches(Dict, Key, Arch):
 # @param Arch:     Supported Arch
 # @param Defines:  DEFINE statement to be parsed
 #
+
+
 def GenDefines(String, Arch, Defines):
     if String.find(DataType.TAB_DEFINE + ' ') > -1:
         List = String.replace(DataType.TAB_DEFINE + ' ', '').\
-        split(DataType.TAB_EQUAL_SPLIT)
+            split(DataType.TAB_EQUAL_SPLIT)
         if len(List) == 2:
             Defines[(CleanString(List[0]), Arch)] = CleanString(List[1])
             return 0
@@ -75,7 +81,7 @@ def GenDefines(String, Arch, Defines):
             return -1
     return 1
 
-## GetLibraryClassesWithModuleType
+# GetLibraryClassesWithModuleType
 #
 # Get Library Class definition when no module type defined
 #
@@ -84,6 +90,8 @@ def GenDefines(String, Arch, Defines):
 # @param KeyValues:         To store data after parsing
 # @param CommentCharacter:  Comment char, used to ignore comment content
 #
+
+
 def GetLibraryClassesWithModuleType(Lines, Key, KeyValues, CommentCharacter):
     NewKey = SplitModuleType(Key)
     Lines = Lines.split(DataType.TAB_SECTION_END, 1)[1]
@@ -95,7 +103,7 @@ def GetLibraryClassesWithModuleType(Lines, Key, KeyValues, CommentCharacter):
 
     return True
 
-## GetDynamics
+# GetDynamics
 #
 # Get Dynamic Pcds
 #
@@ -104,6 +112,8 @@ def GetLibraryClassesWithModuleType(Lines, Key, KeyValues, CommentCharacter):
 # @param KeyValues:         To store data after parsing
 # @param CommentCharacter:  Comment char, used to ignore comment content
 #
+
+
 def GetDynamics(Lines, Key, KeyValues, CommentCharacter):
     #
     # Get SkuId Name List
@@ -119,7 +129,7 @@ def GetDynamics(Lines, Key, KeyValues, CommentCharacter):
 
     return True
 
-## SplitModuleType
+# SplitModuleType
 #
 # Split ModuleType out of section defien to get key
 # [LibraryClass.Arch.ModuleType|ModuleType|ModuleType] -> [
@@ -127,6 +137,8 @@ def GetDynamics(Lines, Key, KeyValues, CommentCharacter):
 #
 # @param Key:  String to be parsed
 #
+
+
 def SplitModuleType(Key):
     KeyList = Key.split(DataType.TAB_SPLIT)
     #
@@ -146,7 +158,7 @@ def SplitModuleType(Key):
 
     return ReturnValue
 
-## Replace macro in string
+# Replace macro in string
 #
 # This method replace macros used in given string. The macros are given in a
 # dictionary.
@@ -157,6 +169,8 @@ def SplitModuleType(Key):
 # @param Line:              The content contain line string and line number
 # @param FileName:        The meta-file file name
 #
+
+
 def ReplaceMacro(String, MacroDefinitions=None, SelfReplacement=False, Line=None, FileName=None, Flag=False):
     LastString = String
     if MacroDefinitions is None:
@@ -201,10 +215,10 @@ def ReplaceMacro(String, MacroDefinitions=None, SelfReplacement=False, Line=None
                     Count += 1
                     if Count % 2 != 0:
                         QuotedStringList[Count - 1] = QuotedStringList[Count - 1].replace("$(%s)" % Macro,
-                                                                        MacroDefinitions[Macro])
+                                                                                          MacroDefinitions[Macro])
                     elif Count == len(QuotedStringList) and Count % 2 == 0:
                         QuotedStringList[Count - 1] = QuotedStringList[Count - 1].replace("$(%s)" % Macro,
-                                                                        MacroDefinitions[Macro])
+                                                                                          MacroDefinitions[Macro])
 
         RetString = ''
         if HaveQuotedMacroFlag:
@@ -227,7 +241,7 @@ def ReplaceMacro(String, MacroDefinitions=None, SelfReplacement=False, Line=None
 
     return String
 
-## NormPath
+# NormPath
 #
 # Create a normal path
 # And replace DEFINE in the path
@@ -235,6 +249,8 @@ def ReplaceMacro(String, MacroDefinitions=None, SelfReplacement=False, Line=None
 # @param Path:     The input value for Path to be converted
 # @param Defines:  A set for DEFINE statement
 #
+
+
 def NormPath(Path, Defines=None):
     IsRelativePath = False
     if Defines is None:
@@ -256,7 +272,7 @@ def NormPath(Path, Defines=None):
         Path = os.path.join('.', Path)
     return Path
 
-## CleanString
+# CleanString
 #
 # Remove comments in a string
 # Remove spaces
@@ -265,6 +281,8 @@ def NormPath(Path, Defines=None):
 # @param CommentCharacter:  Comment char, used to ignore comment content,
 #                           default is DataType.TAB_COMMENT_SPLIT
 #
+
+
 def CleanString(Line, CommentCharacter=DataType.TAB_COMMENT_SPLIT, AllowCppStyleComment=False):
     #
     # remove whitespace
@@ -292,7 +310,7 @@ def CleanString(Line, CommentCharacter=DataType.TAB_COMMENT_SPLIT, AllowCppStyle
 
     return Line
 
-## CleanString2
+# CleanString2
 #
 # Split comments in a string
 # Remove spaces
@@ -301,6 +319,8 @@ def CleanString(Line, CommentCharacter=DataType.TAB_COMMENT_SPLIT, AllowCppStyle
 # @param CommentCharacter:  Comment char, used to ignore comment content,
 #                           default is DataType.TAB_COMMENT_SPLIT
 #
+
+
 def CleanString2(Line, CommentCharacter=DataType.TAB_COMMENT_SPLIT, AllowCppStyleComment=False):
     #
     # remove whitespace
@@ -337,7 +357,7 @@ def CleanString2(Line, CommentCharacter=DataType.TAB_COMMENT_SPLIT, AllowCppStyl
 
     return Line, Comment
 
-## GetMultipleValuesOfKeyFromLines
+# GetMultipleValuesOfKeyFromLines
 #
 # Parse multiple strings to clean comment and spaces
 # The result is saved to KeyValues
@@ -347,6 +367,8 @@ def CleanString2(Line, CommentCharacter=DataType.TAB_COMMENT_SPLIT, AllowCppStyl
 # @param KeyValues:         To store data after parsing
 # @param CommentCharacter:  Comment char, used to ignore comment content
 #
+
+
 def GetMultipleValuesOfKeyFromLines(Lines, Key, KeyValues, CommentCharacter):
     if Key:
         pass
@@ -360,7 +382,7 @@ def GetMultipleValuesOfKeyFromLines(Lines, Key, KeyValues, CommentCharacter):
             KeyValues += [Line]
     return True
 
-## GetDefineValue
+# GetDefineValue
 #
 # Parse a DEFINE statement to get defined value
 # DEFINE Key Value
@@ -369,13 +391,15 @@ def GetMultipleValuesOfKeyFromLines(Lines, Key, KeyValues, CommentCharacter):
 # @param Key:               The key of DEFINE statement
 # @param CommentCharacter:  Comment char, used to ignore comment content
 #
+
+
 def GetDefineValue(String, Key, CommentCharacter):
     if CommentCharacter:
         pass
     String = CleanString(String)
-    return String[String.find(Key + ' ') + len(Key + ' ') : ]
+    return String[String.find(Key + ' ') + len(Key + ' '):]
 
-## GetSingleValueOfKeyFromLines
+# GetSingleValueOfKeyFromLines
 #
 # Parse multiple strings as below to get value of each definition line
 # Key1 = Value1
@@ -393,7 +417,9 @@ def GetDefineValue(String, Key, CommentCharacter):
 #                              values. Key1 = Value1|Value2, '|' is the value
 #                              split char
 #
-def GetSingleValueOfKeyFromLines(Lines, Dictionary, CommentCharacter, KeySplitCharacter, \
+
+
+def GetSingleValueOfKeyFromLines(Lines, Dictionary, CommentCharacter, KeySplitCharacter,
                                  ValueSplitFlag, ValueSplitCharacter):
     Lines = Lines.split('\n')
     Keys = []
@@ -450,7 +476,7 @@ def GetSingleValueOfKeyFromLines(Lines, Dictionary, CommentCharacter, KeySplitCh
 
     return True
 
-## The content to be parsed
+# The content to be parsed
 #
 # Do pre-check for a file before it is parsed
 # Check $()
@@ -460,6 +486,8 @@ def GetSingleValueOfKeyFromLines(Lines, Dictionary, CommentCharacter, KeySplitCh
 # @param FileContent:    File content to be parsed
 # @param SupSectionTag:  Used for error report
 #
+
+
 def PreCheck(FileName, FileContent, SupSectionTag):
     if SupSectionTag:
         pass
@@ -502,7 +530,7 @@ def PreCheck(FileName, FileContent, SupSectionTag):
 
     return NewFileContent
 
-## CheckFileType
+# CheckFileType
 #
 # Check if the Filename is including ExtName
 # Return True if it exists
@@ -516,7 +544,9 @@ def PreCheck(FileName, FileContent, SupSectionTag):
 # @param Line:               The line in container file which defines the file
 #                            to be checked
 #
-def CheckFileType(CheckFilename, ExtName, ContainerFilename, SectionName, Line, LineNo= -1):
+
+
+def CheckFileType(CheckFilename, ExtName, ContainerFilename, SectionName, Line, LineNo=-1):
     if CheckFilename != '' and CheckFilename is not None:
         (Root, Ext) = os.path.splitext(CheckFilename)
         if Ext.upper() != ExtName.upper() and Root:
@@ -524,12 +554,12 @@ def CheckFileType(CheckFilename, ExtName, ContainerFilename, SectionName, Line, 
             if LineNo == -1:
                 LineNo = GetLineNo(ContainerFile, Line)
             ErrorMsg = ST.ERR_SECTIONNAME_INVALID % (SectionName, CheckFilename, ExtName)
-            Logger.Error("Parser", PARSER_ERROR, ErrorMsg, Line=LineNo, \
+            Logger.Error("Parser", PARSER_ERROR, ErrorMsg, Line=LineNo,
                          File=ContainerFilename, RaiseError=Logger.IS_RAISE_ERROR)
 
     return True
 
-## CheckFileExist
+# CheckFileExist
 #
 # Check if the file exists
 # Return True if it exists
@@ -543,7 +573,9 @@ def CheckFileType(CheckFilename, ExtName, ContainerFilename, SectionName, Line, 
 # @param Line:               The line in container file which defines the
 #                            file to be checked
 #
-def CheckFileExist(WorkspaceDir, CheckFilename, ContainerFilename, SectionName, Line, LineNo= -1):
+
+
+def CheckFileExist(WorkspaceDir, CheckFilename, ContainerFilename, SectionName, Line, LineNo=-1):
     CheckFile = ''
     if CheckFilename != '' and CheckFilename is not None:
         CheckFile = WorkspaceFile(WorkspaceDir, CheckFilename)
@@ -553,16 +585,18 @@ def CheckFileExist(WorkspaceDir, CheckFilename, ContainerFilename, SectionName, 
                 LineNo = GetLineNo(ContainerFile, Line)
             ErrorMsg = ST.ERR_CHECKFILE_NOTFOUND % (CheckFile, SectionName)
             Logger.Error("Parser", PARSER_ERROR, ErrorMsg,
-                            File=ContainerFilename, Line=LineNo, RaiseError=Logger.IS_RAISE_ERROR)
+                         File=ContainerFilename, Line=LineNo, RaiseError=Logger.IS_RAISE_ERROR)
     return CheckFile
 
-## GetLineNo
+# GetLineNo
 #
 # Find the index of a line in a file
 #
 # @param FileContent:  Search scope
 # @param Line:         Search key
 #
+
+
 def GetLineNo(FileContent, Line, IsIgnoreComment=True):
     LineList = FileContent.splitlines()
     for Index in range(len(LineList)):
@@ -577,7 +611,7 @@ def GetLineNo(FileContent, Line, IsIgnoreComment=True):
 
     return -1
 
-## RaiseParserError
+# RaiseParserError
 #
 # Raise a parser error
 #
@@ -586,31 +620,37 @@ def GetLineNo(FileContent, Line, IsIgnoreComment=True):
 # @param File:     File which has the string
 # @param Format:   Correct format
 #
-def RaiseParserError(Line, Section, File, Format='', LineNo= -1):
+
+
+def RaiseParserError(Line, Section, File, Format='', LineNo=-1):
     if LineNo == -1:
         LineNo = GetLineNo(open(os.path.normpath(File), 'r').read(), Line)
     ErrorMsg = ST.ERR_INVALID_NOTFOUND % (Line, Section)
     if Format != '':
         Format = "Correct format is " + Format
-    Logger.Error("Parser", PARSER_ERROR, ErrorMsg, File=File, Line=LineNo, \
+    Logger.Error("Parser", PARSER_ERROR, ErrorMsg, File=File, Line=LineNo,
                  ExtraData=Format, RaiseError=Logger.IS_RAISE_ERROR)
 
-## WorkspaceFile
+# WorkspaceFile
 #
 # Return a full path with workspace dir
 #
 # @param WorkspaceDir:  Workspace dir
 # @param Filename:      Relative file name
 #
+
+
 def WorkspaceFile(WorkspaceDir, Filename):
     return os.path.join(NormPath(WorkspaceDir), NormPath(Filename))
 
-## Split string
+# Split string
 #
 # Remove '"' which startswith and endswith string
 #
 # @param String:  The string need to be split
 #
+
+
 def SplitString(String):
     if String.startswith('\"'):
         String = String[1:]
@@ -618,31 +658,37 @@ def SplitString(String):
         String = String[:-1]
     return String
 
-## Convert To Sql String
+# Convert To Sql String
 #
 # Replace "'" with "''" in each item of StringList
 #
 # @param StringList:  A list for strings to be converted
 #
+
+
 def ConvertToSqlString(StringList):
     return list(map(lambda s: s.replace("'", "''"), StringList))
 
-## Convert To Sql String
+# Convert To Sql String
 #
 # Replace "'" with "''" in the String
 #
 # @param String:  A String to be converted
 #
+
+
 def ConvertToSqlString2(String):
     return String.replace("'", "''")
 
-## GetStringOfList
+# GetStringOfList
 #
 # Get String of a List
 #
 # @param Lines: string list
 # @param Split: split character
 #
+
+
 def GetStringOfList(List, Split=' '):
     if not isinstance(List, type([])):
         return List
@@ -651,12 +697,14 @@ def GetStringOfList(List, Split=' '):
         Str = Str + Item + Split
     return Str.strip()
 
-## Get HelpTextList
+# Get HelpTextList
 #
 # Get HelpTextList from HelpTextClassList
 #
 # @param HelpTextClassList: Help Text Class List
 #
+
+
 def GetHelpTextList(HelpTextClassList):
     List = []
     if HelpTextClassList:
@@ -666,12 +714,14 @@ def GetHelpTextList(HelpTextClassList):
                 List.extend(HelpText.String.split('\n'))
     return List
 
-## Get String Array Length
+# Get String Array Length
 #
 # Get String Array Length
 #
 # @param String: the source string
 #
+
+
 def StringArrayLength(String):
     if String.startswith('L"'):
         return (len(String) - 3 + 1) * 2
@@ -680,7 +730,7 @@ def StringArrayLength(String):
     else:
         return len(String.split()) + 1
 
-## RemoveDupOption
+# RemoveDupOption
 #
 # Remove Dup Option
 #
@@ -688,6 +738,8 @@ def StringArrayLength(String):
 # @param Which: Which flag
 # @param Against: Against flag
 #
+
+
 def RemoveDupOption(OptionString, Which="/I", Against=None):
     OptionList = OptionString.split()
     ValueList = []
@@ -707,7 +759,7 @@ def RemoveDupOption(OptionString, Which="/I", Against=None):
             ValueList.append(Val)
     return " ".join(OptionList)
 
-## Check if the string is HexDgit
+# Check if the string is HexDgit
 #
 # Return true if all characters in the string are digits and there is at
 # least one character
@@ -715,6 +767,8 @@ def RemoveDupOption(OptionString, Which="/I", Against=None):
 # , false otherwise.
 # @param string: input string
 #
+
+
 def IsHexDigit(Str):
     try:
         int(Str, 10)
@@ -728,7 +782,7 @@ def IsHexDigit(Str):
                 return False
     return False
 
-## Check if the string is HexDgit and its integer value within limit of UINT32
+# Check if the string is HexDgit and its integer value within limit of UINT32
 #
 # Return true if all characters in the string are digits and there is at
 # least one character
@@ -736,6 +790,8 @@ def IsHexDigit(Str):
 # , false otherwise.
 # @param string: input string
 #
+
+
 def IsHexDigitUINT32(Str):
     try:
         Value = int(Str, 10)
@@ -751,7 +807,7 @@ def IsHexDigitUINT32(Str):
                 return False
     return False
 
-## CleanSpecialChar
+# CleanSpecialChar
 #
 # The ASCII text files of type INF, DEC, INI are edited by developers,
 # and may contain characters that cannot be directly translated to strings that
@@ -759,6 +815,8 @@ def IsHexDigitUINT32(Str):
 # (0x00-0x08, TAB [0x09], 0x0B, 0x0C, 0x0E-0x1F, 0x80-0xFF)
 # must be converted to a space character[0x20] as part of the parsing process.
 #
+
+
 def ConvertSpecialChar(Lines):
     RetLines = []
     for line in Lines:
@@ -767,12 +825,14 @@ def ConvertSpecialChar(Lines):
 
     return RetLines
 
-## __GetTokenList
+# __GetTokenList
 #
 # Assume Str is a valid feature flag expression.
 # Return a list which contains tokens: alpha numeric token and other token
 # Whitespace are not stripped
 #
+
+
 def __GetTokenList(Str):
     InQuote = False
     Token = ''
@@ -819,13 +879,15 @@ def __GetTokenList(Str):
         List.append(TokenOP)
     return List
 
-## ConvertNEToNOTEQ
+# ConvertNEToNOTEQ
 #
 # Convert NE operator to NOT EQ
 # For example: 1 NE 2 -> 1 NOT EQ 2
 #
 # @param Expr: Feature flag expression to be converted
 #
+
+
 def ConvertNEToNOTEQ(Expr):
     List = __GetTokenList(Expr)
     for Index in range(len(List)):
@@ -833,13 +895,15 @@ def ConvertNEToNOTEQ(Expr):
             List[Index] = 'NOT EQ'
     return ''.join(List)
 
-## ConvertNOTEQToNE
+# ConvertNOTEQToNE
 #
 # Convert NOT EQ operator to NE
 # For example: 1 NOT NE 2 -> 1 NE 2
 #
 # @param Expr: Feature flag expression to be converted
 #
+
+
 def ConvertNOTEQToNE(Expr):
     List = __GetTokenList(Expr)
     HasNOT = False
@@ -860,7 +924,7 @@ def ConvertNOTEQToNE(Expr):
 
     return ''.join(RetList)
 
-## SplitPcdEntry
+# SplitPcdEntry
 #
 # Split an PCD entry string to Token.CName and PCD value and FFE.
 # NOTE: PCD Value and FFE can contain "|" in its expression. And in INF specification, have below rule.
@@ -871,6 +935,8 @@ def ConvertNOTEQToNE(Expr):
 #
 # @return List     [PcdTokenCName, Value, FFE]
 #
+
+
 def SplitPcdEntry(String):
     if not String:
         return ['', '', ''], False
@@ -923,11 +989,13 @@ def SplitPcdEntry(String):
 
     return ['', '', ''], False
 
-## Check if two arches matched?
+# Check if two arches matched?
 #
 # @param Arch1
 # @param Arch2
 #
+
+
 def IsMatchArch(Arch1, Arch2):
     if 'COMMON' in Arch1 or 'COMMON' in Arch2:
         return True
@@ -953,6 +1021,8 @@ def IsMatchArch(Arch1, Arch2):
 # Search all files in FilePath to find the FileName with the largest index
 # Return the FileName with index +1 under the FilePath
 #
+
+
 def GetUniFileName(FilePath, FileName):
     Files = []
     try:

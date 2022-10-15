@@ -1,11 +1,11 @@
-## @file
+# @file
 # This file is used to define common items of class object
 #
 # Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 
 
-## SkuInfoClass
+# SkuInfoClass
 #
 # This class defined SkuInfo item used in Module/Platform/Package files
 #
@@ -29,8 +29,8 @@
 # @var DefaultValue:       To store value for DefaultValue
 #
 class SkuInfoClass(object):
-    def __init__(self, SkuIdName = '', SkuId = '', VariableName = '', VariableGuid = '', VariableOffset = '',
-                 HiiDefaultValue = '', VpdOffset = '', DefaultValue = '', VariableGuidValue = '', VariableAttribute = '', DefaultStore = None):
+    def __init__(self, SkuIdName='', SkuId='', VariableName='', VariableGuid='', VariableOffset='',
+                 HiiDefaultValue='', VpdOffset='', DefaultValue='', VariableGuidValue='', VariableAttribute='', DefaultStore=None):
         self.SkuIdName = SkuIdName
         self.SkuId = SkuId
 
@@ -57,7 +57,7 @@ class SkuInfoClass(object):
         #
         self.DefaultValue = DefaultValue
 
-    ## Convert the class to a string
+    # Convert the class to a string
     #
     #  Convert each member of the class to string
     #  Organize to a single line format string
@@ -66,16 +66,16 @@ class SkuInfoClass(object):
     #
     def __str__(self):
         Rtn = 'SkuId = ' + str(self.SkuId) + "," + \
-                    'SkuIdName = ' + str(self.SkuIdName) + "," + \
-                    'VariableName = ' + str(self.VariableName) + "," + \
-                    'VariableGuid = ' + str(self.VariableGuid) + "," + \
-                    'VariableOffset = ' + str(self.VariableOffset) + "," + \
-                    'HiiDefaultValue = ' + str(self.HiiDefaultValue) + "," + \
-                    'VpdOffset = ' + str(self.VpdOffset) + "," + \
-                    'DefaultValue = ' + str(self.DefaultValue) + ","
+            'SkuIdName = ' + str(self.SkuIdName) + "," + \
+            'VariableName = ' + str(self.VariableName) + "," + \
+            'VariableGuid = ' + str(self.VariableGuid) + "," + \
+            'VariableOffset = ' + str(self.VariableOffset) + "," + \
+            'HiiDefaultValue = ' + str(self.HiiDefaultValue) + "," + \
+            'VpdOffset = ' + str(self.VpdOffset) + "," + \
+            'DefaultValue = ' + str(self.DefaultValue) + ","
         return Rtn
 
-    def __deepcopy__(self,memo):
+    def __deepcopy__(self, memo):
         new_sku = SkuInfoClass()
         new_sku.SkuIdName = self.SkuIdName
         new_sku.SkuId = self.SkuId
@@ -85,7 +85,7 @@ class SkuInfoClass(object):
         new_sku.VariableOffset = self.VariableOffset
         new_sku.HiiDefaultValue = self.HiiDefaultValue
         new_sku.VariableAttribute = self.VariableAttribute
-        new_sku.DefaultStoreDict = {key:value for key,value in self.DefaultStoreDict.items()}
+        new_sku.DefaultStoreDict = {key: value for key, value in self.DefaultStoreDict.items()}
         new_sku.VpdOffset = self.VpdOffset
         new_sku.DefaultValue = self.DefaultValue
         return new_sku

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to parse a PCD file of .PKG file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -35,6 +35,8 @@ import re
 ##
 # PcdErrorXml
 #
+
+
 class PcdErrorXml(object):
     def __init__(self):
         self.ValidValueList = ''
@@ -47,14 +49,14 @@ class PcdErrorXml(object):
     def FromXml(self, Item, Key):
         self.ValidValueList = XmlElement(Item, '%s/ValidValueList' % Key)
         self.ValidValueListLang = \
-        XmlAttribute(XmlNode(Item, '%s/ValidValueList' % Key), 'Lang')
+            XmlAttribute(XmlNode(Item, '%s/ValidValueList' % Key), 'Lang')
         self.ValidValueRange = self.TransferValidEpxr2ValidRange(XmlElement(Item, '%s/ValidValueRange' % Key))
         self.Expression = XmlElement(Item, '%s/Expression' % Key)
         self.ErrorNumber = XmlElement(Item, '%s/ErrorNumber' % Key)
         for ErrMsg in XmlList(Item, '%s/ErrorMessage' % Key):
             ErrorMessageString = XmlElement(ErrMsg, 'ErrorMessage')
             ErrorMessageLang = \
-            XmlAttribute(XmlNode(ErrMsg, 'ErrorMessage'), 'Lang')
+                XmlAttribute(XmlNode(ErrMsg, 'ErrorMessage'), 'Lang')
             self.ErrorMessage.append((ErrorMessageLang, ErrorMessageString))
 
         Error = PcdErrorObject()
@@ -74,16 +76,16 @@ class PcdErrorXml(object):
         NodeList = []
         if PcdError.GetValidValue():
             Element1 = \
-            CreateXmlElement('ValidValueList', PcdError.GetValidValue(), [], \
-                             [['Lang', PcdError.GetValidValueLang()]])
+                CreateXmlElement('ValidValueList', PcdError.GetValidValue(), [],
+                                 [['Lang', PcdError.GetValidValueLang()]])
             NodeList.append(Element1)
         if PcdError.GetValidValueRange():
             TansferedRangeStr = self.TransferValidRange2Expr(PcdError.GetTokenSpaceGuidCName(),
                                                              PcdError.GetCName(),
                                                              PcdError.GetValidValueRange())
             Element1 = \
-            CreateXmlElement('ValidValueRange', \
-                             TansferedRangeStr, [], [])
+                CreateXmlElement('ValidValueRange',
+                                 TansferedRangeStr, [], [])
             NodeList.append(Element1)
         if PcdError.GetExpression():
             NodeList.append(['Expression', PcdError.GetExpression()])
@@ -91,7 +93,7 @@ class PcdErrorXml(object):
             NodeList.append(['ErrorNumber', PcdError.GetErrorNumber()])
         for Item in PcdError.GetErrorMessageList():
             Element = \
-            CreateXmlElement('ErrorMessage', Item[1], [], [['Lang', Item[0]]])
+                CreateXmlElement('ErrorMessage', Item[1], [], [['Lang', Item[0]]])
             NodeList.append(Element)
         Root = CreateXmlElement('%s' % Key, '', NodeList, AttributeList)
 
@@ -158,18 +160,18 @@ class PcdErrorXml(object):
             pass
 
         PCD_PATTERN = \
-        '[\t\s]*[_a-zA-Z][a-zA-Z0-9_]*[\t\s]*\.[\t\s]*[_a-zA-Z][a-zA-Z0-9_]*[\t\s]*'
+            '[\t\s]*[_a-zA-Z][a-zA-Z0-9_]*[\t\s]*\.[\t\s]*[_a-zA-Z][a-zA-Z0-9_]*[\t\s]*'
         IntPattern1 = \
-        '[\t\s]*\([\t\s]*'+PCD_PATTERN+'[\t\s]+GE[\t\s]+\d+[\t\s]*\)[\t\s]+AND[\t\s]+\([\t\s]*'+\
-        PCD_PATTERN+'[\t\s]+LE[\t\s]+\d+[\t\s]*\)'
+            '[\t\s]*\([\t\s]*' + PCD_PATTERN + '[\t\s]+GE[\t\s]+\d+[\t\s]*\)[\t\s]+AND[\t\s]+\([\t\s]*' +\
+            PCD_PATTERN + '[\t\s]+LE[\t\s]+\d+[\t\s]*\)'
         IntPattern1 = IntPattern1.replace(' ', '')
-        IntPattern2 = '[\t\s]*'+PCD_PATTERN+'[\t\s]+(LT|GT|LE|GE|XOR|EQ)[\t\s]+\d+[\t\s]*'
+        IntPattern2 = '[\t\s]*' + PCD_PATTERN + '[\t\s]+(LT|GT|LE|GE|XOR|EQ)[\t\s]+\d+[\t\s]*'
 
         HexPattern1 = \
-        '[\t\s]*\([\t\s]*'+PCD_PATTERN+'[\t\s]+GE[\t\s]+0[xX][0-9a-fA-F]+[\t\s]*\)[\t\s]+AND[\t\s]+\([\t\s]*'+\
-        PCD_PATTERN+'[\t\s]+LE[\t\s]+0[xX][0-9a-fA-F]+[\t\s]*\)'
+            '[\t\s]*\([\t\s]*' + PCD_PATTERN + '[\t\s]+GE[\t\s]+0[xX][0-9a-fA-F]+[\t\s]*\)[\t\s]+AND[\t\s]+\([\t\s]*' +\
+            PCD_PATTERN + '[\t\s]+LE[\t\s]+0[xX][0-9a-fA-F]+[\t\s]*\)'
         HexPattern1 = HexPattern1.replace(' ', '')
-        HexPattern2 = '[\t\s]*'+PCD_PATTERN+'[\t\s]+(LT|GT|LE|GE|XOR|EQ)[\t\s]+0[xX][0-9a-zA-Z]+[\t\s]*'
+        HexPattern2 = '[\t\s]*' + PCD_PATTERN + '[\t\s]+(LT|GT|LE|GE|XOR|EQ)[\t\s]+0[xX][0-9a-zA-Z]+[\t\s]*'
 
         #
         # Do the Hex1 conversion
@@ -236,17 +238,17 @@ class PcdErrorXml(object):
 
         return ValidRangeExpr
 
-
-
     def __str__(self):
         return "ValidValueList = %s ValidValueListLang = %s ValidValueRange \
         = %s Expression = %s ErrorNumber = %s %s" % \
-        (self.ValidValueList, self.ValidValueListLang, self.ValidValueRange, \
-         self.Expression, self.ErrorNumber, self.ErrorMessage)
+            (self.ValidValueList, self.ValidValueListLang, self.ValidValueRange,
+             self.Expression, self.ErrorNumber, self.ErrorMessage)
 
 ##
 # PcdEntryXml
 #
+
+
 class PcdEntryXml(object):
     def __init__(self):
         self.PcdItemType = ''
@@ -272,12 +274,12 @@ class PcdEntryXml(object):
     #
     def FromXml(self, Item, Key):
         self.PcdItemType = \
-        XmlAttribute(XmlNode(Item, '%s' % Key), 'PcdItemType')
+            XmlAttribute(XmlNode(Item, '%s' % Key), 'PcdItemType')
         self.PcdUsage = XmlAttribute(XmlNode(Item, '%s' % Key), 'PcdUsage')
         self.TokenSpaceGuidCName = \
-        XmlElement(Item, '%s/TokenSpaceGuidCname' % Key)
+            XmlElement(Item, '%s/TokenSpaceGuidCname' % Key)
         self.TokenSpaceGuidValue = \
-        XmlElement(Item, '%s/TokenSpaceGuidValue' % Key)
+            XmlElement(Item, '%s/TokenSpaceGuidValue' % Key)
         self.Token = XmlElement(Item, '%s/Token' % Key)
         self.CName = XmlElement(Item, '%s/CName' % Key)
         self.PcdCName = XmlElement(Item, '%s/PcdCName' % Key)
@@ -325,9 +327,10 @@ class PcdEntryXml(object):
     ##
     # Package will use FromXml2
     #
+
     def FromXml2(self, Item, Key):
         self.TokenSpaceGuidCName = \
-        XmlElement(Item, '%s/TokenSpaceGuidCname' % Key)
+            XmlElement(Item, '%s/TokenSpaceGuidCname' % Key)
         self.Token = XmlElement(Item, '%s/Token' % Key)
         self.CName = XmlElement(Item, '%s/CName' % Key)
         self.DatumType = XmlElement(Item, '%s/DatumType' % Key)
@@ -373,10 +376,10 @@ class PcdEntryXml(object):
     #
     def FromXml3(self, Item, Key):
         self.PcdItemType = \
-        XmlAttribute(XmlNode(Item, '%s' % Key), 'PcdItemType')
+            XmlAttribute(XmlNode(Item, '%s' % Key), 'PcdItemType')
         self.PcdUsage = XmlAttribute(XmlNode(Item, '%s' % Key), 'PcdUsage')
         self.TokenSpaceGuidCName = \
-        XmlElement(Item, '%s/TokenSpaceGuidCName' % Key)
+            XmlElement(Item, '%s/TokenSpaceGuidCName' % Key)
         self.CName = XmlElement(Item, '%s/CName' % Key)
         self.DefaultValue = XmlElement(Item, '%s/DefaultValue' % Key)
         self.CommonDefines.FromXml(XmlNode(Item, '%s' % Key), Key)
@@ -412,11 +415,11 @@ class PcdEntryXml(object):
         DefaultValue = ConvertNEToNOTEQ(PcdEntry.GetDefaultValue())
 
         AttributeList = \
-        [['SupArchList', GetStringOfList(PcdEntry.GetSupArchList())], \
-         ['PcdUsage', PcdEntry.GetValidUsage()], \
-         ['PcdItemType', PcdEntry.GetItemType()], \
-         ['FeatureFlag', PcdEntry.GetFeatureFlag()],
-        ]
+            [['SupArchList', GetStringOfList(PcdEntry.GetSupArchList())],
+             ['PcdUsage', PcdEntry.GetValidUsage()],
+                ['PcdItemType', PcdEntry.GetItemType()],
+                ['FeatureFlag', PcdEntry.GetFeatureFlag()],
+             ]
         NodeList = [['TokenSpaceGuidCname', PcdEntry.GetTokenSpaceGuidCName()],
                     ['TokenSpaceGuidValue', PcdEntry.GetTokenSpaceGuidValue()],
                     ['Token', PcdEntry.GetToken()],
@@ -426,7 +429,7 @@ class PcdEntryXml(object):
                     ['DefaultValue', DefaultValue],
                     ['MaxDatumSize', PcdEntry.GetMaxDatumSize()],
                     ['Offset', PcdEntry.GetOffset()],
-                   ]
+                    ]
 
         for Item in PcdEntry.GetHelpTextList():
             Tmp = HelpTextXml()
@@ -441,6 +444,7 @@ class PcdEntryXml(object):
     ##
     # Package will use ToXml2
     #
+
     def ToXml2(self, PcdEntry, Key):
         if self.PcdCName:
             pass
@@ -448,9 +452,9 @@ class PcdEntryXml(object):
         DefaultValue = ConvertNEToNOTEQ(PcdEntry.GetDefaultValue())
 
         AttributeList = \
-        [['SupArchList', GetStringOfList(PcdEntry.GetSupArchList())], \
-         ['SupModList', GetStringOfList(PcdEntry.GetSupModuleList())]
-        ]
+            [['SupArchList', GetStringOfList(PcdEntry.GetSupArchList())],
+             ['SupModList', GetStringOfList(PcdEntry.GetSupModuleList())]
+             ]
         NodeList = [['TokenSpaceGuidCname', PcdEntry.GetTokenSpaceGuidCName()],
                     ['Token', PcdEntry.GetToken()],
                     ['CName', PcdEntry.GetCName()],
@@ -458,7 +462,7 @@ class PcdEntryXml(object):
                     ['ValidUsage', GetStringOfList(PcdEntry.GetValidUsage())],
                     ['DefaultValue', DefaultValue],
                     ['MaxDatumSize', PcdEntry.GetMaxDatumSize()],
-                   ]
+                    ]
         for Item in PcdEntry.GetPromptList():
             Tmp = PromptXml()
             NodeList.append(Tmp.ToXml(Item))
@@ -477,6 +481,7 @@ class PcdEntryXml(object):
     ##
     # Module will use ToXml3
     #
+
     def ToXml3(self, PcdEntry, Key):
         if self.PcdCName:
             pass
@@ -484,15 +489,15 @@ class PcdEntryXml(object):
         DefaultValue = ConvertNEToNOTEQ(PcdEntry.GetDefaultValue())
 
         AttributeList = \
-        [['SupArchList', GetStringOfList(PcdEntry.GetSupArchList())], \
-         ['PcdUsage', PcdEntry.GetValidUsage()], \
-         ['PcdItemType', PcdEntry.GetItemType()], \
-         ['FeatureFlag', ConvertNEToNOTEQ(PcdEntry.GetFeatureFlag())],
-        ]
+            [['SupArchList', GetStringOfList(PcdEntry.GetSupArchList())],
+             ['PcdUsage', PcdEntry.GetValidUsage()],
+                ['PcdItemType', PcdEntry.GetItemType()],
+                ['FeatureFlag', ConvertNEToNOTEQ(PcdEntry.GetFeatureFlag())],
+             ]
         NodeList = [['CName', PcdEntry.GetCName()],
                     ['TokenSpaceGuidCName', PcdEntry.GetTokenSpaceGuidCName()],
                     ['DefaultValue', DefaultValue],
-                   ]
+                    ]
 
         for Item in PcdEntry.GetHelpTextList():
             Tmp = HelpTextXml()
@@ -517,14 +522,14 @@ class PcdEntryXml(object):
         AttributeList = []
 
         NodeList = [
-                    ['TokenSpaceGuidValue', PcdEntry.GetTokenSpaceGuidValue()],
-                    ['PcdCName', PcdEntry.GetCName()],
-                    ['Token', PcdEntry.GetToken()],
-                    ['DatumType', PcdEntry.GetDatumType()],
-                    ['MaxDatumSize', PcdEntry.GetMaxDatumSize()],
-                    ['Value', DefaultValue],
-                    ['Offset', PcdEntry.GetOffset()]
-                   ]
+            ['TokenSpaceGuidValue', PcdEntry.GetTokenSpaceGuidValue()],
+            ['PcdCName', PcdEntry.GetCName()],
+            ['Token', PcdEntry.GetToken()],
+            ['DatumType', PcdEntry.GetDatumType()],
+            ['MaxDatumSize', PcdEntry.GetMaxDatumSize()],
+            ['Value', DefaultValue],
+            ['Offset', PcdEntry.GetOffset()]
+        ]
 
         for Item in PcdEntry.GetHelpTextList():
             Tmp = HelpTextXml()
@@ -537,17 +542,16 @@ class PcdEntryXml(object):
 
         return Root
 
-
     def __str__(self):
         Str = \
-        ('PcdItemType = %s PcdUsage = %s TokenSpaceGuidCName = %s \
+            ('PcdItemType = %s PcdUsage = %s TokenSpaceGuidCName = %s \
         TokenSpaceGuidValue = %s Token = %s CName = %s PcdCName = %s \
         DatumType = %s ValidUsage = %s DefaultValue = %s MaxDatumSize = %s \
         Value = %s Offset = %s %s') % \
-        (self.PcdItemType, self.PcdUsage, self.TokenSpaceGuidCName, \
-         self.TokenSpaceGuidValue, self.Token, self.CName, self.PcdCName, \
-         self.DatumType, self.ValidUsage, self.DefaultValue, \
-         self.MaxDatumSize, self.Value, self.Offset, self.CommonDefines)
+            (self.PcdItemType, self.PcdUsage, self.TokenSpaceGuidCName,
+             self.TokenSpaceGuidValue, self.Token, self.CName, self.PcdCName,
+             self.DatumType, self.ValidUsage, self.DefaultValue,
+             self.MaxDatumSize, self.Value, self.Offset, self.CommonDefines)
         for Item in self.HelpText:
             Str = Str + "\n\t" + str(Item)
         for Item in self.PcdError:

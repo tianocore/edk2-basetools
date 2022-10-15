@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the parser for BuildOption sections in INF file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -25,22 +25,23 @@ from edk2basetools.UPT.Library.ParserValidate import IsValidFamily
 from edk2basetools.UPT.Library.ParserValidate import IsValidBuildOptionName
 from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
+
 class InfBuildOptionSectionParser(InfParserSectionRoot):
-    ## InfBuildOptionParser
+    # InfBuildOptionParser
     #
     #
     def InfBuildOptionParser(self, SectionString, InfSectionObject, FileName):
 
         BuildOptionList = []
-        SectionContent  = ''
+        SectionContent = ''
 
         if not GlobalData.gIS_BINARY_INF:
-            ValueList       = []
-            LineNo          = 0
+            ValueList = []
+            LineNo = 0
 
             for Line in SectionString:
                 LineContent = Line[0]
-                LineNo      = Line[1]
+                LineNo = Line[1]
                 TailComments = ''
                 ReplaceFlag = False
 
@@ -146,13 +147,15 @@ class InfBuildOptionSectionParser(InfParserSectionRoot):
         if not InfSectionObject.SetBuildOptions(BuildOptionList, ArchList, SectionContent):
             Logger.Error('InfParser',
                          FORMAT_INVALID,
-                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR%("[BuilOptions]"),
+                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR % ("[BuilOptions]"),
                          File=FileName,
                          Line=LastItem[3])
 
-## InfBuildOptionParser
+# InfBuildOptionParser
 #
 #
+
+
 def InfAsBuiltBuildOptionParser(SectionString, FileName):
     BuildOptionList = []
     #
@@ -164,7 +167,7 @@ def InfAsBuiltBuildOptionParser(SectionString, FileName):
     for Line in SectionString:
         Count += 1
         LineContent = Line[0]
-        LineNo      = Line[1]
+        LineNo = Line[1]
 
         #
         # The last line
@@ -195,11 +198,11 @@ def InfAsBuiltBuildOptionParser(SectionString, FileName):
 
         if not LineContent.strip().startswith("#"):
             Logger.Error('InfParser',
-                        FORMAT_INVALID,
-                        ST.ERR_BO_CONTATIN_ASBUILD_AND_COMMON,
-                        File=FileName,
-                        Line=LineNo,
-                        ExtraData=LineContent)
+                         FORMAT_INVALID,
+                         ST.ERR_BO_CONTATIN_ASBUILD_AND_COMMON,
+                         File=FileName,
+                         Line=LineNo,
+                         ExtraData=LineContent)
 
         if IsAsBuildOptionInfo(LineContent):
             AsBuildOptionFlag = True

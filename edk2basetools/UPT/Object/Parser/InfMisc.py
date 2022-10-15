@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file miscellaneous.
 # Include BootMode/HOB/Event and others. It will consumed by InfParser.
 #
@@ -20,6 +20,8 @@ from edk2basetools.UPT.Library.Misc import Sdict
 ##
 # BootModeObject
 #
+
+
 class InfBootModeObject():
     def __init__(self):
         self.SupportedBootModes = ''
@@ -28,21 +30,26 @@ class InfBootModeObject():
 
     def SetSupportedBootModes(self, SupportedBootModes):
         self.SupportedBootModes = SupportedBootModes
+
     def GetSupportedBootModes(self):
         return self.SupportedBootModes
 
     def SetHelpString(self, HelpString):
         self.HelpString = HelpString
+
     def GetHelpString(self):
         return self.HelpString
 
     def SetUsage(self, Usage):
         self.Usage = Usage
+
     def GetUsage(self):
         return self.Usage
 ##
 # EventObject
 #
+
+
 class InfEventObject():
     def __init__(self):
         self.EventType = ''
@@ -57,16 +64,20 @@ class InfEventObject():
 
     def SetHelpString(self, HelpString):
         self.HelpString = HelpString
+
     def GetHelpString(self):
         return self.HelpString
 
     def SetUsage(self, Usage):
         self.Usage = Usage
+
     def GetUsage(self):
         return self.Usage
 ##
 # HobObject
 #
+
+
 class InfHobObject():
     def __init__(self):
         self.HobType = ''
@@ -82,28 +93,33 @@ class InfHobObject():
 
     def SetUsage(self, Usage):
         self.Usage = Usage
+
     def GetUsage(self):
         return self.Usage
 
     def SetSupArchList(self, ArchList):
         self.SupArchList = ArchList
+
     def GetSupArchList(self):
         return self.SupArchList
 
     def SetHelpString(self, HelpString):
         self.HelpString = HelpString
+
     def GetHelpString(self):
         return self.HelpString
 
 ##
 # InfSpecialCommentObject
 #
+
+
 class InfSpecialCommentObject(InfSectionCommonDef):
     def __init__(self):
         self.SpecialComments = Sdict()
         InfSectionCommonDef.__init__(self)
 
-    def SetSpecialComments(self, SepcialSectionList = None, Type = ''):
+    def SetSpecialComments(self, SepcialSectionList=None, Type=''):
         if Type == DT.TYPE_HOB_SECTION or \
            Type == DT.TYPE_EVENT_SECTION or \
            Type == DT.TYPE_BOOTMODE_SECTION:
@@ -123,8 +139,7 @@ class InfSpecialCommentObject(InfSectionCommonDef):
         return self.SpecialComments
 
 
-
-## ErrorInInf
+# ErrorInInf
 #
 # An encapsulate of Error for INF parser.
 #

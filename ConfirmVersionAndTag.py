@@ -1,4 +1,4 @@
-## @file
+# @file
 # Quick script to check that the wheel/package created is has a good version
 # Official releases should not be made from non-tagged code.
 #

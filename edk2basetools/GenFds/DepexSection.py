@@ -1,4 +1,4 @@
-## @file
+# @file
 # process depex section generation
 #
 #  Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -20,11 +20,13 @@ from edk2basetools.Common.BuildToolError import *
 from edk2basetools.Common.Misc import PathClass
 from edk2basetools.Common.DataType import *
 
-## generate data section
+# generate data section
 #
 #
+
+
 class DepexSection (DepexSectionClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -39,11 +41,11 @@ class DepexSection (DepexSectionClassObject):
                                                                     GenFdsGlobalVariable.ToolChainTag)
             for Inf in GenFdsGlobalVariable.FdfParser.Profile.InfList:
                 ModuleData = GenFdsGlobalVariable.WorkSpace.BuildObject[
-                                                            PathClass(Inf, GenFdsGlobalVariable.WorkSpaceDir),
-                                                            Arch,
-                                                            GenFdsGlobalVariable.TargetName,
-                                                            GenFdsGlobalVariable.ToolChainTag
-                                                            ]
+                    PathClass(Inf, GenFdsGlobalVariable.WorkSpaceDir),
+                    Arch,
+                    GenFdsGlobalVariable.TargetName,
+                    GenFdsGlobalVariable.ToolChainTag
+                ]
                 for Pkg in ModuleData.Packages:
                     if Pkg not in PkgList:
                         PkgList.append(Pkg)
@@ -56,7 +58,7 @@ class DepexSection (DepexSectionClassObject):
                     return PkgDb.Guids[CName]
         return None
 
-    ## GenSection() method
+    # GenSection() method
     #
     #   Generate compressed section
     #
@@ -69,7 +71,7 @@ class DepexSection (DepexSectionClassObject):
     #   @param  Dict        dictionary contains macro and its value
     #   @retval tuple       (Generated file name list, section alignment)
     #
-    def GenSection(self, OutputPath, ModuleName, SecNum, keyStringList, FfsFile = None, Dict = None, IsMakefile = False):
+    def GenSection(self, OutputPath, ModuleName, SecNum, keyStringList, FfsFile=None, Dict=None, IsMakefile=False):
         if self.ExpressionProcessed == False:
             self.Expression = self.Expression.replace("\n", " ").replace("\r", " ")
             ExpList = self.Expression.split()
@@ -88,24 +90,25 @@ class DepexSection (DepexSectionClassObject):
 
         if self.DepexType == 'PEI_DEPEX_EXP':
             ModuleType = SUP_MODULE_PEIM
-            SecType    = BINARY_FILE_TYPE_PEI_DEPEX
+            SecType = BINARY_FILE_TYPE_PEI_DEPEX
         elif self.DepexType == 'DXE_DEPEX_EXP':
             ModuleType = SUP_MODULE_DXE_DRIVER
-            SecType    = BINARY_FILE_TYPE_DXE_DEPEX
+            SecType = BINARY_FILE_TYPE_DXE_DEPEX
         elif self.DepexType == 'SMM_DEPEX_EXP':
             ModuleType = SUP_MODULE_DXE_SMM_DRIVER
-            SecType    = BINARY_FILE_TYPE_SMM_DEPEX
+            SecType = BINARY_FILE_TYPE_SMM_DEPEX
         else:
             EdkLogger.error("GenFds", FORMAT_INVALID,
                             "Depex type %s is not valid for module %s" % (self.DepexType, ModuleName))
 
-        InputFile = os.path.join (OutputPath, ModuleName + SUP_MODULE_SEC + SecNum + '.depex')
+        InputFile = os.path.join(OutputPath, ModuleName + SUP_MODULE_SEC + SecNum + '.depex')
         InputFile = os.path.normpath(InputFile)
         Depex = DependencyExpression(self.Expression, ModuleType)
         Depex.Generate(InputFile)
 
-        OutputFile = os.path.join (OutputPath, ModuleName + SUP_MODULE_SEC + SecNum + '.dpx')
+        OutputFile = os.path.join(OutputPath, ModuleName + SUP_MODULE_SEC + SecNum + '.dpx')
         OutputFile = os.path.normpath(OutputFile)
 
-        GenFdsGlobalVariable.GenerateSection(OutputFile, [InputFile], Section.Section.SectionType.get (SecType), IsMakefile=IsMakefile)
+        GenFdsGlobalVariable.GenerateSection(
+            OutputFile, [InputFile], Section.Section.SectionType.get(SecType), IsMakefile=IsMakefile)
         return [OutputFile], self.Alignment

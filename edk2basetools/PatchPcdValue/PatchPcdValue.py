@@ -1,4 +1,4 @@
-## @file
+# @file
 # Patch value into the binary file.
 #
 # Copyright (c) 2010 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -25,7 +25,7 @@ __version_number__ = ("0.10" + " " + gBUILD_VERSION)
 __version__ = "%prog Version " + __version_number__
 __copyright__ = "Copyright (c) 2010 - 2018, Intel Corporation. All rights reserved."
 
-## PatchBinaryFile method
+# PatchBinaryFile method
 #
 # This method mainly patches the data into binary file.
 #
@@ -38,12 +38,14 @@ __copyright__ = "Copyright (c) 2010 - 2018, Intel Corporation. All rights reserv
 # @retval 0     File is updated successfully.
 # @retval not 0 File is updated failed.
 #
+
+
 def PatchBinaryFile(FileName, ValueOffset, TypeName, ValueString, MaxSize=0):
     #
     # Length of Binary File
     #
     FileHandle = open(FileName, 'rb')
-    FileHandle.seek (0, 2)
+    FileHandle.seek(0, 2)
     FileLength = FileHandle.tell()
     FileHandle.close()
     #
@@ -104,7 +106,7 @@ def PatchBinaryFile(FileName, ValueOffset, TypeName, ValueString, MaxSize=0):
                 ValueNumber = 1
             elif ValueString == 'FALSE':
                 ValueNumber = 0
-            ValueNumber = int (ValueString, 0)
+            ValueNumber = int(ValueString, 0)
             if ValueNumber != 0:
                 ValueNumber = 1
         except:
@@ -118,7 +120,7 @@ def PatchBinaryFile(FileName, ValueOffset, TypeName, ValueString, MaxSize=0):
         # Get PCD value for UINT* data type
         #
         try:
-            ValueNumber = int (ValueString, 0)
+            ValueNumber = int(ValueString, 0)
         except:
             return PARAMETER_INVALID, "PCD Value %s is not valid dec or hex string." % (ValueString)
         #
@@ -149,7 +151,7 @@ def PatchBinaryFile(FileName, ValueOffset, TypeName, ValueString, MaxSize=0):
             #
             # Patch {0x1, 0x2, ...} byte by byte
             #
-            ValueList = ValueString[1 : len(ValueString) - 1].split(',')
+            ValueList = ValueString[1: len(ValueString) - 1].split(',')
             Index = 0
             try:
                 for ByteString in ValueList:
@@ -191,13 +193,15 @@ def PatchBinaryFile(FileName, ValueOffset, TypeName, ValueString, MaxSize=0):
         FileHandle.close()
     return 0, "Patch Value into File %s successfully." % (FileName)
 
-## Parse command line options
+# Parse command line options
 #
 # Using standard Python module optparse to parse command line option of this tool.
 #
 # @retval Options   A optparse.Values object containing the parsed options
 # @retval InputFile Path of file to be trimmed
 #
+
+
 def Options():
     OptionList = [
         make_option("-f", "--offset", dest="PcdOffset", action="store", type="int",
@@ -232,7 +236,7 @@ def Options():
     InputFile = Args[len(Args) - 1]
     return Options, InputFile
 
-## Entrance method
+# Entrance method
 #
 # This method mainly dispatch specific methods per the command line options.
 # If no error found, return zero value so the caller of this tool can know
@@ -241,6 +245,8 @@ def Options():
 # @retval 0     Tool was successful
 # @retval 1     Tool failed
 #
+
+
 def Main():
     try:
         #
@@ -252,28 +258,33 @@ def Main():
             EdkLogger.SetLevel(CommandOptions.LogLevel + 1)
         else:
             EdkLogger.SetLevel(CommandOptions.LogLevel)
-        if not os.path.exists (InputFile):
+        if not os.path.exists(InputFile):
             EdkLogger.error("PatchPcdValue", FILE_NOT_FOUND, ExtraData=InputFile)
             return 1
         if CommandOptions.PcdOffset is None or CommandOptions.PcdValue is None or CommandOptions.PcdTypeName is None:
-            EdkLogger.error("PatchPcdValue", OPTION_MISSING, ExtraData="PcdOffset or PcdValue of PcdTypeName is not specified.")
+            EdkLogger.error("PatchPcdValue", OPTION_MISSING,
+                            ExtraData="PcdOffset or PcdValue of PcdTypeName is not specified.")
             return 1
         if CommandOptions.PcdTypeName.upper() not in TAB_PCD_NUMERIC_TYPES_VOID:
-            EdkLogger.error("PatchPcdValue", PARAMETER_INVALID, ExtraData="PCD type %s is not valid." % (CommandOptions.PcdTypeName))
+            EdkLogger.error("PatchPcdValue", PARAMETER_INVALID, ExtraData="PCD type %s is not valid." %
+                            (CommandOptions.PcdTypeName))
             return 1
         if CommandOptions.PcdTypeName.upper() == TAB_VOID and CommandOptions.PcdMaxSize is None:
-            EdkLogger.error("PatchPcdValue", OPTION_MISSING, ExtraData="PcdMaxSize is not specified for VOID* type PCD.")
+            EdkLogger.error("PatchPcdValue", OPTION_MISSING,
+                            ExtraData="PcdMaxSize is not specified for VOID* type PCD.")
             return 1
         #
         # Patch value into binary image.
         #
-        ReturnValue, ErrorInfo = PatchBinaryFile (InputFile, CommandOptions.PcdOffset, CommandOptions.PcdTypeName, CommandOptions.PcdValue, CommandOptions.PcdMaxSize)
+        ReturnValue, ErrorInfo = PatchBinaryFile(
+            InputFile, CommandOptions.PcdOffset, CommandOptions.PcdTypeName, CommandOptions.PcdValue, CommandOptions.PcdMaxSize)
         if ReturnValue != 0:
             EdkLogger.error("PatchPcdValue", ReturnValue, ExtraData=ErrorInfo)
             return 1
         return 0
     except:
         return 1
+
 
 if __name__ == '__main__':
     r = Main()

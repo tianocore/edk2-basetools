@@ -1,4 +1,4 @@
-## @file
+# @file
 # process FFS generation from FILE statement
 #
 #  Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -23,11 +23,13 @@ from .Ffs import FdfFvFileTypeToFileType
 from .GenFdsGlobalVariable import GenFdsGlobalVariable
 import shutil
 
-## generate FFS from FILE
+# generate FFS from FILE
 #
 #
+
+
 class FileStatement (FileStatementClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -39,7 +41,7 @@ class FileStatement (FileStatementClassObject):
         self.InfFileName = None
         self.SubAlignment = None
 
-    ## GenFfs() method
+    # GenFfs() method
     #
     #   Generate FFS
     #
@@ -49,19 +51,19 @@ class FileStatement (FileStatementClassObject):
     #   @param  FvParentAddr Parent Fv base address
     #   @retval string       Generated FFS file name
     #
-    def GenFfs(self, Dict = None, FvChildAddr=[], FvParentAddr=None, IsMakefile=False, FvName=None):
+    def GenFfs(self, Dict=None, FvChildAddr=[], FvParentAddr=None, IsMakefile=False, FvName=None):
 
         if self.NameGuid and self.NameGuid.startswith('PCD('):
             PcdValue = GenFdsGlobalVariable.GetPcdValue(self.NameGuid)
             if len(PcdValue) == 0:
-                EdkLogger.error("GenFds", GENFDS_ERROR, '%s NOT defined.' \
-                            % (self.NameGuid))
+                EdkLogger.error("GenFds", GENFDS_ERROR, '%s NOT defined.'
+                                % (self.NameGuid))
             if PcdValue.startswith('{'):
                 PcdValue = GuidStructureByteArrayToGuidString(PcdValue)
             RegistryGuidStr = PcdValue
             if len(RegistryGuidStr) == 0:
-                EdkLogger.error("GenFds", GENFDS_ERROR, 'GUID value for %s in wrong format.' \
-                            % (self.NameGuid))
+                EdkLogger.error("GenFds", GENFDS_ERROR, 'GUID value for %s in wrong format.'
+                                % (self.NameGuid))
             self.NameGuid = RegistryGuidStr
 
         Str = self.NameGuid
@@ -125,13 +127,13 @@ class FileStatement (FileStatementClassObject):
                         self.SubAlignment = self.SubAlignment[MaxAlignIndex]
 
                 if self.Alignment and self.SubAlignment:
-                    if GenFdsGlobalVariable.GetAlignment (self.Alignment) < GenFdsGlobalVariable.GetAlignment (self.SubAlignment):
+                    if GenFdsGlobalVariable.GetAlignment(self.Alignment) < GenFdsGlobalVariable.GetAlignment(self.SubAlignment):
                         self.Alignment = self.SubAlignment
                 elif self.SubAlignment:
                     self.Alignment = self.SubAlignment
 
             self.FileName = GenFdsGlobalVariable.ReplaceWorkspaceMacro(self.FileName)
-            #Replace $(SAPCE) with real space
+            # Replace $(SAPCE) with real space
             self.FileName = self.FileName.replace('$(SPACE)', ' ')
             SectionFiles = [GenFdsGlobalVariable.MacroExtend(self.FileName, Dict)]
 
@@ -141,7 +143,7 @@ class FileStatement (FileStatementClassObject):
             SectionAlignments = []
             for section in self.SectionList:
                 Index = Index + 1
-                SecIndex = '%d' %Index
+                SecIndex = '%d' % Index
                 # process the inside FvImage from FvSection or GuidSection
                 if FvChildAddr != []:
                     if isinstance(section, FvImageSection):
@@ -170,6 +172,6 @@ class FileStatement (FileStatementClassObject):
                                          CheckSum=self.CheckSum,
                                          Align=self.Alignment,
                                          SectionAlign=SectionAlignments
-                                        )
+                                         )
 
         return FfsFileOutput

@@ -1,4 +1,4 @@
-## @file
+# @file
 # preprocess source file
 #
 #  Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -30,21 +30,21 @@ from edk2basetools.Eot.CodeFragment import PP_Directive
 from edk2basetools.Eot.ParserWarning import Warning
 
 
-##define T_CHAR_SPACE                ' '
-##define T_CHAR_NULL                 '\0'
-##define T_CHAR_CR                   '\r'
-##define T_CHAR_TAB                  '\t'
-##define T_CHAR_LF                   '\n'
-##define T_CHAR_SLASH                '/'
-##define T_CHAR_BACKSLASH            '\\'
-##define T_CHAR_DOUBLE_QUOTE         '\"'
-##define T_CHAR_SINGLE_QUOTE         '\''
-##define T_CHAR_STAR                 '*'
-##define T_CHAR_HASH                 '#'
+# define T_CHAR_SPACE                ' '
+# define T_CHAR_NULL                 '\0'
+# define T_CHAR_CR                   '\r'
+# define T_CHAR_TAB                  '\t'
+# define T_CHAR_LF                   '\n'
+# define T_CHAR_SLASH                '/'
+# define T_CHAR_BACKSLASH            '\\'
+# define T_CHAR_DOUBLE_QUOTE         '\"'
+# define T_CHAR_SINGLE_QUOTE         '\''
+# define T_CHAR_STAR                 '*'
+# define T_CHAR_HASH                 '#'
 
-(T_CHAR_SPACE, T_CHAR_NULL, T_CHAR_CR, T_CHAR_TAB, T_CHAR_LF, T_CHAR_SLASH, \
-T_CHAR_BACKSLASH, T_CHAR_DOUBLE_QUOTE, T_CHAR_SINGLE_QUOTE, T_CHAR_STAR, T_CHAR_HASH) = \
-(' ', '\0', '\r', '\t', '\n', '/', '\\', '\"', '\'', '*', '#')
+(T_CHAR_SPACE, T_CHAR_NULL, T_CHAR_CR, T_CHAR_TAB, T_CHAR_LF, T_CHAR_SLASH,
+ T_CHAR_BACKSLASH, T_CHAR_DOUBLE_QUOTE, T_CHAR_SINGLE_QUOTE, T_CHAR_STAR, T_CHAR_HASH) = \
+    (' ', '\0', '\r', '\t', '\n', '/', '\\', '\"', '\'', '*', '#')
 
 SEPERATOR_TUPLE = ('=', '|', ',', '{', '}')
 
@@ -52,15 +52,17 @@ SEPERATOR_TUPLE = ('=', '|', ',', '{', '}')
 
 (T_PP_INCLUDE, T_PP_DEFINE, T_PP_OTHERS) = (0, 1, 2)
 
-## The collector for source code fragments.
+# The collector for source code fragments.
 #
 # PreprocessFile method should be called prior to ParseFile
 #
 # GetNext*** procedures mean these procedures will get next token first, then make judgement.
 # Get*** procedures mean these procedures will make judgement on current token only.
 #
+
+
 class CodeFragmentCollector:
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  FileName    The file that to be parsed
@@ -75,7 +77,7 @@ class CodeFragmentCollector:
         self.__Token = ""
         self.__SkippedChars = ""
 
-    ## __EndOfFile() method
+    # __EndOfFile() method
     #
     #   Judge current buffer pos is at file end
     #
@@ -93,7 +95,7 @@ class CodeFragmentCollector:
         else:
             return False
 
-    ## __EndOfLine() method
+    # __EndOfLine() method
     #
     #   Judge current buffer pos is at line end
     #
@@ -108,7 +110,7 @@ class CodeFragmentCollector:
         else:
             return False
 
-    ## Rewind() method
+    # Rewind() method
     #
     #   Reset file data buffer to the initial state
     #
@@ -118,7 +120,7 @@ class CodeFragmentCollector:
         self.CurrentLineNumber = 1
         self.CurrentOffsetWithinLine = 0
 
-    ## __UndoOneChar() method
+    # __UndoOneChar() method
     #
     #   Go back one char in the file buffer
     #
@@ -137,7 +139,7 @@ class CodeFragmentCollector:
             self.CurrentOffsetWithinLine -= 1
         return True
 
-    ## __GetOneChar() method
+    # __GetOneChar() method
     #
     #   Move forward one char in the file buffer
     #
@@ -145,12 +147,12 @@ class CodeFragmentCollector:
     #
     def __GetOneChar(self):
         if self.CurrentOffsetWithinLine == len(self.Profile.FileLinesList[self.CurrentLineNumber - 1]) - 1:
-                self.CurrentLineNumber += 1
-                self.CurrentOffsetWithinLine = 0
+            self.CurrentLineNumber += 1
+            self.CurrentOffsetWithinLine = 0
         else:
-                self.CurrentOffsetWithinLine += 1
+            self.CurrentOffsetWithinLine += 1
 
-    ## __CurrentChar() method
+    # __CurrentChar() method
     #
     #   Get the char pointed to by the file buffer pointer
     #
@@ -162,7 +164,7 @@ class CodeFragmentCollector:
 
         return CurrentChar
 
-    ## __NextChar() method
+    # __NextChar() method
     #
     #   Get the one char pass the char pointed to by the file buffer pointer
     #
@@ -175,7 +177,7 @@ class CodeFragmentCollector:
         else:
             return self.Profile.FileLinesList[self.CurrentLineNumber - 1][self.CurrentOffsetWithinLine + 1]
 
-    ## __SetCurrentCharValue() method
+    # __SetCurrentCharValue() method
     #
     #   Modify the value of current char
     #
@@ -185,7 +187,7 @@ class CodeFragmentCollector:
     def __SetCurrentCharValue(self, Value):
         self.Profile.FileLinesList[self.CurrentLineNumber - 1][self.CurrentOffsetWithinLine] = Value
 
-    ## __SetCharValue() method
+    # __SetCharValue() method
     #
     #   Modify the value of current char
     #
@@ -195,7 +197,7 @@ class CodeFragmentCollector:
     def __SetCharValue(self, Line, Offset, Value):
         self.Profile.FileLinesList[Line - 1][Offset] = Value
 
-    ## __CurrentLine() method
+    # __CurrentLine() method
     #
     #   Get the list that contains current line contents
     #
@@ -205,7 +207,7 @@ class CodeFragmentCollector:
     def __CurrentLine(self):
         return self.Profile.FileLinesList[self.CurrentLineNumber - 1]
 
-    ## __InsertComma() method
+    # __InsertComma() method
     #
     #   Insert ',' to replace PP
     #
@@ -213,7 +215,6 @@ class CodeFragmentCollector:
     #   @retval List        current line contents
     #
     def __InsertComma(self, Line):
-
 
         if self.Profile.FileLinesList[Line - 1][0] != T_CHAR_HASH:
             BeforeHashPart = str(self.Profile.FileLinesList[Line - 1]).split(T_CHAR_HASH)[0]
@@ -231,7 +232,7 @@ class CodeFragmentCollector:
 
         self.Profile.FileLinesList[Line - 1].insert(self.CurrentOffsetWithinLine, ',')
 
-    ## PreprocessFileWithClear() method
+    # PreprocessFileWithClear() method
     #
     # Run a preprocess for the file to clean all comments
     #
@@ -325,9 +326,9 @@ class CodeFragmentCollector:
             # check for /* comment start
             elif self.__CurrentChar() == T_CHAR_SLASH and self.__NextChar() == T_CHAR_STAR:
 
-                self.__SetCurrentCharValue( T_CHAR_SPACE)
+                self.__SetCurrentCharValue(T_CHAR_SPACE)
                 self.__GetOneChar()
-                self.__SetCurrentCharValue( T_CHAR_SPACE)
+                self.__SetCurrentCharValue(T_CHAR_SPACE)
                 self.__GetOneChar()
                 InComment = True
             else:
@@ -340,7 +341,7 @@ class CodeFragmentCollector:
             FileProfile.PPDirectiveList.append(PPDirectiveObj)
         self.Rewind()
 
-    ## ParseFile() method
+    # ParseFile() method
     #
     #   Parse the file profile buffer to extract fd, fv ... information
     #   Exception will be raised if syntax error found
@@ -360,7 +361,7 @@ class CodeFragmentCollector:
         parser = CParser(tStream)
         parser.translation_unit()
 
-    ## CleanFileProfileBuffer() method
+    # CleanFileProfileBuffer() method
     #
     #   Reset all contents of the profile of a file
     #
@@ -375,7 +376,7 @@ class CodeFragmentCollector:
         FileProfile.TypedefDefinitionList = []
         FileProfile.FunctionCallingList = []
 
-    ## PrintFragments() method
+    # PrintFragments() method
     #
     #   Print the contents of the profile of a file
     #
@@ -399,13 +400,13 @@ class CodeFragmentCollector:
         print('/********* VARIABLE DECLARATIONS ********/')
         print('/****************************************/')
         for var in FileProfile.VariableDeclarationList:
-            print(str(var.StartPos) + var.Modifier + ' '+ var.Declarator)
+            print(str(var.StartPos) + var.Modifier + ' ' + var.Declarator)
 
         print('/****************************************/')
         print('/********* FUNCTION DEFINITIONS *********/')
         print('/****************************************/')
         for func in FileProfile.FunctionDefinitionList:
-            print(str(func.StartPos) + func.Modifier + ' '+ func.Declarator + ' ' + str(func.NamePos))
+            print(str(func.StartPos) + func.Modifier + ' ' + func.Declarator + ' ' + str(func.NamePos))
 
         print('/****************************************/')
         print('/************ ENUMERATIONS **************/')
@@ -424,6 +425,7 @@ class CodeFragmentCollector:
         print('/****************************************/')
         for typedef in FileProfile.TypedefDefinitionList:
             print(str(typedef.StartPos) + typedef.ToType)
+
 
 ##
 #

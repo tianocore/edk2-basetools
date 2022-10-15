@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define each component of tools_def.txt file
 #
 # Copyright (c) 2007 - 2021, Intel Corporation. All rights reserved.<BR>
@@ -22,9 +22,8 @@ import edk2basetools.Common.GlobalData as GlobalData
 from edk2basetools.Common import GlobalData
 from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 from .DataType import TAB_TOD_DEFINES_TARGET, TAB_TOD_DEFINES_TOOL_CHAIN_TAG,\
-                     TAB_TOD_DEFINES_TARGET_ARCH, TAB_TOD_DEFINES_COMMAND_TYPE\
-                     , TAB_TOD_DEFINES_FAMILY, TAB_TOD_DEFINES_BUILDRULEFAMILY,\
-                     TAB_STAR, TAB_TAT_DEFINES_TOOL_CHAIN_CONF
+    TAB_TOD_DEFINES_TARGET_ARCH, TAB_TOD_DEFINES_COMMAND_TYPE, TAB_TOD_DEFINES_FAMILY, TAB_TOD_DEFINES_BUILDRULEFAMILY,\
+    TAB_STAR, TAB_TAT_DEFINES_TOOL_CHAIN_CONF
 
 
 ##
@@ -35,7 +34,7 @@ gEnvRefPattern = re.compile('(ENV\([^\(\)]+\))')
 gMacroDefPattern = re.compile("DEFINE\s+([^\s]+)")
 gDefaultToolsDefFile = "tools_def.txt"
 
-## ToolDefClassObject
+# ToolDefClassObject
 #
 # This class defined content used in file tools_def.txt
 #
@@ -45,6 +44,8 @@ gDefaultToolsDefFile = "tools_def.txt"
 # @var ToolsDefTxtDictionary:  To store keys and values defined in target.txt
 # @var MacroDictionary:        To store keys and values defined in DEFINE statement
 #
+
+
 class ToolDefClassObject(object):
     def __init__(self, FileName=None):
         self.ToolsDefTxtDictionary = {}
@@ -55,7 +56,7 @@ class ToolDefClassObject(object):
         if FileName is not None:
             self.LoadToolDefFile(FileName)
 
-    ## LoadToolDefFile
+    # LoadToolDefFile
     #
     # Load target.txt file and parse it
     #
@@ -67,26 +68,29 @@ class ToolDefClassObject(object):
         mws.setWs(GlobalData.gWorkspace, PackagesPath)
 
         self.ToolsDefTxtDatabase = {
-            TAB_TOD_DEFINES_TARGET          :   [],
-            TAB_TOD_DEFINES_TOOL_CHAIN_TAG  :   [],
-            TAB_TOD_DEFINES_TARGET_ARCH     :   [],
-            TAB_TOD_DEFINES_COMMAND_TYPE    :   []
+            TAB_TOD_DEFINES_TARGET: [],
+            TAB_TOD_DEFINES_TOOL_CHAIN_TAG: [],
+            TAB_TOD_DEFINES_TARGET_ARCH: [],
+            TAB_TOD_DEFINES_COMMAND_TYPE: []
         }
 
         self.IncludeToolDefFile(FileName)
 
         self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TARGET] = list(set(self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TARGET]))
-        self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TOOL_CHAIN_TAG] = list(set(self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TOOL_CHAIN_TAG]))
-        self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TARGET_ARCH] = list(set(self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TARGET_ARCH]))
+        self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TOOL_CHAIN_TAG] = list(
+            set(self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TOOL_CHAIN_TAG]))
+        self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TARGET_ARCH] = list(
+            set(self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TARGET_ARCH]))
 
-        self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_COMMAND_TYPE] = list(set(self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_COMMAND_TYPE]))
+        self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_COMMAND_TYPE] = list(
+            set(self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_COMMAND_TYPE]))
 
         self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TARGET].sort()
         self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TOOL_CHAIN_TAG].sort()
         self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_TARGET_ARCH].sort()
         self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_COMMAND_TYPE].sort()
 
-    ## IncludeToolDefFile
+    # IncludeToolDefFile
     #
     # Load target.txt file and parse it as if its contents were inside the main file
     #
@@ -114,7 +118,7 @@ class ToolDefClassObject(object):
                 if not Done:
                     EdkLogger.error("tools_def.txt parser", ATTRIBUTE_NOT_AVAILABLE,
                                     "Macro or Environment has not been defined",
-                                ExtraData=IncFile[4:-1], File=FileName, Line=Index+1)
+                                    ExtraData=IncFile[4:-1], File=FileName, Line=Index + 1)
                 IncFile = NormPath(IncFile)
 
                 if not os.path.isabs(IncFile):
@@ -147,14 +151,16 @@ class ToolDefClassObject(object):
 
             NameValuePair = Line.split("=", 1)
             if len(NameValuePair) != 2:
-                EdkLogger.warn("tools_def.txt parser", "Line %d: not correct assignment statement, skipped" % (Index + 1))
+                EdkLogger.warn("tools_def.txt parser",
+                               "Line %d: not correct assignment statement, skipped" % (Index + 1))
                 continue
 
             Name = NameValuePair[0].strip()
             Value = NameValuePair[1].strip()
 
             if Name == "IDENTIFIER":
-                EdkLogger.debug(EdkLogger.DEBUG_8, "Line %d: Found identifier statement, skipped: %s" % ((Index + 1), Value))
+                EdkLogger.debug(EdkLogger.DEBUG_8, "Line %d: Found identifier statement, skipped: %s" %
+                                ((Index + 1), Value))
                 continue
 
             MacroDefinition = gMacroDefPattern.findall(Name)
@@ -163,7 +169,7 @@ class ToolDefClassObject(object):
                 if not Done:
                     EdkLogger.error("tools_def.txt parser", ATTRIBUTE_NOT_AVAILABLE,
                                     "Macro or Environment has not been defined",
-                                ExtraData=Value[4:-1], File=FileName, Line=Index+1)
+                                    ExtraData=Value[4:-1], File=FileName, Line=Index + 1)
 
                 MacroName = MacroDefinition[0].strip()
                 self.MacroDictionary["DEF(%s)" % MacroName] = Value
@@ -174,7 +180,7 @@ class ToolDefClassObject(object):
             if not Done:
                 EdkLogger.error("tools_def.txt parser", ATTRIBUTE_NOT_AVAILABLE,
                                 "Macro or Environment has not been defined",
-                                ExtraData=Value[4:-1], File=FileName, Line=Index+1)
+                                ExtraData=Value[4:-1], File=FileName, Line=Index + 1)
 
             List = Name.split('_')
             if len(List) != 5:
@@ -203,14 +209,16 @@ class ToolDefClassObject(object):
                         self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_FAMILY][List[1]] = Value
                         self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_BUILDRULEFAMILY][List[1]] = Value
                     elif self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_FAMILY][List[1]] != Value:
-                        EdkLogger.verbose("Line %d: No override allowed for the family of a tool chain: %s" % ((Index + 1), Name))
+                        EdkLogger.verbose(
+                            "Line %d: No override allowed for the family of a tool chain: %s" % ((Index + 1), Name))
                 if List[4] == TAB_TOD_DEFINES_BUILDRULEFAMILY and List[2] == TAB_STAR and List[3] == TAB_STAR:
                     if TAB_TOD_DEFINES_BUILDRULEFAMILY not in self.ToolsDefTxtDatabase \
                        or List[1] not in self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_FAMILY]:
-                        EdkLogger.verbose("Line %d: The family is not specified, but BuildRuleFamily is specified for the tool chain: %s" % ((Index + 1), Name))
+                        EdkLogger.verbose(
+                            "Line %d: The family is not specified, but BuildRuleFamily is specified for the tool chain: %s" % ((Index + 1), Name))
                     self.ToolsDefTxtDatabase[TAB_TOD_DEFINES_BUILDRULEFAMILY][List[1]] = Value
 
-    ## ExpandMacros
+    # ExpandMacros
     #
     # Replace defined macros with real value
     #
@@ -237,7 +245,7 @@ class ToolDefClassObject(object):
 
         return True, Value
 
-## ToolDefDict
+# ToolDefDict
 #
 # Load tools_def.txt in input Conf dir
 #
@@ -279,6 +287,7 @@ class ToolDefDict():
         else:
             ToolDef.LoadToolDefFile(os.path.normpath(os.path.join(self.ConfDir, gDefaultToolsDefFile)))
         self._ToolDef = ToolDef
+
 
 ##
 #

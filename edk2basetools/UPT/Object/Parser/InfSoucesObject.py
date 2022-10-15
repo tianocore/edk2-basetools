@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file [Sources] section.
 # It will consumed by InfParser.
 #
@@ -24,9 +24,11 @@ from edk2basetools.UPT.Library.Misc import ValidFile
 from edk2basetools.UPT.Library.ParserValidate import IsValidFamily
 from edk2basetools.UPT.Library.ParserValidate import IsValidPath
 
-## __GenSourceInstance
+# __GenSourceInstance
 #
 #
+
+
 def GenSourceInstance(Item, CurrentLineOfItem, ItemObj):
 
     IsValidFileFlag = False
@@ -53,7 +55,7 @@ def GenSourceInstance(Item, CurrentLineOfItem, ItemObj):
             if not FeatureFlagRtv[0]:
                 Logger.Error("InfParser",
                              ToolError.FORMAT_INVALID,
-                             ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID%(FeatureFlagRtv[1]),
+                             ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID % (FeatureFlagRtv[1]),
                              File=CurrentLineOfItem[2],
                              Line=CurrentLineOfItem[1],
                              ExtraData=CurrentLineOfItem[0])
@@ -64,7 +66,7 @@ def GenSourceInstance(Item, CurrentLineOfItem, ItemObj):
             else:
                 Logger.Error("InfParser",
                              ToolError.FORMAT_INVALID,
-                             ST.ERR_INF_PARSER_TOOLCODE_NOT_PERMITTED%(Item[2]),
+                             ST.ERR_INF_PARSER_TOOLCODE_NOT_PERMITTED % (Item[2]),
                              File=CurrentLineOfItem[2],
                              Line=CurrentLineOfItem[1],
                              ExtraData=CurrentLineOfItem[0])
@@ -74,7 +76,7 @@ def GenSourceInstance(Item, CurrentLineOfItem, ItemObj):
             else:
                 Logger.Error("InfParser",
                              ToolError.FORMAT_INVALID,
-                             ST.ERR_INF_PARSER_TAGNAME_NOT_PERMITTED%(Item[2]),
+                             ST.ERR_INF_PARSER_TAGNAME_NOT_PERMITTED % (Item[2]),
                              File=CurrentLineOfItem[2],
                              Line=CurrentLineOfItem[1],
                              ExtraData=CurrentLineOfItem[0])
@@ -89,7 +91,7 @@ def GenSourceInstance(Item, CurrentLineOfItem, ItemObj):
             else:
                 Logger.Error("InfParser",
                              ToolError.FORMAT_INVALID,
-                             ST.ERR_INF_PARSER_SOURCE_SECTION_FAMILY_INVALID%(Item[1]),
+                             ST.ERR_INF_PARSER_SOURCE_SECTION_FAMILY_INVALID % (Item[1]),
                              File=CurrentLineOfItem[2],
                              Line=CurrentLineOfItem[1],
                              ExtraData=CurrentLineOfItem[0])
@@ -101,7 +103,7 @@ def GenSourceInstance(Item, CurrentLineOfItem, ItemObj):
             if not (ValidFile(FullFileName) or ValidFile(Item[0])):
                 Logger.Error("InfParser",
                              ToolError.FORMAT_INVALID,
-                             ST.ERR_FILELIST_EXIST%(Item[0]),
+                             ST.ERR_FILELIST_EXIST % (Item[0]),
                              File=CurrentLineOfItem[2],
                              Line=CurrentLineOfItem[1],
                              ExtraData=CurrentLineOfItem[0])
@@ -115,7 +117,7 @@ def GenSourceInstance(Item, CurrentLineOfItem, ItemObj):
             else:
                 Logger.Error("InfParser",
                              ToolError.FORMAT_INVALID,
-                             ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID%(Item[0]),
+                             ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID % (Item[0]),
                              File=CurrentLineOfItem[2],
                              Line=CurrentLineOfItem[1],
                              ExtraData=CurrentLineOfItem[0])
@@ -132,74 +134,86 @@ def GenSourceInstance(Item, CurrentLineOfItem, ItemObj):
 
     return ItemObj
 
-## InfSourcesItemObject()
+# InfSourcesItemObject()
 #
 #
+
+
 class InfSourcesItemObject():
-    def __init__(self, \
-                 SourceFileName = '', \
-                 Family = '', \
-                 TagName = '', \
-                 ToolCode = '', \
-                 FeatureFlagExp = ''):
+    def __init__(self,
+                 SourceFileName='',
+                 Family='',
+                 TagName='',
+                 ToolCode='',
+                 FeatureFlagExp=''):
         self.SourceFileName = SourceFileName
-        self.Family         = Family
-        self.TagName        = TagName
-        self.ToolCode       = ToolCode
+        self.Family = Family
+        self.TagName = TagName
+        self.ToolCode = ToolCode
         self.FeatureFlagExp = FeatureFlagExp
-        self.HeaderString   = ''
-        self.TailString     = ''
-        self.SupArchList    = []
+        self.HeaderString = ''
+        self.TailString = ''
+        self.SupArchList = []
 
     def SetSourceFileName(self, SourceFilename):
         self.SourceFileName = SourceFilename
+
     def GetSourceFileName(self):
         return self.SourceFileName
 
     def SetFamily(self, Family):
         self.Family = Family
+
     def GetFamily(self):
         return self.Family
 
     def SetTagName(self, TagName):
         self.TagName = TagName
+
     def GetTagName(self):
         return self.TagName
 
     def SetToolCode(self, ToolCode):
         self.ToolCode = ToolCode
+
     def GetToolCode(self):
         return self.ToolCode
 
     def SetFeatureFlagExp(self, FeatureFlagExp):
         self.FeatureFlagExp = FeatureFlagExp
+
     def GetFeatureFlagExp(self):
         return self.FeatureFlagExp
 
     def SetHeaderString(self, HeaderString):
         self.HeaderString = HeaderString
+
     def GetHeaderString(self):
         return self.HeaderString
 
     def SetTailString(self, TailString):
         self.TailString = TailString
+
     def GetTailString(self):
         return self.TailString
 
     def SetSupArchList(self, SupArchList):
         self.SupArchList = SupArchList
+
     def GetSupArchList(self):
         return self.SupArchList
 ##
 #
 #
 #
+
+
 class InfSourcesObject(InfSectionCommonDef):
     def __init__(self):
         self.Sources = Sdict()
         InfSectionCommonDef.__init__(self)
 
-    def SetSources(self, SourceList, Arch = None):
+    def SetSources(self, SourceList, Arch=None):
         __SupArchList = []
         for ArchItem in Arch:
             #

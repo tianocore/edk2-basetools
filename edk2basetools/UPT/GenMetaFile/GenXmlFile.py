@@ -1,4 +1,4 @@
-## @file GenXmlFile.py
+# @file GenXmlFile.py
 #
 # This file contained the logical of generate XML files.
 #

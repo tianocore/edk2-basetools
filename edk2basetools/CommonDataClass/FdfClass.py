@@ -1,4 +1,4 @@
-## @file
+# @file
 # classes represent data in FDF
 #
 #  Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -6,11 +6,11 @@
 #  SPDX-License-Identifier: BSD-2-Clause-Patent
 #
 
-## FD data in FDF
+# FD data in FDF
 #
 #
 class FDClassObject:
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -30,11 +30,13 @@ class FDClassObject:
         self.SetVarDict = {}
         self.RegionList = []
 
-## FFS data in FDF
+# FFS data in FDF
 #
 #
+
+
 class FfsClassObject:
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -45,11 +47,13 @@ class FfsClassObject:
         self.Alignment = None
         self.SectionList = []
 
-## FILE statement data in FDF
+# FILE statement data in FDF
 #
 #
-class FileStatementClassObject (FfsClassObject) :
-    ## The constructor
+
+
+class FileStatementClassObject (FfsClassObject):
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -63,11 +67,13 @@ class FileStatementClassObject (FfsClassObject) :
         self.DefineVarDict = {}
         self.KeepReloc = None
 
-## INF statement data in FDF
+# INF statement data in FDF
 #
 #
+
+
 class FfsInfStatementClassObject(FfsClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -82,22 +88,26 @@ class FfsInfStatementClassObject(FfsClassObject):
         self.KeepReloc = None
         self.UseArch = None
 
-## section data in FDF
+# section data in FDF
 #
 #
+
+
 class SectionClassObject:
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
     def __init__(self):
         self.Alignment = None
 
-## Depex expression section in FDF
+# Depex expression section in FDF
 #
 #
+
+
 class DepexSectionClassObject (SectionClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -106,11 +116,13 @@ class DepexSectionClassObject (SectionClassObject):
         self.Expression = None
         self.ExpressionProcessed = False
 
-## Compress section data in FDF
+# Compress section data in FDF
 #
 #
-class CompressSectionClassObject (SectionClassObject) :
-    ## The constructor
+
+
+class CompressSectionClassObject (SectionClassObject):
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -119,11 +131,13 @@ class CompressSectionClassObject (SectionClassObject) :
         self.CompType = None
         self.SectionList = []
 
-## Data section data in FDF
+# Data section data in FDF
 #
 #
+
+
 class DataSectionClassObject (SectionClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -134,11 +148,13 @@ class DataSectionClassObject (SectionClassObject):
         self.SectionList = []
         self.KeepReloc = True
 
-## Rule section data in FDF
+# Rule section data in FDF
 #
 #
+
+
 class EfiSectionClassObject (SectionClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -153,11 +169,13 @@ class EfiSectionClassObject (SectionClassObject):
         self.BuildNum = None
         self.KeepReloc = None
 
-## FV image section data in FDF
+# FV image section data in FDF
 #
 #
+
+
 class FvImageSectionClassObject (SectionClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -170,11 +188,13 @@ class FvImageSectionClassObject (SectionClassObject):
         self.FvFileExtension = None
         self.FvAddr = None
 
-## GUIDed section data in FDF
+# GUIDed section data in FDF
 #
 #
-class GuidSectionClassObject (SectionClassObject) :
-    ## The constructor
+
+
+class GuidSectionClassObject (SectionClassObject):
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -190,11 +210,13 @@ class GuidSectionClassObject (SectionClassObject) :
         self.FvParentAddr = None
         self.IncludeFvSection = False
 
-## UI section data in FDF
+# UI section data in FDF
 #
 #
+
+
 class UiSectionClassObject (SectionClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -203,11 +225,13 @@ class UiSectionClassObject (SectionClassObject):
         self.StringData = None
         self.FileName = None
 
-## Version section data in FDF
+# Version section data in FDF
 #
 #
+
+
 class VerSectionClassObject (SectionClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -217,11 +241,13 @@ class VerSectionClassObject (SectionClassObject):
         self.StringData = None
         self.FileName = None
 
-## Rule data in FDF
+# Rule data in FDF
 #
 #
-class RuleClassObject :
-    ## The constructor
+
+
+class RuleClassObject:
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -238,11 +264,13 @@ class RuleClassObject :
         self.KeyStringList = []
         self.KeepReloc = None
 
-## Complex rule data in FDF
+# Complex rule data in FDF
 #
 #
-class RuleComplexFileClassObject(RuleClassObject) :
-    ## The constructor
+
+
+class RuleComplexFileClassObject(RuleClassObject):
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -250,11 +278,13 @@ class RuleComplexFileClassObject(RuleClassObject) :
         RuleClassObject.__init__(self)
         self.SectionList = []
 
-## Simple rule data in FDF
+# Simple rule data in FDF
 #
 #
-class RuleSimpleFileClassObject(RuleClassObject) :
-    ## The constructor
+
+
+class RuleSimpleFileClassObject(RuleClassObject):
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -264,11 +294,13 @@ class RuleSimpleFileClassObject(RuleClassObject) :
         self.SectionType = ''
         self.FileExtension = None
 
-## File extension rule data in FDF
+# File extension rule data in FDF
 #
 #
+
+
 class RuleFileExtensionClassObject(RuleClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -276,11 +308,13 @@ class RuleFileExtensionClassObject(RuleClassObject):
         RuleClassObject.__init__(self)
         self.FileExtension = None
 
-## Capsule data in FDF
+# Capsule data in FDF
 #
 #
-class CapsuleClassObject :
-    ## The constructor
+
+
+class CapsuleClassObject:
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -298,15 +332,16 @@ class CapsuleClassObject :
         self.CapsuleDataList = []
         self.FmpPayloadList = []
 
-## OptionROM data in FDF
+# OptionROM data in FDF
 #
 #
+
+
 class OptionRomClassObject:
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
     def __init__(self):
         self.DriverName = None
         self.FfsList = []
-

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase table for fdf datas
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -14,19 +14,21 @@ import edk2basetools.CommonDataClass.DataClass as DataClass
 from edk2basetools.Table.Table import Table
 from edk2basetools.Common.StringUtils import ConvertToSqlString
 
-## TableFdf
+# TableFdf
 #
 # This class defined a table used for data model
 #
 # @param object:       Inherited from object class
 #
 #
+
+
 class TableFdf(Table):
     def __init__(self, Cursor):
         Table.__init__(self, Cursor)
         self.Table = 'Fdf'
 
-    ## Create table
+    # Create table
     #
     # Create table Fdf
     #
@@ -62,7 +64,7 @@ class TableFdf(Table):
                                                       )""" % self.Table
         Table.Create(self, SqlCommand)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Fdf
     #
@@ -89,7 +91,7 @@ class TableFdf(Table):
 
         return self.ID
 
-    ## Query table
+    # Query table
     #
     # @param Model:  The Model of Record
     #

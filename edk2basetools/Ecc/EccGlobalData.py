@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to save global datas used by ECC tool
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contain unit test for DecParser
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -20,6 +20,8 @@ from edk2basetools.UPT.Library.ParserValidate import IsValidCFormatGuid
 #
 # Test tool function
 #
+
+
 def TestToolFuncs():
     assert IsValidCArray('{0x1, 0x23}')
 
@@ -46,8 +48,10 @@ def TestToolFuncs():
     assert not IsValidPcdDatum('UNKNOWNTYPE', '0xabc')[0]
     assert not IsValidPcdDatum('UINT8', 'not number')[0]
 
-    assert( IsValidCFormatGuid('{ 0xfa0b1735 , 0x87a0, 0x4193, {0xb2, 0x66 , 0x53, 0x8c , 0x38, 0xaf, 0x48, 0xce }}'))
-    assert( not IsValidCFormatGuid('{ 0xfa0b1735 , 0x87a0, 0x4193, {0xb2, 0x66 , 0x53, 0x8c , 0x38, 0xaf, 0x48, 0xce }} 0xaa'))
+    assert(IsValidCFormatGuid('{ 0xfa0b1735 , 0x87a0, 0x4193, {0xb2, 0x66 , 0x53, 0x8c , 0x38, 0xaf, 0x48, 0xce }}'))
+    assert(not IsValidCFormatGuid(
+        '{ 0xfa0b1735 , 0x87a0, 0x4193, {0xb2, 0x66 , 0x53, 0x8c , 0x38, 0xaf, 0x48, 0xce }} 0xaa'))
+
 
 def TestTemplate(TestString, TestFunc):
     Path = os.path.join(os.getcwd(), 'test.dec')
@@ -75,6 +79,8 @@ def TestTemplate(TestString, TestFunc):
 # This function test right syntax DEC file
 # @retval: parser object
 #
+
+
 def TestOK(Path, TestString):
     try:
         Parser = Dec(Path)
@@ -84,6 +90,8 @@ def TestOK(Path, TestString):
 
 # This function test wrong syntax DEC file
 # if parser checked wrong syntax, exception thrown and it's expected result
+
+
 def TestError(Path, TestString):
     try:
         Dec(Path)
@@ -91,6 +99,7 @@ def TestError(Path, TestString):
         # Raise error, get expected result
         return True
     raise 'Bug!!! Wrong syntax in DEC file, but passed by DEC parser!!\n' + TestString
+
 
 def TestDecDefine():
     TestString = '''
@@ -118,6 +127,7 @@ def TestDecDefine():
       PACKAGE_GUID                   = F-8F52-4603-AEB4-F29B510B6766 # Error GUID
     '''
     assert TestTemplate(TestString, TestError)
+
 
 def TestDecInclude():
     TestString = '''
@@ -163,6 +173,7 @@ def TestDecInclude():
 
     os.removedirs('Include/Ia32')
 
+
 def TestDecGuidPpiProtocol():
     TestString = '''
     [Defines]
@@ -205,6 +216,7 @@ def TestDecGuidPpiProtocol():
     assert Items[0].GuidCName == 'gEfiPeiMasterBootModePpiGuid'
     assert Items[0].GuidCValue == '{ 0x7408d748, 0xfc8c, 0x4ee6, {0x92, 0x88, 0xc4, 0xbe, 0xc0, 0x92, 0xa4, 0x10 } }'
 
+
 def TestDecPcd():
     TestString = '''
     [Defines]
@@ -246,6 +258,7 @@ def TestDecPcd():
     assert len(Items) == 4
     assert len(Obj.GetPcdsByType('PcdsPatchableInModule')) == 2
 
+
 def TestDecUserExtension():
     TestString = '''
     [Defines]
@@ -264,6 +277,7 @@ def TestDecUserExtension():
     assert len(Items[0].ArchAndModuleType) == 1
     assert ['MyID', '"TestString"', 'IA32'] in Items[0].ArchAndModuleType
 
+
 if __name__ == '__main__':
     import Logger.Logger
     Logger.Logger.Initialize()
@@ -275,5 +289,3 @@ if __name__ == '__main__':
     unittest.FunctionTestCase(TestDecUserExtension).runTest()
 
     print('All tests passed...')
-
-

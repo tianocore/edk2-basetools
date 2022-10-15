@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase table for Identifiers
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -13,19 +13,21 @@ import edk2basetools.Common.EdkLogger as EdkLogger
 from edk2basetools.Common.StringUtils import ConvertToSqlString
 from edk2basetools.Table.Table import Table
 
-## TableIdentifier
+# TableIdentifier
 #
 # This class defined a table used for Identifier
 #
 # @param object:       Inherited from object class
 #
 #
+
+
 class TableIdentifier(Table):
     def __init__(self, Cursor):
         Table.__init__(self, Cursor)
         self.Table = 'Identifier'
 
-    ## Create table
+    # Create table
     #
     # Create table Identifier
     #
@@ -58,7 +60,7 @@ class TableIdentifier(Table):
                                                      )""" % self.Table
         Table.Create(self, SqlCommand)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Identifier
     #
@@ -79,7 +81,7 @@ class TableIdentifier(Table):
         self.ID = self.ID + 1
         (Modifier, Type, Name, Value) = ConvertToSqlString((Modifier, Type, Name, Value))
         SqlCommand = """insert into %s values(%s, '%s', '%s', '%s', '%s', %s, %s, %s, %s, %s, %s, %s)""" \
-                                           % (self.Table, self.ID, Modifier, Type, Name, Value, Model, BelongsToFile, BelongsToFunction, StartLine, StartColumn, EndLine, EndColumn)
+            % (self.Table, self.ID, Modifier, Type, Name, Value, Model, BelongsToFile, BelongsToFunction, StartLine, StartColumn, EndLine, EndColumn)
         Table.Insert(self, SqlCommand)
 
         return self.ID

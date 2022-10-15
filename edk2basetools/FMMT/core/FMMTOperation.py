@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define the functions to operate bios binary file.
 #
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
@@ -13,7 +13,9 @@ global Fv_count
 Fv_count = 0
 
 # The ROOT_TYPE can be 'ROOT_TREE', 'ROOT_FV_TREE', 'ROOT_FFS_TREE', 'ROOT_SECTION_TREE'
-def ViewFile(inputfile: str, ROOT_TYPE: str, layoutfile: str=None, outputfile: str=None) -> None:
+
+
+def ViewFile(inputfile: str, ROOT_TYPE: str, layoutfile: str = None, outputfile: str = None) -> None:
     if not os.path.exists(inputfile):
         logger.error("Invalid inputfile, can not open {}.".format(inputfile))
         raise Exception("Process Failed: Invalid inputfile!")
@@ -36,7 +38,7 @@ def ViewFile(inputfile: str, ROOT_TYPE: str, layoutfile: str=None, outputfile: s
             layoutfilename = layoutfile
             layoutfileformat = os.path.splitext(layoutfile)[1][1:].lower()
         else:
-            layoutfilename = "Layout_{}{}".format(os.path.basename(inputfile),".{}".format(layoutfile.lower()))
+            layoutfilename = "Layout_{}{}".format(os.path.basename(inputfile), ".{}".format(layoutfile.lower()))
             layoutfileformat = layoutfile.lower()
         GetFormatter(layoutfileformat).dump(InfoDict, FmmtParser.BinaryInfo, layoutfilename)
     # 4. Data Encapsulation
@@ -47,7 +49,8 @@ def ViewFile(inputfile: str, ROOT_TYPE: str, layoutfile: str=None, outputfile: s
             f.write(FmmtParser.FinalData)
         logger.debug('Encapsulated data is saved in {}.'.format(outputfile))
 
-def DeleteFfs(inputfile: str, TargetFfs_name: str, outputfile: str, Fv_name: str=None) -> None:
+
+def DeleteFfs(inputfile: str, TargetFfs_name: str, outputfile: str, Fv_name: str = None) -> None:
     if not os.path.exists(inputfile):
         logger.error("Invalid inputfile, can not open {}.".format(inputfile))
         raise Exception("Process Failed: Invalid inputfile!")
@@ -81,6 +84,7 @@ def DeleteFfs(inputfile: str, TargetFfs_name: str, outputfile: str, Fv_name: str
             f.write(FmmtParser.FinalData)
         logger.debug('Encapsulated data is saved in {}.'.format(outputfile))
 
+
 def AddNewFfs(inputfile: str, Fv_name: str, newffsfile: str, outputfile: str) -> None:
     if not os.path.exists(inputfile):
         logger.error("Invalid inputfile, can not open {}.".format(inputfile))
@@ -111,7 +115,8 @@ def AddNewFfs(inputfile: str, Fv_name: str, newffsfile: str, outputfile: str) ->
             if TargetFfsPad.type == FFS_FREE_SPACE:
                 NewFmmtParser.ParserFromRoot(NewFmmtParser.WholeFvTree, new_ffs_data, TargetFfsPad.Data.HOffset)
             else:
-                NewFmmtParser.ParserFromRoot(NewFmmtParser.WholeFvTree, new_ffs_data, TargetFfsPad.Data.HOffset+TargetFfsPad.Data.Size)
+                NewFmmtParser.ParserFromRoot(NewFmmtParser.WholeFvTree, new_ffs_data,
+                                             TargetFfsPad.Data.HOffset + TargetFfsPad.Data.Size)
             logger.debug('Done!')
             FfsMod = FvHandler(NewFmmtParser.WholeFvTree.Child[0], TargetFfsPad)
             Status = FfsMod.AddFfs()
@@ -125,7 +130,8 @@ def AddNewFfs(inputfile: str, Fv_name: str, newffsfile: str, outputfile: str) ->
             f.write(FmmtParser.FinalData)
         logger.debug('Encapsulated data is saved in {}.'.format(outputfile))
 
-def ReplaceFfs(inputfile: str, Ffs_name: str, newffsfile: str, outputfile: str, Fv_name: str=None) -> None:
+
+def ReplaceFfs(inputfile: str, Ffs_name: str, newffsfile: str, outputfile: str, Fv_name: str = None) -> None:
     if not os.path.exists(inputfile):
         logger.error("Invalid inputfile, can not open {}.".format(inputfile))
         raise Exception("Process Failed: Invalid inputfile!")
@@ -166,7 +172,8 @@ def ReplaceFfs(inputfile: str, Ffs_name: str, newffsfile: str, outputfile: str, 
             f.write(FmmtParser.FinalData)
         logger.debug('Encapsulated data is saved in {}.'.format(outputfile))
 
-def ExtractFfs(inputfile: str, Ffs_name: str, outputfile: str, Fv_name: str=None) -> None:
+
+def ExtractFfs(inputfile: str, Ffs_name: str, outputfile: str, Fv_name: str = None) -> None:
     if not os.path.exists(inputfile):
         logger.error("Invalid inputfile, can not open {}.".format(inputfile))
         raise Exception("Process Failed: Invalid inputfile!")

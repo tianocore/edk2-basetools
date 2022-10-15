@@ -1,4 +1,4 @@
-## @file
+# @file
 #  Intel Binary Product Data Generation Tool (Intel BPDG).
 #  This tool provide a simple process for the creation of a binary file containing read-only
 #  configuration data for EDK II platforms that contain Dynamic and DynamicEx PCDs described
@@ -28,10 +28,10 @@ from edk2basetools.Common.BuildVersion import gBUILD_VERSION
 from . import StringTable as st
 from . import GenVpd
 
-PROJECT_NAME       = st.LBL_BPDG_LONG_UNI
-VERSION            = (st.LBL_BPDG_VERSION + " Build " + gBUILD_VERSION)
+PROJECT_NAME = st.LBL_BPDG_LONG_UNI
+VERSION = (st.LBL_BPDG_VERSION + " Build " + gBUILD_VERSION)
 
-## Tool entrance method
+# Tool entrance method
 #
 # This method mainly dispatch specific methods per the command line options.
 # If no error found, return zero value so the caller of this tool can know
@@ -40,6 +40,8 @@ VERSION            = (st.LBL_BPDG_VERSION + " Build " + gBUILD_VERSION)
 #   @retval 0     Tool was successful
 #   @retval 1     Tool failed
 #
+
+
 def main():
     global Options, Args
 
@@ -59,24 +61,26 @@ def main():
         EdkLogger.SetLevel(EdkLogger.INFO)
 
     if Options.bin_filename is None:
-        EdkLogger.error("BPDG", ATTRIBUTE_NOT_AVAILABLE, "Please use the -o option to specify the file name for the VPD binary file")
+        EdkLogger.error("BPDG", ATTRIBUTE_NOT_AVAILABLE,
+                        "Please use the -o option to specify the file name for the VPD binary file")
     if Options.filename is None:
-        EdkLogger.error("BPDG", ATTRIBUTE_NOT_AVAILABLE, "Please use the -m option to specify the file name for the mapping file")
+        EdkLogger.error("BPDG", ATTRIBUTE_NOT_AVAILABLE,
+                        "Please use the -m option to specify the file name for the mapping file")
 
     Force = False
     if Options.opt_force is not None:
         Force = True
 
-    if (Args[0] is not None) :
+    if (Args[0] is not None):
         StartBpdg(Args[0], Options.filename, Options.bin_filename, Force)
-    else :
+    else:
         EdkLogger.error("BPDG", ATTRIBUTE_NOT_AVAILABLE, "Please specify the file which contain the VPD pcd info.",
                         None)
 
     return ReturnCode
 
 
-## Parse command line options
+# Parse command line options
 #
 # Using standard Python module optparse to parse command line option of this tool.
 #
@@ -113,7 +117,7 @@ def MyOptionParser():
     return options, args
 
 
-## Start BPDG and call the main functions
+# Start BPDG and call the main functions
 #
 # This method mainly focus on call GenVPD class member functions to complete
 # BPDG's target. It will process VpdFile override, and provide the interface file
@@ -133,7 +137,7 @@ def StartBpdg(InputFileName, MapFileName, VpdFileName, Force):
         if choice.strip().lower() not in ['y', 'yes', '']:
             return
 
-    GenVPD = GenVpd.GenVPD (InputFileName, MapFileName, VpdFileName)
+    GenVPD = GenVpd.GenVPD(InputFileName, MapFileName, VpdFileName)
 
     EdkLogger.info('%-24s = %s' % ("VPD input data file: ", InputFileName))
     EdkLogger.info('%-24s = %s' % ("VPD output map file: ", MapFileName))
@@ -146,13 +150,13 @@ def StartBpdg(InputFileName, MapFileName, VpdFileName, Force):
 
     EdkLogger.info("- Vpd pcd fixed done! -")
 
+
 if __name__ == '__main__':
     try:
         r = main()
     except FatalError as e:
         r = e
-    ## 0-127 is a safe return range, and 1 is a standard default error
-    if r < 0 or r > 127: r = 1
+    # 0-127 is a safe return range, and 1 is a standard default error
+    if r < 0 or r > 127:
+        r = 1
     sys.exit(r)
-
-

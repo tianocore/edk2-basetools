@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define common static strings and global data used by UPT
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>

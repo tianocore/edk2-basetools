@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is for installed package information database operations
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -26,11 +26,11 @@ from edk2basetools.UPT.Library import GlobalData
 from edk2basetools.UPT.Logger.ToolError import FatalError
 from edk2basetools.UPT.Logger.ToolError import EDK1_INF_ERROR
 from edk2basetools.UPT.Logger.ToolError import UNKNOWN_ERROR
-(DEPEX_CHECK_SUCCESS, DEPEX_CHECK_MODULE_NOT_FOUND, \
-DEPEX_CHECK_PACKAGE_NOT_FOUND, DEPEX_CHECK_DP_NOT_FOUND) = (0, 1, 2, 3)
+(DEPEX_CHECK_SUCCESS, DEPEX_CHECK_MODULE_NOT_FOUND,
+ DEPEX_CHECK_PACKAGE_NOT_FOUND, DEPEX_CHECK_DP_NOT_FOUND) = (0, 1, 2, 3)
 
 
-## DependencyRules
+# DependencyRules
 #
 # This class represents the dependency rule check mechanism
 #
@@ -57,7 +57,7 @@ class DependencyRules(object):
 
         return RtnList
 
-    ## Check whether a module exists by checking the Guid+Version+Name+Path combination
+    # Check whether a module exists by checking the Guid+Version+Name+Path combination
     #
     # @param Guid:  Guid of a module
     # @param Version: Version of a module
@@ -75,7 +75,7 @@ class DependencyRules(object):
         else:
             return False
 
-    ## Check whether a module depex satisfied.
+    # Check whether a module depex satisfied.
     #
     # @param ModuleObj: A module object
     # @param DpObj: A distribution object
@@ -103,7 +103,7 @@ class DependencyRules(object):
                 for GuidVerPair in DpObj.PackageSurfaceArea.keys():
                     if Dep.GetGuid() == GuidVerPair[0]:
                         if Dep.GetVersion() is None or \
-                        len(Dep.GetVersion()) == 0:
+                                len(Dep.GetVersion()) == 0:
                             Result = True
                             break
                         if Dep.GetVersion() == GuidVerPair[1]:
@@ -114,14 +114,14 @@ class DependencyRules(object):
                     break
 
         if not Result:
-            Logger.Error("CheckModuleDepex", UNKNOWN_ERROR, \
-                         ST.ERR_DEPENDENCY_NOT_MATCH % (ModuleObj.GetName(), \
-                                                        Dep.GetPackageFilePath(), \
-                                                        Dep.GetGuid(), \
+            Logger.Error("CheckModuleDepex", UNKNOWN_ERROR,
+                         ST.ERR_DEPENDENCY_NOT_MATCH % (ModuleObj.GetName(),
+                                                        Dep.GetPackageFilePath(),
+                                                        Dep.GetGuid(),
                                                         Dep.GetVersion()))
         return Result
 
-    ## Check whether a package exists in a package list specified by PkgsToBeDepend.
+    # Check whether a package exists in a package list specified by PkgsToBeDepend.
     #
     # @param Guid: Guid of a package
     # @param Version: Version of a package
@@ -148,7 +148,7 @@ class DependencyRules(object):
         Logger.Verbose(ST.MSG_CHECK_PACKAGE_FINISH)
         return Found
 
-    ## Check whether a package depex satisfied.
+    # Check whether a package depex satisfied.
     #
     # @param PkgObj: A package object
     # @param DpObj: A distribution object
@@ -165,7 +165,7 @@ class DependencyRules(object):
                 return False
         return True
 
-    ## Check whether a DP exists.
+    # Check whether a DP exists.
     #
     # @param Guid: Guid of a Distribution
     # @param Version: Version of a Distribution
@@ -182,7 +182,7 @@ class DependencyRules(object):
         Logger.Verbose(ST.MSG_CHECK_DP_FINISH)
         return Found
 
-    ## Check whether a DP depex satisfied by current workspace for Install
+    # Check whether a DP depex satisfied by current workspace for Install
     #
     # @param DpObj:  A distribution object
     # @return: True if distribution depex satisfied
@@ -208,14 +208,14 @@ class DependencyRules(object):
 
         return True, DpObj
 
-
-    ## Check whether a DP depex satisfied by current workspace
+    # Check whether a DP depex satisfied by current workspace
     #  (excluding the original distribution's packages to be replaced) for Replace
     #
     # @param DpObj:  A distribution object
     # @param OrigDpGuid: The original distribution's Guid
     # @param OrigDpVersion: The original distribution's Version
     #
+
     def ReplaceCheckNewDpDepex(self, DpObj, OrigDpGuid, OrigDpVersion):
         self.PkgsToBeDepend = [(PkgInfo[1], PkgInfo[2]) for PkgInfo in self.WsPkgList]
         OrigDpPackageList = self.IpiDb.GetPackageListFromDp(OrigDpGuid, OrigDpVersion)
@@ -225,7 +225,7 @@ class DependencyRules(object):
                 self.PkgsToBeDepend.remove((Guid, Version))
         return self.CheckDpDepexSatisfied(DpObj)
 
-    ## Check whether a DP depex satisfied by current workspace.
+    # Check whether a DP depex satisfied by current workspace.
     #
     # @param DpObj:  A distribution object
     #
@@ -246,7 +246,7 @@ class DependencyRules(object):
 
         return True
 
-    ## Check whether a DP could be removed from current workspace.
+    # Check whether a DP could be removed from current workspace.
     #
     # @param DpGuid:  File's guid
     # @param DpVersion: File's version
@@ -293,7 +293,7 @@ class DependencyRules(object):
         #
         for (PkgGuid, PkgVersion, InstallPath) in DpPackageList:
             Logger.Warn("UPT",
-                        ST.WARN_INSTALLED_PACKAGE_NOT_FOUND%(PkgGuid, PkgVersion, InstallPath))
+                        ST.WARN_INSTALLED_PACKAGE_NOT_FOUND % (PkgGuid, PkgVersion, InstallPath))
 
         #
         # check modules to see if has dependency on package of current DP
@@ -304,8 +304,7 @@ class DependencyRules(object):
                 DependModuleList.append(Module)
         return (Removable, DependModuleList)
 
-
-    ## Check whether a DP could be replaced by a distribution containing NewDpPkgList
+    # Check whether a DP could be replaced by a distribution containing NewDpPkgList
     # from current workspace.
     #
     # @param OrigDpGuid:  original Dp's Guid
@@ -314,6 +313,7 @@ class DependencyRules(object):
     # @retval Replaceable: True if distribution could be replaced, False Else
     # @retval DependModuleList: the list of modules that make distribution can not be replaced
     #
+
     def CheckDpDepexForReplace(self, OrigDpGuid, OrigDpVersion, NewDpPkgList):
         Replaceable = True
         DependModuleList = []
@@ -358,7 +358,7 @@ class DependencyRules(object):
         #
         for (PkgGuid, PkgVersion, InstallPath) in DpPackageList:
             Logger.Warn("UPT",
-                        ST.WARN_INSTALLED_PACKAGE_NOT_FOUND%(PkgGuid, PkgVersion, InstallPath))
+                        ST.WARN_INSTALLED_PACKAGE_NOT_FOUND % (PkgGuid, PkgVersion, InstallPath))
 
         #
         # check modules to see if it can be satisfied by package not belong to removed DP
@@ -370,7 +370,7 @@ class DependencyRules(object):
         return (Replaceable, DependModuleList)
 
 
-## check whether module depends on packages in DpPackagePathList, return True
+# check whether module depends on packages in DpPackagePathList, return True
 # if found, False else
 #
 # @param Path: a module path
@@ -390,7 +390,7 @@ def VerifyRemoveModuleDep(Path, DpPackagePathList):
     except FatalError as ErrCode:
         if ErrCode.message == EDK1_INF_ERROR:
             Logger.Warn("UPT",
-                        ST.WRN_EDK1_INF_FOUND%Path)
+                        ST.WRN_EDK1_INF_FOUND % Path)
             return True
         else:
             return True
@@ -399,6 +399,8 @@ def VerifyRemoveModuleDep(Path, DpPackagePathList):
 #
 # Get Dependency package path from an Inf file path
 #
+
+
 def GetPackagePath(InfPath):
     PackagePath = []
     if os.path.exists(InfPath):
@@ -419,7 +421,7 @@ def GetPackagePath(InfPath):
 
     return PackagePath
 
-## check whether module depends on packages in DpPackagePathList and can not be satisfied by OtherPkgList
+# check whether module depends on packages in DpPackagePathList and can not be satisfied by OtherPkgList
 #
 # @param Path: a module path
 # @param DpPackagePathList:  a list of Package Paths
@@ -428,6 +430,8 @@ def GetPackagePath(InfPath):
 #           True:  either module doesn't depend on DpPackagePathList or module depends on DpPackagePathList
 #                 but can be satisfied by OtherPkgList
 #
+
+
 def VerifyReplaceModuleDep(Path, DpPackagePathList, OtherPkgList):
     try:
         for Item in GetPackagePath(Path):
@@ -442,7 +446,7 @@ def VerifyReplaceModuleDep(Path, DpPackagePathList, OtherPkgList):
     except FatalError as ErrCode:
         if ErrCode.message == EDK1_INF_ERROR:
             Logger.Warn("UPT",
-                        ST.WRN_EDK1_INF_FOUND%Path)
+                        ST.WRN_EDK1_INF_FOUND % Path)
             return True
         else:
             return True

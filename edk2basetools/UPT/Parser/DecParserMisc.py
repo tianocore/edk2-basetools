@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define helper class and function for DEC parser
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -9,7 +9,7 @@
 DecParserMisc
 '''
 
-## Import modules
+# Import modules
 #
 import os
 import edk2basetools.UPT.Logger.Log as Logger
@@ -30,9 +30,11 @@ CVAR_PATTERN = '[_a-zA-Z][a-zA-Z0-9_]*'
 PCD_TOKEN_PATTERN = '(0[xX]0*[a-fA-F0-9]{1,8})|([0-9]+)'
 MACRO_PATTERN = '[A-Z][_A-Z0-9]*'
 
-## FileContent
+# FileContent
 # Class to hold DEC file information
 #
+
+
 class FileContent:
     def __init__(self, Filename, FileContent2):
         self.Filename = Filename
@@ -72,7 +74,7 @@ class FileContent:
         return self.LineIndex >= self.FileLines
 
 
-## StripRoot
+# StripRoot
 #
 # Strip root path
 #
@@ -92,7 +94,7 @@ def StripRoot(Root, Path):
         return Path
     return OrigPath
 
-## CleanString
+# CleanString
 #
 # Split comments in a string
 # Remove spaces
@@ -101,7 +103,9 @@ def StripRoot(Root, Path):
 # @param CommentCharacter:  Comment char, used to ignore comment content,
 #                           default is DataType.TAB_COMMENT_SPLIT
 #
-def CleanString(Line, CommentCharacter=TAB_COMMENT_SPLIT, \
+
+
+def CleanString(Line, CommentCharacter=TAB_COMMENT_SPLIT,
                 AllowCppStyleComment=False):
     #
     # remove whitespace
@@ -129,7 +133,7 @@ def CleanString(Line, CommentCharacter=TAB_COMMENT_SPLIT, \
     return Line, Comment
 
 
-## IsValidNumValUint8
+# IsValidNumValUint8
 #
 # Check if Token is NumValUint8: <NumValUint8> ::= {<ShortNum>} {<UINT8>} {<Expression>}
 #
@@ -157,13 +161,15 @@ def IsValidNumValUint8(Token):
     else:
         return True
 
-## IsValidNList
+# IsValidNList
 #
 # Check if Value has the format of <NumValUint8> ["," <NumValUint8>]{0,}
 # <NumValUint8> ::= {<ShortNum>} {<UINT8>} {<Expression>}
 #
 # @param Value: Value to be checked
 #
+
+
 def IsValidNList(Value):
     Par = ParserHelper(Value)
     if Par.End():
@@ -180,12 +186,14 @@ def IsValidNList(Value):
             break
     return Par.End()
 
-## IsValidCArray
+# IsValidCArray
 #
 # check Array is valid
 #
 # @param Array:    The input Array
 #
+
+
 def IsValidCArray(Array):
     Par = ParserHelper(Array)
     if not Par.Expect('{'):
@@ -212,13 +220,15 @@ def IsValidCArray(Array):
             return False
     return Par.End()
 
-## IsValidPcdDatum
+# IsValidPcdDatum
 #
 # check PcdDatum is valid
 #
 # @param Type:    The pcd Type
 # @param Value:    The pcd Value
 #
+
+
 def IsValidPcdDatum(Type, Value):
     if not Value:
         return False, ST.ERR_DECPARSE_PCD_VALUE_EMPTY
@@ -227,13 +237,13 @@ def IsValidPcdDatum(Type, Value):
     if Type not in ["UINT8", "UINT16", "UINT32", "UINT64", "VOID*", "BOOLEAN"]:
         return False, ST.ERR_DECPARSE_PCD_TYPE
     if Type == "VOID*":
-        if not ((Value.startswith('L"') or Value.startswith('"') and \
+        if not ((Value.startswith('L"') or Value.startswith('"') and
                  Value.endswith('"'))
-                or (IsValidCArray(Value)) or (IsValidCFormatGuid(Value)) \
+                or (IsValidCArray(Value)) or (IsValidCFormatGuid(Value))
                 or (IsValidNList(Value)) or (CheckGuidRegFormat(Value))
-               ):
+                ):
             return False, ST.ERR_DECPARSE_PCD_VOID % (Value, Type)
-        RealString = Value[Value.find('"') + 1 :-1]
+        RealString = Value[Value.find('"') + 1:-1]
         if RealString:
             if not IsValidBareCString(RealString):
                 return False, ST.ERR_DECPARSE_PCD_VOID % (Value, Type)
@@ -252,7 +262,7 @@ def IsValidPcdDatum(Type, Value):
         try:
             StrVal = Value
             if Value and not Value.startswith('0x') \
-                and not Value.startswith('0X'):
+                    and not Value.startswith('0X'):
                 Value = Value.lstrip('0')
                 if not Value:
                     return True, ""
@@ -268,8 +278,10 @@ def IsValidPcdDatum(Type, Value):
 
     return True, ""
 
-## ParserHelper
+# ParserHelper
 #
+
+
 class ParserHelper:
     def __init__(self, String, File=''):
         self._String = String
@@ -277,7 +289,7 @@ class ParserHelper:
         self._Index = 0
         self._File = File
 
-    ## End
+    # End
     #
     # End
     #
@@ -285,7 +297,7 @@ class ParserHelper:
         self.__SkipWhitespace()
         return self._Index >= self._StrLen
 
-    ## __SkipWhitespace
+    # __SkipWhitespace
     #
     # Skip whitespace
     #
@@ -295,7 +307,7 @@ class ParserHelper:
                 break
             self._Index += 1
 
-    ## Expect
+    # Expect
     #
     # Expect char in string
     #
@@ -314,7 +326,7 @@ class ParserHelper:
         #
         return False
 
-    ## GetToken
+    # GetToken
     #
     # Get token until encounter StopChar, front whitespace is consumed
     #
@@ -338,7 +350,7 @@ class ParserHelper:
                 LastChar = Char
         return self._String[PreIndex:self._Index]
 
-    ## AssertChar
+    # AssertChar
     #
     # Assert char at current index of string is AssertChar, or will report
     # error message
@@ -352,7 +364,7 @@ class ParserHelper:
             Logger.Error(TOOL_NAME, FILE_PARSE_FAILURE, File=self._File,
                          Line=ErrorLineNum, ExtraData=ErrorString)
 
-    ## AssertEnd
+    # AssertEnd
     #
     # @param ErrorString: ErrorString
     # @param ErrorLineNum: ErrorLineNum

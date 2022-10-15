@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase a meta file table
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -15,15 +15,16 @@ import edk2basetools.Common.EdkLogger as EdkLogger
 from edk2basetools.Common.BuildToolError import FORMAT_INVALID
 
 from edk2basetools.CommonDataClass.DataClass import MODEL_FILE_DSC, MODEL_FILE_DEC, MODEL_FILE_INF, \
-                                      MODEL_FILE_OTHERS
+    MODEL_FILE_OTHERS
 from edk2basetools.Common.DataType import *
+
 
 class MetaFileTable():
     # TRICK: use file ID as the part before '.'
     _ID_STEP_ = 1
     _ID_MAX_ = 99999999
 
-    ## Constructor
+    # Constructor
     def __init__(self, DB, MetaFile, FileType, Temporary, FromItem=None):
         self.MetaFile = MetaFile
         self.TableName = ""
@@ -32,12 +33,12 @@ class MetaFileTable():
 
         self.CurrentContent = []
         DB.TblFile.append([MetaFile.Name,
-                        MetaFile.Ext,
-                        MetaFile.Dir,
-                        MetaFile.Path,
-                        FileType,
-                        MetaFile.TimeStamp,
-                        FromItem])
+                           MetaFile.Ext,
+                           MetaFile.Dir,
+                           MetaFile.Path,
+                           FileType,
+                           MetaFile.TimeStamp,
+                           FromItem])
         self.FileId = len(DB.TblFile)
         self.ID = self.FileId * 10**8
         if Temporary:
@@ -62,9 +63,11 @@ class MetaFileTable():
         self.CurrentContent.append(self._DUMMY_)
 
     def GetAll(self):
-        return [item for item in self.CurrentContent if item[0] >= 0 and item[-1]>=0]
+        return [item for item in self.CurrentContent if item[0] >= 0 and item[-1] >= 0]
 
-## Python class representation of table storing module data
+# Python class representation of table storing module data
+
+
 class ModuleTable(MetaFileTable):
     _COLUMN_ = '''
         ID REAL PRIMARY KEY,
@@ -84,11 +87,11 @@ class ModuleTable(MetaFileTable):
     # used as table end flag, in case the changes to database is not committed to db file
     _DUMMY_ = [-1, -1, '====', '====', '====', '====', '====', -1, -1, -1, -1, -1, -1]
 
-    ## Constructor
+    # Constructor
     def __init__(self, Db, MetaFile, Temporary):
         MetaFileTable.__init__(self, Db, MetaFile, MODEL_FILE_INF, Temporary)
 
-    ## Insert a record into table Inf
+    # Insert a record into table Inf
     #
     # @param Model:          Model of a Inf item
     # @param Value1:         Value1 of a Inf item
@@ -106,29 +109,30 @@ class ModuleTable(MetaFileTable):
     def Insert(self, Model, Value1, Value2, Value3, Scope1=TAB_ARCH_COMMON, Scope2=TAB_COMMON,
                BelongsToItem=-1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1, Enabled=0):
 
-        (Value1, Value2, Value3, Scope1, Scope2) = (Value1.strip(), Value2.strip(), Value3.strip(), Scope1.strip(), Scope2.strip())
+        (Value1, Value2, Value3, Scope1, Scope2) = (Value1.strip(),
+                                                    Value2.strip(), Value3.strip(), Scope1.strip(), Scope2.strip())
         self.ID = self.ID + self._ID_STEP_
         if self.ID >= (MODEL_FILE_INF + self._ID_MAX_):
             self.ID = MODEL_FILE_INF + self._ID_STEP_
 
-        row = [ self.ID,
-                Model,
-                Value1,
-                Value2,
-                Value3,
-                Scope1,
-                Scope2,
-                BelongsToItem,
-                StartLine,
-                StartColumn,
-                EndLine,
-                EndColumn,
-                Enabled
-            ]
+        row = [self.ID,
+               Model,
+               Value1,
+               Value2,
+               Value3,
+               Scope1,
+               Scope2,
+               BelongsToItem,
+               StartLine,
+               StartColumn,
+               EndLine,
+               EndColumn,
+               Enabled
+               ]
         self.CurrentContent.append(row)
         return self.ID
 
-    ## Query table
+    # Query table
     #
     # @param    Model:      The Model of Record
     # @param    Arch:       The Arch attribute of Record
@@ -139,7 +143,7 @@ class ModuleTable(MetaFileTable):
     def Query(self, Model, Arch=None, Platform=None, BelongsToItem=None):
 
         QueryTab = self.CurrentContent
-        result = [item for item in QueryTab if item[1] == Model and item[-1]>=0 ]
+        result = [item for item in QueryTab if item[1] == Model and item[-1] >= 0]
 
         if Arch is not None and Arch != TAB_ARCH_COMMON:
             ArchList = set(['COMMON'])
@@ -147,17 +151,19 @@ class ModuleTable(MetaFileTable):
             result = [item for item in result if item[5] in ArchList]
 
         if Platform is not None and Platform != TAB_COMMON:
-            Platformlist = set( ['COMMON','DEFAULT'])
+            Platformlist = set(['COMMON', 'DEFAULT'])
             Platformlist.add(Platform)
             result = [item for item in result if item[6] in Platformlist]
 
         if BelongsToItem is not None:
             result = [item for item in result if item[7] == BelongsToItem]
 
-        result = [ [r[2],r[3],r[4],r[5],r[6],r[0],r[8]] for r in result ]
+        result = [[r[2], r[3], r[4], r[5], r[6], r[0], r[8]] for r in result]
         return result
 
-## Python class representation of table storing package data
+# Python class representation of table storing package data
+
+
 class PackageTable(MetaFileTable):
     _COLUMN_ = '''
         ID REAL PRIMARY KEY,
@@ -177,11 +183,11 @@ class PackageTable(MetaFileTable):
     # used as table end flag, in case the changes to database is not committed to db file
     _DUMMY_ = [-1, -1, '====', '====', '====', '====', '====', -1, -1, -1, -1, -1, -1]
 
-    ## Constructor
+    # Constructor
     def __init__(self, Cursor, MetaFile, Temporary):
         MetaFileTable.__init__(self, Cursor, MetaFile, MODEL_FILE_DEC, Temporary)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Dec
     #
@@ -200,27 +206,28 @@ class PackageTable(MetaFileTable):
     #
     def Insert(self, Model, Value1, Value2, Value3, Scope1=TAB_ARCH_COMMON, Scope2=TAB_COMMON,
                BelongsToItem=-1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1, Enabled=0):
-        (Value1, Value2, Value3, Scope1, Scope2) = (Value1.strip(), Value2.strip(), Value3.strip(), Scope1.strip(), Scope2.strip())
+        (Value1, Value2, Value3, Scope1, Scope2) = (Value1.strip(),
+                                                    Value2.strip(), Value3.strip(), Scope1.strip(), Scope2.strip())
         self.ID = self.ID + self._ID_STEP_
 
-        row = [ self.ID,
-                Model,
-                Value1,
-                Value2,
-                Value3,
-                Scope1,
-                Scope2,
-                BelongsToItem,
-                StartLine,
-                StartColumn,
-                EndLine,
-                EndColumn,
-                Enabled
-            ]
+        row = [self.ID,
+               Model,
+               Value1,
+               Value2,
+               Value3,
+               Scope1,
+               Scope2,
+               BelongsToItem,
+               StartLine,
+               StartColumn,
+               EndLine,
+               EndColumn,
+               Enabled
+               ]
         self.CurrentContent.append(row)
         return self.ID
 
-    ## Query table
+    # Query table
     #
     # @param    Model:  The Model of Record
     # @param    Arch:   The Arch attribute of Record
@@ -230,7 +237,7 @@ class PackageTable(MetaFileTable):
     def Query(self, Model, Arch=None):
 
         QueryTab = self.CurrentContent
-        result = [item for item in QueryTab if item[1] == Model and item[-1]>=0 ]
+        result = [item for item in QueryTab if item[1] == Model and item[-1] >= 0]
 
         if Arch is not None and Arch != TAB_ARCH_COMMON:
             ArchList = set(['COMMON'])
@@ -276,7 +283,9 @@ class PackageTable(MetaFileTable):
             return set(), set(), set()
         return set(validateranges), set(validlists), set(expressions)
 
-## Python class representation of table storing platform data
+# Python class representation of table storing platform data
+
+
 class PlatformTable(MetaFileTable):
     _COLUMN_ = '''
         ID REAL PRIMARY KEY,
@@ -296,13 +305,13 @@ class PlatformTable(MetaFileTable):
         Enabled INTEGER DEFAULT 0
         '''
     # used as table end flag, in case the changes to database is not committed to db file
-    _DUMMY_ = [-1, -1, '====', '====', '====', '====', '====','====', -1, -1, -1, -1, -1, -1, -1]
+    _DUMMY_ = [-1, -1, '====', '====', '====', '====', '====', '====', -1, -1, -1, -1, -1, -1, -1]
 
-    ## Constructor
+    # Constructor
     def __init__(self, Cursor, MetaFile, Temporary, FromItem=0):
         MetaFileTable.__init__(self, Cursor, MetaFile, MODEL_FILE_DSC, Temporary, FromItem)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Dsc
     #
@@ -320,32 +329,32 @@ class PlatformTable(MetaFileTable):
     # @param EndColumn:      EndColumn of a Dsc item
     # @param Enabled:        If this item enabled
     #
-    def Insert(self, Model, Value1, Value2, Value3, Scope1=TAB_ARCH_COMMON, Scope2=TAB_COMMON, Scope3=TAB_DEFAULT_STORES_DEFAULT,BelongsToItem=-1,
+    def Insert(self, Model, Value1, Value2, Value3, Scope1=TAB_ARCH_COMMON, Scope2=TAB_COMMON, Scope3=TAB_DEFAULT_STORES_DEFAULT, BelongsToItem=-1,
                FromItem=-1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1, Enabled=1):
-        (Value1, Value2, Value3, Scope1, Scope2, Scope3) = (Value1.strip(), Value2.strip(), Value3.strip(), Scope1.strip(), Scope2.strip(), Scope3.strip())
+        (Value1, Value2, Value3, Scope1, Scope2, Scope3) = (Value1.strip(),
+                                                            Value2.strip(), Value3.strip(), Scope1.strip(), Scope2.strip(), Scope3.strip())
         self.ID = self.ID + self._ID_STEP_
 
-        row = [ self.ID,
-                Model,
-                Value1,
-                Value2,
-                Value3,
-                Scope1,
-                Scope2,
-                Scope3,
-                BelongsToItem,
-                FromItem,
-                StartLine,
-                StartColumn,
-                EndLine,
-                EndColumn,
-                Enabled
-            ]
+        row = [self.ID,
+               Model,
+               Value1,
+               Value2,
+               Value3,
+               Scope1,
+               Scope2,
+               Scope3,
+               BelongsToItem,
+               FromItem,
+               StartLine,
+               StartColumn,
+               EndLine,
+               EndColumn,
+               Enabled
+               ]
         self.CurrentContent.append(row)
         return self.ID
 
-
-    ## Query table
+    # Query table
     #
     # @param Model:          The Model of Record
     # @param Scope1:         Arch of a Dsc item
@@ -355,15 +364,16 @@ class PlatformTable(MetaFileTable):
     #
     # @retval:       A recordSet of all found records
     #
+
     def Query(self, Model, Scope1=None, Scope2=None, BelongsToItem=None, FromItem=None):
 
         QueryTab = self.CurrentContent
-        result = [item for item in QueryTab if item[1] == Model and item[-1]>0 ]
+        result = [item for item in QueryTab if item[1] == Model and item[-1] > 0]
         if Scope1 is not None and Scope1 != TAB_ARCH_COMMON:
             Sc1 = set(['COMMON'])
             Sc1.add(Scope1)
             result = [item for item in result if item[5] in Sc1]
-        Sc2 = set( ['COMMON','DEFAULT'])
+        Sc2 = set(['COMMON', 'DEFAULT'])
         if Scope2 and Scope2 != TAB_COMMON:
             if '.' in Scope2:
                 Index = Scope2.index('.')
@@ -379,33 +389,36 @@ class PlatformTable(MetaFileTable):
         if FromItem is not None:
             result = [item for item in result if item[9] == FromItem]
 
-        result = [ [r[2],r[3],r[4],r[5],r[6],r[7],r[0],r[10]] for r in result ]
+        result = [[r[2], r[3], r[4], r[5], r[6], r[7], r[0], r[10]] for r in result]
         return result
 
-    def DisableComponent(self,comp_id):
+    def DisableComponent(self, comp_id):
         for item in self.CurrentContent:
             if item[0] == comp_id or item[8] == comp_id:
                 item[-1] = -1
 
-## Factory class to produce different storage for different type of meta-file
+# Factory class to produce different storage for different type of meta-file
+
+
 class MetaFileStorage(object):
     _FILE_TABLE_ = {
-        MODEL_FILE_INF      :   ModuleTable,
-        MODEL_FILE_DEC      :   PackageTable,
-        MODEL_FILE_DSC      :   PlatformTable,
-        MODEL_FILE_OTHERS   :   MetaFileTable,
+        MODEL_FILE_INF: ModuleTable,
+        MODEL_FILE_DEC: PackageTable,
+        MODEL_FILE_DSC: PlatformTable,
+        MODEL_FILE_OTHERS: MetaFileTable,
     }
 
     _FILE_TYPE_ = {
-        ".inf"  : MODEL_FILE_INF,
-        ".dec"  : MODEL_FILE_DEC,
-        ".dsc"  : MODEL_FILE_DSC,
+        ".inf": MODEL_FILE_INF,
+        ".dec": MODEL_FILE_DEC,
+        ".dsc": MODEL_FILE_DSC,
     }
     _ObjectCache = {}
-    ## Constructor
+    # Constructor
+
     def __new__(Class, Cursor, MetaFile, FileType=None, Temporary=False, FromItem=None):
         # no type given, try to find one
-        key = (MetaFile.Path, FileType,Temporary,FromItem)
+        key = (MetaFile.Path, FileType, Temporary, FromItem)
         if key in Class._ObjectCache:
             return Class._ObjectCache[key]
         if not FileType:
@@ -427,4 +440,3 @@ class MetaFileStorage(object):
         if not Temporary:
             Class._ObjectCache[key] = reval
         return reval
-

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to parse a PCD file of .PKG file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -41,6 +41,8 @@ import edk2basetools.UPT.Library.DataType as DataType
 ##
 # ClonedFromXml
 #
+
+
 class ClonedFromXml(object):
     def __init__(self):
         self.GUID = ''
@@ -85,9 +87,9 @@ class CommonDefinesXml(object):
             pass
         self.Usage = XmlAttribute(Item, 'Usage')
         self.SupArchList = \
-        [Arch for Arch in GetSplitValueList(XmlAttribute(Item, 'SupArchList'), DataType.TAB_SPACE_SPLIT) if Arch]
+            [Arch for Arch in GetSplitValueList(XmlAttribute(Item, 'SupArchList'), DataType.TAB_SPACE_SPLIT) if Arch]
         self.SupModList = \
-        [Mod for Mod in GetSplitValueList(XmlAttribute(Item, 'SupModList'), DataType.TAB_SPACE_SPLIT) if Mod]
+            [Mod for Mod in GetSplitValueList(XmlAttribute(Item, 'SupModList'), DataType.TAB_SPACE_SPLIT) if Mod]
         self.FeatureFlag = ConvertNOTEQToNE(XmlAttribute(Item, 'FeatureFlag'))
 
     def ToXml(self):
@@ -95,11 +97,13 @@ class CommonDefinesXml(object):
 
     def __str__(self):
         return "Usage = %s SupArchList = %s SupModList = %s FeatureFlag = %s" \
-                % (self.Usage, self.SupArchList, self.SupModList, self.FeatureFlag)
+            % (self.Usage, self.SupArchList, self.SupModList, self.FeatureFlag)
 
 ##
 # PromptXml
 #
+
+
 class PromptXml(object):
     def __init__(self):
         self.Prompt = ''
@@ -115,12 +119,15 @@ class PromptXml(object):
         if self.Prompt:
             pass
         return CreateXmlElement('%s' % Key, Prompt.GetString(), [], [['Lang', Prompt.GetLang()]])
+
     def __str__(self):
         return "Prompt = %s Lang = %s" % (self.Prompt, self.Lang)
 
 ##
 # HelpTextXml
 #
+
+
 class HelpTextXml(object):
     def __init__(self):
         self.HelpText = ''
@@ -136,12 +143,15 @@ class HelpTextXml(object):
         if self.HelpText:
             pass
         return CreateXmlElement('%s' % Key, HelpText.GetString(), [], [['Lang', HelpText.GetLang()]])
+
     def __str__(self):
         return "HelpText = %s Lang = %s" % (self.HelpText, self.Lang)
 
 ##
 # HeaderXml
 #
+
+
 class HeaderXml(object):
     def __init__(self):
         self.Name = ''
@@ -160,7 +170,7 @@ class HeaderXml(object):
                 XmlTreeLevel = ['DistributionPackage', 'ModuleSurfaceArea']
             else:
                 XmlTreeLevel = ['DistributionPackage', 'PackageSurfaceArea', 'ModuleSurfaceArea']
-            CheckDict = {'Header':''}
+            CheckDict = {'Header': ''}
             IsRequiredItemListNull(CheckDict, XmlTreeLevel)
         self.Name = XmlElement(Item, '%s/Name' % Key)
         self.BaseName = XmlAttribute(XmlNode(Item, '%s/Name' % Key), 'BaseName')
@@ -238,11 +248,13 @@ class HeaderXml(object):
     def __str__(self):
         return "Name = %s BaseName = %s GUID = %s Version = %s Copyright = %s \
         License = %s Abstract = %s Description = %s" % \
-        (self.Name, self.BaseName, self.GUID, self.Version, self.CopyrightList, \
-         self.LicenseList, self.AbstractList, self.DescriptionList)
+            (self.Name, self.BaseName, self.GUID, self.Version, self.CopyrightList,
+             self.LicenseList, self.AbstractList, self.DescriptionList)
 ##
 # DistributionPackageHeaderXml
 #
+
+
 class DistributionPackageHeaderXml(object):
     def __init__(self):
         self.Header = HeaderXml()
@@ -289,14 +301,14 @@ class DistributionPackageHeaderXml(object):
     def ToXml(self, DistributionPackageHeader, Key):
         if self.Header:
             pass
-        Element1 = CreateXmlElement('Name', \
-                                    DistributionPackageHeader.GetName(), [], \
-                                    [['BaseName', \
-                                    DistributionPackageHeader.GetBaseName()]])
-        Element2 = CreateXmlElement('GUID', \
-                                    DistributionPackageHeader.GetGuid(), [], \
-                                    [['Version', \
-                                    DistributionPackageHeader.GetVersion()]])
+        Element1 = CreateXmlElement('Name',
+                                    DistributionPackageHeader.GetName(), [],
+                                    [['BaseName',
+                                      DistributionPackageHeader.GetBaseName()]])
+        Element2 = CreateXmlElement('GUID',
+                                    DistributionPackageHeader.GetGuid(), [],
+                                    [['Version',
+                                      DistributionPackageHeader.GetVersion()]])
         AttributeList = []
         if DistributionPackageHeader.ReadOnly != '':
             AttributeList.append(['ReadOnly', str(DistributionPackageHeader.ReadOnly).lower()])
@@ -327,7 +339,7 @@ class DistributionPackageHeaderXml(object):
                     ['Abstract', DPAbstract],
                     ['Description', DPDescription],
                     ['Signature', DistributionPackageHeader.Signature],
-                    ['XmlSpecification', \
+                    ['XmlSpecification',
                      DistributionPackageHeader.XmlSpecification],
                     ]
         Root = CreateXmlElement('%s' % Key, '', NodeList, AttributeList)
@@ -336,11 +348,13 @@ class DistributionPackageHeaderXml(object):
     def __str__(self):
         return "ReadOnly = %s RePackage = %s Vendor = %s Date = %s \
         Signature = %s XmlSpecification = %s %s" % \
-        (self.ReadOnly, self.RePackage, self.Vendor, self.Date, \
-         self.Signature, self.XmlSpecification, self.Header)
+            (self.ReadOnly, self.RePackage, self.Vendor, self.Date,
+             self.Signature, self.XmlSpecification, self.Header)
 ##
 # PackageHeaderXml
 #
+
+
 class PackageHeaderXml(object):
     def __init__(self):
         self.Header = HeaderXml()
@@ -366,9 +380,9 @@ class PackageHeaderXml(object):
     def ToXml(self, PackageObject2, Key):
         if self.PackagePath:
             pass
-        Element1 = CreateXmlElement('Name', PackageObject2.GetName(), [], \
-                         [['BaseName', PackageObject2.GetBaseName()]])
-        Element2 = CreateXmlElement('GUID', PackageObject2.GetGuid(), [], \
+        Element1 = CreateXmlElement('Name', PackageObject2.GetName(), [],
+                                    [['BaseName', PackageObject2.GetBaseName()]])
+        Element2 = CreateXmlElement('GUID', PackageObject2.GetGuid(), [],
                                     [['Version', PackageObject2.GetVersion()]])
         NodeList = [Element1,
                     Element2
@@ -406,7 +420,6 @@ class PackageHeaderXml(object):
             if Value:
                 NodeList.append(CreateXmlElement(DataType.TAB_HEADER_DESCRIPTION, Value, [], [['Lang', Lang]]))
 
-
         NodeList.append(['PackagePath', PackageObject2.GetPackagePath()])
         AttributeList = []
         Root = CreateXmlElement('%s' % Key, '', NodeList, AttributeList)
@@ -419,6 +432,8 @@ class PackageHeaderXml(object):
 ##
 # MiscellaneousFileXml
 #
+
+
 class MiscellaneousFileXml(object):
     def __init__(self):
         self.Header = HeaderXml()
@@ -426,6 +441,7 @@ class MiscellaneousFileXml(object):
     ##
     # This API is used for Package or Module's MiscellaneousFile section
     #
+
     def FromXml(self, Item, Key):
         if not Item:
             return None
@@ -458,6 +474,7 @@ class MiscellaneousFileXml(object):
     ##
     # This API is used for DistP's tool section
     #
+
     def FromXml2(self, Item, Key):
         if Item is None:
             return None
@@ -466,7 +483,7 @@ class MiscellaneousFileXml(object):
         for SubItem in XmlList(Item, '%s/Filename' % Key):
             Filename = XmlElement(SubItem, '%s/Filename' % Key)
             Executable = \
-            XmlAttribute(XmlNode(SubItem, '%s/Filename' % Key), 'Executable')
+                XmlAttribute(XmlNode(SubItem, '%s/Filename' % Key), 'Executable')
             OsType = XmlAttribute(XmlNode(SubItem, '%s/Filename' % Key), 'OS')
             if Executable.upper() == "TRUE":
                 Executable = True
@@ -518,17 +535,17 @@ class MiscellaneousFileXml(object):
                         ['License', DPLicense],
                         ['Abstract', DPAbstract],
                         ['Description', DPDescription],
-                       ]
+                        ]
             for File in MiscFile.GetFileList():
-                NodeList.append\
-                (CreateXmlElement\
-                 ('Filename', File.GetURI(), [], \
-                  [['Executable', str(File.GetExecutable()).lower()]]))
+                NodeList.append(CreateXmlElement
+                                ('Filename', File.GetURI(), [],
+                                 [['Executable', str(File.GetExecutable()).lower()]]))
             Root = CreateXmlElement('%s' % Key, '', NodeList, [])
             return Root
     ##
     # This API is used for DistP's tool section
     #
+
     def ToXml2(self, MiscFile, Key):
         if self.Header:
             pass
@@ -554,15 +571,14 @@ class MiscellaneousFileXml(object):
                         ['License', DPLicense],
                         ['Abstract', DPAbstract],
                         ['Description', DPDescription],
-                       ]
+                        ]
             HeaderNode = CreateXmlElement('Header', '', NodeList, [])
             NodeList = [HeaderNode]
             for File in MiscFile.GetFileList():
-                NodeList.append\
-                (CreateXmlElement\
-                 ('Filename', File.GetURI(), [], \
-                  [['Executable', str(File.GetExecutable()).lower()], \
-                   ['OS', File.GetOS()]]))
+                NodeList.append(CreateXmlElement
+                                ('Filename', File.GetURI(), [],
+                                 [['Executable', str(File.GetExecutable()).lower()],
+                                  ['OS', File.GetOS()]]))
             Root = CreateXmlElement('%s' % Key, '', NodeList, [])
             return Root
 
@@ -574,6 +590,8 @@ class MiscellaneousFileXml(object):
 ##
 # UserExtensionsXml
 #
+
+
 class UserExtensionsXml(object):
     def __init__(self):
         self.UserId = ''
@@ -605,22 +623,22 @@ class UserExtensionsXml(object):
         self.UserId = XmlAttribute(XmlNode(Item, '%s' % Key), 'UserId')
         self.Identifier = XmlAttribute(XmlNode(Item, '%s' % Key), 'Identifier')
         if self.UserId == DataType.TAB_BINARY_HEADER_USERID \
-        and self.Identifier == DataType.TAB_BINARY_HEADER_IDENTIFIER:
+                and self.Identifier == DataType.TAB_BINARY_HEADER_IDENTIFIER:
             for SubItem in XmlList(Item, '%s/BinaryAbstract' % Key):
                 BinaryAbstractLang = XmlAttribute(SubItem, 'Lang')
                 self.BinaryAbstractList.append((BinaryAbstractLang, XmlElement(SubItem, '%s/BinaryAbstract' % Key)))
             for SubItem in XmlList(Item, '%s/BinaryDescription' % Key):
                 BinaryDescriptionLang = XmlAttribute(SubItem, 'Lang')
                 self.BinaryDescriptionList.append((BinaryDescriptionLang,
-                                                       XmlElement(SubItem, '%s/BinaryDescription' % Key)))
+                                                   XmlElement(SubItem, '%s/BinaryDescription' % Key)))
             for SubItem in XmlList(Item, '%s/BinaryCopyright' % Key):
                 BinaryCopyrightLang = XmlAttribute(SubItem, 'Lang')
                 self.BinaryCopyrightList.append((BinaryCopyrightLang,
-                                                     XmlElement(SubItem, '%s/BinaryCopyright' % Key)))
+                                                 XmlElement(SubItem, '%s/BinaryCopyright' % Key)))
             for SubItem in XmlList(Item, '%s/BinaryLicense' % Key):
                 BinaryLicenseLang = XmlAttribute(SubItem, 'Lang')
                 self.BinaryLicenseList.append((BinaryLicenseLang,
-                                                   XmlElement(SubItem, '%s/BinaryLicense' % Key)))
+                                               XmlElement(SubItem, '%s/BinaryLicense' % Key)))
 
         DefineItem = XmlNode(Item, '%s/Define' % Key)
         for SubItem in XmlList(DefineItem, 'Define/Statement'):
@@ -668,13 +686,13 @@ class UserExtensionsXml(object):
             pass
         AttributeList = [['UserId', str(UserExtension.GetUserID())],
                          ['Identifier', str(UserExtension.GetIdentifier())],
-                         ['SupArchList', \
+                         ['SupArchList',
                           GetStringOfList(UserExtension.GetSupArchList())],
-                        ]
-        Root = CreateXmlElement('%s' % Key, UserExtension.GetStatement(), [], \
-                                    AttributeList)
+                         ]
+        Root = CreateXmlElement('%s' % Key, UserExtension.GetStatement(), [],
+                                AttributeList)
         if UserExtension.GetIdentifier() == DataType.TAB_BINARY_HEADER_IDENTIFIER and \
-        UserExtension.GetUserID() == DataType.TAB_BINARY_HEADER_USERID:
+                UserExtension.GetUserID() == DataType.TAB_BINARY_HEADER_USERID:
             for (Lang, Value) in UserExtension.GetBinaryAbstract():
                 if Value:
                     ChildElement = CreateXmlElement('BinaryAbstract', Value, [], [['Lang', Lang]])
@@ -696,7 +714,7 @@ class UserExtensionsXml(object):
         DefineDict = UserExtension.GetDefinesDict()
         if DefineDict:
             for Item in DefineDict.keys():
-                NodeList.append(CreateXmlElement\
+                NodeList.append(CreateXmlElement
                                 ('Statement', Item, [], []))
             DefineElement = CreateXmlElement('Define', '', NodeList, [])
             Root.appendChild(DefineElement)
@@ -704,18 +722,18 @@ class UserExtensionsXml(object):
         BuildOptionDict = UserExtension.GetBuildOptionDict()
         if BuildOptionDict:
             for Item in BuildOptionDict.keys():
-                NodeList.append(CreateXmlElement\
-                                ('Statement', BuildOptionDict[Item], [], \
+                NodeList.append(CreateXmlElement
+                                ('Statement', BuildOptionDict[Item], [],
                                  [['SupArchList', Item]]))
             BuildOptionElement = \
-            CreateXmlElement('BuildOption', '', NodeList, [])
+                CreateXmlElement('BuildOption', '', NodeList, [])
             Root.appendChild(BuildOptionElement)
         NodeList = []
         IncludesDict = UserExtension.GetIncludesDict()
         if IncludesDict:
             for Item in IncludesDict.keys():
-                NodeList.append(CreateXmlElement\
-                                ('Statement', Item, [], \
+                NodeList.append(CreateXmlElement
+                                ('Statement', Item, [],
                                  [['SupArchList', IncludesDict[Item]]]))
             IncludesElement = CreateXmlElement('Includes', '', NodeList, [])
             Root.appendChild(IncludesElement)
@@ -740,6 +758,8 @@ class UserExtensionsXml(object):
 ##
 # UserExtensionSourceXml
 #
+
+
 class UserExtensionSourceXml(object):
     def __init__(self):
         self.UserExtensionSource = ''
@@ -758,13 +778,13 @@ class UserExtensionSourceXml(object):
             SupArchStr = XmlElement(SubItem, 'SourceFile/SupArchList')
             DictKey = (FileName, Family, FeatureFlag, SupArchStr)
             ValueList = []
-            for ValueNodeItem in XmlList(SubItem, \
+            for ValueNodeItem in XmlList(SubItem,
                                          'SourceFile/SourceFileOtherAttr'):
-                TagName = XmlElement(ValueNodeItem, \
+                TagName = XmlElement(ValueNodeItem,
                                      'SourceFileOtherAttr/TagName')
-                ToolCode = XmlElement(ValueNodeItem, \
+                ToolCode = XmlElement(ValueNodeItem,
                                       'SourceFileOtherAttr/ToolCode')
-                Comment = XmlElement(ValueNodeItem, \
+                Comment = XmlElement(ValueNodeItem,
                                      'SourceFileOtherAttr/Comment')
                 if (TagName == ' ') and (ToolCode == ' ') and (Comment == ' '):
                     TagName = ''
@@ -795,10 +815,10 @@ class UserExtensionSourceXml(object):
                 ValueNodeList.append(["TagName", TagName])
                 ValueNodeList.append(["ToolCode", ToolCode])
                 ValueNodeList.append(["Comment", Comment])
-                ValueNodeXml = CreateXmlElement('SourceFileOtherAttr', '', \
+                ValueNodeXml = CreateXmlElement('SourceFileOtherAttr', '',
                                                 ValueNodeList, [])
                 SourceFileNodeList.append(ValueNodeXml)
-            SourceFileNodeXml = CreateXmlElement('SourceFile', '', \
+            SourceFileNodeXml = CreateXmlElement('SourceFile', '',
                                                  SourceFileNodeList, [])
             SourcesNodeList.append(SourceFileNodeXml)
         Root = CreateXmlElement('%s' % Key, '', SourcesNodeList, [])
@@ -807,6 +827,8 @@ class UserExtensionSourceXml(object):
 ##
 # UserExtensionBinaryXml
 #
+
+
 class UserExtensionBinaryXml(object):
     def __init__(self):
         self.UserExtensionBinary = ''
@@ -824,15 +846,15 @@ class UserExtensionBinaryXml(object):
             SupArch = XmlElement(SubItem, 'Binary/SupArchList')
             DictKey = (FileName, FileType, ConvertNOTEQToNE(FFE), SupArch)
             ValueList = []
-            for ValueNodeItem in XmlList(SubItem, \
+            for ValueNodeItem in XmlList(SubItem,
                                          'Binary/BinaryFileOtherAttr'):
-                Target = XmlElement(ValueNodeItem, \
+                Target = XmlElement(ValueNodeItem,
                                     'BinaryFileOtherAttr/Target')
-                Family = XmlElement(ValueNodeItem, \
+                Family = XmlElement(ValueNodeItem,
                                     'BinaryFileOtherAttr/Family')
-                TagName = XmlElement(ValueNodeItem, \
+                TagName = XmlElement(ValueNodeItem,
                                      'BinaryFileOtherAttr/TagName')
-                Comment = XmlElement(ValueNodeItem, \
+                Comment = XmlElement(ValueNodeItem,
                                      'BinaryFileOtherAttr/Comment')
                 if (Target == ' ') and (Family == ' ') and \
                    (TagName == ' ') and (Comment == ' '):
@@ -868,7 +890,7 @@ class UserExtensionBinaryXml(object):
                 ValueNodeList.append(["Family", Family])
                 ValueNodeList.append(["TagName", TagName])
                 ValueNodeList.append(["Comment", Comment])
-                ValueNodeXml = CreateXmlElement('BinaryFileOtherAttr', '', \
+                ValueNodeXml = CreateXmlElement('BinaryFileOtherAttr', '',
                                                 ValueNodeList, [])
                 FileNodeList.append(ValueNodeXml)
             FileNodeXml = CreateXmlElement('Binary', '', FileNodeList, [])
@@ -879,6 +901,8 @@ class UserExtensionBinaryXml(object):
 ##
 # LibraryClassXml
 #
+
+
 class LibraryClassXml(object):
     def __init__(self):
         self.Keyword = ''
@@ -913,10 +937,10 @@ class LibraryClassXml(object):
         if self.HeaderFile:
             pass
         AttributeList = \
-        [['Keyword', LibraryClass.GetLibraryClass()],
-         ['SupArchList', GetStringOfList(LibraryClass.GetSupArchList())],
-         ['SupModList', GetStringOfList(LibraryClass.GetSupModuleList())]
-         ]
+            [['Keyword', LibraryClass.GetLibraryClass()],
+             ['SupArchList', GetStringOfList(LibraryClass.GetSupArchList())],
+                ['SupModList', GetStringOfList(LibraryClass.GetSupModuleList())]
+             ]
         NodeList = [['HeaderFile', LibraryClass.GetIncludeHeader()]]
         for Item in LibraryClass.GetHelpTextList():
             Tmp = HelpTextXml()
@@ -929,11 +953,11 @@ class LibraryClassXml(object):
             pass
         FeatureFlag = ConvertNEToNOTEQ(LibraryClass.GetFeatureFlag())
         AttributeList = \
-        [['Usage', LibraryClass.GetUsage()], \
-         ['SupArchList', GetStringOfList(LibraryClass.GetSupArchList())], \
-         ['SupModList', GetStringOfList(LibraryClass.GetSupModuleList())], \
-         ['FeatureFlag', FeatureFlag]
-         ]
+            [['Usage', LibraryClass.GetUsage()],
+             ['SupArchList', GetStringOfList(LibraryClass.GetSupArchList())],
+                ['SupModList', GetStringOfList(LibraryClass.GetSupModuleList())],
+                ['FeatureFlag', FeatureFlag]
+             ]
         NodeList = [['Keyword', LibraryClass.GetLibraryClass()], ]
         for Item in LibraryClass.GetHelpTextList():
             Tmp = HelpTextXml()
@@ -943,8 +967,8 @@ class LibraryClassXml(object):
 
     def __str__(self):
         Str = "Keyword = %s HeaderFile = %s RecommendedInstanceGuid = %s RecommendedInstanceVersion = %s %s" % \
-              (self.Keyword, self.HeaderFile, self.RecommendedInstanceGuid, self.RecommendedInstanceVersion, \
-              self.CommonDefines)
+              (self.Keyword, self.HeaderFile, self.RecommendedInstanceGuid, self.RecommendedInstanceVersion,
+               self.CommonDefines)
         for Item in self.HelpText:
             Str = Str + "\n\t" + str(Item)
         return Str
@@ -952,6 +976,8 @@ class LibraryClassXml(object):
 ##
 # FilenameXml
 #
+
+
 class FilenameXml(object):
     def __init__(self):
         self.FileType = ''
@@ -982,16 +1008,16 @@ class FilenameXml(object):
     def ToXml(self, Filename, Key):
         if self.Filename:
             pass
-        AttributeList = [['SupArchList', \
+        AttributeList = [['SupArchList',
                           GetStringOfList(Filename.GetSupArchList())],
                          ['FileType', Filename.GetFileType()],
                          ['FeatureFlag', ConvertNEToNOTEQ(Filename.GetFeatureFlag())],
                          ['GUID', Filename.GetGuidValue()]
-                        ]
+                         ]
         Root = CreateXmlElement('%s' % Key, Filename.GetFilename(), [], AttributeList)
 
         return Root
 
     def __str__(self):
         return "FileType = %s Filename = %s %s" \
-             % (self.FileType, self.Filename, self.CommonDefines)
+            % (self.FileType, self.Filename, self.CommonDefines)

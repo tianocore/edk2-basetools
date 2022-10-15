@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contain unit test for CommentParsing
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -34,6 +34,8 @@ from edk2basetools.UPT.Library.Misc import CreateDirectory
 #
 # Test _GetHelpStr
 #
+
+
 class _GetHelpStrTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -507,6 +509,8 @@ Guid1|FFE1
 #
 # Test GenProtocolPPiSections
 #
+
+
 class GenProtocolPPiSectionsTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -536,18 +540,18 @@ class GenProtocolPPiSectionsTest(unittest.TestCase):
         return Object
 
     #    Usage        Notify    Help    INF Comment
-    #1   UNDEFINED    true    Present    ## UNDEFINED ## NOTIFY # Help
-    #2   UNDEFINED    true    Not Present    ## UNDEFINED ## NOTIFY
-    #3   UNDEFINED    false    Present    ## UNDEFINED # Help
-    #4   UNDEFINED    false     Not Present    ## UNDEFINED
-    #5   UNDEFINED    Not Present    Present    # Help
-    #6   UNDEFINED    Not Present    Not Present    <empty>
-    #7   Other        true    Present    ## Other ## NOTIFY # Help
-    #8   Other        true    Not Present    ## Other ## NOTIFY
-    #9   Other        false    Present    ## Other # Help
-    #A   Other        false     Not Present    ## Other
-    #B   Other        Not Present    Present    ## Other # Help
-    #C   Other        Not Present    Not Present    ## Other
+    # 1   UNDEFINED    true    Present    ## UNDEFINED ## NOTIFY # Help
+    # 2   UNDEFINED    true    Not Present    ## UNDEFINED ## NOTIFY
+    # 3   UNDEFINED    false    Present    ## UNDEFINED # Help
+    # 4   UNDEFINED    false     Not Present    ## UNDEFINED
+    # 5   UNDEFINED    Not Present    Present    # Help
+    # 6   UNDEFINED    Not Present    Not Present    <empty>
+    # 7   Other        true    Present    ## Other ## NOTIFY # Help
+    # 8   Other        true    Not Present    ## Other ## NOTIFY
+    # 9   Other        false    Present    ## Other # Help
+    # A   Other        false     Not Present    ## Other
+    # B   Other        Not Present    Present    ## Other # Help
+    # C   Other        Not Present    Not Present    ## Other
 
     def testNormalCase1(self):
         ObjectList = []
@@ -560,9 +564,8 @@ class GenProtocolPPiSectionsTest(unittest.TestCase):
         HelpStr = 'Help'
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -572,9 +575,8 @@ Guid1|FFE1 ## UNDEFINED ## NOTIFY # Help'''
         IsProtocol = False
         ObjectList = []
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Ppis]
@@ -592,9 +594,8 @@ Guid1|FFE1 ## UNDEFINED ## NOTIFY # Help'''
         HelpStr = ''
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -612,9 +613,8 @@ Guid1|FFE1 ## UNDEFINED ## NOTIFY'''
         HelpStr = 'Help'
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -632,9 +632,8 @@ Guid1|FFE1 ## UNDEFINED # Help'''
         HelpStr = ''
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -652,9 +651,8 @@ Guid1|FFE1 ## UNDEFINED'''
         HelpStr = 'Help'
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -672,9 +670,8 @@ Guid1|FFE1 # Help'''
         HelpStr = ''
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -692,9 +689,8 @@ Guid1|FFE1'''
         HelpStr = 'Help'
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -712,9 +708,8 @@ Guid1|FFE1 ## PRODUCES ## NOTIFY # Help'''
         HelpStr = ''
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -732,9 +727,8 @@ Guid1|FFE1 ## PRODUCES ## NOTIFY'''
         HelpStr = 'Help'
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -752,9 +746,8 @@ Guid1|FFE1 ## PRODUCES # Help'''
         HelpStr = ''
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -772,9 +765,8 @@ Guid1|FFE1 ## PRODUCES'''
         HelpStr = 'Help'
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -792,9 +784,8 @@ Guid1|FFE1 ## PRODUCES # Help'''
         HelpStr = ''
         IsProtocol = True
         Object = self.ObjectFactory(CName, FFE, Usage, Notify,
-                                 HelpStr, IsProtocol)
+                                    HelpStr, IsProtocol)
         ObjectList.append(Object)
-
 
         Result = GenProtocolPPiSections(ObjectList, IsProtocol)
         Expected = '''[Protocols]
@@ -804,6 +795,8 @@ Guid1|FFE1 ## PRODUCES'''
 #
 # Test GenPcdSections
 #
+
+
 class GenPcdSectionsTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -832,12 +825,11 @@ class GenPcdSectionsTest(unittest.TestCase):
 
         return Object
 
-
     #    Usage        Help    INF Comment
-    #1   UNDEFINED    Present    # Help
-    #2   UNDEFINED    Not Present    <empty>
-    #3   Other        Present    ## Other # Help
-    #4   Other        Not Present    ## Other
+    # 1   UNDEFINED    Present    # Help
+    # 2   UNDEFINED    Not Present    <empty>
+    # 3   Other        Present    ## Other # Help
+    # 4   Other        Not Present    ## Other
 
     def testNormalCase1(self):
         ObjectList = []
@@ -1244,7 +1236,6 @@ class GenHobSectionsTest(unittest.TestCase):
         Usage = 'UNDEFINED'
         Str = '\nNew Stack HoB'
 
-
         Object = self.ObjectFactory(SupArchList, Type, Usage, Str)
         ObjectList.append(Object)
 
@@ -1265,7 +1256,6 @@ class GenHobSectionsTest(unittest.TestCase):
         Type = 'Foo'
         Usage = 'UNDEFINED'
         Str = '\nNew Stack HoB\n\nTail Comment'
-
 
         Object = self.ObjectFactory(SupArchList, Type, Usage, Str)
         ObjectList.append(Object)
@@ -1289,7 +1279,6 @@ class GenHobSectionsTest(unittest.TestCase):
         Type = 'Foo'
         Usage = 'UNDEFINED'
         Str = '\n\n'
-
 
         Object = self.ObjectFactory(SupArchList, Type, Usage, Str)
         ObjectList.append(Object)
@@ -1372,6 +1361,8 @@ class GenHobSectionsTest(unittest.TestCase):
 #
 # Test GenGenericCommentF
 #
+
+
 class GenGenericCommentFTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -1408,6 +1399,7 @@ class GenGenericCommentFTest(unittest.TestCase):
         Result = GenGenericCommentF(CommentLines)
         Expected = '# coment line 1\n# coment line 2\n'
         self.assertEqual(Result, Expected)
+
 
 if __name__ == '__main__':
     Logger.Initialize()

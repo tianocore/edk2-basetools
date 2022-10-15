@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define strings used in the BPDG tool
 #
 # Copyright (c) 2010 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -6,9 +6,9 @@
 ##
 
 
-#string table starts here...
+# string table starts here...
 
-#strings are classified as following types
+# strings are classified as following types
 #    MSG_...: it is a message string
 #    ERR_...: it is a error string
 #    WRN_...: it is a warning string
@@ -19,7 +19,7 @@
 #    XRC_...: it is a user visible string from xrc file
 
 MAP_FILE_COMMENT_TEMPLATE = \
-"""
+    """
 ## @file
 #
 #  THIS IS AUTO-GENERATED FILE BY BPDG TOOLS AND PLEASE DO NOT MAKE MODIFICATION.
@@ -38,12 +38,11 @@ MAP_FILE_COMMENT_TEMPLATE = \
 """
 
 
-
-LBL_BPDG_LONG_UNI           = (u"Intel(r) Binary Product Data Generation Tool (Intel(r) BPDG)")
-LBL_BPDG_VERSION            = (u"1.0")
-LBL_BPDG_USAGE              = \
-(
-"""BPDG options -o Filename.bin -m Filename.map Filename.txt
+LBL_BPDG_LONG_UNI = (u"Intel(r) Binary Product Data Generation Tool (Intel(r) BPDG)")
+LBL_BPDG_VERSION = (u"1.0")
+LBL_BPDG_USAGE = \
+    (
+        """BPDG options -o Filename.bin -m Filename.map Filename.txt
 Copyright (c) 2010 - 2018, Intel Corporation All Rights Reserved.
 
   Intel(r) Binary Product Data Generation Tool (Intel(r) BPDG)
@@ -56,17 +55,18 @@ Required Flags:
             the mapping of Pcd name, offset, datum size and value derived
             from the input file and any automatic calculations.
 """
-)
+    )
 
-MSG_OPTION_HELP             = ("Show this help message and exit.")
-MSG_OPTION_DEBUG_LEVEL      = ("Print DEBUG statements, where DEBUG_LEVEL is 0-9.")
-MSG_OPTION_VERBOSE          = ("Print informational statements.")
-MSG_OPTION_QUIET            = ("Returns the exit code and will display only error messages.")
-MSG_OPTION_VPD_FILENAME     = ("Specify the file name for the VPD binary file.")
-MSG_OPTION_MAP_FILENAME     = ("Generate file name for consumption during the build that contains the mapping of Pcd name, offset, datum size and value derived from the input file and any automatic calculations.")
-MSG_OPTION_FORCE            = ("Will force overwriting existing output files rather than returning an error message.")
+MSG_OPTION_HELP = ("Show this help message and exit.")
+MSG_OPTION_DEBUG_LEVEL = ("Print DEBUG statements, where DEBUG_LEVEL is 0-9.")
+MSG_OPTION_VERBOSE = ("Print informational statements.")
+MSG_OPTION_QUIET = ("Returns the exit code and will display only error messages.")
+MSG_OPTION_VPD_FILENAME = ("Specify the file name for the VPD binary file.")
+MSG_OPTION_MAP_FILENAME = (
+    "Generate file name for consumption during the build that contains the mapping of Pcd name, offset, datum size and value derived from the input file and any automatic calculations.")
+MSG_OPTION_FORCE = ("Will force overwriting existing output files rather than returning an error message.")
 
-ERR_INVALID_DEBUG_LEVEL     = ("Invalid level for debug message. Only "
-                                "'DEBUG', 'INFO', 'WARNING', 'ERROR', "
-                                "'CRITICAL' are supported for debugging "
-                                "messages.")
+ERR_INVALID_DEBUG_LEVEL = ("Invalid level for debug message. Only "
+                           "'DEBUG', 'INFO', 'WARNING', 'ERROR', "
+                           "'CRITICAL' are supported for debugging "
+                           "messages.")

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This is an XML API that uses a syntax similar to XPath, but it is written in
 # standard python so that no extra python packages are required to use it.
 #
@@ -20,13 +20,15 @@ import codecs
 from edk2basetools.UPT.Logger.ToolError import PARSER_ERROR
 import edk2basetools.UPT.Logger.Log as Logger
 
-## Create a element of XML
+# Create a element of XML
 #
 # @param Name
 # @param String
 # @param NodeList
 # @param AttributeList
 #
+
+
 def CreateXmlElement(Name, String, NodeList, AttributeList):
     Doc = xml.dom.minidom.Document()
     Element = Doc.createElement(Name)
@@ -51,7 +53,7 @@ def CreateXmlElement(Name, String, NodeList, AttributeList):
 
     return Element
 
-## Get a list of XML nodes using XPath style syntax.
+# Get a list of XML nodes using XPath style syntax.
 #
 # Return a list of XML DOM nodes from the root Dom specified by XPath String.
 # If the input Dom or String is not valid, then an empty list is returned.
@@ -59,6 +61,8 @@ def CreateXmlElement(Name, String, NodeList, AttributeList):
 # @param  Dom                The root XML DOM node.
 # @param  String             A XPath style path.
 #
+
+
 def XmlList(Dom, String):
     if String is None or String == "" or Dom is None or Dom == "":
         return []
@@ -74,7 +78,7 @@ def XmlList(Dom, String):
         ChildNodes = []
         for Node in Nodes:
             if Node.nodeType == Node.ELEMENT_NODE and Node.tagName == \
-            TagList[Index]:
+                    TagList[Index]:
                 if Index < End:
                     ChildNodes.extend(Node.childNodes)
                 else:
@@ -86,7 +90,7 @@ def XmlList(Dom, String):
     return Nodes
 
 
-## Get a single XML node using XPath style syntax.
+# Get a single XML node using XPath style syntax.
 #
 # Return a single XML DOM node from the root Dom specified by XPath String.
 # If the input Dom or String is not valid, then an empty string is returned.
@@ -95,7 +99,7 @@ def XmlList(Dom, String):
 # @param  String             A XPath style path.
 #
 def XmlNode(Dom, String):
-    if String is None or String == ""  or Dom is None or Dom == "":
+    if String is None or String == "" or Dom is None or Dom == "":
         return None
     if Dom.nodeType == Dom.DOCUMENT_NODE:
         Dom = Dom.documentElement
@@ -118,7 +122,7 @@ def XmlNode(Dom, String):
     return None
 
 
-## Get a single XML element using XPath style syntax.
+# Get a single XML element using XPath style syntax.
 #
 # Return a single XML element from the root Dom specified by XPath String.
 # If the input Dom or String is not valid, then an empty string is returned.
@@ -132,7 +136,7 @@ def XmlElement(Dom, String):
     except BaseException:
         return ""
 
-## Get a single XML element using XPath style syntax.
+# Get a single XML element using XPath style syntax.
 #
 # Similar with XmlElement, but do not strip all the leading and tailing space
 # and newline, instead just remove the newline and spaces introduced by
@@ -141,6 +145,8 @@ def XmlElement(Dom, String):
 # @param  Dom                The root XML DOM object.
 # @param  Strin              A XPath style path.
 #
+
+
 def XmlElement2(Dom, String):
     try:
         HelpStr = XmlNode(Dom, String).firstChild.data
@@ -151,7 +157,7 @@ def XmlElement2(Dom, String):
         return ""
 
 
-## Get a single XML element of the current node.
+# Get a single XML element of the current node.
 #
 # Return a single XML element specified by the current root Dom.
 # If the input Dom is not valid, then an empty string is returned.
@@ -165,7 +171,7 @@ def XmlElementData(Dom):
         return ""
 
 
-## Get a list of XML elements using XPath style syntax.
+# Get a list of XML elements using XPath style syntax.
 #
 # Return a list of XML elements from the root Dom specified by XPath String.
 # If the input Dom or String is not valid, then an empty list is returned.
@@ -177,7 +183,7 @@ def XmlElementList(Dom, String):
     return list(map(XmlElementData, XmlList(Dom, String)))
 
 
-## Get the XML attribute of the current node.
+# Get the XML attribute of the current node.
 #
 # Return a single XML attribute named Attribute from the current root Dom.
 # If the input Dom or Attribute is not valid, then an empty string is returned.
@@ -192,7 +198,7 @@ def XmlAttribute(Dom, Attribute):
         return ''
 
 
-## Get the XML node name of the current node.
+# Get the XML node name of the current node.
 #
 # Return a single XML node name from the current root Dom.
 # If the input Dom is not valid, then an empty string is returned.
@@ -205,13 +211,15 @@ def XmlNodeName(Dom):
     except BaseException:
         return ''
 
-## Parse an XML file.
+# Parse an XML file.
 #
 # Parse the input XML file named FileName and return a XML DOM it stands for.
 # If the input File is not a valid XML file, then an empty string is returned.
 #
 # @param  FileName           The XML file name.
 #
+
+
 def XmlParseFile(FileName):
     try:
         XmlFile = codecs.open(FileName, 'rb')

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the parser for [Binaries] sections in INF file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -23,8 +23,9 @@ from edk2basetools.UPT.Object.Parser.InfCommonObject import InfLineCommentObject
 from edk2basetools.UPT.Object.Parser.InfCommonObject import CurrentLine
 from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
+
 class InfBinarySectionParser(InfParserSectionRoot):
-    ## InfBinaryParser
+    # InfBinaryParser
     #
     #
     def InfBinaryParser(self, SectionString, InfSectionObject, FileName):
@@ -32,12 +33,12 @@ class InfBinarySectionParser(InfParserSectionRoot):
         # Macro defined in this section
         #
         SectionMacros = {}
-        ValueList     = []
+        ValueList = []
         #
         # For UI (UI, SEC_UI, UNI_UI) binaries
         # One and only one UI section can be included
         #
-        UiBinaryList  = []
+        UiBinaryList = []
         #
         # For Version (VER, SEC_VER, UNI_VER).
         # One and only one VER section on be included
@@ -48,9 +49,9 @@ class InfBinarySectionParser(InfParserSectionRoot):
         #
         ComBinaryList = []
 
-        StillCommentFalg  = False
-        HeaderComments    = []
-        LineComment       = None
+        StillCommentFalg = False
+        HeaderComments = []
+        LineComment = None
 
         AllSectionContent = ''
         #
@@ -58,7 +59,7 @@ class InfBinarySectionParser(InfParserSectionRoot):
         #
         for Line in SectionString:
             BinLineContent = Line[0]
-            BinLineNo      = Line[1]
+            BinLineNo = Line[1]
 
             if BinLineContent.strip() == '':
                 continue
@@ -114,9 +115,9 @@ class InfBinarySectionParser(InfParserSectionRoot):
             # Find Macro
             #
             MacroDef = MacroParser((BinLineContent, BinLineNo),
-                                      FileName,
-                                      DT.MODEL_EFI_BINARY_FILE,
-                                      self.FileLocalMacros)
+                                   FileName,
+                                   DT.MODEL_EFI_BINARY_FILE,
+                                   self.FileLocalMacros)
             if MacroDef[0] is not None:
                 SectionMacros[MacroDef[0]] = MacroDef[1]
                 LineComment = None
@@ -157,8 +158,8 @@ class InfBinarySectionParser(InfParserSectionRoot):
             # Should equal to VER/SEC_VER/UNI_VER
             #
             elif ValueList[0] == DT.BINARY_FILE_TYPE_UNI_VER or \
-               ValueList[0] == DT.BINARY_FILE_TYPE_SEC_VER or \
-               ValueList[0] == DT.BINARY_FILE_TYPE_VER:
+                    ValueList[0] == DT.BINARY_FILE_TYPE_SEC_VER or \
+                    ValueList[0] == DT.BINARY_FILE_TYPE_VER:
                 if len(ValueList) == 2:
                     TokenList = GetSplitValueList(ValueList[1],
                                                   DT.TAB_VALUE_SPLIT,
@@ -178,8 +179,8 @@ class InfBinarySectionParser(InfParserSectionRoot):
                                                       5)
                     else:
                         TokenList = GetSplitValueList(ValueList[1],
-                              DT.TAB_VALUE_SPLIT,
-                              4)
+                                                      DT.TAB_VALUE_SPLIT,
+                                                      4)
 
                     NewValueList = []
                     NewValueList.append(ValueList[0])
@@ -194,9 +195,6 @@ class InfBinarySectionParser(InfParserSectionRoot):
                     ComBinaryList.append((NewValueList,
                                           LineComment,
                                           CurrentLineObj))
-
-
-
 
             ValueList = []
             LineComment = None
@@ -220,7 +218,6 @@ class InfBinarySectionParser(InfParserSectionRoot):
                                           ArchList):
             Logger.Error('InfParser',
                          FORMAT_INVALID,
-                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR%("[Binaries]"),
+                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR % ("[Binaries]"),
                          File=FileName,
                          Line=Item[3])
-

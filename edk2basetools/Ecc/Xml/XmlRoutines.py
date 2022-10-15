@@ -1,4 +1,4 @@
-## @file
+# @file
 # This is an XML API that uses a syntax similar to XPath, but it is written in
 # standard python so that no extra python packages are required to use it.
 #
@@ -14,7 +14,7 @@ import xml.dom.minidom
 import codecs
 from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
-## Create a element of XML
+# Create a element of XML
 #
 # @param Name
 # @param String
@@ -23,6 +23,8 @@ from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 #
 # @revel Element
 #
+
+
 def CreateXmlElement(Name, String, NodeList, AttributeList):
     Doc = xml.dom.minidom.Document()
     Element = Doc.createElement(Name)
@@ -47,7 +49,7 @@ def CreateXmlElement(Name, String, NodeList, AttributeList):
 
     return Element
 
-## Get a list of XML nodes using XPath style syntax.
+# Get a list of XML nodes using XPath style syntax.
 #
 # Return a list of XML DOM nodes from the root Dom specified by XPath String.
 # If the input Dom or String is not valid, then an empty list is returned.
@@ -57,6 +59,8 @@ def CreateXmlElement(Name, String, NodeList, AttributeList):
 #
 # @revel  Nodes              A list of XML nodes matching XPath style Sting.
 #
+
+
 def XmlList(Dom, String):
     if String is None or String == "" or Dom is None or Dom == "":
         return []
@@ -83,7 +87,7 @@ def XmlList(Dom, String):
     return Nodes
 
 
-## Get a single XML node using XPath style syntax.
+# Get a single XML node using XPath style syntax.
 #
 # Return a single XML DOM node from the root Dom specified by XPath String.
 # If the input Dom or String is not valid, then an empty string is returned.
@@ -94,7 +98,7 @@ def XmlList(Dom, String):
 # @revel  Node               A single XML node matching XPath style Sting.
 #
 def XmlNode(Dom, String):
-    if String is None or String == ""  or Dom is None or Dom == "":
+    if String is None or String == "" or Dom is None or Dom == "":
         return ""
     if Dom.nodeType == Dom.DOCUMENT_NODE:
         Dom = Dom.documentElement
@@ -116,7 +120,7 @@ def XmlNode(Dom, String):
     return ""
 
 
-## Get a single XML element using XPath style syntax.
+# Get a single XML element using XPath style syntax.
 #
 # Return a single XML element from the root Dom specified by XPath String.
 # If the input Dom or String is not valid, then an empty string is returned.
@@ -133,7 +137,7 @@ def XmlElement(Dom, String):
         return ""
 
 
-## Get a single XML element of the current node.
+# Get a single XML element of the current node.
 #
 # Return a single XML element specified by the current root Dom.
 # If the input Dom is not valid, then an empty string is returned.
@@ -149,7 +153,7 @@ def XmlElementData(Dom):
         return ""
 
 
-## Get a list of XML elements using XPath style syntax.
+# Get a list of XML elements using XPath style syntax.
 #
 # Return a list of XML elements from the root Dom specified by XPath String.
 # If the input Dom or String is not valid, then an empty list is returned.
@@ -163,7 +167,7 @@ def XmlElementList(Dom, String):
     return map(XmlElementData, XmlList(Dom, String))
 
 
-## Get the XML attribute of the current node.
+# Get the XML attribute of the current node.
 #
 # Return a single XML attribute named Attribute from the current root Dom.
 # If the input Dom or Attribute is not valid, then an empty string is returned.
@@ -180,7 +184,7 @@ def XmlAttribute(Dom, Attribute):
         return ''
 
 
-## Get the XML node name of the current node.
+# Get the XML node name of the current node.
 #
 # Return a single XML node name from the current root Dom.
 # If the input Dom is not valid, then an empty string is returned.
@@ -195,7 +199,7 @@ def XmlNodeName(Dom):
     except:
         return ''
 
-## Parse an XML file.
+# Parse an XML file.
 #
 # Parse the input XML file named FileName and return a XML DOM it stands for.
 # If the input File is not a valid XML file, then an empty string is returned.
@@ -204,9 +208,11 @@ def XmlNodeName(Dom):
 #
 # @revel  Dom                The Dom object achieved from the XML file.
 #
+
+
 def XmlParseFile(FileName):
     try:
-        XmlFile = codecs.open(FileName,encoding='utf_8_sig')
+        XmlFile = codecs.open(FileName, encoding='utf_8_sig')
         Dom = xml.dom.minidom.parse(XmlFile)
         XmlFile.close()
         return Dom
@@ -214,12 +220,13 @@ def XmlParseFile(FileName):
         print(X)
         return ""
 
+
 # This acts like the main() function for the script, unless it is 'import'ed
 # into another script.
 if __name__ == '__main__':
     # Nothing to do here. Could do some unit tests.
-    A = CreateXmlElement('AAA', 'CCC',  [['AAA', '111'], ['BBB', '222']], [['A', '1'], ['B', '2']])
-    B = CreateXmlElement('ZZZ', 'CCC',  [['XXX', '111'], ['YYY', '222']], [['A', '1'], ['B', '2']])
+    A = CreateXmlElement('AAA', 'CCC', [['AAA', '111'], ['BBB', '222']], [['A', '1'], ['B', '2']])
+    B = CreateXmlElement('ZZZ', 'CCC', [['XXX', '111'], ['YYY', '222']], [['A', '1'], ['B', '2']])
     C = CreateXmlList('DDD', 'EEE', [A, B], ['FFF', 'GGG'])
-    print(C.toprettyxml(indent = " "))
+    print(C.toprettyxml(indent=" "))
     pass

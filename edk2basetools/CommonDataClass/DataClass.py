@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class for data structure used in ECC
 #
 # Copyright (c) 2008 - 2014, Intel Corporation. All rights reserved.<BR>
@@ -73,14 +73,14 @@ MODEL_PCD_DYNAMIC_DEFAULT = 4009
 MODEL_PCD_DYNAMIC_VPD = 4010
 MODEL_PCD_DYNAMIC_HII = 4011
 MODEL_PCD_TYPE_LIST = [MODEL_PCD_FIXED_AT_BUILD,
-                        MODEL_PCD_PATCHABLE_IN_MODULE,
-                        MODEL_PCD_FEATURE_FLAG,
-                        MODEL_PCD_DYNAMIC_DEFAULT,
-                        MODEL_PCD_DYNAMIC_HII,
-                        MODEL_PCD_DYNAMIC_VPD,
-                        MODEL_PCD_DYNAMIC_EX_DEFAULT,
-                        MODEL_PCD_DYNAMIC_EX_HII,
-                        MODEL_PCD_DYNAMIC_EX_VPD
+                       MODEL_PCD_PATCHABLE_IN_MODULE,
+                       MODEL_PCD_FEATURE_FLAG,
+                       MODEL_PCD_DYNAMIC_DEFAULT,
+                       MODEL_PCD_DYNAMIC_HII,
+                       MODEL_PCD_DYNAMIC_VPD,
+                       MODEL_PCD_DYNAMIC_EX_DEFAULT,
+                       MODEL_PCD_DYNAMIC_EX_HII,
+                       MODEL_PCD_DYNAMIC_EX_VPD
                        ]
 
 MODEL_META_DATA_HEADER_COMMENT = 5000
@@ -176,9 +176,9 @@ MODEL_LIST = [('MODEL_UNKNOWN', MODEL_UNKNOWN),
               ('MODEL_META_DATA_PACKAGE', MODEL_META_DATA_PACKAGE),
               ('MODEL_META_DATA_NMAKE', MODEL_META_DATA_NMAKE),
               ('MODEL_META_DATA_COMMENT', MODEL_META_DATA_COMMENT)
-             ]
+              ]
 
-## FunctionClass
+# FunctionClass
 #
 # This class defines a structure of a function
 #
@@ -212,12 +212,14 @@ MODEL_LIST = [('MODEL_UNKNOWN', MODEL_UNKNOWN),
 # @var IdentifierList:     IdentifierList of a File
 # @var PcdList:            PcdList of a File
 #
+
+
 class FunctionClass(object):
-    def __init__(self, ID = -1, Header = '', Modifier = '', Name = '', ReturnStatement = '', \
-                 StartLine = -1, StartColumn = -1, EndLine = -1, EndColumn = -1, \
-                 BodyStartLine = -1, BodyStartColumn = -1, BelongsToFile = -1, \
-                 IdentifierList = [], PcdList = [], \
-                 FunNameStartLine = -1, FunNameStartColumn = -1):
+    def __init__(self, ID=-1, Header='', Modifier='', Name='', ReturnStatement='',
+                 StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1,
+                 BodyStartLine=-1, BodyStartColumn=-1, BelongsToFile=-1,
+                 IdentifierList=[], PcdList=[],
+                 FunNameStartLine=-1, FunNameStartColumn=-1):
         self.ID = ID
         self.Header = Header
         self.Modifier = Modifier
@@ -236,7 +238,7 @@ class FunctionClass(object):
         self.IdentifierList = IdentifierList
         self.PcdList = PcdList
 
-## IdentifierClass
+# IdentifierClass
 #
 # This class defines a structure of a variable
 #
@@ -266,9 +268,11 @@ class FunctionClass(object):
 # @var EndLine:              EndLine of a Identifier
 # @var EndColumn:            EndColumn of a Identifier
 #
+
+
 class IdentifierClass(object):
-    def __init__(self, ID = -1, Modifier = '', Type = '', Name = '', Value = '', Model = MODEL_UNKNOWN, \
-                 BelongsToFile = -1, BelongsToFunction = -1, StartLine = -1, StartColumn = -1, EndLine = -1, EndColumn = -1):
+    def __init__(self, ID=-1, Modifier='', Type='', Name='', Value='', Model=MODEL_UNKNOWN,
+                 BelongsToFile=-1, BelongsToFunction=-1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1):
         self.ID = ID
         self.Modifier = Modifier
         self.Type = Type
@@ -282,7 +286,7 @@ class IdentifierClass(object):
         self.EndLine = EndLine
         self.EndColumn = EndColumn
 
-## PcdClass
+# PcdClass
 #
 # This class defines a structure of a Pcd
 #
@@ -312,9 +316,11 @@ class IdentifierClass(object):
 # @var EndLine:                EndLine of a Pcd
 # @var EndColumn:              EndColumn of a Pcd
 #
+
+
 class PcdDataClass(object):
-    def __init__(self, ID = -1, CName = '', TokenSpaceGuidCName = '', Token = '', DatumType = '', Model = MODEL_UNKNOWN, \
-                 BelongsToFile = -1, BelongsToFunction = -1, StartLine = -1, StartColumn = -1, EndLine = -1, EndColumn = -1):
+    def __init__(self, ID=-1, CName='', TokenSpaceGuidCName='', Token='', DatumType='', Model=MODEL_UNKNOWN,
+                 BelongsToFile=-1, BelongsToFunction=-1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1):
         self.ID = ID
         self.CName = CName
         self.TokenSpaceGuidCName = TokenSpaceGuidCName
@@ -327,7 +333,7 @@ class PcdDataClass(object):
         self.EndLine = EndLine
         self.EndColumn = EndColumn
 
-## FileClass
+# FileClass
 #
 # This class defines a structure of a file
 #
@@ -353,9 +359,11 @@ class PcdDataClass(object):
 # @var IdentifierList:    IdentifierList of a File
 # @var PcdList:           PcdList of a File
 #
+
+
 class FileClass(object):
-    def __init__(self, ID = -1, Name = '', ExtName = '', Path = '', FullPath = '', Model = MODEL_UNKNOWN, TimeStamp = '', \
-                 FunctionList = [], IdentifierList = [], PcdList = []):
+    def __init__(self, ID=-1, Name='', ExtName='', Path='', FullPath='', Model=MODEL_UNKNOWN, TimeStamp='',
+                 FunctionList=[], IdentifierList=[], PcdList=[]):
         self.ID = ID
         self.Name = Name
         self.ExtName = ExtName

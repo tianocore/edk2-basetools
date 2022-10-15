@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file [BuildOptions] section.
 # It will consumed by InfParser.
 #
@@ -14,19 +14,22 @@ from edk2basetools.UPT.Library import GlobalData
 
 from edk2basetools.UPT.Object.Parser.InfCommonObject import InfSectionCommonDef
 
+
 class InfBuildOptionItem():
     def __init__(self):
-        self.Content     = ''
+        self.Content = ''
         self.SupArchList = []
         self.AsBuildList = []
 
     def SetContent(self, Content):
         self.Content = Content
+
     def GetContent(self):
         return self.Content
 
     def SetSupArchList(self, SupArchList):
         self.SupArchList = SupArchList
+
     def GetSupArchList(self):
         return self.SupArchList
 
@@ -35,11 +38,12 @@ class InfBuildOptionItem():
     #
     def SetAsBuildList(self, AsBuildList):
         self.AsBuildList = AsBuildList
+
     def GetAsBuildList(self):
         return self.AsBuildList
 
 
-## INF BuildOption section
+# INF BuildOption section
 #  Macro define is not permitted for this section.
 #
 #
@@ -47,7 +51,7 @@ class InfBuildOptionsObject(InfSectionCommonDef):
     def __init__(self):
         self.BuildOptions = []
         InfSectionCommonDef.__init__(self)
-    ## SetBuildOptions function
+    # SetBuildOptions function
     #
     # For BuildOptionName, need to validate its format
     # For BuildOptionValue, just ignore it.
@@ -61,7 +65,8 @@ class InfBuildOptionsObject(InfSectionCommonDef):
     # @return True          Build options set/validate successfully
     # @return False         Build options set/validate failed
     #
-    def SetBuildOptions(self, BuildOptCont, ArchList = None, SectionContent = ''):
+
+    def SetBuildOptions(self, BuildOptCont, ArchList=None, SectionContent=''):
 
         if not GlobalData.gIS_BINARY_INF:
 

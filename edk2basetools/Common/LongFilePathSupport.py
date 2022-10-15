@@ -1,4 +1,4 @@
-## @file
+# @file
 # Override built in function file.open to provide support for long file path
 #
 # Copyright (c) 2014 - 2015, Intel Corporation. All rights reserved.<BR>
@@ -14,6 +14,8 @@ import codecs
 # OpenLongPath
 # Convert a file path to a long file path
 #
+
+
 def LongFilePath(FileName):
     FileName = os.path.normpath(FileName)
     if platform.system() == 'Windows':
@@ -29,8 +31,11 @@ def LongFilePath(FileName):
 # OpenLongFilePath
 # wrap open to support opening a long file path
 #
-def OpenLongFilePath(FileName, Mode='r', Buffer= -1):
+
+
+def OpenLongFilePath(FileName, Mode='r', Buffer=-1):
     return open(LongFilePath(FileName), Mode, Buffer)
+
 
 def CodecOpenLongFilePath(Filename, Mode='rb', Encoding=None, Errors='strict', Buffering=1):
     return codecs.open(LongFilePath(Filename), Mode, Encoding, Errors, Buffering)
@@ -39,6 +44,8 @@ def CodecOpenLongFilePath(Filename, Mode='rb', Encoding=None, Errors='strict', B
 # CopyLongFilePath
 # wrap copyfile to support copy a long file path
 #
+
+
 def CopyLongFilePath(src, dst):
     with open(LongFilePath(src), 'rb') as fsrc:
         with open(LongFilePath(dst), 'wb') as fdst:

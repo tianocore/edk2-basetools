@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase table for functions
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -13,18 +13,20 @@ import edk2basetools.Common.EdkLogger as EdkLogger
 from edk2basetools.Table.Table import Table
 from edk2basetools.Common.StringUtils import ConvertToSqlString
 
-## TableFunction
+# TableFunction
 #
 # This class defined a table used for function
 #
 # @param Table:       Inherited from Table class
 #
+
+
 class TableFunction(Table):
     def __init__(self, Cursor):
         Table.__init__(self, Cursor)
         self.Table = 'Function'
 
-    ## Create table
+    # Create table
     #
     # Create table Function
     #
@@ -61,7 +63,7 @@ class TableFunction(Table):
                                                       )""" % self.Table
         Table.Create(self, SqlCommand)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Function
     #
@@ -84,7 +86,7 @@ class TableFunction(Table):
         self.ID = self.ID + 1
         (Header, Modifier, Name, ReturnStatement) = ConvertToSqlString((Header, Modifier, Name, ReturnStatement))
         SqlCommand = """insert into %s values(%s, '%s', '%s', '%s', '%s', %s, %s, %s, %s, %s, %s, %s, %s, %s)""" \
-                                    % (self.Table, self.ID, Header, Modifier, Name, ReturnStatement, StartLine, StartColumn, EndLine, EndColumn, BodyStartLine, BodyStartColumn, BelongsToFile, FunNameStartLine, FunNameStartColumn)
+            % (self.Table, self.ID, Header, Modifier, Name, ReturnStatement, StartLine, StartColumn, EndLine, EndColumn, BodyStartLine, BodyStartColumn, BelongsToFile, FunNameStartLine, FunNameStartColumn)
         Table.Insert(self, SqlCommand)
 
         return self.ID

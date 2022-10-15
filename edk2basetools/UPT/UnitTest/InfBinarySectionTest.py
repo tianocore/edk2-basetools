@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contain unit test for Test [Binary] section part of InfParser
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -23,14 +23,14 @@ import edk2basetools.UPT.Library.GlobalData as Global
 # Only has 1 element, binary item Type
 #
 SectionStringsCommonItem1 = \
-"""
+    """
 GUID
 """
 #
 # Have 2 elements, binary item Type and FileName
 #
 SectionStringsCommonItem2 = \
-"""
+    """
 GUID | Test/Test.guid
 """
 
@@ -38,7 +38,7 @@ GUID | Test/Test.guid
 # Have 3 elements, Type | FileName | Target | Family | TagName | FeatureFlagExp
 #
 SectionStringsCommonItem3 = \
-"""
+    """
 GUID | Test/Test.guid | DEBUG
 """
 
@@ -47,7 +47,7 @@ GUID | Test/Test.guid | DEBUG
 # Target with MACRO defined in [Define] section
 #
 SectionStringsCommonItem4 = \
-"""
+    """
 GUID | Test/Test.guid | $(TARGET)
 """
 
@@ -56,7 +56,7 @@ GUID | Test/Test.guid | $(TARGET)
 # FileName with MACRO defined in [Binary] section
 #
 SectionStringsCommonItem5 = \
-"""
+    """
 DEFINE BINARY_FILE_PATH = Test
 GUID | $(BINARY_FILE_PATH)/Test.guid | $(TARGET)
 """
@@ -65,7 +65,7 @@ GUID | $(BINARY_FILE_PATH)/Test.guid | $(TARGET)
 # Have 4 elements, Type | FileName | Target | Family
 #
 SectionStringsCommonItem6 = \
-"""
+    """
 GUID | Test/Test.guid | DEBUG | *
 """
 
@@ -73,7 +73,7 @@ GUID | Test/Test.guid | DEBUG | *
 # Have 4 elements, Type | FileName | Target | Family
 #
 SectionStringsCommonItem7 = \
-"""
+    """
 GUID | Test/Test.guid | DEBUG | MSFT
 """
 
@@ -81,7 +81,7 @@ GUID | Test/Test.guid | DEBUG | MSFT
 # Have 5 elements, Type | FileName | Target | Family | TagName
 #
 SectionStringsCommonItem8 = \
-"""
+    """
 GUID | Test/Test.guid | DEBUG | MSFT | TEST
 """
 
@@ -89,7 +89,7 @@ GUID | Test/Test.guid | DEBUG | MSFT | TEST
 # Have 6 elements, Type | FileName | Target | Family | TagName | FFE
 #
 SectionStringsCommonItem9 = \
-"""
+    """
 GUID | Test/Test.guid | DEBUG | MSFT | TEST | TRUE
 """
 
@@ -98,12 +98,11 @@ GUID | Test/Test.guid | DEBUG | MSFT | TEST | TRUE
 # Test wrong format
 #
 SectionStringsCommonItem10 = \
-"""
+    """
 GUID | Test/Test.guid | DEBUG | MSFT | TEST | TRUE | OVERFLOW
 """
 
 #-------------end of common binary item test input----------------------------#
-
 
 
 #-------------start of VER type binary item test input------------------------#
@@ -112,14 +111,14 @@ GUID | Test/Test.guid | DEBUG | MSFT | TEST | TRUE | OVERFLOW
 # Has 1 element, error format
 #
 SectionStringsVerItem1 = \
-"""
+    """
 VER
 """
 #
 # Have 5 elements, error format(Maximum elements amount is 4)
 #
 SectionStringsVerItem2 = \
-"""
+    """
 VER | Test/Test.ver | * | TRUE | OverFlow
 """
 
@@ -127,7 +126,7 @@ VER | Test/Test.ver | * | TRUE | OverFlow
 # Have 2 elements, Type | FileName
 #
 SectionStringsVerItem3 = \
-"""
+    """
 VER | Test/Test.ver
 """
 
@@ -135,7 +134,7 @@ VER | Test/Test.ver
 # Have 3 elements, Type | FileName | Target
 #
 SectionStringsVerItem4 = \
-"""
+    """
 VER | Test/Test.ver | DEBUG
 """
 
@@ -143,7 +142,7 @@ VER | Test/Test.ver | DEBUG
 # Have 4 elements, Type | FileName | Target | FeatureFlagExp
 #
 SectionStringsVerItem5 = \
-"""
+    """
 VER | Test/Test.ver | DEBUG | TRUE
 """
 
@@ -151,7 +150,7 @@ VER | Test/Test.ver | DEBUG | TRUE
 # Exist 2 VER items, both opened.
 #
 SectionStringsVerItem6 = \
-"""
+    """
 VER | Test/Test.ver | * | TRUE
 VER | Test/Test2.ver | * | TRUE
 """
@@ -161,7 +160,7 @@ VER | Test/Test2.ver | * | TRUE
 # Exist 2 VER items, only 1 opened.
 #
 SectionStringsVerItem7 = \
-"""
+    """
 VER | Test/Test.ver | * | TRUE
 VER | Test/Test2.ver | * | FALSE
 """
@@ -175,19 +174,19 @@ VER | Test/Test2.ver | * | FALSE
 # Test only one UI section can exist
 #
 SectionStringsUiItem1 = \
-"""
+    """
 UI | Test/Test.ui | * | TRUE
 UI | Test/Test2.ui | * | TRUE
 """
 
 SectionStringsUiItem2 = \
-"""
+    """
 UI | Test/Test.ui | * | TRUE
 SEC_UI | Test/Test2.ui | * | TRUE
 """
 
 SectionStringsUiItem3 = \
-"""
+    """
 UI | Test/Test.ui | * | TRUE
 UI | Test/Test2.ui | * | FALSE
 """
@@ -196,14 +195,14 @@ UI | Test/Test2.ui | * | FALSE
 # Has 1 element, error format
 #
 SectionStringsUiItem4 = \
-"""
+    """
 UI
 """
 #
 # Have 5 elements, error format(Maximum elements amount is 4)
 #
 SectionStringsUiItem5 = \
-"""
+    """
 UI | Test/Test.ui | * | TRUE | OverFlow
 """
 
@@ -211,7 +210,7 @@ UI | Test/Test.ui | * | TRUE | OverFlow
 # Have 2 elements, Type | FileName
 #
 SectionStringsUiItem6 = \
-"""
+    """
 UI | Test/Test.ui
 """
 
@@ -219,7 +218,7 @@ UI | Test/Test.ui
 # Have 3 elements, Type | FileName | Target
 #
 SectionStringsUiItem7 = \
-"""
+    """
 UI | Test/Test.ui | DEBUG
 """
 
@@ -227,7 +226,7 @@ UI | Test/Test.ui | DEBUG
 # Have 4 elements, Type | FileName | Target | FeatureFlagExp
 #
 SectionStringsUiItem8 = \
-"""
+    """
 UI | Test/Test.ui | DEBUG | TRUE
 """
 #---------------end of UI type binary item test input-------------------------#
@@ -238,6 +237,8 @@ gFileName = "BinarySectionTest.inf"
 ##
 # Construct SectionString for call section parser usage.
 #
+
+
 def StringToSectionString(String):
     Lines = String.split('\n')
     LineNo = 0
@@ -249,6 +250,7 @@ def StringToSectionString(String):
         LineNo = LineNo + 1
 
     return SectionString
+
 
 def PrepareTest(String):
     SectionString = StringToSectionString(String)
@@ -263,7 +265,7 @@ def PrepareTest(String):
             #
             FileName = os.path.normpath(os.path.realpath(ValueList[1].strip()))
             try:
-                TempFile  = open (FileName, "w")
+                TempFile = open(FileName, "w")
                 TempFile.close()
             except:
                 print("File Create Error")
@@ -276,6 +278,7 @@ def PrepareTest(String):
         ItemList.append((ValueList, InfLineCommentObject, CurrentLine))
 
     return ItemList
+
 
 if __name__ == '__main__':
     Logger.Initialize()
@@ -290,26 +293,26 @@ if __name__ == '__main__':
     # For All Ui test
     #
     UiStringList = [
-                    SectionStringsUiItem1,
-                    SectionStringsUiItem2,
-                    SectionStringsUiItem3,
-                    SectionStringsUiItem4,
-                    SectionStringsUiItem5,
-                    SectionStringsUiItem6,
-                    SectionStringsUiItem7,
-                    SectionStringsUiItem8
-                    ]
+        SectionStringsUiItem1,
+        SectionStringsUiItem2,
+        SectionStringsUiItem3,
+        SectionStringsUiItem4,
+        SectionStringsUiItem5,
+        SectionStringsUiItem6,
+        SectionStringsUiItem7,
+        SectionStringsUiItem8
+    ]
 
     for Item in UiStringList:
         Ui = PrepareTest(Item)
         if Item == SectionStringsUiItem4 or Item == SectionStringsUiItem5:
             try:
-                InfBinariesInstance.SetBinary(Ui = Ui, ArchList = ArchList)
+                InfBinariesInstance.SetBinary(Ui=Ui, ArchList=ArchList)
             except Logger.FatalError:
                 pass
         else:
             try:
-                InfBinariesInstance.SetBinary(Ui = Ui, ArchList = ArchList)
+                InfBinariesInstance.SetBinary(Ui=Ui, ArchList=ArchList)
             except:
                 AllPassedFlag = False
 
@@ -317,27 +320,27 @@ if __name__ == '__main__':
     # For All Ver Test
     #
     VerStringList = [
-                     SectionStringsVerItem1,
-                     SectionStringsVerItem2,
-                     SectionStringsVerItem3,
-                     SectionStringsVerItem4,
-                     SectionStringsVerItem5,
-                     SectionStringsVerItem6,
-                     SectionStringsVerItem7
-                     ]
+        SectionStringsVerItem1,
+        SectionStringsVerItem2,
+        SectionStringsVerItem3,
+        SectionStringsVerItem4,
+        SectionStringsVerItem5,
+        SectionStringsVerItem6,
+        SectionStringsVerItem7
+    ]
     for Item in VerStringList:
         Ver = PrepareTest(Item)
         if Item == SectionStringsVerItem1 or \
            Item == SectionStringsVerItem2:
 
             try:
-                InfBinariesInstance.SetBinary(Ver = Ver, ArchList = ArchList)
+                InfBinariesInstance.SetBinary(Ver=Ver, ArchList=ArchList)
             except:
                 pass
 
         else:
             try:
-                InfBinariesInstance.SetBinary(Ver = Ver, ArchList = ArchList)
+                InfBinariesInstance.SetBinary(Ver=Ver, ArchList=ArchList)
             except:
                 AllPassedFlag = False
 
@@ -345,17 +348,17 @@ if __name__ == '__main__':
     # For All Common Test
     #
     CommonStringList = [
-                     SectionStringsCommonItem1,
-                     SectionStringsCommonItem2,
-                     SectionStringsCommonItem3,
-                     SectionStringsCommonItem4,
-                     SectionStringsCommonItem5,
-                     SectionStringsCommonItem6,
-                     SectionStringsCommonItem7,
-                     SectionStringsCommonItem8,
-                     SectionStringsCommonItem9,
-                     SectionStringsCommonItem10
-                     ]
+        SectionStringsCommonItem1,
+        SectionStringsCommonItem2,
+        SectionStringsCommonItem3,
+        SectionStringsCommonItem4,
+        SectionStringsCommonItem5,
+        SectionStringsCommonItem6,
+        SectionStringsCommonItem7,
+        SectionStringsCommonItem8,
+        SectionStringsCommonItem9,
+        SectionStringsCommonItem10
+    ]
 
     for Item in CommonStringList:
         CommonBin = PrepareTest(Item)
@@ -363,19 +366,18 @@ if __name__ == '__main__':
            Item == SectionStringsCommonItem1:
 
             try:
-                InfBinariesInstance.SetBinary(CommonBinary = CommonBin, ArchList = ArchList)
+                InfBinariesInstance.SetBinary(CommonBinary=CommonBin, ArchList=ArchList)
             except:
                 pass
 
         else:
             try:
-                InfBinariesInstance.SetBinary(Ver = Ver, ArchList = ArchList)
+                InfBinariesInstance.SetBinary(Ver=Ver, ArchList=ArchList)
             except:
                 print("Test Failed!")
                 AllPassedFlag = False
 
-    if AllPassedFlag :
+    if AllPassedFlag:
         print('All tests passed...')
     else:
         print('Some unit test failed!')
-

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the parser for [Depex] sections in INF file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -20,8 +20,9 @@ from edk2basetools.UPT.Library import DataType as DT
 from edk2basetools.UPT.Library.Misc import GetSplitValueList
 from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
+
 class InfDepexSectionParser(InfParserSectionRoot):
-    ## InfDepexParser
+    # InfDepexParser
     #
     # For now, only separate Depex String and comments.
     # Have two types of section header.
@@ -31,13 +32,13 @@ class InfDepexSectionParser(InfParserSectionRoot):
     def InfDepexParser(self, SectionString, InfSectionObject, FileName):
         DepexContent = []
         DepexComment = []
-        ValueList    = []
+        ValueList = []
         #
         # Parse section content
         #
         for Line in SectionString:
             LineContent = Line[0]
-            LineNo      = Line[1]
+            LineNo = Line[1]
 
             #
             # Found comment
@@ -57,8 +58,7 @@ class InfDepexSectionParser(InfParserSectionRoot):
 
             if CommentCount > -1:
                 DepexComment.append((LineContent[CommentCount:], LineNo))
-                LineContent = LineContent[:CommentCount-1]
-
+                LineContent = LineContent[:CommentCount - 1]
 
             CommentCount = -1
             DepexContent.append((LineContent, LineNo))
@@ -90,9 +90,9 @@ class InfDepexSectionParser(InfParserSectionRoot):
             else:
                 FormatCommentLn = CommentItem[1] + 1
 
-        if not InfSectionObject.SetDepex(DepexContent, KeyList = KeyList, CommentList = NewCommentList):
+        if not InfSectionObject.SetDepex(DepexContent, KeyList=KeyList, CommentList=NewCommentList):
             Logger.Error('InfParser',
                          FORMAT_INVALID,
-                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR%("[Depex]"),
+                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR % ("[Depex]"),
                          File=FileName,
                          Line=LastItem[3])

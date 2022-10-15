@@ -1,4 +1,4 @@
-## @file
+# @file
 # fragments of source file
 #
 #  Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -26,13 +26,15 @@ StructUnionDefinitionList = []
 TypedefDefinitionList = []
 FunctionCallingList = []
 
-## record file data when parsing source
+# record file data when parsing source
 #
 # May raise Exception when opening file.
 #
-class FileProfile :
 
-    ## The constructor
+
+class FileProfile:
+
+    # The constructor
     #
     #   @param  self        The object pointer
     #   @param  FileName    The file that to be parsed
