@@ -1,4 +1,4 @@
-## @file
+# @file
 # process Version section generation
 #
 #  Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -17,19 +17,21 @@ from edk2basetools.CommonDataClass.FdfClass import VerSectionClassObject
 from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 from edk2basetools.Common.DataType import SUP_MODULE_SEC
 
-## generate version section
+# generate version section
 #
 #
+
+
 class VerSection (VerSectionClassObject):
 
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
     def __init__(self):
         VerSectionClassObject.__init__(self)
 
-    ## GenSection() method
+    # GenSection() method
     #
     #   Generate version section
     #
@@ -42,7 +44,7 @@ class VerSection (VerSectionClassObject):
     #   @param  Dict        dictionary contains macro and its value
     #   @retval tuple       (Generated file name, section alignment)
     #
-    def GenSection(self, OutputPath, ModuleName, SecNum, KeyStringList, FfsInf=None, Dict=None, IsMakefile = False):
+    def GenSection(self, OutputPath, ModuleName, SecNum, KeyStringList, FfsInf=None, Dict=None, IsMakefile=False):
         #
         # Prepare the parameter of GenSection
         #

@@ -1,4 +1,4 @@
-## @file
+# @file
 # process APRIORI file data and generate PEI/DXE APRIORI file
 #
 #  Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -24,11 +24,13 @@ from edk2basetools.Common.DataType import TAB_COMMON
 DXE_APRIORI_GUID = "FC510EE7-FFDC-11D4-BD41-0080C73C8881"
 PEI_APRIORI_GUID = "1B45CC0A-156A-428A-AF62-49864DA0E6E6"
 
-## process APRIORI file data and generate PEI/DXE APRIORI file
+# process APRIORI file data and generate PEI/DXE APRIORI file
 #
 #
+
+
 class AprioriSection (object):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -37,7 +39,7 @@ class AprioriSection (object):
         self.FfsList = []
         self.AprioriType = ""
 
-    ## GenFfs() method
+    # GenFfs() method
     #
     #   Generate FFS for APRIORI file
     #
@@ -46,7 +48,7 @@ class AprioriSection (object):
     #   @param  Dict        dictionary contains macro and its value
     #   @retval string      Generated file name
     #
-    def GenFfs (self, FvName, Dict = None, IsMakefile = False):
+    def GenFfs(self, FvName, Dict=None, IsMakefile=False):
         if Dict is None:
             Dict = {}
         Buffer = BytesIO()
@@ -55,16 +57,16 @@ class AprioriSection (object):
         else:
             AprioriFileGuid = DXE_APRIORI_GUID
 
-        OutputAprFilePath = os.path.join (GenFdsGlobalVariable.WorkSpaceDir, \
-                                   GenFdsGlobalVariable.FfsDir,\
-                                   AprioriFileGuid + FvName)
+        OutputAprFilePath = os.path.join(GenFdsGlobalVariable.WorkSpaceDir,
+                                         GenFdsGlobalVariable.FfsDir,
+                                         AprioriFileGuid + FvName)
         if not os.path.exists(OutputAprFilePath):
             os.makedirs(OutputAprFilePath)
 
-        OutputAprFileName = os.path.join( OutputAprFilePath, \
-                                       AprioriFileGuid + FvName + '.Apri' )
-        AprFfsFileName = os.path.join (OutputAprFilePath,\
-                                    AprioriFileGuid + FvName + '.Ffs')
+        OutputAprFileName = os.path.join(OutputAprFilePath,
+                                         AprioriFileGuid + FvName + '.Apri')
+        AprFfsFileName = os.path.join(OutputAprFilePath,
+                                      AprioriFileGuid + FvName + '.Ffs')
 
         Dict.update(self.DefineVarDict)
         InfFileName = None
@@ -81,16 +83,18 @@ class AprioriSection (object):
                 InfFileName = GenFdsGlobalVariable.MacroExtend(InfFileName, Dict, Arch)
 
                 if Arch:
-                    Inf = GenFdsGlobalVariable.WorkSpace.BuildObject[PathClass(InfFileName, GenFdsGlobalVariable.WorkSpaceDir), Arch, GenFdsGlobalVariable.TargetName, GenFdsGlobalVariable.ToolChainTag]
+                    Inf = GenFdsGlobalVariable.WorkSpace.BuildObject[PathClass(
+                        InfFileName, GenFdsGlobalVariable.WorkSpaceDir), Arch, GenFdsGlobalVariable.TargetName, GenFdsGlobalVariable.ToolChainTag]
                     Guid = Inf.Guid
                 else:
-                    Inf = GenFdsGlobalVariable.WorkSpace.BuildObject[PathClass(InfFileName, GenFdsGlobalVariable.WorkSpaceDir), TAB_COMMON, GenFdsGlobalVariable.TargetName, GenFdsGlobalVariable.ToolChainTag]
+                    Inf = GenFdsGlobalVariable.WorkSpace.BuildObject[PathClass(
+                        InfFileName, GenFdsGlobalVariable.WorkSpaceDir), TAB_COMMON, GenFdsGlobalVariable.TargetName, GenFdsGlobalVariable.ToolChainTag]
                     Guid = Inf.Guid
 
                     if not Inf.Module.Binaries:
                         EdkLoggerError("GenFds", RESOURCE_NOT_AVAILABLE,
-                                        "INF %s not found in build ARCH %s!" \
-                                        % (InfFileName, GenFdsGlobalVariable.ArchList))
+                                       "INF %s not found in build ARCH %s!"
+                                       % (InfFileName, GenFdsGlobalVariable.ArchList))
 
             GuidPart = Guid.split('-')
             Buffer.write(pack('I', int(GuidPart[0], 16)))
@@ -98,24 +102,25 @@ class AprioriSection (object):
             Buffer.write(pack('H', int(GuidPart[2], 16)))
 
             for Num in range(2):
-                Char = GuidPart[3][Num*2:Num*2+2]
+                Char = GuidPart[3][Num * 2:Num * 2 + 2]
                 Buffer.write(pack('B', int(Char, 16)))
 
             for Num in range(6):
-                Char = GuidPart[4][Num*2:Num*2+2]
+                Char = GuidPart[4][Num * 2:Num * 2 + 2]
                 Buffer.write(pack('B', int(Char, 16)))
 
         SaveFileOnChange(OutputAprFileName, Buffer.getvalue())
 
-        RawSectionFileName = os.path.join( OutputAprFilePath, \
-                                       AprioriFileGuid + FvName + '.raw' )
+        RawSectionFileName = os.path.join(OutputAprFilePath,
+                                          AprioriFileGuid + FvName + '.raw')
         MakefilePath = None
         if IsMakefile:
             if not InfFileName:
                 return None
             MakefilePath = InfFileName, Arch
-        GenFdsGlobalVariable.GenerateSection(RawSectionFileName, [OutputAprFileName], 'EFI_SECTION_RAW', IsMakefile=IsMakefile)
+        GenFdsGlobalVariable.GenerateSection(
+            RawSectionFileName, [OutputAprFileName], 'EFI_SECTION_RAW', IsMakefile=IsMakefile)
         GenFdsGlobalVariable.GenerateFfs(AprFfsFileName, [RawSectionFileName],
-                                        'EFI_FV_FILETYPE_FREEFORM', AprioriFileGuid, MakefilePath=MakefilePath)
+                                         'EFI_FV_FILETYPE_FREEFORM', AprioriFileGuid, MakefilePath=MakefilePath)
 
         return AprFfsFileName

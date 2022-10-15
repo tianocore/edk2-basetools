@@ -36,8 +36,9 @@ ERR_ARRAY_ELE = 'This must be HEX value for NList or Array: [%s].'
 ERR_EMPTY_EXPR = 'Empty expression is not allowed.'
 ERR_IN_OPERAND = 'Macro after IN operator can only be: $(FAMILY), $(ARCH), $(TOOL_CHAIN_TAG) and $(TARGET).'
 
+
 class RangeObject(object):
-    def __init__(self, start, end, empty = False):
+    def __init__(self, start, end, empty=False):
 
         if int(start) < int(end):
             self.start = int(start)
@@ -47,13 +48,14 @@ class RangeObject(object):
             self.end = int(start)
         self.empty = empty
 
+
 class RangeContainer(object):
     def __init__(self):
         self.rangelist = []
 
     def push(self, RangeObject):
         self.rangelist.append(RangeObject)
-        self.rangelist = sorted(self.rangelist, key = lambda rangeobj : rangeobj.start)
+        self.rangelist = sorted(self.rangelist, key=lambda rangeobj: rangeobj.start)
         self.merge()
 
     def pop(self):
@@ -68,6 +70,7 @@ class RangeContainer(object):
             else:
                 newrangelist.append(rangeobj)
         self.rangelist = newrangelist
+
     def merge(self):
         self.__clean__()
         for i in range(0, len(self.rangelist) - 1):
@@ -75,7 +78,8 @@ class RangeContainer(object):
                 continue
             else:
                 self.rangelist[i + 1].start = self.rangelist[i].start
-                self.rangelist[i + 1].end = self.rangelist[i + 1].end > self.rangelist[i].end and self.rangelist[i + 1].end or self.rangelist[i].end
+                self.rangelist[i + 1].end = self.rangelist[i +
+                                                           1].end > self.rangelist[i].end and self.rangelist[i + 1].end or self.rangelist[i].end
                 self.rangelist[i].empty = True
 
         self.__clean__()
@@ -91,6 +95,7 @@ class RangeContainer(object):
 class XOROperatorObject(object):
     def __init__(self):
         pass
+
     def Calculate(self, Operand, DataType, SymbolTable):
         if isinstance(Operand, type('')) and not Operand.isalnum():
             Expr = "XOR ..."
@@ -102,9 +107,11 @@ class XOROperatorObject(object):
         SymbolTable[rangeId] = rangeContainer
         return rangeId
 
+
 class LEOperatorObject(object):
     def __init__(self):
         pass
+
     def Calculate(self, Operand, DataType, SymbolTable):
         if isinstance(Operand, type('')) and not Operand.isalnum():
             Expr = "LE ..."
@@ -114,9 +121,12 @@ class LEOperatorObject(object):
         rangeContainer.push(RangeObject(0, int(Operand)))
         SymbolTable[rangeId1] = rangeContainer
         return rangeId1
+
+
 class LTOperatorObject(object):
     def __init__(self):
         pass
+
     def Calculate(self, Operand, DataType, SymbolTable):
         if isinstance(Operand, type('')) and not Operand.isalnum():
             Expr = "LT ..."
@@ -127,9 +137,11 @@ class LTOperatorObject(object):
         SymbolTable[rangeId1] = rangeContainer
         return rangeId1
 
+
 class GEOperatorObject(object):
     def __init__(self):
         pass
+
     def Calculate(self, Operand, DataType, SymbolTable):
         if isinstance(Operand, type('')) and not Operand.isalnum():
             Expr = "GE ..."
@@ -140,9 +152,11 @@ class GEOperatorObject(object):
         SymbolTable[rangeId1] = rangeContainer
         return rangeId1
 
+
 class GTOperatorObject(object):
     def __init__(self):
         pass
+
     def Calculate(self, Operand, DataType, SymbolTable):
         if isinstance(Operand, type('')) and not Operand.isalnum():
             Expr = "GT ..."
@@ -153,9 +167,11 @@ class GTOperatorObject(object):
         SymbolTable[rangeId1] = rangeContainer
         return rangeId1
 
+
 class EQOperatorObject(object):
     def __init__(self):
         pass
+
     def Calculate(self, Operand, DataType, SymbolTable):
         if isinstance(Operand, type('')) and not Operand.isalnum():
             Expr = "EQ ..."
@@ -165,6 +181,7 @@ class EQOperatorObject(object):
         rangeContainer.push(RangeObject(int(Operand), int(Operand)))
         SymbolTable[rangeId1] = rangeContainer
         return rangeId1
+
 
 def GetOperatorObject(Operator):
     if Operator == '>':
@@ -182,17 +199,18 @@ def GetOperatorObject(Operator):
     else:
         raise BadExpression("Bad Operator")
 
+
 class RangeExpression(BaseExpression):
     # Logical operator mapping
     LogicalOperators = {
-        '&&' : 'and', '||' : 'or',
-        '!'  : 'not', 'AND': 'and',
-        'OR' : 'or' , 'NOT': 'not',
-        'XOR': '^'  , 'xor': '^',
-        'EQ' : '==' , 'NE' : '!=',
-        'GT' : '>'  , 'LT' : '<',
-        'GE' : '>=' , 'LE' : '<=',
-        'IN' : 'in'
+        '&&': 'and', '||': 'or',
+        '!': 'not', 'AND': 'and',
+        'OR': 'or', 'NOT': 'not',
+        'XOR': '^', 'xor': '^',
+        'EQ': '==', 'NE': '!=',
+        'GT': '>', 'LT': '<',
+        'GE': '>=', 'LE': '<=',
+        'IN': 'in'
     }
 
     NonLetterOpLst = ['+', '-', '&', '|', '^', '!', '=', '>', '<']
@@ -226,7 +244,6 @@ class RangeExpression(BaseExpression):
 
         self._Expr = expr
         return expr
-
 
     def EvalRange(self, Operator, Oprand):
 
@@ -283,10 +300,8 @@ class RangeExpression(BaseExpression):
 #        rangeContainer.dump()
         return rangeid
 
-
     def NegativeRange(self, Oprand1):
         rangeContainer1 = self.operanddict[Oprand1]
-
 
         rangeids = []
 
@@ -321,7 +336,7 @@ class RangeExpression(BaseExpression):
         self.operanddict[rangeid2] = self.operanddict[re]
         return rangeid2
 
-    def Eval(self, Operator, Oprand1, Oprand2 = None):
+    def Eval(self, Operator, Oprand1, Oprand2=None):
 
         if Operator in ["!", "NOT", "not"]:
             if not gGuidPattern.match(Oprand1.strip()):
@@ -330,7 +345,7 @@ class RangeExpression(BaseExpression):
         else:
             if Operator in ["==", ">=", "<=", ">", "<", '^']:
                 return self.EvalRange(Operator, Oprand1)
-            elif Operator == 'and' :
+            elif Operator == 'and':
                 if not gGuidPatternEnd.match(Oprand1.strip()) or not gGuidPatternEnd.match(Oprand2.strip()):
                     raise BadExpression(ERR_STRING_EXPR % Operator)
                 return self.Rangeintersection(Oprand1, Oprand2)
@@ -341,8 +356,7 @@ class RangeExpression(BaseExpression):
             else:
                 raise BadExpression(ERR_STRING_EXPR % Operator)
 
-
-    def __init__(self, Expression, PcdDataType, SymbolTable = None):
+    def __init__(self, Expression, PcdDataType, SymbolTable=None):
         if SymbolTable is None:
             SymbolTable = {}
         super(RangeExpression, self).__init__(self, Expression, PcdDataType, SymbolTable)
@@ -367,7 +381,6 @@ class RangeExpression(BaseExpression):
         self._Token = ''
         self._WarnExcept = None
 
-
         # Literal token without any conversion
         self._LiteralToken = ''
 
@@ -383,7 +396,7 @@ class RangeExpression(BaseExpression):
     #   @return: True or False if RealValue is False
     #            Evaluated value of string format if RealValue is True
     #
-    def __call__(self, RealValue = False, Depth = 0):
+    def __call__(self, RealValue=False, Depth=0):
         if self._NoProcess:
             return self._Expr
 
@@ -397,7 +410,7 @@ class RangeExpression(BaseExpression):
         if RealValue and Depth == 0:
             self._Token = self._Expr
             if gGuidPatternEnd.match(self._Expr):
-                return [self.operanddict[self._Expr] ]
+                return [self.operanddict[self._Expr]]
 
             self._Idx = 0
             self._Token = ''
@@ -507,11 +520,11 @@ class RangeExpression(BaseExpression):
         # All whitespace and tabs in array are already stripped.
         IsArray = IsGuid = False
         if len(Token.split(',')) == 11 and len(Token.split(',{')) == 2 \
-            and len(Token.split('},')) == 1:
+                and len(Token.split('},')) == 1:
             HexLen = [11, 6, 6, 5, 4, 4, 4, 4, 4, 4, 6]
             HexList = Token.split(',')
             if HexList[3].startswith('{') and \
-                not [Index for Index, Hex in enumerate(HexList) if len(Hex) > HexLen[Index]]:
+                    not [Index for Index, Hex in enumerate(HexList) if len(Hex) > HexLen[Index]]:
                 IsGuid = True
         if Token.lstrip('{').rstrip('}').find('{') == -1:
             if not [Hex for Hex in Token.lstrip('{').rstrip('}').split(',') if len(Hex) > 4]:
@@ -543,7 +556,7 @@ class RangeExpression(BaseExpression):
 
     # Get token that is comprised by alphanumeric, underscore or dot(used by PCD)
     # @param IsAlphaOp: Indicate if parsing general token or script operator(EQ, NE...)
-    def __GetIdToken(self, IsAlphaOp = False):
+    def __GetIdToken(self, IsAlphaOp=False):
         IdToken = ''
         for Ch in self._Expr[self._Idx:]:
             if not self.__IsIdChar(Ch):
@@ -581,7 +594,7 @@ class RangeExpression(BaseExpression):
         else:
             self.__IsNumberToken()
 
-    def __GetNList(self, InArray = False):
+    def __GetNList(self, InArray=False):
         self._GetSingleToken()
         if not self.__IsHexLiteral():
             if InArray:
@@ -609,7 +622,7 @@ class RangeExpression(BaseExpression):
 
     def __IsHexLiteral(self):
         if self._LiteralToken.startswith('{') and \
-            self._LiteralToken.endswith('}'):
+                self._LiteralToken.endswith('}'):
             return True
 
         if gHexPattern.match(self._LiteralToken):
@@ -645,7 +658,7 @@ class RangeExpression(BaseExpression):
             Ch = Expr[0]
             Match = gGuidPattern.match(Expr)
             if Match and not Expr[Match.end():Match.end() + 1].isalnum() \
-                and Expr[Match.end():Match.end() + 1] != '_':
+                    and Expr[Match.end():Match.end() + 1] != '_':
                 self._Idx += Match.end()
                 self._Token = Expr[0:Match.end()]
                 return self._Token

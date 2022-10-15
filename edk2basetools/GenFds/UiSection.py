@@ -1,4 +1,4 @@
-## @file
+# @file
 # process UI section generation
 #
 #  Copyright (c) 2007 - 2017, Intel Corporation. All rights reserved.<BR>
@@ -19,19 +19,21 @@ from edk2basetools.CommonDataClass.FdfClass import UiSectionClassObject
 from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 from edk2basetools.Common.DataType import *
 
-## generate UI section
+# generate UI section
 #
 #
+
+
 class UiSection (UiSectionClassObject):
 
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
     def __init__(self):
         UiSectionClassObject.__init__(self)
 
-    ## GenSection() method
+    # GenSection() method
     #
     #   Generate UI section
     #
@@ -44,7 +46,7 @@ class UiSection (UiSectionClassObject):
     #   @param  Dict        dictionary contains macro and its value
     #   @retval tuple       (Generated file name, section alignment)
     #
-    def GenSection(self, OutputPath, ModuleName, SecNum, KeyStringList, FfsInf=None, Dict=None, IsMakefile = False):
+    def GenSection(self, OutputPath, ModuleName, SecNum, KeyStringList, FfsInf=None, Dict=None, IsMakefile=False):
         #
         # Prepare the parameter of GenSection
         #
@@ -53,9 +55,10 @@ class UiSection (UiSectionClassObject):
             self.StringData = FfsInf.__ExtendMacro__(self.StringData)
             self.FileName = FfsInf.__ExtendMacro__(self.FileName)
 
-        OutputFile = os.path.join(OutputPath, ModuleName + SUP_MODULE_SEC + SecNum + SectionSuffix.get(BINARY_FILE_TYPE_UI))
+        OutputFile = os.path.join(OutputPath, ModuleName + SUP_MODULE_SEC +
+                                  SecNum + SectionSuffix.get(BINARY_FILE_TYPE_UI))
 
-        if self.StringData is not None :
+        if self.StringData is not None:
             NameString = self.StringData
         elif self.FileName is not None:
             if Dict is None:
@@ -67,7 +70,8 @@ class UiSection (UiSectionClassObject):
             FileObj.close()
         else:
             NameString = ''
-        GenFdsGlobalVariable.GenerateSection(OutputFile, None, 'EFI_SECTION_USER_INTERFACE', Ui=NameString, IsMakefile=IsMakefile)
+        GenFdsGlobalVariable.GenerateSection(
+            OutputFile, None, 'EFI_SECTION_USER_INTERFACE', Ui=NameString, IsMakefile=IsMakefile)
 
         OutputFileList = []
         OutputFileList.append(OutputFile)

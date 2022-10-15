@@ -59,15 +59,15 @@ class TestSplit(unittest.TestCase):
             "Binary.bin",
             "Binary1.bin",
             r"output/Binary1.bin",
-            os.path.abspath( r"output/Binary1.bin")
-            ]
+            os.path.abspath(r"output/Binary1.bin")
+        ]
         expected_output = [
-            os.path.join(os.path.dirname(self.binary_file),"Binary.bin1" ),
-            os.path.join(os.getcwd(),"Binary.bin"),
-            os.path.join(os.getcwd(),"Binary1.bin"),
-            os.path.join(os.getcwd(),r"output/Binary1.bin"),
-            os.path.join(os.path.abspath( r"output/Binary1.bin"))
-            ]
+            os.path.join(os.path.dirname(self.binary_file), "Binary.bin1"),
+            os.path.join(os.getcwd(), "Binary.bin"),
+            os.path.join(os.getcwd(), "Binary1.bin"),
+            os.path.join(os.getcwd(), r"output/Binary1.bin"),
+            os.path.join(os.path.abspath(r"output/Binary1.bin"))
+        ]
         for index, o in enumerate(output):
             try:
                 sp.splitFile(self.binary_file, 123, outputfile1=o)
@@ -84,26 +84,26 @@ class TestSplit(unittest.TestCase):
             r"output1/output2",
             os.path.abspath("output"),
             "output"
-            ]
+        ]
         output = [
             None,
             None,
             "Binary1.bin",
             r"output/Binary1.bin",
-            os.path.abspath( r"output_1/Binary1.bin")
-            ]
+            os.path.abspath(r"output_1/Binary1.bin")
+        ]
 
         expected_output = [
-            os.path.join(os.path.dirname(self.binary_file),"Binary.bin1" ),
-            os.path.join(os.getcwd(),"output", "Binary.bin1"),
-            os.path.join(os.getcwd(), r"output1/output2" , "Binary1.bin"),
-            os.path.join(os.getcwd(),r"output", "output/Binary1.bin"),
-            os.path.join(os.path.abspath( r"output/Binary1.bin"))
-            ]
+            os.path.join(os.path.dirname(self.binary_file), "Binary.bin1"),
+            os.path.join(os.getcwd(), "output", "Binary.bin1"),
+            os.path.join(os.getcwd(), r"output1/output2", "Binary1.bin"),
+            os.path.join(os.getcwd(), r"output", "output/Binary1.bin"),
+            os.path.join(os.path.abspath(r"output/Binary1.bin"))
+        ]
 
         for index, o in enumerate(outputfolder):
             try:
-                sp.splitFile(self.binary_file, 123, outputdir=o,outputfile1=output[index])
+                sp.splitFile(self.binary_file, 123, outputdir=o, outputfile1=output[index])
             except Exception as e:
                 self.assertTrue(False, msg="splitFile function error")
 

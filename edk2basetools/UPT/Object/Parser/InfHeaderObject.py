@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file header.
 # It will consumed by InfParser.
 #
@@ -10,7 +10,7 @@
 InfHeaderObject
 '''
 
-## INF file header object
+# INF file header object
 #
 # A sample file header
 #
@@ -24,15 +24,17 @@ InfHeaderObject
 # # License
 # #
 #
+
+
 class InfHeaderObject():
     def __init__(self):
-        self.FileName    = ''
-        self.Abstract    = ''
+        self.FileName = ''
+        self.Abstract = ''
         self.Description = ''
-        self.Copyright   = ''
-        self.License     = ''
+        self.Copyright = ''
+        self.License = ''
 
-    ## SetFileName
+    # SetFileName
     #
     # @param FileName: File Name
     #
@@ -43,12 +45,12 @@ class InfHeaderObject():
         else:
             return False
 
-    ## GetFileName
+    # GetFileName
     #
     def GetFileName(self):
         return self.FileName
 
-    ## SetAbstract
+    # SetAbstract
     #
     # @param Abstract: Abstract
     #
@@ -59,12 +61,12 @@ class InfHeaderObject():
         else:
             return False
 
-    ## GetAbstract
+    # GetAbstract
     #
     def GetAbstract(self):
         return self.Abstract
 
-    ## SetDescription
+    # SetDescription
     #
     # @param Description: Description content
     #
@@ -75,12 +77,12 @@ class InfHeaderObject():
         else:
             return False
 
-    ## GetAbstract
+    # GetAbstract
     #
     def GetDescription(self):
         return self.Description
 
-    ## SetCopyright
+    # SetCopyright
     #
     # @param Copyright: Copyright content
     #
@@ -91,12 +93,12 @@ class InfHeaderObject():
         else:
             return False
 
-    ## GetCopyright
+    # GetCopyright
     #
     def GetCopyright(self):
         return self.Copyright
 
-    ## SetCopyright
+    # SetCopyright
     #
     # @param License: License content
     #
@@ -107,7 +109,7 @@ class InfHeaderObject():
         else:
             return False
 
-    ## GetLicense
+    # GetLicense
     #
     def GetLicense(self):
         return self.License

@@ -1,11 +1,11 @@
-## @file
+# @file
 # Parser a Inf file and Get specify section data.
 #
 # Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 #
 
-## Import Modules
+# Import Modules
 #
 
 import edk2basetools.Common.EdkLogger as EdkLogger
@@ -48,8 +48,8 @@ class InfSectionParser():
                 UserExtFind = True
                 FindEnd = False
 
-            if (NextLine != '' and NextLine[0] == TAB_SECTION_START and \
-                NextLine[-1] == TAB_SECTION_END) or FileLastLine:
+            if (NextLine != '' and NextLine[0] == TAB_SECTION_START and
+                    NextLine[-1] == TAB_SECTION_END) or FileLastLine:
                 UserExtFind = False
                 FindEnd = True
                 self._FileSectionDataList.append({SectionLine: SectionData[:]})
@@ -102,18 +102,3 @@ class InfSectionParser():
                             EdkLogger.error("build", AUTOGEN_ERROR, 'Section %s is invalid.' % key)
                         DepexExpressionList.append({SubKey: SectionDataDict[key]})
         return DepexExpressionList
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

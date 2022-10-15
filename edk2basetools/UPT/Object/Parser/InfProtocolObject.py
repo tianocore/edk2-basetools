@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file [Protocols] section.
 # It will consumed by InfParser.
 #
@@ -21,6 +21,7 @@ from edk2basetools.UPT.Object.Parser.InfMisc import ErrorInInf
 from edk2basetools.UPT.Library import DataType as DT
 from edk2basetools.UPT.Logger import StringTable as ST
 
+
 def ParseProtocolComment(CommentsList, InfProtocolItemObj):
     CommentInsList = []
     PreUsage = None
@@ -31,14 +32,14 @@ def ParseProtocolComment(CommentsList, InfProtocolItemObj):
     for CommentItem in CommentsList:
         Count = Count + 1
         CommentItemUsage, \
-        CommentItemNotify, \
-        CommentItemString, \
-        CommentItemHelpText = \
-                ParseComment(CommentItem,
-                             DT.PROTOCOL_USAGE_TOKENS,
-                             DT.PROTOCOL_NOTIFY_TOKENS,
-                             ['PROTOCOL'],
-                             False)
+            CommentItemNotify, \
+            CommentItemString, \
+            CommentItemHelpText = \
+            ParseComment(CommentItem,
+                         DT.PROTOCOL_USAGE_TOKENS,
+                         DT.PROTOCOL_NOTIFY_TOKENS,
+                         ['PROTOCOL'],
+                         False)
 
         if CommentItemString:
             pass
@@ -123,6 +124,7 @@ def ParseProtocolComment(CommentsList, InfProtocolItemObj):
 
     return InfProtocolItemObj
 
+
 class InfProtocolItemCommentContent():
     def __init__(self):
         #
@@ -138,19 +140,23 @@ class InfProtocolItemCommentContent():
 
     def SetUsageItem(self, UsageItem):
         self.UsageItem = UsageItem
+
     def GetUsageItem(self):
         return self.UsageItem
 
     def SetNotify(self, Notify):
         if Notify != DT.ITEM_UNDEFINED:
             self.Notify = 'true'
+
     def GetNotify(self):
         return self.Notify
 
     def SetHelpStringItem(self, HelpStringItem):
         self.HelpStringItem = HelpStringItem
+
     def GetHelpStringItem(self):
         return self.HelpStringItem
+
 
 class InfProtocolItem():
     def __init__(self):
@@ -161,21 +167,25 @@ class InfProtocolItem():
 
     def SetName(self, Name):
         self.Name = Name
+
     def GetName(self):
         return self.Name
 
     def SetFeatureFlagExp(self, FeatureFlagExp):
         self.FeatureFlagExp = FeatureFlagExp
+
     def GetFeatureFlagExp(self):
         return self.FeatureFlagExp
 
     def SetSupArchList(self, SupArchList):
         self.SupArchList = SupArchList
+
     def GetSupArchList(self):
         return self.SupArchList
 
     def SetCommentList(self, CommentList):
         self.CommentList = CommentList
+
     def GetCommentList(self):
         return self.CommentList
 
@@ -183,6 +193,8 @@ class InfProtocolItem():
 #
 #
 #
+
+
 class InfProtocolObject():
     def __init__(self):
         self.Protocols = Sdict()
@@ -191,7 +203,7 @@ class InfProtocolObject():
         #
         self.Macros = {}
 
-    def SetProtocol(self, ProtocolContent, Arch = None,):
+    def SetProtocol(self, ProtocolContent, Arch=None,):
         __SupArchList = []
         for ArchItem in Arch:
             #
@@ -217,7 +229,7 @@ class InfProtocolObject():
                 # Only CName contained
                 #
                 if not IsValidCVariableName(Item[0]):
-                    ErrorInInf(ST.ERR_INF_PARSER_INVALID_CNAME%(Item[0]),
+                    ErrorInInf(ST.ERR_INF_PARSER_INVALID_CNAME % (Item[0]),
                                LineInfo=LineInfo)
                 if (Item[0] != ''):
                     InfProtocolItemObj.SetName(Item[0])
@@ -239,7 +251,7 @@ class InfProtocolObject():
                 #
                 FeatureFlagRtv = IsValidFeatureFlagExp(Item[1].strip())
                 if not FeatureFlagRtv[0]:
-                    ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID%(FeatureFlagRtv[1]),
+                    ErrorInInf(ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID % (FeatureFlagRtv[1]),
                                LineInfo=LineInfo)
                 InfProtocolItemObj.SetFeatureFlagExp(Item[1])
 

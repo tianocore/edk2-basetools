@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file [Binaries] section.
 # It will consumed by InfParser.
 #
@@ -39,32 +39,40 @@ class InfBianryItem():
 
     def SetFileName(self, FileName):
         self.FileName = FileName
+
     def GetFileName(self):
         return self.FileName
 
     def SetTarget(self, Target):
         self.Target = Target
+
     def GetTarget(self):
         return self.Target
 
     def SetFeatureFlagExp(self, FeatureFlagExp):
         self.FeatureFlagExp = FeatureFlagExp
+
     def GetFeatureFlagExp(self):
         return self.FeatureFlagExp
 
     def SetHelpString(self, HelpString):
         self.HelpString = HelpString
+
     def GetHelpString(self):
         return self.HelpString
 
     def SetType(self, Type):
         self.Type = Type
+
     def GetType(self):
         return self.Type
+
     def SetSupArchList(self, SupArchList):
         self.SupArchList = SupArchList
+
     def GetSupArchList(self):
         return self.SupArchList
+
 
 class InfBianryVerItem(InfBianryItem, CurrentLine):
     def __init__(self):
@@ -74,8 +82,10 @@ class InfBianryVerItem(InfBianryItem, CurrentLine):
 
     def SetVerTypeName(self, VerTypeName):
         self.VerTypeName = VerTypeName
+
     def GetVerTypeName(self):
         return self.VerTypeName
+
 
 class InfBianryUiItem(InfBianryItem, CurrentLine):
     def __init__(self):
@@ -85,8 +95,10 @@ class InfBianryUiItem(InfBianryItem, CurrentLine):
 
     def SetUiTypeName(self, UiTypeName):
         self.UiTypeName = UiTypeName
+
     def GetVerTypeName(self):
         return self.UiTypeName
+
 
 class InfBianryCommonItem(InfBianryItem, CurrentLine):
     def __init__(self):
@@ -99,21 +111,25 @@ class InfBianryCommonItem(InfBianryItem, CurrentLine):
 
     def SetCommonType(self, CommonType):
         self.CommonType = CommonType
+
     def GetCommonType(self):
         return self.CommonType
 
     def SetTagName(self, TagName):
         self.TagName = TagName
+
     def GetTagName(self):
         return self.TagName
 
     def SetFamily(self, Family):
         self.Family = Family
+
     def GetFamily(self):
         return self.Family
 
     def SetGuidValue(self, GuidValue):
         self.GuidValue = GuidValue
+
     def GetGuidValue(self):
         return self.GuidValue
 
@@ -121,6 +137,8 @@ class InfBianryCommonItem(InfBianryItem, CurrentLine):
 #
 #
 #
+
+
 class InfBinariesObject(InfSectionCommonDef):
     def __init__(self):
         self.Binaries = Sdict()
@@ -130,7 +148,7 @@ class InfBinariesObject(InfSectionCommonDef):
         self.Macros = {}
         InfSectionCommonDef.__init__(self)
 
-    ## CheckVer
+    # CheckVer
     #
     #
     def CheckVer(self, Ver, __SupArchList):
@@ -206,7 +224,7 @@ class InfBinariesObject(InfSectionCommonDef):
                     return False
                 if IsValidFileFlag:
                     VerContent[0] = ConvPathFromAbsToRel(VerContent[0],
-                                            GlobalData.gINF_MODULE_DIR)
+                                                         GlobalData.gINF_MODULE_DIR)
                     InfBianryVerItemObj.SetFileName(VerContent[1])
             if len(VerContent) >= 3:
                 #
@@ -224,7 +242,7 @@ class InfBinariesObject(InfSectionCommonDef):
                 #
                 # Validate Feature Flag Express
                 #
-                FeatureFlagRtv = IsValidFeatureFlagExp(VerContent[3].\
+                FeatureFlagRtv = IsValidFeatureFlagExp(VerContent[3].
                                                        strip())
                 if not FeatureFlagRtv[0]:
                     Logger.Error("InfParser",
@@ -275,7 +293,7 @@ class InfBinariesObject(InfSectionCommonDef):
                     BinariesList.append((InfBianryVerItemObj, VerComment))
                     self.Binaries[InfBianryVerItemObj] = BinariesList
 
-    ## ParseCommonBinary
+    # ParseCommonBinary
     #
     # ParseCommonBinary
     #
@@ -333,7 +351,7 @@ class InfBinariesObject(InfSectionCommonDef):
                 if BinaryFileType not in DT.BINARY_FILE_TYPE_LIST:
                     Logger.Error("InfParser",
                                  ToolError.FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_BINARY_ITEM_INVALID_FILETYPE % \
+                                 ST.ERR_INF_PARSER_BINARY_ITEM_INVALID_FILETYPE %
                                  (DT.BINARY_FILE_TYPE_LIST.__str__()),
                                  File=CurrentLineOfItem.GetFileName(),
                                  Line=CurrentLineOfItem.GetLineNo(),
@@ -345,7 +363,7 @@ class InfBinariesObject(InfSectionCommonDef):
                 if BinaryFileType == 'LIB' or BinaryFileType == 'UEFI_APP':
                     Logger.Error("InfParser",
                                  ToolError.FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_BINARY_ITEM_INVALID_FILETYPE % \
+                                 ST.ERR_INF_PARSER_BINARY_ITEM_INVALID_FILETYPE %
                                  (DT.BINARY_FILE_TYPE_LIST.__str__()),
                                  File=CurrentLineOfItem.GetFileName(),
                                  Line=CurrentLineOfItem.GetLineNo(),
@@ -360,11 +378,11 @@ class InfBinariesObject(InfSectionCommonDef):
                         FileName = ItemContent[2]
                     else:
                         Logger.Error("InfParser",
-                                 ToolError.FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_BINARY_ITEM_FILENAME_NOT_EXIST,
-                                 File=CurrentLineOfItem.GetFileName(),
-                                 Line=CurrentLineOfItem.GetLineNo(),
-                                 ExtraData=CurrentLineOfItem.GetLineString())
+                                     ToolError.FORMAT_INVALID,
+                                     ST.ERR_INF_PARSER_BINARY_ITEM_FILENAME_NOT_EXIST,
+                                     File=CurrentLineOfItem.GetFileName(),
+                                     Line=CurrentLineOfItem.GetLineNo(),
+                                     ExtraData=CurrentLineOfItem.GetLineString())
                 else:
                     FileName = ItemContent[1]
                 #
@@ -386,11 +404,11 @@ class InfBinariesObject(InfSectionCommonDef):
                     IsValidFileFlag = True
                 else:
                     Logger.Error("InfParser",
-                                ToolError.FORMAT_INVALID,
-                                ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID % (FileName),
-                                File=CurrentLineOfItem.GetFileName(),
-                                Line=CurrentLineOfItem.GetLineNo(),
-                                ExtraData=CurrentLineOfItem.GetLineString())
+                                 ToolError.FORMAT_INVALID,
+                                 ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID % (FileName),
+                                 File=CurrentLineOfItem.GetFileName(),
+                                 Line=CurrentLineOfItem.GetLineNo(),
+                                 ExtraData=CurrentLineOfItem.GetLineString())
                     return False
                 if IsValidFileFlag:
                     ItemContent[0] = ConvPathFromAbsToRel(ItemContent[0], GlobalData.gINF_MODULE_DIR)
@@ -466,11 +484,11 @@ class InfBinariesObject(InfSectionCommonDef):
             if len(ItemContent) == 7:
                 if ItemContent[6].strip() == '':
                     Logger.Error("InfParser",
-                                     ToolError.FORMAT_INVALID,
-                                     ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_MISSING,
-                                     File=CurrentLineOfItem.GetFileName(),
-                                     Line=CurrentLineOfItem.GetLineNo(),
-                                     ExtraData=CurrentLineOfItem.GetLineString())
+                                 ToolError.FORMAT_INVALID,
+                                 ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_MISSING,
+                                 File=CurrentLineOfItem.GetFileName(),
+                                 Line=CurrentLineOfItem.GetLineNo(),
+                                 ExtraData=CurrentLineOfItem.GetLineString())
                 #
                 # Validate Feature Flag Express
                 #

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file [Ppis] section.
 # It will consumed by InfParser.
 #
@@ -20,6 +20,7 @@ import edk2basetools.UPT.Logger.Log as Logger
 from edk2basetools.UPT.Logger import ToolError
 from edk2basetools.UPT.Logger import StringTable as ST
 
+
 def ParsePpiComment(CommentsList, InfPpiItemObj):
     PreNotify = None
     PreUsage = None
@@ -30,14 +31,14 @@ def ParsePpiComment(CommentsList, InfPpiItemObj):
     for CommentItem in CommentsList:
         Count = Count + 1
         CommentItemUsage, \
-        CommentItemNotify, \
-        CommentItemString, \
-        CommentItemHelpText = \
-                ParseComment(CommentItem,
-                             DT.ALL_USAGE_TOKENS,
-                             DT.PPI_NOTIFY_TOKENS,
-                             ['PPI'],
-                             False)
+            CommentItemNotify, \
+            CommentItemString, \
+            CommentItemHelpText = \
+            ParseComment(CommentItem,
+                         DT.ALL_USAGE_TOKENS,
+                         DT.PPI_NOTIFY_TOKENS,
+                         ['PPI'],
+                         False)
 
         #
         # To avoid PyLint error
@@ -134,6 +135,7 @@ def ParsePpiComment(CommentsList, InfPpiItemObj):
 
     return InfPpiItemObj
 
+
 class InfPpiItemCommentContent():
     def __init__(self):
         #
@@ -149,50 +151,60 @@ class InfPpiItemCommentContent():
 
     def SetUsage(self, UsageItem):
         self.UsageItem = UsageItem
+
     def GetUsage(self):
         return self.UsageItem
 
     def SetNotify(self, Notify):
         if Notify != DT.ITEM_UNDEFINED:
             self.Notify = 'true'
+
     def GetNotify(self):
         return self.Notify
 
     def SetHelpStringItem(self, HelpStringItem):
         self.HelpStringItem = HelpStringItem
+
     def GetHelpStringItem(self):
         return self.HelpStringItem
 
+
 class InfPpiItem():
     def __init__(self):
-        self.Name             = ''
-        self.FeatureFlagExp   = ''
-        self.SupArchList      = []
-        self.CommentList      = []
+        self.Name = ''
+        self.FeatureFlagExp = ''
+        self.SupArchList = []
+        self.CommentList = []
 
     def SetName(self, Name):
         self.Name = Name
+
     def GetName(self):
         return self.Name
 
     def SetSupArchList(self, SupArchList):
         self.SupArchList = SupArchList
+
     def GetSupArchList(self):
         return self.SupArchList
 
     def SetCommentList(self, CommentList):
         self.CommentList = CommentList
+
     def GetCommentList(self):
         return self.CommentList
 
     def SetFeatureFlagExp(self, FeatureFlagExp):
         self.FeatureFlagExp = FeatureFlagExp
+
     def GetFeatureFlagExp(self):
         return self.FeatureFlagExp
 ##
 #
 #
 #
+
+
 class InfPpiObject():
     def __init__(self):
         self.Ppis = Sdict()
@@ -201,7 +213,7 @@ class InfPpiObject():
         #
         self.Macros = {}
 
-    def SetPpi(self, PpiList, Arch = None):
+    def SetPpi(self, PpiList, Arch=None):
         __SupArchList = []
         for ArchItem in Arch:
             #
@@ -228,7 +240,7 @@ class InfPpiObject():
                 if not IsValidCVariableName(Item[0]):
                     Logger.Error("InfParser",
                                  ToolError.FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_INVALID_CNAME%(Item[0]),
+                                 ST.ERR_INF_PARSER_INVALID_CNAME % (Item[0]),
                                  File=CurrentLineOfItem[2],
                                  Line=CurrentLineOfItem[1],
                                  ExtraData=CurrentLineOfItem[0])
@@ -265,7 +277,7 @@ class InfPpiObject():
                 if not FeatureFlagRtv[0]:
                     Logger.Error("InfParser",
                                  ToolError.FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID%(FeatureFlagRtv[1]),
+                                 ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID % (FeatureFlagRtv[1]),
                                  File=CurrentLineOfItem[2],
                                  Line=CurrentLineOfItem[1],
                                  ExtraData=CurrentLineOfItem[0])
@@ -331,7 +343,6 @@ class InfPpiObject():
                 self.Ppis[InfPpiItemObj] = PpiList
 
         return True
-
 
     def GetPpi(self):
         return self.Ppis

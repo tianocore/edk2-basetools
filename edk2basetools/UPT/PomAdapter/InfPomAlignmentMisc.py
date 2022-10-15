@@ -1,4 +1,4 @@
-## @file InfPomAlignmentMisc.py
+# @file InfPomAlignmentMisc.py
 # This file contained the routines for InfPomAlignment
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -23,7 +23,7 @@ from edk2basetools.UPT.Library.Misc import CheckGuidRegFormat
 from edk2basetools.UPT.Logger import StringTable as ST
 
 
-## GenModuleHeaderUserExt
+# GenModuleHeaderUserExt
 #
 #
 def GenModuleHeaderUserExt(DefineObj, ArchString):
@@ -146,7 +146,7 @@ def GenModuleHeaderUserExt(DefineObj, ArchString):
     return DefinesDictNew
 
 
-## Generate the define statement that will be put into userextension
+# Generate the define statement that will be put into userextension
 #  Not support comments.
 #
 # @param HeaderComment: the original header comment (# not removed)
@@ -162,10 +162,12 @@ def _GenInfDefineStateMent(HeaderComment, Name, Value, TailComment):
 
     return Statement
 
-## GenBinaryData
+# GenBinaryData
 #
 #
-def GenBinaryData(BinaryData, BinaryObj, BinariesDict, AsBuildIns, BinaryFileObjectList, \
+
+
+def GenBinaryData(BinaryData, BinaryObj, BinariesDict, AsBuildIns, BinaryFileObjectList,
                   SupArchList, BinaryModule, DecObjList=None):
     if BinaryModule:
         pass
@@ -206,16 +208,16 @@ def GenBinaryData(BinaryData, BinaryObj, BinariesDict, AsBuildIns, BinaryFileObj
             if not CheckGuidRegFormat(ItemObj.GetGuidValue()):
                 if not DecObjList:
                     if DT.TAB_HORIZON_LINE_SPLIT in ItemObj.GetGuidValue() or \
-                        DT.TAB_COMMA_SPLIT in ItemObj.GetGuidValue():
+                            DT.TAB_COMMA_SPLIT in ItemObj.GetGuidValue():
                         Logger.Error("\nMkPkg",
-                                 FORMAT_INVALID,
-                                 ST.ERR_DECPARSE_DEFINE_PKGGUID,
-                                 ExtraData=ItemObj.GetGuidValue(),
-                                 RaiseError=True)
+                                     FORMAT_INVALID,
+                                     ST.ERR_DECPARSE_DEFINE_PKGGUID,
+                                     ExtraData=ItemObj.GetGuidValue(),
+                                     RaiseError=True)
                     else:
                         Logger.Error("\nMkPkg",
                                      FORMAT_INVALID,
-                                     ST.ERR_UNI_SUBGUID_VALUE_DEFINE_DEC_NOT_FOUND % \
+                                     ST.ERR_UNI_SUBGUID_VALUE_DEFINE_DEC_NOT_FOUND %
                                      (ItemObj.GetGuidValue()),
                                      RaiseError=True)
                 else:
@@ -227,10 +229,10 @@ def GenBinaryData(BinaryData, BinaryObj, BinariesDict, AsBuildIns, BinaryFileObj
 
                     if not FileNameObj.GetGuidValue():
                         Logger.Error("\nMkPkg",
-                                         FORMAT_INVALID,
-                                         ST.ERR_DECPARSE_CGUID_NOT_FOUND % \
-                                         (ItemObj.GetGuidValue()),
-                                         RaiseError=True)
+                                     FORMAT_INVALID,
+                                     ST.ERR_DECPARSE_CGUID_NOT_FOUND %
+                                     (ItemObj.GetGuidValue()),
+                                     RaiseError=True)
             else:
                 FileNameObj.SetGuidValue(ItemObj.GetGuidValue().strip())
 

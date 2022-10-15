@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define the interface of Bios Parser.
 #
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
@@ -11,6 +11,7 @@ from core.BiosTree import *
 from core.GuidTools import *
 from utils.FmmtLogger import FmmtLogger as logger
 
+
 class FMMTParser:
     def __init__(self, name: str, TYPE: str) -> None:
         self.WholeFvTree = BIOSTREE(name)
@@ -18,8 +19,8 @@ class FMMTParser:
         self.FinalData = b''
         self.BinaryInfo = []
 
-    ## Parser the nodes in WholeTree.
-    def ParserFromRoot(self, WholeFvTree=None, whole_data: bytes=b'', Reloffset: int=0) -> None:
+    # Parser the nodes in WholeTree.
+    def ParserFromRoot(self, WholeFvTree=None, whole_data: bytes = b'', Reloffset: int = 0) -> None:
         if WholeFvTree.type == ROOT_TREE or WholeFvTree.type == ROOT_FV_TREE:
             ParserEntry().DataParser(self.WholeFvTree, whole_data, Reloffset)
         else:
@@ -27,7 +28,7 @@ class FMMTParser:
         for Child in WholeFvTree.Child:
             self.ParserFromRoot(Child, "")
 
-    ## Encapuslation all the data in tree into self.FinalData
+    # Encapuslation all the data in tree into self.FinalData
     def Encapsulation(self, rootTree, CompressStatus: bool) -> None:
         # If current node is Root node, skip it.
         if rootTree.type == ROOT_TREE or rootTree.type == ROOT_FV_TREE or rootTree.type == ROOT_FFS_TREE or rootTree.type == ROOT_SECTION_TREE:
@@ -66,7 +67,8 @@ class FMMTParser:
                 else:
                     Data = rootTree.Data.Data
                     if rootTree.Data.ExtHeader:
-                        self.FinalData += struct2stream(rootTree.Data.Header) + struct2stream(rootTree.Data.ExtHeader) + Data + rootTree.Data.PadData
+                        self.FinalData += struct2stream(rootTree.Data.Header) + \
+                            struct2stream(rootTree.Data.ExtHeader) + Data + rootTree.Data.PadData
                     else:
                         self.FinalData += struct2stream(rootTree.Data.Header) + Data + rootTree.Data.PadData
                     if rootTree.isFinalChild():
@@ -77,7 +79,8 @@ class FMMTParser:
                 Data = rootTree.Data.OriData
                 rootTree.Child = []
                 if rootTree.Data.ExtHeader:
-                    self.FinalData += struct2stream(rootTree.Data.Header) + struct2stream(rootTree.Data.ExtHeader) + Data + rootTree.Data.PadData
+                    self.FinalData += struct2stream(rootTree.Data.Header) + \
+                        struct2stream(rootTree.Data.ExtHeader) + Data + rootTree.Data.PadData
                 else:
                     self.FinalData += struct2stream(rootTree.Data.Header) + Data + rootTree.Data.PadData
                 if rootTree.isFinalChild():

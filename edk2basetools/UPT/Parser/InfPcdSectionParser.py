@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the parser for [Pcds] sections in INF file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -23,8 +23,9 @@ from edk2basetools.UPT.Library import GlobalData
 from edk2basetools.UPT.Library.StringUtils import SplitPcdEntry
 from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
+
 class InfPcdSectionParser(InfParserSectionRoot):
-    ## Section PCD related parser
+    # Section PCD related parser
     #
     # For 5 types of PCD list below, all use this function.
     # 'FixedPcd', 'FeaturePcd', 'PatchPcd', 'Pcd', 'PcdEx'
@@ -35,7 +36,7 @@ class InfPcdSectionParser(InfParserSectionRoot):
     #
     def InfPcdParser(self, SectionString, InfSectionObject, FileName):
         KeysList = []
-        PcdList   = []
+        PcdList = []
         CommentsList = []
         ValueList = []
         #
@@ -47,10 +48,10 @@ class InfPcdSectionParser(InfParserSectionRoot):
                 KeysList.append((Item[0], Item[1], Item[3]))
                 LineIndex = Item[3]
 
-            if (Item[0].upper() == DT.TAB_INF_FIXED_PCD.upper() or \
-                Item[0].upper() == DT.TAB_INF_FEATURE_PCD.upper() or \
-                Item[0].upper() == DT.TAB_INF_PCD.upper()) and GlobalData.gIS_BINARY_INF:
-                Logger.Error('InfParser', FORMAT_INVALID, ST.ERR_ASBUILD_PCD_SECTION_TYPE%("\"" + Item[0] + "\""),
+            if (Item[0].upper() == DT.TAB_INF_FIXED_PCD.upper() or
+                Item[0].upper() == DT.TAB_INF_FEATURE_PCD.upper() or
+                    Item[0].upper() == DT.TAB_INF_PCD.upper()) and GlobalData.gIS_BINARY_INF:
+                Logger.Error('InfParser', FORMAT_INVALID, ST.ERR_ASBUILD_PCD_SECTION_TYPE % ("\"" + Item[0] + "\""),
                              File=FileName, Line=LineIndex)
 
         #
@@ -63,7 +64,7 @@ class InfPcdSectionParser(InfParserSectionRoot):
             SectionMacros = {}
             for Line in SectionString:
                 PcdLineContent = Line[0]
-                PcdLineNo      = Line[1]
+                PcdLineNo = Line[1]
                 if PcdLineContent.strip() == '':
                     CommentsList = []
                     continue
@@ -77,8 +78,8 @@ class InfPcdSectionParser(InfParserSectionRoot):
                     #
                     if PcdLineContent.find(DT.TAB_COMMENT_SPLIT) > -1:
                         CommentsList.append((
-                                PcdLineContent[PcdLineContent.find(DT.TAB_COMMENT_SPLIT):],
-                                PcdLineNo))
+                            PcdLineContent[PcdLineContent.find(DT.TAB_COMMENT_SPLIT):],
+                            PcdLineNo))
                         PcdLineContent = PcdLineContent[:PcdLineContent.find(DT.TAB_COMMENT_SPLIT)]
 
                 if PcdLineContent != '':
@@ -109,7 +110,7 @@ class InfPcdSectionParser(InfParserSectionRoot):
                     #
                     ValueList = [InfExpandMacro(Value, (FileName, PcdLineContent, PcdLineNo),
                                                 self.FileLocalMacros, SectionMacros, True)
-                                for Value in ValueList]
+                                 for Value in ValueList]
 
                 if len(ValueList) >= 1:
                     PcdList.append((ValueList, CommentsList, (PcdLineContent, PcdLineNo, FileName)))
@@ -122,7 +123,7 @@ class InfPcdSectionParser(InfParserSectionRoot):
         else:
             for Line in SectionString:
                 LineContent = Line[0].strip()
-                LineNo      = Line[1]
+                LineNo = Line[1]
 
                 if LineContent == '':
                     CommentsList = []
@@ -135,8 +136,8 @@ class InfPcdSectionParser(InfParserSectionRoot):
                 # Have comments at tail.
                 #
                 CommentIndex = LineContent.find(DT.TAB_COMMENT_SPLIT)
-                if  CommentIndex > -1:
-                    CommentsList.append(LineContent[CommentIndex+1:])
+                if CommentIndex > -1:
+                    CommentsList.append(LineContent[CommentIndex + 1:])
                     LineContent = LineContent[:CommentIndex]
 
                 TokenList = GetSplitValueList(LineContent, DT.TAB_VALUE_SPLIT)
@@ -168,11 +169,10 @@ class InfPcdSectionParser(InfParserSectionRoot):
                     CommentsList = []
                 continue
 
-        if not InfSectionObject.SetPcds(PcdList, KeysList = KeysList,
-                                        PackageInfo = self.InfPackageSection.GetPackages()):
+        if not InfSectionObject.SetPcds(PcdList, KeysList=KeysList,
+                                        PackageInfo=self.InfPackageSection.GetPackages()):
             Logger.Error('InfParser',
                          FORMAT_INVALID,
-                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR%("[PCD]"),
+                         ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR % ("[PCD]"),
                          File=FileName,
                          Line=LineIndex)
-

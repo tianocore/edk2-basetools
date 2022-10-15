@@ -1,4 +1,4 @@
-## @file
+# @file
 # Rule object for generating FFS
 #
 #  Copyright (c) 2007, Intel Corporation. All rights reserved.<BR>
@@ -11,11 +11,13 @@
 #
 from edk2basetools.CommonDataClass.FdfClass import RuleClassObject
 
-## Rule base class
+# Rule base class
 #
 #
+
+
 class Rule(RuleClassObject):
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #

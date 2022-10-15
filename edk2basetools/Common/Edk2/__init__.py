@@ -1,4 +1,4 @@
-## @file
+# @file
 # Python 'Common.Edk2' package initialization file.
 #
 # This file is required to make Python interpreter treat the directory

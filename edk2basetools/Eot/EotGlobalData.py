@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to save global datas
 #
 # Copyright (c) 2008 - 2014, Intel Corporation. All rights reserved.<BR>

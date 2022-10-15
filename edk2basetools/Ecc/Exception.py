@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to parse exception items found by ECC tool
 #
 # Copyright (c) 2009 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -14,6 +14,8 @@ from edk2basetools.Ecc.Xml.XmlRoutines import *
 import edk2basetools.Common.LongFilePathOs as os
 
 # ExceptionXml to parse Exception Node of XML file
+
+
 class ExceptionXml(object):
     def __init__(self):
         self.KeyWord = ''
@@ -26,9 +28,11 @@ class ExceptionXml(object):
         self.FilePath = os.path.normpath(XmlElement(Item, '%s/FilePath' % Key))
 
     def __str__(self):
-        return 'ErrorID = %s KeyWord = %s FilePath = %s' %(self.ErrorID, self.KeyWord, self.FilePath)
+        return 'ErrorID = %s KeyWord = %s FilePath = %s' % (self.ErrorID, self.KeyWord, self.FilePath)
 
 # ExceptionListXml to parse Exception Node List of XML file
+
+
 class ExceptionListXml(object):
     def __init__(self):
         self.List = []
@@ -56,8 +60,10 @@ class ExceptionListXml(object):
         return RtnStr
 
 # A class to check exception
+
+
 class ExceptionCheck(object):
-    def __init__(self, FilePath = None):
+    def __init__(self, FilePath=None):
         self.ExceptionList = []
         self.ExceptionListXml = ExceptionListXml()
         self.LoadExceptionListXml(FilePath)
@@ -72,6 +78,7 @@ class ExceptionCheck(object):
             return True
         else:
             return False
+
 
 ##
 #

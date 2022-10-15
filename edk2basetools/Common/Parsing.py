@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define common parsing related functions used in parsing INF/DEC/DSC process
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -13,10 +13,12 @@ from .StringUtils import *
 from edk2basetools.CommonDataClass.DataClass import *
 from .DataType import *
 
-## ParseDefineMacro
+# ParseDefineMacro
 #
 # Search whole table to find all defined Macro and replaced them with the real values
 #
+
+
 def ParseDefineMacro2(Table, RecordSets, GlobalMacro):
     Macros = {}
     #
@@ -41,10 +43,12 @@ def ParseDefineMacro2(Table, RecordSets, GlobalMacro):
         for Item in Value:
             Item[0] = ReplaceMacro(Item[0], Macros)
 
-## ParseDefineMacro
+# ParseDefineMacro
 #
 # Search whole table to find all defined Macro and replaced them with the real values
 #
+
+
 def ParseDefineMacro(Table, GlobalMacro):
     Macros = {}
     #
@@ -55,18 +59,18 @@ def ParseDefineMacro(Table, GlobalMacro):
                     and Enabled > -1""" % (Table.Table, MODEL_META_DATA_DEFINE)
     RecordSet = Table.Exec(SqlCommand)
     for Record in RecordSet:
-#***************************************************************************************************************************************************
-#            The follow SqlCommand (expr replace) is not supported in Sqlite 3.3.4 which is used in Python 2.5                                     *
-#            Reserved Only                                                                                                                         *
-#            SqlCommand = """update %s set Value1 = replace(Value1, '%s', '%s')                                                                    *
-#                            where ID in (select ID from %s                                                                                        *
-#                                         where Model = %s                                                                                         *
-#                                         and Value1 like '%%%s%%'                                                                                 *
-#                                         and StartLine > %s                                                                                       *
-#                                         and Enabled > -1                                                                                         *
-#                                         and Arch = '%s')""" % \                                                                                  *
-#                                         (self.TblDsc.Table, Record[0], Record[1], self.TblDsc.Table, Record[2], Record[1], Record[3], Record[4]) *
-#***************************************************************************************************************************************************
+        # ***************************************************************************************************************************************************
+        #            The follow SqlCommand (expr replace) is not supported in Sqlite 3.3.4 which is used in Python 2.5                                     *
+        #            Reserved Only                                                                                                                         *
+        #            SqlCommand = """update %s set Value1 = replace(Value1, '%s', '%s')                                                                    *
+        #                            where ID in (select ID from %s                                                                                        *
+        #                                         where Model = %s                                                                                         *
+        #                                         and Value1 like '%%%s%%'                                                                                 *
+        #                                         and StartLine > %s                                                                                       *
+        #                                         and Enabled > -1                                                                                         *
+        #                                         and Arch = '%s')""" % \                                                                                  *
+        #                                         (self.TblDsc.Table, Record[0], Record[1], self.TblDsc.Table, Record[2], Record[1], Record[3], Record[4]) *
+        # ***************************************************************************************************************************************************
         Macros[Record[0]] = Record[1]
 
     #
@@ -80,7 +84,7 @@ def ParseDefineMacro(Table, GlobalMacro):
     SqlCommand = """select ID, Value1 from %s
                     where Model != %s
                     and Value1 like '%%$(%%' and Value1 like '%%)%%'
-                    and Enabled > -1"""  % (Table.Table, MODEL_META_DATA_DEFINE)
+                    and Enabled > -1""" % (Table.Table, MODEL_META_DATA_DEFINE)
     FoundRecords = Table.Exec(SqlCommand)
     for FoundRecord in FoundRecords:
         NewValue = ReplaceMacro(FoundRecord[1], Macros)
@@ -88,7 +92,7 @@ def ParseDefineMacro(Table, GlobalMacro):
                         where ID = %s""" % (Table.Table, ConvertToSqlString2(NewValue), FoundRecord[0])
         Table.Exec(SqlCommand)
 
-##QueryDefinesItem
+# QueryDefinesItem
 #
 # Search item of section [Defines] by name, return its values
 #
@@ -98,6 +102,8 @@ def ParseDefineMacro(Table, GlobalMacro):
 #
 # @retval RecordSet: A list of all matched records
 #
+
+
 def QueryDefinesItem(Table, Name, Arch, BelongsToFile):
     SqlCommand = """select Value2 from %s
                     where Model = %s
@@ -132,7 +138,7 @@ def QueryDefinesItem(Table, Name, Arch, BelongsToFile):
                     RetVal.append(Item)
         return RetVal
 
-##QueryDefinesItem
+# QueryDefinesItem
 #
 # Search item of section [Defines] by name, return its values
 #
@@ -142,6 +148,8 @@ def QueryDefinesItem(Table, Name, Arch, BelongsToFile):
 #
 # @retval RecordSet: A list of all matched records
 #
+
+
 def QueryDefinesItem2(Table, Arch, BelongsToFile):
     SqlCommand = """select Value1, Value2, StartLine from %s
                     where Model = %s
@@ -159,7 +167,7 @@ def QueryDefinesItem2(Table, Arch, BelongsToFile):
 
     return RecordSet
 
-##QueryDscItem
+# QueryDscItem
 #
 # Search all dsc item for a specific section
 #
@@ -168,6 +176,8 @@ def QueryDefinesItem2(Table, Arch, BelongsToFile):
 #
 # @retval RecordSet: A list of all matched records
 #
+
+
 def QueryDscItem(Table, Model, BelongsToItem, BelongsToFile):
     SqlCommand = """select Value1, Arch, StartLine, ID, Value2 from %s
                     where Model = %s
@@ -176,7 +186,7 @@ def QueryDscItem(Table, Model, BelongsToItem, BelongsToFile):
                     and Enabled > -1""" % (Table.Table, Model, BelongsToItem, BelongsToFile)
     return Table.Exec(SqlCommand)
 
-##QueryDecItem
+# QueryDecItem
 #
 # Search all dec item for a specific section
 #
@@ -185,6 +195,8 @@ def QueryDscItem(Table, Model, BelongsToItem, BelongsToFile):
 #
 # @retval RecordSet: A list of all matched records
 #
+
+
 def QueryDecItem(Table, Model, BelongsToItem):
     SqlCommand = """select Value1, Arch, StartLine, ID, Value2 from %s
                     where Model = %s
@@ -192,7 +204,7 @@ def QueryDecItem(Table, Model, BelongsToItem):
                     and Enabled > -1""" % (Table.Table, Model, BelongsToItem)
     return Table.Exec(SqlCommand)
 
-##QueryInfItem
+# QueryInfItem
 #
 # Search all dec item for a specific section
 #
@@ -201,6 +213,8 @@ def QueryDecItem(Table, Model, BelongsToItem):
 #
 # @retval RecordSet: A list of all matched records
 #
+
+
 def QueryInfItem(Table, Model, BelongsToItem):
     SqlCommand = """select Value1, Arch, StartLine, ID, Value2 from %s
                     where Model = %s
@@ -208,7 +222,7 @@ def QueryInfItem(Table, Model, BelongsToItem):
                     and Enabled > -1""" % (Table.Table, Model, BelongsToItem)
     return Table.Exec(SqlCommand)
 
-## GetBuildOption
+# GetBuildOption
 #
 # Parse a string with format "[<Family>:]<ToolFlag>=Flag"
 # Return (Family, ToolFlag, Flag)
@@ -218,21 +232,23 @@ def QueryInfItem(Table, Model, BelongsToItem):
 #
 # @retval truple() A truple structure as (Family, ToolChain, Flag)
 #
-def GetBuildOption(String, File, LineNo = -1):
+
+
+def GetBuildOption(String, File, LineNo=-1):
     (Family, ToolChain, Flag) = ('', '', '')
     if String.find(TAB_EQUAL_SPLIT) < 0:
         RaiseParserError(String, 'BuildOptions', File, '[<Family>:]<ToolFlag>=Flag', LineNo)
     else:
-        List = GetSplitValueList(String, TAB_EQUAL_SPLIT, MaxSplit = 1)
+        List = GetSplitValueList(String, TAB_EQUAL_SPLIT, MaxSplit=1)
         if List[0].find(':') > -1:
-            Family = List[0][ : List[0].find(':')].strip()
-            ToolChain = List[0][List[0].find(':') + 1 : ].strip()
+            Family = List[0][: List[0].find(':')].strip()
+            ToolChain = List[0][List[0].find(':') + 1:].strip()
         else:
             ToolChain = List[0].strip()
         Flag = List[1].strip()
     return (Family, ToolChain, Flag)
 
-## Get Library Class
+# Get Library Class
 #
 # Get Library of Dsc as <LibraryClassKeyWord>|<LibraryInstance>
 #
@@ -241,7 +257,9 @@ def GetBuildOption(String, File, LineNo = -1):
 #
 # @retval (LibraryClassKeyWord, LibraryInstance, [SUP_MODULE_LIST]) Formatted Library Item
 #
-def GetLibraryClass(Item, ContainerFile, WorkspaceDir, LineNo = -1):
+
+
+def GetLibraryClass(Item, ContainerFile, WorkspaceDir, LineNo=-1):
     List = GetSplitValueList(Item[0])
     SupMod = SUP_MODULE_LIST_STRING
     if len(List) != 2:
@@ -254,7 +272,7 @@ def GetLibraryClass(Item, ContainerFile, WorkspaceDir, LineNo = -1):
 
     return (List[0], List[1], SupMod)
 
-## Get Library Class
+# Get Library Class
 #
 # Get Library of Dsc as <LibraryClassKeyWord>[|<LibraryInstance>][|<TokenSpaceGuidCName>.<PcdCName>]
 #
@@ -263,12 +281,15 @@ def GetLibraryClass(Item, ContainerFile, WorkspaceDir, LineNo = -1):
 #
 # @retval (LibraryClassKeyWord, LibraryInstance, [SUP_MODULE_LIST]) Formatted Library Item
 #
-def GetLibraryClassOfInf(Item, ContainerFile, WorkspaceDir, LineNo = -1):
+
+
+def GetLibraryClassOfInf(Item, ContainerFile, WorkspaceDir, LineNo=-1):
     ItemList = GetSplitValueList((Item[0] + DataType.TAB_VALUE_SPLIT * 2))
     SupMod = SUP_MODULE_LIST_STRING
 
     if len(ItemList) > 5:
-        RaiseParserError(Item[0], 'LibraryClasses', ContainerFile, '<LibraryClassKeyWord>[|<LibraryInstance>][|<TokenSpaceGuidCName>.<PcdCName>]')
+        RaiseParserError(Item[0], 'LibraryClasses', ContainerFile,
+                         '<LibraryClassKeyWord>[|<LibraryInstance>][|<TokenSpaceGuidCName>.<PcdCName>]')
     else:
         CheckFileType(ItemList[1], '.Inf', ContainerFile, 'LibraryClasses', Item[0], LineNo)
         CheckFileExist(WorkspaceDir, ItemList[1], ContainerFile, 'LibraryClasses', Item[0], LineNo)
@@ -279,7 +300,7 @@ def GetLibraryClassOfInf(Item, ContainerFile, WorkspaceDir, LineNo = -1):
 
     return (ItemList[0], ItemList[1], ItemList[2], SupMod)
 
-## CheckPcdTokenInfo
+# CheckPcdTokenInfo
 #
 # Check if PcdTokenInfo is following <TokenSpaceGuidCName>.<PcdCName>
 #
@@ -289,7 +310,9 @@ def GetLibraryClassOfInf(Item, ContainerFile, WorkspaceDir, LineNo = -1):
 #
 # @retval True PcdTokenInfo is in correct format
 #
-def CheckPcdTokenInfo(TokenInfoString, Section, File, LineNo = -1):
+
+
+def CheckPcdTokenInfo(TokenInfoString, Section, File, LineNo=-1):
     Format = '<TokenSpaceGuidCName>.<PcdCName>'
     if TokenInfoString != '' and TokenInfoString is not None:
         TokenInfoList = GetSplitValueList(TokenInfoString, TAB_SPLIT)
@@ -298,7 +321,7 @@ def CheckPcdTokenInfo(TokenInfoString, Section, File, LineNo = -1):
 
     RaiseParserError(TokenInfoString, Section, File, Format, LineNo)
 
-## Get Pcd
+# Get Pcd
 #
 # Get Pcd of Dsc as <PcdTokenSpaceGuidCName>.<TokenCName>|<Value>[|<Type>|<MaximumDatumSize>]
 #
@@ -307,12 +330,15 @@ def CheckPcdTokenInfo(TokenInfoString, Section, File, LineNo = -1):
 #
 # @retval (TokenInfo[1], TokenInfo[0], List[1], List[2], List[3], Type)
 #
-def GetPcd(Item, Type, ContainerFile, LineNo = -1):
+
+
+def GetPcd(Item, Type, ContainerFile, LineNo=-1):
     TokenGuid, TokenName, Value, MaximumDatumSize, Token = '', '', '', '', ''
     List = GetSplitValueList(Item + TAB_VALUE_SPLIT * 2)
 
     if len(List) < 4 or len(List) > 6:
-        RaiseParserError(Item, 'Pcds' + Type, ContainerFile, '<PcdTokenSpaceGuidCName>.<TokenCName>|<Value>[|<Type>|<MaximumDatumSize>]', LineNo)
+        RaiseParserError(Item, 'Pcds' + Type, ContainerFile,
+                         '<PcdTokenSpaceGuidCName>.<TokenCName>|<Value>[|<Type>|<MaximumDatumSize>]', LineNo)
     else:
         Value = List[1]
         MaximumDatumSize = List[2]
@@ -323,7 +349,7 @@ def GetPcd(Item, Type, ContainerFile, LineNo = -1):
 
     return (TokenName, TokenGuid, Value, MaximumDatumSize, Token, Type)
 
-## Get FeatureFlagPcd
+# Get FeatureFlagPcd
 #
 # Get FeatureFlagPcd of Dsc as <PcdTokenSpaceGuidCName>.<TokenCName>|TRUE/FALSE
 #
@@ -332,7 +358,9 @@ def GetPcd(Item, Type, ContainerFile, LineNo = -1):
 #
 # @retval (TokenInfo[1], TokenInfo[0], List[1], Type)
 #
-def GetFeatureFlagPcd(Item, Type, ContainerFile, LineNo = -1):
+
+
+def GetFeatureFlagPcd(Item, Type, ContainerFile, LineNo=-1):
     TokenGuid, TokenName, Value = '', '', ''
     List = GetSplitValueList(Item)
     if len(List) != 2:
@@ -344,7 +372,7 @@ def GetFeatureFlagPcd(Item, Type, ContainerFile, LineNo = -1):
 
     return (TokenName, TokenGuid, Value, Type)
 
-## Get DynamicDefaultPcd
+# Get DynamicDefaultPcd
 #
 # Get DynamicDefaultPcd of Dsc as <PcdTokenSpaceGuidCName>.<TokenCName>|<Value>[|<DatumTyp>[|<MaxDatumSize>]]
 #
@@ -353,11 +381,14 @@ def GetFeatureFlagPcd(Item, Type, ContainerFile, LineNo = -1):
 #
 # @retval (TokenInfo[1], TokenInfo[0], List[1], List[2], List[3], Type)
 #
-def GetDynamicDefaultPcd(Item, Type, ContainerFile, LineNo = -1):
+
+
+def GetDynamicDefaultPcd(Item, Type, ContainerFile, LineNo=-1):
     TokenGuid, TokenName, Value, DatumTyp, MaxDatumSize = '', '', '', '', ''
     List = GetSplitValueList(Item + TAB_VALUE_SPLIT * 2)
     if len(List) < 4 or len(List) > 8:
-        RaiseParserError(Item, 'Pcds' + Type, ContainerFile, '<PcdTokenSpaceGuidCName>.<TokenCName>|<Value>[|<DatumTyp>[|<MaxDatumSize>]]', LineNo)
+        RaiseParserError(Item, 'Pcds' + Type, ContainerFile,
+                         '<PcdTokenSpaceGuidCName>.<TokenCName>|<Value>[|<DatumTyp>[|<MaxDatumSize>]]', LineNo)
     else:
         Value = List[1]
         DatumTyp = List[2]
@@ -367,7 +398,7 @@ def GetDynamicDefaultPcd(Item, Type, ContainerFile, LineNo = -1):
 
     return (TokenName, TokenGuid, Value, DatumTyp, MaxDatumSize, Type)
 
-## Get DynamicHiiPcd
+# Get DynamicHiiPcd
 #
 # Get DynamicHiiPcd of Dsc as <PcdTokenSpaceGuidCName>.<TokenCName>|<String>|<VariableGuidCName>|<VariableOffset>[|<DefaultValue>[|<MaximumDatumSize>]]
 #
@@ -376,11 +407,14 @@ def GetDynamicDefaultPcd(Item, Type, ContainerFile, LineNo = -1):
 #
 # @retval (TokenInfo[1], TokenInfo[0], List[1], List[2], List[3], List[4], List[5], Type)
 #
-def GetDynamicHiiPcd(Item, Type, ContainerFile, LineNo = -1):
+
+
+def GetDynamicHiiPcd(Item, Type, ContainerFile, LineNo=-1):
     TokenGuid, TokenName, L1, L2, L3, L4, L5 = '', '', '', '', '', '', ''
     List = GetSplitValueList(Item + TAB_VALUE_SPLIT * 2)
     if len(List) < 6 or len(List) > 8:
-        RaiseParserError(Item, 'Pcds' + Type, ContainerFile, '<PcdTokenSpaceGuidCName>.<TokenCName>|<String>|<VariableGuidCName>|<VariableOffset>[|<DefaultValue>[|<MaximumDatumSize>]]', LineNo)
+        RaiseParserError(Item, 'Pcds' + Type, ContainerFile,
+                         '<PcdTokenSpaceGuidCName>.<TokenCName>|<String>|<VariableGuidCName>|<VariableOffset>[|<DefaultValue>[|<MaximumDatumSize>]]', LineNo)
     else:
         L1, L2, L3, L4, L5 = List[1], List[2], List[3], List[4], List[5]
     if CheckPcdTokenInfo(List[0], 'Pcds' + Type, ContainerFile, LineNo):
@@ -388,7 +422,7 @@ def GetDynamicHiiPcd(Item, Type, ContainerFile, LineNo = -1):
 
     return (TokenName, TokenGuid, L1, L2, L3, L4, L5, Type)
 
-## Get DynamicVpdPcd
+# Get DynamicVpdPcd
 #
 # Get DynamicVpdPcd of Dsc as <PcdTokenSpaceGuidCName>.<TokenCName>|<VpdOffset>[|<MaximumDatumSize>]
 #
@@ -397,11 +431,14 @@ def GetDynamicHiiPcd(Item, Type, ContainerFile, LineNo = -1):
 #
 # @retval (TokenInfo[1], TokenInfo[0], List[1], List[2], Type)
 #
-def GetDynamicVpdPcd(Item, Type, ContainerFile, LineNo = -1):
+
+
+def GetDynamicVpdPcd(Item, Type, ContainerFile, LineNo=-1):
     TokenGuid, TokenName, L1, L2 = '', '', '', ''
     List = GetSplitValueList(Item + TAB_VALUE_SPLIT)
     if len(List) < 3 or len(List) > 4:
-        RaiseParserError(Item, 'Pcds' + Type, ContainerFile, '<PcdTokenSpaceGuidCName>.<TokenCName>|<VpdOffset>[|<MaximumDatumSize>]', LineNo)
+        RaiseParserError(Item, 'Pcds' + Type, ContainerFile,
+                         '<PcdTokenSpaceGuidCName>.<TokenCName>|<VpdOffset>[|<MaximumDatumSize>]', LineNo)
     else:
         L1, L2 = List[1], List[2]
     if CheckPcdTokenInfo(List[0], 'Pcds' + Type, ContainerFile, LineNo):
@@ -409,7 +446,7 @@ def GetDynamicVpdPcd(Item, Type, ContainerFile, LineNo = -1):
 
     return (TokenName, TokenGuid, L1, L2, Type)
 
-## GetComponent
+# GetComponent
 #
 # Parse block of the components defined in dsc file
 # Set KeyValues as [ ['component name', [lib1, lib2, lib3], [bo1, bo2, bo3], [pcd1, pcd2, pcd3]], ...]
@@ -419,8 +456,11 @@ def GetDynamicVpdPcd(Item, Type, ContainerFile, LineNo = -1):
 #
 # @retval True Get component successfully
 #
+
+
 def GetComponent(Lines, KeyValues):
-    (findBlock, findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, False, False)
+    (findBlock, findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+     findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, False, False)
     ListItem = None
     LibraryClassItem = []
     BuildOption = []
@@ -449,32 +489,40 @@ def GetComponent(Lines, KeyValues):
         #
         if findBlock:
             if Line.find('<LibraryClasses>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (True, False, False, False, False, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (True, False, False, False, False, False, False)
                 continue
             if Line.find('<BuildOptions>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, True, False, False, False, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, True, False, False, False, False, False)
                 continue
             if Line.find('<PcdsFeatureFlag>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, True, False, False, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, True, False, False, False, False)
                 continue
             if Line.find('<PcdsPatchableInModule>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, True, False, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, True, False, False, False)
                 continue
             if Line.find('<PcdsFixedAtBuild>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, True, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, True, False, False)
                 continue
             if Line.find('<PcdsDynamic>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, True, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, True, False)
                 continue
             if Line.find('<PcdsDynamicEx>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, True)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, True)
                 continue
             if Line.endswith('}'):
                 #
                 # find '}' at line tail
                 #
                 KeyValues.append([ListItem, LibraryClassItem, BuildOption, Pcd])
-                (findBlock, findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, False, False)
+                (findBlock, findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, False, False)
                 LibraryClassItem, BuildOption, Pcd = [], [], []
                 continue
 
@@ -498,7 +546,7 @@ def GetComponent(Lines, KeyValues):
 
     return True
 
-## GetExec
+# GetExec
 #
 # Parse a string with format "InfFilename [EXEC = ExecFilename]"
 # Return (InfFilename, ExecFilename)
@@ -507,18 +555,20 @@ def GetComponent(Lines, KeyValues):
 #
 # @retval truple() A pair as (InfFilename, ExecFilename)
 #
+
+
 def GetExec(String):
     InfFilename = ''
     ExecFilename = ''
     if String.find('EXEC') > -1:
-        InfFilename = String[ : String.find('EXEC')].strip()
-        ExecFilename = String[String.find('EXEC') + len('EXEC') : ].strip()
+        InfFilename = String[: String.find('EXEC')].strip()
+        ExecFilename = String[String.find('EXEC') + len('EXEC'):].strip()
     else:
         InfFilename = String.strip()
 
     return (InfFilename, ExecFilename)
 
-## GetComponents
+# GetComponents
 #
 # Parse block of the components defined in dsc file
 # Set KeyValues as [ ['component name', [lib1, lib2, lib3], [bo1, bo2, bo3], [pcd1, pcd2, pcd3]], ...]
@@ -530,10 +580,13 @@ def GetExec(String):
 #
 # @retval True Get component successfully
 #
+
+
 def GetComponents(Lines, Key, KeyValues, CommentCharacter):
     if Lines.find(DataType.TAB_SECTION_END) > -1:
         Lines = Lines.split(DataType.TAB_SECTION_END, 1)[1]
-    (findBlock, findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, False, False)
+    (findBlock, findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+     findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, False, False)
     ListItem = None
     LibraryClassItem = []
     BuildOption = []
@@ -559,32 +612,40 @@ def GetComponents(Lines, Key, KeyValues, CommentCharacter):
         #
         if findBlock:
             if Line.find('<LibraryClasses>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (True, False, False, False, False, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (True, False, False, False, False, False, False)
                 continue
             if Line.find('<BuildOptions>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, True, False, False, False, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, True, False, False, False, False, False)
                 continue
             if Line.find('<PcdsFeatureFlag>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, True, False, False, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, True, False, False, False, False)
                 continue
             if Line.find('<PcdsPatchableInModule>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, True, False, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, True, False, False, False)
                 continue
             if Line.find('<PcdsFixedAtBuild>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, True, False, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, True, False, False)
                 continue
             if Line.find('<PcdsDynamic>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, True, False)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, True, False)
                 continue
             if Line.find('<PcdsDynamicEx>') != -1:
-                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, True)
+                (findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, True)
                 continue
             if Line.endswith('}'):
                 #
                 # find '}' at line tail
                 #
                 KeyValues.append([ListItem, LibraryClassItem, BuildOption, Pcd])
-                (findBlock, findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild, findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, False, False)
+                (findBlock, findLibraryClass, findBuildOption, findPcdsFeatureFlag, findPcdsPatchableInModule, findPcdsFixedAtBuild,
+                 findPcdsDynamic, findPcdsDynamicEx) = (False, False, False, False, False, False, False, False)
                 LibraryClassItem, BuildOption, Pcd = [], [], []
                 continue
 
@@ -608,7 +669,7 @@ def GetComponents(Lines, Key, KeyValues, CommentCharacter):
 
     return True
 
-## Get Source
+# Get Source
 #
 # Get Source of Inf as <Filename>[|<Family>[|<TagName>[|<ToolCode>[|<PcdFeatureFlag>]]]]
 #
@@ -617,11 +678,14 @@ def GetComponents(Lines, Key, KeyValues, CommentCharacter):
 #
 # @retval (List[0], List[1], List[2], List[3], List[4])
 #
-def GetSource(Item, ContainerFile, FileRelativePath, LineNo = -1):
+
+
+def GetSource(Item, ContainerFile, FileRelativePath, LineNo=-1):
     ItemNew = Item + DataType.TAB_VALUE_SPLIT * 4
     List = GetSplitValueList(ItemNew)
     if len(List) < 5 or len(List) > 9:
-        RaiseParserError(Item, 'Sources', ContainerFile, '<Filename>[|<Family>[|<TagName>[|<ToolCode>[|<PcdFeatureFlag>]]]]', LineNo)
+        RaiseParserError(Item, 'Sources', ContainerFile,
+                         '<Filename>[|<Family>[|<TagName>[|<ToolCode>[|<PcdFeatureFlag>]]]]', LineNo)
     List[0] = NormPath(List[0])
     CheckFileExist(FileRelativePath, List[0], ContainerFile, 'Sources', Item, LineNo)
     if List[4] != '':
@@ -629,7 +693,7 @@ def GetSource(Item, ContainerFile, FileRelativePath, LineNo = -1):
 
     return (List[0], List[1], List[2], List[3], List[4])
 
-## Get Binary
+# Get Binary
 #
 # Get Binary of Inf as <Filename>[|<Family>[|<TagName>[|<ToolCode>[|<PcdFeatureFlag>]]]]
 #
@@ -639,11 +703,14 @@ def GetSource(Item, ContainerFile, FileRelativePath, LineNo = -1):
 # @retval (List[0], List[1], List[2], List[3])
 # @retval List
 #
-def GetBinary(Item, ContainerFile, FileRelativePath, LineNo = -1):
+
+
+def GetBinary(Item, ContainerFile, FileRelativePath, LineNo=-1):
     ItemNew = Item + DataType.TAB_VALUE_SPLIT
     List = GetSplitValueList(ItemNew)
     if len(List) != 4 and len(List) != 5:
-        RaiseParserError(Item, 'Binaries', ContainerFile, "<FileType>|<Filename>|<Target>[|<TokenSpaceGuidCName>.<PcdCName>]", LineNo)
+        RaiseParserError(Item, 'Binaries', ContainerFile,
+                         "<FileType>|<Filename>|<Target>[|<TokenSpaceGuidCName>.<PcdCName>]", LineNo)
     else:
         if List[3] != '':
             CheckPcdTokenInfo(List[3], 'Binaries', ContainerFile, LineNo)
@@ -657,7 +724,7 @@ def GetBinary(Item, ContainerFile, FileRelativePath, LineNo = -1):
     elif len(List) == 1:
         return (List[0], '', '', '')
 
-## Get Guids/Protocols/Ppis
+# Get Guids/Protocols/Ppis
 #
 # Get Guids/Protocols/Ppis of Inf as <GuidCName>[|<PcdFeatureFlag>]
 #
@@ -667,7 +734,9 @@ def GetBinary(Item, ContainerFile, FileRelativePath, LineNo = -1):
 #
 # @retval (List[0], List[1])
 #
-def GetGuidsProtocolsPpisOfInf(Item, Type, ContainerFile, LineNo = -1):
+
+
+def GetGuidsProtocolsPpisOfInf(Item, Type, ContainerFile, LineNo=-1):
     ItemNew = Item + TAB_VALUE_SPLIT
     List = GetSplitValueList(ItemNew)
     if List[1] != '':
@@ -675,7 +744,7 @@ def GetGuidsProtocolsPpisOfInf(Item, Type, ContainerFile, LineNo = -1):
 
     return (List[0], List[1])
 
-## Get Guids/Protocols/Ppis
+# Get Guids/Protocols/Ppis
 #
 # Get Guids/Protocols/Ppis of Dec as <GuidCName>=<GuidValue>
 #
@@ -685,14 +754,16 @@ def GetGuidsProtocolsPpisOfInf(Item, Type, ContainerFile, LineNo = -1):
 #
 # @retval (List[0], List[1])
 #
-def GetGuidsProtocolsPpisOfDec(Item, Type, ContainerFile, LineNo = -1):
+
+
+def GetGuidsProtocolsPpisOfDec(Item, Type, ContainerFile, LineNo=-1):
     List = GetSplitValueList(Item, DataType.TAB_EQUAL_SPLIT)
     if len(List) != 2:
         RaiseParserError(Item, Type, ContainerFile, '<CName>=<GuidValue>', LineNo)
 
     return (List[0], List[1])
 
-## GetPackage
+# GetPackage
 #
 # Get Package of Inf as <PackagePath>[|<PcdFeatureFlag>]
 #
@@ -702,7 +773,9 @@ def GetGuidsProtocolsPpisOfDec(Item, Type, ContainerFile, LineNo = -1):
 #
 # @retval (List[0], List[1])
 #
-def GetPackage(Item, ContainerFile, FileRelativePath, LineNo = -1):
+
+
+def GetPackage(Item, ContainerFile, FileRelativePath, LineNo=-1):
     ItemNew = Item + TAB_VALUE_SPLIT
     List = GetSplitValueList(ItemNew)
     CheckFileType(List[0], '.Dec', ContainerFile, 'package', List[0], LineNo)
@@ -713,7 +786,7 @@ def GetPackage(Item, ContainerFile, FileRelativePath, LineNo = -1):
 
     return (List[0], List[1])
 
-## Get Pcd Values of Inf
+# Get Pcd Values of Inf
 #
 # Get Pcd of Inf as <TokenSpaceGuidCName>.<PcdCName>[|<Value>]
 #
@@ -723,6 +796,8 @@ def GetPackage(Item, ContainerFile, FileRelativePath, LineNo = -1):
 #
 # @retval (TokenSpcCName, TokenCName, Value, ItemType) Formatted Pcd Item
 #
+
+
 def GetPcdOfInf(Item, Type, File, LineNo):
     Format = '<TokenSpaceGuidCName>.<PcdCName>[|<Value>]'
     TokenGuid, TokenName, Value, InfType = '', '', '', ''
@@ -752,12 +827,12 @@ def GetPcdOfInf(Item, Type, File, LineNo):
     return (TokenGuid, TokenName, Value, Type)
 
 
-## Get Pcd Values of Dec
+# Get Pcd Values of Dec
 #
 # Get Pcd of Dec as <TokenSpcCName>.<TokenCName>|<Value>|<DatumType>|<Token>
 # @retval (TokenSpcCName, TokenCName, Value, DatumType, Token, ItemType) Formatted Pcd Item
 #
-def GetPcdOfDec(Item, Type, File, LineNo = -1):
+def GetPcdOfDec(Item, Type, File, LineNo=-1):
     Format = '<TokenSpaceGuidCName>.<PcdCName>|<Value>|<DatumType>|<Token>'
     TokenGuid, TokenName, Value, DatumType, Token = '', '', '', '', ''
     List = GetSplitValueList(Item)
@@ -776,7 +851,7 @@ def GetPcdOfDec(Item, Type, File, LineNo = -1):
 
     return (TokenGuid, TokenName, Value, DatumType, Token, Type)
 
-## Parse DEFINE statement
+# Parse DEFINE statement
 #
 # Get DEFINE macros
 #
@@ -784,15 +859,21 @@ def GetPcdOfDec(Item, Type, File, LineNo = -1):
 # Value1: Macro Name
 # Value2: Macro Value
 #
+
+
 def ParseDefine(LineValue, StartLine, Table, FileID, Filename, SectionName, SectionModel, Arch):
     EdkLogger.debug(EdkLogger.DEBUG_2, "DEFINE statement '%s' found in section %s" % (LineValue, SectionName))
-    Define = GetSplitValueList(CleanString(LineValue[LineValue.upper().find(DataType.TAB_DEFINE.upper() + ' ') + len(DataType.TAB_DEFINE + ' ') : ]), TAB_EQUAL_SPLIT, 1)
-    Table.Insert(MODEL_META_DATA_DEFINE, Define[0], Define[1], '', '', '', Arch, SectionModel, FileID, StartLine, -1, StartLine, -1, 0)
+    Define = GetSplitValueList(CleanString(LineValue[LineValue.upper().find(
+        DataType.TAB_DEFINE.upper() + ' ') + len(DataType.TAB_DEFINE + ' '):]), TAB_EQUAL_SPLIT, 1)
+    Table.Insert(MODEL_META_DATA_DEFINE, Define[0], Define[1], '', '', '',
+                 Arch, SectionModel, FileID, StartLine, -1, StartLine, -1, 0)
 
-## InsertSectionItems
+# InsertSectionItems
 #
 # Insert item data of a section to a dict
 #
+
+
 def InsertSectionItems(Model, CurrentSection, SectionItemList, ArchList, ThirdList, RecordSet):
     # Insert each item data of a section
     for Index in range(0, len(ArchList)):
@@ -806,7 +887,7 @@ def InsertSectionItems(Model, CurrentSection, SectionItemList, ArchList, ThirdLi
             BelongsToItem, EndLine, EndColumn = -1, -1, -1
             LineValue, StartLine, EndLine, Comment = SectionItem[0], SectionItem[1], SectionItem[1], SectionItem[2]
 
-            EdkLogger.debug(4, "Parsing %s ..." %LineValue)
+            EdkLogger.debug(4, "Parsing %s ..." % LineValue)
             # And then parse DEFINE statement
             if LineValue.upper().find(DataType.TAB_DEFINE.upper() + ' ') > -1:
                 continue
@@ -818,7 +899,7 @@ def InsertSectionItems(Model, CurrentSection, SectionItemList, ArchList, ThirdLi
         if RecordSet != {}:
             RecordSet[Model] = Records
 
-## Insert records to database
+# Insert records to database
 #
 # Insert item data of a section to database
 # @param Table:            The Table to be inserted
@@ -831,6 +912,8 @@ def InsertSectionItems(Model, CurrentSection, SectionItemList, ArchList, ThirdLi
 # @param IfDefList:        A list of all conditional statements
 # @param RecordSet:        A dict of all parsed records
 #
+
+
 def InsertSectionItemsIntoDatabase(Table, FileID, Filename, Model, CurrentSection, SectionItemList, ArchList, ThirdList, IfDefList, RecordSet):
     #
     # Insert each item data of a section
@@ -846,7 +929,7 @@ def InsertSectionItemsIntoDatabase(Table, FileID, Filename, Model, CurrentSectio
             BelongsToItem, EndLine, EndColumn = -1, -1, -1
             LineValue, StartLine, EndLine = SectionItem[0], SectionItem[1], SectionItem[1]
 
-            EdkLogger.debug(4, "Parsing %s ..." %LineValue)
+            EdkLogger.debug(4, "Parsing %s ..." % LineValue)
             #
             # And then parse DEFINE statement
             #
@@ -863,14 +946,16 @@ def InsertSectionItemsIntoDatabase(Table, FileID, Filename, Model, CurrentSectio
         if RecordSet != {}:
             RecordSet[Model] = Records
 
-## GenMetaDatSectionItem
+# GenMetaDatSectionItem
+
+
 def GenMetaDatSectionItem(Key, Value, List):
     if Key not in List:
         List[Key] = [Value]
     else:
         List[Key].append(Value)
 
-## IsValidWord
+# IsValidWord
 #
 # Check whether the word is valid.
 # <Word>   ::=  (a-zA-Z0-9_)(a-zA-Z0-9_-){0,} Alphanumeric characters with
@@ -880,6 +965,8 @@ def GenMetaDatSectionItem(Key, Value, List):
 #
 # @param Word:  The word string need to be checked.
 #
+
+
 def IsValidWord(Word):
     if not Word:
         return False

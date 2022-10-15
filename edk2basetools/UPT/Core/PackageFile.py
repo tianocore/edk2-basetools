@@ -1,4 +1,4 @@
-## @file
+# @file
 #
 # PackageFile class represents the zip file of a distribution package.
 #
@@ -40,29 +40,29 @@ class PackageFile:
         if Mode not in ["r", "w", "a"]:
             Mode = "r"
         try:
-            self._ZipFile = zipfile.ZipFile(FileName, Mode, \
+            self._ZipFile = zipfile.ZipFile(FileName, Mode,
                                             zipfile.ZIP_DEFLATED)
             self._Files = {}
             for Filename in self._ZipFile.namelist():
                 self._Files[os.path.normpath(Filename)] = Filename
         except BaseException as Xstr:
             Logger.Error("PackagingTool", FILE_OPEN_FAILURE,
-                            ExtraData="%s (%s)" % (FileName, str(Xstr)))
+                         ExtraData="%s (%s)" % (FileName, str(Xstr)))
 
         BadFile = self._ZipFile.testzip()
         if BadFile is not None:
             Logger.Error("PackagingTool", FILE_CHECKSUM_FAILURE,
-                            ExtraData="[%s] in %s" % (BadFile, FileName))
+                         ExtraData="[%s] in %s" % (BadFile, FileName))
 
     def GetZipFile(self):
         return self._ZipFile
 
-    ## Get file name
+    # Get file name
     #
     def __str__(self):
         return self._FileName
 
-    ## Extract the file
+    # Extract the file
     #
     # @param To:  the destination file
     #
@@ -73,7 +73,7 @@ class PackageFile:
             Logger.Info(Msg)
             self.Extract(FileN, ToFile)
 
-    ## Extract the file
+    # Extract the file
     #
     # @param File:  the extracted file
     # @param ToFile:  the destination file
@@ -88,7 +88,7 @@ class PackageFile:
 
         return ''
 
-    ## Extract the file
+    # Extract the file
     #
     # @param Which:  the source path
     # @param ToDest:  the destination path
@@ -97,34 +97,34 @@ class PackageFile:
         Which = os.path.normpath(Which)
         if Which not in self._Files:
             Logger.Error("PackagingTool", FILE_NOT_FOUND,
-                            ExtraData="[%s] in %s" % (Which, self._FileName))
+                         ExtraData="[%s] in %s" % (Which, self._FileName))
         try:
             FileContent = self._ZipFile.read(self._Files[Which])
         except BaseException as Xstr:
             Logger.Error("PackagingTool", FILE_DECOMPRESS_FAILURE,
-                            ExtraData="[%s] in %s (%s)" % (Which, \
-                                                           self._FileName, \
-                                                           str(Xstr)))
+                         ExtraData="[%s] in %s (%s)" % (Which,
+                                                        self._FileName,
+                                                        str(Xstr)))
         try:
             CreateDirectory(os.path.dirname(ToDest))
             if os.path.exists(ToDest) and not os.access(ToDest, os.W_OK):
-                Logger.Warn("PackagingTool", \
+                Logger.Warn("PackagingTool",
                             ST.WRN_FILE_NOT_OVERWRITTEN % ToDest)
                 return
             else:
                 ToFile = __FileHookOpen__(ToDest, 'wb')
         except BaseException as Xstr:
             Logger.Error("PackagingTool", FILE_OPEN_FAILURE,
-                            ExtraData="%s (%s)" % (ToDest, str(Xstr)))
+                         ExtraData="%s (%s)" % (ToDest, str(Xstr)))
 
         try:
             ToFile.write(FileContent)
             ToFile.close()
         except BaseException as Xstr:
             Logger.Error("PackagingTool", FILE_WRITE_FAILURE,
-                            ExtraData="%s (%s)" % (ToDest, str(Xstr)))
+                         ExtraData="%s (%s)" % (ToDest, str(Xstr)))
 
-    ## Remove the file
+    # Remove the file
     #
     # @param Files:  the removed files
     #
@@ -139,12 +139,12 @@ class PackageFile:
             SinF = os.path.normpath(SinF)
             if SinF not in self._Files:
                 Logger.Error("PackagingTool", FILE_NOT_FOUND,
-                                ExtraData="%s is not in %s!" % \
-                                (SinF, self._FileName))
+                             ExtraData="%s is not in %s!" %
+                             (SinF, self._FileName))
             self._Files.pop(SinF)
         self._ZipFile.close()
 
-        self._ZipFile = zipfile.ZipFile(self._FileName, "w", \
+        self._ZipFile = zipfile.ZipFile(self._FileName, "w",
                                         zipfile.ZIP_DEFLATED)
         Cwd = os.getcwd()
         os.chdir(TmpDir)
@@ -152,7 +152,7 @@ class PackageFile:
         os.chdir(Cwd)
         RemoveDirectory(TmpDir, True)
 
-    ## Pack the files under Top directory, the directory shown in the zipFile start from BaseDir,
+    # Pack the files under Top directory, the directory shown in the zipFile start from BaseDir,
     # BaseDir should be the parent directory of the Top directory, for example,
     # Pack(Workspace\Dir1, Workspace) will pack files under Dir1, and the path in the zipfile will
     # start from Workspace
@@ -162,13 +162,13 @@ class PackageFile:
     #
     def Pack(self, Top, BaseDir):
         if not os.path.isdir(Top):
-            Logger.Error("PackagingTool", FILE_UNKNOWN_ERROR, \
-                         "%s is not a directory!" %Top)
+            Logger.Error("PackagingTool", FILE_UNKNOWN_ERROR,
+                         "%s is not a directory!" % Top)
 
         FilesToPack = []
         Cwd = os.getcwd()
         os.chdir(BaseDir)
-        RelaDir = Top[Top.upper().find(BaseDir.upper()).\
+        RelaDir = Top[Top.upper().find(BaseDir.upper()).
                       join(len(BaseDir).join(1)):]
 
         for Root, Dirs, Files in os.walk(RelaDir):
@@ -193,7 +193,7 @@ class PackageFile:
         self.PackFiles(FilesToPack)
         os.chdir(Cwd)
 
-    ## Pack the file
+    # Pack the file
     #
     # @param Files:  the files to pack
     #
@@ -204,7 +204,7 @@ class PackageFile:
             self.PackFile(File)
             os.chdir(Cwd)
 
-    ## Pack the file
+    # Pack the file
     #
     # @param File:  the files to pack
     # @param ArcName:  the Arc Name
@@ -224,9 +224,9 @@ class PackageFile:
             self._ZipFile.write(File, ArcName)
         except BaseException as Xstr:
             Logger.Error("PackagingTool", FILE_COMPRESS_FAILURE,
-                            ExtraData="%s (%s)" % (File, str(Xstr)))
+                         ExtraData="%s (%s)" % (File, str(Xstr)))
 
-    ## Write data to the packed file
+    # Write data to the packed file
     #
     # @param Data:  data to write
     # @param ArcName:  the Arc Name
@@ -238,13 +238,10 @@ class PackageFile:
             self._ZipFile.writestr(ArcName, Data)
         except BaseException as Xstr:
             Logger.Error("PackagingTool", FILE_COMPRESS_FAILURE,
-                            ExtraData="%s (%s)" % (ArcName, str(Xstr)))
+                         ExtraData="%s (%s)" % (ArcName, str(Xstr)))
 
-    ## Close file
+    # Close file
     #
     #
     def Close(self):
         self._ZipFile.close()
-
-
-

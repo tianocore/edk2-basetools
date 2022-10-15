@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase table for data models
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -14,19 +14,21 @@ import edk2basetools.CommonDataClass.DataClass as DataClass
 from edk2basetools.Table.Table import Table
 from edk2basetools.Common.StringUtils import ConvertToSqlString
 
-## TableDataModel
+# TableDataModel
 #
 # This class defined a table used for data model
 #
 # @param object:       Inherited from object class
 #
 #
+
+
 class TableDataModel(Table):
     def __init__(self, Cursor):
         Table.__init__(self, Cursor)
         self.Table = 'DataModel'
 
-    ## Create table
+    # Create table
     #
     # Create table DataModel
     #
@@ -43,7 +45,7 @@ class TableDataModel(Table):
                                                       )""" % self.Table
         Table.Create(self, SqlCommand)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table DataModel
     #
@@ -55,12 +57,13 @@ class TableDataModel(Table):
     def Insert(self, CrossIndex, Name, Description):
         self.ID = self.ID + 1
         (Name, Description) = ConvertToSqlString((Name, Description))
-        SqlCommand = """insert into %s values(%s, %s, '%s', '%s')""" % (self.Table, self.ID, CrossIndex, Name, Description)
+        SqlCommand = """insert into %s values(%s, %s, '%s', '%s')""" % (
+            self.Table, self.ID, CrossIndex, Name, Description)
         Table.Insert(self, SqlCommand)
 
         return self.ID
 
-    ## Init table
+    # Init table
     #
     # Create all default records of table DataModel
     #
@@ -73,7 +76,7 @@ class TableDataModel(Table):
             self.Insert(CrossIndex, Name, Description)
         EdkLogger.verbose("Initialize table DataModel ... DONE!")
 
-    ## Get CrossIndex
+    # Get CrossIndex
     #
     # Get a model's cross index from its name
     #

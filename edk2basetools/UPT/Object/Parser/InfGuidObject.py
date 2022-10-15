@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file [Guids] section.
 # It will consumed by InfParser.
 #
@@ -19,6 +19,7 @@ from edk2basetools.UPT.Library import DataType as DT
 import edk2basetools.UPT.Logger.Log as Logger
 from edk2basetools.UPT.Logger import ToolError
 from edk2basetools.UPT.Logger import StringTable as ST
+
 
 class InfGuidItemCommentContent():
     def __init__(self):
@@ -45,23 +46,28 @@ class InfGuidItemCommentContent():
 
     def SetUsageItem(self, UsageItem):
         self.UsageItem = UsageItem
+
     def GetUsageItem(self):
         return self.UsageItem
 
     def SetGuidTypeItem(self, GuidTypeItem):
         self.GuidTypeItem = GuidTypeItem
+
     def GetGuidTypeItem(self):
         return self.GuidTypeItem
 
     def SetVariableNameItem(self, VariableNameItem):
         self.VariableNameItem = VariableNameItem
+
     def GetVariableNameItem(self):
         return self.VariableNameItem
 
     def SetHelpStringItem(self, HelpStringItem):
         self.HelpStringItem = HelpStringItem
+
     def GetHelpStringItem(self):
         return self.HelpStringItem
+
 
 class InfGuidItem():
     def __init__(self):
@@ -75,33 +81,39 @@ class InfGuidItem():
 
     def SetName(self, Name):
         self.Name = Name
+
     def GetName(self):
         return self.Name
 
     def SetFeatureFlagExp(self, FeatureFlagExp):
         self.FeatureFlagExp = FeatureFlagExp
+
     def GetFeatureFlagExp(self):
         return self.FeatureFlagExp
 
     def SetCommentList(self, CommentList):
         self.CommentList = CommentList
+
     def GetCommentList(self):
         return self.CommentList
 
     def SetSupArchList(self, SupArchList):
         self.SupArchList = SupArchList
+
     def GetSupArchList(self):
         return self.SupArchList
 
-## ParseComment
+# ParseComment
 #
 # ParseComment
 #
+
+
 def ParseGuidComment(CommentsList, InfGuidItemObj):
     #
     # Get/Set Usage and HelpString
     #
-    if CommentsList is not None and len(CommentsList) != 0 :
+    if CommentsList is not None and len(CommentsList) != 0:
         CommentInsList = []
         PreUsage = None
         PreGuidType = None
@@ -111,14 +123,14 @@ def ParseGuidComment(CommentsList, InfGuidItemObj):
         for CommentItem in CommentsList:
             Count = Count + 1
             CommentItemUsage, \
-            CommentItemGuidType, \
-            CommentItemVarString, \
-            CommentItemHelpText = \
-                    ParseComment(CommentItem,
-                                 DT.ALL_USAGE_TOKENS,
-                                 DT.GUID_TYPE_TOKENS,
-                                 [],
-                                 True)
+                CommentItemGuidType, \
+                CommentItemVarString, \
+                CommentItemHelpText = \
+                ParseComment(CommentItem,
+                             DT.ALL_USAGE_TOKENS,
+                             DT.GUID_TYPE_TOKENS,
+                             [],
+                             True)
 
             if CommentItemHelpText is None:
                 CommentItemHelpText = ''
@@ -212,10 +224,12 @@ def ParseGuidComment(CommentsList, InfGuidItemObj):
 
     return InfGuidItemObj
 
-## InfGuidObject
+# InfGuidObject
 #
 # InfGuidObject
 #
+
+
 class InfGuidObject():
     def __init__(self):
         self.Guids = Sdict()
@@ -224,7 +238,7 @@ class InfGuidObject():
         #
         self.Macros = {}
 
-    def SetGuid(self, GuidList, Arch = None):
+    def SetGuid(self, GuidList, Arch=None):
         __SupportArchList = []
         for ArchItem in Arch:
             #
@@ -252,7 +266,7 @@ class InfGuidObject():
                 if not IsValidCVariableName(Item[0]):
                     Logger.Error("InfParser",
                                  ToolError.FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_INVALID_CNAME%(Item[0]),
+                                 ST.ERR_INF_PARSER_INVALID_CNAME % (Item[0]),
                                  File=CurrentLineOfItem[2],
                                  Line=CurrentLineOfItem[1],
                                  ExtraData=CurrentLineOfItem[0])
@@ -285,7 +299,7 @@ class InfGuidObject():
                 if not FeatureFlagRtv[0]:
                     Logger.Error("InfParser",
                                  ToolError.FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID%(FeatureFlagRtv[1]),
+                                 ST.ERR_INF_PARSER_FEATURE_FLAG_EXP_SYNTAX_INVLID % (FeatureFlagRtv[1]),
                                  File=CurrentLineOfItem[2],
                                  Line=CurrentLineOfItem[1],
                                  ExtraData=CurrentLineOfItem[0])

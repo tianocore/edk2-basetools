@@ -1,4 +1,4 @@
-## @file
+# @file
 # Standardized Error Handling infrastructures.
 #
 # Copyright (c) 2007 - 2016, Intel Corporation. All rights reserved.<BR>
@@ -34,7 +34,7 @@ OPTION_UNKNOWN_ERROR = 0x1FFF
 
 PARAMETER_INVALID = 0x2000
 PARAMETER_MISSING = 0x2001
-PARAMETER_UNKNOWN_ERROR =0x2FFF
+PARAMETER_UNKNOWN_ERROR = 0x2FFF
 
 FORMAT_INVALID = 0x3000
 FORMAT_NOT_SUPPORTED = 0x3001
@@ -89,72 +89,75 @@ ERROR_STATEMENT = 0xFFFD
 ABORT_ERROR = 0xFFFE
 UNKNOWN_ERROR = 0xFFFF
 
-## Error message of each error code
+# Error message of each error code
 gErrorMessage = {
-    FILE_NOT_FOUND          :   "File/directory not found in workspace",
-    FILE_OPEN_FAILURE       :   "File open failure",
-    FILE_WRITE_FAILURE      :   "File write failure",
-    FILE_PARSE_FAILURE      :   "File parse failure",
-    FILE_READ_FAILURE       :   "File read failure",
-    FILE_CREATE_FAILURE     :   "File create failure",
-    FILE_CHECKSUM_FAILURE   :   "Invalid checksum of file",
-    FILE_COMPRESS_FAILURE   :   "File compress failure",
-    FILE_DECOMPRESS_FAILURE :   "File decompress failure",
-    FILE_MOVE_FAILURE       :   "File move failure",
-    FILE_DELETE_FAILURE     :   "File delete failure",
-    FILE_COPY_FAILURE       :   "File copy failure",
-    FILE_POSITIONING_FAILURE:   "Failed to seeking position",
-    FILE_ALREADY_EXIST      :   "File or directory already exists",
-    FILE_TYPE_MISMATCH      :   "Incorrect file type",
-    FILE_CASE_MISMATCH      :   "File name case mismatch",
-    FILE_DUPLICATED         :   "Duplicated file found",
-    FILE_UNKNOWN_ERROR      :   "Unknown error encountered on file",
+    FILE_NOT_FOUND: "File/directory not found in workspace",
+    FILE_OPEN_FAILURE: "File open failure",
+    FILE_WRITE_FAILURE: "File write failure",
+    FILE_PARSE_FAILURE: "File parse failure",
+    FILE_READ_FAILURE: "File read failure",
+    FILE_CREATE_FAILURE: "File create failure",
+    FILE_CHECKSUM_FAILURE: "Invalid checksum of file",
+    FILE_COMPRESS_FAILURE: "File compress failure",
+    FILE_DECOMPRESS_FAILURE: "File decompress failure",
+    FILE_MOVE_FAILURE: "File move failure",
+    FILE_DELETE_FAILURE: "File delete failure",
+    FILE_COPY_FAILURE: "File copy failure",
+    FILE_POSITIONING_FAILURE: "Failed to seeking position",
+    FILE_ALREADY_EXIST: "File or directory already exists",
+    FILE_TYPE_MISMATCH: "Incorrect file type",
+    FILE_CASE_MISMATCH: "File name case mismatch",
+    FILE_DUPLICATED: "Duplicated file found",
+    FILE_UNKNOWN_ERROR: "Unknown error encountered on file",
 
-    OPTION_UNKNOWN          :   "Unknown option",
-    OPTION_MISSING          :   "Missing option",
-    OPTION_CONFLICT         :   "Conflict options",
-    OPTION_VALUE_INVALID    :   "Invalid value of option",
-    OPTION_DEPRECATED       :   "Deprecated option",
-    OPTION_NOT_SUPPORTED    :   "Unsupported option",
-    OPTION_UNKNOWN_ERROR    :   "Unknown error when processing options",
+    OPTION_UNKNOWN: "Unknown option",
+    OPTION_MISSING: "Missing option",
+    OPTION_CONFLICT: "Conflict options",
+    OPTION_VALUE_INVALID: "Invalid value of option",
+    OPTION_DEPRECATED: "Deprecated option",
+    OPTION_NOT_SUPPORTED: "Unsupported option",
+    OPTION_UNKNOWN_ERROR: "Unknown error when processing options",
 
-    PARAMETER_INVALID       :   "Invalid parameter",
-    PARAMETER_MISSING       :   "Missing parameter",
-    PARAMETER_UNKNOWN_ERROR :   "Unknown error in parameters",
+    PARAMETER_INVALID: "Invalid parameter",
+    PARAMETER_MISSING: "Missing parameter",
+    PARAMETER_UNKNOWN_ERROR: "Unknown error in parameters",
 
-    FORMAT_INVALID          :   "Invalid syntax/format",
-    FORMAT_NOT_SUPPORTED    :   "Not supported syntax/format",
-    FORMAT_UNKNOWN          :   "Unknown format",
-    FORMAT_UNKNOWN_ERROR    :   "Unknown error in syntax/format ",
+    FORMAT_INVALID: "Invalid syntax/format",
+    FORMAT_NOT_SUPPORTED: "Not supported syntax/format",
+    FORMAT_UNKNOWN: "Unknown format",
+    FORMAT_UNKNOWN_ERROR: "Unknown error in syntax/format ",
 
-    RESOURCE_NOT_AVAILABLE  :   "Not available",
-    RESOURCE_ALLOCATE_FAILURE :   "Allocate failure",
-    RESOURCE_FULL           :   "Full",
-    RESOURCE_OVERFLOW       :   "Overflow",
-    RESOURCE_UNDERRUN       :   "Underrun",
-    RESOURCE_UNKNOWN_ERROR  :   "Unknown error",
+    RESOURCE_NOT_AVAILABLE: "Not available",
+    RESOURCE_ALLOCATE_FAILURE: "Allocate failure",
+    RESOURCE_FULL: "Full",
+    RESOURCE_OVERFLOW: "Overflow",
+    RESOURCE_UNDERRUN: "Underrun",
+    RESOURCE_UNKNOWN_ERROR: "Unknown error",
 
-    ATTRIBUTE_NOT_AVAILABLE :   "Not available",
-    ATTRIBUTE_GET_FAILURE   :   "Failed to retrieve",
-    ATTRIBUTE_SET_FAILURE   :   "Failed to set",
-    ATTRIBUTE_UPDATE_FAILURE:   "Failed to update",
-    ATTRIBUTE_ACCESS_DENIED :   "Access denied",
-    ATTRIBUTE_UNKNOWN_ERROR :   "Unknown error when accessing",
+    ATTRIBUTE_NOT_AVAILABLE: "Not available",
+    ATTRIBUTE_GET_FAILURE: "Failed to retrieve",
+    ATTRIBUTE_SET_FAILURE: "Failed to set",
+    ATTRIBUTE_UPDATE_FAILURE: "Failed to update",
+    ATTRIBUTE_ACCESS_DENIED: "Access denied",
+    ATTRIBUTE_UNKNOWN_ERROR: "Unknown error when accessing",
 
-    COMMAND_FAILURE         :   "Failed to execute command",
+    COMMAND_FAILURE: "Failed to execute command",
 
-    IO_NOT_READY            :   "Not ready",
-    IO_BUSY                 :   "Busy",
-    IO_TIMEOUT              :   "Timeout",
-    IO_UNKNOWN_ERROR        :   "Unknown error in IO operation",
+    IO_NOT_READY: "Not ready",
+    IO_BUSY: "Busy",
+    IO_TIMEOUT: "Timeout",
+    IO_UNKNOWN_ERROR: "Unknown error in IO operation",
 
-    ERROR_STATEMENT         :   "!error statement",
-    UNKNOWN_ERROR           :   "Unknown error",
+    ERROR_STATEMENT: "!error statement",
+    UNKNOWN_ERROR: "Unknown error",
 }
 
-## Exception indicating a fatal error
+# Exception indicating a fatal error
+
+
 class FatalError(Exception):
     pass
+
 
 if __name__ == "__main__":
     pass

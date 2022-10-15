@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file [LibraryClasses] section.
 # It will consumed by InfParser.
 #
@@ -20,10 +20,12 @@ from edk2basetools.UPT.Object.Parser.InfCommonObject import CurrentLine
 from edk2basetools.UPT.Library.ExpressionValidate import IsValidFeatureFlagExp
 from edk2basetools.UPT.Library.ParserValidate import IsValidLibName
 
-## GetArchModuleType
+# GetArchModuleType
 #
 # Get Arch List and ModuleType List
 #
+
+
 def GetArchModuleType(KeyList):
     __SupArchList = []
     __SupModuleList = []
@@ -62,26 +64,31 @@ class InfLibraryClassItem():
 
     def SetLibName(self, LibName):
         self.LibName = LibName
+
     def GetLibName(self):
         return self.LibName
 
     def SetHelpString(self, HelpString):
         self.HelpString = HelpString
+
     def GetHelpString(self):
         return self.HelpString
 
     def SetFeatureFlagExp(self, FeatureFlagExp):
         self.FeatureFlagExp = FeatureFlagExp
+
     def GetFeatureFlagExp(self):
         return self.FeatureFlagExp
 
     def SetSupArchList(self, SupArchList):
         self.SupArchList = SupArchList
+
     def GetSupArchList(self):
         return self.SupArchList
 
     def SetSupModuleList(self, SupModuleList):
         self.SupModuleList = SupModuleList
+
     def GetSupModuleList(self):
         return self.SupModuleList
 
@@ -90,18 +97,22 @@ class InfLibraryClassItem():
     #
     def SetFileGuid(self, FileGuid):
         self.FileGuid = FileGuid
+
     def GetFileGuid(self):
         return self.FileGuid
 
     def SetVersion(self, Version):
         self.Version = Version
+
     def GetVersion(self):
         return self.Version
 
-## INF LibraryClass Section
+# INF LibraryClass Section
 #
 #
 #
+
+
 class InfLibraryClassObject():
     def __init__(self):
         self.LibraryClasses = Sdict()
@@ -110,7 +121,7 @@ class InfLibraryClassObject():
         #
         self.Macros = {}
 
-    ##SetLibraryClasses
+    # SetLibraryClasses
     #
     #
     # @param HelpString:     It can be a common comment or contain a recommend
@@ -139,11 +150,11 @@ class InfLibraryClassObject():
                                 LibItemObj.SetLibName(LibItem[0])
                             else:
                                 Logger.Error("InfParser",
-                                         ToolError.FORMAT_INVALID,
-                                         ST.ERR_INF_PARSER_DEFINE_LIB_NAME_INVALID,
-                                         File=GlobalData.gINF_MODULE_NAME,
-                                         Line=LibItemObj.CurrentLine.GetLineNo(),
-                                         ExtraData=LibItemObj.CurrentLine.GetLineString())
+                                             ToolError.FORMAT_INVALID,
+                                             ST.ERR_INF_PARSER_DEFINE_LIB_NAME_INVALID,
+                                             File=GlobalData.gINF_MODULE_NAME,
+                                             Line=LibItemObj.CurrentLine.GetLineNo(),
+                                             ExtraData=LibItemObj.CurrentLine.GetLineString())
                         else:
                             Logger.Error("InfParser",
                                          ToolError.FORMAT_INVALID,

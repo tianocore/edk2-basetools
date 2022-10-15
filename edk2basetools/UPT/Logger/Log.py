@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file implements the log mechanism for Python tools.
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -10,7 +10,7 @@
 Logger
 '''
 
-## Import modules
+# Import modules
 from sys import argv
 from sys import stdout
 from sys import stderr
@@ -42,12 +42,12 @@ DEBUG_7 = 8
 DEBUG_8 = 9
 DEBUG_9 = 10
 VERBOSE = 15
-INFO    = 20
-WARN    = 30
-QUIET   = 40
+INFO = 20
+WARN = 30
+QUIET = 40
 QUIET_1 = 41
-ERROR   = 50
-SILENT  = 60
+ERROR = 50
+SILENT = 60
 
 IS_RAISE_ERROR = True
 SUPRESS_ERROR = False
@@ -59,15 +59,15 @@ _TOOL_NAME = os.path.basename(argv[0])
 #
 # For validation purpose
 #
-_LOG_LEVELS = [DEBUG_0, DEBUG_1, DEBUG_2, DEBUG_3, DEBUG_4, DEBUG_5, DEBUG_6, \
-              DEBUG_7, DEBUG_8, DEBUG_9, VERBOSE, WARN, INFO, ERROR, QUIET, \
-              QUIET_1, SILENT]
+_LOG_LEVELS = [DEBUG_0, DEBUG_1, DEBUG_2, DEBUG_3, DEBUG_4, DEBUG_5, DEBUG_6,
+               DEBUG_7, DEBUG_8, DEBUG_9, VERBOSE, WARN, INFO, ERROR, QUIET,
+               QUIET_1, SILENT]
 #
 # For DEBUG level (All DEBUG_0~9 are applicable)
 #
 _DEBUG_LOGGER = getLogger("tool_debug")
-_DEBUG_FORMATTER = Formatter("[%(asctime)s.%(msecs)d]: %(message)s", \
-                            datefmt="%H:%M:%S")
+_DEBUG_FORMATTER = Formatter("[%(asctime)s.%(msecs)d]: %(message)s",
+                             datefmt="%H:%M:%S")
 #
 # For VERBOSE, INFO, WARN level
 #
@@ -83,10 +83,10 @@ _ERROR_FORMATTER = Formatter("%(message)s")
 # String templates for ERROR/WARN/DEBUG log message
 #
 _ERROR_MESSAGE_TEMPLATE = \
-('\n\n%(tool)s...\n%(file)s(%(line)s): error %(errorcode)04X: %(msg)s\n\t%(extra)s')
+    ('\n\n%(tool)s...\n%(file)s(%(line)s): error %(errorcode)04X: %(msg)s\n\t%(extra)s')
 
 __ERROR_MESSAGE_TEMPLATE_WITHOUT_FILE = \
-'\n\n%(tool)s...\n : error %(errorcode)04X: %(msg)s\n\t%(extra)s'
+    '\n\n%(tool)s...\n : error %(errorcode)04X: %(msg)s\n\t%(extra)s'
 
 _WARNING_MESSAGE_TEMPLATE = '%(tool)s...\n%(file)s(%(line)s): warning: %(msg)s'
 _WARNING_MESSAGE_TEMPLATE_WITHOUT_FILE = '%(tool)s: : warning: %(msg)s'
@@ -104,15 +104,19 @@ def Info(msg, *args, **kwargs):
 #
 # Log information which should be always put out
 #
+
+
 def Quiet(msg, *args, **kwargs):
     _ERROR_LOGGER.error(msg, *args, **kwargs)
 
-## Log debug message
+# Log debug message
 #
 #   @param  Level       DEBUG level (DEBUG0~9)
 #   @param  Message     Debug information
 #   @param  ExtraData   More information associated with "Message"
 #
+
+
 def Debug(Level, Message, ExtraData=None):
     if _DEBUG_LOGGER.level > Level:
         return
@@ -123,9 +127,9 @@ def Debug(Level, Message, ExtraData=None):
     #
     CallerStack = extract_stack()[-2]
     TemplateDict = {
-        "file"      : CallerStack[0],
-        "line"      : CallerStack[1],
-        "msg"       : Message,
+        "file": CallerStack[0],
+        "line": CallerStack[1],
+        "msg": Message,
     }
 
     if ExtraData is not None:
@@ -135,14 +139,16 @@ def Debug(Level, Message, ExtraData=None):
 
     _DEBUG_LOGGER.log(Level, LogText)
 
-## Log verbose message
+# Log verbose message
 #
 #   @param  Message     Verbose information
 #
+
+
 def Verbose(Message):
     return _INFO_LOGGER.log(VERBOSE, Message)
 
-## Log warning message
+# Log warning message
 #
 #   Warning messages are those which might be wrong but won't fail the tool.
 #
@@ -153,6 +159,8 @@ def Verbose(Message):
 #   @param  Line        The line number in the "File" which caused the warning.
 #   @param  ExtraData   More information associated with "Message"
 #
+
+
 def Warn(ToolName, Message, File=None, Line=None, ExtraData=None):
     if _INFO_LOGGER.level > WARN:
         return
@@ -168,10 +176,10 @@ def Warn(ToolName, Message, File=None, Line=None, ExtraData=None):
         Line = "%d" % Line
 
     TemplateDict = {
-        "tool"      : ToolName,
-        "file"      : File,
-        "line"      : Line,
-        "msg"       : Message,
+        "tool": ToolName,
+        "file": File,
+        "line": Line,
+        "msg": Message,
     }
 
     if File is not None:
@@ -189,7 +197,7 @@ def Warn(ToolName, Message, File=None, Line=None, ExtraData=None):
     if GlobalData.gWARNING_AS_ERROR == True:
         raise FatalError(WARNING_AS_ERROR)
 
-## Log ERROR message
+# Log ERROR message
 #
 # Once an error messages is logged, the tool's execution will be broken by
 # raising an exception. If you don't want to break the execution later, you
@@ -205,7 +213,9 @@ def Warn(ToolName, Message, File=None, Line=None, ExtraData=None):
 #   @param  RaiseError  Raise an exception to break the tool's execution if
 #                       it's True. This is the default behavior.
 #
-def Error(ToolName, ErrorCode, Message=None, File=None, Line=None, \
+
+
+def Error(ToolName, ErrorCode, Message=None, File=None, Line=None,
           ExtraData=None, RaiseError=IS_RAISE_ERROR):
     if ToolName:
         pass
@@ -224,16 +234,16 @@ def Error(ToolName, ErrorCode, Message=None, File=None, Line=None, \
         ExtraData = ""
 
     TemplateDict = {
-        "tool"      : _TOOL_NAME,
-        "file"      : File,
-        "line"      : Line,
-        "errorcode" : ErrorCode,
-        "msg"       : Message,
-        "extra"     : ExtraData
+        "tool": _TOOL_NAME,
+        "file": File,
+        "line": Line,
+        "errorcode": ErrorCode,
+        "msg": Message,
+        "extra": ExtraData
     }
 
     if File is not None:
-        LogText =  _ERROR_MESSAGE_TEMPLATE % TemplateDict
+        LogText = _ERROR_MESSAGE_TEMPLATE % TemplateDict
     else:
         LogText = __ERROR_MESSAGE_TEMPLATE_WITHOUT_FILE % TemplateDict
 
@@ -243,7 +253,7 @@ def Error(ToolName, ErrorCode, Message=None, File=None, Line=None, \
         raise FatalError(ErrorCode)
 
 
-## Initialize log system
+# Initialize log system
 #
 def Initialize():
     #
@@ -272,33 +282,39 @@ def Initialize():
     _ERROR_LOGGER.addHandler(_ErrorCh)
 
 
-## Set log level
+# Set log level
 #
 #   @param  Level   One of log level in _LogLevel
 #
 def SetLevel(Level):
     if Level not in _LOG_LEVELS:
-        Info("Not supported log level (%d). Use default level instead." % \
+        Info("Not supported log level (%d). Use default level instead." %
              Level)
         Level = INFO
     _DEBUG_LOGGER.setLevel(Level)
     _INFO_LOGGER.setLevel(Level)
     _ERROR_LOGGER.setLevel(Level)
 
-## Get current log level
+# Get current log level
 #
+
+
 def GetLevel():
     return _INFO_LOGGER.getEffectiveLevel()
 
-## Raise up warning as error
+# Raise up warning as error
 #
+
+
 def SetWarningAsError():
     GlobalData.gWARNING_AS_ERROR = True
 
-## Specify a file to store the log message as well as put on console
+# Specify a file to store the log message as well as put on console
 #
 #   @param  LogFile     The file path used to store the log message
 #
+
+
 def SetLogFile(LogFile):
     if os.path.exists(LogFile):
         remove(LogFile)
@@ -314,6 +330,3 @@ def SetLogFile(LogFile):
     _Ch = FileHandler(LogFile)
     _Ch.setFormatter(_ERROR_FORMATTER)
     _ERROR_LOGGER.addHandler(_Ch)
-
-
-

@@ -1,4 +1,4 @@
-## @file
+# @file
 # Standardized Error Handling infrastructures.
 #
 # Copyright (c) 2008 - 2010, Intel Corporation. All rights reserved.<BR>
@@ -10,6 +10,5 @@ ERROR_1 = 1000
 
 # Error message
 gEccErrorMessage = {
-    ERROR_1 : "RESERVED"
-    }
-
+    ERROR_1: "RESERVED"
+}

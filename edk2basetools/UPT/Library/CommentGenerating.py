@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define comment generating interface
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -30,33 +30,37 @@ from edk2basetools.UPT.Library.DataType import TAB_STAR
 from edk2basetools.UPT.Library.DataType import TAB_PCD_PROMPT
 from edk2basetools.UPT.Library.UniClassObject import ConvertSpecialUnicodes
 from edk2basetools.UPT.Library.Misc import GetLocalValue
-## GenTailCommentLines
+# GenTailCommentLines
 #
 # @param TailCommentLines:  the tail comment lines that need to be generated
 # @param LeadingSpaceNum:   the number of leading space needed for non-first
 #                            line tail comment
 #
-def GenTailCommentLines (TailCommentLines, LeadingSpaceNum = 0):
+
+
+def GenTailCommentLines(TailCommentLines, LeadingSpaceNum=0):
     TailCommentLines = TailCommentLines.rstrip(END_OF_LINE)
-    CommentStr = TAB_SPACE_SPLIT*2 + TAB_SPECIAL_COMMENT + TAB_SPACE_SPLIT + \
-    (END_OF_LINE + LeadingSpaceNum * TAB_SPACE_SPLIT + TAB_SPACE_SPLIT*2 + TAB_SPECIAL_COMMENT + \
-     TAB_SPACE_SPLIT).join(GetSplitValueList(TailCommentLines, END_OF_LINE))
+    CommentStr = TAB_SPACE_SPLIT * 2 + TAB_SPECIAL_COMMENT + TAB_SPACE_SPLIT + \
+        (END_OF_LINE + LeadingSpaceNum * TAB_SPACE_SPLIT + TAB_SPACE_SPLIT * 2 + TAB_SPECIAL_COMMENT +
+         TAB_SPACE_SPLIT).join(GetSplitValueList(TailCommentLines, END_OF_LINE))
 
     return CommentStr
 
-## GenGenericComment
+# GenGenericComment
 #
 # @param CommentLines:   Generic comment Text, maybe Multiple Lines
 #
-def GenGenericComment (CommentLines):
+
+
+def GenGenericComment(CommentLines):
     if not CommentLines:
         return ''
     CommentLines = CommentLines.rstrip(END_OF_LINE)
-    CommentStr = TAB_SPECIAL_COMMENT + TAB_SPACE_SPLIT + (END_OF_LINE + TAB_COMMENT_SPLIT + TAB_SPACE_SPLIT).join\
-    (GetSplitValueList(CommentLines, END_OF_LINE)) + END_OF_LINE
+    CommentStr = TAB_SPECIAL_COMMENT + TAB_SPACE_SPLIT + \
+        (END_OF_LINE + TAB_COMMENT_SPLIT + TAB_SPACE_SPLIT).join(GetSplitValueList(CommentLines, END_OF_LINE)) + END_OF_LINE
     return CommentStr
 
-## GenGenericCommentF
+# GenGenericCommentF
 #
 #  similar to GenGenericComment but will remove <EOL> at end of comment once,
 #  and for line with only <EOL>, '#\n' will be generated instead of '# \n'
@@ -64,7 +68,9 @@ def GenGenericComment (CommentLines):
 # @param CommentLines:   Generic comment Text, maybe Multiple Lines
 # @return CommentStr:    Generated comment line
 #
-def GenGenericCommentF (CommentLines, NumOfPound=1, IsPrompt=False, IsInfLibraryClass=False):
+
+
+def GenGenericCommentF(CommentLines, NumOfPound=1, IsPrompt=False, IsInfLibraryClass=False):
     if not CommentLines:
         return ''
     #
@@ -76,7 +82,7 @@ def GenGenericCommentF (CommentLines, NumOfPound=1, IsPrompt=False, IsInfLibrary
     CommentStr = ''
     if IsPrompt:
         CommentStr += TAB_COMMENT_SPLIT * NumOfPound + TAB_SPACE_SPLIT + TAB_PCD_PROMPT + TAB_SPACE_SPLIT + \
-        CommentLines.replace(END_OF_LINE, '') + END_OF_LINE
+            CommentLines.replace(END_OF_LINE, '') + END_OF_LINE
     else:
         CommentLineList = GetSplitValueList(CommentLines, END_OF_LINE)
         FindLibraryClass = False
@@ -102,7 +108,7 @@ def GenGenericCommentF (CommentLines, NumOfPound=1, IsPrompt=False, IsInfLibrary
     return CommentStr
 
 
-## GenHeaderCommentSection
+# GenHeaderCommentSection
 #
 # Generate Header comment sections
 #
@@ -111,7 +117,7 @@ def GenGenericCommentF (CommentLines, NumOfPound=1, IsPrompt=False, IsInfLibrary
 # @param Copyright     possible multiple copyright lines
 # @param License       possible multiple license lines
 #
-def GenHeaderCommentSection(Abstract, Description, Copyright, License, IsBinaryHeader=False, \
+def GenHeaderCommentSection(Abstract, Description, Copyright, License, IsBinaryHeader=False,
                             CommChar=TAB_COMMENT_SPLIT):
     Content = ''
 
@@ -124,21 +130,21 @@ def GenHeaderCommentSection(Abstract, Description, Copyright, License, IsBinaryH
         Content += CommChar * 2 + TAB_SPACE_SPLIT + TAB_BINARY_HEADER_COMMENT + '\r\n'
     elif CommChar == TAB_COMMENT_EDK1_SPLIT:
         Content += CommChar + TAB_SPACE_SPLIT + TAB_COMMENT_EDK1_START + TAB_STAR + TAB_SPACE_SPLIT +\
-         TAB_HEADER_COMMENT + '\r\n'
+            TAB_HEADER_COMMENT + '\r\n'
     else:
         Content += CommChar * 2 + TAB_SPACE_SPLIT + TAB_HEADER_COMMENT + '\r\n'
     if Abstract:
         Abstract = Abstract.rstrip('\r\n')
-        Content += CommChar + TAB_SPACE_SPLIT + ('\r\n' + CommChar + TAB_SPACE_SPLIT).join(GetSplitValueList\
-                                                                                                (Abstract, '\n'))
+        Content += CommChar + TAB_SPACE_SPLIT + ('\r\n' + CommChar + TAB_SPACE_SPLIT).join(GetSplitValueList
+                                                                                           (Abstract, '\n'))
         Content += '\r\n' + CommChar + '\r\n'
     else:
         Content += CommChar + '\r\n'
 
     if Description:
         Description = Description.rstrip('\r\n')
-        Content += CommChar + TAB_SPACE_SPLIT + ('\r\n' + CommChar + TAB_SPACE_SPLIT).join(GetSplitValueList\
-                                                  (Description, '\n'))
+        Content += CommChar + TAB_SPACE_SPLIT + ('\r\n' + CommChar + TAB_SPACE_SPLIT).join(GetSplitValueList
+                                                                                           (Description, '\n'))
         Content += '\r\n' + CommChar + '\r\n'
 
     #
@@ -146,14 +152,14 @@ def GenHeaderCommentSection(Abstract, Description, Copyright, License, IsBinaryH
     #
     if Copyright:
         Copyright = Copyright.rstrip('\r\n')
-        Content += CommChar + TAB_SPACE_SPLIT + ('\r\n' + CommChar + TAB_SPACE_SPLIT).join\
-        (GetSplitValueList(Copyright, '\n'))
+        Content += CommChar + TAB_SPACE_SPLIT + \
+            ('\r\n' + CommChar + TAB_SPACE_SPLIT).join(GetSplitValueList(Copyright, '\n'))
         Content += '\r\n' + CommChar + '\r\n'
 
     if License:
         License = License.rstrip('\r\n')
-        Content += CommChar + TAB_SPACE_SPLIT + ('\r\n' + CommChar + TAB_SPACE_SPLIT).join(GetSplitValueList\
-                                                  (License, '\n'))
+        Content += CommChar + TAB_SPACE_SPLIT + ('\r\n' + CommChar + TAB_SPACE_SPLIT).join(GetSplitValueList
+                                                                                           (License, '\n'))
         Content += '\r\n' + CommChar + '\r\n'
 
     if CommChar == TAB_COMMENT_EDK1_SPLIT:
@@ -164,26 +170,28 @@ def GenHeaderCommentSection(Abstract, Description, Copyright, License, IsBinaryH
     return Content
 
 
-## GenInfPcdTailComment
+# GenInfPcdTailComment
 #  Generate Pcd tail comment for Inf, this would be one line comment
 #
 # @param Usage:            Usage type
 # @param TailCommentText:  Comment text for tail comment
 #
-def GenInfPcdTailComment (Usage, TailCommentText):
+def GenInfPcdTailComment(Usage, TailCommentText):
     if (Usage == ITEM_UNDEFINED) and (not TailCommentText):
         return ''
 
     CommentLine = TAB_SPACE_SPLIT.join([Usage, TailCommentText])
     return GenTailCommentLines(CommentLine)
 
-## GenInfProtocolPPITailComment
+# GenInfProtocolPPITailComment
 #  Generate Protocol/PPI tail comment for Inf
 #
 # @param Usage:            Usage type
 # @param TailCommentText:  Comment text for tail comment
 #
-def GenInfProtocolPPITailComment (Usage, Notify, TailCommentText):
+
+
+def GenInfProtocolPPITailComment(Usage, Notify, TailCommentText):
     if (not Notify) and (Usage == ITEM_UNDEFINED) and (not TailCommentText):
         return ''
 
@@ -195,16 +203,18 @@ def GenInfProtocolPPITailComment (Usage, Notify, TailCommentText):
     CommentLine += TAB_SPACE_SPLIT.join([Usage, TailCommentText])
     return GenTailCommentLines(CommentLine)
 
-## GenInfGuidTailComment
+# GenInfGuidTailComment
 #  Generate Guid tail comment for Inf
 #
 # @param Usage:            Usage type
 # @param TailCommentText:  Comment text for tail comment
 #
-def GenInfGuidTailComment (Usage, GuidTypeList, VariableName, TailCommentText):
+
+
+def GenInfGuidTailComment(Usage, GuidTypeList, VariableName, TailCommentText):
     GuidType = GuidTypeList[0]
     if (Usage == ITEM_UNDEFINED) and (GuidType == ITEM_UNDEFINED) and \
-        (not TailCommentText):
+            (not TailCommentText):
         return ''
 
     FirstLine = Usage + " ## " + GuidType
@@ -214,16 +224,18 @@ def GenInfGuidTailComment (Usage, GuidTypeList, VariableName, TailCommentText):
     CommentLine = TAB_SPACE_SPLIT.join([FirstLine, TailCommentText])
     return GenTailCommentLines(CommentLine)
 
-## GenDecGuidTailComment
+# GenDecGuidTailComment
 #
 # @param SupModuleList:  Supported module type list
 #
-def GenDecTailComment (SupModuleList):
+
+
+def GenDecTailComment(SupModuleList):
     CommentLine = TAB_SPACE_SPLIT.join(SupModuleList)
     return GenTailCommentLines(CommentLine)
 
 
-## _GetHelpStr
+# _GetHelpStr
 #  get HelpString from a list of HelpTextObject, the priority refer to
 #  related HLD
 #

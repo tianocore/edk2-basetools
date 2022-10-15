@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase table for inf datas
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -14,19 +14,21 @@ import edk2basetools.CommonDataClass.DataClass as DataClass
 from edk2basetools.Table.Table import Table
 from edk2basetools.Common.StringUtils import ConvertToSqlString
 
-## TableInf
+# TableInf
 #
 # This class defined a table used for data model
 #
 # @param object:       Inherited from object class
 #
 #
+
+
 class TableInf(Table):
     def __init__(self, Cursor):
         Table.__init__(self, Cursor)
         self.Table = 'Inf'
 
-    ## Create table
+    # Create table
     #
     # Create table Inf
     #
@@ -65,7 +67,7 @@ class TableInf(Table):
                                                       )""" % self.Table
         Table.Create(self, SqlCommand)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Inf
     #
@@ -94,7 +96,7 @@ class TableInf(Table):
 
         return self.ID
 
-    ## Query table
+    # Query table
     #
     # @param Model:  The Model of Record
     #

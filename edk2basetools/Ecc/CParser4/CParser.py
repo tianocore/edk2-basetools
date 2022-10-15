@@ -6,7 +6,7 @@ from typing.io import TextIO
 import sys
 
 
-## @file
+# @file
 # The file defines the parser for C source files.
 #
 # THIS FILE IS AUTO-GENENERATED. PLEASE DON NOT MODIFY THIS FILE.
@@ -21,6 +21,7 @@ import sys
 
 import edk2basetools.Ecc.CodeFragment as CodeFragment
 import edk2basetools.Ecc.FileProfile as FileProfile
+
 
 def serializedATN():
     with StringIO() as buf:
@@ -475,61 +476,61 @@ def serializedATN():
         return buf.getvalue()
 
 
-class CParser ( Parser ):
+class CParser (Parser):
 
     grammarFileName = "C.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'{'", "';'", "'typedef'", "','", "'='",
-                     "'extern'", "'static'", "'auto'", "'register'", "'STATIC'",
-                     "'void'", "'char'", "'short'", "'int'", "'long'", "'float'",
-                     "'double'", "'signed'", "'unsigned'", "'}'", "'struct'",
-                     "'union'", "':'", "'enum'", "'const'", "'volatile'",
-                     "'IN'", "'OUT'", "'OPTIONAL'", "'CONST'", "'UNALIGNED'",
-                     "'VOLATILE'", "'GLOBAL_REMOVE_IF_UNREFERENCED'", "'EFIAPI'",
-                     "'EFI_BOOTSERVICE'", "'EFI_RUNTIMESERVICE'", "'PACKED'",
-                     "'('", "')'", "'['", "']'", "'*'", "'...'", "'+'",
-                     "'-'", "'/'", "'%'", "'++'", "'--'", "'sizeof'", "'.'",
-                     "'->'", "'&'", "'~'", "'!'", "'*='", "'/='", "'%='",
-                     "'+='", "'-='", "'<<='", "'>>='", "'&='", "'^='", "'|='",
-                     "'?'", "'||'", "'&&'", "'|'", "'^'", "'=='", "'!='",
-                     "'<'", "'>'", "'<='", "'>='", "'<<'", "'>>'", "'__asm__'",
-                     "'_asm'", "'__asm'", "'case'", "'default'", "'if'",
-                     "'else'", "'switch'", "'while'", "'do'", "'goto'",
-                     "'continue'", "'break'", "'return'" ]
+    literalNames = ["<INVALID>", "'{'", "';'", "'typedef'", "','", "'='",
+                    "'extern'", "'static'", "'auto'", "'register'", "'STATIC'",
+                    "'void'", "'char'", "'short'", "'int'", "'long'", "'float'",
+                    "'double'", "'signed'", "'unsigned'", "'}'", "'struct'",
+                    "'union'", "':'", "'enum'", "'const'", "'volatile'",
+                    "'IN'", "'OUT'", "'OPTIONAL'", "'CONST'", "'UNALIGNED'",
+                    "'VOLATILE'", "'GLOBAL_REMOVE_IF_UNREFERENCED'", "'EFIAPI'",
+                    "'EFI_BOOTSERVICE'", "'EFI_RUNTIMESERVICE'", "'PACKED'",
+                    "'('", "')'", "'['", "']'", "'*'", "'...'", "'+'",
+                    "'-'", "'/'", "'%'", "'++'", "'--'", "'sizeof'", "'.'",
+                    "'->'", "'&'", "'~'", "'!'", "'*='", "'/='", "'%='",
+                    "'+='", "'-='", "'<<='", "'>>='", "'&='", "'^='", "'|='",
+                    "'?'", "'||'", "'&&'", "'|'", "'^'", "'=='", "'!='",
+                    "'<'", "'>'", "'<='", "'>='", "'<<'", "'>>'", "'__asm__'",
+                    "'_asm'", "'__asm'", "'case'", "'default'", "'if'",
+                    "'else'", "'switch'", "'while'", "'do'", "'goto'",
+                    "'continue'", "'break'", "'return'"]
 
-    symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                      "<INVALID>", "IDENTIFIER", "CHARACTER_LITERAL", "STRING_LITERAL",
-                      "HEX_LITERAL", "DECIMAL_LITERAL", "OCTAL_LITERAL",
-                      "FLOATING_POINT_LITERAL", "WS", "BS", "UnicodeVocabulary",
-                      "COMMENT", "LINE_COMMENT", "LINE_COMMAND" ]
+    symbolicNames = ["<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
+                     "<INVALID>", "IDENTIFIER", "CHARACTER_LITERAL", "STRING_LITERAL",
+                     "HEX_LITERAL", "DECIMAL_LITERAL", "OCTAL_LITERAL",
+                     "FLOATING_POINT_LITERAL", "WS", "BS", "UnicodeVocabulary",
+                     "COMMENT", "LINE_COMMENT", "LINE_COMMAND"]
 
     RULE_translation_unit = 0
     RULE_external_declaration = 1
@@ -603,225 +604,218 @@ class CParser ( Parser ):
     RULE_iteration_statement = 69
     RULE_jump_statement = 70
 
-    ruleNames =  [ "translation_unit", "external_declaration", "function_definition",
-                   "declaration_specifiers", "declaration", "init_declarator_list",
-                   "init_declarator", "storage_class_specifier", "type_specifier",
-                   "type_id", "struct_or_union_specifier", "struct_or_union",
-                   "struct_declaration_list", "struct_declaration", "specifier_qualifier_list",
-                   "struct_declarator_list", "struct_declarator", "enum_specifier",
-                   "enumerator_list", "enumerator", "type_qualifier", "declarator",
-                   "direct_declarator", "declarator_suffix", "pointer",
-                   "parameter_type_list", "parameter_list", "parameter_declaration",
-                   "identifier_list", "type_name", "abstract_declarator",
-                   "direct_abstract_declarator", "abstract_declarator_suffix",
-                   "initializer", "initializer_list", "argument_expression_list",
-                   "additive_expression", "multiplicative_expression", "cast_expression",
-                   "unary_expression", "postfix_expression", "macro_parameter_list",
-                   "unary_operator", "primary_expression", "constant", "expression",
-                   "constant_expression", "assignment_expression", "lvalue",
-                   "assignment_operator", "conditional_expression", "logical_or_expression",
-                   "logical_and_expression", "inclusive_or_expression",
-                   "exclusive_or_expression", "and_expression", "equality_expression",
-                   "relational_expression", "shift_expression", "statement",
-                   "asm2_statement", "asm1_statement", "asm_statement",
-                   "macro_statement", "labeled_statement", "compound_statement",
-                   "statement_list", "expression_statement", "selection_statement",
-                   "iteration_statement", "jump_statement" ]
+    ruleNames = ["translation_unit", "external_declaration", "function_definition",
+                 "declaration_specifiers", "declaration", "init_declarator_list",
+                 "init_declarator", "storage_class_specifier", "type_specifier",
+                 "type_id", "struct_or_union_specifier", "struct_or_union",
+                 "struct_declaration_list", "struct_declaration", "specifier_qualifier_list",
+                 "struct_declarator_list", "struct_declarator", "enum_specifier",
+                 "enumerator_list", "enumerator", "type_qualifier", "declarator",
+                 "direct_declarator", "declarator_suffix", "pointer",
+                 "parameter_type_list", "parameter_list", "parameter_declaration",
+                 "identifier_list", "type_name", "abstract_declarator",
+                 "direct_abstract_declarator", "abstract_declarator_suffix",
+                 "initializer", "initializer_list", "argument_expression_list",
+                 "additive_expression", "multiplicative_expression", "cast_expression",
+                 "unary_expression", "postfix_expression", "macro_parameter_list",
+                 "unary_operator", "primary_expression", "constant", "expression",
+                 "constant_expression", "assignment_expression", "lvalue",
+                 "assignment_operator", "conditional_expression", "logical_or_expression",
+                 "logical_and_expression", "inclusive_or_expression",
+                 "exclusive_or_expression", "and_expression", "equality_expression",
+                 "relational_expression", "shift_expression", "statement",
+                 "asm2_statement", "asm1_statement", "asm_statement",
+                 "macro_statement", "labeled_statement", "compound_statement",
+                 "statement_list", "expression_statement", "selection_statement",
+                 "iteration_statement", "jump_statement"]
 
     EOF = Token.EOF
-    T__0=1
-    T__1=2
-    T__2=3
-    T__3=4
-    T__4=5
-    T__5=6
-    T__6=7
-    T__7=8
-    T__8=9
-    T__9=10
-    T__10=11
-    T__11=12
-    T__12=13
-    T__13=14
-    T__14=15
-    T__15=16
-    T__16=17
-    T__17=18
-    T__18=19
-    T__19=20
-    T__20=21
-    T__21=22
-    T__22=23
-    T__23=24
-    T__24=25
-    T__25=26
-    T__26=27
-    T__27=28
-    T__28=29
-    T__29=30
-    T__30=31
-    T__31=32
-    T__32=33
-    T__33=34
-    T__34=35
-    T__35=36
-    T__36=37
-    T__37=38
-    T__38=39
-    T__39=40
-    T__40=41
-    T__41=42
-    T__42=43
-    T__43=44
-    T__44=45
-    T__45=46
-    T__46=47
-    T__47=48
-    T__48=49
-    T__49=50
-    T__50=51
-    T__51=52
-    T__52=53
-    T__53=54
-    T__54=55
-    T__55=56
-    T__56=57
-    T__57=58
-    T__58=59
-    T__59=60
-    T__60=61
-    T__61=62
-    T__62=63
-    T__63=64
-    T__64=65
-    T__65=66
-    T__66=67
-    T__67=68
-    T__68=69
-    T__69=70
-    T__70=71
-    T__71=72
-    T__72=73
-    T__73=74
-    T__74=75
-    T__75=76
-    T__76=77
-    T__77=78
-    T__78=79
-    T__79=80
-    T__80=81
-    T__81=82
-    T__82=83
-    T__83=84
-    T__84=85
-    T__85=86
-    T__86=87
-    T__87=88
-    T__88=89
-    T__89=90
-    T__90=91
-    T__91=92
-    IDENTIFIER=93
-    CHARACTER_LITERAL=94
-    STRING_LITERAL=95
-    HEX_LITERAL=96
-    DECIMAL_LITERAL=97
-    OCTAL_LITERAL=98
-    FLOATING_POINT_LITERAL=99
-    WS=100
-    BS=101
-    UnicodeVocabulary=102
-    COMMENT=103
-    LINE_COMMENT=104
-    LINE_COMMAND=105
+    T__0 = 1
+    T__1 = 2
+    T__2 = 3
+    T__3 = 4
+    T__4 = 5
+    T__5 = 6
+    T__6 = 7
+    T__7 = 8
+    T__8 = 9
+    T__9 = 10
+    T__10 = 11
+    T__11 = 12
+    T__12 = 13
+    T__13 = 14
+    T__14 = 15
+    T__15 = 16
+    T__16 = 17
+    T__17 = 18
+    T__18 = 19
+    T__19 = 20
+    T__20 = 21
+    T__21 = 22
+    T__22 = 23
+    T__23 = 24
+    T__24 = 25
+    T__25 = 26
+    T__26 = 27
+    T__27 = 28
+    T__28 = 29
+    T__29 = 30
+    T__30 = 31
+    T__31 = 32
+    T__32 = 33
+    T__33 = 34
+    T__34 = 35
+    T__35 = 36
+    T__36 = 37
+    T__37 = 38
+    T__38 = 39
+    T__39 = 40
+    T__40 = 41
+    T__41 = 42
+    T__42 = 43
+    T__43 = 44
+    T__44 = 45
+    T__45 = 46
+    T__46 = 47
+    T__47 = 48
+    T__48 = 49
+    T__49 = 50
+    T__50 = 51
+    T__51 = 52
+    T__52 = 53
+    T__53 = 54
+    T__54 = 55
+    T__55 = 56
+    T__56 = 57
+    T__57 = 58
+    T__58 = 59
+    T__59 = 60
+    T__60 = 61
+    T__61 = 62
+    T__62 = 63
+    T__63 = 64
+    T__64 = 65
+    T__65 = 66
+    T__66 = 67
+    T__67 = 68
+    T__68 = 69
+    T__69 = 70
+    T__70 = 71
+    T__71 = 72
+    T__72 = 73
+    T__73 = 74
+    T__74 = 75
+    T__75 = 76
+    T__76 = 77
+    T__77 = 78
+    T__78 = 79
+    T__79 = 80
+    T__80 = 81
+    T__81 = 82
+    T__82 = 83
+    T__83 = 84
+    T__84 = 85
+    T__85 = 86
+    T__86 = 87
+    T__87 = 88
+    T__88 = 89
+    T__89 = 90
+    T__90 = 91
+    T__91 = 92
+    IDENTIFIER = 93
+    CHARACTER_LITERAL = 94
+    STRING_LITERAL = 95
+    HEX_LITERAL = 96
+    DECIMAL_LITERAL = 97
+    OCTAL_LITERAL = 98
+    FLOATING_POINT_LITERAL = 99
+    WS = 100
+    BS = 101
+    UnicodeVocabulary = 102
+    COMMENT = 103
+    LINE_COMMENT = 104
+    LINE_COMMAND = 105
 
     # @param  input Type: TokenStream
     # @param  output= sys.stdout Type: TextIO
-    def __init__(self,input,output= sys.stdout):
+    def __init__(self, input, output=sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
+    def printTokenInfo(self, line, offset, tokenText):
+        print(str(line) + ',' + str(offset) + ':' + str(tokenText))
 
-
-
-    def printTokenInfo(self,line,offset,tokenText):
-        print(str(line)+ ',' + str(offset) + ':' + str(tokenText))
-
-    def StorePredicateExpression(self,StartLine,StartOffset,EndLine,EndOffset,Text):
+    def StorePredicateExpression(self, StartLine, StartOffset, EndLine, EndOffset, Text):
         PredExp = CodeFragment.PredicateExpression(Text, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.PredicateExpressionList.append(PredExp)
 
-    def StoreEnumerationDefinition(self,StartLine,StartOffset,EndLine,EndOffset,Text):
+    def StoreEnumerationDefinition(self, StartLine, StartOffset, EndLine, EndOffset, Text):
         EnumDef = CodeFragment.EnumerationDefinition(Text, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.EnumerationDefinitionList.append(EnumDef)
 
-    def StoreStructUnionDefinition(self,StartLine,StartOffset,EndLine,EndOffset,Text):
+    def StoreStructUnionDefinition(self, StartLine, StartOffset, EndLine, EndOffset, Text):
         SUDef = CodeFragment.StructUnionDefinition(Text, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.StructUnionDefinitionList.append(SUDef)
 
-    def StoreTypedefDefinition(self,StartLine,StartOffset,EndLine,EndOffset,FromText,ToText):
+    def StoreTypedefDefinition(self, StartLine, StartOffset, EndLine, EndOffset, FromText, ToText):
         Tdef = CodeFragment.TypedefDefinition(FromText, ToText, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.TypedefDefinitionList.append(Tdef)
 
-    def StoreFunctionDefinition(self,StartLine,StartOffset,EndLine,EndOffset,ModifierText,DeclText,LeftBraceLine,LeftBraceOffset,DeclLine,DeclOffset):
-        FuncDef = CodeFragment.FunctionDefinition(ModifierText, DeclText, (StartLine, StartOffset), (EndLine, EndOffset), (LeftBraceLine, LeftBraceOffset), (DeclLine, DeclOffset))
+    def StoreFunctionDefinition(self, StartLine, StartOffset, EndLine, EndOffset, ModifierText, DeclText, LeftBraceLine, LeftBraceOffset, DeclLine, DeclOffset):
+        FuncDef = CodeFragment.FunctionDefinition(
+            ModifierText, DeclText, (StartLine, StartOffset), (EndLine, EndOffset), (LeftBraceLine, LeftBraceOffset), (DeclLine, DeclOffset))
         FileProfile.FunctionDefinitionList.append(FuncDef)
 
-    def StoreVariableDeclaration(self,StartLine,StartOffset,EndLine,EndOffset,ModifierText,DeclText):
-        VarDecl = CodeFragment.VariableDeclaration(ModifierText, DeclText, (StartLine, StartOffset), (EndLine, EndOffset))
+    def StoreVariableDeclaration(self, StartLine, StartOffset, EndLine, EndOffset, ModifierText, DeclText):
+        VarDecl = CodeFragment.VariableDeclaration(
+            ModifierText, DeclText, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.VariableDeclarationList.append(VarDecl)
 
-    def StoreFunctionCalling(self,StartLine,StartOffset,EndLine,EndOffset,FuncName,ParamList):
+    def StoreFunctionCalling(self, StartLine, StartOffset, EndLine, EndOffset, FuncName, ParamList):
         FuncCall = CodeFragment.FunctionCalling(FuncName, ParamList, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.FunctionCallingList.append(FuncCall)
-
-
 
     class Translation_unitContext(ParserRuleContext):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def external_declaration(self,i=None):
+        def external_declaration(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.External_declarationContext)
             else:
-                return self.getTypedRuleContext(CParser.External_declarationContext,i)
-
+                return self.getTypedRuleContext(CParser.External_declarationContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_translation_unit
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterTranslation_unit" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterTranslation_unit"):
                 listener.enterTranslation_unit(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitTranslation_unit" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitTranslation_unit"):
                 listener.exitTranslation_unit(self)
-
-
-
 
     def translation_unit(self):
 
         localctx = CParser.Translation_unitContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_translation_unit)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 145
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__2) | (1 << CParser.T__5) | (1 << CParser.T__6) | (1 << CParser.T__7) | (1 << CParser.T__8) | (1 << CParser.T__9) | (1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36) | (1 << CParser.T__37) | (1 << CParser.T__41))) != 0) or _la==CParser.IDENTIFIER:
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__2) | (1 << CParser.T__5) | (1 << CParser.T__6) | (1 << CParser.T__7) | (1 << CParser.T__8) | (1 << CParser.T__9) | (1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36) | (1 << CParser.T__37) | (1 << CParser.T__41))) != 0) or _la == CParser.IDENTIFIER:
                 self.state = 142
                 self.external_declaration()
                 self.state = 147
@@ -840,75 +834,66 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def declarator(self):
-            return self.getTypedRuleContext(CParser.DeclaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.DeclaratorContext, 0)
 
         def declaration_specifiers(self):
-            return self.getTypedRuleContext(CParser.Declaration_specifiersContext,0)
-
+            return self.getTypedRuleContext(CParser.Declaration_specifiersContext, 0)
 
         # @param  i=None Type: int
-        def declaration(self,i=None):
+        def declaration(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.DeclarationContext)
             else:
-                return self.getTypedRuleContext(CParser.DeclarationContext,i)
-
+                return self.getTypedRuleContext(CParser.DeclarationContext, i)
 
         def function_definition(self):
-            return self.getTypedRuleContext(CParser.Function_definitionContext,0)
-
+            return self.getTypedRuleContext(CParser.Function_definitionContext, 0)
 
         def macro_statement(self):
-            return self.getTypedRuleContext(CParser.Macro_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Macro_statementContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_external_declaration
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterExternal_declaration" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterExternal_declaration"):
                 listener.enterExternal_declaration(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitExternal_declaration" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitExternal_declaration"):
                 listener.exitExternal_declaration(self)
-
-
-
 
     def external_declaration(self):
 
         localctx = CParser.External_declarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_external_declaration)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 166
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 4, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 149
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input, 1, self._ctx)
                 if la_ == 1:
                     self.state = 148
                     self.declaration_specifiers()
-
 
                 self.state = 151
                 self.declarator()
                 self.state = 155
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__2) | (1 << CParser.T__5) | (1 << CParser.T__6) | (1 << CParser.T__7) | (1 << CParser.T__8) | (1 << CParser.T__9) | (1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36))) != 0) or _la==CParser.IDENTIFIER:
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__2) | (1 << CParser.T__5) | (1 << CParser.T__6) | (1 << CParser.T__7) | (1 << CParser.T__8) | (1 << CParser.T__9) | (1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36))) != 0) or _la == CParser.IDENTIFIER:
                     self.state = 152
                     self.declaration()
                     self.state = 157
@@ -938,13 +923,11 @@ class CParser ( Parser ):
                 self.state = 164
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__1:
+                if _la == CParser.T__1:
                     self.state = 163
                     self.match(CParser.T__1)
 
-
                 pass
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -958,7 +941,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
             self.ModifierText = ''
@@ -967,70 +950,62 @@ class CParser ( Parser ):
             self.LBOffset = 0
             self.DeclLine = 0
             self.DeclOffset = 0
-            self.d = None # Declaration_specifiersContext
-            self._declaration_specifiers = None # Declaration_specifiersContext
-            self._declarator = None # DeclaratorContext
-            self.a = None # Compound_statementContext
-            self.b = None # Compound_statementContext
+            self.d = None  # Declaration_specifiersContext
+            self._declaration_specifiers = None  # Declaration_specifiersContext
+            self._declarator = None  # DeclaratorContext
+            self.a = None  # Compound_statementContext
+            self.b = None  # Compound_statementContext
 
         def declarator(self):
-            return self.getTypedRuleContext(CParser.DeclaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.DeclaratorContext, 0)
 
         def compound_statement(self):
-            return self.getTypedRuleContext(CParser.Compound_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Compound_statementContext, 0)
 
         def declaration_specifiers(self):
-            return self.getTypedRuleContext(CParser.Declaration_specifiersContext,0)
-
+            return self.getTypedRuleContext(CParser.Declaration_specifiersContext, 0)
 
         # @param  i=None Type: int
-        def declaration(self,i=None):
+        def declaration(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.DeclarationContext)
             else:
-                return self.getTypedRuleContext(CParser.DeclarationContext,i)
-
+                return self.getTypedRuleContext(CParser.DeclarationContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_function_definition
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterFunction_definition" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterFunction_definition"):
                 listener.enterFunction_definition(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitFunction_definition" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitFunction_definition"):
                 listener.exitFunction_definition(self)
-
-
-
 
     def function_definition(self):
 
         localctx = CParser.Function_definitionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_function_definition)
 
-        ModifierText = '';
-        DeclText = '';
-        LBLine = 0;
-        LBOffset = 0;
-        DeclLine = 0;
-        DeclOffset = 0;
+        ModifierText = ''
+        DeclText = ''
+        LBLine = 0
+        LBOffset = 0
+        DeclLine = 0
+        DeclOffset = 0
 
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 169
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 5, self._ctx)
             if la_ == 1:
                 self.state = 168
                 localctx.d = localctx._declaration_specifiers = self.declaration_specifiers()
-
 
             self.state = 171
             localctx._declarator = self.declarator()
@@ -1047,7 +1022,7 @@ class CParser ( Parser ):
                     self.state = 175
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__2) | (1 << CParser.T__5) | (1 << CParser.T__6) | (1 << CParser.T__7) | (1 << CParser.T__8) | (1 << CParser.T__9) | (1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36))) != 0) or _la==CParser.IDENTIFIER):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__2) | (1 << CParser.T__5) | (1 << CParser.T__6) | (1 << CParser.T__7) | (1 << CParser.T__8) | (1 << CParser.T__9) | (1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36))) != 0) or _la == CParser.IDENTIFIER):
                         break
 
                 self.state = 177
@@ -1060,12 +1035,13 @@ class CParser ( Parser ):
             else:
                 raise NoViableAltException(self)
 
-
             if localctx.d != None:
-                ModifierText = (None if localctx._declaration_specifiers is None else self._input.getText((localctx._declaration_specifiers.start,localctx._declaration_specifiers.stop)))
+                ModifierText = (None if localctx._declaration_specifiers is None else self._input.getText(
+                    (localctx._declaration_specifiers.start, localctx._declaration_specifiers.stop)))
             else:
                 ModifierText = ''
-            DeclText = (None if localctx._declarator is None else self._input.getText((localctx._declarator.start,localctx._declarator.stop)))
+            DeclText = (None if localctx._declarator is None else self._input.getText(
+                (localctx._declarator.start, localctx._declarator.stop)))
             DeclLine = (None if localctx._declarator is None else localctx._declarator.start).line
             DeclOffset = (None if localctx._declarator is None else localctx._declarator.start).column
             if localctx.a != None:
@@ -1077,7 +1053,8 @@ class CParser ( Parser ):
 
             self._ctx.stop = self._input.LT(-1)
 
-            self.StoreFunctionDefinition(localctx.start.line, localctx.start.column, localctx.stop.line, localctx.stop.column, ModifierText, DeclText, LBLine, LBOffset, DeclLine, DeclOffset)
+            self.StoreFunctionDefinition(localctx.start.line, localctx.start.column, localctx.stop.line,
+                                         localctx.stop.column, ModifierText, DeclText, LBLine, LBOffset, DeclLine, DeclOffset)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1091,49 +1068,43 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def storage_class_specifier(self,i=None):
+        def storage_class_specifier(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Storage_class_specifierContext)
             else:
-                return self.getTypedRuleContext(CParser.Storage_class_specifierContext,i)
-
+                return self.getTypedRuleContext(CParser.Storage_class_specifierContext, i)
 
         # @param  i=None Type: int
-        def type_specifier(self,i=None):
+        def type_specifier(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Type_specifierContext)
             else:
-                return self.getTypedRuleContext(CParser.Type_specifierContext,i)
-
+                return self.getTypedRuleContext(CParser.Type_specifierContext, i)
 
         # @param  i=None Type: int
-        def type_qualifier(self,i=None):
+        def type_qualifier(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Type_qualifierContext)
             else:
-                return self.getTypedRuleContext(CParser.Type_qualifierContext,i)
-
+                return self.getTypedRuleContext(CParser.Type_qualifierContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_declaration_specifiers
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterDeclaration_specifiers" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterDeclaration_specifiers"):
                 listener.enterDeclaration_specifiers(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitDeclaration_specifiers" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitDeclaration_specifiers"):
                 listener.exitDeclaration_specifiers(self)
-
-
-
 
     def declaration_specifiers(self):
 
@@ -1144,7 +1115,7 @@ class CParser ( Parser ):
             self.state = 187
             self._errHandler.sync(self)
             _alt = 1
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     self.state = 187
                     self._errHandler.sync(self)
@@ -1164,12 +1135,11 @@ class CParser ( Parser ):
                     else:
                         raise NoViableAltException(self)
 
-
                 else:
                     raise NoViableAltException(self)
                 self.state = 189
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 9, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1183,46 +1153,41 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.a = None # Token
-            self.b = None # Declaration_specifiersContext
-            self.c = None # Init_declarator_listContext
-            self.d = None # Token
-            self.s = None # Declaration_specifiersContext
-            self.t = None # Init_declarator_listContext
-            self.e = None # Token
+            self.a = None  # Token
+            self.b = None  # Declaration_specifiersContext
+            self.c = None  # Init_declarator_listContext
+            self.d = None  # Token
+            self.s = None  # Declaration_specifiersContext
+            self.t = None  # Init_declarator_listContext
+            self.e = None  # Token
 
         def init_declarator_list(self):
-            return self.getTypedRuleContext(CParser.Init_declarator_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Init_declarator_listContext, 0)
 
         def declaration_specifiers(self):
-            return self.getTypedRuleContext(CParser.Declaration_specifiersContext,0)
-
+            return self.getTypedRuleContext(CParser.Declaration_specifiersContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_declaration
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterDeclaration" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterDeclaration"):
                 listener.enterDeclaration(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitDeclaration" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitDeclaration"):
                 listener.exitDeclaration(self)
-
-
-
 
     def declaration(self):
 
         localctx = CParser.DeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_declaration)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 206
             self._errHandler.sync(self)
@@ -1233,11 +1198,10 @@ class CParser ( Parser ):
                 localctx.a = self.match(CParser.T__2)
                 self.state = 193
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,10,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input, 10, self._ctx)
                 if la_ == 1:
                     self.state = 192
                     localctx.b = self.declaration_specifiers()
-
 
                 self.state = 195
                 localctx.c = self.init_declarator_list()
@@ -1245,9 +1209,11 @@ class CParser ( Parser ):
                 localctx.d = self.match(CParser.T__1)
 
                 if localctx.b is not None:
-                    self.StoreTypedefDefinition(localctx.a.line, localctx.a.column, (0 if localctx.d is None else localctx.d.line), localctx.d.column, (None if localctx.b is None else self._input.getText((localctx.b.start,localctx.b.stop))), (None if localctx.c is None else self._input.getText((localctx.c.start,localctx.c.stop))))
+                    self.StoreTypedefDefinition(localctx.a.line, localctx.a.column, (0 if localctx.d is None else localctx.d.line), localctx.d.column, (None if localctx.b is None else self._input.getText(
+                        (localctx.b.start, localctx.b.stop))), (None if localctx.c is None else self._input.getText((localctx.c.start, localctx.c.stop))))
                 else:
-                    self.StoreTypedefDefinition(localctx.a.line, localctx.a.column, (0 if localctx.d is None else localctx.d.line), localctx.d.column, '', (None if localctx.c is None else self._input.getText((localctx.c.start,localctx.c.stop))))
+                    self.StoreTypedefDefinition(localctx.a.line, localctx.a.column, (0 if localctx.d is None else localctx.d.line),
+                                                localctx.d.column, '', (None if localctx.c is None else self._input.getText((localctx.c.start, localctx.c.stop))))
 
                 pass
             elif token in [CParser.T__5, CParser.T__6, CParser.T__7, CParser.T__8, CParser.T__9, CParser.T__10, CParser.T__11, CParser.T__12, CParser.T__13, CParser.T__14, CParser.T__15, CParser.T__16, CParser.T__17, CParser.T__18, CParser.T__20, CParser.T__21, CParser.T__23, CParser.T__24, CParser.T__25, CParser.T__26, CParser.T__27, CParser.T__28, CParser.T__29, CParser.T__30, CParser.T__31, CParser.T__32, CParser.T__33, CParser.T__34, CParser.T__35, CParser.T__36, CParser.IDENTIFIER]:
@@ -1261,12 +1227,12 @@ class CParser ( Parser ):
                     self.state = 200
                     localctx.t = self.init_declarator_list()
 
-
                 self.state = 203
                 localctx.e = self.match(CParser.T__1)
 
                 if localctx.t is not None:
-                    self.StoreVariableDeclaration((None if localctx.s is None else localctx.s.start).line, (None if localctx.s is None else localctx.s.start).column, (None if localctx.t is None else localctx.t.start).line, (None if localctx.t is None else localctx.t.start).column, (None if localctx.s is None else self._input.getText((localctx.s.start,localctx.s.stop))), (None if localctx.t is None else self._input.getText((localctx.t.start,localctx.t.stop))))
+                    self.StoreVariableDeclaration((None if localctx.s is None else localctx.s.start).line, (None if localctx.s is None else localctx.s.start).column, (None if localctx.t is None else localctx.t.start).line, (
+                        None if localctx.t is None else localctx.t.start).column, (None if localctx.s is None else self._input.getText((localctx.s.start, localctx.s.stop))), (None if localctx.t is None else self._input.getText((localctx.t.start, localctx.t.stop))))
 
                 pass
             else:
@@ -1284,39 +1250,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def init_declarator(self,i=None):
+        def init_declarator(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Init_declaratorContext)
             else:
-                return self.getTypedRuleContext(CParser.Init_declaratorContext,i)
-
+                return self.getTypedRuleContext(CParser.Init_declaratorContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_init_declarator_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterInit_declarator_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterInit_declarator_list"):
                 listener.enterInit_declarator_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitInit_declarator_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitInit_declarator_list"):
                 listener.exitInit_declarator_list(self)
-
-
-
 
     def init_declarator_list(self):
 
         localctx = CParser.Init_declarator_listContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_init_declarator_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 208
@@ -1324,7 +1286,7 @@ class CParser ( Parser ):
             self.state = 213
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__3:
+            while _la == CParser.T__3:
                 self.state = 209
                 self.match(CParser.T__3)
                 self.state = 210
@@ -1345,39 +1307,34 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def declarator(self):
-            return self.getTypedRuleContext(CParser.DeclaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.DeclaratorContext, 0)
 
         def initializer(self):
-            return self.getTypedRuleContext(CParser.InitializerContext,0)
-
+            return self.getTypedRuleContext(CParser.InitializerContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_init_declarator
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterInit_declarator" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterInit_declarator"):
                 listener.enterInit_declarator(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitInit_declarator" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitInit_declarator"):
                 listener.exitInit_declarator(self)
-
-
-
 
     def init_declarator(self):
 
         localctx = CParser.Init_declaratorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_init_declarator)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 216
@@ -1385,12 +1342,11 @@ class CParser ( Parser ):
             self.state = 219
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CParser.T__4:
+            if _la == CParser.T__4:
                 self.state = 217
                 self.match(CParser.T__4)
                 self.state = 218
                 self.initializer()
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1404,32 +1360,28 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return CParser.RULE_storage_class_specifier
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterStorage_class_specifier" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterStorage_class_specifier"):
                 listener.enterStorage_class_specifier(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitStorage_class_specifier" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitStorage_class_specifier"):
                 listener.exitStorage_class_specifier(self)
-
-
-
 
     def storage_class_specifier(self):
 
         localctx = CParser.Storage_class_specifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_storage_class_specifier)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 221
@@ -1451,54 +1403,46 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.s = None # Struct_or_union_specifierContext
-            self.e = None # Enum_specifierContext
+            self.s = None  # Struct_or_union_specifierContext
+            self.e = None  # Enum_specifierContext
 
         def struct_or_union_specifier(self):
-            return self.getTypedRuleContext(CParser.Struct_or_union_specifierContext,0)
-
+            return self.getTypedRuleContext(CParser.Struct_or_union_specifierContext, 0)
 
         def enum_specifier(self):
-            return self.getTypedRuleContext(CParser.Enum_specifierContext,0)
-
+            return self.getTypedRuleContext(CParser.Enum_specifierContext, 0)
 
         def IDENTIFIER(self):
             return self.getToken(CParser.IDENTIFIER, 0)
 
         def declarator(self):
-            return self.getTypedRuleContext(CParser.DeclaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.DeclaratorContext, 0)
 
         # @param  i=None Type: int
-        def type_qualifier(self,i=None):
+        def type_qualifier(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Type_qualifierContext)
             else:
-                return self.getTypedRuleContext(CParser.Type_qualifierContext,i)
-
+                return self.getTypedRuleContext(CParser.Type_qualifierContext, i)
 
         def type_id(self):
-            return self.getTypedRuleContext(CParser.Type_idContext,0)
-
+            return self.getTypedRuleContext(CParser.Type_idContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_type_specifier
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterType_specifier" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterType_specifier"):
                 listener.enterType_specifier(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitType_specifier" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitType_specifier"):
                 listener.exitType_specifier(self)
-
-
-
 
     def type_specifier(self):
 
@@ -1507,7 +1451,7 @@ class CParser ( Parser ):
         try:
             self.state = 247
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 16, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 223
@@ -1568,7 +1512,8 @@ class CParser ( Parser ):
                 localctx.s = self.struct_or_union_specifier()
 
                 if localctx.s.stop is not None:
-                    self.StoreStructUnionDefinition((None if localctx.s is None else localctx.s.start).line, (None if localctx.s is None else localctx.s.start).column, (None if localctx.s is None else localctx.s.stop).line, (None if localctx.s is None else localctx.s.stop).column, (None if localctx.s is None else self._input.getText((localctx.s.start,localctx.s.stop))))
+                    self.StoreStructUnionDefinition((None if localctx.s is None else localctx.s.start).line, (None if localctx.s is None else localctx.s.start).column, (None if localctx.s is None else localctx.s.stop).line, (
+                        None if localctx.s is None else localctx.s.stop).column, (None if localctx.s is None else self._input.getText((localctx.s.start, localctx.s.stop))))
 
                 pass
 
@@ -1578,7 +1523,8 @@ class CParser ( Parser ):
                 localctx.e = self.enum_specifier()
 
                 if localctx.e.stop is not None:
-                    self.StoreEnumerationDefinition((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start,localctx.e.stop))))
+                    self.StoreEnumerationDefinition((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (
+                        None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start, localctx.e.stop))))
 
                 pass
 
@@ -1588,14 +1534,14 @@ class CParser ( Parser ):
                 self.match(CParser.IDENTIFIER)
                 self.state = 242
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,15,self._ctx)
-                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                    if _alt==1:
+                _alt = self._interp.adaptivePredict(self._input, 15, self._ctx)
+                while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                    if _alt == 1:
                         self.state = 239
                         self.type_qualifier()
                     self.state = 244
                     self._errHandler.sync(self)
-                    _alt = self._interp.adaptivePredict(self._input,15,self._ctx)
+                    _alt = self._interp.adaptivePredict(self._input, 15, self._ctx)
 
                 self.state = 245
                 self.declarator()
@@ -1606,7 +1552,6 @@ class CParser ( Parser ):
                 self.state = 246
                 self.type_id()
                 pass
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1620,7 +1565,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1631,17 +1576,14 @@ class CParser ( Parser ):
             return CParser.RULE_type_id
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterType_id" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterType_id"):
                 listener.enterType_id(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitType_id" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitType_id"):
                 listener.exitType_id(self)
-
-
-
 
     def type_id(self):
 
@@ -1663,17 +1605,15 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def struct_or_union(self):
-            return self.getTypedRuleContext(CParser.Struct_or_unionContext,0)
-
+            return self.getTypedRuleContext(CParser.Struct_or_unionContext, 0)
 
         def struct_declaration_list(self):
-            return self.getTypedRuleContext(CParser.Struct_declaration_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Struct_declaration_listContext, 0)
 
         def IDENTIFIER(self):
             return self.getToken(CParser.IDENTIFIER, 0)
@@ -1682,27 +1622,24 @@ class CParser ( Parser ):
             return CParser.RULE_struct_or_union_specifier
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterStruct_or_union_specifier" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterStruct_or_union_specifier"):
                 listener.enterStruct_or_union_specifier(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitStruct_or_union_specifier" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitStruct_or_union_specifier"):
                 listener.exitStruct_or_union_specifier(self)
-
-
-
 
     def struct_or_union_specifier(self):
 
         localctx = CParser.Struct_or_union_specifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_struct_or_union_specifier)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 262
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 18, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 251
@@ -1710,10 +1647,9 @@ class CParser ( Parser ):
                 self.state = 253
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.IDENTIFIER:
+                if _la == CParser.IDENTIFIER:
                     self.state = 252
                     self.match(CParser.IDENTIFIER)
-
 
                 self.state = 255
                 self.match(CParser.T__0)
@@ -1731,7 +1667,6 @@ class CParser ( Parser ):
                 self.match(CParser.IDENTIFIER)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1744,37 +1679,33 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return CParser.RULE_struct_or_union
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterStruct_or_union" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterStruct_or_union"):
                 listener.enterStruct_or_union(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitStruct_or_union" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitStruct_or_union"):
                 listener.exitStruct_or_union(self)
-
-
-
 
     def struct_or_union(self):
 
         localctx = CParser.Struct_or_unionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_struct_or_union)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 264
             _la = self._input.LA(1)
-            if not(_la==CParser.T__20 or _la==CParser.T__21):
+            if not(_la == CParser.T__20 or _la == CParser.T__21):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1791,39 +1722,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def struct_declaration(self,i=None):
+        def struct_declaration(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Struct_declarationContext)
             else:
-                return self.getTypedRuleContext(CParser.Struct_declarationContext,i)
-
+                return self.getTypedRuleContext(CParser.Struct_declarationContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_struct_declaration_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterStruct_declaration_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterStruct_declaration_list"):
                 listener.enterStruct_declaration_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitStruct_declaration_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitStruct_declaration_list"):
                 listener.exitStruct_declaration_list(self)
-
-
-
 
     def struct_declaration_list(self):
 
         localctx = CParser.Struct_declaration_listContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_struct_declaration_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 267
@@ -1835,7 +1762,7 @@ class CParser ( Parser ):
                 self.state = 269
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36))) != 0) or _la==CParser.IDENTIFIER):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36))) != 0) or _la == CParser.IDENTIFIER):
                     break
 
         except RecognitionException as re:
@@ -1850,33 +1777,28 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def specifier_qualifier_list(self):
-            return self.getTypedRuleContext(CParser.Specifier_qualifier_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Specifier_qualifier_listContext, 0)
 
         def struct_declarator_list(self):
-            return self.getTypedRuleContext(CParser.Struct_declarator_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Struct_declarator_listContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_struct_declaration
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterStruct_declaration" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterStruct_declaration"):
                 listener.enterStruct_declaration(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitStruct_declaration" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitStruct_declaration"):
                 listener.exitStruct_declaration(self)
-
-
-
 
     def struct_declaration(self):
 
@@ -1902,41 +1824,36 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def type_qualifier(self,i=None):
+        def type_qualifier(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Type_qualifierContext)
             else:
-                return self.getTypedRuleContext(CParser.Type_qualifierContext,i)
-
+                return self.getTypedRuleContext(CParser.Type_qualifierContext, i)
 
         # @param  i=None Type: int
-        def type_specifier(self,i=None):
+        def type_specifier(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Type_specifierContext)
             else:
-                return self.getTypedRuleContext(CParser.Type_specifierContext,i)
-
+                return self.getTypedRuleContext(CParser.Type_specifierContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_specifier_qualifier_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterSpecifier_qualifier_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterSpecifier_qualifier_list"):
                 listener.enterSpecifier_qualifier_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitSpecifier_qualifier_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitSpecifier_qualifier_list"):
                 listener.exitSpecifier_qualifier_list(self)
-
-
-
 
     def specifier_qualifier_list(self):
 
@@ -1947,7 +1864,7 @@ class CParser ( Parser ):
             self.state = 277
             self._errHandler.sync(self)
             _alt = 1
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     self.state = 277
                     self._errHandler.sync(self)
@@ -1963,12 +1880,11 @@ class CParser ( Parser ):
                     else:
                         raise NoViableAltException(self)
 
-
                 else:
                     raise NoViableAltException(self)
                 self.state = 279
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,21,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 21, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1982,39 +1898,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def struct_declarator(self,i=None):
+        def struct_declarator(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Struct_declaratorContext)
             else:
-                return self.getTypedRuleContext(CParser.Struct_declaratorContext,i)
-
+                return self.getTypedRuleContext(CParser.Struct_declaratorContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_struct_declarator_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterStruct_declarator_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterStruct_declarator_list"):
                 listener.enterStruct_declarator_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitStruct_declarator_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitStruct_declarator_list"):
                 listener.exitStruct_declarator_list(self)
-
-
-
 
     def struct_declarator_list(self):
 
         localctx = CParser.Struct_declarator_listContext(self, self._ctx, self.state)
         self.enterRule(localctx, 30, self.RULE_struct_declarator_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 281
@@ -2022,7 +1934,7 @@ class CParser ( Parser ):
             self.state = 286
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__3:
+            while _la == CParser.T__3:
                 self.state = 282
                 self.match(CParser.T__3)
                 self.state = 283
@@ -2043,39 +1955,34 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def declarator(self):
-            return self.getTypedRuleContext(CParser.DeclaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.DeclaratorContext, 0)
 
         def constant_expression(self):
-            return self.getTypedRuleContext(CParser.Constant_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Constant_expressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_struct_declarator
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterStruct_declarator" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterStruct_declarator"):
                 listener.enterStruct_declarator(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitStruct_declarator" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitStruct_declarator"):
                 listener.exitStruct_declarator(self)
-
-
-
 
     def struct_declarator(self):
 
         localctx = CParser.Struct_declaratorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_struct_declarator)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 296
             self._errHandler.sync(self)
@@ -2087,12 +1994,11 @@ class CParser ( Parser ):
                 self.state = 292
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__22:
+                if _la == CParser.T__22:
                     self.state = 290
                     self.match(CParser.T__22)
                     self.state = 291
                     self.constant_expression()
-
 
                 pass
             elif token in [CParser.T__22]:
@@ -2117,13 +2023,12 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def enumerator_list(self):
-            return self.getTypedRuleContext(CParser.Enumerator_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Enumerator_listContext, 0)
 
         def IDENTIFIER(self):
             return self.getToken(CParser.IDENTIFIER, 0)
@@ -2132,27 +2037,24 @@ class CParser ( Parser ):
             return CParser.RULE_enum_specifier
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterEnum_specifier" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterEnum_specifier"):
                 listener.enterEnum_specifier(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitEnum_specifier" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitEnum_specifier"):
                 listener.exitEnum_specifier(self)
-
-
-
 
     def enum_specifier(self):
 
         localctx = CParser.Enum_specifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_enum_specifier)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 317
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 27, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 298
@@ -2164,10 +2066,9 @@ class CParser ( Parser ):
                 self.state = 302
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__3:
+                if _la == CParser.T__3:
                     self.state = 301
                     self.match(CParser.T__3)
-
 
                 self.state = 304
                 self.match(CParser.T__19)
@@ -2186,10 +2087,9 @@ class CParser ( Parser ):
                 self.state = 311
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__3:
+                if _la == CParser.T__3:
                     self.state = 310
                     self.match(CParser.T__3)
-
 
                 self.state = 313
                 self.match(CParser.T__19)
@@ -2203,7 +2103,6 @@ class CParser ( Parser ):
                 self.match(CParser.IDENTIFIER)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2216,33 +2115,29 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def enumerator(self,i=None):
+        def enumerator(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.EnumeratorContext)
             else:
-                return self.getTypedRuleContext(CParser.EnumeratorContext,i)
-
+                return self.getTypedRuleContext(CParser.EnumeratorContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_enumerator_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterEnumerator_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterEnumerator_list"):
                 listener.enterEnumerator_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitEnumerator_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitEnumerator_list"):
                 listener.exitEnumerator_list(self)
-
-
-
 
     def enumerator_list(self):
 
@@ -2254,16 +2149,16 @@ class CParser ( Parser ):
             self.enumerator()
             self.state = 324
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 28, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     self.state = 320
                     self.match(CParser.T__3)
                     self.state = 321
                     self.enumerator()
                 self.state = 326
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 28, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2277,7 +2172,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2285,30 +2180,26 @@ class CParser ( Parser ):
             return self.getToken(CParser.IDENTIFIER, 0)
 
         def constant_expression(self):
-            return self.getTypedRuleContext(CParser.Constant_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Constant_expressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_enumerator
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterEnumerator" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterEnumerator"):
                 listener.enterEnumerator(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitEnumerator" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitEnumerator"):
                 listener.exitEnumerator(self)
-
-
-
 
     def enumerator(self):
 
         localctx = CParser.EnumeratorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 38, self.RULE_enumerator)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 327
@@ -2316,12 +2207,11 @@ class CParser ( Parser ):
             self.state = 330
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CParser.T__4:
+            if _la == CParser.T__4:
                 self.state = 328
                 self.match(CParser.T__4)
                 self.state = 329
                 self.constant_expression()
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2335,32 +2225,28 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return CParser.RULE_type_qualifier
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterType_qualifier" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterType_qualifier"):
                 listener.enterType_qualifier(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitType_qualifier" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitType_qualifier"):
                 listener.exitType_qualifier(self)
-
-
-
 
     def type_qualifier(self):
 
         localctx = CParser.Type_qualifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 40, self.RULE_type_qualifier)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 332
@@ -2382,76 +2268,67 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def direct_declarator(self):
-            return self.getTypedRuleContext(CParser.Direct_declaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.Direct_declaratorContext, 0)
 
         def pointer(self):
-            return self.getTypedRuleContext(CParser.PointerContext,0)
-
+            return self.getTypedRuleContext(CParser.PointerContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_declarator
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterDeclarator" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterDeclarator"):
                 listener.enterDeclarator(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitDeclarator" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitDeclarator"):
                 listener.exitDeclarator(self)
-
-
-
 
     def declarator(self):
 
         localctx = CParser.DeclaratorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 42, self.RULE_declarator)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 348
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,34,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 34, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 335
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__41:
+                if _la == CParser.T__41:
                     self.state = 334
                     self.pointer()
-
 
                 self.state = 338
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__33:
+                if _la == CParser.T__33:
                     self.state = 337
                     self.match(CParser.T__33)
-
 
                 self.state = 341
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__34:
+                if _la == CParser.T__34:
                     self.state = 340
                     self.match(CParser.T__34)
-
 
                 self.state = 344
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__35:
+                if _la == CParser.T__35:
                     self.state = 343
                     self.match(CParser.T__35)
-
 
                 self.state = 346
                 self.direct_declarator()
@@ -2462,7 +2339,6 @@ class CParser ( Parser ):
                 self.state = 347
                 self.pointer()
                 pass
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2476,7 +2352,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2484,32 +2360,27 @@ class CParser ( Parser ):
             return self.getToken(CParser.IDENTIFIER, 0)
 
         # @param  i=None Type: int
-        def declarator_suffix(self,i=None):
+        def declarator_suffix(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Declarator_suffixContext)
             else:
-                return self.getTypedRuleContext(CParser.Declarator_suffixContext,i)
-
+                return self.getTypedRuleContext(CParser.Declarator_suffixContext, i)
 
         def declarator(self):
-            return self.getTypedRuleContext(CParser.DeclaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.DeclaratorContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_direct_declarator
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterDirect_declarator" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterDirect_declarator"):
                 listener.enterDirect_declarator(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitDirect_declarator" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitDirect_declarator"):
                 listener.exitDirect_declarator(self)
-
-
-
 
     def direct_declarator(self):
 
@@ -2525,14 +2396,14 @@ class CParser ( Parser ):
                 self.match(CParser.IDENTIFIER)
                 self.state = 354
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,35,self._ctx)
-                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                    if _alt==1:
+                _alt = self._interp.adaptivePredict(self._input, 35, self._ctx)
+                while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                    if _alt == 1:
                         self.state = 351
                         self.declarator_suffix()
                     self.state = 356
                     self._errHandler.sync(self)
-                    _alt = self._interp.adaptivePredict(self._input,35,self._ctx)
+                    _alt = self._interp.adaptivePredict(self._input, 35, self._ctx)
 
                 pass
             elif token in [CParser.T__37]:
@@ -2541,11 +2412,10 @@ class CParser ( Parser ):
                 self.match(CParser.T__37)
                 self.state = 359
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,36,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input, 36, self._ctx)
                 if la_ == 1:
                     self.state = 358
                     self.match(CParser.T__33)
-
 
                 self.state = 361
                 self.declarator()
@@ -2554,7 +2424,7 @@ class CParser ( Parser ):
                 self.state = 364
                 self._errHandler.sync(self)
                 _alt = 1
-                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                     if _alt == 1:
                         self.state = 363
                         self.declarator_suffix()
@@ -2563,7 +2433,7 @@ class CParser ( Parser ):
                         raise NoViableAltException(self)
                     self.state = 366
                     self._errHandler.sync(self)
-                    _alt = self._interp.adaptivePredict(self._input,37,self._ctx)
+                    _alt = self._interp.adaptivePredict(self._input, 37, self._ctx)
 
                 pass
             else:
@@ -2581,37 +2451,31 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def constant_expression(self):
-            return self.getTypedRuleContext(CParser.Constant_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Constant_expressionContext, 0)
 
         def parameter_type_list(self):
-            return self.getTypedRuleContext(CParser.Parameter_type_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Parameter_type_listContext, 0)
 
         def identifier_list(self):
-            return self.getTypedRuleContext(CParser.Identifier_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Identifier_listContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_declarator_suffix
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterDeclarator_suffix" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterDeclarator_suffix"):
                 listener.enterDeclarator_suffix(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitDeclarator_suffix" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitDeclarator_suffix"):
                 listener.exitDeclarator_suffix(self)
-
-
-
 
     def declarator_suffix(self):
 
@@ -2620,7 +2484,7 @@ class CParser ( Parser ):
         try:
             self.state = 386
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,39,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 39, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 370
@@ -2667,7 +2531,6 @@ class CParser ( Parser ):
                 self.match(CParser.T__38)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2680,37 +2543,32 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def type_qualifier(self,i=None):
+        def type_qualifier(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Type_qualifierContext)
             else:
-                return self.getTypedRuleContext(CParser.Type_qualifierContext,i)
-
+                return self.getTypedRuleContext(CParser.Type_qualifierContext, i)
 
         def pointer(self):
-            return self.getTypedRuleContext(CParser.PointerContext,0)
-
+            return self.getTypedRuleContext(CParser.PointerContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_pointer
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterPointer" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterPointer"):
                 listener.enterPointer(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitPointer" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitPointer"):
                 listener.exitPointer(self)
-
-
-
 
     def pointer(self):
 
@@ -2719,7 +2577,7 @@ class CParser ( Parser ):
         try:
             self.state = 400
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,42,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 42, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 388
@@ -2727,7 +2585,7 @@ class CParser ( Parser ):
                 self.state = 390
                 self._errHandler.sync(self)
                 _alt = 1
-                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                     if _alt == 1:
                         self.state = 389
                         self.type_qualifier()
@@ -2736,15 +2594,14 @@ class CParser ( Parser ):
                         raise NoViableAltException(self)
                     self.state = 392
                     self._errHandler.sync(self)
-                    _alt = self._interp.adaptivePredict(self._input,40,self._ctx)
+                    _alt = self._interp.adaptivePredict(self._input, 40, self._ctx)
 
                 self.state = 395
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,41,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input, 41, self._ctx)
                 if la_ == 1:
                     self.state = 394
                     self.pointer()
-
 
                 pass
 
@@ -2762,7 +2619,6 @@ class CParser ( Parser ):
                 self.match(CParser.T__41)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2775,35 +2631,31 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def parameter_list(self):
-            return self.getTypedRuleContext(CParser.Parameter_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Parameter_listContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_parameter_type_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterParameter_type_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterParameter_type_list"):
                 listener.enterParameter_type_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitParameter_type_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitParameter_type_list"):
                 listener.exitParameter_type_list(self)
-
-
-
 
     def parameter_type_list(self):
 
         localctx = CParser.Parameter_type_listContext(self, self._ctx, self.state)
         self.enterRule(localctx, 50, self.RULE_parameter_type_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 402
@@ -2811,20 +2663,18 @@ class CParser ( Parser ):
             self.state = 408
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CParser.T__3:
+            if _la == CParser.T__3:
                 self.state = 403
                 self.match(CParser.T__3)
                 self.state = 405
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__28:
+                if _la == CParser.T__28:
                     self.state = 404
                     self.match(CParser.T__28)
 
-
                 self.state = 407
                 self.match(CParser.T__42)
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2838,33 +2688,29 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def parameter_declaration(self,i=None):
+        def parameter_declaration(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Parameter_declarationContext)
             else:
-                return self.getTypedRuleContext(CParser.Parameter_declarationContext,i)
-
+                return self.getTypedRuleContext(CParser.Parameter_declarationContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_parameter_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterParameter_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterParameter_list"):
                 listener.enterParameter_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitParameter_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitParameter_list"):
                 listener.exitParameter_list(self)
-
-
-
 
     def parameter_list(self):
 
@@ -2876,24 +2722,23 @@ class CParser ( Parser ):
             self.parameter_declaration()
             self.state = 418
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,46,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 46, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     self.state = 411
                     self.match(CParser.T__3)
                     self.state = 413
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,45,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input, 45, self._ctx)
                     if la_ == 1:
                         self.state = 412
                         self.match(CParser.T__28)
-
 
                     self.state = 415
                     self.parameter_declaration()
                 self.state = 420
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,46,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 46, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2907,66 +2752,59 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def declaration_specifiers(self):
-            return self.getTypedRuleContext(CParser.Declaration_specifiersContext,0)
-
+            return self.getTypedRuleContext(CParser.Declaration_specifiersContext, 0)
 
         # @param  i=None Type: int
-        def declarator(self,i=None):
+        def declarator(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.DeclaratorContext)
             else:
-                return self.getTypedRuleContext(CParser.DeclaratorContext,i)
-
+                return self.getTypedRuleContext(CParser.DeclaratorContext, i)
 
         # @param  i=None Type: int
-        def abstract_declarator(self,i=None):
+        def abstract_declarator(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Abstract_declaratorContext)
             else:
-                return self.getTypedRuleContext(CParser.Abstract_declaratorContext,i)
-
+                return self.getTypedRuleContext(CParser.Abstract_declaratorContext, i)
 
         def IDENTIFIER(self):
             return self.getToken(CParser.IDENTIFIER, 0)
 
         # @param  i=None Type: int
-        def pointer(self,i=None):
+        def pointer(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.PointerContext)
             else:
-                return self.getTypedRuleContext(CParser.PointerContext,i)
-
+                return self.getTypedRuleContext(CParser.PointerContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_parameter_declaration
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterParameter_declaration" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterParameter_declaration"):
                 listener.enterParameter_declaration(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitParameter_declaration" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitParameter_declaration"):
                 listener.exitParameter_declaration(self)
-
-
-
 
     def parameter_declaration(self):
 
         localctx = CParser.Parameter_declarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_parameter_declaration)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 439
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,51,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 51, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 421
@@ -2977,7 +2815,7 @@ class CParser ( Parser ):
                 while ((((_la - 34)) & ~0x3f) == 0 and ((1 << (_la - 34)) & ((1 << (CParser.T__33 - 34)) | (1 << (CParser.T__34 - 34)) | (1 << (CParser.T__35 - 34)) | (1 << (CParser.T__37 - 34)) | (1 << (CParser.T__39 - 34)) | (1 << (CParser.T__41 - 34)) | (1 << (CParser.IDENTIFIER - 34)))) != 0):
                     self.state = 424
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,47,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input, 47, self._ctx)
                     if la_ == 1:
                         self.state = 422
                         self.declarator()
@@ -2988,7 +2826,6 @@ class CParser ( Parser ):
                         self.abstract_declarator()
                         pass
 
-
                     self.state = 428
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
@@ -2996,10 +2833,9 @@ class CParser ( Parser ):
                 self.state = 430
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__28:
+                if _la == CParser.T__28:
                     self.state = 429
                     self.match(CParser.T__28)
-
 
                 pass
 
@@ -3008,7 +2844,7 @@ class CParser ( Parser ):
                 self.state = 435
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==CParser.T__41:
+                while _la == CParser.T__41:
                     self.state = 432
                     self.pointer()
                     self.state = 437
@@ -3018,7 +2854,6 @@ class CParser ( Parser ):
                 self.state = 438
                 self.match(CParser.IDENTIFIER)
                 pass
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -3032,12 +2867,12 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def IDENTIFIER(self,i=None):
+        def IDENTIFIER(self, i=None):
             if i is None:
                 return self.getTokens(CParser.IDENTIFIER)
             else:
@@ -3047,23 +2882,20 @@ class CParser ( Parser ):
             return CParser.RULE_identifier_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterIdentifier_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterIdentifier_list"):
                 listener.enterIdentifier_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitIdentifier_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitIdentifier_list"):
                 listener.exitIdentifier_list(self)
-
-
-
 
     def identifier_list(self):
 
         localctx = CParser.Identifier_listContext(self, self._ctx, self.state)
         self.enterRule(localctx, 56, self.RULE_identifier_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 441
@@ -3071,7 +2903,7 @@ class CParser ( Parser ):
             self.state = 446
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__3:
+            while _la == CParser.T__3:
                 self.state = 442
                 self.match(CParser.T__3)
                 self.state = 443
@@ -3092,47 +2924,41 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def specifier_qualifier_list(self):
-            return self.getTypedRuleContext(CParser.Specifier_qualifier_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Specifier_qualifier_listContext, 0)
 
         def abstract_declarator(self):
-            return self.getTypedRuleContext(CParser.Abstract_declaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.Abstract_declaratorContext, 0)
 
         def type_id(self):
-            return self.getTypedRuleContext(CParser.Type_idContext,0)
-
+            return self.getTypedRuleContext(CParser.Type_idContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_type_name
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterType_name" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterType_name"):
                 listener.enterType_name(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitType_name" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitType_name"):
                 listener.exitType_name(self)
-
-
-
 
     def type_name(self):
 
         localctx = CParser.Type_nameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 58, self.RULE_type_name)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 454
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,54,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 54, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 449
@@ -3144,7 +2970,6 @@ class CParser ( Parser ):
                     self.state = 450
                     self.abstract_declarator()
 
-
                 pass
 
             elif la_ == 2:
@@ -3152,7 +2977,6 @@ class CParser ( Parser ):
                 self.state = 453
                 self.type_id()
                 pass
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -3166,33 +2990,28 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def pointer(self):
-            return self.getTypedRuleContext(CParser.PointerContext,0)
-
+            return self.getTypedRuleContext(CParser.PointerContext, 0)
 
         def direct_abstract_declarator(self):
-            return self.getTypedRuleContext(CParser.Direct_abstract_declaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.Direct_abstract_declaratorContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_abstract_declarator
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterAbstract_declarator" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterAbstract_declarator"):
                 listener.enterAbstract_declarator(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitAbstract_declarator" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitAbstract_declarator"):
                 listener.exitAbstract_declarator(self)
-
-
-
 
     def abstract_declarator(self):
 
@@ -3208,11 +3027,10 @@ class CParser ( Parser ):
                 self.pointer()
                 self.state = 458
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,55,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input, 55, self._ctx)
                 if la_ == 1:
                     self.state = 457
                     self.direct_abstract_declarator()
-
 
                 pass
             elif token in [CParser.T__37, CParser.T__39]:
@@ -3235,36 +3053,32 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def abstract_declarator(self):
-            return self.getTypedRuleContext(CParser.Abstract_declaratorContext,0)
-
+            return self.getTypedRuleContext(CParser.Abstract_declaratorContext, 0)
 
         # @param  i=None Type: int
-        def abstract_declarator_suffix(self,i=None):
+        def abstract_declarator_suffix(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Abstract_declarator_suffixContext)
             else:
-                return self.getTypedRuleContext(CParser.Abstract_declarator_suffixContext,i)
-
+                return self.getTypedRuleContext(CParser.Abstract_declarator_suffixContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_direct_abstract_declarator
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterDirect_abstract_declarator" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterDirect_abstract_declarator"):
                 listener.enterDirect_abstract_declarator(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitDirect_abstract_declarator" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitDirect_abstract_declarator"):
                 listener.exitDirect_abstract_declarator(self)
-
-
 
     def direct_abstract_declarator(self):
 
@@ -3274,7 +3088,7 @@ class CParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 468
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,57,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 57, self._ctx)
             if la_ == 1:
                 self.state = 463
                 self.match(CParser.T__37)
@@ -3289,17 +3103,16 @@ class CParser ( Parser ):
                 self.abstract_declarator_suffix()
                 pass
 
-
             self.state = 473
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,58,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 58, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     self.state = 470
                     self.abstract_declarator_suffix()
                 self.state = 475
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,58,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 58, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -3313,33 +3126,28 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def constant_expression(self):
-            return self.getTypedRuleContext(CParser.Constant_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Constant_expressionContext, 0)
 
         def parameter_type_list(self):
-            return self.getTypedRuleContext(CParser.Parameter_type_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Parameter_type_listContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_abstract_declarator_suffix
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterAbstract_declarator_suffix" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterAbstract_declarator_suffix"):
                 listener.enterAbstract_declarator_suffix(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitAbstract_declarator_suffix" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitAbstract_declarator_suffix"):
                 listener.exitAbstract_declarator_suffix(self)
-
-
-
 
     def abstract_declarator_suffix(self):
 
@@ -3348,7 +3156,7 @@ class CParser ( Parser ):
         try:
             self.state = 488
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,59,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 59, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 476
@@ -3385,7 +3193,6 @@ class CParser ( Parser ):
                 self.match(CParser.T__38)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3398,39 +3205,34 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def assignment_expression(self):
-            return self.getTypedRuleContext(CParser.Assignment_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Assignment_expressionContext, 0)
 
         def initializer_list(self):
-            return self.getTypedRuleContext(CParser.Initializer_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Initializer_listContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_initializer
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterInitializer" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterInitializer"):
                 listener.enterInitializer(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitInitializer" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitInitializer"):
                 listener.exitInitializer(self)
-
-
-
 
     def initializer(self):
 
         localctx = CParser.InitializerContext(self, self._ctx, self.state)
         self.enterRule(localctx, 66, self.RULE_initializer)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 498
             self._errHandler.sync(self)
@@ -3449,10 +3251,9 @@ class CParser ( Parser ):
                 self.state = 494
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__3:
+                if _la == CParser.T__3:
                     self.state = 493
                     self.match(CParser.T__3)
-
 
                 self.state = 496
                 self.match(CParser.T__19)
@@ -3472,33 +3273,29 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def initializer(self,i=None):
+        def initializer(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.InitializerContext)
             else:
-                return self.getTypedRuleContext(CParser.InitializerContext,i)
-
+                return self.getTypedRuleContext(CParser.InitializerContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_initializer_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterInitializer_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterInitializer_list"):
                 listener.enterInitializer_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitInitializer_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitInitializer_list"):
                 listener.exitInitializer_list(self)
-
-
-
 
     def initializer_list(self):
 
@@ -3510,16 +3307,16 @@ class CParser ( Parser ):
             self.initializer()
             self.state = 505
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,62,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 62, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     self.state = 501
                     self.match(CParser.T__3)
                     self.state = 502
                     self.initializer()
                 self.state = 507
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,62,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 62, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -3533,39 +3330,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def assignment_expression(self,i=None):
+        def assignment_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Assignment_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Assignment_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Assignment_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_argument_expression_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterArgument_expression_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterArgument_expression_list"):
                 listener.enterArgument_expression_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitArgument_expression_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitArgument_expression_list"):
                 listener.exitArgument_expression_list(self)
-
-
-
 
     def argument_expression_list(self):
 
         localctx = CParser.Argument_expression_listContext(self, self._ctx, self.state)
         self.enterRule(localctx, 70, self.RULE_argument_expression_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 508
@@ -3573,15 +3366,14 @@ class CParser ( Parser ):
             self.state = 510
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CParser.T__28:
+            if _la == CParser.T__28:
                 self.state = 509
                 self.match(CParser.T__28)
-
 
             self.state = 519
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__3:
+            while _la == CParser.T__3:
                 self.state = 512
                 self.match(CParser.T__3)
                 self.state = 513
@@ -3589,10 +3381,9 @@ class CParser ( Parser ):
                 self.state = 515
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==CParser.T__28:
+                if _la == CParser.T__28:
                     self.state = 514
                     self.match(CParser.T__28)
-
 
                 self.state = 521
                 self._errHandler.sync(self)
@@ -3610,39 +3401,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def multiplicative_expression(self,i=None):
+        def multiplicative_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Multiplicative_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Multiplicative_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Multiplicative_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_additive_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterAdditive_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterAdditive_expression"):
                 listener.enterAdditive_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitAdditive_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitAdditive_expression"):
                 listener.exitAdditive_expression(self)
-
-
-
 
     def additive_expression(self):
 
         localctx = CParser.Additive_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 72, self.RULE_additive_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 522
@@ -3650,7 +3437,7 @@ class CParser ( Parser ):
             self.state = 529
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__43 or _la==CParser.T__44:
+            while _la == CParser.T__43 or _la == CParser.T__44:
                 self.state = 527
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
@@ -3685,39 +3472,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def cast_expression(self,i=None):
+        def cast_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Cast_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Cast_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Cast_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_multiplicative_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterMultiplicative_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterMultiplicative_expression"):
                 listener.enterMultiplicative_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitMultiplicative_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitMultiplicative_expression"):
                 listener.exitMultiplicative_expression(self)
-
-
-
 
     def multiplicative_expression(self):
 
         localctx = CParser.Multiplicative_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 74, self.RULE_multiplicative_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 532
@@ -3766,37 +3549,31 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def type_name(self):
-            return self.getTypedRuleContext(CParser.Type_nameContext,0)
-
+            return self.getTypedRuleContext(CParser.Type_nameContext, 0)
 
         def cast_expression(self):
-            return self.getTypedRuleContext(CParser.Cast_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Cast_expressionContext, 0)
 
         def unary_expression(self):
-            return self.getTypedRuleContext(CParser.Unary_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Unary_expressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_cast_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterCast_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterCast_expression"):
                 listener.enterCast_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitCast_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitCast_expression"):
                 listener.exitCast_expression(self)
-
-
-
 
     def cast_expression(self):
 
@@ -3805,7 +3582,7 @@ class CParser ( Parser ):
         try:
             self.state = 550
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,70,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 70, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 544
@@ -3824,7 +3601,6 @@ class CParser ( Parser ):
                 self.unary_expression()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3837,45 +3613,37 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def postfix_expression(self):
-            return self.getTypedRuleContext(CParser.Postfix_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Postfix_expressionContext, 0)
 
         def unary_expression(self):
-            return self.getTypedRuleContext(CParser.Unary_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Unary_expressionContext, 0)
 
         def unary_operator(self):
-            return self.getTypedRuleContext(CParser.Unary_operatorContext,0)
-
+            return self.getTypedRuleContext(CParser.Unary_operatorContext, 0)
 
         def cast_expression(self):
-            return self.getTypedRuleContext(CParser.Cast_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Cast_expressionContext, 0)
 
         def type_name(self):
-            return self.getTypedRuleContext(CParser.Type_nameContext,0)
-
+            return self.getTypedRuleContext(CParser.Type_nameContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_unary_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterUnary_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterUnary_expression"):
                 listener.enterUnary_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitUnary_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitUnary_expression"):
                 listener.exitUnary_expression(self)
-
-
-
 
     def unary_expression(self):
 
@@ -3884,7 +3652,7 @@ class CParser ( Parser ):
         try:
             self.state = 567
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,71,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 71, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 552
@@ -3935,7 +3703,6 @@ class CParser ( Parser ):
                 self.match(CParser.T__38)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3948,48 +3715,44 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
             self.FuncCallText = ''
-            self.p = None # Primary_expressionContext
-            self.a = None # Token
-            self.c = None # Argument_expression_listContext
-            self.b = None # Token
-            self.x = None # Token
-            self.y = None # Token
-            self.z = None # Token
+            self.p = None  # Primary_expressionContext
+            self.a = None  # Token
+            self.c = None  # Argument_expression_listContext
+            self.b = None  # Token
+            self.x = None  # Token
+            self.y = None  # Token
+            self.z = None  # Token
 
         def primary_expression(self):
-            return self.getTypedRuleContext(CParser.Primary_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Primary_expressionContext, 0)
 
         # @param  i=None Type: int
-        def expression(self,i=None):
+        def expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(CParser.ExpressionContext,i)
-
+                return self.getTypedRuleContext(CParser.ExpressionContext, i)
 
         # @param  i=None Type: int
-        def macro_parameter_list(self,i=None):
+        def macro_parameter_list(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Macro_parameter_listContext)
             else:
-                return self.getTypedRuleContext(CParser.Macro_parameter_listContext,i)
-
+                return self.getTypedRuleContext(CParser.Macro_parameter_listContext, i)
 
         # @param  i=None Type: int
-        def argument_expression_list(self,i=None):
+        def argument_expression_list(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Argument_expression_listContext)
             else:
-                return self.getTypedRuleContext(CParser.Argument_expression_listContext,i)
-
+                return self.getTypedRuleContext(CParser.Argument_expression_listContext, i)
 
         # @param  i=None Type: int
-        def IDENTIFIER(self,i=None):
+        def IDENTIFIER(self, i=None):
             if i is None:
                 return self.getTokens(CParser.IDENTIFIER)
             else:
@@ -3999,38 +3762,35 @@ class CParser ( Parser ):
             return CParser.RULE_postfix_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterPostfix_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterPostfix_expression"):
                 listener.enterPostfix_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitPostfix_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitPostfix_expression"):
                 listener.exitPostfix_expression(self)
-
-
-
 
     def postfix_expression(self):
 
         localctx = CParser.Postfix_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 80, self.RULE_postfix_expression)
 
-        self.FuncCallText=''
+        self.FuncCallText = ''
 
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 569
             localctx.p = self.primary_expression()
-            self.FuncCallText += (None if localctx.p is None else self._input.getText((localctx.p.start,localctx.p.stop)))
+            self.FuncCallText += (None if localctx.p is None else self._input.getText((localctx.p.start, localctx.p.stop)))
             self.state = 600
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,73,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 73, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     self.state = 598
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,72,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input, 72, self._ctx)
                     if la_ == 1:
                         self.state = 571
                         self.match(CParser.T__39)
@@ -4045,7 +3805,8 @@ class CParser ( Parser ):
                         self.match(CParser.T__37)
                         self.state = 576
                         localctx.a = self.match(CParser.T__38)
-                        self.StoreFunctionCalling((None if localctx.p is None else localctx.p.start).line, (None if localctx.p is None else localctx.p.start).column, (0 if localctx.a is None else localctx.a.line), localctx.a.column, self.FuncCallText, '')
+                        self.StoreFunctionCalling((None if localctx.p is None else localctx.p.start).line, (None if localctx.p is None else localctx.p.start).column, (
+                            0 if localctx.a is None else localctx.a.line), localctx.a.column, self.FuncCallText, '')
                         pass
 
                     elif la_ == 3:
@@ -4055,7 +3816,8 @@ class CParser ( Parser ):
                         localctx.c = self.argument_expression_list()
                         self.state = 580
                         localctx.b = self.match(CParser.T__38)
-                        self.StoreFunctionCalling((None if localctx.p is None else localctx.p.start).line, (None if localctx.p is None else localctx.p.start).column, (0 if localctx.b is None else localctx.b.line), localctx.b.column, self.FuncCallText, (None if localctx.c is None else self._input.getText((localctx.c.start,localctx.c.stop))))
+                        self.StoreFunctionCalling((None if localctx.p is None else localctx.p.start).line, (None if localctx.p is None else localctx.p.start).column, (
+                            0 if localctx.b is None else localctx.b.line), localctx.b.column, self.FuncCallText, (None if localctx.c is None else self._input.getText((localctx.c.start, localctx.c.stop))))
                         pass
 
                     elif la_ == 4:
@@ -4101,10 +3863,9 @@ class CParser ( Parser ):
                         self.match(CParser.T__48)
                         pass
 
-
                 self.state = 602
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,73,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 73, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -4118,39 +3879,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def parameter_declaration(self,i=None):
+        def parameter_declaration(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Parameter_declarationContext)
             else:
-                return self.getTypedRuleContext(CParser.Parameter_declarationContext,i)
-
+                return self.getTypedRuleContext(CParser.Parameter_declarationContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_macro_parameter_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterMacro_parameter_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterMacro_parameter_list"):
                 listener.enterMacro_parameter_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitMacro_parameter_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitMacro_parameter_list"):
                 listener.exitMacro_parameter_list(self)
-
-
-
 
     def macro_parameter_list(self):
 
         localctx = CParser.Macro_parameter_listContext(self, self._ctx, self.state)
         self.enterRule(localctx, 82, self.RULE_macro_parameter_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 603
@@ -4158,7 +3915,7 @@ class CParser ( Parser ):
             self.state = 608
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__3:
+            while _la == CParser.T__3:
                 self.state = 604
                 self.match(CParser.T__3)
                 self.state = 605
@@ -4179,32 +3936,28 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return CParser.RULE_unary_operator
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterUnary_operator" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterUnary_operator"):
                 listener.enterUnary_operator(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitUnary_operator" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitUnary_operator"):
                 listener.exitUnary_operator(self)
-
-
-
 
     def unary_operator(self):
 
         localctx = CParser.Unary_operatorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 84, self.RULE_unary_operator)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 611
@@ -4226,7 +3979,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -4234,28 +3987,23 @@ class CParser ( Parser ):
             return self.getToken(CParser.IDENTIFIER, 0)
 
         def constant(self):
-            return self.getTypedRuleContext(CParser.ConstantContext,0)
-
+            return self.getTypedRuleContext(CParser.ConstantContext, 0)
 
         def expression(self):
-            return self.getTypedRuleContext(CParser.ExpressionContext,0)
-
+            return self.getTypedRuleContext(CParser.ExpressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_primary_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterPrimary_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterPrimary_expression"):
                 listener.enterPrimary_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitPrimary_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitPrimary_expression"):
                 listener.exitPrimary_expression(self)
-
-
-
 
     def primary_expression(self):
 
@@ -4264,7 +4012,7 @@ class CParser ( Parser ):
         try:
             self.state = 619
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,75,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 75, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 613
@@ -4287,7 +4035,6 @@ class CParser ( Parser ):
                 self.match(CParser.T__38)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4300,7 +4047,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -4317,14 +4064,14 @@ class CParser ( Parser ):
             return self.getToken(CParser.CHARACTER_LITERAL, 0)
 
         # @param  i=None Type: int
-        def IDENTIFIER(self,i=None):
+        def IDENTIFIER(self, i=None):
             if i is None:
                 return self.getTokens(CParser.IDENTIFIER)
             else:
                 return self.getToken(CParser.IDENTIFIER, i)
 
         # @param  i=None Type: int
-        def STRING_LITERAL(self,i=None):
+        def STRING_LITERAL(self, i=None):
             if i is None:
                 return self.getTokens(CParser.STRING_LITERAL)
             else:
@@ -4337,23 +4084,20 @@ class CParser ( Parser ):
             return CParser.RULE_constant
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterConstant" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterConstant"):
                 listener.enterConstant(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitConstant" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitConstant"):
                 listener.exitConstant(self)
-
-
-
 
     def constant(self):
 
         localctx = CParser.ConstantContext(self, self._ctx, self.state)
         self.enterRule(localctx, 88, self.RULE_constant)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 647
             self._errHandler.sync(self)
@@ -4383,12 +4127,12 @@ class CParser ( Parser ):
                 self.state = 636
                 self._errHandler.sync(self)
                 _alt = 1
-                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                     if _alt == 1:
                         self.state = 628
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
-                        while _la==CParser.IDENTIFIER:
+                        while _la == CParser.IDENTIFIER:
                             self.state = 625
                             self.match(CParser.IDENTIFIER)
                             self.state = 630
@@ -4398,7 +4142,7 @@ class CParser ( Parser ):
                         self.state = 632
                         self._errHandler.sync(self)
                         _alt = 1
-                        while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                        while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                             if _alt == 1:
                                 self.state = 631
                                 self.match(CParser.STRING_LITERAL)
@@ -4407,19 +4151,18 @@ class CParser ( Parser ):
                                 raise NoViableAltException(self)
                             self.state = 634
                             self._errHandler.sync(self)
-                            _alt = self._interp.adaptivePredict(self._input,77,self._ctx)
-
+                            _alt = self._interp.adaptivePredict(self._input, 77, self._ctx)
 
                     else:
                         raise NoViableAltException(self)
                     self.state = 638
                     self._errHandler.sync(self)
-                    _alt = self._interp.adaptivePredict(self._input,78,self._ctx)
+                    _alt = self._interp.adaptivePredict(self._input, 78, self._ctx)
 
                 self.state = 643
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==CParser.IDENTIFIER:
+                while _la == CParser.IDENTIFIER:
                     self.state = 640
                     self.match(CParser.IDENTIFIER)
                     self.state = 645
@@ -4447,39 +4190,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def assignment_expression(self,i=None):
+        def assignment_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Assignment_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Assignment_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Assignment_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterExpression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterExpression"):
                 listener.enterExpression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitExpression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitExpression"):
                 listener.exitExpression(self)
-
-
-
 
     def expression(self):
 
         localctx = CParser.ExpressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 90, self.RULE_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 649
@@ -4487,7 +4226,7 @@ class CParser ( Parser ):
             self.state = 654
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__3:
+            while _la == CParser.T__3:
                 self.state = 650
                 self.match(CParser.T__3)
                 self.state = 651
@@ -4508,29 +4247,25 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def conditional_expression(self):
-            return self.getTypedRuleContext(CParser.Conditional_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Conditional_expressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_constant_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterConstant_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterConstant_expression"):
                 listener.enterConstant_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitConstant_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitConstant_expression"):
                 listener.exitConstant_expression(self)
-
-
-
 
     def constant_expression(self):
 
@@ -4552,41 +4287,34 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def lvalue(self):
-            return self.getTypedRuleContext(CParser.LvalueContext,0)
-
+            return self.getTypedRuleContext(CParser.LvalueContext, 0)
 
         def assignment_operator(self):
-            return self.getTypedRuleContext(CParser.Assignment_operatorContext,0)
-
+            return self.getTypedRuleContext(CParser.Assignment_operatorContext, 0)
 
         def assignment_expression(self):
-            return self.getTypedRuleContext(CParser.Assignment_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Assignment_expressionContext, 0)
 
         def conditional_expression(self):
-            return self.getTypedRuleContext(CParser.Conditional_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Conditional_expressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_assignment_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterAssignment_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterAssignment_expression"):
                 listener.enterAssignment_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitAssignment_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitAssignment_expression"):
                 listener.exitAssignment_expression(self)
-
-
-
 
     def assignment_expression(self):
 
@@ -4595,7 +4323,7 @@ class CParser ( Parser ):
         try:
             self.state = 664
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,82,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 82, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 659
@@ -4612,7 +4340,6 @@ class CParser ( Parser ):
                 self.conditional_expression()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4625,29 +4352,25 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def unary_expression(self):
-            return self.getTypedRuleContext(CParser.Unary_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Unary_expressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_lvalue
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterLvalue" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterLvalue"):
                 listener.enterLvalue(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitLvalue" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitLvalue"):
                 listener.exitLvalue(self)
-
-
-
 
     def lvalue(self):
 
@@ -4669,32 +4392,28 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return CParser.RULE_assignment_operator
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterAssignment_operator" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterAssignment_operator"):
                 listener.enterAssignment_operator(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitAssignment_operator" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitAssignment_operator"):
                 listener.exitAssignment_operator(self)
-
-
-
 
     def assignment_operator(self):
 
         localctx = CParser.Assignment_operatorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 98, self.RULE_assignment_operator)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 668
@@ -4716,44 +4435,38 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.e = None # Logical_or_expressionContext
+            self.e = None  # Logical_or_expressionContext
 
         def logical_or_expression(self):
-            return self.getTypedRuleContext(CParser.Logical_or_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Logical_or_expressionContext, 0)
 
         def expression(self):
-            return self.getTypedRuleContext(CParser.ExpressionContext,0)
-
+            return self.getTypedRuleContext(CParser.ExpressionContext, 0)
 
         def conditional_expression(self):
-            return self.getTypedRuleContext(CParser.Conditional_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Conditional_expressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_conditional_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterConditional_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterConditional_expression"):
                 listener.enterConditional_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitConditional_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitConditional_expression"):
                 listener.exitConditional_expression(self)
-
-
-
 
     def conditional_expression(self):
 
         localctx = CParser.Conditional_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 100, self.RULE_conditional_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 670
@@ -4761,7 +4474,7 @@ class CParser ( Parser ):
             self.state = 677
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CParser.T__65:
+            if _la == CParser.T__65:
                 self.state = 671
                 self.match(CParser.T__65)
                 self.state = 672
@@ -4770,8 +4483,8 @@ class CParser ( Parser ):
                 self.match(CParser.T__22)
                 self.state = 674
                 self.conditional_expression()
-                self.StorePredicateExpression((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start,localctx.e.stop))))
-
+                self.StorePredicateExpression((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (
+                    None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start, localctx.e.stop))))
 
         except RecognitionException as re:
             localctx.exception = re
@@ -4785,39 +4498,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def logical_and_expression(self,i=None):
+        def logical_and_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Logical_and_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Logical_and_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Logical_and_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_logical_or_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterLogical_or_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterLogical_or_expression"):
                 listener.enterLogical_or_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitLogical_or_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitLogical_or_expression"):
                 listener.exitLogical_or_expression(self)
-
-
-
 
     def logical_or_expression(self):
 
         localctx = CParser.Logical_or_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 102, self.RULE_logical_or_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 679
@@ -4825,7 +4534,7 @@ class CParser ( Parser ):
             self.state = 684
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__66:
+            while _la == CParser.T__66:
                 self.state = 680
                 self.match(CParser.T__66)
                 self.state = 681
@@ -4846,39 +4555,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def inclusive_or_expression(self,i=None):
+        def inclusive_or_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Inclusive_or_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Inclusive_or_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Inclusive_or_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_logical_and_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterLogical_and_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterLogical_and_expression"):
                 listener.enterLogical_and_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitLogical_and_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitLogical_and_expression"):
                 listener.exitLogical_and_expression(self)
-
-
-
 
     def logical_and_expression(self):
 
         localctx = CParser.Logical_and_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 104, self.RULE_logical_and_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 687
@@ -4886,7 +4591,7 @@ class CParser ( Parser ):
             self.state = 692
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__67:
+            while _la == CParser.T__67:
                 self.state = 688
                 self.match(CParser.T__67)
                 self.state = 689
@@ -4907,39 +4612,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def exclusive_or_expression(self,i=None):
+        def exclusive_or_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Exclusive_or_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Exclusive_or_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Exclusive_or_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_inclusive_or_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterInclusive_or_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterInclusive_or_expression"):
                 listener.enterInclusive_or_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitInclusive_or_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitInclusive_or_expression"):
                 listener.exitInclusive_or_expression(self)
-
-
-
 
     def inclusive_or_expression(self):
 
         localctx = CParser.Inclusive_or_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 106, self.RULE_inclusive_or_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 695
@@ -4947,7 +4648,7 @@ class CParser ( Parser ):
             self.state = 700
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__68:
+            while _la == CParser.T__68:
                 self.state = 696
                 self.match(CParser.T__68)
                 self.state = 697
@@ -4968,39 +4669,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def and_expression(self,i=None):
+        def and_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.And_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.And_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.And_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_exclusive_or_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterExclusive_or_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterExclusive_or_expression"):
                 listener.enterExclusive_or_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitExclusive_or_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitExclusive_or_expression"):
                 listener.exitExclusive_or_expression(self)
-
-
-
 
     def exclusive_or_expression(self):
 
         localctx = CParser.Exclusive_or_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 108, self.RULE_exclusive_or_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 703
@@ -5008,7 +4705,7 @@ class CParser ( Parser ):
             self.state = 708
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__69:
+            while _la == CParser.T__69:
                 self.state = 704
                 self.match(CParser.T__69)
                 self.state = 705
@@ -5029,39 +4726,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def equality_expression(self,i=None):
+        def equality_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Equality_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Equality_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Equality_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_and_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterAnd_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterAnd_expression"):
                 listener.enterAnd_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitAnd_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitAnd_expression"):
                 listener.exitAnd_expression(self)
-
-
-
 
     def and_expression(self):
 
         localctx = CParser.And_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 110, self.RULE_and_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 711
@@ -5069,7 +4762,7 @@ class CParser ( Parser ):
             self.state = 716
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__52:
+            while _la == CParser.T__52:
                 self.state = 712
                 self.match(CParser.T__52)
                 self.state = 713
@@ -5090,39 +4783,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def relational_expression(self,i=None):
+        def relational_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Relational_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Relational_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Relational_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_equality_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterEquality_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterEquality_expression"):
                 listener.enterEquality_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitEquality_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitEquality_expression"):
                 listener.exitEquality_expression(self)
-
-
-
 
     def equality_expression(self):
 
         localctx = CParser.Equality_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 112, self.RULE_equality_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 719
@@ -5130,10 +4819,10 @@ class CParser ( Parser ):
             self.state = 724
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__70 or _la==CParser.T__71:
+            while _la == CParser.T__70 or _la == CParser.T__71:
                 self.state = 720
                 _la = self._input.LA(1)
-                if not(_la==CParser.T__70 or _la==CParser.T__71):
+                if not(_la == CParser.T__70 or _la == CParser.T__71):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -5156,39 +4845,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def shift_expression(self,i=None):
+        def shift_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Shift_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Shift_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Shift_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_relational_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterRelational_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterRelational_expression"):
                 listener.enterRelational_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitRelational_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitRelational_expression"):
                 listener.exitRelational_expression(self)
-
-
-
 
     def relational_expression(self):
 
         localctx = CParser.Relational_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 114, self.RULE_relational_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 727
@@ -5222,39 +4907,35 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def additive_expression(self,i=None):
+        def additive_expression(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.Additive_expressionContext)
             else:
-                return self.getTypedRuleContext(CParser.Additive_expressionContext,i)
-
+                return self.getTypedRuleContext(CParser.Additive_expressionContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_shift_expression
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterShift_expression" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterShift_expression"):
                 listener.enterShift_expression(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitShift_expression" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitShift_expression"):
                 listener.exitShift_expression(self)
-
-
-
 
     def shift_expression(self):
 
         localctx = CParser.Shift_expressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 116, self.RULE_shift_expression)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 735
@@ -5262,10 +4943,10 @@ class CParser ( Parser ):
             self.state = 740
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CParser.T__76 or _la==CParser.T__77:
+            while _la == CParser.T__76 or _la == CParser.T__77:
                 self.state = 736
                 _la = self._input.LA(1)
-                if not(_la==CParser.T__76 or _la==CParser.T__77):
+                if not(_la == CParser.T__76 or _la == CParser.T__77):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -5288,69 +4969,55 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def labeled_statement(self):
-            return self.getTypedRuleContext(CParser.Labeled_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Labeled_statementContext, 0)
 
         def compound_statement(self):
-            return self.getTypedRuleContext(CParser.Compound_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Compound_statementContext, 0)
 
         def expression_statement(self):
-            return self.getTypedRuleContext(CParser.Expression_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Expression_statementContext, 0)
 
         def selection_statement(self):
-            return self.getTypedRuleContext(CParser.Selection_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Selection_statementContext, 0)
 
         def iteration_statement(self):
-            return self.getTypedRuleContext(CParser.Iteration_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Iteration_statementContext, 0)
 
         def jump_statement(self):
-            return self.getTypedRuleContext(CParser.Jump_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Jump_statementContext, 0)
 
         def macro_statement(self):
-            return self.getTypedRuleContext(CParser.Macro_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Macro_statementContext, 0)
 
         def asm2_statement(self):
-            return self.getTypedRuleContext(CParser.Asm2_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Asm2_statementContext, 0)
 
         def asm1_statement(self):
-            return self.getTypedRuleContext(CParser.Asm1_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Asm1_statementContext, 0)
 
         def asm_statement(self):
-            return self.getTypedRuleContext(CParser.Asm_statementContext,0)
-
+            return self.getTypedRuleContext(CParser.Asm_statementContext, 0)
 
         def declaration(self):
-            return self.getTypedRuleContext(CParser.DeclarationContext,0)
-
+            return self.getTypedRuleContext(CParser.DeclarationContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterStatement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterStatement"):
                 listener.enterStatement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitStatement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitStatement"):
                 listener.exitStatement(self)
-
-
-
 
     def statement(self):
 
@@ -5359,7 +5026,7 @@ class CParser ( Parser ):
         try:
             self.state = 754
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,92,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 92, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 743
@@ -5426,7 +5093,6 @@ class CParser ( Parser ):
                 self.declaration()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5439,7 +5105,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5450,32 +5116,28 @@ class CParser ( Parser ):
             return CParser.RULE_asm2_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterAsm2_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterAsm2_statement"):
                 listener.enterAsm2_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitAsm2_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitAsm2_statement"):
                 listener.exitAsm2_statement(self)
-
-
-
 
     def asm2_statement(self):
 
         localctx = CParser.Asm2_statementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 120, self.RULE_asm2_statement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 757
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CParser.T__78:
+            if _la == CParser.T__78:
                 self.state = 756
                 self.match(CParser.T__78)
-
 
             self.state = 759
             self.match(CParser.IDENTIFIER)
@@ -5483,19 +5145,19 @@ class CParser ( Parser ):
             self.match(CParser.T__37)
             self.state = 764
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,94,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 94, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     self.state = 761
                     _la = self._input.LA(1)
-                    if _la <= 0 or _la==CParser.T__1:
+                    if _la <= 0 or _la == CParser.T__1:
                         self._errHandler.recoverInline(self)
                     else:
                         self._errHandler.reportMatch(self)
                         self.consume()
                 self.state = 766
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,94,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 94, self._ctx)
 
             self.state = 767
             self.match(CParser.T__38)
@@ -5513,32 +5175,28 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return CParser.RULE_asm1_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterAsm1_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterAsm1_statement"):
                 listener.enterAsm1_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitAsm1_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitAsm1_statement"):
                 listener.exitAsm1_statement(self)
-
-
-
 
     def asm1_statement(self):
 
         localctx = CParser.Asm1_statementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 122, self.RULE_asm1_statement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 770
@@ -5551,7 +5209,7 @@ class CParser ( Parser ):
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__0) | (1 << CParser.T__1) | (1 << CParser.T__2) | (1 << CParser.T__3) | (1 << CParser.T__4) | (1 << CParser.T__5) | (1 << CParser.T__6) | (1 << CParser.T__7) | (1 << CParser.T__8) | (1 << CParser.T__9) | (1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__22) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36) | (1 << CParser.T__37) | (1 << CParser.T__38) | (1 << CParser.T__39) | (1 << CParser.T__40) | (1 << CParser.T__41) | (1 << CParser.T__42) | (1 << CParser.T__43) | (1 << CParser.T__44) | (1 << CParser.T__45) | (1 << CParser.T__46) | (1 << CParser.T__47) | (1 << CParser.T__48) | (1 << CParser.T__49) | (1 << CParser.T__50) | (1 << CParser.T__51) | (1 << CParser.T__52) | (1 << CParser.T__53) | (1 << CParser.T__54) | (1 << CParser.T__55) | (1 << CParser.T__56) | (1 << CParser.T__57) | (1 << CParser.T__58) | (1 << CParser.T__59) | (1 << CParser.T__60) | (1 << CParser.T__61) | (1 << CParser.T__62))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (CParser.T__63 - 64)) | (1 << (CParser.T__64 - 64)) | (1 << (CParser.T__65 - 64)) | (1 << (CParser.T__66 - 64)) | (1 << (CParser.T__67 - 64)) | (1 << (CParser.T__68 - 64)) | (1 << (CParser.T__69 - 64)) | (1 << (CParser.T__70 - 64)) | (1 << (CParser.T__71 - 64)) | (1 << (CParser.T__72 - 64)) | (1 << (CParser.T__73 - 64)) | (1 << (CParser.T__74 - 64)) | (1 << (CParser.T__75 - 64)) | (1 << (CParser.T__76 - 64)) | (1 << (CParser.T__77 - 64)) | (1 << (CParser.T__78 - 64)) | (1 << (CParser.T__79 - 64)) | (1 << (CParser.T__80 - 64)) | (1 << (CParser.T__81 - 64)) | (1 << (CParser.T__82 - 64)) | (1 << (CParser.T__83 - 64)) | (1 << (CParser.T__84 - 64)) | (1 << (CParser.T__85 - 64)) | (1 << (CParser.T__86 - 64)) | (1 << (CParser.T__87 - 64)) | (1 << (CParser.T__88 - 64)) | (1 << (CParser.T__89 - 64)) | (1 << (CParser.T__90 - 64)) | (1 << (CParser.T__91 - 64)) | (1 << (CParser.IDENTIFIER - 64)) | (1 << (CParser.CHARACTER_LITERAL - 64)) | (1 << (CParser.STRING_LITERAL - 64)) | (1 << (CParser.HEX_LITERAL - 64)) | (1 << (CParser.DECIMAL_LITERAL - 64)) | (1 << (CParser.OCTAL_LITERAL - 64)) | (1 << (CParser.FLOATING_POINT_LITERAL - 64)) | (1 << (CParser.WS - 64)) | (1 << (CParser.BS - 64)) | (1 << (CParser.UnicodeVocabulary - 64)) | (1 << (CParser.COMMENT - 64)) | (1 << (CParser.LINE_COMMENT - 64)) | (1 << (CParser.LINE_COMMAND - 64)))) != 0):
                 self.state = 772
                 _la = self._input.LA(1)
-                if _la <= 0 or _la==CParser.T__19:
+                if _la <= 0 or _la == CParser.T__19:
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -5574,32 +5232,28 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return CParser.RULE_asm_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterAsm_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterAsm_statement"):
                 listener.enterAsm_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitAsm_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitAsm_statement"):
                 listener.exitAsm_statement(self)
-
-
-
 
     def asm_statement(self):
 
         localctx = CParser.Asm_statementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 124, self.RULE_asm_statement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 780
@@ -5612,7 +5266,7 @@ class CParser ( Parser ):
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__0) | (1 << CParser.T__1) | (1 << CParser.T__2) | (1 << CParser.T__3) | (1 << CParser.T__4) | (1 << CParser.T__5) | (1 << CParser.T__6) | (1 << CParser.T__7) | (1 << CParser.T__8) | (1 << CParser.T__9) | (1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__22) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36) | (1 << CParser.T__37) | (1 << CParser.T__38) | (1 << CParser.T__39) | (1 << CParser.T__40) | (1 << CParser.T__41) | (1 << CParser.T__42) | (1 << CParser.T__43) | (1 << CParser.T__44) | (1 << CParser.T__45) | (1 << CParser.T__46) | (1 << CParser.T__47) | (1 << CParser.T__48) | (1 << CParser.T__49) | (1 << CParser.T__50) | (1 << CParser.T__51) | (1 << CParser.T__52) | (1 << CParser.T__53) | (1 << CParser.T__54) | (1 << CParser.T__55) | (1 << CParser.T__56) | (1 << CParser.T__57) | (1 << CParser.T__58) | (1 << CParser.T__59) | (1 << CParser.T__60) | (1 << CParser.T__61) | (1 << CParser.T__62))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (CParser.T__63 - 64)) | (1 << (CParser.T__64 - 64)) | (1 << (CParser.T__65 - 64)) | (1 << (CParser.T__66 - 64)) | (1 << (CParser.T__67 - 64)) | (1 << (CParser.T__68 - 64)) | (1 << (CParser.T__69 - 64)) | (1 << (CParser.T__70 - 64)) | (1 << (CParser.T__71 - 64)) | (1 << (CParser.T__72 - 64)) | (1 << (CParser.T__73 - 64)) | (1 << (CParser.T__74 - 64)) | (1 << (CParser.T__75 - 64)) | (1 << (CParser.T__76 - 64)) | (1 << (CParser.T__77 - 64)) | (1 << (CParser.T__78 - 64)) | (1 << (CParser.T__79 - 64)) | (1 << (CParser.T__80 - 64)) | (1 << (CParser.T__81 - 64)) | (1 << (CParser.T__82 - 64)) | (1 << (CParser.T__83 - 64)) | (1 << (CParser.T__84 - 64)) | (1 << (CParser.T__85 - 64)) | (1 << (CParser.T__86 - 64)) | (1 << (CParser.T__87 - 64)) | (1 << (CParser.T__88 - 64)) | (1 << (CParser.T__89 - 64)) | (1 << (CParser.T__90 - 64)) | (1 << (CParser.T__91 - 64)) | (1 << (CParser.IDENTIFIER - 64)) | (1 << (CParser.CHARACTER_LITERAL - 64)) | (1 << (CParser.STRING_LITERAL - 64)) | (1 << (CParser.HEX_LITERAL - 64)) | (1 << (CParser.DECIMAL_LITERAL - 64)) | (1 << (CParser.OCTAL_LITERAL - 64)) | (1 << (CParser.FLOATING_POINT_LITERAL - 64)) | (1 << (CParser.WS - 64)) | (1 << (CParser.BS - 64)) | (1 << (CParser.UnicodeVocabulary - 64)) | (1 << (CParser.COMMENT - 64)) | (1 << (CParser.LINE_COMMENT - 64)) | (1 << (CParser.LINE_COMMAND - 64)))) != 0):
                 self.state = 782
                 _la = self._input.LA(1)
-                if _la <= 0 or _la==CParser.T__19:
+                if _la <= 0 or _la == CParser.T__19:
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -5635,7 +5289,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5643,42 +5297,36 @@ class CParser ( Parser ):
             return self.getToken(CParser.IDENTIFIER, 0)
 
         # @param  i=None Type: int
-        def declaration(self,i=None):
+        def declaration(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.DeclarationContext)
             else:
-                return self.getTypedRuleContext(CParser.DeclarationContext,i)
-
+                return self.getTypedRuleContext(CParser.DeclarationContext, i)
 
         def statement_list(self):
-            return self.getTypedRuleContext(CParser.Statement_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Statement_listContext, 0)
 
         def expression(self):
-            return self.getTypedRuleContext(CParser.ExpressionContext,0)
-
+            return self.getTypedRuleContext(CParser.ExpressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_macro_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterMacro_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterMacro_statement"):
                 listener.enterMacro_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitMacro_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitMacro_statement"):
                 listener.exitMacro_statement(self)
-
-
-
 
     def macro_statement(self):
 
         localctx = CParser.Macro_statementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 126, self.RULE_macro_statement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 790
@@ -5687,22 +5335,21 @@ class CParser ( Parser ):
             self.match(CParser.T__37)
             self.state = 795
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,97,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 97, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     self.state = 792
                     self.declaration()
                 self.state = 797
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,97,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 97, self._ctx)
 
             self.state = 799
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,98,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 98, self._ctx)
             if la_ == 1:
                 self.state = 798
                 self.statement_list()
-
 
             self.state = 802
             self._errHandler.sync(self)
@@ -5710,7 +5357,6 @@ class CParser ( Parser ):
             if ((((_la - 38)) & ~0x3f) == 0 and ((1 << (_la - 38)) & ((1 << (CParser.T__37 - 38)) | (1 << (CParser.T__41 - 38)) | (1 << (CParser.T__43 - 38)) | (1 << (CParser.T__44 - 38)) | (1 << (CParser.T__47 - 38)) | (1 << (CParser.T__48 - 38)) | (1 << (CParser.T__49 - 38)) | (1 << (CParser.T__52 - 38)) | (1 << (CParser.T__53 - 38)) | (1 << (CParser.T__54 - 38)) | (1 << (CParser.IDENTIFIER - 38)) | (1 << (CParser.CHARACTER_LITERAL - 38)) | (1 << (CParser.STRING_LITERAL - 38)) | (1 << (CParser.HEX_LITERAL - 38)) | (1 << (CParser.DECIMAL_LITERAL - 38)) | (1 << (CParser.OCTAL_LITERAL - 38)) | (1 << (CParser.FLOATING_POINT_LITERAL - 38)))) != 0):
                 self.state = 801
                 self.expression()
-
 
             self.state = 804
             self.match(CParser.T__38)
@@ -5726,7 +5372,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5734,28 +5380,23 @@ class CParser ( Parser ):
             return self.getToken(CParser.IDENTIFIER, 0)
 
         def statement(self):
-            return self.getTypedRuleContext(CParser.StatementContext,0)
-
+            return self.getTypedRuleContext(CParser.StatementContext, 0)
 
         def constant_expression(self):
-            return self.getTypedRuleContext(CParser.Constant_expressionContext,0)
-
+            return self.getTypedRuleContext(CParser.Constant_expressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_labeled_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterLabeled_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterLabeled_statement"):
                 listener.enterLabeled_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitLabeled_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitLabeled_statement"):
                 listener.exitLabeled_statement(self)
-
-
-
 
     def labeled_statement(self):
 
@@ -5809,57 +5450,52 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def declaration(self,i=None):
+        def declaration(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.DeclarationContext)
             else:
-                return self.getTypedRuleContext(CParser.DeclarationContext,i)
-
+                return self.getTypedRuleContext(CParser.DeclarationContext, i)
 
         def statement_list(self):
-            return self.getTypedRuleContext(CParser.Statement_listContext,0)
-
+            return self.getTypedRuleContext(CParser.Statement_listContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_compound_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterCompound_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterCompound_statement"):
                 listener.enterCompound_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitCompound_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitCompound_statement"):
                 listener.exitCompound_statement(self)
-
-
-
 
     def compound_statement(self):
 
         localctx = CParser.Compound_statementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 130, self.RULE_compound_statement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 819
             self.match(CParser.T__0)
             self.state = 823
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,101,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 101, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     self.state = 820
                     self.declaration()
                 self.state = 825
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,101,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 101, self._ctx)
 
             self.state = 827
             self._errHandler.sync(self)
@@ -5867,7 +5503,6 @@ class CParser ( Parser ):
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CParser.T__0) | (1 << CParser.T__1) | (1 << CParser.T__2) | (1 << CParser.T__5) | (1 << CParser.T__6) | (1 << CParser.T__7) | (1 << CParser.T__8) | (1 << CParser.T__9) | (1 << CParser.T__10) | (1 << CParser.T__11) | (1 << CParser.T__12) | (1 << CParser.T__13) | (1 << CParser.T__14) | (1 << CParser.T__15) | (1 << CParser.T__16) | (1 << CParser.T__17) | (1 << CParser.T__18) | (1 << CParser.T__20) | (1 << CParser.T__21) | (1 << CParser.T__23) | (1 << CParser.T__24) | (1 << CParser.T__25) | (1 << CParser.T__26) | (1 << CParser.T__27) | (1 << CParser.T__28) | (1 << CParser.T__29) | (1 << CParser.T__30) | (1 << CParser.T__31) | (1 << CParser.T__32) | (1 << CParser.T__33) | (1 << CParser.T__34) | (1 << CParser.T__35) | (1 << CParser.T__36) | (1 << CParser.T__37) | (1 << CParser.T__41) | (1 << CParser.T__43) | (1 << CParser.T__44) | (1 << CParser.T__47) | (1 << CParser.T__48) | (1 << CParser.T__49) | (1 << CParser.T__52) | (1 << CParser.T__53) | (1 << CParser.T__54))) != 0) or ((((_la - 79)) & ~0x3f) == 0 and ((1 << (_la - 79)) & ((1 << (CParser.T__78 - 79)) | (1 << (CParser.T__79 - 79)) | (1 << (CParser.T__80 - 79)) | (1 << (CParser.T__81 - 79)) | (1 << (CParser.T__82 - 79)) | (1 << (CParser.T__83 - 79)) | (1 << (CParser.T__85 - 79)) | (1 << (CParser.T__86 - 79)) | (1 << (CParser.T__87 - 79)) | (1 << (CParser.T__88 - 79)) | (1 << (CParser.T__89 - 79)) | (1 << (CParser.T__90 - 79)) | (1 << (CParser.T__91 - 79)) | (1 << (CParser.IDENTIFIER - 79)) | (1 << (CParser.CHARACTER_LITERAL - 79)) | (1 << (CParser.STRING_LITERAL - 79)) | (1 << (CParser.HEX_LITERAL - 79)) | (1 << (CParser.DECIMAL_LITERAL - 79)) | (1 << (CParser.OCTAL_LITERAL - 79)) | (1 << (CParser.FLOATING_POINT_LITERAL - 79)))) != 0):
                 self.state = 826
                 self.statement_list()
-
 
             self.state = 829
             self.match(CParser.T__19)
@@ -5883,33 +5518,29 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         # @param  i=None Type: int
-        def statement(self,i=None):
+        def statement(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.StatementContext)
             else:
-                return self.getTypedRuleContext(CParser.StatementContext,i)
-
+                return self.getTypedRuleContext(CParser.StatementContext, i)
 
         def getRuleIndex(self):
             return CParser.RULE_statement_list
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterStatement_list" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterStatement_list"):
                 listener.enterStatement_list(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitStatement_list" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitStatement_list"):
                 listener.exitStatement_list(self)
-
-
-
 
     def statement_list(self):
 
@@ -5920,7 +5551,7 @@ class CParser ( Parser ):
             self.state = 832
             self._errHandler.sync(self)
             _alt = 1
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     self.state = 831
                     self.statement()
@@ -5929,7 +5560,7 @@ class CParser ( Parser ):
                     raise NoViableAltException(self)
                 self.state = 834
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,103,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 103, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -5943,29 +5574,25 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def expression(self):
-            return self.getTypedRuleContext(CParser.ExpressionContext,0)
-
+            return self.getTypedRuleContext(CParser.ExpressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_expression_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterExpression_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterExpression_statement"):
                 listener.enterExpression_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitExpression_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitExpression_statement"):
                 listener.exitExpression_statement(self)
-
-
-
 
     def expression_statement(self):
 
@@ -6002,38 +5629,33 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.e = None # ExpressionContext
+            self.e = None  # ExpressionContext
 
         # @param  i=None Type: int
-        def statement(self,i=None):
+        def statement(self, i=None):
             if i is None:
                 return self.getTypedRuleContexts(CParser.StatementContext)
             else:
-                return self.getTypedRuleContext(CParser.StatementContext,i)
-
+                return self.getTypedRuleContext(CParser.StatementContext, i)
 
         def expression(self):
-            return self.getTypedRuleContext(CParser.ExpressionContext,0)
-
+            return self.getTypedRuleContext(CParser.ExpressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_selection_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterSelection_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterSelection_statement"):
                 listener.enterSelection_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitSelection_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitSelection_statement"):
                 listener.exitSelection_statement(self)
-
-
-
 
     def selection_statement(self):
 
@@ -6053,18 +5675,18 @@ class CParser ( Parser ):
                 localctx.e = self.expression()
                 self.state = 845
                 self.match(CParser.T__38)
-                self.StorePredicateExpression((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start,localctx.e.stop))))
+                self.StorePredicateExpression((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (
+                    None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start, localctx.e.stop))))
                 self.state = 847
                 self.statement()
                 self.state = 850
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,105,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input, 105, self._ctx)
                 if la_ == 1:
                     self.state = 848
                     self.match(CParser.T__84)
                     self.state = 849
                     self.statement()
-
 
                 pass
             elif token in [CParser.T__85]:
@@ -6095,34 +5717,29 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.e = None # ExpressionContext
+            self.e = None  # ExpressionContext
 
         def statement(self):
-            return self.getTypedRuleContext(CParser.StatementContext,0)
-
+            return self.getTypedRuleContext(CParser.StatementContext, 0)
 
         def expression(self):
-            return self.getTypedRuleContext(CParser.ExpressionContext,0)
-
+            return self.getTypedRuleContext(CParser.ExpressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_iteration_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterIteration_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterIteration_statement"):
                 listener.enterIteration_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitIteration_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitIteration_statement"):
                 listener.exitIteration_statement(self)
-
-
-
 
     def iteration_statement(self):
 
@@ -6144,7 +5761,8 @@ class CParser ( Parser ):
                 self.match(CParser.T__38)
                 self.state = 864
                 self.statement()
-                self.StorePredicateExpression((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start,localctx.e.stop))))
+                self.StorePredicateExpression((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (
+                    None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start, localctx.e.stop))))
                 pass
             elif token in [CParser.T__87]:
                 self.enterOuterAlt(localctx, 2)
@@ -6162,7 +5780,8 @@ class CParser ( Parser ):
                 self.match(CParser.T__38)
                 self.state = 873
                 self.match(CParser.T__1)
-                self.StorePredicateExpression((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start,localctx.e.stop))))
+                self.StorePredicateExpression((None if localctx.e is None else localctx.e.start).line, (None if localctx.e is None else localctx.e.start).column, (None if localctx.e is None else localctx.e.stop).line, (
+                    None if localctx.e is None else localctx.e.stop).column, (None if localctx.e is None else self._input.getText((localctx.e.start, localctx.e.stop))))
                 pass
             else:
                 raise NoViableAltException(self)
@@ -6179,7 +5798,7 @@ class CParser ( Parser ):
 
         # @param  parent=None Type: ParserRuleContext
         # @param  invokingState=-1 Type: int
-        def __init__(self,parser,parent=None,invokingState=-1):
+        def __init__(self, parser, parent=None, invokingState=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -6187,24 +5806,20 @@ class CParser ( Parser ):
             return self.getToken(CParser.IDENTIFIER, 0)
 
         def expression(self):
-            return self.getTypedRuleContext(CParser.ExpressionContext,0)
-
+            return self.getTypedRuleContext(CParser.ExpressionContext, 0)
 
         def getRuleIndex(self):
             return CParser.RULE_jump_statement
 
         # @param  listener Type: ParseTreeListener
-        def enterRule(self,listener):
-            if hasattr( listener, "enterJump_statement" ):
+        def enterRule(self, listener):
+            if hasattr(listener, "enterJump_statement"):
                 listener.enterJump_statement(self)
 
         # @param  listener Type: ParseTreeListener
-        def exitRule(self,listener):
-            if hasattr( listener, "exitJump_statement" ):
+        def exitRule(self, listener):
+            if hasattr(listener, "exitJump_statement"):
                 listener.exitJump_statement(self)
-
-
-
 
     def jump_statement(self):
 
@@ -6213,7 +5828,7 @@ class CParser ( Parser ):
         try:
             self.state = 891
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,108,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 108, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 878
@@ -6258,7 +5873,6 @@ class CParser ( Parser ):
                 self.match(CParser.T__1)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -6266,8 +5880,3 @@ class CParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
-
-
-
-

@@ -31,6 +31,8 @@ from sys import platform
 #
 # @param  Options: command Options
 #
+
+
 def Main(Options=None):
     ContentZipFile, DistFile = None, None
     ReturnCode = 0
@@ -70,12 +72,12 @@ def Main(Options=None):
     except Exception as x:
         ReturnCode = TE.CODE_ERROR
         Logger.Error(
-                    "\nTestInstallPkg",
-                    TE.CODE_ERROR,
-                    ST.ERR_UNKNOWN_FATAL_INSTALL_ERR % Options.DistFiles,
-                    ExtraData=ST.MSG_SEARCH_FOR_HELP % ST.MSG_EDKII_MAIL_ADDR,
-                    RaiseError=False
-                    )
+            "\nTestInstallPkg",
+            TE.CODE_ERROR,
+            ST.ERR_UNKNOWN_FATAL_INSTALL_ERR % Options.DistFiles,
+            ExtraData=ST.MSG_SEARCH_FOR_HELP % ST.MSG_EDKII_MAIL_ADDR,
+            RaiseError=False
+        )
         Logger.Quiet(ST.MSG_PYTHON_ON % (python_version(), platform) + format_exc())
 
     finally:
@@ -91,4 +93,3 @@ def Main(Options=None):
     if ReturnCode == 0:
         Logger.Quiet(ST.MSG_FINISH)
     return ReturnCode
-

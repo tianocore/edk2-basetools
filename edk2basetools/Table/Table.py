@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase a common table
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -10,7 +10,7 @@
 #
 import edk2basetools.Common.EdkLogger as EdkLogger
 
-## TableFile
+# TableFile
 #
 # This class defined a common table
 #
@@ -19,13 +19,15 @@ import edk2basetools.Common.EdkLogger as EdkLogger
 # @param Cursor:     Cursor of the database
 # @param TableName:  Name of the table
 #
+
+
 class Table(object):
     def __init__(self, Cursor):
         self.Cur = Cursor
         self.Table = ''
         self.ID = 0
 
-    ## Create table
+    # Create table
     #
     # Create a table
     #
@@ -34,14 +36,14 @@ class Table(object):
         self.ID = 0
         EdkLogger.verbose(SqlCommand + " ... DONE!")
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into a table
     #
     def Insert(self, SqlCommand):
         self.Exec(SqlCommand)
 
-    ## Query table
+    # Query table
     #
     # Query all records of the table
     #
@@ -53,10 +55,10 @@ class Table(object):
             EdkLogger.verbose(str(Rs))
 
         TotalCount = self.GetCount()
-        EdkLogger.verbose("*** Total %s records in table %s ***" % (TotalCount, self.Table) )
+        EdkLogger.verbose("*** Total %s records in table %s ***" % (TotalCount, self.Table))
         EdkLogger.verbose("Query tabel %s DONE!" % self.Table)
 
-    ## Drop a table
+    # Drop a table
     #
     # Drop the table
     #
@@ -65,7 +67,7 @@ class Table(object):
         self.Cur.execute(SqlCommand)
         EdkLogger.verbose("Drop tabel %s ... DONE!" % self.Table)
 
-    ## Get count
+    # Get count
     #
     # Get a count of all records of the table
     #
@@ -77,7 +79,7 @@ class Table(object):
         for Item in self.Cur:
             return Item[0]
 
-    ## Generate ID
+    # Generate ID
     #
     # Generate an ID if input ID is -1
     #
@@ -91,14 +93,14 @@ class Table(object):
 
         return self.ID
 
-    ## Init the ID of the table
+    # Init the ID of the table
     #
     # Init the ID of the table
     #
     def InitID(self):
         self.ID = self.GetCount()
 
-    ## Exec
+    # Exec
     #
     # Exec Sql Command, return result
     #

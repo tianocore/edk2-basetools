@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to parse a Package file of .PKG file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -35,6 +35,8 @@ from edk2basetools.UPT.Xml.PcdXml import PcdEntryXml
 ##
 # IndustryStandardHeaderXml
 #
+
+
 class IndustryStandardHeaderXml(object):
     def __init__(self):
         self.HeaderFile = ''
@@ -72,6 +74,8 @@ class IndustryStandardHeaderXml(object):
 ##
 # PackageIncludeHeaderXml
 #
+
+
 class PackageIncludeHeaderXml(object):
     def __init__(self):
         self.HeaderFile = ''
@@ -98,7 +102,7 @@ class PackageIncludeHeaderXml(object):
     def ToXml(self, PackageIncludeHeader, Key):
         if self.HeaderFile:
             pass
-        AttributeList = [['SupArchList', GetStringOfList(PackageIncludeHeader.GetSupArchList())], \
+        AttributeList = [['SupArchList', GetStringOfList(PackageIncludeHeader.GetSupArchList())],
                          ['SupModList', GetStringOfList(PackageIncludeHeader.GetSupModuleList())], ]
 
         HeaderFileNode = CreateXmlElement('HeaderFile', PackageIncludeHeader.FilePath, [], AttributeList)
@@ -121,6 +125,8 @@ class PackageIncludeHeaderXml(object):
 ##
 # PcdCheckXml
 #
+
+
 class PcdCheckXml(object):
     def __init__(self):
         self.PcdCheck = ''
@@ -144,6 +150,8 @@ class PcdCheckXml(object):
 ##
 # PackageSurfaceAreaXml
 #
+
+
 class PackageSurfaceAreaXml(object):
     def __init__(self):
         self.Package = None
@@ -189,9 +197,8 @@ class PackageSurfaceAreaXml(object):
             Package.SetStandardIncludeFileList(Package.GetStandardIncludeFileList() + [Include])
 
         if XmlList(Item, '/PackageSurfaceArea/IndustryStandardIncludes') and \
-        not XmlList(Item, '/PackageSurfaceArea/IndustryStandardIncludes/IndustryStandardHeader'):
+                not XmlList(Item, '/PackageSurfaceArea/IndustryStandardIncludes/IndustryStandardHeader'):
             Package.SetStandardIncludeFileList([None])
-
 
         #
         # PackageHeader
@@ -256,8 +263,7 @@ class PackageSurfaceAreaXml(object):
                 PcdErrorMessageList = PcdErrorObj.GetErrorMessageList()
                 if PcdErrorMessageList:
                     Package.PcdErrorCommentDict[(PcdEntry.GetTokenSpaceGuidCName(), PcdErrorObj.GetErrorNumber())] = \
-                    PcdErrorMessageList
-
+                        PcdErrorMessageList
 
         if XmlList(Item, '/PackageSurfaceArea/PcdDeclarations') and not \
            XmlList(Item, '/PackageSurfaceArea/PcdDeclarations/PcdEntry'):
@@ -353,18 +359,17 @@ class PackageSurfaceAreaXml(object):
         GuidProtocolPpiNode = CreateXmlElement('GuidDeclarations', '', [], [])
         for GuidProtocolPpi in Package.GetGuidList():
             Tmp = GuidXml('Package')
-            GuidProtocolPpiNode.appendChild(Tmp.ToXml\
+            GuidProtocolPpiNode.appendChild(Tmp.ToXml
                                             (GuidProtocolPpi, 'Entry'))
         DomPackage.appendChild(GuidProtocolPpiNode)
         #
         # Protocol
         #
         GuidProtocolPpiNode = \
-        CreateXmlElement('ProtocolDeclarations', '', [], [])
+            CreateXmlElement('ProtocolDeclarations', '', [], [])
         for GuidProtocolPpi in Package.GetProtocolList():
             Tmp = ProtocolXml('Package')
-            GuidProtocolPpiNode.appendChild\
-            (Tmp.ToXml(GuidProtocolPpi, 'Entry'))
+            GuidProtocolPpiNode.appendChild(Tmp.ToXml(GuidProtocolPpi, 'Entry'))
         DomPackage.appendChild(GuidProtocolPpiNode)
         #
         # Ppi
@@ -372,8 +377,7 @@ class PackageSurfaceAreaXml(object):
         GuidProtocolPpiNode = CreateXmlElement('PpiDeclarations', '', [], [])
         for GuidProtocolPpi in Package.GetPpiList():
             Tmp = PpiXml('Package')
-            GuidProtocolPpiNode.appendChild\
-            (Tmp.ToXml(GuidProtocolPpi, 'Entry'))
+            GuidProtocolPpiNode.appendChild(Tmp.ToXml(GuidProtocolPpi, 'Entry'))
         DomPackage.appendChild(GuidProtocolPpiNode)
         #
         # PcdEntry

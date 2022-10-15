@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contain unit test for CommentParsing
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -9,9 +9,9 @@ import unittest
 
 import edk2basetools.UPT.Logger.Log as Logger
 from edk2basetools.UPT.Library.CommentParsing import ParseHeaderCommentSection, \
-                                   ParseGenericComment, \
-                                   ParseDecPcdGenericComment, \
-                                   ParseDecPcdTailComment
+    ParseGenericComment, \
+    ParseDecPcdGenericComment, \
+    ParseDecPcdTailComment
 from edk2basetools.UPT.Library.CommentParsing import _IsCopyrightLine
 from edk2basetools.UPT.Library.StringUtils import GetSplitValueList
 from edk2basetools.UPT.Library.DataType import TAB_SPACE_SPLIT
@@ -20,6 +20,8 @@ from edk2basetools.UPT.Library.DataType import TAB_LANGUAGE_EN_US
 #
 # Test ParseHeaderCommentSection
 #
+
+
 class ParseHeaderCommentSectionTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -32,7 +34,7 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
     #
     def testNormalCase1(self):
         TestCommentLines1 = \
-        '''# License1
+            '''# License1
         # License2
         #
         ## @file
@@ -74,7 +76,7 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
     #
     def testNormalCase2(self):
         TestCommentLines2 = \
-        ''' # License1
+            ''' # License1
         # License2
         #
         ## @file
@@ -110,14 +112,14 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
         ExpectedLicense = 'License1\nLicense2'
         self.assertEqual(License, ExpectedLicense)
 
-
     #
     # Normal case2: have license/copyright/license above @file,
     # but no abstract/description
     #
+
     def testNormalCase3(self):
         TestCommentLines3 = \
-        ''' # License1
+            ''' # License1
         # License2
         #
         ## @file
@@ -160,7 +162,7 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
     #
     def testNormalCase4(self):
         TestCommentLines = \
-        '''
+            '''
         ## @file
         # Abstract
         #
@@ -202,7 +204,7 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
     #
     def testNormalCase5(self):
         TestCommentLines = \
-        '''
+            '''
         ## @file
         # Abstract
         #
@@ -248,7 +250,7 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
     #
     def testNormalCase6(self):
         TestCommentLines = \
-        '''
+            '''
         ## @file
         # Abstract
         #
@@ -296,7 +298,7 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
     #
     def testNormalCase7(self):
         TestCommentLines = \
-        '''
+            '''
         ## @file
         #
         # Description
@@ -343,7 +345,7 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
     #
     def testNormalCase8(self):
         TestCommentLines = \
-        '''
+            '''
         ## @file
         # Abstact
         #
@@ -383,7 +385,7 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
     #
     def testErrorCase1(self):
         TestCommentLines = \
-        '''
+            '''
         ## @file
         # Abstract
         #
@@ -410,7 +412,7 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
     #
     def testErrorCase2(self):
         TestCommentLines = \
-        '''
+            '''
         ## @file
         # Abstract
         #
@@ -437,6 +439,8 @@ class ParseHeaderCommentSectionTest(unittest.TestCase):
 #
 # Test ParseGenericComment
 #
+
+
 class ParseGenericCommentTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -449,7 +453,7 @@ class ParseGenericCommentTest(unittest.TestCase):
     #
     def testNormalCase1(self):
         TestCommentLines = \
-        '''# hello world'''
+            '''# hello world'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
         LineNum = 0
@@ -468,7 +472,7 @@ class ParseGenericCommentTest(unittest.TestCase):
     #
     def testNormalCase2(self):
         TestCommentLines = \
-        '''## hello world
+            '''## hello world
         # second line'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
@@ -489,7 +493,7 @@ class ParseGenericCommentTest(unittest.TestCase):
     #
     def testNormalCase3(self):
         TestCommentLines = \
-        '''## hello world
+            '''## hello world
         This is not comment line'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
@@ -508,6 +512,8 @@ class ParseGenericCommentTest(unittest.TestCase):
 #
 # Test ParseDecPcdGenericComment
 #
+
+
 class ParseDecPcdGenericCommentTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -520,7 +526,7 @@ class ParseDecPcdGenericCommentTest(unittest.TestCase):
     #
     def testNormalCase1(self):
         TestCommentLines = \
-        '''## hello world
+            '''## hello world
         # second line'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
@@ -537,13 +543,13 @@ class ParseDecPcdGenericCommentTest(unittest.TestCase):
         self.assertEqual(HelpTxt,
                          'hello world\n' + 'second line')
 
-
     #
     # Normal case2: comments with valid list
     #
+
     def testNormalCase2(self):
         TestCommentLines = \
-        '''## hello world
+            '''## hello world
         # second line
         # @ValidList 1, 2, 3
         # other line'''
@@ -562,8 +568,8 @@ class ParseDecPcdGenericCommentTest(unittest.TestCase):
         self.assertEqual(HelpTxt,
                          'hello world\n' + 'second line\n' + 'other line')
         ExpectedList = GetSplitValueList('1 2 3', TAB_SPACE_SPLIT)
-        ActualList = [item for item in \
-            GetSplitValueList(PcdErr.GetValidValue(), TAB_SPACE_SPLIT) if item]
+        ActualList = [item for item in
+                      GetSplitValueList(PcdErr.GetValidValue(), TAB_SPACE_SPLIT) if item]
         self.assertEqual(ExpectedList, ActualList)
         self.failIf(PcdErr.GetExpression())
         self.failIf(PcdErr.GetValidValueRange())
@@ -573,7 +579,7 @@ class ParseDecPcdGenericCommentTest(unittest.TestCase):
     #
     def testNormalCase3(self):
         TestCommentLines = \
-        '''## hello world
+            '''## hello world
         # second line
         # @ValidRange LT 1 AND GT 2
         # other line'''
@@ -600,7 +606,7 @@ class ParseDecPcdGenericCommentTest(unittest.TestCase):
     #
     def testNormalCase4(self):
         TestCommentLines = \
-        '''## hello world
+            '''## hello world
         # second line
         # @Expression LT 1 AND GT 2
         # other line'''
@@ -627,7 +633,7 @@ class ParseDecPcdGenericCommentTest(unittest.TestCase):
     #
     def testNormalCase5(self):
         TestCommentLines = \
-        '''# @Expression LT 1 AND GT 2'''
+            '''# @Expression LT 1 AND GT 2'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
         LineNum = 0
@@ -649,7 +655,7 @@ class ParseDecPcdGenericCommentTest(unittest.TestCase):
     #
     def testNormalCase6(self):
         TestCommentLines = \
-        '''#'''
+            '''#'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
         LineNum = 0
@@ -663,15 +669,14 @@ class ParseDecPcdGenericCommentTest(unittest.TestCase):
         self.assertEqual(HelpTxt, '\n')
         self.failIf(PcdErr)
 
-
-
     #
     # Error case1: comments with both expression and valid list, use later
     # ignore the former and with a warning message
     #
+
     def testErrorCase1(self):
         TestCommentLines = \
-        '''## hello world
+            '''## hello world
         # second line
         # @ValidList 1, 2, 3
         # @Expression LT 1 AND GT 2
@@ -692,6 +697,8 @@ class ParseDecPcdGenericCommentTest(unittest.TestCase):
 #
 # Test ParseDecPcdTailComment
 #
+
+
 class ParseDecPcdTailCommentTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -704,7 +711,7 @@ class ParseDecPcdTailCommentTest(unittest.TestCase):
     #
     def testNormalCase1(self):
         TestCommentLines = \
-        '''## #hello world'''
+            '''## #hello world'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
         LineNum = 0
@@ -725,7 +732,7 @@ class ParseDecPcdTailCommentTest(unittest.TestCase):
     #
     def testNormalCase2(self):
         TestCommentLines = \
-        '''## BASE #hello world'''
+            '''## BASE #hello world'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
         LineNum = 0
@@ -748,7 +755,7 @@ class ParseDecPcdTailCommentTest(unittest.TestCase):
     #
     def testNormalCase3(self):
         TestCommentLines = \
-        '''## BASE  UEFI_APPLICATION #hello world'''
+            '''## BASE  UEFI_APPLICATION #hello world'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
         LineNum = 0
@@ -771,7 +778,7 @@ class ParseDecPcdTailCommentTest(unittest.TestCase):
     #
     def testNormalCase4(self):
         TestCommentLines = \
-        '''## BASE  UEFI_APPLICATION'''
+            '''## BASE  UEFI_APPLICATION'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
         LineNum = 0
@@ -792,7 +799,7 @@ class ParseDecPcdTailCommentTest(unittest.TestCase):
     #
     def testNormalCase5(self):
         TestCommentLines = \
-        ''' # 1 = 128MB, 2 = 256MB, 3 = MAX'''
+            ''' # 1 = 128MB, 2 = 256MB, 3 = MAX'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
         LineNum = 0
@@ -808,14 +815,14 @@ class ParseDecPcdTailCommentTest(unittest.TestCase):
                          '1 = 128MB, 2 = 256MB, 3 = MAX')
         self.failIf(SupModeList)
 
-
     #
     # Error case2: comments with supModList contains valid and invalid
     # module type
     #
+
     def testErrorCase2(self):
         TestCommentLines = \
-        '''## BASE INVALID_MODULE_TYPE #hello world'''
+            '''## BASE INVALID_MODULE_TYPE #hello world'''
 
         CommentList = GetSplitValueList(TestCommentLines, "\n")
         LineNum = 0
@@ -911,6 +918,7 @@ class _IsCopyrightLineTest(unittest.TestCase):
         Line = 'not a Copyright '
         Result = _IsCopyrightLine(Line)
         self.failIf(Result)
+
 
 if __name__ == '__main__':
     Logger.Initialize()

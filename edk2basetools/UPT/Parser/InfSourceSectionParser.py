@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the parser for [Sources] sections in INF file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -22,21 +22,22 @@ from edk2basetools.UPT.Library.Misc import GetSplitValueList
 from edk2basetools.UPT.Object.Parser.InfCommonObject import InfLineCommentObject
 from edk2basetools.UPT.Parser.InfParserMisc import InfParserSectionRoot
 
+
 class InfSourceSectionParser(InfParserSectionRoot):
-    ## InfSourceParser
+    # InfSourceParser
     #
     #
     def InfSourceParser(self, SectionString, InfSectionObject, FileName):
         SectionMacros = {}
-        ValueList     = []
-        SourceList    = []
-        StillCommentFalg  = False
-        HeaderComments    = []
-        LineComment       = None
-        SectionContent  = ''
+        ValueList = []
+        SourceList = []
+        StillCommentFalg = False
+        HeaderComments = []
+        LineComment = None
+        SectionContent = ''
         for Line in SectionString:
             SrcLineContent = Line[0]
-            SrcLineNo      = Line[1]
+            SrcLineNo = Line[1]
 
             if SrcLineContent.strip() == '':
                 continue
@@ -101,9 +102,9 @@ class InfSourceSectionParser(InfParserSectionRoot):
             # Replace with Local section Macro and [Defines] section Macro.
             #
             SrcLineContent = InfExpandMacro(SrcLineContent,
-                                         (FileName, SrcLineContent, SrcLineNo),
-                                         self.FileLocalMacros,
-                                         SectionMacros)
+                                            (FileName, SrcLineContent, SrcLineNo),
+                                            self.FileLocalMacros,
+                                            SectionMacros)
 
             TokenList = GetSplitValueList(SrcLineContent, DT.TAB_VALUE_SPLIT, 4)
             ValueList[0:len(TokenList)] = TokenList
@@ -131,7 +132,7 @@ class InfSourceSectionParser(InfParserSectionRoot):
                 InfSectionObject.SetSupArchList(Item[1])
 
         InfSectionObject.SetAllContent(SectionContent)
-        if not InfSectionObject.SetSources(SourceList, Arch = ArchList):
+        if not InfSectionObject.SetSources(SourceList, Arch=ArchList):
             Logger.Error('InfParser',
                          FORMAT_INVALID,
                          ST.ERR_INF_PARSER_MODULE_SECTION_TYPE_ERROR % ("[Sources]"),

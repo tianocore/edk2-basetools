@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase a meta file table
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -17,11 +17,12 @@ import edk2basetools.Ecc.EccGlobalData as EccGlobalData
 from edk2basetools.Ecc.MetaFileWorkspace.MetaDataTable import Table
 from edk2basetools.Ecc.MetaFileWorkspace.MetaDataTable import ConvertToSqlString
 from edk2basetools.CommonDataClass.DataClass import MODEL_FILE_DSC, MODEL_FILE_DEC, MODEL_FILE_INF, \
-                                      MODEL_FILE_OTHERS
+    MODEL_FILE_OTHERS
+
 
 class MetaFileTable(Table):
-    ## Constructor
-    def __init__(self, Cursor, MetaFile, FileType, TableName, Temporary = False):
+    # Constructor
+    def __init__(self, Cursor, MetaFile, FileType, TableName, Temporary=False):
         self.MetaFile = MetaFile
         self.TblFile = EccGlobalData.gDb.TblFile
         if (FileType == MODEL_FILE_INF):
@@ -38,7 +39,7 @@ class MetaFileTable(Table):
         self.Create(False)
 
 
-## Python class representation of table storing module data
+# Python class representation of table storing module data
 class ModuleTable(MetaFileTable):
     _COLUMN_ = '''
         ID REAL PRIMARY KEY,
@@ -60,11 +61,11 @@ class ModuleTable(MetaFileTable):
     # used as table end flag, in case the changes to database is not committed to db file
     _DUMMY_ = "-1, -1, '====', '====', '====', '====', '====', -1, -1, -1, -1, -1, -1, -1"
 
-    ## Constructor
+    # Constructor
     def __init__(self, Cursor):
         MetaFileTable.__init__(self, Cursor, '', MODEL_FILE_INF, "Inf", False)
 
-    ## Insert a record into table Inf
+    # Insert a record into table Inf
     #
     # @param Model:          Model of a Inf item
     # @param Value1:         Value1 of a Inf item
@@ -80,27 +81,28 @@ class ModuleTable(MetaFileTable):
     # @param Enabled:        If this item enabled
     #
     def Insert(self, Model, Value1, Value2, Value3, Scope1='COMMON', Scope2='COMMON',
-               BelongsToItem=-1, BelongsToFile = -1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1, Enabled=0, Usage=''):
-        (Value1, Value2, Value3, Usage, Scope1, Scope2) = ConvertToSqlString((Value1, Value2, Value3, Usage, Scope1, Scope2))
+               BelongsToItem=-1, BelongsToFile=-1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1, Enabled=0, Usage=''):
+        (Value1, Value2, Value3, Usage, Scope1, Scope2) = ConvertToSqlString(
+            (Value1, Value2, Value3, Usage, Scope1, Scope2))
         return Table.Insert(
-                        self,
-                        Model,
-                        Value1,
-                        Value2,
-                        Value3,
-                        Usage,
-                        Scope1,
-                        Scope2,
-                        BelongsToItem,
-                        BelongsToFile,
-                        StartLine,
-                        StartColumn,
-                        EndLine,
-                        EndColumn,
-                        Enabled
-                        )
+            self,
+            Model,
+            Value1,
+            Value2,
+            Value3,
+            Usage,
+            Scope1,
+            Scope2,
+            BelongsToItem,
+            BelongsToFile,
+            StartLine,
+            StartColumn,
+            EndLine,
+            EndColumn,
+            Enabled
+        )
 
-    ## Query table
+    # Query table
     #
     # @param    Model:      The Model of Record
     # @param    Arch:       The Arch attribute of Record
@@ -120,7 +122,9 @@ class ModuleTable(MetaFileTable):
         SqlCommand = "SELECT %s FROM %s WHERE %s" % (ValueString, self.Table, ConditionString)
         return self.Exec(SqlCommand)
 
-## Python class representation of table storing package data
+# Python class representation of table storing package data
+
+
 class PackageTable(MetaFileTable):
     _COLUMN_ = '''
         ID REAL PRIMARY KEY,
@@ -141,11 +145,11 @@ class PackageTable(MetaFileTable):
     # used as table end flag, in case the changes to database is not committed to db file
     _DUMMY_ = "-1, -1, '====', '====', '====', '====', '====', -1, -1, -1, -1, -1, -1, -1"
 
-    ## Constructor
+    # Constructor
     def __init__(self, Cursor):
         MetaFileTable.__init__(self, Cursor, '', MODEL_FILE_DEC, "Dec", False)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Dec
     #
@@ -163,26 +167,26 @@ class PackageTable(MetaFileTable):
     # @param Enabled:        If this item enabled
     #
     def Insert(self, Model, Value1, Value2, Value3, Scope1='COMMON', Scope2='COMMON',
-               BelongsToItem=-1, BelongsToFile = -1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1, Enabled=0):
+               BelongsToItem=-1, BelongsToFile=-1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1, Enabled=0):
         (Value1, Value2, Value3, Scope1, Scope2) = ConvertToSqlString((Value1, Value2, Value3, Scope1, Scope2))
         return Table.Insert(
-                        self,
-                        Model,
-                        Value1,
-                        Value2,
-                        Value3,
-                        Scope1,
-                        Scope2,
-                        BelongsToItem,
-                        BelongsToFile,
-                        StartLine,
-                        StartColumn,
-                        EndLine,
-                        EndColumn,
-                        Enabled
-                        )
+            self,
+            Model,
+            Value1,
+            Value2,
+            Value3,
+            Scope1,
+            Scope2,
+            BelongsToItem,
+            BelongsToFile,
+            StartLine,
+            StartColumn,
+            EndLine,
+            EndColumn,
+            Enabled
+        )
 
-    ## Query table
+    # Query table
     #
     # @param    Model:  The Model of Record
     # @param    Arch:   The Arch attribute of Record
@@ -199,7 +203,9 @@ class PackageTable(MetaFileTable):
         SqlCommand = "SELECT %s FROM %s WHERE %s" % (ValueString, self.Table, ConditionString)
         return self.Exec(SqlCommand)
 
-## Python class representation of table storing platform data
+# Python class representation of table storing platform data
+
+
 class PlatformTable(MetaFileTable):
     _COLUMN_ = '''
         ID REAL PRIMARY KEY,
@@ -221,11 +227,11 @@ class PlatformTable(MetaFileTable):
     # used as table end flag, in case the changes to database is not committed to db file
     _DUMMY_ = "-1, -1, '====', '====', '====', '====', '====', -1, -1, -1, -1, -1, -1, -1, -1"
 
-    ## Constructor
-    def __init__(self, Cursor, MetaFile = '', FileType = MODEL_FILE_DSC, Temporary = False):
+    # Constructor
+    def __init__(self, Cursor, MetaFile='', FileType=MODEL_FILE_DSC, Temporary=False):
         MetaFileTable.__init__(self, Cursor, MetaFile, FileType, "Dsc", Temporary)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Dsc
     #
@@ -243,28 +249,28 @@ class PlatformTable(MetaFileTable):
     # @param EndColumn:      EndColumn of a Dsc item
     # @param Enabled:        If this item enabled
     #
-    def Insert(self, Model, Value1, Value2, Value3, Scope1='COMMON', Scope2='COMMON', BelongsToItem=-1, BelongsToFile = -1,
+    def Insert(self, Model, Value1, Value2, Value3, Scope1='COMMON', Scope2='COMMON', BelongsToItem=-1, BelongsToFile=-1,
                FromItem=-1, StartLine=-1, StartColumn=-1, EndLine=-1, EndColumn=-1, Enabled=1):
         (Value1, Value2, Value3, Scope1, Scope2) = ConvertToSqlString((Value1, Value2, Value3, Scope1, Scope2))
         return Table.Insert(
-                        self,
-                        Model,
-                        Value1,
-                        Value2,
-                        Value3,
-                        Scope1,
-                        Scope2,
-                        BelongsToItem,
-                        BelongsToFile,
-                        FromItem,
-                        StartLine,
-                        StartColumn,
-                        EndLine,
-                        EndColumn,
-                        Enabled
-                        )
+            self,
+            Model,
+            Value1,
+            Value2,
+            Value3,
+            Scope1,
+            Scope2,
+            BelongsToItem,
+            BelongsToFile,
+            FromItem,
+            StartLine,
+            StartColumn,
+            EndLine,
+            EndColumn,
+            Enabled
+        )
 
-    ## Query table
+    # Query table
     #
     # @param Model:          The Model of Record
     # @param Scope1:         Arch of a Dsc item
@@ -294,22 +300,24 @@ class PlatformTable(MetaFileTable):
         SqlCommand = "SELECT %s FROM %s WHERE %s" % (ValueString, self.Table, ConditionString)
         return self.Exec(SqlCommand)
 
-## Factory class to produce different storage for different type of meta-file
+# Factory class to produce different storage for different type of meta-file
+
+
 class MetaFileStorage(object):
     _FILE_TABLE_ = {
-        MODEL_FILE_INF      :   ModuleTable,
-        MODEL_FILE_DEC      :   PackageTable,
-        MODEL_FILE_DSC      :   PlatformTable,
-        MODEL_FILE_OTHERS   :   MetaFileTable,
+        MODEL_FILE_INF: ModuleTable,
+        MODEL_FILE_DEC: PackageTable,
+        MODEL_FILE_DSC: PlatformTable,
+        MODEL_FILE_OTHERS: MetaFileTable,
     }
 
     _FILE_TYPE_ = {
-        ".inf"  : MODEL_FILE_INF,
-        ".dec"  : MODEL_FILE_DEC,
-        ".dsc"  : MODEL_FILE_DSC,
+        ".inf": MODEL_FILE_INF,
+        ".dec": MODEL_FILE_DEC,
+        ".dsc": MODEL_FILE_DSC,
     }
 
-    ## Constructor
+    # Constructor
     def __new__(Class, Cursor, MetaFile, FileType=None, Temporary=False):
         # no type given, try to find one
         if not FileType:
@@ -326,4 +334,3 @@ class MetaFileStorage(object):
 
         # create the storage object and return it to caller
         return Class._FILE_TABLE_[FileType](*Args)
-

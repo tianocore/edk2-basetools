@@ -1,4 +1,4 @@
-## @file
+# @file
 # Install distribution package.
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -46,11 +46,13 @@ from edk2basetools.UPT.Core.DistributionPackageClass import DistributionPackageC
 from edk2basetools.UPT.Core.PackageFile import PackageFile
 from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
-## CheckForExistingDp
+# CheckForExistingDp
 #
 # Check if there is a same name DP file existing
 # @param Path: The path to be checked
 #
+
+
 def CheckForExistingDp(Path):
     if os.path.exists(Path):
         Logger.Info(ST.MSG_DISTRIBUTION_PACKAGE_FILE_EXISTS % Path)
@@ -59,14 +61,16 @@ def CheckForExistingDp(Path):
         if Input.upper() != "Y":
             Logger.Error("\nMkPkg", ABORT_ERROR, ST.ERR_USER_ABORT, RaiseError=True)
 
-## Tool entrance method
+# Tool entrance method
 #
 # This method mainly dispatch specific methods per the command line options.
 # If no error found, return zero value so the caller of this tool can know
 # if it's executed successfully or not.
 #
 #
-def Main(Options = None):
+
+
+def Main(Options=None):
     if Options is None:
         Logger.Error("\nMkPkg", OPTION_UNKNOWN_ERROR, ST.ERR_OPTION_NOT_FOUND)
     try:
@@ -138,7 +142,7 @@ def Main(Options = None):
                         Logger.Error("\nMkPkg",
                                      UPT_REPKG_ERROR,
                                      ST.ERR_UPT_REPKG_ERROR,
-                                     ExtraData=ST.MSG_REPKG_CONFLICT %\
+                                     ExtraData=ST.MSG_REPKG_CONFLICT %
                                      (FileFullPath, DpGuid, DpVersion, DpName)
                                      )
                     else:
@@ -155,7 +159,7 @@ def Main(Options = None):
             DistPkg.Header.Guid = str(uuid4())
             DistPkg.Header.Version = '1.0'
 
-        DistPkg.GetDistributionPackage(WorkspaceDir, Options.PackageFileList, \
+        DistPkg.GetDistributionPackage(WorkspaceDir, Options.PackageFileList,
                                        Options.ModuleFileList)
         FileList, MetaDataFileList = DistPkg.GetDistributionFileList()
         for File in FileList + MetaDataFileList:
@@ -170,9 +174,8 @@ def Main(Options = None):
                     Logger.Error("\nMkPkg",
                                  UPT_REPKG_ERROR,
                                  ST.ERR_UPT_REPKG_ERROR,
-                                 ExtraData = \
-                                 ST.MSG_REPKG_CONFLICT %(FileFullPath, DpName, \
-                                                         DpGuid, DpVersion)
+                                 ExtraData=ST.MSG_REPKG_CONFLICT % (FileFullPath, DpName,
+                                                                    DpGuid, DpVersion)
                                  )
                 else:
                     DistPkg.Header.RePackage = True
@@ -210,25 +213,25 @@ def Main(Options = None):
     except FatalError as XExcept:
         ReturnCode = XExcept.args[0]
         if Logger.GetLevel() <= Logger.DEBUG_9:
-            Logger.Quiet(ST.MSG_PYTHON_ON % \
+            Logger.Quiet(ST.MSG_PYTHON_ON %
                          (python_version(), platform) + format_exc())
     except KeyboardInterrupt:
         ReturnCode = ABORT_ERROR
         if Logger.GetLevel() <= Logger.DEBUG_9:
-            Logger.Quiet(ST.MSG_PYTHON_ON % \
+            Logger.Quiet(ST.MSG_PYTHON_ON %
                          (python_version(), platform) + format_exc())
     except OSError:
         pass
     except:
         Logger.Error(
-                    "\nMkPkg",
-                    CODE_ERROR,
-                    ST.ERR_UNKNOWN_FATAL_CREATING_ERR % \
-                    Options.PackFileToCreate,
-                    ExtraData=ST.MSG_SEARCH_FOR_HELP % ST.MSG_EDKII_MAIL_ADDR,
-                    RaiseError=False
-                    )
-        Logger.Quiet(ST.MSG_PYTHON_ON % \
+            "\nMkPkg",
+            CODE_ERROR,
+            ST.ERR_UNKNOWN_FATAL_CREATING_ERR %
+            Options.PackFileToCreate,
+            ExtraData=ST.MSG_SEARCH_FOR_HELP % ST.MSG_EDKII_MAIL_ADDR,
+            RaiseError=False
+        )
+        Logger.Quiet(ST.MSG_PYTHON_ON %
                      (python_version(), platform) + format_exc())
         ReturnCode = CODE_ERROR
     finally:
@@ -240,7 +243,7 @@ def Main(Options = None):
     return ReturnCode
 
 
-## CheckFileList
+# CheckFileList
 #
 # @param QualifiedExt:             QualifiedExt
 # @param FileList:                 FileList
@@ -255,7 +258,7 @@ def CheckFileList(QualifiedExt, FileList, ErrorStringExt, ErrorStringFullPath):
     for Item in FileList:
         Ext = os.path.splitext(Item)[1]
         if Ext.upper() != QualifiedExt.upper():
-            Logger.Error("\nMkPkg", OPTION_VALUE_INVALID, \
+            Logger.Error("\nMkPkg", OPTION_VALUE_INVALID,
                          ErrorStringExt % Item)
 
         Item = os.path.normpath(Item)
@@ -266,9 +269,9 @@ def CheckFileList(QualifiedExt, FileList, ErrorStringExt, ErrorStringFullPath):
             Logger.Error("\nMkPkg", OPTION_VALUE_INVALID,
                          ErrorStringFullPath % Item)
         elif not IsValidPath(Item, WorkspaceDir):
-            Logger.Error("\nMkPkg", OPTION_VALUE_INVALID, \
+            Logger.Error("\nMkPkg", OPTION_VALUE_INVALID,
                          ErrorStringExt % Item)
 
         if not os.path.split(Item)[0]:
-            Logger.Error("\nMkPkg", OPTION_VALUE_INVALID, \
+            Logger.Error("\nMkPkg", OPTION_VALUE_INVALID,
                          ST.ERR_INVALID_METAFILE_PATH % Item)

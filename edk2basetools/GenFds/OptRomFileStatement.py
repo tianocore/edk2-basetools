@@ -1,4 +1,4 @@
-## @file
+# @file
 # process OptionROM generation from FILE statement
 #
 #  Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -16,8 +16,10 @@ from .GenFdsGlobalVariable import GenFdsGlobalVariable
 ##
 #
 #
+
+
 class OptRomFileStatement:
-    ## The constructor
+    # The constructor
     #
     #   @param  self        The object pointer
     #
@@ -26,7 +28,7 @@ class OptRomFileStatement:
         self.FileType = None
         self.OverrideAttribs = None
 
-    ## GenFfs() method
+    # GenFfs() method
     #
     #   Generate FFS
     #
@@ -34,7 +36,7 @@ class OptRomFileStatement:
     #   @param  Dict        dictionary contains macro and value pair
     #   @retval string      Generated FFS file name
     #
-    def GenFfs(self, Dict = None, IsMakefile=False):
+    def GenFfs(self, Dict=None, IsMakefile=False):
 
         if Dict is None:
             Dict = {}
@@ -43,6 +45,3 @@ class OptRomFileStatement:
             self.FileName = GenFdsGlobalVariable.ReplaceWorkspaceMacro(self.FileName)
 
         return self.FileName
-
-
-

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class objects of INF file [Depex] section.
 # It will consumed by InfParser.
 #
@@ -19,6 +19,7 @@ from edk2basetools.UPT.Logger import StringTable as ST
 from edk2basetools.UPT.Object.Parser.InfCommonObject import InfSectionCommonDef
 from edk2basetools.UPT.Library.ParserValidate import IsValidArch
 
+
 class InfDepexContentItem():
     def __init__(self):
         self.SectionType = ''
@@ -26,11 +27,13 @@ class InfDepexContentItem():
 
     def SetSectionType(self, SectionType):
         self.SectionType = SectionType
+
     def GetSectionType(self):
         return self.SectionType
 
     def SetSectionString(self, SectionString):
         self.SectionString = SectionString
+
     def GetSectionString(self):
         return self.SectionString
 
@@ -46,38 +49,46 @@ class InfDepexItem():
 
     def SetFeatureFlagExp(self, FeatureFlagExp):
         self.FeatureFlagExp = FeatureFlagExp
+
     def GetFeatureFlagExp(self):
         return self.FeatureFlagExp
 
     def SetSupArch(self, Arch):
         self.SupArch = Arch
+
     def GetSupArch(self):
         return self.SupArch
 
     def SetHelpString(self, HelpString):
         self.HelpString = HelpString
+
     def GetHelpString(self):
         return self.HelpString
 
     def SetModuleType(self, Type):
         self.ModuleType = Type
+
     def GetModuleType(self):
         return self.ModuleType
 
     def SetDepexConent(self, Content):
         self.DepexContent = Content
+
     def GetDepexContent(self):
         return self.DepexContent
 
     def SetInfDepexContentItemList(self, InfDepexContentItemList):
         self.InfDepexContentItemList = InfDepexContentItemList
+
     def GetInfDepexContentItemList(self):
         return self.InfDepexContentItemList
 
-## InfDepexObject
+# InfDepexObject
 #
 #
 #
+
+
 class InfDepexObject(InfSectionCommonDef):
     def __init__(self):
         self.Depex = []

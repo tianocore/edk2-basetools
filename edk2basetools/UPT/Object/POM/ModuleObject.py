@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define a class object to describe a module
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -38,6 +38,8 @@ class BootModeObject(CommonPropertiesObject, HelpTextListObject):
 ##
 # EventObject
 #
+
+
 class EventObject(CommonPropertiesObject, HelpTextListObject):
     def __init__(self):
         self.EventType = ''
@@ -53,6 +55,8 @@ class EventObject(CommonPropertiesObject, HelpTextListObject):
 ##
 # HobObject
 #
+
+
 class HobObject(CommonPropertiesObject, HelpTextListObject):
     def __init__(self):
         self.HobType = ''
@@ -68,6 +72,8 @@ class HobObject(CommonPropertiesObject, HelpTextListObject):
 ##
 # SpecObject
 #
+
+
 class SpecObject(object):
     def __init__(self):
         self.Spec = ''
@@ -85,10 +91,12 @@ class SpecObject(object):
     def GetVersion(self):
         return self.Version
 
-## ModuleHeaderObject
+# ModuleHeaderObject
 #
 # This class defined header items used in Module file
 #
+
+
 class ModuleHeaderObject(IdentificationObject, CommonHeaderObject, BinaryHeaderObject):
     def __init__(self):
         self.IsLibrary = False
@@ -211,6 +219,8 @@ class ModuleHeaderObject(IdentificationObject, CommonHeaderObject, BinaryHeaderO
 ##
 # SourceFileObject
 #
+
+
 class SourceFileObject(CommonPropertiesObject):
     def __init__(self):
         CommonPropertiesObject.__init__(self)
@@ -224,7 +234,7 @@ class SourceFileObject(CommonPropertiesObject):
         self.SourceFile = SourceFile
 
     def GetSourceFile(self):
-        return  self.SourceFile
+        return self.SourceFile
 
     def SetTagName(self, TagName):
         self.TagName = TagName
@@ -284,22 +294,27 @@ class AsBuildLibraryClassObject(object):
 
     def SetLibGuid(self, LibGuid):
         self.LibGuid = LibGuid
+
     def GetLibGuid(self):
         return self.LibGuid
 
     def SetLibVersion(self, LibVersion):
         self.LibVersion = LibVersion
+
     def GetLibVersion(self):
         return self.LibVersion
 
     def SetSupArchList(self, SupArchList):
         self.SupArchList = SupArchList
+
     def GetSupArchList(self):
         return self.SupArchList
 
 ##
 # AsBuiltObject
 #
+
+
 class AsBuiltObject(object):
     def __init__(self):
         #
@@ -347,6 +362,8 @@ class AsBuiltObject(object):
 # BinaryBuildFlag, this object will include those fields that are not
 # covered by the UPT Spec BinaryFile field
 #
+
+
 class BinaryBuildFlagObject(object):
     def __init__(self):
         self.Target = ''
@@ -374,12 +391,15 @@ class BinaryBuildFlagObject(object):
 
     def SetAsBuiltOptionFlags(self, AsBuiltOptionFlags):
         self.AsBuiltOptionFlags = AsBuiltOptionFlags
+
     def GetAsBuiltOptionFlags(self):
         return self.AsBuiltOptionFlags
 
 ##
 # ExternObject
 #
+
+
 class ExternObject(CommonPropertiesObject):
     def __init__(self):
         self.EntryPoint = ''
@@ -415,12 +435,15 @@ class ExternObject(CommonPropertiesObject):
 
     def SetSupModList(self, SupModList):
         self.SupModList = SupModList
+
     def GetSupModList(self):
         return self.SupModList
 
 ##
 # DepexObject
 #
+
+
 class DepexObject(CommonPropertiesObject):
     def __init__(self):
         self.Depex = ''
@@ -442,6 +465,8 @@ class DepexObject(CommonPropertiesObject):
 ##
 # PackageDependencyObject
 #
+
+
 class PackageDependencyObject(GuidVersionObject, CommonPropertiesObject):
     def __init__(self):
         self.Package = ''
@@ -464,6 +489,8 @@ class PackageDependencyObject(GuidVersionObject, CommonPropertiesObject):
 ##
 # BuildOptionObject
 #
+
+
 class BuildOptionObject(CommonPropertiesObject):
     def __init__(self):
         CommonPropertiesObject.__init__(self)
@@ -478,6 +505,8 @@ class BuildOptionObject(CommonPropertiesObject):
 ##
 # ModuleObject
 #
+
+
 class ModuleObject(ModuleHeaderObject):
     def __init__(self):
         #

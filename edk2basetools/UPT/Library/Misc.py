@@ -1,4 +1,4 @@
-## @file
+# @file
 # Common routines used by all tools
 #
 # Copyright (c) 2011 - 2019, Intel Corporation. All rights reserved.<BR>
@@ -46,11 +46,13 @@ from edk2basetools.UPT.Object.POM.CommonObject import TextObject
 from edk2basetools.UPT.Core.FileHook import __FileHookOpen__
 from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
-## Convert GUID string in xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx style to C
+# Convert GUID string in xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx style to C
 # structure style
 #
 # @param      Guid:    The GUID string
 #
+
+
 def GuidStringToGuidStructureString(Guid):
     GuidList = Guid.split('-')
     Result = '{'
@@ -62,18 +64,20 @@ def GuidStringToGuidStructureString(Guid):
     Result += '}}'
     return Result
 
-## Check whether GUID string is of format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+# Check whether GUID string is of format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 #
 # @param      GuidValue:   The GUID value
 #
+
+
 def CheckGuidRegFormat(GuidValue):
-    ## Regular expression used to find out register format of GUID
+    # Regular expression used to find out register format of GUID
     #
     RegFormatGuidPattern = re.compile("^\s*([0-9a-fA-F]){8}-"
-                                       "([0-9a-fA-F]){4}-"
-                                       "([0-9a-fA-F]){4}-"
-                                       "([0-9a-fA-F]){4}-"
-                                       "([0-9a-fA-F]){12}\s*$")
+                                      "([0-9a-fA-F]){4}-"
+                                      "([0-9a-fA-F]){4}-"
+                                      "([0-9a-fA-F]){4}-"
+                                      "([0-9a-fA-F]){12}\s*$")
 
     if RegFormatGuidPattern.match(GuidValue):
         return True
@@ -81,38 +85,40 @@ def CheckGuidRegFormat(GuidValue):
         return False
 
 
-## Convert GUID string in C structure style to
+# Convert GUID string in C structure style to
 # xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 #
 # @param      GuidValue:   The GUID value in C structure format
 #
 def GuidStructureStringToGuidString(GuidValue):
     GuidValueString = GuidValue.lower().replace("{", "").replace("}", "").\
-    replace(" ", "").replace(";", "")
+        replace(" ", "").replace(";", "")
     GuidValueList = GuidValueString.split(",")
     if len(GuidValueList) != 11:
         return ''
     try:
         return "%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x" % (
-                int(GuidValueList[0], 16),
-                int(GuidValueList[1], 16),
-                int(GuidValueList[2], 16),
-                int(GuidValueList[3], 16),
-                int(GuidValueList[4], 16),
-                int(GuidValueList[5], 16),
-                int(GuidValueList[6], 16),
-                int(GuidValueList[7], 16),
-                int(GuidValueList[8], 16),
-                int(GuidValueList[9], 16),
-                int(GuidValueList[10], 16)
-                )
+            int(GuidValueList[0], 16),
+            int(GuidValueList[1], 16),
+            int(GuidValueList[2], 16),
+            int(GuidValueList[3], 16),
+            int(GuidValueList[4], 16),
+            int(GuidValueList[5], 16),
+            int(GuidValueList[6], 16),
+            int(GuidValueList[7], 16),
+            int(GuidValueList[8], 16),
+            int(GuidValueList[9], 16),
+            int(GuidValueList[10], 16)
+        )
     except BaseException:
         return ''
 
-## Create directories
+# Create directories
 #
 # @param      Directory:   The directory name
 #
+
+
 def CreateDirectory(Directory):
     if Directory is None or Directory.strip() == "":
         return True
@@ -123,13 +129,15 @@ def CreateDirectory(Directory):
         return False
     return True
 
-## Remove directories, including files and sub-directories in it
+# Remove directories, including files and sub-directories in it
 #
 # @param      Directory:   The directory name
 #
+
+
 def RemoveDirectory(Directory, Recursively=False):
     if Directory is None or Directory.strip() == "" or not \
-    os.path.exists(Directory):
+            os.path.exists(Directory):
         return
     if Recursively:
         CurrentDirectory = getcwd()
@@ -142,7 +150,7 @@ def RemoveDirectory(Directory, Recursively=False):
         chdir(CurrentDirectory)
     rmdir(Directory)
 
-## Store content in file
+# Store content in file
 #
 # This method is used to save file only when its content is changed. This is
 # quite useful for "make" system to decide what will be re-built and what
@@ -153,6 +161,8 @@ def RemoveDirectory(Directory, Recursively=False):
 # @param      IsBinaryFile:    The flag indicating if the file is binary file
 #                              or not
 #
+
+
 def SaveFileOnChange(File, Content, IsBinaryFile=True):
     if os.path.exists(File):
         if IsBinaryFile:
@@ -186,11 +196,13 @@ def SaveFileOnChange(File, Content, IsBinaryFile=True):
 
     return True
 
-## Get all files of a directory
+# Get all files of a directory
 #
 # @param Root:       Root dir
 # @param SkipList :  The files need be skipped
 #
+
+
 def GetFiles(Root, SkipList=None, FullPath=True):
     OriPath = os.path.normpath(Root)
     FileList = []
@@ -215,7 +227,7 @@ def GetFiles(Root, SkipList=None, FullPath=True):
 
     return FileList
 
-## Get all non-metadata files of a directory
+# Get all non-metadata files of a directory
 #
 # @param Root:       Root Dir
 # @param SkipList :  List of path need be skipped
@@ -223,6 +235,8 @@ def GetFiles(Root, SkipList=None, FullPath=True):
 # @param PrefixPath: the path that need to be added to the files found
 # @return: the list of files found
 #
+
+
 def GetNonMetaDataFiles(Root, SkipList, FullPath, PrefixPath):
     FileList = GetFiles(Root, SkipList, FullPath)
     NewFileList = []
@@ -236,11 +250,13 @@ def GetNonMetaDataFiles(Root, SkipList, FullPath, PrefixPath):
 
     return NewFileList
 
-## Check if given file exists or not
+# Check if given file exists or not
 #
 # @param      File:    File name or path to be checked
 # @param      Dir:     The directory the file is relative to
 #
+
+
 def ValidFile(File, Ext=None):
     File = File.replace('\\', '/')
     if Ext is not None:
@@ -251,12 +267,14 @@ def ValidFile(File, Ext=None):
         return False
     return True
 
-## RealPath
+# RealPath
 #
 # @param      File:    File name or path to be checked
 # @param      Dir:     The directory the file is relative to
 # @param      OverrideDir:     The override directory
 #
+
+
 def RealPath(File, Dir='', OverrideDir=''):
     NewFile = os.path.normpath(os.path.join(Dir, File))
     NewFile = GlobalData.gALL_FILES[NewFile]
@@ -265,22 +283,24 @@ def RealPath(File, Dir='', OverrideDir=''):
         NewFile = GlobalData.gALL_FILES[NewFile]
     return NewFile
 
-## RealPath2
+# RealPath2
 #
 # @param      File:    File name or path to be checked
 # @param      Dir:     The directory the file is relative to
 # @param      OverrideDir:     The override directory
 #
+
+
 def RealPath2(File, Dir='', OverrideDir=''):
     if OverrideDir:
-        NewFile = GlobalData.gALL_FILES[os.path.normpath(os.path.join\
-                                                        (OverrideDir, File))]
+        NewFile = GlobalData.gALL_FILES[os.path.normpath(os.path.join
+                                                         (OverrideDir, File))]
         if NewFile:
             if OverrideDir[-1] == os.path.sep:
                 return NewFile[len(OverrideDir):], NewFile[0:len(OverrideDir)]
             else:
                 return NewFile[len(OverrideDir) + 1:], \
-            NewFile[0:len(OverrideDir)]
+                    NewFile[0:len(OverrideDir)]
 
     NewFile = GlobalData.gALL_FILES[os.path.normpath(os.path.join(Dir, File))]
     if NewFile:
@@ -294,10 +314,12 @@ def RealPath2(File, Dir='', OverrideDir=''):
 
     return None, None
 
-## CommonPath
+# CommonPath
 #
 # @param PathList: PathList
 #
+
+
 def CommonPath(PathList):
     Path1 = min(PathList).split(os.path.sep)
     Path2 = max(PathList).split(os.path.sep)
@@ -306,11 +328,13 @@ def CommonPath(PathList):
             return os.path.sep.join(Path1[:Index])
     return os.path.sep.join(Path1)
 
-## PathClass
+# PathClass
 #
+
+
 class PathClass(object):
     def __init__(self, File='', Root='', AlterRoot='', Type='', IsBinary=False,
-                 Arch='COMMON', ToolChainFamily='', Target='', TagName='', \
+                 Arch='COMMON', ToolChainFamily='', Target='', TagName='',
                  ToolCode=''):
         self.Arch = Arch
         self.File = str(File)
@@ -366,14 +390,14 @@ class PathClass(object):
 
         self._Key = None
 
-    ## Convert the object of this class to a string
+    # Convert the object of this class to a string
     #
     #  Convert member Path of the class to a string
     #
     def __str__(self):
         return self.Path
 
-    ## Override __eq__ function
+    # Override __eq__ function
     #
     # Check whether PathClass are the same
     #
@@ -383,27 +407,28 @@ class PathClass(object):
         else:
             return self.Path == str(Other)
 
-    ## Override __hash__ function
+    # Override __hash__ function
     #
     # Use Path as key in hash table
     #
     def __hash__(self):
         return hash(self.Path)
 
-    ## _GetFileKey
+    # _GetFileKey
     #
     def _GetFileKey(self):
         if self._Key is None:
             self._Key = self.Path.upper()
         return self._Key
-    ## Validate
+    # Validate
     #
+
     def Validate(self, Type='', CaseSensitive=True):
         if GlobalData.gCASE_INSENSITIVE:
             CaseSensitive = False
         if Type and Type.lower() != self.Type:
             return ToolError.FILE_TYPE_MISMATCH, '%s (expect %s but got %s)' % \
-        (self.File, Type, self.Type)
+                (self.File, Type, self.Type)
 
         RealFile, RealRoot = RealPath2(self.File, self.Root, self.AlterRoot)
         if not RealRoot and not RealFile:
@@ -417,12 +442,12 @@ class PathClass(object):
         ErrorCode = 0
         ErrorInfo = ''
         if RealRoot != self.Root or RealFile != self.File:
-            if CaseSensitive and (RealFile != self.File or \
-                                  (RealRoot != self.Root and RealRoot != \
+            if CaseSensitive and (RealFile != self.File or
+                                  (RealRoot != self.Root and RealRoot !=
                                    self.AlterRoot)):
                 ErrorCode = ToolError.FILE_CASE_MISMATCH
                 ErrorInfo = self.File + '\n\t' + RealFile + \
-                 " [in file system]"
+                    " [in file system]"
 
             self.SubDir, self.Name = os.path.split(RealFile)
             self.BaseName, self.Ext = os.path.splitext(self.Name)
@@ -437,10 +462,12 @@ class PathClass(object):
 
     Key = property(_GetFileKey)
 
-## Get current workspace
+# Get current workspace
 #
 #  get WORKSPACE from environment variable if present,if not use current working directory as WORKSPACE
 #
+
+
 def GetWorkspace():
     #
     # check WORKSPACE
@@ -463,7 +490,7 @@ def GetWorkspace():
 
     return WorkspaceDir, mws.PACKAGES_PATH
 
-## Get relative path
+# Get relative path
 #
 #  use full path and workspace to get relative path
 #  the destination of this function is mainly to resolve the root path issue(like c: or c:\)
@@ -471,22 +498,26 @@ def GetWorkspace():
 #  @param Fullpath: a string of fullpath
 #  @param Workspace: a string of workspace
 #
+
+
 def GetRelativePath(Fullpath, Workspace):
 
     RelativePath = ''
     if Workspace.endswith(os.sep):
-        RelativePath = Fullpath[Fullpath.upper().find(Workspace.upper())+len(Workspace):]
+        RelativePath = Fullpath[Fullpath.upper().find(Workspace.upper()) + len(Workspace):]
     else:
-        RelativePath = Fullpath[Fullpath.upper().find(Workspace.upper())+len(Workspace)+1:]
+        RelativePath = Fullpath[Fullpath.upper().find(Workspace.upper()) + len(Workspace) + 1:]
 
     return RelativePath
 
-## Check whether all module types are in list
+# Check whether all module types are in list
 #
 # check whether all module types (SUP_MODULE_LIST) are in list
 #
 # @param ModuleList:  a list of ModuleType
 #
+
+
 def IsAllModuleList(ModuleList):
     NewModuleList = [Module.upper() for Module in ModuleList]
     for Module in SUP_MODULE_LIST:
@@ -495,12 +526,14 @@ def IsAllModuleList(ModuleList):
     else:
         return True
 
-## Dictionary that use comment(GenericComment, TailComment) as value,
+# Dictionary that use comment(GenericComment, TailComment) as value,
 # if a new comment which key already in the dic is inserted, then the
 # comment will be merged.
 # Key is (Statement, SupArch), when TailComment is added, it will ident
 # according to Statement
 #
+
+
 class MergeCommentDict(dict):
     ## []= operator
     #
@@ -509,18 +542,18 @@ class MergeCommentDict(dict):
         if Key in self:
             OrigVal1, OrigVal2 = dict.__getitem__(self, Key)
             Statement = Key[0]
-            dict.__setitem__(self, Key, (OrigVal1 + GenericComment, OrigVal2 \
+            dict.__setitem__(self, Key, (OrigVal1 + GenericComment, OrigVal2
                                          + len(Statement) * ' ' + TailComment))
         else:
             dict.__setitem__(self, Key, (GenericComment, TailComment))
 
-    ## =[] operator
+    # =[] operator
     #
     def __getitem__(self, Key):
         return dict.__getitem__(self, Key)
 
 
-## GenDummyHelpTextObj
+# GenDummyHelpTextObj
 #
 # @retval HelpTxt:   Generated dummy help text object
 #
@@ -530,7 +563,7 @@ def GenDummyHelpTextObj():
     HelpTxt.SetString(' ')
     return HelpTxt
 
-## ConvertVersionToDecimal, the minor version should be within 0 - 99
+# ConvertVersionToDecimal, the minor version should be within 0 - 99
 # <HexVersion>          ::=  "0x" <Major> <Minor>
 # <Major>               ::=  (a-fA-F0-9){4}
 # <Minor>               ::=  (a-fA-F0-9){4}
@@ -539,6 +572,8 @@ def GenDummyHelpTextObj():
 # @param StringIn:  The string contains version defined in INF file.
 #                   It can be Decimal or Hex
 #
+
+
 def ConvertVersionToDecimal(StringIn):
     if IsValidHexVersion(StringIn):
         Value = int(StringIn, 16)
@@ -559,12 +594,14 @@ def ConvertVersionToDecimal(StringIn):
             #
             return StringIn
 
-## GetHelpStringByRemoveHashKey
+# GetHelpStringByRemoveHashKey
 #
 # Remove hash key at the header of string and return the remain.
 #
 # @param String:  The string need to be processed.
 #
+
+
 def GetHelpStringByRemoveHashKey(String):
     ReturnString = ''
     PattenRemoveHashKey = re.compile(r"^[#+\s]+", re.DOTALL)
@@ -585,7 +622,7 @@ def GetHelpStringByRemoveHashKey(String):
 
     return ReturnString
 
-## ConvPathFromAbsToRel
+# ConvPathFromAbsToRel
 #
 # Get relative file path from absolute path.
 #
@@ -593,6 +630,8 @@ def GetHelpStringByRemoveHashKey(String):
 # @param Root:  The string contain the parent path of Path in.
 #
 #
+
+
 def ConvPathFromAbsToRel(Path, Root):
     Path = os.path.normpath(Path)
     Root = os.path.normpath(Root)
@@ -608,13 +647,15 @@ def ConvPathFromAbsToRel(Path, Root):
     else:
         return Path
 
-## ConvertPath
+# ConvertPath
 #
 # Convert special characters to '_', '\' to '/'
 # return converted path: Test!1.inf -> Test_1.inf
 #
 # @param Path: Path to be converted
 #
+
+
 def ConvertPath(Path):
     RetPath = ''
     for Char in Path.strip():
@@ -626,7 +667,7 @@ def ConvertPath(Path):
             RetPath = RetPath + '_'
     return RetPath
 
-## ConvertSpec
+# ConvertSpec
 #
 # during install, convert the Spec string extract from UPD into INF allowable definition,
 # the difference is period is allowed in the former (not the first letter) but not in the latter.
@@ -634,6 +675,8 @@ def ConvertPath(Path):
 #
 # @param SpecStr: SpecStr to be converted
 #
+
+
 def ConvertSpec(SpecStr):
     RetStr = ''
     for Char in SpecStr:
@@ -645,7 +688,7 @@ def ConvertSpec(SpecStr):
     return RetStr
 
 
-## IsEqualList
+# IsEqualList
 #
 # Judge two lists are identical(contain same item).
 # The rule is elements in List A are in List B and elements in List B are in List A.
@@ -669,7 +712,7 @@ def IsEqualList(ListA, ListB):
 
     return True
 
-## ConvertArchList
+# ConvertArchList
 #
 # Convert item in ArchList if the start character is lower case.
 # In UDP spec, Arch is only allowed as: [A-Z]([a-zA-Z0-9])*
@@ -678,6 +721,8 @@ def IsEqualList(ListA, ListB):
 #
 # @return NewList  The ArchList been converted.
 #
+
+
 def ConvertArchList(ArchList):
     NewArchList = []
     if not ArchList:
@@ -693,7 +738,7 @@ def ConvertArchList(ArchList):
 
     return NewArchList
 
-## ProcessLineExtender
+# ProcessLineExtender
 #
 # Process the LineExtender of Line in LineList.
 # If one line ends with a line extender, then it will be combined together with next line.
@@ -702,6 +747,8 @@ def ConvertArchList(ArchList):
 #
 # @return NewList  The ArchList been processed.
 #
+
+
 def ProcessLineExtender(LineList):
     NewList = []
     Count = 0
@@ -716,7 +763,7 @@ def ProcessLineExtender(LineList):
 
     return NewList
 
-## ProcessEdkComment
+# ProcessEdkComment
 #
 # Process EDK style comment in LineList: c style /* */ comment or cpp style // comment
 #
@@ -726,6 +773,8 @@ def ProcessLineExtender(LineList):
 # @return LineList  The LineList been processed.
 # @return FirstPos  Where Edk comment is first found, -1 if not found
 #
+
+
 def ProcessEdkComment(LineList):
     FindEdkBlockComment = False
     Count = 0
@@ -754,7 +803,7 @@ def ProcessEdkComment(LineList):
             if FindEdkBlockComment:
                 if FirstPos == -1:
                     FirstPos = StartPos
-                for Index in range(StartPos, EndPos+1):
+                for Index in range(StartPos, EndPos + 1):
                     LineList[Index] = ''
                 FindEdkBlockComment = False
         elif Line.find("//") != -1 and not Line.startswith("#"):
@@ -769,7 +818,7 @@ def ProcessEdkComment(LineList):
 
     return LineList, FirstPos
 
-## GetLibInstanceInfo
+# GetLibInstanceInfo
 #
 # Get the information from Library Instance INF file.
 #
@@ -777,6 +826,8 @@ def ProcessEdkComment(LineList):
 # @param WorkSpace. The WorkSpace directory used to combined with INF file path.
 #
 # @return GUID, Version
+
+
 def GetLibInstanceInfo(String, WorkSpace, LineNo):
 
     FileGuidString = ""
@@ -855,7 +906,7 @@ def GetLibInstanceInfo(String, WorkSpace, LineNo):
 
         return FileGuidString, VerString
 
-## GetLocalValue
+# GetLocalValue
 #
 # Generate the local value for INF and DEC file. If Lang attribute not present, then use this value.
 # If present, and there is no element without the Lang attribute, and one of the elements has the rfc1766 code is
@@ -867,6 +918,8 @@ def GetLibInstanceInfo(String, WorkSpace, LineNo):
 # @param UseFirstValue: True to use the first value, False to use the last value
 #
 # @return LocalValue
+
+
 def GetLocalValue(ValueList, UseFirstValue=False):
     Value1 = ''
     Value2 = ''
@@ -919,7 +972,7 @@ def GetLocalValue(ValueList, UseFirstValue=False):
     return ''
 
 
-## GetCharIndexOutStr
+# GetCharIndexOutStr
 #
 # Get comment character index outside a string
 #
@@ -941,19 +994,21 @@ def GetCharIndexOutStr(CommentCharacter, Line):
     for Index in range(0, len(Line)):
         if Line[Index] == '"':
             InString = not InString
-        elif Line[Index] == CommentCharacter and InString :
+        elif Line[Index] == CommentCharacter and InString:
             pass
-        elif Line[Index] == CommentCharacter and (Index +1) < len(Line) and Line[Index+1] == CommentCharacter \
-            and not InString :
+        elif Line[Index] == CommentCharacter and (Index + 1) < len(Line) and Line[Index + 1] == CommentCharacter \
+                and not InString:
             return Index
     return -1
 
-## ValidateUNIFilePath
+# ValidateUNIFilePath
 #
 # Check the UNI file path
 #
 # @param FilePath: The UNI file path
 #
+
+
 def ValidateUNIFilePath(Path):
     Suffix = Path[Path.rfind(TAB_SPLIT):]
 
@@ -962,18 +1017,18 @@ def ValidateUNIFilePath(Path):
     #
     if Suffix not in TAB_UNI_FILE_SUFFIXS:
         Logger.Error("Unicode File Parser",
-                        ToolError.FORMAT_INVALID,
-                        Message=ST.ERR_UNI_FILE_SUFFIX_WRONG,
-                        ExtraData=Path)
+                     ToolError.FORMAT_INVALID,
+                     Message=ST.ERR_UNI_FILE_SUFFIX_WRONG,
+                     ExtraData=Path)
 
     #
     # Check if '..' in the file name(without suffix)
     #
     if (TAB_SPLIT + TAB_SPLIT) in Path:
         Logger.Error("Unicode File Parser",
-                        ToolError.FORMAT_INVALID,
-                        Message=ST.ERR_UNI_FILE_NAME_INVALID,
-                        ExtraData=Path)
+                     ToolError.FORMAT_INVALID,
+                     Message=ST.ERR_UNI_FILE_NAME_INVALID,
+                     ExtraData=Path)
 
     #
     # Check if the file name is valid according to the DEC and INF specification
@@ -983,7 +1038,6 @@ def ValidateUNIFilePath(Path):
     InvalidCh = re.sub(Pattern, '', FileName)
     if InvalidCh:
         Logger.Error("Unicode File Parser",
-                        ToolError.FORMAT_INVALID,
-                        Message=ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID,
-                        ExtraData=Path)
-
+                     ToolError.FORMAT_INVALID,
+                     Message=ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID,
+                     ExtraData=Path)

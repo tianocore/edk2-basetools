@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create/update/query/erase table for pcds
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -13,19 +13,21 @@ import edk2basetools.Common.EdkLogger as EdkLogger
 from edk2basetools.Table.Table import Table
 from edk2basetools.Common.StringUtils import ConvertToSqlString
 
-## TablePcd
+# TablePcd
 #
 # This class defined a table used for pcds
 #
 # @param object:       Inherited from object class
 #
 #
+
+
 class TablePcd(Table):
     def __init__(self, Cursor):
         Table.__init__(self, Cursor)
         self.Table = 'Pcd'
 
-    ## Create table
+    # Create table
     #
     # Create table Pcd
     #
@@ -58,7 +60,7 @@ class TablePcd(Table):
                                                       )""" % self.Table
         Table.Create(self, SqlCommand)
 
-    ## Insert table
+    # Insert table
     #
     # Insert a record into table Pcd
     #
@@ -79,7 +81,7 @@ class TablePcd(Table):
         self.ID = self.ID + 1
         (CName, TokenSpaceGuidCName, DatumType) = ConvertToSqlString((CName, TokenSpaceGuidCName, DatumType))
         SqlCommand = """insert into %s values(%s, '%s', '%s', %s, '%s', %s, %s, %s, %s, %s, %s, %s)""" \
-                                           % (self.Table, self.ID, CName, TokenSpaceGuidCName, Token, DatumType, Model, BelongsToFile, BelongsToFunction, StartLine, StartColumn, EndLine, EndColumn)
+            % (self.Table, self.ID, CName, TokenSpaceGuidCName, Token, DatumType, Model, BelongsToFile, BelongsToFunction, StartLine, StartColumn, EndLine, EndColumn)
         Table.Insert(self, SqlCommand)
 
         return self.ID

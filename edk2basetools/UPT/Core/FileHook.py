@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file hooks file and directory creation and removal
 #
 # Copyright (c) 2014 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -18,25 +18,27 @@ from time import sleep
 from edk2basetools.UPT.Library import GlobalData
 
 __built_in_remove__ = os.remove
-__built_in_mkdir__  = os.mkdir
-__built_in_rmdir__  = os.rmdir
-__built_in_chmod__  = os.chmod
-__built_in_open__   = open
+__built_in_mkdir__ = os.mkdir
+__built_in_rmdir__ = os.rmdir
+__built_in_chmod__ = os.chmod
+__built_in_open__ = open
 
-_RMFILE      = 0
-_MKFILE      = 1
-_RMDIR       = 2
-_MKDIR       = 3
-_CHMOD       = 4
+_RMFILE = 0
+_MKFILE = 1
+_RMDIR = 2
+_MKDIR = 3
+_CHMOD = 4
 
 gBACKUPFILE = 'file.backup'
-gEXCEPTION_LIST = ['Conf'+os.sep+'DistributionPackageDatabase.db', '.tmp', gBACKUPFILE]
+gEXCEPTION_LIST = ['Conf' + os.sep + 'DistributionPackageDatabase.db', '.tmp', gBACKUPFILE]
+
 
 class _PathInfo:
     def __init__(self, action, path, mode=-1):
         self.action = action
         self.path = path
         self.mode = mode
+
 
 class RecoverMgr:
     def __init__(self, workspace):
@@ -101,14 +103,14 @@ class RecoverMgr:
             item = self.rlist[index]
             exist = os.path.exists(item.path)
             if item.action == _MKFILE and exist:
-                #if not os.access(item.path, os.W_OK):
+                # if not os.access(item.path, os.W_OK):
                 #    os.chmod(item.path, S_IWUSR)
                 __built_in_remove__(item.path)
             elif item.action == _RMFILE and not exist:
                 if not self.zip:
                     self.zip = zipfile.ZipFile(self.zipfile, 'r', zipfile.ZIP_DEFLATED)
                 arcname = os.path.normpath(item.path)
-                arcname = arcname[len(self.workspace)+1:].encode('utf_8')
+                arcname = arcname[len(self.workspace) + 1:].encode('utf_8')
                 if os.sep != "/" and os.sep in arcname:
                     arcname = arcname.replace(os.sep, '/')
                 mtime = self.zip.getinfo(arcname).date_time
@@ -145,14 +147,15 @@ class RecoverMgr:
     # Check if path needs to be hooked
     def _tryhook(self, path):
         path = os.path.normpath(path)
-        works = self.workspace if str(self.workspace).endswith(os.sep) else (self.workspace  + os.sep)
+        works = self.workspace if str(self.workspace).endswith(os.sep) else (self.workspace + os.sep)
         if not path.startswith(works):
             return ''
         for exceptdir in gEXCEPTION_LIST:
             full = os.path.join(self.workspace, exceptdir)
             if full == path or path.startswith(full + os.sep) or os.path.split(full)[0] == path:
                 return ''
-        return path[len(self.workspace)+1:]
+        return path[len(self.workspace) + 1:]
+
 
 def _hookrm(path):
     if GlobalData.gRECOVERMGR:
@@ -160,11 +163,13 @@ def _hookrm(path):
     else:
         __built_in_remove__(path)
 
+
 def _hookmkdir(path, mode=0o777):
     if GlobalData.gRECOVERMGR:
         GlobalData.gRECOVERMGR.bkmkdir(path, mode)
     else:
         __built_in_mkdir__(path, mode)
+
 
 def _hookrmdir(path):
     if GlobalData.gRECOVERMGR:
@@ -172,10 +177,12 @@ def _hookrmdir(path):
     else:
         __built_in_rmdir__(path)
 
+
 def _hookmkfile(path, mode='r', bufsize=-1):
     if GlobalData.gRECOVERMGR:
         return GlobalData.gRECOVERMGR.bkmkfile(path, mode, bufsize)
     return __built_in_open__(path, mode, bufsize)
+
 
 def _hookchmod(path, mode):
     if GlobalData.gRECOVERMGR:
@@ -183,11 +190,13 @@ def _hookchmod(path, mode):
     else:
         __built_in_chmod__(path, mode)
 
+
 def SetRecoverMgr(mgr):
     GlobalData.gRECOVERMGR = mgr
 
-os.remove   = _hookrm
-os.mkdir    = _hookmkdir
-os.rmdir    = _hookrmdir
-os.chmod    = _hookchmod
-__FileHookOpen__    = _hookmkfile
+
+os.remove = _hookrm
+os.mkdir = _hookmkdir
+os.rmdir = _hookrmdir
+os.chmod = _hookchmod
+__FileHookOpen__ = _hookmkfile

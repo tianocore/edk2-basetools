@@ -5,7 +5,7 @@ from typing.io import TextIO
 import sys
 
 
-## @file
+# @file
 # The file defines the parser for C source files.
 #
 # THIS FILE IS AUTO-GENENERATED. PLEASE DON NOT MODIFY THIS FILE.
@@ -20,6 +20,7 @@ import sys
 
 import edk2basetools.Ecc.CodeFragment as CodeFragment
 import edk2basetools.Ecc.FileProfile as FileProfile
+
 
 def serializedATN():
     with StringIO() as buf:
@@ -423,7 +424,7 @@ class CLexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     T__0 = 1
     T__1 = 2
@@ -531,96 +532,93 @@ class CLexer(Lexer):
     LINE_COMMENT = 104
     LINE_COMMAND = 105
 
-    channelNames = [ u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN" ]
+    channelNames = [u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN"]
 
-    modeNames = [ "DEFAULT_MODE" ]
+    modeNames = ["DEFAULT_MODE"]
 
-    literalNames = [ "<INVALID>",
-            "'{'", "';'", "'typedef'", "','", "'='", "'extern'", "'static'",
-            "'auto'", "'register'", "'STATIC'", "'void'", "'char'", "'short'",
-            "'int'", "'long'", "'float'", "'double'", "'signed'", "'unsigned'",
-            "'}'", "'struct'", "'union'", "':'", "'enum'", "'const'", "'volatile'",
-            "'IN'", "'OUT'", "'OPTIONAL'", "'CONST'", "'UNALIGNED'", "'VOLATILE'",
-            "'GLOBAL_REMOVE_IF_UNREFERENCED'", "'EFIAPI'", "'EFI_BOOTSERVICE'",
-            "'EFI_RUNTIMESERVICE'", "'PACKED'", "'('", "')'", "'['", "']'",
-            "'*'", "'...'", "'+'", "'-'", "'/'", "'%'", "'++'", "'--'",
-            "'sizeof'", "'.'", "'->'", "'&'", "'~'", "'!'", "'*='", "'/='",
-            "'%='", "'+='", "'-='", "'<<='", "'>>='", "'&='", "'^='", "'|='",
-            "'?'", "'||'", "'&&'", "'|'", "'^'", "'=='", "'!='", "'<'",
-            "'>'", "'<='", "'>='", "'<<'", "'>>'", "'__asm__'", "'_asm'",
-            "'__asm'", "'case'", "'default'", "'if'", "'else'", "'switch'",
-            "'while'", "'do'", "'goto'", "'continue'", "'break'", "'return'" ]
+    literalNames = ["<INVALID>",
+                    "'{'", "';'", "'typedef'", "','", "'='", "'extern'", "'static'",
+                    "'auto'", "'register'", "'STATIC'", "'void'", "'char'", "'short'",
+                    "'int'", "'long'", "'float'", "'double'", "'signed'", "'unsigned'",
+                    "'}'", "'struct'", "'union'", "':'", "'enum'", "'const'", "'volatile'",
+                    "'IN'", "'OUT'", "'OPTIONAL'", "'CONST'", "'UNALIGNED'", "'VOLATILE'",
+                    "'GLOBAL_REMOVE_IF_UNREFERENCED'", "'EFIAPI'", "'EFI_BOOTSERVICE'",
+                    "'EFI_RUNTIMESERVICE'", "'PACKED'", "'('", "')'", "'['", "']'",
+                    "'*'", "'...'", "'+'", "'-'", "'/'", "'%'", "'++'", "'--'",
+                    "'sizeof'", "'.'", "'->'", "'&'", "'~'", "'!'", "'*='", "'/='",
+                    "'%='", "'+='", "'-='", "'<<='", "'>>='", "'&='", "'^='", "'|='",
+                    "'?'", "'||'", "'&&'", "'|'", "'^'", "'=='", "'!='", "'<'",
+                    "'>'", "'<='", "'>='", "'<<'", "'>>'", "'__asm__'", "'_asm'",
+                    "'__asm'", "'case'", "'default'", "'if'", "'else'", "'switch'",
+                    "'while'", "'do'", "'goto'", "'continue'", "'break'", "'return'"]
 
-    symbolicNames = [ "<INVALID>",
-            "IDENTIFIER", "CHARACTER_LITERAL", "STRING_LITERAL", "HEX_LITERAL",
-            "DECIMAL_LITERAL", "OCTAL_LITERAL", "FLOATING_POINT_LITERAL",
-            "WS", "BS", "UnicodeVocabulary", "COMMENT", "LINE_COMMENT",
-            "LINE_COMMAND" ]
+    symbolicNames = ["<INVALID>",
+                     "IDENTIFIER", "CHARACTER_LITERAL", "STRING_LITERAL", "HEX_LITERAL",
+                     "DECIMAL_LITERAL", "OCTAL_LITERAL", "FLOATING_POINT_LITERAL",
+                     "WS", "BS", "UnicodeVocabulary", "COMMENT", "LINE_COMMENT",
+                     "LINE_COMMAND"]
 
-    ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6",
-                  "T__7", "T__8", "T__9", "T__10", "T__11", "T__12", "T__13",
-                  "T__14", "T__15", "T__16", "T__17", "T__18", "T__19",
-                  "T__20", "T__21", "T__22", "T__23", "T__24", "T__25",
-                  "T__26", "T__27", "T__28", "T__29", "T__30", "T__31",
-                  "T__32", "T__33", "T__34", "T__35", "T__36", "T__37",
-                  "T__38", "T__39", "T__40", "T__41", "T__42", "T__43",
-                  "T__44", "T__45", "T__46", "T__47", "T__48", "T__49",
-                  "T__50", "T__51", "T__52", "T__53", "T__54", "T__55",
-                  "T__56", "T__57", "T__58", "T__59", "T__60", "T__61",
-                  "T__62", "T__63", "T__64", "T__65", "T__66", "T__67",
-                  "T__68", "T__69", "T__70", "T__71", "T__72", "T__73",
-                  "T__74", "T__75", "T__76", "T__77", "T__78", "T__79",
-                  "T__80", "T__81", "T__82", "T__83", "T__84", "T__85",
-                  "T__86", "T__87", "T__88", "T__89", "T__90", "T__91",
-                  "IDENTIFIER", "LETTER", "CHARACTER_LITERAL", "STRING_LITERAL",
-                  "HEX_LITERAL", "DECIMAL_LITERAL", "OCTAL_LITERAL", "HexDigit",
-                  "IntegerTypeSuffix", "FLOATING_POINT_LITERAL", "Exponent",
-                  "FloatTypeSuffix", "EscapeSequence", "OctalEscape", "UnicodeEscape",
-                  "WS", "BS", "UnicodeVocabulary", "COMMENT", "LINE_COMMENT",
-                  "LINE_COMMAND" ]
+    ruleNames = ["T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6",
+                 "T__7", "T__8", "T__9", "T__10", "T__11", "T__12", "T__13",
+                 "T__14", "T__15", "T__16", "T__17", "T__18", "T__19",
+                 "T__20", "T__21", "T__22", "T__23", "T__24", "T__25",
+                 "T__26", "T__27", "T__28", "T__29", "T__30", "T__31",
+                 "T__32", "T__33", "T__34", "T__35", "T__36", "T__37",
+                 "T__38", "T__39", "T__40", "T__41", "T__42", "T__43",
+                 "T__44", "T__45", "T__46", "T__47", "T__48", "T__49",
+                 "T__50", "T__51", "T__52", "T__53", "T__54", "T__55",
+                 "T__56", "T__57", "T__58", "T__59", "T__60", "T__61",
+                 "T__62", "T__63", "T__64", "T__65", "T__66", "T__67",
+                 "T__68", "T__69", "T__70", "T__71", "T__72", "T__73",
+                 "T__74", "T__75", "T__76", "T__77", "T__78", "T__79",
+                 "T__80", "T__81", "T__82", "T__83", "T__84", "T__85",
+                 "T__86", "T__87", "T__88", "T__89", "T__90", "T__91",
+                 "IDENTIFIER", "LETTER", "CHARACTER_LITERAL", "STRING_LITERAL",
+                 "HEX_LITERAL", "DECIMAL_LITERAL", "OCTAL_LITERAL", "HexDigit",
+                 "IntegerTypeSuffix", "FLOATING_POINT_LITERAL", "Exponent",
+                 "FloatTypeSuffix", "EscapeSequence", "OctalEscape", "UnicodeEscape",
+                 "WS", "BS", "UnicodeVocabulary", "COMMENT", "LINE_COMMENT",
+                 "LINE_COMMAND"]
 
     grammarFileName = "C.g4"
 
     # @param  output= sys.stdout Type: TextIO
-    def __init__(self,input=None,output= sys.stdout):
+    def __init__(self, input=None, output=sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7.1")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
 
+    def printTokenInfo(self, line, offset, tokenText):
+        print(str(line) + ',' + str(offset) + ':' + str(tokenText))
 
-
-    def printTokenInfo(self,line,offset,tokenText):
-        print(str(line)+ ',' + str(offset) + ':' + str(tokenText))
-
-    def StorePredicateExpression(self,StartLine,StartOffset,EndLine,EndOffset,Text):
+    def StorePredicateExpression(self, StartLine, StartOffset, EndLine, EndOffset, Text):
         PredExp = CodeFragment.PredicateExpression(Text, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.PredicateExpressionList.append(PredExp)
 
-    def StoreEnumerationDefinition(self,StartLine,StartOffset,EndLine,EndOffset,Text):
+    def StoreEnumerationDefinition(self, StartLine, StartOffset, EndLine, EndOffset, Text):
         EnumDef = CodeFragment.EnumerationDefinition(Text, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.EnumerationDefinitionList.append(EnumDef)
 
-    def StoreStructUnionDefinition(self,StartLine,StartOffset,EndLine,EndOffset,Text):
+    def StoreStructUnionDefinition(self, StartLine, StartOffset, EndLine, EndOffset, Text):
         SUDef = CodeFragment.StructUnionDefinition(Text, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.StructUnionDefinitionList.append(SUDef)
 
-    def StoreTypedefDefinition(self,StartLine,StartOffset,EndLine,EndOffset,FromText,ToText):
+    def StoreTypedefDefinition(self, StartLine, StartOffset, EndLine, EndOffset, FromText, ToText):
         Tdef = CodeFragment.TypedefDefinition(FromText, ToText, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.TypedefDefinitionList.append(Tdef)
 
-    def StoreFunctionDefinition(self,StartLine,StartOffset,EndLine,EndOffset,ModifierText,DeclText,LeftBraceLine,LeftBraceOffset,DeclLine,DeclOffset):
-        FuncDef = CodeFragment.FunctionDefinition(ModifierText, DeclText, (StartLine, StartOffset), (EndLine, EndOffset), (LeftBraceLine, LeftBraceOffset), (DeclLine, DeclOffset))
+    def StoreFunctionDefinition(self, StartLine, StartOffset, EndLine, EndOffset, ModifierText, DeclText, LeftBraceLine, LeftBraceOffset, DeclLine, DeclOffset):
+        FuncDef = CodeFragment.FunctionDefinition(
+            ModifierText, DeclText, (StartLine, StartOffset), (EndLine, EndOffset), (LeftBraceLine, LeftBraceOffset), (DeclLine, DeclOffset))
         FileProfile.FunctionDefinitionList.append(FuncDef)
 
-    def StoreVariableDeclaration(self,StartLine,StartOffset,EndLine,EndOffset,ModifierText,DeclText):
-        VarDecl = CodeFragment.VariableDeclaration(ModifierText, DeclText, (StartLine, StartOffset), (EndLine, EndOffset))
+    def StoreVariableDeclaration(self, StartLine, StartOffset, EndLine, EndOffset, ModifierText, DeclText):
+        VarDecl = CodeFragment.VariableDeclaration(
+            ModifierText, DeclText, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.VariableDeclarationList.append(VarDecl)
 
-    def StoreFunctionCalling(self,StartLine,StartOffset,EndLine,EndOffset,FuncName,ParamList):
+    def StoreFunctionCalling(self, StartLine, StartOffset, EndLine, EndOffset, FuncName, ParamList):
         FuncCall = CodeFragment.FunctionCalling(FuncName, ParamList, (StartLine, StartOffset), (EndLine, EndOffset))
         FileProfile.FunctionCallingList.append(FuncCall)
-
-
-

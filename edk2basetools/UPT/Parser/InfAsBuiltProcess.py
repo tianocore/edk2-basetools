@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to provide method for process AsBuilt INF file. It will consumed by InfParser
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -7,7 +7,7 @@
 '''
 InfAsBuiltProcess
 '''
-## Import modules
+# Import modules
 #
 
 import os
@@ -27,7 +27,7 @@ from edk2basetools.UPT.Parser.InfParserMisc import InfExpandMacro
 
 from edk2basetools.UPT.Library import DataType as DT
 
-## GetLibInstanceInfo
+# GetLibInstanceInfo
 #
 # Get the information from Library Instance INF file.
 #
@@ -35,6 +35,8 @@ from edk2basetools.UPT.Library import DataType as DT
 # @param WorkSpace. The WorkSpace directory used to combined with INF file path.
 #
 # @return GUID, Version
+
+
 def GetLibInstanceInfo(String, WorkSpace, LineNo, CurrentInfFileName):
 
     FileGuidString = ""
@@ -54,10 +56,10 @@ def GetLibInstanceInfo(String, WorkSpace, LineNo, CurrentInfFileName):
     # To deal with library instance specified by GUID and version
     #
     RegFormatGuidPattern = re.compile("\s*([0-9a-fA-F]){8}-"
-                                       "([0-9a-fA-F]){4}-"
-                                       "([0-9a-fA-F]){4}-"
-                                       "([0-9a-fA-F]){4}-"
-                                       "([0-9a-fA-F]){12}\s*")
+                                      "([0-9a-fA-F]){4}-"
+                                      "([0-9a-fA-F]){4}-"
+                                      "([0-9a-fA-F]){4}-"
+                                      "([0-9a-fA-F]){12}\s*")
     VersionPattern = re.compile('[\t\s]*\d+(\.\d+)?[\t\s]*')
     GuidMatchedObj = RegFormatGuidPattern.search(String)
 
@@ -73,7 +75,6 @@ def GetLibInstanceInfo(String, WorkSpace, LineNo, CurrentInfFileName):
     # To deal with library instance specified by file name
     #
     FileLinesList = GetFileLineContent(String, WorkSpace, LineNo, OriginalString)
-
 
     ReFindFileGuidPattern = re.compile("^\s*FILE_GUID\s*=.*$")
     ReFindVerStringPattern = re.compile("^\s*VERSION_STRING\s*=.*$")
@@ -91,7 +92,7 @@ def GetLibInstanceInfo(String, WorkSpace, LineNo, CurrentInfFileName):
 
     return FileGuidString, VerString
 
-## GetPackageListInfo
+# GetPackageListInfo
 #
 # Get the package information from INF file.
 #
@@ -99,6 +100,8 @@ def GetLibInstanceInfo(String, WorkSpace, LineNo, CurrentInfFileName):
 # @param WorkSpace. The WorkSpace directory used to combined with INF file path.
 #
 # @return GUID, Version
+
+
 def GetPackageListInfo(FileNameString, WorkSpace, LineNo):
     PackageInfoList = []
     DefineSectionMacros = {}
@@ -177,6 +180,7 @@ def GetPackageListInfo(FileNameString, WorkSpace, LineNo):
 
     return PackageInfoList
 
+
 def GetFileLineContent(FileName, WorkSpace, LineNo, OriginalString):
 
     if not LineNo:
@@ -220,10 +224,12 @@ def GetFileLineContent(FileName, WorkSpace, LineNo, OriginalString):
 # Get all INF files from current workspace
 #
 #
+
+
 def GetInfsFromWorkSpace(WorkSpace):
     InfFiles = []
     for top, dirs, files in os.walk(WorkSpace):
-        dirs = dirs # just for pylint
+        dirs = dirs  # just for pylint
         for File in files:
             if File.upper().endswith(".INF"):
                 InfFiles.append(os.path.join(top, File))
@@ -234,6 +240,8 @@ def GetInfsFromWorkSpace(WorkSpace):
 # Get GUID and version from library instance file
 #
 #
+
+
 def GetGuidVerFormLibInstance(Guid, Version, WorkSpace, CurrentInfFileName):
     for InfFile in GetInfsFromWorkSpace(WorkSpace):
         try:
@@ -270,7 +278,7 @@ def GetGuidVerFormLibInstance(Guid, Version, WorkSpace, CurrentInfFileName):
                 VerString = GetSplitValueList(VerString, '=', 1)[1]
 
             if FileGuidString.strip().upper() == Guid.upper() and \
-                VerString.strip().upper() == Version.upper():
+                    VerString.strip().upper() == Version.upper():
                 return Guid, Version
 
         except BaseException:
@@ -279,5 +287,3 @@ def GetGuidVerFormLibInstance(Guid, Version, WorkSpace, CurrentInfFileName):
             InfFileObj.close()
 
     return '', ''
-
-

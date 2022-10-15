@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define class Configuration
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -17,129 +17,131 @@ from edk2basetools.Common.LongFilePathSupport import OpenLongFilePath as open
 
 _ConfigFileToInternalTranslation = {
     # not same
-    "ModifierList":"ModifierSet",
+    "ModifierList": "ModifierSet",
 
     # same
     # please keep this in correct alphabetical order.
-    "AutoCorrect":"AutoCorrect",
-    "BinaryExtList":"BinaryExtList",
-    "CFunctionLayoutCheckAll":"CFunctionLayoutCheckAll",
-    "CFunctionLayoutCheckDataDeclaration":"CFunctionLayoutCheckDataDeclaration",
-    "CFunctionLayoutCheckFunctionBody":"CFunctionLayoutCheckFunctionBody",
-    "CFunctionLayoutCheckFunctionName":"CFunctionLayoutCheckFunctionName",
-    "CFunctionLayoutCheckFunctionPrototype":"CFunctionLayoutCheckFunctionPrototype",
-    "CFunctionLayoutCheckNoInitOfVariable":"CFunctionLayoutCheckNoInitOfVariable",
-    "CFunctionLayoutCheckNoStatic":"CFunctionLayoutCheckNoStatic",
-    "CFunctionLayoutCheckOptionalFunctionalModifier":"CFunctionLayoutCheckOptionalFunctionalModifier",
-    "CFunctionLayoutCheckReturnType":"CFunctionLayoutCheckReturnType",
-    "CheckAll":"CheckAll",
-    "Copyright":"Copyright",
-    "DeclarationDataTypeCheckAll":"DeclarationDataTypeCheckAll",
-    "DeclarationDataTypeCheckEFIAPIModifier":"DeclarationDataTypeCheckEFIAPIModifier",
-    "DeclarationDataTypeCheckEnumeratedType":"DeclarationDataTypeCheckEnumeratedType",
-    "DeclarationDataTypeCheckInOutModifier":"DeclarationDataTypeCheckInOutModifier",
-    "DeclarationDataTypeCheckNoUseCType":"DeclarationDataTypeCheckNoUseCType",
-    "DeclarationDataTypeCheckSameStructure":"DeclarationDataTypeCheckSameStructure",
-    "DeclarationDataTypeCheckStructureDeclaration":"DeclarationDataTypeCheckStructureDeclaration",
-    "DeclarationDataTypeCheckUnionType":"DeclarationDataTypeCheckUnionType",
-    "DoxygenCheckAll":"DoxygenCheckAll",
-    "DoxygenCheckCommand":"DoxygenCheckCommand",
-    "DoxygenCheckCommentDescription":"DoxygenCheckCommentDescription",
-    "DoxygenCheckCommentFormat":"DoxygenCheckCommentFormat",
-    "DoxygenCheckFileHeader":"DoxygenCheckFileHeader",
-    "DoxygenCheckFunctionHeader":"DoxygenCheckFunctionHeader",
-    "GeneralCheckAll":"GeneralCheckAll",
-    "GeneralCheckCarriageReturn":"GeneralCheckCarriageReturn",
-    "GeneralCheckFileExistence":"GeneralCheckFileExistence",
-    "GeneralCheckIndentation":"GeneralCheckIndentation",
-    "GeneralCheckIndentationWidth":"GeneralCheckIndentationWidth",
-    "GeneralCheckLine":"GeneralCheckLine",
-    "GeneralCheckLineEnding":"GeneralCheckLineEnding",
-    "GeneralCheckLineWidth":"GeneralCheckLineWidth",
-    "GeneralCheckNoProgma":"GeneralCheckNoProgma",
-    "GeneralCheckNoTab":"GeneralCheckNoTab",
-    "GeneralCheckNo_Asm":"GeneralCheckNo_Asm",
-    "GeneralCheckNonAcsii":"GeneralCheckNonAcsii",
-    "GeneralCheckTabWidth":"GeneralCheckTabWidth",
-    "GeneralCheckTrailingWhiteSpaceLine":"GeneralCheckTrailingWhiteSpaceLine",
-    "GeneralCheckUni":"GeneralCheckUni",
-    "HeaderCheckAll":"HeaderCheckAll",
-    "HeaderCheckCFileCommentLicenseFormat":"HeaderCheckCFileCommentLicenseFormat",
-    "HeaderCheckCFileCommentReferenceFormat":"HeaderCheckCFileCommentReferenceFormat",
-    "HeaderCheckCFileCommentStartSpacesNum":"HeaderCheckCFileCommentStartSpacesNum",
-    "HeaderCheckFile":"HeaderCheckFile",
-    "HeaderCheckFileCommentEnd":"HeaderCheckFileCommentEnd",
-    "HeaderCheckFunction":"HeaderCheckFunction",
-    "IncludeFileCheckAll":"IncludeFileCheckAll",
-    "IncludeFileCheckData":"IncludeFileCheckData",
-    "IncludeFileCheckIfndefStatement":"IncludeFileCheckIfndefStatement",
-    "IncludeFileCheckSameName":"IncludeFileCheckSameName",
-    "MetaDataFileCheckAll":"MetaDataFileCheckAll",
-    "MetaDataFileCheckBinaryInfInFdf":"MetaDataFileCheckBinaryInfInFdf",
-    "MetaDataFileCheckGenerateFileList":"MetaDataFileCheckGenerateFileList",
-    "MetaDataFileCheckGuidDuplicate":"MetaDataFileCheckGuidDuplicate",
-    "MetaDataFileCheckLibraryDefinedInDec":"MetaDataFileCheckLibraryDefinedInDec",
-    "MetaDataFileCheckLibraryInstance":"MetaDataFileCheckLibraryInstance",
-    "MetaDataFileCheckLibraryInstanceDependent":"MetaDataFileCheckLibraryInstanceDependent",
-    "MetaDataFileCheckLibraryInstanceOrder":"MetaDataFileCheckLibraryInstanceOrder",
-    "MetaDataFileCheckLibraryNoUse":"MetaDataFileCheckLibraryNoUse",
-    "MetaDataFileCheckModuleFileGuidDuplication":"MetaDataFileCheckModuleFileGuidDuplication",
-    "MetaDataFileCheckModuleFileGuidFormat":"MetaDataFileCheckModuleFileGuidFormat",
-    "MetaDataFileCheckModuleFileNoUse":"MetaDataFileCheckModuleFileNoUse",
-    "MetaDataFileCheckModuleFilePcdFormat":"MetaDataFileCheckModuleFilePcdFormat",
-    "MetaDataFileCheckModuleFilePpiFormat":"MetaDataFileCheckModuleFilePpiFormat",
-    "MetaDataFileCheckModuleFileProtocolFormat":"MetaDataFileCheckModuleFileProtocolFormat",
-    "MetaDataFileCheckPathName":"MetaDataFileCheckPathName",
-    "MetaDataFileCheckPathOfGenerateFileList":"MetaDataFileCheckPathOfGenerateFileList",
-    "MetaDataFileCheckPcdDuplicate":"MetaDataFileCheckPcdDuplicate",
-    "MetaDataFileCheckPcdFlash":"MetaDataFileCheckPcdFlash",
-    "MetaDataFileCheckPcdNoUse":"MetaDataFileCheckPcdNoUse",
-    "MetaDataFileCheckPcdType":"MetaDataFileCheckPcdType",
-    "NamingConventionCheckAll":"NamingConventionCheckAll",
-    "NamingConventionCheckDefineStatement":"NamingConventionCheckDefineStatement",
-    "NamingConventionCheckFunctionName":"NamingConventionCheckFunctionName",
-    "NamingConventionCheckIfndefStatement":"NamingConventionCheckIfndefStatement",
-    "NamingConventionCheckPathName":"NamingConventionCheckPathName",
-    "NamingConventionCheckSingleCharacterVariable":"NamingConventionCheckSingleCharacterVariable",
-    "NamingConventionCheckTypedefStatement":"NamingConventionCheckTypedefStatement",
-    "NamingConventionCheckVariableName":"NamingConventionCheckVariableName",
-    "PredicateExpressionCheckAll":"PredicateExpressionCheckAll",
-    "PredicateExpressionCheckBooleanValue":"PredicateExpressionCheckBooleanValue",
-    "PredicateExpressionCheckComparisonNullType":"PredicateExpressionCheckComparisonNullType",
-    "PredicateExpressionCheckNonBooleanOperator":"PredicateExpressionCheckNonBooleanOperator",
-    "ScanOnlyDirList":"ScanOnlyDirList",
-    "SkipDirList":"SkipDirList",
-    "SkipFileList":"SkipFileList",
-    "SmmCommParaCheckAll":"SmmCommParaCheckAll",
-    "SmmCommParaCheckBufferType":"SmmCommParaCheckBufferType",
-    "SpaceCheckAll":"SpaceCheckAll",
-    "SpellingCheckAll":"SpellingCheckAll",
-    "TokenReleaceList":"TokenReleaceList",
-    "UniCheckAll":"UniCheckAll",
-    "UniCheckHelpInfo":"UniCheckHelpInfo",
-    "UniCheckPCDInfo":"UniCheckPCDInfo",
-    "Version":"Version"
-    }
+    "AutoCorrect": "AutoCorrect",
+    "BinaryExtList": "BinaryExtList",
+    "CFunctionLayoutCheckAll": "CFunctionLayoutCheckAll",
+    "CFunctionLayoutCheckDataDeclaration": "CFunctionLayoutCheckDataDeclaration",
+    "CFunctionLayoutCheckFunctionBody": "CFunctionLayoutCheckFunctionBody",
+    "CFunctionLayoutCheckFunctionName": "CFunctionLayoutCheckFunctionName",
+    "CFunctionLayoutCheckFunctionPrototype": "CFunctionLayoutCheckFunctionPrototype",
+    "CFunctionLayoutCheckNoInitOfVariable": "CFunctionLayoutCheckNoInitOfVariable",
+    "CFunctionLayoutCheckNoStatic": "CFunctionLayoutCheckNoStatic",
+    "CFunctionLayoutCheckOptionalFunctionalModifier": "CFunctionLayoutCheckOptionalFunctionalModifier",
+    "CFunctionLayoutCheckReturnType": "CFunctionLayoutCheckReturnType",
+    "CheckAll": "CheckAll",
+    "Copyright": "Copyright",
+    "DeclarationDataTypeCheckAll": "DeclarationDataTypeCheckAll",
+    "DeclarationDataTypeCheckEFIAPIModifier": "DeclarationDataTypeCheckEFIAPIModifier",
+    "DeclarationDataTypeCheckEnumeratedType": "DeclarationDataTypeCheckEnumeratedType",
+    "DeclarationDataTypeCheckInOutModifier": "DeclarationDataTypeCheckInOutModifier",
+    "DeclarationDataTypeCheckNoUseCType": "DeclarationDataTypeCheckNoUseCType",
+    "DeclarationDataTypeCheckSameStructure": "DeclarationDataTypeCheckSameStructure",
+    "DeclarationDataTypeCheckStructureDeclaration": "DeclarationDataTypeCheckStructureDeclaration",
+    "DeclarationDataTypeCheckUnionType": "DeclarationDataTypeCheckUnionType",
+    "DoxygenCheckAll": "DoxygenCheckAll",
+    "DoxygenCheckCommand": "DoxygenCheckCommand",
+    "DoxygenCheckCommentDescription": "DoxygenCheckCommentDescription",
+    "DoxygenCheckCommentFormat": "DoxygenCheckCommentFormat",
+    "DoxygenCheckFileHeader": "DoxygenCheckFileHeader",
+    "DoxygenCheckFunctionHeader": "DoxygenCheckFunctionHeader",
+    "GeneralCheckAll": "GeneralCheckAll",
+    "GeneralCheckCarriageReturn": "GeneralCheckCarriageReturn",
+    "GeneralCheckFileExistence": "GeneralCheckFileExistence",
+    "GeneralCheckIndentation": "GeneralCheckIndentation",
+    "GeneralCheckIndentationWidth": "GeneralCheckIndentationWidth",
+    "GeneralCheckLine": "GeneralCheckLine",
+    "GeneralCheckLineEnding": "GeneralCheckLineEnding",
+    "GeneralCheckLineWidth": "GeneralCheckLineWidth",
+    "GeneralCheckNoProgma": "GeneralCheckNoProgma",
+    "GeneralCheckNoTab": "GeneralCheckNoTab",
+    "GeneralCheckNo_Asm": "GeneralCheckNo_Asm",
+    "GeneralCheckNonAcsii": "GeneralCheckNonAcsii",
+    "GeneralCheckTabWidth": "GeneralCheckTabWidth",
+    "GeneralCheckTrailingWhiteSpaceLine": "GeneralCheckTrailingWhiteSpaceLine",
+    "GeneralCheckUni": "GeneralCheckUni",
+    "HeaderCheckAll": "HeaderCheckAll",
+    "HeaderCheckCFileCommentLicenseFormat": "HeaderCheckCFileCommentLicenseFormat",
+    "HeaderCheckCFileCommentReferenceFormat": "HeaderCheckCFileCommentReferenceFormat",
+    "HeaderCheckCFileCommentStartSpacesNum": "HeaderCheckCFileCommentStartSpacesNum",
+    "HeaderCheckFile": "HeaderCheckFile",
+    "HeaderCheckFileCommentEnd": "HeaderCheckFileCommentEnd",
+    "HeaderCheckFunction": "HeaderCheckFunction",
+    "IncludeFileCheckAll": "IncludeFileCheckAll",
+    "IncludeFileCheckData": "IncludeFileCheckData",
+    "IncludeFileCheckIfndefStatement": "IncludeFileCheckIfndefStatement",
+    "IncludeFileCheckSameName": "IncludeFileCheckSameName",
+    "MetaDataFileCheckAll": "MetaDataFileCheckAll",
+    "MetaDataFileCheckBinaryInfInFdf": "MetaDataFileCheckBinaryInfInFdf",
+    "MetaDataFileCheckGenerateFileList": "MetaDataFileCheckGenerateFileList",
+    "MetaDataFileCheckGuidDuplicate": "MetaDataFileCheckGuidDuplicate",
+    "MetaDataFileCheckLibraryDefinedInDec": "MetaDataFileCheckLibraryDefinedInDec",
+    "MetaDataFileCheckLibraryInstance": "MetaDataFileCheckLibraryInstance",
+    "MetaDataFileCheckLibraryInstanceDependent": "MetaDataFileCheckLibraryInstanceDependent",
+    "MetaDataFileCheckLibraryInstanceOrder": "MetaDataFileCheckLibraryInstanceOrder",
+    "MetaDataFileCheckLibraryNoUse": "MetaDataFileCheckLibraryNoUse",
+    "MetaDataFileCheckModuleFileGuidDuplication": "MetaDataFileCheckModuleFileGuidDuplication",
+    "MetaDataFileCheckModuleFileGuidFormat": "MetaDataFileCheckModuleFileGuidFormat",
+    "MetaDataFileCheckModuleFileNoUse": "MetaDataFileCheckModuleFileNoUse",
+    "MetaDataFileCheckModuleFilePcdFormat": "MetaDataFileCheckModuleFilePcdFormat",
+    "MetaDataFileCheckModuleFilePpiFormat": "MetaDataFileCheckModuleFilePpiFormat",
+    "MetaDataFileCheckModuleFileProtocolFormat": "MetaDataFileCheckModuleFileProtocolFormat",
+    "MetaDataFileCheckPathName": "MetaDataFileCheckPathName",
+    "MetaDataFileCheckPathOfGenerateFileList": "MetaDataFileCheckPathOfGenerateFileList",
+    "MetaDataFileCheckPcdDuplicate": "MetaDataFileCheckPcdDuplicate",
+    "MetaDataFileCheckPcdFlash": "MetaDataFileCheckPcdFlash",
+    "MetaDataFileCheckPcdNoUse": "MetaDataFileCheckPcdNoUse",
+    "MetaDataFileCheckPcdType": "MetaDataFileCheckPcdType",
+    "NamingConventionCheckAll": "NamingConventionCheckAll",
+    "NamingConventionCheckDefineStatement": "NamingConventionCheckDefineStatement",
+    "NamingConventionCheckFunctionName": "NamingConventionCheckFunctionName",
+    "NamingConventionCheckIfndefStatement": "NamingConventionCheckIfndefStatement",
+    "NamingConventionCheckPathName": "NamingConventionCheckPathName",
+    "NamingConventionCheckSingleCharacterVariable": "NamingConventionCheckSingleCharacterVariable",
+    "NamingConventionCheckTypedefStatement": "NamingConventionCheckTypedefStatement",
+    "NamingConventionCheckVariableName": "NamingConventionCheckVariableName",
+    "PredicateExpressionCheckAll": "PredicateExpressionCheckAll",
+    "PredicateExpressionCheckBooleanValue": "PredicateExpressionCheckBooleanValue",
+    "PredicateExpressionCheckComparisonNullType": "PredicateExpressionCheckComparisonNullType",
+    "PredicateExpressionCheckNonBooleanOperator": "PredicateExpressionCheckNonBooleanOperator",
+    "ScanOnlyDirList": "ScanOnlyDirList",
+    "SkipDirList": "SkipDirList",
+    "SkipFileList": "SkipFileList",
+    "SmmCommParaCheckAll": "SmmCommParaCheckAll",
+    "SmmCommParaCheckBufferType": "SmmCommParaCheckBufferType",
+    "SpaceCheckAll": "SpaceCheckAll",
+    "SpellingCheckAll": "SpellingCheckAll",
+    "TokenReleaceList": "TokenReleaceList",
+    "UniCheckAll": "UniCheckAll",
+    "UniCheckHelpInfo": "UniCheckHelpInfo",
+    "UniCheckPCDInfo": "UniCheckPCDInfo",
+    "Version": "Version"
+}
 
-## Configuration
+# Configuration
 #
 # This class is used to define all items in configuration file
 #
 # @param Filename:  The name of configuration file, the default is config.ini
 #
+
+
 class Configuration(object):
     def __init__(self, Filename):
         self.Filename = Filename
 
         self.Version = 0.1
 
-        ## Identify to if check all items
+        # Identify to if check all items
         # 1 - Check all items and ignore all other detailed items
         # 0 - Not check all items, the tool will go through all other detailed items to decide to check or not
         #
         self.CheckAll = 0
 
-        ## Identify to if automatically correct mistakes
+        # Identify to if automatically correct mistakes
         # 1 - Automatically correct
         # 0 - Not automatically correct
         # Only the following check points can be automatically corrected, others not listed below are not supported even it is 1
@@ -156,7 +158,7 @@ class Configuration(object):
         # Defaultly use the definition in class DataType
         self.ModifierSet = MODIFIER_SET
 
-        ## General Checking
+        # General Checking
         self.GeneralCheckAll = 0
 
         # Check whether NO Tab is used, replaced with spaces
@@ -190,10 +192,10 @@ class Configuration(object):
 
         self.CFunctionLayoutCheckNoDeprecated = 1
 
-        ## Space Checking
+        # Space Checking
         self.SpaceCheckAll = 1
 
-        ## Predicate Expression Checking
+        # Predicate Expression Checking
         self.PredicateExpressionCheckAll = 0
 
         # Check whether Boolean values, variable type BOOLEAN not use explicit comparisons to TRUE or FALSE
@@ -203,7 +205,7 @@ class Configuration(object):
         # Check whether a comparison of any pointer to zero must be done via the NULL type
         self.PredicateExpressionCheckComparisonNullType = 1
 
-        ## Headers Checking
+        # Headers Checking
         self.HeaderCheckAll = 0
 
         # Check whether File header exists
@@ -219,7 +221,7 @@ class Configuration(object):
         # Check whether C File header Comment have the License immediately after the ""Copyright"" line
         self.HeaderCheckCFileCommentLicenseFormat = 1
 
-        ## C Function Layout Checking
+        # C Function Layout Checking
         self.CFunctionLayoutCheckAll = 0
 
         # Check whether return type exists and in the first line
@@ -240,10 +242,10 @@ class Configuration(object):
         # Check whether no use of STATIC for functions
         self.CFunctionLayoutCheckNoStatic = 1
 
-        ## Include Files Checking
+        # Include Files Checking
         self.IncludeFileCheckAll = 0
 
-        #Check whether having include files with same name
+        # Check whether having include files with same name
         self.IncludeFileCheckSameName = 1
         # Check whether all include file contents is guarded by a #ifndef statement.
         # the #ifndef must be the first line of code following the file header comment
@@ -253,7 +255,7 @@ class Configuration(object):
         # Check whether include files NOT contain code or define data variables
         self.IncludeFileCheckData = 1
 
-        ## Declarations and Data Types Checking
+        # Declarations and Data Types Checking
         self.DeclarationDataTypeCheckAll = 0
 
         # Check whether no use of int, unsigned, char, void, long in any .c, .h or .asl files.
@@ -271,7 +273,7 @@ class Configuration(object):
         # Check whether Union Type has a 'typedef' and the name is capital
         self.DeclarationDataTypeCheckUnionType = 1
 
-        ## Naming Conventions Checking
+        # Naming Conventions Checking
         self.NamingConventionCheckAll = 0
 
         # Check whether only capital letters are used for #define declarations
@@ -293,7 +295,7 @@ class Configuration(object):
         # Check whether NO use short variable name with single character
         self.NamingConventionCheckSingleCharacterVariable = 1
 
-        ## Doxygen Checking
+        # Doxygen Checking
         self.DoxygenCheckAll = 0
 
         # Check whether the file headers are followed Doxygen special documentation blocks in section 2.3.5
@@ -308,7 +310,7 @@ class Configuration(object):
         # Check whether only Doxygen commands allowed to mark the code are @bug and @todo.
         self.DoxygenCheckCommand = 1
 
-        ## Meta-Data File Processing Checking
+        # Meta-Data File Processing Checking
         self.MetaDataFileCheckAll = 0
 
         # Check whether each file defined in meta-data exists
@@ -398,7 +400,7 @@ class Configuration(object):
         Filepath = os.path.normpath(self.Filename)
         if not os.path.isfile(Filepath):
             ErrorMsg = "Can't find configuration file '%s'" % Filepath
-            EdkLogger.error("Ecc", EdkLogger.ECC_ERROR, ErrorMsg, File = Filepath)
+            EdkLogger.error("Ecc", EdkLogger.ECC_ERROR, ErrorMsg, File=Filepath)
 
         LineNo = 0
         for Line in open(Filepath, 'r'):
@@ -408,7 +410,7 @@ class Configuration(object):
                 List = GetSplitValueList(Line, TAB_EQUAL_SPLIT)
                 if List[0] not in _ConfigFileToInternalTranslation:
                     ErrorMsg = "Invalid configuration option '%s' was found" % List[0]
-                    EdkLogger.error("Ecc", EdkLogger.ECC_ERROR, ErrorMsg, File = Filepath, Line = LineNo)
+                    EdkLogger.error("Ecc", EdkLogger.ECC_ERROR, ErrorMsg, File=Filepath, Line=LineNo)
                 assert _ConfigFileToInternalTranslation[List[0]] in self.__dict__
                 if List[0] == 'ModifierList':
                     List[1] = GetSplitValueList(List[1], TAB_COMMA_SPLIT)
@@ -430,6 +432,7 @@ class Configuration(object):
         print(self.Filename)
         for Key in self.__dict__.keys():
             print(Key, '=', self.__dict__[Key])
+
 
 #
 # test that our dict and out class still match in contents.

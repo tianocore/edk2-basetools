@@ -1,6 +1,6 @@
-## @file
+# @file
 # This file is used to define class objects for DEC file. It will consumed by
-#DecParser
+# DecParser
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
 #
@@ -10,7 +10,7 @@
 DecObject
 '''
 
-## Import modules
+# Import modules
 #
 import os.path
 
@@ -25,51 +25,55 @@ from edk2basetools.UPT.Library.DataType import TAB_USER_EXTENSIONS
 from edk2basetools.UPT.Library.DataType import TAB_PCDS
 from edk2basetools.UPT.Library.DataType import TAB_ARCH_COMMON
 
-## _DecComments
+# _DecComments
 #
 # Base class for all data objects which have head and tail comments
 #
+
+
 class _DecComments:
 
-    ##constructor
+    # constructor
     #
     def __init__(self):
         self._HeadComment = []
         self._TailComment = []
 
-    ## GetComments
+    # GetComments
     #
     def GetComments(self):
         return self._HeadComment, self._TailComment
 
-    ## GetHeadComment
+    # GetHeadComment
     #
     def GetHeadComment(self):
         return self._HeadComment
 
-    ## SetHeadComment
+    # SetHeadComment
     #
     # @param Comment: comment content
     #
     def SetHeadComment(self, Comment):
         self._HeadComment = Comment
 
-    ## GetTailComment
+    # GetTailComment
     #
     def GetTailComment(self):
         return self._TailComment
 
-    ## SetTailComment
+    # SetTailComment
     #
     # @param Comment: comment content
     #
     def SetTailComment(self, Comment):
         self._TailComment = Comment
 
-## _DecBaseObject
+# _DecBaseObject
 #
 # Base class that hold common info
 #
+
+
 class _DecBaseObject(_DecComments):
     def __init__(self, PkgFullName):
         _DecComments.__init__(self)
@@ -82,27 +86,27 @@ class _DecBaseObject(_DecComments):
         self._PackagePath, self._FileName = os.path.split(PkgFullName)
         self._SecName = ''
 
-    ## GetSectionName
+    # GetSectionName
     #
     def GetSectionName(self):
         return self._SecName
 
-    ## GetPackagePath
+    # GetPackagePath
     #
     def GetPackagePath(self):
         return self._PackagePath
 
-    ## GetPackageFile
+    # GetPackageFile
     #
     def GetPackageFile(self):
         return self._FileName
 
-    ## GetPackageFullName
+    # GetPackageFullName
     #
     def GetPackageFullName(self):
         return self._PkgFullName
 
-    ## AddItem
+    # AddItem
     # Add sub-item to current object, sub-class should override it if needed
     #
     # @param Item: Sub-item to be added
@@ -122,7 +126,7 @@ class _DecBaseObject(_DecComments):
             ArchModule.append(Ele[1])
         Item.ArchAndModuleType = ArchModule
 
-    ## _GetItemByArch
+    # _GetItemByArch
     # Helper class used by sub-class
     # @param Arch:  arch
     #
@@ -132,7 +136,7 @@ class _DecBaseObject(_DecComments):
             return []
         return self.ValueDict[Arch]
 
-    ## _GetAllItems
+    # _GetAllItems
     # Get all items, union all arches, items in returned list are unique
     #
     def _GetAllItems(self):
@@ -143,10 +147,12 @@ class _DecBaseObject(_DecComments):
                     Retlst.append(Item)
         return Retlst
 
-## _DecItemBaseObject
+# _DecItemBaseObject
 #
 # Module type and arch the item belongs to
 #
+
+
 class _DecItemBaseObject(_DecComments):
     def __init__(self):
         _DecComments.__init__(self)
@@ -155,7 +161,7 @@ class _DecItemBaseObject(_DecComments):
         #
         self.ArchAndModuleType = []
 
-    ## GetArchList
+    # GetArchList
     #
     def GetArchList(self):
         ArchSet = set()
@@ -163,10 +169,12 @@ class _DecItemBaseObject(_DecComments):
             ArchSet.add(Arch)
         return list(ArchSet)
 
-## DecDefineObject
+# DecDefineObject
 #
 # Class to hold define section information
 #
+
+
 class DecDefineObject(_DecBaseObject):
     def __init__(self, PkgFullName):
         _DecBaseObject.__init__(self, PkgFullName)
@@ -177,7 +185,7 @@ class DecDefineObject(_DecBaseObject):
         self._PkgVersion = ''
         self._PkgUniFile = ''
 
-    ## GetPackageSpecification
+    # GetPackageSpecification
     #
     def GetPackageSpecification(self):
         return self._DecSpec
@@ -185,7 +193,7 @@ class DecDefineObject(_DecBaseObject):
     def SetPackageSpecification(self, DecSpec):
         self._DecSpec = DecSpec
 
-    ## GetPackageName
+    # GetPackageName
     #
     def GetPackageName(self):
         return self._PkgName
@@ -193,7 +201,7 @@ class DecDefineObject(_DecBaseObject):
     def SetPackageName(self, PkgName):
         self._PkgName = PkgName
 
-    ## GetPackageGuid
+    # GetPackageGuid
     #
     def GetPackageGuid(self):
         return self._PkgGuid
@@ -201,7 +209,7 @@ class DecDefineObject(_DecBaseObject):
     def SetPackageGuid(self, PkgGuid):
         self._PkgGuid = PkgGuid
 
-    ## GetPackageVersion
+    # GetPackageVersion
     #
     def GetPackageVersion(self):
         return self._PkgVersion
@@ -209,7 +217,7 @@ class DecDefineObject(_DecBaseObject):
     def SetPackageVersion(self, PkgVersion):
         self._PkgVersion = PkgVersion
 
-    ## GetPackageUniFile
+    # GetPackageUniFile
     #
     def GetPackageUniFile(self):
         return self._PkgUniFile
@@ -217,109 +225,119 @@ class DecDefineObject(_DecBaseObject):
     def SetPackageUniFile(self, PkgUniFile):
         self._PkgUniFile = PkgUniFile
 
-    ## GetDefines
+    # GetDefines
     #
     def GetDefines(self):
         return self._GetItemByArch(TAB_ARCH_COMMON)
 
-    ## GetAllDefines
+    # GetAllDefines
     #
     def GetAllDefines(self):
         return self._GetAllItems()
 
-## DecDefineItemObject
+# DecDefineItemObject
 #
 # Each item of define section
 #
+
+
 class DecDefineItemObject(_DecItemBaseObject):
     def __init__(self):
         _DecItemBaseObject.__init__(self)
         self.Key = ''
         self.Value = ''
 
-    ## __hash__
+    # __hash__
     #
     def __hash__(self):
         return hash(self.Key + self.Value)
 
-    ## __eq__
+    # __eq__
     #
     def __eq__(self, Other):
         return id(self) == id(Other)
 
-    ## __str__
+    # __str__
     #
     def __str__(self):
         return str(self.ArchAndModuleType) + '\n' + self.Key + \
             ' = ' + self.Value
 
-## DecIncludeObject
+# DecIncludeObject
 #
 # Class to hold include section info
 #
+
+
 class DecIncludeObject(_DecBaseObject):
     def __init__(self, PkgFullName):
         _DecBaseObject.__init__(self, PkgFullName)
         self._SecName = TAB_INCLUDES.upper()
 
-    ## GetIncludes
+    # GetIncludes
     #
     def GetIncludes(self, Arch=TAB_ARCH_COMMON):
         return self._GetItemByArch(Arch)
 
-    ## GetAllIncludes
+    # GetAllIncludes
     #
     def GetAllIncludes(self):
         return self._GetAllItems()
 
-## DecIncludeItemObject
+# DecIncludeItemObject
 #
 # Item of include section
 #
+
+
 class DecIncludeItemObject(_DecItemBaseObject):
     def __init__(self, File, Root):
         self.File = File
         self.Root = Root
         _DecItemBaseObject.__init__(self)
 
-    ## __hash__
+    # __hash__
     #
     def __hash__(self):
         return hash(self.File)
 
-    ## __eq__
+    # __eq__
     #
     def __eq__(self, Other):
         return id(self) == id(Other)
 
-    ## __str__
+    # __str__
     #
     def __str__(self):
         return self.File
 
-## DecLibraryclassObject
+# DecLibraryclassObject
 #
 # Class to hold library class section info
 #
+
+
 class DecLibraryclassObject(_DecBaseObject):
     def __init__(self, PkgFullName):
         _DecBaseObject.__init__(self, PkgFullName)
         self._PackagePath, self._FileName = os.path.split(PkgFullName)
         self._SecName = TAB_LIBRARY_CLASSES.upper()
 
-    ## GetLibraryclasses
+    # GetLibraryclasses
     #
     def GetLibraryclasses(self, Arch=TAB_ARCH_COMMON):
         return self._GetItemByArch(Arch)
 
-    ## GetAllLibraryclasses
+    # GetAllLibraryclasses
     #
     def GetAllLibraryclasses(self):
         return self._GetAllItems()
 
-## DecLibraryclassItemObject
+# DecLibraryclassItemObject
 # Item of library class section
 #
+
+
 class DecLibraryclassItemObject(_DecItemBaseObject):
     def __init__(self, Libraryclass, File, Root):
         _DecItemBaseObject.__init__(self)
@@ -327,30 +345,32 @@ class DecLibraryclassItemObject(_DecItemBaseObject):
         self.Root = Root
         self.Libraryclass = Libraryclass
 
-    ## __hash__
+    # __hash__
     #
     def __hash__(self):
         return hash(self.Libraryclass + self.File)
 
-    ## __eq__
+    # __eq__
     #
     def __eq__(self, Other):
         return id(self) == id(Other)
 
-    ## __str__
+    # __str__
     #
     def __str__(self):
         return self.Libraryclass + '|' + self.File
 
-## DecPcdObject
+# DecPcdObject
 # Class to hold PCD section
 #
+
+
 class DecPcdObject(_DecBaseObject):
     def __init__(self, PkgFullName):
         _DecBaseObject.__init__(self, PkgFullName)
         self._SecName = TAB_PCDS.upper()
 
-    ## AddItem
+    # AddItem
     #
     # Diff from base class
     #
@@ -371,7 +391,7 @@ class DecPcdObject(_DecBaseObject):
             ArchModule.append([Type, Arch])
         Item.ArchAndModuleType = ArchModule
 
-    ## GetPcds
+    # GetPcds
     #
     # @param PcdType: PcdType
     # @param Arch: Arch
@@ -383,7 +403,7 @@ class DecPcdObject(_DecBaseObject):
             return []
         return self.ValueDict[PcdType, Arch]
 
-    ## GetPcdsByType
+    # GetPcdsByType
     #
     # @param PcdType: PcdType
     #
@@ -398,12 +418,14 @@ class DecPcdObject(_DecBaseObject):
                     Retlst.append(Item)
         return Retlst
 
-## DecPcdItemObject
+# DecPcdItemObject
 #
 # Item of PCD section
 #
 # @param _DecItemBaseObject: _DecItemBaseObject object
 #
+
+
 class DecPcdItemObject(_DecItemBaseObject):
     def __init__(self, Guid, Name, Value, DatumType,
                  Token, MaxDatumSize=''):
@@ -415,17 +437,17 @@ class DecPcdItemObject(_DecItemBaseObject):
         self.TokenValue = Token
         self.MaxDatumSize = MaxDatumSize
 
-    ## __hash__
+    # __hash__
     #
     def __hash__(self):
         return hash(self.TokenSpaceGuidCName + self.TokenCName)
 
-    ## __eq__
+    # __eq__
     #
     def __eq__(self, Other):
         return id(self) == id(Other)
 
-    ## GetArchListOfType
+    # GetArchListOfType
     #
     # @param PcdType: PcdType
     #
@@ -438,35 +460,39 @@ class DecPcdItemObject(_DecItemBaseObject):
             ItemSet.add(Arch)
         return list(ItemSet)
 
-## DecGuidObjectBase
+# DecGuidObjectBase
 #
 # Base class for PPI, Protocol, and GUID.
 # Hold same data but has different method for clarification in sub-class
 #
 # @param _DecBaseObject: Dec Base Object
 #
+
+
 class DecGuidObjectBase(_DecBaseObject):
     def __init__(self, PkgFullName):
         _DecBaseObject.__init__(self, PkgFullName)
 
-    ## GetGuidStyleItems
+    # GetGuidStyleItems
     #
     # @param Arch: Arch
     #
     def GetGuidStyleItems(self, Arch=TAB_ARCH_COMMON):
         return self._GetItemByArch(Arch)
 
-    ## GetGuidStyleAllItems
+    # GetGuidStyleAllItems
     #
     def GetGuidStyleAllItems(self):
         return self._GetAllItems()
 
-## DecGuidItemObject
+# DecGuidItemObject
 #
 # Item of GUID, PPI and Protocol section
 #
 # @param _DecItemBaseObject: Dec Item Base Object
 #
+
+
 class DecGuidItemObject(_DecItemBaseObject):
     def __init__(self, CName, GuidCValue, GuidString):
         _DecItemBaseObject.__init__(self)
@@ -474,103 +500,111 @@ class DecGuidItemObject(_DecItemBaseObject):
         self.GuidCValue = GuidCValue
         self.GuidString = GuidString
 
-    ## __hash__
+    # __hash__
     #
     def __hash__(self):
         return hash(self.GuidCName)
 
-    ## __eq__
+    # __eq__
     #
     def __eq__(self, Other):
         return id(self) == id(Other)
 
-    ## __str__
+    # __str__
     #
     def __str__(self):
         return self.GuidCName + ' = ' + self.GuidCValue
 
-## DecGuidObject
+# DecGuidObject
 #
 # Class for GUID section
 #
 # @param DecGuidObjectBase: Dec Guid Object Base
 #
+
+
 class DecGuidObject(DecGuidObjectBase):
     def __init__(self, PkgFullName):
         DecGuidObjectBase.__init__(self, PkgFullName)
         self._SecName = TAB_GUIDS.upper()
 
-    ## GetGuids
+    # GetGuids
     #
     # @param Arch: Arch
     #
     def GetGuids(self, Arch=TAB_ARCH_COMMON):
         return self._GetItemByArch(Arch)
 
-    ## GetAllGuids
+    # GetAllGuids
     #
     def GetAllGuids(self):
         return self._GetAllItems()
 
-## DecPpiObject
+# DecPpiObject
 #
 # Class for PPI section
 #
 # @param DecGuidObjectBase: Dec Guid Object Base
 #
+
+
 class DecPpiObject(DecGuidObjectBase):
     def __init__(self, PkgFullName):
         DecGuidObjectBase.__init__(self, PkgFullName)
         self._SecName = TAB_PPIS.upper()
 
-    ## GetPpis
+    # GetPpis
     #
     # @param Arch: Arch
     #
     def GetPpis(self, Arch=TAB_ARCH_COMMON):
         return self._GetItemByArch(Arch)
 
-    ## GetAllPpis
+    # GetAllPpis
     #
     def GetAllPpis(self):
         return self._GetAllItems()
 
-## DecProtocolObject
+# DecProtocolObject
 #
 # Class for protocol section
 #
 # @param DecGuidObjectBase: Dec Guid Object Base
 #
+
+
 class DecProtocolObject(DecGuidObjectBase):
     def __init__(self, PkgFullName):
         DecGuidObjectBase.__init__(self, PkgFullName)
         self._SecName = TAB_PROTOCOLS.upper()
 
-    ## GetProtocols
+    # GetProtocols
     #
     # @param Arch: Arch
     #
     def GetProtocols(self, Arch=TAB_ARCH_COMMON):
         return self._GetItemByArch(Arch)
 
-    ## GetAllProtocols
+    # GetAllProtocols
     #
     def GetAllProtocols(self):
         return self._GetAllItems()
 
-## DecUserExtensionObject
+# DecUserExtensionObject
 #
 # Class for user extension section
 #
 # @param _DecBaseObject: Dec Guid Object Base
 #
+
+
 class DecUserExtensionObject(_DecBaseObject):
     def __init__(self, PkgFullName):
         _DecBaseObject.__init__(self, PkgFullName)
         self._SecName = TAB_USER_EXTENSIONS.upper()
         self.ItemList = []
 
-    ## GetProtocols
+    # GetProtocols
     #
     # @param Item: Item
     # @param Scope: Scope
@@ -582,13 +616,13 @@ class DecUserExtensionObject(_DecBaseObject):
             return
         self.ItemList.append(Item)
 
-    ## GetAllUserExtensions
+    # GetAllUserExtensions
     #
     def GetAllUserExtensions(self):
         return self.ItemList
 
 
-## DecUserExtensionItemObject
+# DecUserExtensionItemObject
 # Item for user extension section
 #
 # @param _DecItemBaseObject: Dec Item Base Object
@@ -599,7 +633,3 @@ class DecUserExtensionItemObject(_DecItemBaseObject):
         self.UserString = ''
         self.UserId = ''
         self.IdString = ''
-
-
-
-

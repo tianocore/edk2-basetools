@@ -1,4 +1,4 @@
-## @file
+# @file
 #
 # Convert an AML file to a .c file containing the AML bytecode stored in a
 # C array.
@@ -24,10 +24,12 @@ Tables\Dsdt.c will contain a C array named "dsdt_aml_code" that contains
 the AML bytecode.
 """
 
-## Parse the command line arguments.
+# Parse the command line arguments.
 #
 # @retval A argparse.NameSpace instance, containing parsed values.
 #
+
+
 def ParseArgs():
     # Initialize the parser.
     Parser = argparse.ArgumentParser(description=__description__)
@@ -50,7 +52,8 @@ def ParseArgs():
         with open(Args.InputFile, "rb") as fIn:
             Signature = str(fIn.read(4))
             if ("DSDT" not in Signature) and ("SSDT" not in Signature):
-                EdkLogger.info("Invalid file type. File does not have a valid DSDT or SSDT signature: {}".format(Args.InputFile))
+                EdkLogger.info(
+                    "Invalid file type. File does not have a valid DSDT or SSDT signature: {}".format(Args.InputFile))
                 return None
 
     # Get the basename of the input file.
@@ -70,7 +73,7 @@ def ParseArgs():
 
     return Args
 
-## Convert an AML file to a .c file containing the AML bytecode stored
+# Convert an AML file to a .c file containing the AML bytecode stored
 #  in a C array.
 #
 # @param  InputFile     Path to the input AML file.
@@ -78,11 +81,13 @@ def ParseArgs():
 # @param  BaseName      Base name of the input file.
 #                       This is also the name of the generated .c file.
 #
+
+
 def AmlToC(InputFile, OutputFile, BaseName):
 
     ArrayName = BaseName.lower() + "_aml_code"
     FileHeader =\
-"""
+        """
 // This file has been generated from:
 //   -Python script: {}
 //   -Input AML file: {}
@@ -105,7 +110,7 @@ def AmlToC(InputFile, OutputFile, BaseName):
             byte = fIn.read(1)
         fOut.write("\n};\n")
 
-## Main method
+# Main method
 #
 # This method:
 #   1-  Initialize an EdkLogger instance.
@@ -116,6 +121,8 @@ def AmlToC(InputFile, OutputFile, BaseName):
 # @retval 0     Success.
 # @retval 1     Error.
 #
+
+
 def Main():
     # Initialize an EdkLogger instance.
     EdkLogger.Initialize()
@@ -135,8 +142,10 @@ def Main():
 
     return 0
 
+
 if __name__ == '__main__':
     r = Main()
     # 0-127 is a safe return range, and 1 is a standard default error
-    if r < 0 or r > 127: r = 1
+    if r < 0 or r > 127:
+        r = 1
     sys.exit(r)

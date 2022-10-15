@@ -1,4 +1,4 @@
-## @file
+# @file
 # Build cache intermediate result and state
 #
 # Copyright (c) 2019 - 2020, Intel Corporation. All rights reserved.<BR>
@@ -15,6 +15,7 @@ import sys
 gIsFileMap = {}
 
 DEP_FILE_TAIL = "# Updated \n"
+
 
 class IncludesAutoGen():
     """ This class is to manage the dependent files witch are used in Makefile to support incremental build.
@@ -34,6 +35,7 @@ class IncludesAutoGen():
             2. ASM PP use c preprocessor to find out all included files with #include format and generate a deps file
             3. build tool updates the .deps file
     """
+
     def __init__(self, makefile_folder, ModuleAuto):
         self.d_folder = makefile_folder
         self.makefile_folder = makefile_folder
@@ -42,10 +44,10 @@ class IncludesAutoGen():
         self.workspace = ModuleAuto.WorkspaceDir
 
     def CreateModuleDeps(self):
-        SaveFileOnChange(os.path.join(self.makefile_folder,"deps.txt"),"\n".join(self.DepsCollection),False)
+        SaveFileOnChange(os.path.join(self.makefile_folder, "deps.txt"), "\n".join(self.DepsCollection), False)
 
     def CreateDepsInclude(self):
-        deps_file = {'deps_file':self.deps_files}
+        deps_file = {'deps_file': self.deps_files}
 
         MakePath = self.module_autogen.BuildOption.get('MAKE', {}).get('PATH')
         if not MakePath:
@@ -69,10 +71,11 @@ ${END}
             deps_include_str = _INCLUDE_DEPS_TEMPLATE.Replace(deps_file)
         except Exception as e:
             print(e)
-        SaveFileOnChange(os.path.join(self.makefile_folder,"dependency"),deps_include_str,False)
+        SaveFileOnChange(os.path.join(self.makefile_folder, "dependency"), deps_include_str, False)
 
     def CreateDepsTarget(self):
-        SaveFileOnChange(os.path.join(self.makefile_folder,"deps_target"),"\n".join([item +":" for item in self.DepsCollection]),False)
+        SaveFileOnChange(os.path.join(self.makefile_folder, "deps_target"),
+                         "\n".join([item + ":" for item in self.DepsCollection]), False)
 
     @cached_property
     def deps_files(self):
@@ -93,14 +96,14 @@ ${END}
         targetname = [item[0].Name for item in self.TargetFileList.values()]
         for abspath in self.deps_files:
             try:
-                with open(abspath,"r") as fd:
+                with open(abspath, "r") as fd:
                     lines = fd.readlines()
 
                 firstlineitems = lines[0].split(": ")
                 dependency_file = firstlineitems[1].strip(" \\\n")
                 dependency_file = dependency_file.strip('''"''')
                 if dependency_file:
-                    if os.path.normpath(dependency_file +".deps") == abspath:
+                    if os.path.normpath(dependency_file + ".deps") == abspath:
                         continue
                     filename = os.path.basename(dependency_file).strip()
                     if filename not in targetname:
@@ -113,14 +116,15 @@ ${END}
                     dependency_file = dependency_file.strip('''"''')
                     if dependency_file == '':
                         continue
-                    if os.path.normpath(dependency_file +".deps") == abspath:
+                    if os.path.normpath(dependency_file + ".deps") == abspath:
                         continue
                     filename = os.path.basename(dependency_file).strip()
                     if filename in targetname:
                         continue
                     includes.add(dependency_file.strip())
             except Exception as e:
-                EdkLogger.error("build",FILE_NOT_FOUND, "%s doesn't exist" % abspath, ExtraData=str(e), RaiseError=False)
+                EdkLogger.error("build", FILE_NOT_FOUND, "%s doesn't exist" %
+                                abspath, ExtraData=str(e), RaiseError=False)
                 continue
         rt = sorted(list(set([item.strip(' " \\\n') for item in includes])))
         return rt
@@ -128,16 +132,19 @@ ${END}
     @cached_property
     def SourceFileList(self):
         """ Get a map of module's source files name to module's source files path """
-        source = {os.path.basename(item.File):item.Path for item in self.module_autogen.SourceFileList}
+        source = {os.path.basename(item.File): item.Path for item in self.module_autogen.SourceFileList}
         middle_file = {}
         for afile in source:
             if afile.upper().endswith(".VFR"):
-                middle_file.update({afile.split(".")[0]+".c":os.path.join(self.module_autogen.DebugDir,afile.split(".")[0]+".c")})
-            if afile.upper().endswith((".S","ASM")):
-                middle_file.update({afile.split(".")[0]+".i":os.path.join(self.module_autogen.OutputDir,afile.split(".")[0]+".i")})
+                middle_file.update(
+                    {afile.split(".")[0] + ".c": os.path.join(self.module_autogen.DebugDir, afile.split(".")[0] + ".c")})
+            if afile.upper().endswith((".S", "ASM")):
+                middle_file.update(
+                    {afile.split(".")[0] + ".i": os.path.join(self.module_autogen.OutputDir, afile.split(".")[0] + ".i")})
             if afile.upper().endswith(".ASL"):
-                middle_file.update({afile.split(".")[0]+".i":os.path.join(self.module_autogen.OutputDir,afile.split(".")[0]+".i")})
-        source.update({"AutoGen.c":os.path.join(self.module_autogen.OutputDir,"AutoGen.c")})
+                middle_file.update(
+                    {afile.split(".")[0] + ".i": os.path.join(self.module_autogen.OutputDir, afile.split(".")[0] + ".i")})
+        source.update({"AutoGen.c": os.path.join(self.module_autogen.OutputDir, "AutoGen.c")})
         source.update(middle_file)
         return source
 
@@ -146,31 +153,34 @@ ${END}
         source_base_name = set([os.path.basename(item.File) for item in self.module_autogen.SourceFileList])
         rt = len(source_base_name) != len(self.module_autogen.SourceFileList)
         return rt
+
     @cached_property
     def CcPPCommandPathSet(self):
         rt = set()
-        rt.add(self.module_autogen.BuildOption.get('CC',{}).get('PATH'))
-        rt.add(self.module_autogen.BuildOption.get('ASLCC',{}).get('PATH'))
-        rt.add(self.module_autogen.BuildOption.get('ASLPP',{}).get('PATH'))
-        rt.add(self.module_autogen.BuildOption.get('VFRPP',{}).get('PATH'))
-        rt.add(self.module_autogen.BuildOption.get('PP',{}).get('PATH'))
-        rt.add(self.module_autogen.BuildOption.get('APP',{}).get('PATH'))
+        rt.add(self.module_autogen.BuildOption.get('CC', {}).get('PATH'))
+        rt.add(self.module_autogen.BuildOption.get('ASLCC', {}).get('PATH'))
+        rt.add(self.module_autogen.BuildOption.get('ASLPP', {}).get('PATH'))
+        rt.add(self.module_autogen.BuildOption.get('VFRPP', {}).get('PATH'))
+        rt.add(self.module_autogen.BuildOption.get('PP', {}).get('PATH'))
+        rt.add(self.module_autogen.BuildOption.get('APP', {}).get('PATH'))
         rt.discard(None)
         return rt
+
     @cached_property
     def TargetFileList(self):
         """ Get a map of module's target name to a tuple of module's targets path and whose input file path """
         targets = {}
-        targets["AutoGen.obj"] = (PathClass(os.path.join(self.module_autogen.OutputDir,"AutoGen.obj")),PathClass(os.path.join(self.module_autogen.DebugDir,"AutoGen.c")))
+        targets["AutoGen.obj"] = (PathClass(os.path.join(self.module_autogen.OutputDir, "AutoGen.obj")),
+                                  PathClass(os.path.join(self.module_autogen.DebugDir, "AutoGen.c")))
         for item in self.module_autogen.Targets.values():
             for block in item:
-                targets[block.Target.Path] = (block.Target,block.Inputs[0])
+                targets[block.Target.Path] = (block.Target, block.Inputs[0])
         return targets
 
-    def GetRealTarget(self,source_file_abs):
+    def GetRealTarget(self, source_file_abs):
         """ Get the final target file based on source file abspath """
-        source_target_map = {item[1].Path:item[0].Path for item in self.TargetFileList.values()}
-        source_name_map = {item[1].File:item[0].Path for item in self.TargetFileList.values()}
+        source_target_map = {item[1].Path: item[0].Path for item in self.TargetFileList.values()}
+        source_name_map = {item[1].File: item[0].Path for item in self.TargetFileList.values()}
         target_abs = source_target_map.get(source_file_abs)
         if target_abs is None:
             if source_file_abs.strip().endswith(".i"):
@@ -197,8 +207,8 @@ ${END}
             if self.HasNamesakeSourceFile:
                 for cc_cmd in self.CcPPCommandPathSet:
                     if cc_cmd in line:
-                        if '''"'''+cc_cmd+'''"''' in line:
-                            cc_options = line[len(cc_cmd)+2:].split()
+                        if '''"''' + cc_cmd + '''"''' in line:
+                            cc_options = line[len(cc_cmd) + 2:].split()
                         else:
                             cc_options = line[len(cc_cmd):].split()
                         for item in cc_options:
@@ -216,9 +226,10 @@ ${END}
                 current_source = line
                 if current_source not in ModuleDepDict:
                     ModuleDepDict[SourceFileAbsPathMap[current_source]] = []
-            elif "Note: including file:" ==  line.lstrip()[:21]:
+            elif "Note: including file:" == line.lstrip()[:21]:
                 if not current_source:
-                    EdkLogger.error("build",BUILD_ERROR, "Parse /showIncludes output failed. line: %s. \n" % line, RaiseError=False)
+                    EdkLogger.error("build", BUILD_ERROR, "Parse /showIncludes output failed. line: %s. \n" %
+                                    line, RaiseError=False)
                 else:
                     ModuleDepDict[SourceFileAbsPathMap[current_source]].append(line.lstrip()[22:].strip())
 
@@ -226,7 +237,8 @@ ${END}
             if ModuleDepDict[source_abs]:
                 target_abs = self.GetRealTarget(source_abs)
                 dep_file_name = os.path.basename(source_abs) + ".deps"
-                SaveFileOnChange(os.path.join(os.path.dirname(target_abs),dep_file_name)," \\\n".join([target_abs+":"] + ['''"''' + item +'''"''' for item in ModuleDepDict[source_abs]]),False)
+                SaveFileOnChange(os.path.join(os.path.dirname(target_abs), dep_file_name), " \\\n".join(
+                    [target_abs + ":"] + ['''"''' + item + '''"''' for item in ModuleDepDict[source_abs]]), False)
 
     def UpdateDepsFileforNonMsvc(self):
         """ Update .deps files.
@@ -239,7 +251,7 @@ ${END}
                 continue
             try:
                 newcontent = []
-                with open(abspath,"r") as fd:
+                with open(abspath, "r") as fd:
                     lines = fd.readlines()
                 if lines[-1] == DEP_FILE_TAIL:
                     continue
@@ -250,7 +262,7 @@ ${END}
                 else:
                     sourceitem = lines[1].strip().split(" ")[0]
 
-                source_abs = self.SourceFileList.get(sourceitem,sourceitem)
+                source_abs = self.SourceFileList.get(sourceitem, sourceitem)
                 firstlineitems[0] = self.GetRealTarget(source_abs)
                 p_target = firstlineitems
                 if not p_target[0].strip().endswith(":"):
@@ -268,10 +280,11 @@ ${END}
 
                 newcontent.append("\n")
                 newcontent.append(DEP_FILE_TAIL)
-                with open(abspath,"w") as fw:
+                with open(abspath, "w") as fw:
                     fw.write("".join(newcontent))
             except Exception as e:
-                EdkLogger.error("build",FILE_NOT_FOUND, "%s doesn't exist" % abspath, ExtraData=str(e), RaiseError=False)
+                EdkLogger.error("build", FILE_NOT_FOUND, "%s doesn't exist" %
+                                abspath, ExtraData=str(e), RaiseError=False)
                 continue
 
     def UpdateDepsFileforTrim(self):
@@ -282,7 +295,7 @@ ${END}
                 continue
             try:
                 newcontent = []
-                with open(abspath,"r") as fd:
+                with open(abspath, "r") as fd:
                     lines = fd.readlines()
                 if lines[-1] == DEP_FILE_TAIL:
                     continue
@@ -291,14 +304,15 @@ ${END}
                 targetitem = self.GetRealTarget(source_abs.strip(" :"))
 
                 targetitem += ": "
-                if len(lines)>=2:
+                if len(lines) >= 2:
                     targetitem += lines[1]
                 newcontent.append(targetitem)
                 newcontent.extend(lines[2:])
                 newcontent.append("\n")
                 newcontent.append(DEP_FILE_TAIL)
-                with open(abspath,"w") as fw:
+                with open(abspath, "w") as fw:
                     fw.write("".join(newcontent))
             except Exception as e:
-                EdkLogger.error("build",FILE_NOT_FOUND, "%s doesn't exist" % abspath, ExtraData=str(e), RaiseError=False)
+                EdkLogger.error("build", FILE_NOT_FOUND, "%s doesn't exist" %
+                                abspath, ExtraData=str(e), RaiseError=False)
                 continue

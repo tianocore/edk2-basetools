@@ -1,10 +1,10 @@
-## @file
+# @file
 # This file is used to generate DEPEX file for module's dependency expression
 #
 # Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 
-## Import Modules
+# Import Modules
 #
 import sys
 import edk2basetools.Common.LongFilePathOs as os
@@ -22,95 +22,98 @@ from edk2basetools.Common import EdkLogger as EdkLogger
 from edk2basetools.Common.BuildVersion import gBUILD_VERSION
 from edk2basetools.Common.DataType import *
 
-## Regular expression for matching "DEPENDENCY_START ... DEPENDENCY_END"
+# Regular expression for matching "DEPENDENCY_START ... DEPENDENCY_END"
 gStartClosePattern = re.compile(".*DEPENDENCY_START(.+)DEPENDENCY_END.*", re.S)
 
-## Mapping between module type and EFI phase
+# Mapping between module type and EFI phase
 gType2Phase = {
-    SUP_MODULE_BASE              :   None,
-    SUP_MODULE_SEC               :   "PEI",
-    SUP_MODULE_PEI_CORE          :   "PEI",
-    SUP_MODULE_PEIM              :   "PEI",
-    SUP_MODULE_DXE_CORE          :   "DXE",
-    SUP_MODULE_DXE_DRIVER        :   "DXE",
-    SUP_MODULE_DXE_SMM_DRIVER    :   "DXE",
-    SUP_MODULE_DXE_RUNTIME_DRIVER:   "DXE",
-    SUP_MODULE_DXE_SAL_DRIVER    :   "DXE",
-    SUP_MODULE_UEFI_DRIVER       :   "DXE",
-    SUP_MODULE_UEFI_APPLICATION  :   "DXE",
-    SUP_MODULE_SMM_CORE          :   "DXE",
-    SUP_MODULE_MM_STANDALONE     :   "MM",
-    SUP_MODULE_MM_CORE_STANDALONE :  "MM",
+    SUP_MODULE_BASE: None,
+    SUP_MODULE_SEC: "PEI",
+    SUP_MODULE_PEI_CORE: "PEI",
+    SUP_MODULE_PEIM: "PEI",
+    SUP_MODULE_DXE_CORE: "DXE",
+    SUP_MODULE_DXE_DRIVER: "DXE",
+    SUP_MODULE_DXE_SMM_DRIVER: "DXE",
+    SUP_MODULE_DXE_RUNTIME_DRIVER: "DXE",
+    SUP_MODULE_DXE_SAL_DRIVER: "DXE",
+    SUP_MODULE_UEFI_DRIVER: "DXE",
+    SUP_MODULE_UEFI_APPLICATION: "DXE",
+    SUP_MODULE_SMM_CORE: "DXE",
+    SUP_MODULE_MM_STANDALONE: "MM",
+    SUP_MODULE_MM_CORE_STANDALONE: "MM",
 }
 
-## Convert dependency expression string into EFI internal representation
+# Convert dependency expression string into EFI internal representation
 #
 #   DependencyExpression class is used to parse dependency expression string and
 # convert it into its binary form.
 #
+
+
 class DependencyExpression:
 
     ArchProtocols = {
-                        '665e3ff6-46cc-11d4-9a38-0090273fc14d',     #   'gEfiBdsArchProtocolGuid'
-                        '26baccb1-6f42-11d4-bce7-0080c73c8881',     #   'gEfiCpuArchProtocolGuid'
-                        '26baccb2-6f42-11d4-bce7-0080c73c8881',     #   'gEfiMetronomeArchProtocolGuid'
-                        '1da97072-bddc-4b30-99f1-72a0b56fff2a',     #   'gEfiMonotonicCounterArchProtocolGuid'
-                        '27cfac87-46cc-11d4-9a38-0090273fc14d',     #   'gEfiRealTimeClockArchProtocolGuid'
-                        '27cfac88-46cc-11d4-9a38-0090273fc14d',     #   'gEfiResetArchProtocolGuid'
-                        'b7dfb4e1-052f-449f-87be-9818fc91b733',     #   'gEfiRuntimeArchProtocolGuid'
-                        'a46423e3-4617-49f1-b9ff-d1bfa9115839',     #   'gEfiSecurityArchProtocolGuid'
-                        '26baccb3-6f42-11d4-bce7-0080c73c8881',     #   'gEfiTimerArchProtocolGuid'
-                        '6441f818-6362-4e44-b570-7dba31dd2453',     #   'gEfiVariableWriteArchProtocolGuid'
-                        '1e5668e2-8481-11d4-bcf1-0080c73c8881',     #   'gEfiVariableArchProtocolGuid'
-                        '665e3ff5-46cc-11d4-9a38-0090273fc14d'      #   'gEfiWatchdogTimerArchProtocolGuid'
-                    }
+        '665e3ff6-46cc-11d4-9a38-0090273fc14d',  # 'gEfiBdsArchProtocolGuid'
+        '26baccb1-6f42-11d4-bce7-0080c73c8881',  # 'gEfiCpuArchProtocolGuid'
+        '26baccb2-6f42-11d4-bce7-0080c73c8881',  # 'gEfiMetronomeArchProtocolGuid'
+        '1da97072-bddc-4b30-99f1-72a0b56fff2a',  # 'gEfiMonotonicCounterArchProtocolGuid'
+        '27cfac87-46cc-11d4-9a38-0090273fc14d',  # 'gEfiRealTimeClockArchProtocolGuid'
+        '27cfac88-46cc-11d4-9a38-0090273fc14d',  # 'gEfiResetArchProtocolGuid'
+        'b7dfb4e1-052f-449f-87be-9818fc91b733',  # 'gEfiRuntimeArchProtocolGuid'
+        'a46423e3-4617-49f1-b9ff-d1bfa9115839',  # 'gEfiSecurityArchProtocolGuid'
+        '26baccb3-6f42-11d4-bce7-0080c73c8881',  # 'gEfiTimerArchProtocolGuid'
+        '6441f818-6362-4e44-b570-7dba31dd2453',  # 'gEfiVariableWriteArchProtocolGuid'
+        '1e5668e2-8481-11d4-bcf1-0080c73c8881',  # 'gEfiVariableArchProtocolGuid'
+        '665e3ff5-46cc-11d4-9a38-0090273fc14d'  # 'gEfiWatchdogTimerArchProtocolGuid'
+    }
 
     OpcodePriority = {
-        DEPEX_OPCODE_AND   :   1,
-        DEPEX_OPCODE_OR    :   1,
-        DEPEX_OPCODE_NOT   :   2,
+        DEPEX_OPCODE_AND: 1,
+        DEPEX_OPCODE_OR: 1,
+        DEPEX_OPCODE_NOT: 2,
     }
 
     Opcode = {
-        "PEI"   : {
-            DEPEX_OPCODE_PUSH  :   0x02,
-            DEPEX_OPCODE_AND   :   0x03,
-            DEPEX_OPCODE_OR    :   0x04,
-            DEPEX_OPCODE_NOT   :   0x05,
-            DEPEX_OPCODE_TRUE  :   0x06,
-            DEPEX_OPCODE_FALSE :   0x07,
-            DEPEX_OPCODE_END   :   0x08
+        "PEI": {
+            DEPEX_OPCODE_PUSH: 0x02,
+            DEPEX_OPCODE_AND: 0x03,
+            DEPEX_OPCODE_OR: 0x04,
+            DEPEX_OPCODE_NOT: 0x05,
+            DEPEX_OPCODE_TRUE: 0x06,
+            DEPEX_OPCODE_FALSE: 0x07,
+            DEPEX_OPCODE_END: 0x08
         },
 
-        "DXE"   : {
-            DEPEX_OPCODE_BEFORE:   0x00,
-            DEPEX_OPCODE_AFTER :   0x01,
-            DEPEX_OPCODE_PUSH  :   0x02,
-            DEPEX_OPCODE_AND   :   0x03,
-            DEPEX_OPCODE_OR    :   0x04,
-            DEPEX_OPCODE_NOT   :   0x05,
-            DEPEX_OPCODE_TRUE  :   0x06,
-            DEPEX_OPCODE_FALSE :   0x07,
-            DEPEX_OPCODE_END   :   0x08,
-            DEPEX_OPCODE_SOR   :   0x09
+        "DXE": {
+            DEPEX_OPCODE_BEFORE: 0x00,
+            DEPEX_OPCODE_AFTER: 0x01,
+            DEPEX_OPCODE_PUSH: 0x02,
+            DEPEX_OPCODE_AND: 0x03,
+            DEPEX_OPCODE_OR: 0x04,
+            DEPEX_OPCODE_NOT: 0x05,
+            DEPEX_OPCODE_TRUE: 0x06,
+            DEPEX_OPCODE_FALSE: 0x07,
+            DEPEX_OPCODE_END: 0x08,
+            DEPEX_OPCODE_SOR: 0x09
         },
 
-        "MM"   : {
-            DEPEX_OPCODE_BEFORE:   0x00,
-            DEPEX_OPCODE_AFTER :   0x01,
-            DEPEX_OPCODE_PUSH  :   0x02,
-            DEPEX_OPCODE_AND   :   0x03,
-            DEPEX_OPCODE_OR    :   0x04,
-            DEPEX_OPCODE_NOT   :   0x05,
-            DEPEX_OPCODE_TRUE  :   0x06,
-            DEPEX_OPCODE_FALSE :   0x07,
-            DEPEX_OPCODE_END   :   0x08,
-            DEPEX_OPCODE_SOR   :   0x09
+        "MM": {
+            DEPEX_OPCODE_BEFORE: 0x00,
+            DEPEX_OPCODE_AFTER: 0x01,
+            DEPEX_OPCODE_PUSH: 0x02,
+            DEPEX_OPCODE_AND: 0x03,
+            DEPEX_OPCODE_OR: 0x04,
+            DEPEX_OPCODE_NOT: 0x05,
+            DEPEX_OPCODE_TRUE: 0x06,
+            DEPEX_OPCODE_FALSE: 0x07,
+            DEPEX_OPCODE_END: 0x08,
+            DEPEX_OPCODE_SOR: 0x09
         }
     }
 
     # all supported op codes and operands
-    SupportedOpcode = [DEPEX_OPCODE_BEFORE, DEPEX_OPCODE_AFTER, DEPEX_OPCODE_PUSH, DEPEX_OPCODE_AND, DEPEX_OPCODE_OR, DEPEX_OPCODE_NOT, DEPEX_OPCODE_END, DEPEX_OPCODE_SOR]
+    SupportedOpcode = [DEPEX_OPCODE_BEFORE, DEPEX_OPCODE_AFTER, DEPEX_OPCODE_PUSH,
+                       DEPEX_OPCODE_AND, DEPEX_OPCODE_OR, DEPEX_OPCODE_NOT, DEPEX_OPCODE_END, DEPEX_OPCODE_SOR]
     SupportedOperand = [DEPEX_OPCODE_TRUE, DEPEX_OPCODE_FALSE]
 
     OpcodeWithSingleOperand = [DEPEX_OPCODE_NOT, DEPEX_OPCODE_BEFORE, DEPEX_OPCODE_AFTER]
@@ -128,7 +131,7 @@ class DependencyExpression:
     #
     TokenPattern = re.compile("(\(|\)|\{[^{}]+\{?[^{}]+\}?[ ]*\}|\w+)")
 
-    ## Constructor
+    # Constructor
     #
     #   @param  Expression  The list or string of dependency expression
     #   @param  ModuleType  The type of the module using the dependency expression
@@ -166,11 +169,11 @@ class DependencyExpression:
                 WellForm += ' ' + Token
         return WellForm
 
-    ## Split the expression string into token list
+    # Split the expression string into token list
     def GetExpressionTokenList(self):
         self.TokenList = self.TokenPattern.findall(self.ExpressionString)
 
-    ## Convert token list into postfix notation
+    # Convert token list into postfix notation
     def GetPostfixNotation(self):
         Stack = []
         LastToken = ''
@@ -198,8 +201,8 @@ class DependencyExpression:
                         EdkLogger.error("GenDepex", PARSER_ERROR, "Invalid dependency expression: missing operator before NOT",
                                         ExtraData="Near %s" % LastToken)
                 elif LastToken in self.SupportedOpcode + ['(', '', None]:
-                        EdkLogger.error("GenDepex", PARSER_ERROR, "Invalid dependency expression: missing operand before " + Token,
-                                        ExtraData="Near %s" % LastToken)
+                    EdkLogger.error("GenDepex", PARSER_ERROR, "Invalid dependency expression: missing operand before " + Token,
+                                    ExtraData="Near %s" % LastToken)
 
                 while len(Stack) > 0:
                     if Stack[-1] == "(" or self.OpcodePriority[Token] >= self.OpcodePriority[Stack[-1]]:
@@ -237,7 +240,7 @@ class DependencyExpression:
         if self.PostfixNotation[-1] != DEPEX_OPCODE_END:
             self.PostfixNotation.append(DEPEX_OPCODE_END)
 
-    ## Validate the dependency expression
+    # Validate the dependency expression
     def ValidateOpcode(self):
         for Op in self.AboveAllOpcode:
             if Op in self.PostfixNotation:
@@ -265,14 +268,14 @@ class DependencyExpression:
             EdkLogger.error("GenDepex", PARSER_ERROR, "Extra expressions after END",
                             ExtraData=str(self))
 
-    ## Simply optimize the dependency expression by removing duplicated operands
+    # Simply optimize the dependency expression by removing duplicated operands
     def Optimize(self):
         OpcodeSet = set(self.OpcodeList)
         # if there are isn't one in the set, return
         if len(OpcodeSet) != 1:
-          return
+            return
         Op = OpcodeSet.pop()
-        #if Op isn't either OR or AND, return
+        # if Op isn't either OR or AND, return
         if Op not in [DEPEX_OPCODE_AND, DEPEX_OPCODE_OR]:
             return
         NewOperand = []
@@ -319,13 +322,13 @@ class DependencyExpression:
         self.PostfixNotation = []
         self.GetPostfixNotation()
 
-
-    ## Convert a GUID value in C structure format into its binary form
+    # Convert a GUID value in C structure format into its binary form
     #
     #   @param  Guid    The GUID value in C structure format
     #
     #   @retval array   The byte array representing the GUID value
     #
+
     def GetGuidValue(self, Guid):
         GuidValueString = Guid.replace("{", "").replace("}", "").replace(" ", "")
         GuidValueList = GuidValueString.split(",")
@@ -337,7 +340,7 @@ class DependencyExpression:
             EdkLogger.error("GenDepex", PARSER_ERROR, "Invalid GUID value string or opcode: %s" % Guid)
         return pack("1I2H8B", *(int(value, 16) for value in GuidValueList))
 
-    ## Save the binary form of dependency expression in file
+    # Save the binary form of dependency expression in file
     #
     #   @param  File    The path of file. If None is given, put the data on console
     #
@@ -370,15 +373,18 @@ class DependencyExpression:
         Buffer.close()
         return FileChangeFlag
 
+
 versionNumber = ("0.04" + " " + gBUILD_VERSION)
 __version__ = "%prog Version " + versionNumber
 __copyright__ = "Copyright (c) 2007-2018, Intel Corporation  All rights reserved."
 __usage__ = "%prog [options] [dependency_expression_file]"
 
-## Parse command line options
+# Parse command line options
 #
 #   @retval OptionParser
 #
+
+
 def GetOptions():
     from optparse import OptionParser
 
@@ -401,7 +407,7 @@ def GetOptions():
     return Parser.parse_args()
 
 
-## Entrance method
+# Entrance method
 #
 # @retval 0     Tool was successful
 # @retval 1     Tool failed
@@ -459,6 +465,6 @@ def Main():
 
     return 0
 
+
 if __name__ == '__main__':
     sys.exit(Main())
-

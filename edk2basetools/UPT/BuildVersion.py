@@ -1,4 +1,4 @@
-## @file
+# @file
 #
 # This file is for build version number auto generation
 #

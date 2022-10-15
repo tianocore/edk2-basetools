@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define a class object to describe a distribution package
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -28,12 +28,14 @@ from edk2basetools.UPT.Object.POM.CommonObject import CommonHeaderObject
 from edk2basetools.UPT.Object.POM.CommonObject import MiscFileObject
 from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
-## DistributionPackageHeaderClass
+# DistributionPackageHeaderClass
 #
 # @param IdentificationObject: Identification Object
 # @param CommonHeaderObject: Common Header Object
 #
-class DistributionPackageHeaderObject(IdentificationObject, \
+
+
+class DistributionPackageHeaderObject(IdentificationObject,
                                       CommonHeaderObject):
     def __init__(self):
         IdentificationObject.__init__(self)
@@ -78,10 +80,12 @@ class DistributionPackageHeaderObject(IdentificationObject, \
     def GetXmlSpecification(self):
         return self.XmlSpecification
 
-## DistributionPackageClass
+# DistributionPackageClass
 #
 # @param object: DistributionPackageClass
 #
+
+
 class DistributionPackageClass(object):
     def __init__(self):
         self.Header = DistributionPackageHeaderObject()
@@ -98,7 +102,7 @@ class DistributionPackageClass(object):
         self.UserExtensions = []
         self.FileList = []
 
-    ## Get all included packages and modules for a distribution package
+    # Get all included packages and modules for a distribution package
     #
     # @param WorkspaceDir:  WorkspaceDir
     # @param PackageList:   A list of all packages
@@ -127,10 +131,9 @@ class DistributionPackageClass(object):
                     if ModuleList and WsRelPath in ModuleList:
                         Logger.Error("UPT",
                                      OPTION_VALUE_INVALID,
-                                     ST.ERR_NOT_STANDALONE_MODULE_ERROR%\
+                                     ST.ERR_NOT_STANDALONE_MODULE_ERROR %
                                      (WsRelPath, PackageFile))
-                    Filename = os.path.normpath\
-                    (os.path.join(PackageObj.GetRelaPath(), File))
+                    Filename = os.path.normpath(os.path.join(PackageObj.GetRelaPath(), File))
                     os.path.splitext(Filename)
                     #
                     # Call INF parser to generate Inf Object.
@@ -144,21 +147,20 @@ class DistributionPackageClass(object):
                         # Add module to package
                         #
                         ModuleDict = PackageObj.GetModuleDict()
-                        ModuleDict[(ModuleObj.GetGuid(), \
-                                    ModuleObj.GetVersion(), \
-                                    ModuleObj.GetName(), \
+                        ModuleDict[(ModuleObj.GetGuid(),
+                                    ModuleObj.GetVersion(),
+                                    ModuleObj.GetName(),
                                     ModuleObj.GetCombinePath())] = ModuleObj
                         PackageObj.SetModuleDict(ModuleDict)
                     except FatalError as ErrCode:
                         if ErrCode.message == EDK1_INF_ERROR:
                             Logger.Warn("UPT",
-                                        ST.WRN_EDK1_INF_FOUND%Filename)
+                                        ST.WRN_EDK1_INF_FOUND % Filename)
                         else:
                             raise
 
-                self.PackageSurfaceArea\
-                [(PackageObj.GetGuid(), PackageObj.GetVersion(), \
-                  PackageObj.GetCombinePath())] = PackageObj
+                self.PackageSurfaceArea[(PackageObj.GetGuid(), PackageObj.GetVersion(),
+                                         PackageObj.GetCombinePath())] = PackageObj
 
         #
         # Get Modules
@@ -179,7 +181,7 @@ class DistributionPackageClass(object):
                     if ErrCode.message == EDK1_INF_ERROR:
                         Logger.Error("UPT",
                                      EDK1_INF_ERROR,
-                                     ST.WRN_EDK1_INF_FOUND%ModuleFileFullPath,
+                                     ST.WRN_EDK1_INF_FOUND % ModuleFileFullPath,
                                      ExtraData=ST.ERR_NOT_SUPPORTED_SA_MODULE)
                     else:
                         raise
@@ -187,7 +189,7 @@ class DistributionPackageClass(object):
         # Recover WorkspaceDir
         WorkspaceDir = Root
 
-    ## Get all files included for a distribution package, except tool/misc of
+    # Get all files included for a distribution package, except tool/misc of
     # distribution level
     #
     # @retval DistFileList  A list of filepath for NonMetaDataFile, relative to workspace
@@ -261,7 +263,4 @@ class DistributionPackageClass(object):
             if SkipModuleUni in self.FileList:
                 self.FileList.remove(SkipModuleUni)
 
-        return  self.FileList, MetaDataFileList
-
-
-
+        return self.FileList, MetaDataFileList

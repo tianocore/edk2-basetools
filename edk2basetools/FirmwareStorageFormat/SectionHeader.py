@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define the Section Header C Struct.
 #
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
@@ -11,11 +11,12 @@ from FirmwareStorageFormat.Common import *
 EFI_COMMON_SECTION_HEADER_LEN = 4
 EFI_COMMON_SECTION_HEADER2_LEN = 8
 
+
 class EFI_COMMON_SECTION_HEADER(Structure):
     _pack_ = 1
     _fields_ = [
-        ('Size',                     ARRAY(c_uint8, 3)),
-        ('Type',                     c_uint8),
+        ('Size', ARRAY(c_uint8, 3)),
+        ('Type', c_uint8),
     ]
 
     @property
@@ -25,12 +26,13 @@ class EFI_COMMON_SECTION_HEADER(Structure):
     def Common_Header_Size(self) -> int:
         return 4
 
+
 class EFI_COMMON_SECTION_HEADER2(Structure):
     _pack_ = 1
     _fields_ = [
-        ('Size',                     ARRAY(c_uint8, 3)),
-        ('Type',                     c_uint8),
-        ('ExtendedSize',             c_uint32),
+        ('Size', ARRAY(c_uint8, 3)),
+        ('Type', c_uint8),
+        ('ExtendedSize', c_uint32),
     ]
 
     @property
@@ -40,41 +42,45 @@ class EFI_COMMON_SECTION_HEADER2(Structure):
     def Common_Header_Size(self) -> int:
         return 8
 
+
 class EFI_COMPRESSION_SECTION(Structure):
     _pack_ = 1
     _fields_ = [
-        ('UncompressedLength',       c_uint32),
-        ('CompressionType',          c_uint8),
+        ('UncompressedLength', c_uint32),
+        ('CompressionType', c_uint8),
     ]
 
     def ExtHeaderSize(self) -> int:
         return 5
 
+
 class EFI_FREEFORM_SUBTYPE_GUID_SECTION(Structure):
     _pack_ = 1
     _fields_ = [
-        ('SubTypeGuid',              GUID),
+        ('SubTypeGuid', GUID),
     ]
 
     def ExtHeaderSize(self) -> int:
         return 16
 
+
 class EFI_GUID_DEFINED_SECTION(Structure):
     _pack_ = 1
     _fields_ = [
-        ('SectionDefinitionGuid',    GUID),
-        ('DataOffset',               c_uint16),
-        ('Attributes',               c_uint16),
+        ('SectionDefinitionGuid', GUID),
+        ('DataOffset', c_uint16),
+        ('Attributes', c_uint16),
     ]
 
     def ExtHeaderSize(self) -> int:
         return 20
 
+
 def Get_USER_INTERFACE_Header(nums: int):
     class EFI_SECTION_USER_INTERFACE(Structure):
         _pack_ = 1
         _fields_ = [
-            ('FileNameString',       ARRAY(c_uint16, nums)),
+            ('FileNameString', ARRAY(c_uint16, nums)),
         ]
 
         def ExtHeaderSize(self) -> int:
@@ -89,16 +95,17 @@ def Get_USER_INTERFACE_Header(nums: int):
 
     return EFI_SECTION_USER_INTERFACE
 
+
 def Get_VERSION_Header(nums: int):
     class EFI_SECTION_VERSION(Structure):
         _pack_ = 1
         _fields_ = [
-            ('BuildNumber',          c_uint16),
-            ('VersionString',        ARRAY(c_uint16, nums)),
+            ('BuildNumber', c_uint16),
+            ('VersionString', ARRAY(c_uint16, nums)),
         ]
 
         def ExtHeaderSize(self) -> int:
-            return 2 * (nums+1)
+            return 2 * (nums + 1)
 
         def GetVersionString(self) -> str:
             VersionString = ''

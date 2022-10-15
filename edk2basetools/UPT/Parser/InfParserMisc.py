@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file contained the miscellaneous functions for INF parser
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -32,31 +32,31 @@ from edk2basetools.UPT.Logger.StringTable import ERR_MARCO_DEFINITION_MISS_ERROR
 # Sections can exist in INF file
 #
 gINF_SECTION_DEF = {
-       DT.TAB_UNKNOWN.upper()          : DT.MODEL_UNKNOWN,
-       DT.TAB_HEADER.upper()           : DT.MODEL_META_DATA_FILE_HEADER,
-       DT.TAB_INF_DEFINES.upper()      : DT.MODEL_META_DATA_DEFINE,
-       DT.TAB_BUILD_OPTIONS.upper()    : DT.MODEL_META_DATA_BUILD_OPTION,
-       DT.TAB_LIBRARY_CLASSES.upper()  : DT.MODEL_EFI_LIBRARY_CLASS,
-       DT.TAB_PACKAGES.upper()         : DT.MODEL_META_DATA_PACKAGE,
-       DT.TAB_INF_FIXED_PCD.upper()    : DT.MODEL_PCD_FIXED_AT_BUILD,
-       DT.TAB_INF_PATCH_PCD.upper()    : DT.MODEL_PCD_PATCHABLE_IN_MODULE,
-       DT.TAB_INF_FEATURE_PCD.upper()  : DT.MODEL_PCD_FEATURE_FLAG,
-       DT.TAB_INF_PCD_EX.upper()       : DT.MODEL_PCD_DYNAMIC_EX,
-       DT.TAB_INF_PCD.upper()          : DT.MODEL_PCD_DYNAMIC,
-       DT.TAB_SOURCES.upper()          : DT.MODEL_EFI_SOURCE_FILE,
-       DT.TAB_GUIDS.upper()            : DT.MODEL_EFI_GUID,
-       DT.TAB_PROTOCOLS.upper()        : DT.MODEL_EFI_PROTOCOL,
-       DT.TAB_PPIS.upper()             : DT.MODEL_EFI_PPI,
-       DT.TAB_DEPEX.upper()            : DT.MODEL_EFI_DEPEX,
-       DT.TAB_BINARIES.upper()         : DT.MODEL_EFI_BINARY_FILE,
-       DT.TAB_USER_EXTENSIONS.upper()  : DT.MODEL_META_DATA_USER_EXTENSION
-       #
-       # EDK1 section
-       # TAB_NMAKE.upper()            : MODEL_META_DATA_NMAKE
-       #
-       }
+    DT.TAB_UNKNOWN.upper(): DT.MODEL_UNKNOWN,
+    DT.TAB_HEADER.upper(): DT.MODEL_META_DATA_FILE_HEADER,
+    DT.TAB_INF_DEFINES.upper(): DT.MODEL_META_DATA_DEFINE,
+    DT.TAB_BUILD_OPTIONS.upper(): DT.MODEL_META_DATA_BUILD_OPTION,
+    DT.TAB_LIBRARY_CLASSES.upper(): DT.MODEL_EFI_LIBRARY_CLASS,
+    DT.TAB_PACKAGES.upper(): DT.MODEL_META_DATA_PACKAGE,
+    DT.TAB_INF_FIXED_PCD.upper(): DT.MODEL_PCD_FIXED_AT_BUILD,
+    DT.TAB_INF_PATCH_PCD.upper(): DT.MODEL_PCD_PATCHABLE_IN_MODULE,
+    DT.TAB_INF_FEATURE_PCD.upper(): DT.MODEL_PCD_FEATURE_FLAG,
+    DT.TAB_INF_PCD_EX.upper(): DT.MODEL_PCD_DYNAMIC_EX,
+    DT.TAB_INF_PCD.upper(): DT.MODEL_PCD_DYNAMIC,
+    DT.TAB_SOURCES.upper(): DT.MODEL_EFI_SOURCE_FILE,
+    DT.TAB_GUIDS.upper(): DT.MODEL_EFI_GUID,
+    DT.TAB_PROTOCOLS.upper(): DT.MODEL_EFI_PROTOCOL,
+    DT.TAB_PPIS.upper(): DT.MODEL_EFI_PPI,
+    DT.TAB_DEPEX.upper(): DT.MODEL_EFI_DEPEX,
+    DT.TAB_BINARIES.upper(): DT.MODEL_EFI_BINARY_FILE,
+    DT.TAB_USER_EXTENSIONS.upper(): DT.MODEL_META_DATA_USER_EXTENSION
+    #
+    # EDK1 section
+    # TAB_NMAKE.upper()            : MODEL_META_DATA_NMAKE
+    #
+}
 
-## InfExpandMacro
+# InfExpandMacro
 #
 # Expand MACRO definition with MACROs defined in [Defines] section and specific section.
 # The MACROs defined in specific section has high priority and will be expanded firstly.
@@ -66,6 +66,8 @@ gINF_SECTION_DEF = {
 # @param SectionMacros MACROs defined in INF specific section
 # @param Flag          If the flag set to True, need to skip macros in a quoted string
 #
+
+
 def InfExpandMacro(Content, LineInfo, GlobalMacros=None, SectionMacros=None, Flag=False):
     if GlobalMacros is None:
         GlobalMacros = {}
@@ -85,21 +87,21 @@ def InfExpandMacro(Content, LineInfo, GlobalMacros=None, SectionMacros=None, Fla
     #
     # First, replace MARCOs with value defined in specific section
     #
-    Content = ReplaceMacro (Content,
-                            SectionMacros,
-                            False,
-                            (LineContent, LineNo),
-                            FileName,
-                            Flag)
+    Content = ReplaceMacro(Content,
+                           SectionMacros,
+                           False,
+                           (LineContent, LineNo),
+                           FileName,
+                           Flag)
     #
     # Then replace MARCOs with value defined in [Defines] section
     #
-    Content = ReplaceMacro (Content,
-                            GlobalMacros,
-                            False,
-                            (LineContent, LineNo),
-                            FileName,
-                            Flag)
+    Content = ReplaceMacro(Content,
+                           GlobalMacros,
+                           False,
+                           (LineContent, LineNo),
+                           FileName,
+                           Flag)
 
     MacroUsed = gMACRO_PATTERN.findall(Content)
     #
@@ -109,18 +111,18 @@ def InfExpandMacro(Content, LineInfo, GlobalMacros=None, SectionMacros=None, Fla
         return Content
     else:
         for Macro in MacroUsed:
-            gQuotedMacro = re.compile(".*\".*\$\(%s\).*\".*"%(Macro))
+            gQuotedMacro = re.compile(".*\".*\$\(%s\).*\".*" % (Macro))
             if not gQuotedMacro.match(Content):
                 #
                 # Still have MACROs can't be expanded.
                 #
-                ErrorInInf (ERR_MARCO_DEFINITION_MISS_ERROR,
-                            LineInfo=NewLineInfo)
+                ErrorInInf(ERR_MARCO_DEFINITION_MISS_ERROR,
+                           LineInfo=NewLineInfo)
 
     return Content
 
 
-## IsBinaryInf
+# IsBinaryInf
 #
 # Judge whether the INF file is Binary INF or Common INF
 #
@@ -146,7 +148,7 @@ def IsBinaryInf(FileLineList):
     return False
 
 
-## IsLibInstanceInfo
+# IsLibInstanceInfo
 #
 # Judge whether the string contain the information of ## @LIB_INSTANCES.
 #
@@ -162,7 +164,7 @@ def IsLibInstanceInfo(String):
         return False
 
 
-## IsAsBuildOptionInfo
+# IsAsBuildOptionInfo
 #
 # Judge whether the string contain the information of ## @ASBUILD.
 #
@@ -197,20 +199,20 @@ class InfParserSectionRoot(object):
 
         self.FullPath = ''
 
-        self.InfDefSection              = None
-        self.InfBuildOptionSection      = None
-        self.InfLibraryClassSection     = None
-        self.InfPackageSection          = None
-        self.InfPcdSection              = None
-        self.InfSourcesSection          = None
-        self.InfUserExtensionSection    = None
-        self.InfProtocolSection         = None
-        self.InfPpiSection              = None
-        self.InfGuidSection             = None
-        self.InfDepexSection            = None
-        self.InfPeiDepexSection         = None
-        self.InfDxeDepexSection         = None
-        self.InfSmmDepexSection         = None
-        self.InfBinariesSection         = None
-        self.InfHeader                  = None
-        self.InfSpecialCommentSection   = None
+        self.InfDefSection = None
+        self.InfBuildOptionSection = None
+        self.InfLibraryClassSection = None
+        self.InfPackageSection = None
+        self.InfPcdSection = None
+        self.InfSourcesSection = None
+        self.InfUserExtensionSection = None
+        self.InfProtocolSection = None
+        self.InfPpiSection = None
+        self.InfGuidSection = None
+        self.InfDepexSection = None
+        self.InfPeiDepexSection = None
+        self.InfDxeDepexSection = None
+        self.InfSmmDepexSection = None
+        self.InfBinariesSection = None
+        self.InfHeader = None
+        self.InfSpecialCommentSection = None

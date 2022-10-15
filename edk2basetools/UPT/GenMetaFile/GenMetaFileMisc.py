@@ -1,4 +1,4 @@
-## @file GenMetaFileMisc.py
+# @file GenMetaFileMisc.py
 #
 # This file contained the miscellaneous routines for GenMetaFile usage.
 #
@@ -21,6 +21,8 @@ from edk2basetools.UPT.Parser.DecParser import Dec
 #  @param Arch:     string of source file family field
 #  @param ExternList:  string of source file FeatureFlag field
 #
+
+
 def AddExternToDefineSec(SectionDict, Arch, ExternList):
     LeftOffset = 31
     for ArchList, EntryPoint, UnloadImage, Constructor, Destructor, FFE, HelpStringList in ExternList:
@@ -68,10 +70,12 @@ def AddExternToDefineSec(SectionDict, Arch, ExternList):
                     Statement = Statement + HelpStringList[1].GetString()
                 SectionDict[Arch] = SectionDict[Arch] + [Statement]
 
-## ObtainPcdName
+# ObtainPcdName
 #
 # Using TokenSpaceGuidValue and Token to obtain PcdName from DEC file
 #
+
+
 def ObtainPcdName(Packages, TokenSpaceGuidValue, Token):
     TokenSpaceGuidName = ''
     PcdCName = ''
@@ -149,11 +153,13 @@ def ObtainPcdName(Packages, TokenSpaceGuidValue, Token):
 
     return TokenSpaceGuidName, PcdCName
 
-## _TransferDict
+# _TransferDict
 #  transfer dict that using (Statement, SortedArch) as key,
 #  (GenericComment, UsageComment) as value into a dict that using SortedArch as
 #  key and NewStatement as value
 #
+
+
 def TransferDict(OrigDict, Type=None):
     NewDict = {}
     LeftOffset = 0
@@ -185,4 +191,3 @@ def TransferDict(OrigDict, Type=None):
             NewDict[SortedArch] = [NewStateMent]
 
     return NewDict
-

@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define the common C struct and functions.
 #
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
@@ -26,17 +26,18 @@ ZEROVECTOR_BYTE = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00
 PADVECTOR = uuid.UUID("ffffffff-ffff-ffff-ffff-ffffffffffff")
 FVH_SIGNATURE = b'_FVH'
 
-#Alignment
+# Alignment
 SECTION_COMMON_ALIGNMENT = 4
 FFS_COMMON_ALIGNMENT = 8
+
 
 class GUID(Structure):
     _pack_ = 1
     _fields_ = [
-        ('Guid1',            c_uint32),
-        ('Guid2',            c_uint16),
-        ('Guid3',            c_uint16),
-        ('Guid4',            ARRAY(c_uint8, 8)),
+        ('Guid1', c_uint32),
+        ('Guid2', c_uint16),
+        ('Guid3', c_uint16),
+        ('Guid4', ARRAY(c_uint8, 8)),
     ]
 
     def from_list(self, listformat: list) -> None:
@@ -44,7 +45,7 @@ class GUID(Structure):
         self.Guid2 = listformat[1]
         self.Guid3 = listformat[2]
         for i in range(8):
-            self.Guid4[i] = listformat[i+3]
+            self.Guid4[i] = listformat[i + 3]
 
     def __cmp__(self, otherguid) -> bool:
         if not isinstance(otherguid, GUID):
@@ -56,11 +57,12 @@ class GUID(Structure):
                 rt = rt & (self.Guid4[i] == otherguid.Guid4[i])
         return rt
 
+
 def ModifyGuidFormat(target_guid: str) -> GUID:
     target_guid = target_guid.replace('-', '')
     target_list = []
-    start = [0,8,12,16,18,20,22,24,26,28,30]
-    end = [8,12,16,18,20,22,24,26,28,30,32]
+    start = [0, 8, 12, 16, 18, 20, 22, 24, 26, 28, 30]
+    end = [8, 12, 16, 18, 20, 22, 24, 26, 28, 30, 32]
     num = len(start)
     for pos in range(num):
         new_value = int(target_guid[start[pos]:end[pos]], 16)
@@ -75,7 +77,6 @@ def struct2stream(s) -> bytes:
     length = sizeof(s)
     p = cast(pointer(s), POINTER(c_char * length))
     return p.contents.raw
-
 
 
 def GetPadSize(Size: int, alignment: int) -> int:

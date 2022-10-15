@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to create a database used by build tool
 #
 # Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -23,7 +23,7 @@ from edk2basetools.Workspace.DecBuildData import DecBuildData
 from edk2basetools.Workspace.DscBuildData import DscBuildData
 from edk2basetools.Workspace.InfBuildData import InfBuildData
 
-## Database
+# Database
 #
 #   This class defined the build database for all modules, packages and platform.
 # It will call corresponding parser for the given file if it cannot find it in
@@ -33,6 +33,8 @@ from edk2basetools.Workspace.InfBuildData import InfBuildData
 # @param GlobalMacros       Global macros used for replacement during file parsing
 # @param RenewDb=False      Create new database file if it's already there
 #
+
+
 class WorkspaceDatabase(object):
 
     #
@@ -42,26 +44,27 @@ class WorkspaceDatabase(object):
     class BuildObjectFactory(object):
 
         _FILE_TYPE_ = {
-            ".inf"  : MODEL_FILE_INF,
-            ".dec"  : MODEL_FILE_DEC,
-            ".dsc"  : MODEL_FILE_DSC,
+            ".inf": MODEL_FILE_INF,
+            ".dec": MODEL_FILE_DEC,
+            ".dsc": MODEL_FILE_DSC,
         }
 
         # file parser
         _FILE_PARSER_ = {
-            MODEL_FILE_INF  :   InfParser,
-            MODEL_FILE_DEC  :   DecParser,
-            MODEL_FILE_DSC  :   DscParser,
+            MODEL_FILE_INF: InfParser,
+            MODEL_FILE_DEC: DecParser,
+            MODEL_FILE_DSC: DscParser,
         }
 
         # convert to xxxBuildData object
         _GENERATOR_ = {
-            MODEL_FILE_INF  :   InfBuildData,
-            MODEL_FILE_DEC  :   DecBuildData,
-            MODEL_FILE_DSC  :   DscBuildData,
+            MODEL_FILE_INF: InfBuildData,
+            MODEL_FILE_DEC: DecBuildData,
+            MODEL_FILE_DSC: DscBuildData,
         }
 
         _CACHE_ = {}    # (FilePath, Arch)  : <object>
+
         def GetCache(self):
             return self._CACHE_
 
@@ -104,7 +107,8 @@ class WorkspaceDatabase(object):
             BuildObject = self.CreateBuildObject(FilePath, Arch, Target, Toolchain)
             self._CACHE_[Key] = BuildObject
             return BuildObject
-        def CreateBuildObject(self,FilePath, Arch, Target, Toolchain):
+
+        def CreateBuildObject(self, FilePath, Arch, Target, Toolchain):
             Ext = FilePath.Type
             if Ext not in self._FILE_TYPE_:
                 return None
@@ -114,22 +118,22 @@ class WorkspaceDatabase(object):
 
             # get the parser ready for this file
             MetaFile = self._FILE_PARSER_[FileType](
-                                FilePath,
-                                FileType,
-                                Arch,
-                                MetaFileStorage(self.WorkspaceDb, FilePath, FileType)
-                                )
+                FilePath,
+                FileType,
+                Arch,
+                MetaFileStorage(self.WorkspaceDb, FilePath, FileType)
+            )
             # always do post-process, in case of macros change
             MetaFile.DoPostProcess()
             # object the build is based on
             BuildObject = self._GENERATOR_[FileType](
-                                    FilePath,
-                                    MetaFile,
-                                    self,
-                                    Arch,
-                                    Target,
-                                    Toolchain
-                                    )
+                FilePath,
+                MetaFile,
+                self,
+                Arch,
+                Target,
+                Toolchain
+            )
             return BuildObject
 
     # placeholder for file format conversion
@@ -141,7 +145,7 @@ class WorkspaceDatabase(object):
         def __getitem__(self, Key):
             pass
 
-    ## Constructor of WorkspaceDatabase
+    # Constructor of WorkspaceDatabase
     #
     # @param DbPath             Path of database file
     # @param GlobalMacros       Global macros used for replacement during file parsing
@@ -158,8 +162,8 @@ class WorkspaceDatabase(object):
         self.BuildObject = WorkspaceDatabase.BuildObjectFactory(self)
         self.TransformObject = WorkspaceDatabase.TransformObjectFactory(self)
 
+    # Summarize all packages in the database
 
-    ## Summarize all packages in the database
     def GetPackageList(self, Platform, Arch, TargetName, ToolChainTag):
         self.Platform = Platform
         PackageList = []
@@ -193,6 +197,7 @@ class WorkspaceDatabase(object):
             EdkLogger.error('build', PARSER_ERROR, "Failed to parser DSC file: %s" % Dscfile)
         return Platform
 
+
 BuildDB = WorkspaceDatabase()
 ##
 #
@@ -201,4 +206,3 @@ BuildDB = WorkspaceDatabase()
 #
 if __name__ == '__main__':
     pass
-

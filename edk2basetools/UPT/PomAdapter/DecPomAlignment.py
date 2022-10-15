@@ -1,4 +1,4 @@
-## @file DecPomAlignment.py
+# @file DecPomAlignment.py
 # This file contained the adapter for convert INF parser object to POM Object
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -86,12 +86,12 @@ from edk2basetools.UPT.Object.POM.CommonObject import MiscFileObject
 from edk2basetools.UPT.Object.POM.CommonObject import FileObject
 
 
-## DecPomAlignment
+# DecPomAlignment
 #
 # Inherited from PackageObject
 #
 class DecPomAlignment(PackageObject):
-    def __init__(self, Filename, WorkspaceDir = None, CheckMulDec = False):
+    def __init__(self, Filename, WorkspaceDir=None, CheckMulDec=False):
         PackageObject.__init__(self)
         self.UserExtensions = ''
         self.WorkspaceDir = WorkspaceDir
@@ -111,7 +111,7 @@ class DecPomAlignment(PackageObject):
         #
         self.DecToPackage()
 
-    ## Load Dec file
+    # Load Dec file
     #
     # Load the file if it exists
     #
@@ -131,7 +131,7 @@ class DecPomAlignment(PackageObject):
 
         self.DecParser = Dec(Filename)
 
-    ## Transfer to Package Object
+    # Transfer to Package Object
     #
     # Transfer all contents of a Dec file to a standard Package Object
     #
@@ -187,7 +187,7 @@ class DecPomAlignment(PackageObject):
         #
         self.GenUserExtensions()
 
-    ## Generate user extension
+    # Generate user extension
     #
     #
     def GenUserExtensions(self):
@@ -226,7 +226,7 @@ class DecPomAlignment(PackageObject):
             PrivateUserExtension.SetUserID(DT.TAB_INTEL)
             self.SetUserExtensionList(self.GetUserExtensionList() + [PrivateUserExtension])
 
-    ## Generate miscellaneous files on DEC file
+    # Generate miscellaneous files on DEC file
     #
     #
     def GenMiscFiles(self, Content):
@@ -241,16 +241,16 @@ class DecPomAlignment(PackageObject):
                 if IsValidPath(FileName, self.GetRelaPath()):
                     FileObj = FileObject()
                     FileObj.SetURI(FileName)
-                    MiscFileObj.SetFileList(MiscFileObj.GetFileList()+[FileObj])
+                    MiscFileObj.SetFileList(MiscFileObj.GetFileList() + [FileObj])
                 else:
                     Logger.Error("InfParser",
                                  FORMAT_INVALID,
-                                 ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID%(Line),
+                                 ST.ERR_INF_PARSER_FILE_NOT_EXIST_OR_NAME_INVALID % (Line),
                                  File=self.GetFileName(),
                                  ExtraData=Line)
-        self.SetMiscFileList(self.GetMiscFileList()+[MiscFileObj])
+        self.SetMiscFileList(self.GetMiscFileList() + [MiscFileObj])
 
-    ## Generate Package Header
+    # Generate Package Header
     #
     # Gen Package Header of Dec as <Key> = <Value>
     #
@@ -268,9 +268,9 @@ class DecPomAlignment(PackageObject):
             #
             # put items into Dict except for PackageName, Guid, Version, DEC_SPECIFICATION
             #
-            SkipItemList = [TAB_DEC_DEFINES_PACKAGE_NAME, \
-                TAB_DEC_DEFINES_PACKAGE_GUID, TAB_DEC_DEFINES_PACKAGE_VERSION, \
-                TAB_DEC_DEFINES_DEC_SPECIFICATION, TAB_DEC_DEFINES_PKG_UNI_FILE]
+            SkipItemList = [TAB_DEC_DEFINES_PACKAGE_NAME,
+                            TAB_DEC_DEFINES_PACKAGE_GUID, TAB_DEC_DEFINES_PACKAGE_VERSION,
+                            TAB_DEC_DEFINES_DEC_SPECIFICATION, TAB_DEC_DEFINES_PKG_UNI_FILE]
             if Item.Key in SkipItemList:
                 continue
             DefinesDict['%s = %s' % (Item.Key, Item.Value)] = TAB_ARCH_COMMON
@@ -284,7 +284,7 @@ class DecPomAlignment(PackageObject):
         if DefObj.GetPackageUniFile():
             ValidateUNIFilePath(DefObj.GetPackageUniFile())
             self.UniFileClassObject = \
-            UniFileClassObject([PathClass(os.path.join(DefObj.GetPackagePath(), DefObj.GetPackageUniFile()))])
+                UniFileClassObject([PathClass(os.path.join(DefObj.GetPackagePath(), DefObj.GetPackageUniFile()))])
         else:
             self.UniFileClassObject = None
 
@@ -322,9 +322,9 @@ class DecPomAlignment(PackageObject):
         if self.DecParser.BinaryHeadComment:
             Abstract, Description, Copyright, License = \
                 ParseHeaderCommentSection(self.DecParser.BinaryHeadComment,
-                                      ContainerFile, True)
+                                          ContainerFile, True)
 
-            if not Abstract  or not Description or not Copyright or not License:
+            if not Abstract or not Description or not Copyright or not License:
                 Logger.Error('MkPkg',
                              FORMAT_INVALID,
                              ST.ERR_INVALID_BINARYHEADER_FORMAT,
@@ -338,7 +338,7 @@ class DecPomAlignment(PackageObject):
         BinaryAbstractList = []
         BinaryDescriptionList = []
 
-        #Get Binary header from UNI file
+        # Get Binary header from UNI file
         # Initialize the UniStrDict dictionary, top keys are language codes
         UniStrDict = {}
         if self.UniFileClassObject:
@@ -348,19 +348,19 @@ class DecPomAlignment(PackageObject):
                     Lang = GetLanguageCode1766(Lang)
                     if StringDefClassObject.StringName == TAB_DEC_BINARY_ABSTRACT:
                         if (Lang, ConvertSpecialUnicodes(StringDefClassObject.StringValue)) \
-                        not in self.GetBinaryHeaderAbstract():
+                                not in self.GetBinaryHeaderAbstract():
                             BinaryAbstractList.append((Lang, ConvertSpecialUnicodes(StringDefClassObject.StringValue)))
                     if StringDefClassObject.StringName == TAB_DEC_BINARY_DESCRIPTION:
                         if (Lang, ConvertSpecialUnicodes(StringDefClassObject.StringValue)) \
-                        not in self.GetBinaryHeaderDescription():
+                                not in self.GetBinaryHeaderDescription():
                             BinaryDescriptionList.append((Lang,
                                                           ConvertSpecialUnicodes(StringDefClassObject.StringValue)))
-        #Combine Binary header from DEC file and UNI file
+        # Combine Binary header from DEC file and UNI file
         BinaryAbstractList = self.GetBinaryHeaderAbstract() + BinaryAbstractList
         BinaryDescriptionList = self.GetBinaryHeaderDescription() + BinaryDescriptionList
         BinaryCopyrightList = self.GetBinaryHeaderCopyright()
         BinaryLicenseList = self.GetBinaryHeaderLicense()
-        #Generate the UserExtensionObject for TianoCore."BinaryHeader"
+        # Generate the UserExtensionObject for TianoCore."BinaryHeader"
         if BinaryAbstractList or BinaryDescriptionList or BinaryCopyrightList or BinaryLicenseList:
             BinaryUserExtension = UserExtensionObject()
             BinaryUserExtension.SetBinaryAbstract(BinaryAbstractList)
@@ -371,13 +371,13 @@ class DecPomAlignment(PackageObject):
             BinaryUserExtension.SetUserID(TAB_BINARY_HEADER_USERID)
             self.SetUserExtensionList(self.GetUserExtensionList() + [BinaryUserExtension])
 
-
-    ## GenIncludes
+    # GenIncludes
     #
     # Gen Includes of Dec
     #
     # @param ContainerFile: The Dec file full path
     #
+
     def GenIncludes(self, ContainerFile):
         if ContainerFile:
             pass
@@ -421,7 +421,7 @@ class DecPomAlignment(PackageObject):
         # to remove the extra path separator '\'
         # as this list is used to search the supported Arch info
         #
-        for IndexN in range (0, len(IncludePathList)):
+        for IndexN in range(0, len(IncludePathList)):
             IncludePathList[IndexN] = os.path.normpath(IncludePathList[IndexN])
         IncludePathList.sort()
         IncludePathList.reverse()
@@ -441,9 +441,9 @@ class DecPomAlignment(PackageObject):
             if ExtName.upper() == '.DEC' and self.CheckMulDec:
                 Logger.Error('MkPkg',
                              UPT_MUL_DEC_ERROR,
-                             ST.ERR_MUL_DEC_ERROR%(os.path.dirname(ContainerFile),
-                                                   os.path.basename(ContainerFile),
-                                                   Includefile))
+                             ST.ERR_MUL_DEC_ERROR % (os.path.dirname(ContainerFile),
+                                                     os.path.basename(ContainerFile),
+                                                     Includefile))
 
             FileCombinePath = os.path.dirname(Includefile)
             Include = IncludeObject()
@@ -473,7 +473,7 @@ class DecPomAlignment(PackageObject):
             PackagePathList.append(Include)
         self.SetPackageIncludeFileList(PackagePathList + PackageIncludeFileList)
 
-    ## GenPpis
+    # GenPpis
     #
     # Gen Ppis of Dec
     # <CName>=<GuidValue>
@@ -489,6 +489,7 @@ class DecPomAlignment(PackageObject):
         Factory = None
         if Type == TAB_GUIDS:
             Obj = self.DecParser.GetGuidSectionObject()
+
             def CreateGuidObject():
                 Object = GuidObject()
                 Object.SetGuidTypeList([])
@@ -522,7 +523,7 @@ class DecPomAlignment(PackageObject):
         for Item in Obj.GetGuidStyleAllItems():
             Name = Item.GuidCName
             Value = Item.GuidString
-            HelpTxt = ParseGenericComment(Item.GetHeadComment() + \
+            HelpTxt = ParseGenericComment(Item.GetHeadComment() +
                                           Item.GetTailComment())
 
             ListObject = Factory()
@@ -537,7 +538,7 @@ class DecPomAlignment(PackageObject):
             DeclarationsList.append(ListObject)
 
         #
-        #GuidTypeList is abstracted from help
+        # GuidTypeList is abstracted from help
         #
         if Type == TAB_GUIDS:
             self.SetGuidList(self.GetGuidList() + DeclarationsList)
@@ -546,7 +547,7 @@ class DecPomAlignment(PackageObject):
         elif Type == TAB_PPIS:
             self.SetPpiList(self.GetPpiList() + DeclarationsList)
 
-    ## GenLibraryClasses
+    # GenLibraryClasses
     #
     # Gen LibraryClasses of Dec
     # <CName>=<GuidValue>
@@ -565,7 +566,7 @@ class DecPomAlignment(PackageObject):
             LibraryClass.SetLibraryClass(Item.Libraryclass)
             LibraryClass.SetSupArchList(Item.GetArchList())
             LibraryClass.SetIncludeHeader(Item.File)
-            HelpTxt = ParseGenericComment(Item.GetHeadComment() + \
+            HelpTxt = ParseGenericComment(Item.GetHeadComment() +
                                           Item.GetTailComment(), None, '@libraryclass')
             if HelpTxt:
                 if self.UniFileClassObject:
@@ -573,10 +574,10 @@ class DecPomAlignment(PackageObject):
                 LibraryClass.SetHelpTextList([HelpTxt])
             LibraryClassDeclarations.append(LibraryClass)
 
-        self.SetLibraryClassList(self.GetLibraryClassList() + \
+        self.SetLibraryClassList(self.GetLibraryClassList() +
                                  LibraryClassDeclarations)
 
-    ## GenPcds
+    # GenPcds
     #
     # Gen Pcds of Dec
     # <TokenSpcCName>.<TokenCName>|<Value>|<DatumType>|<Token>
@@ -591,11 +592,11 @@ class DecPomAlignment(PackageObject):
         #
         PcdDeclarations = []
         IterList = [
-            (TAB_PCDS_FIXED_AT_BUILD_NULL,      'FixedPcd'),
+            (TAB_PCDS_FIXED_AT_BUILD_NULL, 'FixedPcd'),
             (TAB_PCDS_PATCHABLE_IN_MODULE_NULL, 'PatchPcd'),
-            (TAB_PCDS_FEATURE_FLAG_NULL,        'FeaturePcd'),
-            (TAB_PCDS_DYNAMIC_EX_NULL,          'PcdEx'),
-            (TAB_PCDS_DYNAMIC_NULL,             'Pcd')]
+            (TAB_PCDS_FEATURE_FLAG_NULL, 'FeaturePcd'),
+            (TAB_PCDS_DYNAMIC_EX_NULL, 'PcdEx'),
+            (TAB_PCDS_DYNAMIC_NULL, 'Pcd')]
 
         PromptStrList = []
         HelpStrList = []
@@ -617,15 +618,15 @@ class DecPomAlignment(PackageObject):
                     StrList = StringDefClassObject.StringName.split('_')
                     # StringName format is STR_<TOKENSPACECNAME>_<PCDCNAME>_PROMPT
                     if len(StrList) == 4 and StrList[0] == TAB_STR_TOKENCNAME and StrList[3] == TAB_STR_TOKENPROMPT:
-                        PromptStrList.append((GetLanguageCode1766(Lang), StringDefClassObject.StringName, \
+                        PromptStrList.append((GetLanguageCode1766(Lang), StringDefClassObject.StringName,
                                               StringDefClassObject.StringValue))
                     # StringName format is STR_<TOKENSPACECNAME>_<PCDCNAME>_HELP
                     if len(StrList) == 4 and StrList[0] == TAB_STR_TOKENCNAME and StrList[3] == TAB_STR_TOKENHELP:
-                        HelpStrList.append((GetLanguageCode1766(Lang), StringDefClassObject.StringName, \
+                        HelpStrList.append((GetLanguageCode1766(Lang), StringDefClassObject.StringName,
                                             StringDefClassObject.StringValue))
                     # StringName format is STR_<TOKENSPACECNAME>_ERR_##
                     if len(StrList) == 4 and StrList[0] == TAB_STR_TOKENCNAME and StrList[2] == TAB_STR_TOKENERR:
-                        PcdErrStrList.append((GetLanguageCode1766(Lang), StringDefClassObject.StringName, \
+                        PcdErrStrList.append((GetLanguageCode1766(Lang), StringDefClassObject.StringName,
                                               StringDefClassObject.StringValue))
         #
         # For each PCD type
@@ -638,13 +639,13 @@ class DecPomAlignment(PackageObject):
             #
             for Item in PcdObj.GetPcdsByType(PcdType.upper()):
                 PcdDeclaration = GenPcdDeclaration(
-                        ContainerFile,
-                        (Item.TokenSpaceGuidCName, Item.TokenCName,
-                        Item.DefaultValue, Item.DatumType, Item.TokenValue,
-                        Type, Item.GetHeadComment(), Item.GetTailComment(), ''),
-                        Language,
-                        self.DecParser.GetDefineSectionMacro()
-                        )
+                    ContainerFile,
+                    (Item.TokenSpaceGuidCName, Item.TokenCName,
+                     Item.DefaultValue, Item.DatumType, Item.TokenValue,
+                     Type, Item.GetHeadComment(), Item.GetTailComment(), ''),
+                    Language,
+                    self.DecParser.GetDefineSectionMacro()
+                )
                 PcdDeclaration.SetSupArchList(Item.GetArchListOfType(PcdType))
 
                 #
@@ -652,21 +653,21 @@ class DecPomAlignment(PackageObject):
                 #
                 for PcdErr in PcdDeclaration.GetPcdErrorsList():
                     if (PcdDeclaration.GetTokenSpaceGuidCName(), PcdErr.GetErrorNumber()) \
-                        in self.DecParser.PcdErrorCommentDict:
+                            in self.DecParser.PcdErrorCommentDict:
                         Key = (PcdDeclaration.GetTokenSpaceGuidCName(), PcdErr.GetErrorNumber())
-                        PcdErr.SetErrorMessageList(PcdErr.GetErrorMessageList() + \
-                                                      [(Language, self.DecParser.PcdErrorCommentDict[Key])])
+                        PcdErr.SetErrorMessageList(PcdErr.GetErrorMessageList() +
+                                                   [(Language, self.DecParser.PcdErrorCommentDict[Key])])
 
                 for Index in range(0, len(PromptStrList)):
                     StrNameList = PromptStrList[Index][1].split('_')
                     if StrNameList[1].lower() == Item.TokenSpaceGuidCName.lower() and \
-                    StrNameList[2].lower() == Item.TokenCName.lower():
+                            StrNameList[2].lower() == Item.TokenCName.lower():
                         TxtObj = TextObject()
                         TxtObj.SetLang(PromptStrList[Index][0])
                         TxtObj.SetString(PromptStrList[Index][2])
                         for Prompt in PcdDeclaration.GetPromptList():
                             if Prompt.GetLang() == TxtObj.GetLang() and \
-                                Prompt.GetString() == TxtObj.GetString():
+                                    Prompt.GetString() == TxtObj.GetString():
                                 break
                         else:
                             PcdDeclaration.SetPromptList(PcdDeclaration.GetPromptList() + [TxtObj])
@@ -674,13 +675,13 @@ class DecPomAlignment(PackageObject):
                 for Index in range(0, len(HelpStrList)):
                     StrNameList = HelpStrList[Index][1].split('_')
                     if StrNameList[1].lower() == Item.TokenSpaceGuidCName.lower() and \
-                    StrNameList[2].lower() == Item.TokenCName.lower():
+                            StrNameList[2].lower() == Item.TokenCName.lower():
                         TxtObj = TextObject()
                         TxtObj.SetLang(HelpStrList[Index][0])
                         TxtObj.SetString(HelpStrList[Index][2])
                         for HelpStrObj in PcdDeclaration.GetHelpTextList():
                             if HelpStrObj.GetLang() == TxtObj.GetLang() and \
-                                HelpStrObj.GetString() == TxtObj.GetString():
+                                    HelpStrObj.GetString() == TxtObj.GetString():
                                 break
                         else:
                             PcdDeclaration.SetHelpTextList(PcdDeclaration.GetHelpTextList() + [TxtObj])
@@ -691,12 +692,12 @@ class DecPomAlignment(PackageObject):
                 for Index in range(0, len(PcdErrStrList)):
                     StrNameList = PcdErrStrList[Index][1].split('_')
                     if StrNameList[1].lower() == Item.TokenSpaceGuidCName.lower() and \
-                        StrNameList[2].lower() == TAB_STR_TOKENERR.lower():
+                            StrNameList[2].lower() == TAB_STR_TOKENERR.lower():
                         for PcdErr in PcdDeclaration.GetPcdErrorsList():
                             if PcdErr.GetErrorNumber().lower() == (TAB_HEX_START + StrNameList[3]).lower() and \
-                                (PcdErrStrList[Index][0], PcdErrStrList[Index][2]) not in PcdErr.GetErrorMessageList():
-                                PcdErr.SetErrorMessageList(PcdErr.GetErrorMessageList() + \
-                                                            [(PcdErrStrList[Index][0], PcdErrStrList[Index][2])])
+                                    (PcdErrStrList[Index][0], PcdErrStrList[Index][2]) not in PcdErr.GetErrorMessageList():
+                                PcdErr.SetErrorMessageList(PcdErr.GetErrorMessageList() +
+                                                           [(PcdErrStrList[Index][0], PcdErrStrList[Index][2])])
 
                 #
                 # Check to prevent missing error message if a Pcd has the error code.
@@ -790,7 +791,7 @@ class DecPomAlignment(PackageObject):
             for MatchedItem in MatchedList:
                 if MatchedItem not in self.PcdDefaultValueDict:
                     Logger.Error("Dec File Parser", FORMAT_INVALID, Message=ST.ERR_DECPARSE_PCD_NODEFINED % MatchedItem,
-                                     File=self.FullPath)
+                                 File=self.FullPath)
 
                 ReplaceValue = ReplaceValue.replace(MatchedItem, self.PcdDefaultValueDict[MatchedItem])
 
@@ -802,7 +803,7 @@ class DecPomAlignment(PackageObject):
     def CheckPcdValue(self):
         for Pcd in self.GetPcdList():
             self.PcdDefaultValueDict[TAB_SPLIT.join((Pcd.GetTokenSpaceGuidCName(), Pcd.GetCName())).strip()] = \
-            Pcd.GetDefaultValue()
+                Pcd.GetDefaultValue()
 
         for Pcd in self.GetPcdList():
             ValidationExpressions = []
@@ -838,7 +839,7 @@ class DecPomAlignment(PackageObject):
                     if ValidValueRange.find('-') >= 0:
                         ValidValueRange = ValidValueRange.replace('-', '<= x <=')
                     elif not ValidValueRange.startswith('x ') and not ValidValueRange.startswith('not ') \
-                        and not ValidValueRange.startswith('not(') and not ValidValueRange.startswith('('):
+                            and not ValidValueRange.startswith('not(') and not ValidValueRange.startswith('('):
                         ValidValueRange = 'x %s' % ValidValueRange
                     Message = self.GetEnErrorMessage(Valid.GetErrorMessageList())
                     ValidationExpressions.append((ValidValueRange, Message))
@@ -856,27 +857,27 @@ class DecPomAlignment(PackageObject):
 
             try:
                 DefaultValue = eval(DefaultValue.replace('TRUE', 'True').replace('true', 'True')
-                                        .replace('FALSE', 'False').replace('false', 'False'))
+                                    .replace('FALSE', 'False').replace('false', 'False'))
             except BaseException:
                 pass
 
             for (Expression, Msg) in ValidationExpressions:
                 try:
-                    if not eval(Expression, {'x':DefaultValue}):
-                        Logger.Error("Dec File Parser", FORMAT_INVALID, ExtraData='%s, value = %s' %\
+                    if not eval(Expression, {'x': DefaultValue}):
+                        Logger.Error("Dec File Parser", FORMAT_INVALID, ExtraData='%s, value = %s' %
                                      (PcdGuidName, DefaultValue), Message=Msg, File=self.FullPath)
                 except TypeError:
-                    Logger.Error("Dec File Parser", FORMAT_INVALID, ExtraData=PcdGuidName, \
-                                    Message=Msg, File=self.FullPath)
+                    Logger.Error("Dec File Parser", FORMAT_INVALID, ExtraData=PcdGuidName,
+                                 Message=Msg, File=self.FullPath)
 
-    ## GenModuleFileList
+    # GenModuleFileList
     #
     def GenModuleFileList(self, ContainerFile):
         ModuleFileList = []
         ContainerFileName = os.path.basename(ContainerFile)
         ContainerFilePath = os.path.dirname(ContainerFile)
         for Item in GetFiles(ContainerFilePath,
-                        ['CVS', '.svn'] + self.GetIncludePathList(), False):
+                             ['CVS', '.svn'] + self.GetIncludePathList(), False):
             ExtName = os.path.splitext(Item)[1]
             if ExtName.lower() == '.inf':
                 ModuleFileList.append(Item)
@@ -885,13 +886,13 @@ class DecPomAlignment(PackageObject):
                     continue
                 Logger.Error('MkPkg',
                              UPT_MUL_DEC_ERROR,
-                             ST.ERR_MUL_DEC_ERROR%(ContainerFilePath,
-                                                   ContainerFileName,
-                                                   Item))
+                             ST.ERR_MUL_DEC_ERROR % (ContainerFilePath,
+                                                     ContainerFileName,
+                                                     Item))
 
         self.SetModuleFileList(ModuleFileList)
 
-    ## Show detailed information of Package
+    # Show detailed information of Package
     #
     # Print all members and their values of Package class
     #
@@ -901,12 +902,12 @@ class DecPomAlignment(PackageObject):
         print('\nVersion =', self.GetVersion())
         print('\nGuid =', self.GetGuid())
 
-        print('\nStandardIncludes = %d ' \
-            % len(self.GetStandardIncludeFileList()), end=' ')
+        print('\nStandardIncludes = %d '
+              % len(self.GetStandardIncludeFileList()), end=' ')
         for Item in self.GetStandardIncludeFileList():
             print(Item.GetFilePath(), '  ', Item.GetSupArchList())
-        print('\nPackageIncludes = %d \n' \
-            % len(self.GetPackageIncludeFileList()), end=' ')
+        print('\nPackageIncludes = %d \n'
+              % len(self.GetPackageIncludeFileList()), end=' ')
         for Item in self.GetPackageIncludeFileList():
             print(Item.GetFilePath(), '  ', Item.GetSupArchList())
 
@@ -921,16 +922,16 @@ class DecPomAlignment(PackageObject):
             print(Item.GetCName(), Item.GetGuid(), Item.GetSupArchList())
         print('\nLibraryClasses =', self.GetLibraryClassList())
         for Item in self.GetLibraryClassList():
-            print(Item.GetLibraryClass(), Item.GetRecommendedInstance(), \
-            Item.GetSupArchList())
+            print(Item.GetLibraryClass(), Item.GetRecommendedInstance(),
+                  Item.GetSupArchList())
         print('\nPcds =', self.GetPcdList())
         for Item in self.GetPcdList():
-            print('CName=', Item.GetCName(), 'TokenSpaceGuidCName=', \
-                Item.GetTokenSpaceGuidCName(), \
-                'DefaultValue=', Item.GetDefaultValue(), \
-                'ValidUsage=', Item.GetValidUsage(), \
-                'SupArchList', Item.GetSupArchList(), \
-                'Token=', Item.GetToken(), 'DatumType=', Item.GetDatumType())
+            print('CName=', Item.GetCName(), 'TokenSpaceGuidCName=',
+                  Item.GetTokenSpaceGuidCName(),
+                  'DefaultValue=', Item.GetDefaultValue(),
+                  'ValidUsage=', Item.GetValidUsage(),
+                  'SupArchList', Item.GetSupArchList(),
+                  'Token=', Item.GetToken(), 'DatumType=', Item.GetDatumType())
 
         for Item in self.GetMiscFileList():
             print(Item.GetName())
@@ -938,7 +939,7 @@ class DecPomAlignment(PackageObject):
                 print(FileObjectItem.GetURI())
         print('****************\n')
 
-## GenPcdDeclaration
+# GenPcdDeclaration
 #
 # @param ContainerFile:   File name of the DEC file
 # @param PcdInfo:         Pcd information, of format (TokenGuidCName,
@@ -946,6 +947,8 @@ class DecPomAlignment(PackageObject):
 #                         GenericComment, TailComment, Arch)
 # @param Language: The language of HelpText, Prompt
 #
+
+
 def GenPcdDeclaration(ContainerFile, PcdInfo, Language, MacroReplaceDict):
     HelpStr = ''
     PromptStr = ''
@@ -979,7 +982,7 @@ def GenPcdDeclaration(ContainerFile, PcdInfo, Language, MacroReplaceDict):
 
     if TailComment:
         SupModuleList, TailHelpStr = ParseDecPcdTailComment(TailComment,
-                                                        ContainerFile)
+                                                            ContainerFile)
         if SupModuleList:
             Pcd.SetSupModuleList(SupModuleList)
 

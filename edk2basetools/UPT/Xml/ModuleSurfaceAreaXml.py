@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to parse a Module file of .PKG file
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -48,7 +48,7 @@ from edk2basetools.UPT.Xml.XmlParserMisc import GetHelpTextList
 from edk2basetools.UPT.Library import GlobalData
 from edk2basetools.UPT.Library.Misc import GetSplitValueList
 
-##   BinaryFileXml
+# BinaryFileXml
 #
 #    represent the following XML item
 #
@@ -62,6 +62,8 @@ from edk2basetools.UPT.Library.Misc import GetSplitValueList
 #    <AsBuilt> ... </AsBuilt> {0,}
 #    </BinaryFile> {1,}
 #
+
+
 class BinaryFileXml(object):
     def __init__(self):
         self.FileNames = []
@@ -156,7 +158,7 @@ class BinaryFileXml(object):
         for LibGuidVer in LibGuidVerList:
             if LibGuidVer.GetLibGuid() and IsMatchArch(LibGuidVer.GetSupArchList(), SupportArch):
                 GuiVerElem = \
-                CreateXmlElement('GUID', LibGuidVer.GetLibGuid(), [], [['Version', LibGuidVer.GetLibVersion()]])
+                    CreateXmlElement('GUID', LibGuidVer.GetLibGuid(), [], [['Version', LibGuidVer.GetLibVersion()]])
                 GuiVerElemList.append(GuiVerElem)
         if len(GuiVerElemList) > 0:
             LibGuidVerElem = CreateXmlElement('LibraryInstances', '', GuiVerElemList, [])
@@ -194,6 +196,8 @@ class BinaryFileXml(object):
 ##
 # PackageXml
 #
+
+
 class PackageXml(object):
     def __init__(self):
         self.Description = ''
@@ -235,6 +239,8 @@ class PackageXml(object):
 ##
 # ExternXml
 #
+
+
 class ExternXml(object):
     def __init__(self):
         self.CommonDefines = CommonDefinesXml()
@@ -290,6 +296,8 @@ class ExternXml(object):
 ##
 # DepexXml
 #
+
+
 class DepexXml(object):
     def __init__(self):
         self.CommonDefines = CommonDefinesXml()
@@ -337,6 +345,8 @@ class DepexXml(object):
 ##
 # BootModeXml
 #
+
+
 class BootModeXml(object):
     def __init__(self):
         self.SupportedBootModes = ''
@@ -345,7 +355,7 @@ class BootModeXml(object):
 
     def FromXml(self, Item, Key):
         self.SupportedBootModes = \
-        XmlElement(Item, '%s/SupportedBootModes' % Key)
+            XmlElement(Item, '%s/SupportedBootModes' % Key)
         self.CommonDefines.FromXml(Item, Key)
         for HelpTextItem in XmlList(Item, '%s/HelpText' % Key):
             HelpTextObj = HelpTextXml()
@@ -379,6 +389,8 @@ class BootModeXml(object):
 ##
 # EventXml
 #
+
+
 class EventXml(object):
     def __init__(self):
         self.EventType = ''
@@ -407,7 +419,7 @@ class EventXml(object):
             pass
         AttributeList = [['EventType', Event.GetEventType()],
                          ['Usage', Event.GetUsage()],
-                        ]
+                         ]
         NodeList = []
         for Item in Event.GetHelpTextList():
             Tmp = HelpTextXml()
@@ -424,6 +436,8 @@ class EventXml(object):
 ##
 # HobXml
 #
+
+
 class HobXml(object):
     def __init__(self):
         self.HobType = ''
@@ -471,6 +485,8 @@ class HobXml(object):
 ##
 # SourceFileXml
 #
+
+
 class SourceFileXml(object):
     def __init__(self):
         self.SourceFile = ''
@@ -506,6 +522,8 @@ class SourceFileXml(object):
 ##
 # ModulePropertyXml
 #
+
+
 class ModulePropertyXml(object):
     def __init__(self):
         self.CommonDefines = CommonDefinesXml()
@@ -558,7 +576,6 @@ class ModulePropertyXml(object):
 
         return Header, self.BootModes, self.Events, self.HOBs
 
-
     def ToXml(self, Header, BootModes, Events, Hobs, Key):
         if self.ModuleType:
             pass
@@ -569,7 +586,7 @@ class ModulePropertyXml(object):
                     ['PcdIsDriver', Header.GetPcdIsDriver()],
                     ['UefiSpecificationVersion', Header.GetUefiSpecificationVersion()],
                     ['PiSpecificationVersion', Header.GetPiSpecificationVersion()],
-                   ]
+                    ]
         for Item in Header.GetSpecList():
             Spec, Version = Item
             SpecElem = CreateXmlElement('Specification', Spec, [], [['Version', Version]])
@@ -591,9 +608,9 @@ class ModulePropertyXml(object):
     def __str__(self):
         Str = "ModuleType = %s Path = %s PcdIsDriver = %s UefiSpecificationVersion = %s PiSpecificationVersion = %s \
                Specification = %s SpecificationVersion = %s %s" % \
-        (self.ModuleType, self.Path, self.PcdIsDriver, \
-         self.UefiSpecificationVersion, self.PiSpecificationVersion, \
-         self.SpecificationList, self.SpecificationVersion, self.CommonDefines)
+            (self.ModuleType, self.Path, self.PcdIsDriver,
+             self.UefiSpecificationVersion, self.PiSpecificationVersion,
+             self.SpecificationList, self.SpecificationVersion, self.CommonDefines)
         for Item in self.BootModes:
             Str = Str + '\n\t' + str(Item)
         for Item in self.Events:
@@ -605,6 +622,8 @@ class ModulePropertyXml(object):
 ##
 # ModuleXml
 #
+
+
 class ModuleSurfaceAreaXml(object):
     def __init__(self, Package=''):
         self.Module = None
@@ -682,7 +701,7 @@ class ModuleSurfaceAreaXml(object):
         #
         Tmp = ModulePropertyXml()
         (Module, BootModes, Events, HOBs) = \
-        Tmp.FromXml(XmlNode(Item, '/ModuleSurfaceArea/ModuleProperties'), 'ModuleProperties', Module)
+            Tmp.FromXml(XmlNode(Item, '/ModuleSurfaceArea/ModuleProperties'), 'ModuleProperties', Module)
         Module.SetBootModeList(BootModes)
         Module.SetEventList(Events)
         Module.SetHobList(HOBs)
@@ -715,7 +734,7 @@ class ModuleSurfaceAreaXml(object):
             Module.SetSourceFileList(Module.GetSourceFileList() + [SourceFile])
 
         if XmlList(Item, '/ModuleSurfaceArea/SourceFiles') and \
-           not XmlList(Item, '/ModuleSurfaceArea/SourceFiles/Filename') :
+           not XmlList(Item, '/ModuleSurfaceArea/SourceFiles/Filename'):
             Module.SetSourceFileList([None])
 
         #
@@ -727,7 +746,7 @@ class ModuleSurfaceAreaXml(object):
             Module.SetBinaryFileList(Module.GetBinaryFileList() + [BinaryFile])
 
         if XmlList(Item, '/ModuleSurfaceArea/BinaryFiles') and \
-           not XmlList(Item, '/ModuleSurfaceArea/BinaryFiles/BinaryFile') :
+           not XmlList(Item, '/ModuleSurfaceArea/BinaryFiles/BinaryFile'):
             Module.SetBinaryFileList([None])
         #
         # PackageDependencies
@@ -795,7 +814,7 @@ class ModuleSurfaceAreaXml(object):
                 Module.SetPcdList(Module.GetPcdList() + [PcdEntry])
 
             if XmlList(Item, '/ModuleSurfaceArea/PcdCoded') and \
-                not XmlList(Item, '/ModuleSurfaceArea/PcdCoded/PcdEntry'):
+                    not XmlList(Item, '/ModuleSurfaceArea/PcdCoded/PcdEntry'):
                 Module.SetPcdList([None])
 
         Module = self.FromXml2(Item, Module)
@@ -824,7 +843,7 @@ class ModuleSurfaceAreaXml(object):
         # ModuleProperties
         #
         Tmp = ModulePropertyXml()
-        DomModule.appendChild(Tmp.ToXml(Module, Module.GetBootModeList(), Module.GetEventList(), Module.GetHobList(), \
+        DomModule.appendChild(Tmp.ToXml(Module, Module.GetBootModeList(), Module.GetEventList(), Module.GetHobList(),
                                         'ModuleProperties'))
         #
         # ClonedFrom
@@ -951,6 +970,8 @@ class ModuleSurfaceAreaXml(object):
 ##
 # BuildFlagXml used to generate BuildFlag for <AsBuilt>
 #
+
+
 class BuildFlagXml(object):
     def __init__(self):
         self.Target = ''

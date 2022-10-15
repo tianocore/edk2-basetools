@@ -1,4 +1,4 @@
-## @file
+# @file
 #
 # This file is the main entry for UPT
 #
@@ -13,6 +13,35 @@ UPT
 
 ## import modules
 #
+from BuildVersion import gBUILD_VERSION
+from edk2basetools.UPT.Core.IpiDb import IpiDatabase
+from edk2basetools.UPT.Library import GlobalData
+from edk2basetools.UPT.Library.Misc import GetWorkspace
+import TestInstall
+import ReplacePkg
+import InventoryWs
+import RmPkg
+import InstallPkg
+import MkPkg
+from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
+from edk2basetools.UPT.Logger.ToolError import UPT_ALREADY_INSTALLED_ERROR
+from edk2basetools.UPT.Logger.ToolError import FatalError
+from edk2basetools.UPT.Logger.ToolError import OPTION_CONFLICT
+from edk2basetools.UPT.Logger.ToolError import FILE_TYPE_MISMATCH
+from edk2basetools.UPT.Logger.ToolError import OPTION_MISSING
+from edk2basetools.UPT.Logger.ToolError import FILE_NOT_FOUND
+from edk2basetools.UPT.Logger.StringTable import MSG_USAGE
+from edk2basetools.UPT.Logger.StringTable import MSG_DESCRIPTION
+from edk2basetools.UPT.Logger.StringTable import MSG_VERSION
+import edk2basetools.UPT.Logger.Log as Logger
+from edk2basetools.UPT.Logger import StringTable as ST
+from platform import python_version
+from traceback import format_exc
+from optparse import OptionParser
+import platform as pf
+from sys import platform
+import os.path
+from edk2basetools.UPT.Core import FileHook
 import locale
 import sys
 from imp import reload
@@ -20,45 +49,16 @@ encoding = locale.getdefaultlocale()[1]
 if encoding:
     reload(sys)
     sys.setdefaultencoding(encoding)
-from edk2basetools.UPT.Core import FileHook
-import os.path
-from sys import platform
-import platform as pf
-from optparse import OptionParser
-from traceback import format_exc
-from platform import python_version
 
-from edk2basetools.UPT.Logger import StringTable as ST
-import edk2basetools.UPT.Logger.Log as Logger
-from edk2basetools.UPT.Logger.StringTable import MSG_VERSION
-from edk2basetools.UPT.Logger.StringTable import MSG_DESCRIPTION
-from edk2basetools.UPT.Logger.StringTable import MSG_USAGE
-from edk2basetools.UPT.Logger.ToolError import FILE_NOT_FOUND
-from edk2basetools.UPT.Logger.ToolError import OPTION_MISSING
-from edk2basetools.UPT.Logger.ToolError import FILE_TYPE_MISMATCH
-from edk2basetools.UPT.Logger.ToolError import OPTION_CONFLICT
-from edk2basetools.UPT.Logger.ToolError import FatalError
-from edk2basetools.UPT.Logger.ToolError import UPT_ALREADY_INSTALLED_ERROR
-from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
-import MkPkg
-import InstallPkg
-import RmPkg
-import InventoryWs
-import ReplacePkg
-import TestInstall
-from edk2basetools.UPT.Library.Misc import GetWorkspace
-from edk2basetools.UPT.Library import GlobalData
-from edk2basetools.UPT.Core.IpiDb import IpiDatabase
-from BuildVersion import gBUILD_VERSION
-
-## CheckConflictOption
+# CheckConflictOption
 #
 # CheckConflictOption
 #
+
 def CheckConflictOption(Opt):
     if (Opt.PackFileToCreate or Opt.PackFileToInstall or Opt.PackFileToRemove or Opt.PackFileToReplace) \
-    and Opt.InventoryWs:
+            and Opt.InventoryWs:
         Logger.Error("UPT", OPTION_CONFLICT, ExtraData=ST.ERR_L_OA_EXCLUSIVE)
     elif Opt.PackFileToReplace and (Opt.PackFileToCreate or Opt.PackFileToInstall or Opt.PackFileToRemove):
         Logger.Error("UPT", OPTION_CONFLICT, ExtraData=ST.ERR_U_ICR_EXCLUSIVE)
@@ -68,9 +68,9 @@ def CheckConflictOption(Opt):
         Logger.Error("UPT", OPTION_CONFLICT, ExtraData=ST.ERR_I_C_EXCLUSIVE)
     elif Opt.PackFileToInstall and Opt.PackFileToRemove:
         Logger.Error("UPT", OPTION_CONFLICT, ExtraData=ST.ERR_I_R_EXCLUSIVE)
-    elif Opt.PackFileToCreate and  Opt.PackFileToRemove:
+    elif Opt.PackFileToCreate and Opt.PackFileToRemove:
         Logger.Error("UPT", OPTION_CONFLICT, ExtraData=ST.ERR_C_R_EXCLUSIVE)
-    elif Opt.TestDistFiles and (Opt.PackFileToCreate or Opt.PackFileToInstall \
+    elif Opt.TestDistFiles and (Opt.PackFileToCreate or Opt.PackFileToInstall
                                 or Opt.PackFileToRemove or Opt.PackFileToReplace):
         Logger.Error("UPT", OPTION_CONFLICT, ExtraData=ST.ERR_C_R_EXCLUSIVE)
 
@@ -78,8 +78,10 @@ def CheckConflictOption(Opt):
         Logger.Warn("UPT", ST.WARN_CUSTOMPATH_OVERRIDE_USEGUIDEDPATH)
         Opt.UseGuidedPkgPath = False
 
-## SetLogLevel
+# SetLogLevel
 #
+
+
 def SetLogLevel(Opt):
     if Opt.opt_verbose:
         Logger.SetLevel(Logger.VERBOSE)
@@ -96,10 +98,12 @@ def SetLogLevel(Opt):
     else:
         Logger.SetLevel(Logger.INFO)
 
-## Main
+# Main
 #
 # Main
 #
+
+
 def Main():
     Logger.Initialize()
 
@@ -197,7 +201,7 @@ def Main():
     Mgr = FileHook.RecoverMgr(WorkspaceDir)
     FileHook.SetRecoverMgr(Mgr)
 
-    GlobalData.gDB = IpiDatabase(os.path.normpath(os.path.join(WorkspaceDir, \
+    GlobalData.gDB = IpiDatabase(os.path.normpath(os.path.join(WorkspaceDir,
                                                                "Conf/DistributionPackageDatabase.db")), WorkspaceDir)
     GlobalData.gDB.InitDatabase(Opt.SkipLock)
 
@@ -292,7 +296,7 @@ def Main():
     except FatalError as XExcept:
         ReturnCode = XExcept.args[0]
         if Logger.GetLevel() <= Logger.DEBUG_9:
-            Logger.Quiet(ST.MSG_PYTHON_ON % (python_version(), platform) + \
+            Logger.Quiet(ST.MSG_PYTHON_ON % (python_version(), platform) +
                          format_exc())
     finally:
         try:
@@ -313,7 +317,7 @@ def Main():
 
     return ReturnCode
 
-## GetFullPathDist
+# GetFullPathDist
 #
 #  This function will check DistFile existence, if not absolute path, then try current working directory,
 #  then $(WORKSPACE),and return the AbsPath. If file doesn't find, then return None
@@ -322,6 +326,8 @@ def Main():
 # @param WorkspaceDir:   Workspace Directory
 # @return AbsPath:       The Absolute path of the distribution file if existed, None else
 #
+
+
 def GetFullPathDist(DistFile, WorkspaceDir):
     if os.path.isabs(DistFile):
         if not (os.path.exists(DistFile) and os.path.isfile(DistFile)):
@@ -336,6 +342,7 @@ def GetFullPathDist(DistFile, WorkspaceDir):
                 return None
 
         return AbsPath
+
 
 if __name__ == '__main__':
     RETVAL = Main()

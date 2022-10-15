@@ -1,4 +1,4 @@
-## @file
+# @file
 # Simple Rule object for generating FFS
 #
 #  Copyright (c) 2007, Intel Corporation. All rights reserved.<BR>
@@ -13,11 +13,13 @@ from __future__ import absolute_import
 from . import Rule
 from edk2basetools.CommonDataClass.FdfClass import RuleSimpleFileClassObject
 
-## simple rule
+# simple rule
 #
 #
-class RuleSimpleFile (RuleSimpleFileClassObject) :
-    ## The constructor
+
+
+class RuleSimpleFile (RuleSimpleFileClassObject):
+    # The constructor
     #
     #   @param  self        The object pointer
     #

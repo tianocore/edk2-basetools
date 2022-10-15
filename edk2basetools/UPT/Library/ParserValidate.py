@@ -1,4 +1,4 @@
-## @file ParserValidate.py
+# @file ParserValidate.py
 # Functions for parser validation
 #
 # Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -23,26 +23,30 @@ from edk2basetools.UPT.Library.ExpressionValidate import IsValidBareCString
 from edk2basetools.UPT.Library.ExpressionValidate import IsValidFeatureFlagExp
 from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 
-## __HexDigit() method
+# __HexDigit() method
 #
 # Whether char input is a Hex data bit
 #
 # @param  TempChar:    The char to test
 #
+
+
 def __HexDigit(TempChar):
     if (TempChar >= 'a' and TempChar <= 'f') or \
-    (TempChar >= 'A' and TempChar <= 'F') \
+        (TempChar >= 'A' and TempChar <= 'F') \
             or (TempChar >= '0' and TempChar <= '9'):
         return True
     else:
         return False
 
-## IsValidHex() method
+# IsValidHex() method
 #
 # Whether char input is a Hex data.
 #
 # @param  TempChar:    The char to test
 #
+
+
 def IsValidHex(HexStr):
     if not HexStr.upper().startswith("0X"):
         return False
@@ -52,7 +56,7 @@ def IsValidHex(HexStr):
     else:
         return False
 
-## Judge the input string is valid bool type or not.
+# Judge the input string is valid bool type or not.
 #
 # <TRUE>                  ::=  {"TRUE"} {"true"} {"True"} {"0x1"} {"0x01"}
 # <FALSE>                 ::=  {"FALSE"} {"false"} {"False"} {"0x0"} {"0x00"}
@@ -60,6 +64,8 @@ def IsValidHex(HexStr):
 #
 # @param    BoolString:    A string contained the value need to be judged.
 #
+
+
 def IsValidBoolType(BoolString):
     #
     # Valid True
@@ -74,10 +80,10 @@ def IsValidBoolType(BoolString):
     # Valid False
     #
     elif BoolString == 'FALSE' or \
-         BoolString == 'False' or \
-         BoolString == 'false' or \
-         BoolString == '0x0' or \
-         BoolString == '0x00':
+            BoolString == 'False' or \
+            BoolString == 'false' or \
+            BoolString == '0x0' or \
+            BoolString == '0x00':
         return True
     #
     # Invalid bool type
@@ -85,29 +91,35 @@ def IsValidBoolType(BoolString):
     else:
         return False
 
-## Is Valid Module Type List or not
+# Is Valid Module Type List or not
 #
 # @param      ModuleTypeList:  A list contain ModuleType strings need to be
 # judged.
 #
+
+
 def IsValidInfMoudleTypeList(ModuleTypeList):
     for ModuleType in ModuleTypeList:
         return IsValidInfMoudleType(ModuleType)
 
-## Is Valid Module Type or not
+# Is Valid Module Type or not
 #
 # @param      ModuleType:  A string contain ModuleType need to be judged.
 #
+
+
 def IsValidInfMoudleType(ModuleType):
     if ModuleType in MODULE_LIST:
         return True
     else:
         return False
 
-## Is Valid Component Type or not
+# Is Valid Component Type or not
 #
 # @param      ComponentType:  A string contain ComponentType need to be judged.
 #
+
+
 def IsValidInfComponentType(ComponentType):
     if ComponentType.upper() in COMPONENT_TYPE_LIST:
         return True
@@ -115,7 +127,7 @@ def IsValidInfComponentType(ComponentType):
         return False
 
 
-## Is valid Tool Family or not
+# Is valid Tool Family or not
 #
 # @param   ToolFamily:   A string contain Tool Family need to be judged.
 # Family := [A-Z]([a-zA-Z0-9])*
@@ -126,12 +138,14 @@ def IsValidToolFamily(ToolFamily):
         return False
     return True
 
-## Is valid Tool TagName or not
+# Is valid Tool TagName or not
 #
 # The TagName sample is MYTOOLS and VS2005.
 #
 # @param   TagName:   A string contain Tool TagName need to be judged.
 #
+
+
 def IsValidToolTagName(TagName):
     if TagName.strip() == '':
         return True
@@ -141,7 +155,7 @@ def IsValidToolTagName(TagName):
         return False
     return True
 
-## Is valid arch or not
+# Is valid arch or not
 #
 # @param Arch   The arch string need to be validated
 # <OA>                  ::=  (a-zA-Z)(A-Za-z0-9){0,}
@@ -149,6 +163,8 @@ def IsValidToolTagName(TagName):
 #                            {"common"}
 # @param   Arch:   Input arch
 #
+
+
 def IsValidArch(Arch):
     if Arch == 'common':
         return True
@@ -157,13 +173,15 @@ def IsValidArch(Arch):
         return False
     return True
 
-## Is valid family or not
+# Is valid family or not
 #
 # <Family>        ::=  {"MSFT"} {"GCC"} {"INTEL"} {<Usr>} {"*"}
 # <Usr>           ::=  [A-Z][A-Za-z0-9]{0,}
 #
 # @param family:   The family string need to be validated
 #
+
+
 def IsValidFamily(Family):
     Family = Family.strip()
     if Family == '*':
@@ -177,10 +195,12 @@ def IsValidFamily(Family):
         return False
     return True
 
-## Is valid build option name or not
+# Is valid build option name or not
 #
 # @param BuildOptionName:   The BuildOptionName string need to be validated
 #
+
+
 def IsValidBuildOptionName(BuildOptionName):
     if not BuildOptionName:
         return False
@@ -207,24 +227,28 @@ def IsValidBuildOptionName(BuildOptionName):
 
     return True
 
-## IsValidToken
+# IsValidToken
 #
 # Check if pattern string matches total token
 #
 # @param ReString:     regular string
 # @param Token:        Token to be matched
 #
+
+
 def IsValidToken(ReString, Token):
     Match = re.compile(ReString).match(Token)
     return Match and Match.start() == 0 and Match.end() == len(Token)
 
-## IsValidPath
+# IsValidPath
 #
 # Check if path exist
 #
 # @param Path: Absolute path or relative path to be checked
 # @param Root: Root path
 #
+
+
 def IsValidPath(Path, Root):
     Path = Path.strip()
     OrigPath = Path.replace('\\', '/')
@@ -269,7 +293,7 @@ def IsValidPath(Path, Root):
 
     return True
 
-## IsValidInstallPath
+# IsValidInstallPath
 #
 # Check if an install path valid or not.
 #
@@ -277,6 +301,8 @@ def IsValidPath(Path, Root):
 #
 # @param Path: path to be checked
 #
+
+
 def IsValidInstallPath(Path):
     if platform.platform().find("Windows") >= 0:
         if os.path.isabs(Path):
@@ -295,7 +321,7 @@ def IsValidInstallPath(Path):
     return True
 
 
-## IsValidCFormatGuid
+# IsValidCFormatGuid
 #
 # Check if GUID format has the from of {8,4,4,{2,2,2,2,2,2,2,2}}
 #
@@ -356,19 +382,21 @@ def IsValidCFormatGuid(Guid):
 
     return SepValue == '}}' and Value == ''
 
-## IsValidPcdType
+# IsValidPcdType
 #
 # Check whether the PCD type is valid
 #
 # @param PcdTypeString: The PcdType string need to be checked.
 #
+
+
 def IsValidPcdType(PcdTypeString):
     if PcdTypeString.upper() in PCD_USAGE_TYPE_LIST_OF_MODULE:
         return True
     else:
         return False
 
-## IsValidWord
+# IsValidWord
 #
 # Check whether the word is valid.
 # <Word>   ::=  (a-zA-Z0-9_)(a-zA-Z0-9_-){0,} Alphanumeric characters with
@@ -378,6 +406,8 @@ def IsValidPcdType(PcdTypeString):
 #
 # @param Word:  The word string need to be checked.
 #
+
+
 def IsValidWord(Word):
     if not Word:
         return False
@@ -404,7 +434,7 @@ def IsValidWord(Word):
     return True
 
 
-## IsValidSimpleWord
+# IsValidSimpleWord
 #
 # Check whether the SimpleWord is valid.
 # <SimpleWord>          ::=  (a-zA-Z0-9)(a-zA-Z0-9_-){0,}
@@ -424,13 +454,15 @@ def IsValidSimpleWord(Word):
 
     return True
 
-## IsValidDecVersion
+# IsValidDecVersion
 #
 # Check whether the decimal version is valid.
 # <DecVersion>          ::=  (0-9){1,} ["." (0-9){1,}]
 #
 # @param Word:  The word string need to be checked.
 #
+
+
 def IsValidDecVersion(Word):
     if Word.find('.') > -1:
         ReIsValidDecVersion = re.compile(r"[0-9]+\.?[0-9]+$")
@@ -440,7 +472,7 @@ def IsValidDecVersion(Word):
         return False
     return True
 
-## IsValidHexVersion
+# IsValidHexVersion
 #
 # Check whether the hex version is valid.
 # <HexVersion>          ::=  "0x" <Major> <Minor>
@@ -449,6 +481,8 @@ def IsValidDecVersion(Word):
 #
 # @param Word:  The word string need to be checked.
 #
+
+
 def IsValidHexVersion(Word):
     ReIsValidHexVersion = re.compile(r"[0][xX][0-9A-Fa-f]{8}$", re.DOTALL)
     if ReIsValidHexVersion.match(Word) is None:
@@ -456,13 +490,15 @@ def IsValidHexVersion(Word):
 
     return True
 
-## IsValidBuildNumber
+# IsValidBuildNumber
 #
 # Check whether the BUILD_NUMBER is valid.
 # ["BUILD_NUMBER" "=" <Integer>{1,4} <EOL>]
 #
 # @param Word:  The BUILD_NUMBER string need to be checked.
 #
+
+
 def IsValidBuildNumber(Word):
     ReIsValieBuildNumber = re.compile(r"[0-9]{1,4}$", re.DOTALL)
     if ReIsValieBuildNumber.match(Word) is None:
@@ -470,16 +506,18 @@ def IsValidBuildNumber(Word):
 
     return True
 
-## IsValidDepex
+# IsValidDepex
 #
 # Check whether the Depex is valid.
 #
 # @param Word:  The Depex string need to be checked.
 #
+
+
 def IsValidDepex(Word):
     Index = Word.upper().find("PUSH")
     if Index > -1:
-        return IsValidCFormatGuid(Word[Index+4:].strip())
+        return IsValidCFormatGuid(Word[Index + 4:].strip())
 
     ReIsValidCName = re.compile(r"^[A-Za-z_][0-9A-Za-z_\s\.]*$", re.DOTALL)
     if ReIsValidCName.match(Word) is None:
@@ -487,7 +525,7 @@ def IsValidDepex(Word):
 
     return True
 
-## IsValidNormalizedString
+# IsValidNormalizedString
 #
 # Check
 # <NormalizedString>    ::=  <DblQuote> [{<Word>} {<Space>}]{1,} <DblQuote>
@@ -495,6 +533,8 @@ def IsValidDepex(Word):
 #
 # @param String: string to be checked
 #
+
+
 def IsValidNormalizedString(String):
     if String == '':
         return True
@@ -513,12 +553,14 @@ def IsValidNormalizedString(String):
 
     return True
 
-## IsValidIdString
+# IsValidIdString
 #
 # Check whether the IdString is valid.
 #
 # @param IdString:  The IdString need to be checked.
 #
+
+
 def IsValidIdString(String):
     if IsValidSimpleWord(String.strip()):
         return True
@@ -533,7 +575,7 @@ def IsValidIdString(String):
 
     return False
 
-## IsValidVersionString
+# IsValidVersionString
 #
 # Check whether the VersionString is valid.
 # <AsciiString>           ::=  [ [<WhiteSpace>]{0,} [<AsciiChars>]{0,} ] {0,}
@@ -544,6 +586,8 @@ def IsValidIdString(String):
 #
 # @param VersionString:  The VersionString need to be checked.
 #
+
+
 def IsValidVersionString(VersionString):
     VersionString = VersionString.strip()
     for Char in VersionString:
@@ -552,12 +596,14 @@ def IsValidVersionString(VersionString):
 
     return True
 
-## IsValidPcdValue
+# IsValidPcdValue
 #
 # Check whether the PcdValue is valid.
 #
 # @param VersionString:  The PcdValue need to be checked.
 #
+
+
 def IsValidPcdValue(PcdValue):
     for Char in PcdValue:
         if Char == '\n' or Char == '\t' or Char == '\f':
@@ -615,7 +661,7 @@ def IsValidPcdValue(PcdValue):
         return True
 
     ReIsValidByteHex = re.compile(r"^\s*0x[0-9a-fA-F]{1,2}\s*$", re.DOTALL)
-    if PcdValue.strip().startswith('{') and PcdValue.strip().endswith('}') :
+    if PcdValue.strip().startswith('{') and PcdValue.strip().endswith('}'):
         StringValue = PcdValue.strip().lstrip('{').rstrip('}')
         ValueList = StringValue.split(',')
         AllValidFlag = True
@@ -640,12 +686,14 @@ def IsValidPcdValue(PcdValue):
 
     return False
 
-## IsValidCVariableName
+# IsValidCVariableName
 #
 # Check whether the PcdValue is valid.
 #
 # @param VersionString:  The PcdValue need to be checked.
 #
+
+
 def IsValidCVariableName(CName):
     ReIsValidCName = re.compile(r"^[A-Za-z_][0-9A-Za-z_]*$", re.DOTALL)
     if ReIsValidCName.match(CName) is None:
@@ -653,7 +701,7 @@ def IsValidCVariableName(CName):
 
     return True
 
-## IsValidIdentifier
+# IsValidIdentifier
 #
 # <Identifier> ::= <NonDigit> <Chars>{0,}
 # <Chars> ::= (a-zA-Z0-9_)
@@ -661,6 +709,8 @@ def IsValidCVariableName(CName):
 #
 # @param Ident: identifier to be checked
 #
+
+
 def IsValidIdentifier(Ident):
     ReIdent = re.compile(r"^[A-Za-z_][0-9A-Za-z_]*$", re.DOTALL)
     if ReIdent.match(Ident) is None:
@@ -668,12 +718,14 @@ def IsValidIdentifier(Ident):
 
     return True
 
-## IsValidDecVersionVal
+# IsValidDecVersionVal
 #
 # {(0-9){1,} "." (0-99)}
 #
 # @param Ver: version to be checked
 #
+
+
 def IsValidDecVersionVal(Ver):
     ReVersion = re.compile(r"[0-9]+(\.[0-9]{1,2})$")
 
@@ -683,7 +735,7 @@ def IsValidDecVersionVal(Ver):
     return True
 
 
-## IsValidLibName
+# IsValidLibName
 #
 # (A-Z)(a-zA-Z0-9){0,} and could not be "NULL"
 #
@@ -701,6 +753,8 @@ def IsValidLibName(LibName):
 # <UserId> ::= (a-zA-Z)(a-zA-Z0-9_.){0,}
 # Words that contain period "." must be encapsulated in double quotation marks.
 #
+
+
 def IsValidUserId(UserId):
     UserId = UserId.strip()
     Quoted = False
@@ -719,6 +773,8 @@ def IsValidUserId(UserId):
 #
 # Check if a UTF16-LE file has a BOM header
 #
+
+
 def CheckUTF16FileHeader(File):
     FileIn = open(File, 'rb').read(2)
     if FileIn != b'\xff\xfe':

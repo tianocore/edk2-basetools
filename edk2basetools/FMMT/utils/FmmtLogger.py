@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define the Fmmt Logger.
 #
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
@@ -17,12 +17,12 @@ if os.path.exists(logfile):
 FmmtLogger = logging.getLogger('FMMT')
 FmmtLogger.setLevel(logging.DEBUG)
 
-log_stream_handler=logging.StreamHandler(sys.stdout)
-log_file_handler=logging.FileHandler(logfile)
+log_stream_handler = logging.StreamHandler(sys.stdout)
+log_file_handler = logging.FileHandler(logfile)
 log_stream_handler.setLevel(logging.INFO)
 
-stream_format=logging.Formatter("%(levelname)-8s: %(message)s")
-file_format=logging.Formatter("%(levelname)-8s: %(message)s")
+stream_format = logging.Formatter("%(levelname)-8s: %(message)s")
+file_format = logging.Formatter("%(levelname)-8s: %(message)s")
 
 log_stream_handler.setFormatter(stream_format)
 log_file_handler.setFormatter(file_format)

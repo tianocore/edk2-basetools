@@ -1,4 +1,4 @@
-## @file
+# @file
 # This file is used to define common class objects of [Defines] section for INF file.
 # It will consumed by InfParser
 #
@@ -12,37 +12,48 @@ InfDefineCommonObject
 
 from edk2basetools.UPT.Object.Parser.InfCommonObject import InfLineCommentObject
 
-## InfDefineImageExeParamItem
+# InfDefineImageExeParamItem
 #
+
+
 class InfDefineImageExeParamItem():
     def __init__(self):
-        self.CName  = ''
+        self.CName = ''
         self.FeatureFlagExp = ''
         self.Comments = InfLineCommentObject()
 
     def SetCName(self, CName):
         self.CName = CName
+
     def GetCName(self):
         return self.CName
+
     def SetFeatureFlagExp(self, FeatureFlagExp):
         self.FeatureFlagExp = FeatureFlagExp
+
     def GetFeatureFlagExp(self):
         return self.FeatureFlagExp
 
-## InfDefineEntryPointItem
+# InfDefineEntryPointItem
 #
+
+
 class InfDefineEntryPointItem(InfDefineImageExeParamItem):
     def __init__(self):
         InfDefineImageExeParamItem.__init__(self)
 
-## InfDefineUnloadImageItem
+# InfDefineUnloadImageItem
 #
+
+
 class InfDefineUnloadImageItem(InfDefineImageExeParamItem):
     def __init__(self):
         InfDefineImageExeParamItem.__init__(self)
 
-## InfDefineConstructorItem
+# InfDefineConstructorItem
 #
+
+
 class InfDefineConstructorItem(InfDefineImageExeParamItem):
     def __init__(self):
         InfDefineImageExeParamItem.__init__(self)
@@ -50,11 +61,14 @@ class InfDefineConstructorItem(InfDefineImageExeParamItem):
 
     def SetSupModList(self, SupModList):
         self.SupModList = SupModList
+
     def GetSupModList(self):
         return self.SupModList
 
-## InfDefineDestructorItem
+# InfDefineDestructorItem
 #
+
+
 class InfDefineDestructorItem(InfDefineImageExeParamItem):
     def __init__(self):
         InfDefineImageExeParamItem.__init__(self)
@@ -62,11 +76,14 @@ class InfDefineDestructorItem(InfDefineImageExeParamItem):
 
     def SetSupModList(self, SupModList):
         self.SupModList = SupModList
+
     def GetSupModList(self):
         return self.SupModList
 
-## InfDefineLibraryItem
+# InfDefineLibraryItem
 #
+
+
 class InfDefineLibraryItem():
     def __init__(self):
         self.LibraryName = ''
@@ -75,9 +92,12 @@ class InfDefineLibraryItem():
 
     def SetLibraryName(self, Name):
         self.LibraryName = Name
+
     def GetLibraryName(self):
         return self.LibraryName
+
     def SetTypes(self, Type):
         self.Types = Type
+
     def GetTypes(self):
         return self.Types
