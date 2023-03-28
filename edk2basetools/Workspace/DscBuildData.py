@@ -89,7 +89,8 @@ PcdMakefileHeader = '''
 '''
 
 WindowsCFLAGS = 'CFLAGS = $(CFLAGS) /wd4200 /wd4034 /wd4101 '
-LinuxCFLAGS = 'BUILD_CFLAGS += -Wno-pointer-to-int-cast -Wno-unused-variable '
+LinuxCFLAGS = 'CFLAGS += -Wno-pointer-to-int-cast -Wno-unused-variable '
+LinuxCFLAGS2 = 'BUILD_CFLAGS += -Wno-pointer-to-int-cast -Wno-unused-variable '
 PcdMakefileEnd = '''
 !INCLUDE $(BASE_TOOLS_PATH)\Source\C\Makefiles\ms.common
 !INCLUDE $(BASE_TOOLS_PATH)\Source\C\Makefiles\ms.app
@@ -2891,6 +2892,7 @@ class DscBuildData(PlatformBuildClassObject):
         MakeApp = MakeApp + '\n'
 
         CC_FLAGS = LinuxCFLAGS
+        CC_FLAGS2 = LinuxCFLAGS2
         if sys.platform == "win32":
             CC_FLAGS = WindowsCFLAGS
         BuildOptions = OrderedDict()
@@ -2926,7 +2928,9 @@ class DscBuildData(PlatformBuildClassObject):
             ValueList = [item for item in BuildOptions['COMMON'] if item.startswith((r"/U","-U"))]
             ValueList.extend([item for item in BuildOptions['COMMON'] if item.startswith((r"/D", "-D"))])
             CC_FLAGS += " ".join(ValueList)
+            CC_FLAGS2 += " ".join(ValueList)
         MakeApp += CC_FLAGS
+        MakeApp += "\n" + CC_FLAGS2
 
         if sys.platform == "win32":
             MakeApp = MakeApp + PcdMakefileEnd
