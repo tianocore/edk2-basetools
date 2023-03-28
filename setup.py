@@ -78,7 +78,7 @@ setuptools.setup(
     name=PACKAGE_NAME,
     version=version,
     author="Tianocore Edk2-BaseTool team",
-    author_email="edk2-bugs@lists.01.org",
+    author_email="devel@edk2.groups.io",
     description="Python BaseTools supporting UEFI EDK2 firmware development",
     long_description=long_description,
     long_description_content_type="text/markdown",
