@@ -66,6 +66,11 @@ For best success please follow the below process.
 
 ## Maintainers
 
+[Liming Gao <gaoliming@byosoft.com.cn>](mailto:gaoliming@byosoft.com.cn)
+[Rebecca Cran <rebecca@bsdio.com>](mailto:rebecca@bsdio.com)
+
+### Developers/Reviewers
+
 See the [github team](https://github.com/orgs/tianocore/teams/edk-ii-tool-maintainers) for more details.
 
 ## Documentation
