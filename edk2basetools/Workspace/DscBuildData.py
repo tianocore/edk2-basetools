@@ -2895,6 +2895,7 @@ class DscBuildData(PlatformBuildClassObject):
         CC_FLAGS2 = LinuxCFLAGS2
         if sys.platform == "win32":
             CC_FLAGS = WindowsCFLAGS
+            CC_FLAGS2 = WindowsCFLAGS
         BuildOptions = OrderedDict()
         for Options in self.BuildOptions:
             if Options[2] != EDKII_NAME:
