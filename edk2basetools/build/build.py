@@ -64,6 +64,8 @@ from edk2basetools.AutoGen.IncludesAutoGen import IncludesAutoGen
 from edk2basetools.GenFds.GenFds import resetFdsGlobalVariable
 from edk2basetools.AutoGen.AutoGen import CalculatePriorityValue
 
+gDeprecatedToolChains = ['GCC48', 'GCC49', 'GCC5']
+
 ## standard targets of build command
 gSupportedTarget = ['all', 'genc', 'genmake', 'modules', 'libraries', 'fds', 'clean', 'cleanall', 'cleanlib', 'run']
 
@@ -900,6 +902,11 @@ class Build():
         for BuildTarget in self.BuildTargetList:
             GlobalData.gGlobalDefines['TARGET'] = BuildTarget
             for BuildToolChain in self.ToolChainList:
+                if BuildToolChain in gDeprecatedToolChains:
+                    EdkLogger.warn("build", "Toolchain " + BuildToolChain + \
+                        " is deprecated and will be removed before the edk2-stable202402 release. " \
+                        "You should use 'GCCNOLTO' instead of 'GCC49', and 'GCC' instead of 'GCC5'")
+
                 GlobalData.gGlobalDefines['TOOLCHAIN']      = BuildToolChain
                 GlobalData.gGlobalDefines['TOOL_CHAIN_TAG'] = BuildToolChain
                 for BuildArch in self.ArchList:
@@ -2769,6 +2776,11 @@ def Main():
     else:
         BuildDurationStr = time.strftime("%H:%M:%S", BuildDuration)
     if MyBuild is not None:
+        if any(tc in MyBuild.ToolChainList for tc in gDeprecatedToolChains):
+            EdkLogger.warn("build", "Toolchains " + str(gDeprecatedToolChains) + " are " \
+                "deprecated and will be removed before the edk2-stable202402 release. " \
+                "You should use 'GCCNOLTO' instead of 'GCC49', and 'GCC' instead of 'GCC5'.")
+
         if not BuildError:
             MyBuild.BuildReport.GenerateReport(BuildDurationStr, LogBuildTime(MyBuild.AutoGenTime), LogBuildTime(MyBuild.MakeTime), LogBuildTime(MyBuild.GenFdsTime))
 
