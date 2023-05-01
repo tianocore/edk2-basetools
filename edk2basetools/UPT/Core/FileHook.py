@@ -166,7 +166,7 @@ def _hookmkdir(path, mode=0o777):
     else:
         __built_in_mkdir__(path, mode)
 
-def _hookrmdir(path):
+def _hookrmdir(path, dir_fd=None):
     if GlobalData.gRECOVERMGR:
         GlobalData.gRECOVERMGR.bkrmdir(path)
     else:
