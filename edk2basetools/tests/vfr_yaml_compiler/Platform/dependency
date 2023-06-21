@@ -1,0 +1,23 @@
+
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\DEBUG\PlatformForms.vfr.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\DEBUG\PlatformForms.vfr.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\OUTPUT\AutoGen.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\OUTPUT\AutoGen.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\OUTPUT\Platform.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\OUTPUT\Platform.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\OUTPUT\PlatformConfig.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\OUTPUT\PlatformConfig.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\OUTPUT\PlatformForms.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\OvmfPkg\PlatformDxe\Platform\OUTPUT\PlatformForms.c.deps
+!ENDIF
+
+               

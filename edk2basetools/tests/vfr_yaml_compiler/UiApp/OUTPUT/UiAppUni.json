@@ -1,0 +1,64 @@
+{
+    "LanguageDef": [
+        [
+            "en-US",
+            "English"
+        ],
+        [
+            "fr-FR",
+            "Fran\u00e7ais"
+        ],
+        [
+            "en",
+            "Standard English"
+        ],
+        [
+            "fr",
+            "Standard Fran\u00e7ais"
+        ]
+    ],
+    "UniString": {
+        "en-US": {
+            "$LANGUAGE_NAME": "en-US",
+            "$PRINTABLE_LANGUAGE_NAME": "English",
+            "STR_FRONT_PAGE_TITLE": "Front Page",
+            "STR_FRONT_PAGE_COMPUTER_MODEL": "",
+            "STR_FRONT_PAGE_CPU_MODEL": "",
+            "STR_FRONT_PAGE_CPU_SPEED": "",
+            "STR_FRONT_PAGE_MEMORY_SIZE": "",
+            "STR_FRONT_PAGE_BIOS_VERSION": "",
+            "STR_FRONT_PAGE_BANNER_0_LEFT": "Wonder Computer Model 1000Z  Manufactured by Intel\u00ae",
+            "STR_FRONT_PAGE_BANNER_0_RIGHT": "OK",
+            "STR_FRONT_PAGE_BANNER_1_LEFT": "2 Pentium\u00ae X Xeon processors running at 800Thz",
+            "STR_FRONT_PAGE_BANNER_1_RIGHT": "24 TB System RAM",
+            "STR_FRONT_PAGE_BANNER_2_LEFT": "ACME\u00ae EFI BIOS Version 13.5 Release 1039.92",
+            "STR_FRONT_PAGE_BANNER_3_LEFT": "Serial Number: 1Z123456789MARMAR (Need SMBIOS entries)",
+            "STR_CONTINUE_PROMPT": "Continue",
+            "STR_CONTINUE_HELP": "This selection will direct the system to continue to booting process",
+            "STR_LANGUAGE_SELECT": "Select Language",
+            "STR_LANGUAGE_SELECT_HELP": "This is the option one adjusts to change the language for the current system",
+            "STR_MISSING_STRING": "Missing String",
+            "STR_EMPTY_STRING": "",
+            "STR_RESET_STRING": "Reset",
+            "STR_RESET_STRING_HELP": "Reset the current setting.",
+            "STR_CUSTOMIZE_BANNER_LINE4_LEFT": "",
+            "STR_CUSTOMIZE_BANNER_LINE4_RIGHT": "",
+            "STR_CUSTOMIZE_BANNER_LINE5_LEFT": "",
+            "STR_CUSTOMIZE_BANNER_LINE5_RIGHT": "",
+            "STR_TEST_KEY_USED": "WARNING: Test key detected.",
+            "STR_NULL_STRING": " "
+        },
+        "fr-FR": {
+            "$LANGUAGE_NAME": "fr-FR",
+            "$PRINTABLE_LANGUAGE_NAME": "Fran\u00e7ais"
+        },
+        "en": {
+            "$LANGUAGE_NAME": "en",
+            "$PRINTABLE_LANGUAGE_NAME": "Standard English"
+        },
+        "fr": {
+            "$LANGUAGE_NAME": "fr",
+            "$PRINTABLE_LANGUAGE_NAME": "Standard Fran\u00e7ais"
+        }
+    }
+}

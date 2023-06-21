@@ -1,0 +1,423 @@
+## DO NOT REMOVE -- YAML Mode
+include:
+- FormGuid.h
+
+formset:
+  guid:  '{0x642237c7, 0x35d4, 0x472d, { 0x83, 0x65, 0x12, 0xe0, 0xcc, 0xf2, 0x7a, 0x22 }}'
+  help:  'This selection will take you to the Boot Maintenance Manager'
+  title:  'Boot Maintenance Manager'
+  classguid1:  '{0xe58809f8, 0xfbc1, 0x48e2, { 0x88, 0x3a, 0xa3, 0xf, 0xdc, 0x4b, 0x44, 0x1e }}'
+  component:  
+  - varstore:
+      guid:  '{0x642237c7, 0x35d4, 0x472d, { 0x83, 0x65, 0x12, 0xe0, 0xcc, 0xf2, 0x7a, 0x22 }}'
+      varid:  0x1000 # Optional Input
+      size:  3576 # Need to Compute
+      name:  BmmData
+  - form: 
+      formid:  4097 
+      title:  'Boot Maintenance Manager'
+      component:  
+      - text:
+          condition:  'suppressif TRUE'
+          help:  'NONE'
+          prompt:  'NONE'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x1117  # Optional Input, Question QuestionId
+      - label:
+          number:  0xfffc  # Number
+      - label:
+          number:  0xfffd  # Number
+  - form: 
+      formid:  4116 
+      title:  'Boot Options'
+      component:  
+      - goto:
+          questionid:  1
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Go Back To Main Page'
+          help:  'Go Back To Main Page'
+          formid:  0x1001
+          question:  0x0001 #  Optional Input
+      - goto:
+          questionid:  4098
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Add Boot Option'
+          help:  'Add EFI Application or Removable Fs as Boot Option'
+          formid:  0x1014
+          question:  0x1002 #  Optional Input
+      - goto:
+          questionid:  4099
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Delete Boot Option'
+          help:  'Will be valid immediately'
+          formid:  0x1003
+          question:  0x1003 #  Optional Input
+      - goto:
+          questionid:  4100
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Change Boot Order'
+          help:  'Will be valid immediately'
+          formid:  0x1004
+          question:  0x1004 #  Optional Input
+  - form: 
+      formid:  4117 
+      title:  'Driver Options'
+      component:  
+      - goto:
+          questionid:  2
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Go Back To Main Page'
+          help:  'Go Back To Main Page'
+          formid:  0x1001
+          question:  0x0002 #  Optional Input
+      - goto:
+          questionid:  4101
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Add Driver Option'
+          help:  'Add .EFI Driver as Driver Option'
+          formid:  0x1005
+          question:  0x1005 #  Optional Input
+      - goto:
+          questionid:  4102
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Delete Driver Option'
+          help:  'Will be valid on next boot'
+          formid:  0x1006
+          question:  0x1006 #  Optional Input
+      - goto:
+          questionid:  4103
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Change Driver Order'
+          help:  'Will be valid on next boot'
+          formid:  0x1007
+          question:  0x1007 #  Optional Input
+  - form: 
+      formid:  4098 
+      title:  'Modify Boot Option Description'
+      component:  
+      - label:
+          number:  0x1002  # Number
+      - label:
+          number:  0xffff  # Number
+      - subtitle:
+          prompt:  ' '
+          flags:  0  # Optional Input
+      - string:
+          position:  'BOOT_MAINT_FORMSET_GUID.FORM_BOOT_ADD_ID.BmmData.BootDescriptionData' # for reference
+          questionid:  4367
+          varstoreid:  4096  #  Optional Input
+          varname:  2662  # Question VarName
+          varoffset:  2662  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Input the description'
+          help:  ' '
+          opcodeflags:  0x0  # optional input
+          minsize:  6 
+          maxsize:  75 
+      - string:
+          position:  'BOOT_MAINT_FORMSET_GUID.FORM_BOOT_ADD_ID.BmmData.BootOptionalData' # for reference
+          questionid:  4368
+          varstoreid:  4096  #  Optional Input
+          varname:  2862  # Question VarName
+          varoffset:  2862  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Input Optional Data'
+          help:  ' '
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  120 
+      - subtitle:
+          prompt:  ' '
+          flags:  0  # Optional Input
+      - text:
+          help:  'Commit Changes and Exit'
+          prompt:  'Commit Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x1113  # Optional Input, Question QuestionId
+      - text:
+          help:  'Discard Changes and Exit'
+          prompt:  'Discard Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x1114  # Optional Input, Question QuestionId
+  - form: 
+      formid:  4099 
+      title:  'Delete Boot Option'
+      component:  
+      - label:
+          number:  0x1003  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4100 
+      title:  'Change Boot Order'
+      component:  
+      - label:
+          number:  0x1004  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4101 
+      title:  'Add Driver Option'
+      component:  
+      - goto:
+          questionid:  3
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Go Back To Main Page'
+          help:  'Go Back To Main Page'
+          formid:  0x1001
+          question:  0x0003 #  Optional Input
+      - goto:
+          questionid:  4110
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Add Driver Option Using File'
+          help:  'Add Driver Option Using File'
+          formid:  0x1015
+          question:  0x100e #  Optional Input
+  - form: 
+      formid:  4110 
+      title:  'Modify Driver Option Description'
+      component:  
+      - label:
+          number:  0x100e  # Number
+      - label:
+          number:  0xffff  # Number
+      - subtitle:
+          prompt:  ' '
+          flags:  0  # Optional Input
+      - string:
+          position:  'BOOT_MAINT_FORMSET_GUID.FORM_DRV_ADD_FILE_ID.BmmData.DriverDescriptionData' # for reference
+          questionid:  4369
+          varstoreid:  4096  #  Optional Input
+          varname:  3116  # Question VarName
+          varoffset:  3116  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Input the description'
+          help:  ' '
+          opcodeflags:  0x0  # optional input
+          minsize:  6 
+          maxsize:  75 
+      - string:
+          position:  'BOOT_MAINT_FORMSET_GUID.FORM_DRV_ADD_FILE_ID.BmmData.DriverOptionalData' # for reference
+          questionid:  4370
+          varstoreid:  4096  #  Optional Input
+          varname:  3316  # Question VarName
+          varoffset:  3316  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Input Optional Data'
+          help:  ' '
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  120 
+      - checkbox:
+          position:  'BOOT_MAINT_FORMSET_GUID.FORM_DRV_ADD_FILE_ID.BmmData.ForceReconnect' # for reference
+          questionid:  4
+          varstoreid:  4096  #  Optional Input
+          varname:  3573  # Question VarName
+          varoffset:  3573  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Load Option Reconnect'
+          help:  'Load Option Reconnect'
+          opcodeflags:  0x1  # optional input
+      - subtitle:
+          prompt:  ' '
+          flags:  0  # Optional Input
+      - text:
+          help:  'Commit Changes and Exit'
+          prompt:  'Commit Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x1115  # Optional Input, Question QuestionId
+      - text:
+          help:  'Discard Changes and Exit'
+          prompt:  'Discard Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x1116  # Optional Input, Question QuestionId
+  - form: 
+      formid:  4102 
+      title:  'Delete Driver Option'
+      component:  
+      - label:
+          number:  0x1006  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4103 
+      title:  'Change Driver Order'
+      component:  
+      - label:
+          number:  0x1007  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4104 
+      title:  'Console Options'
+      component:  
+      - goto:
+          questionid:  5
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Go Back To Main Page'
+          help:  'Go Back To Main Page'
+          formid:  0x1001
+          question:  0x0005 #  Optional Input
+      - goto:
+          questionid:  4105
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Console Input Device Select'
+          help:  'Enable console device as ConIn'
+          formid:  0x1009
+          question:  0x1009 #  Optional Input
+      - goto:
+          questionid:  4106
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Console Output Device Select'
+          help:  'Enable console device as ConOut'
+          formid:  0x100a
+          question:  0x100a #  Optional Input
+      - goto:
+          questionid:  4107
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Console Standard Error Device Select'
+          help:  'Enable console device as StdErr'
+          formid:  0x100b
+          question:  0x100b #  Optional Input
+      - goto:
+          questionid:  4129
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Console Output Mode Select'
+          help:  'Select Console Output Mode: 80x25, 100x31, etc.'
+          formid:  0x1021
+          question:  0x1021 #  Optional Input
+      - goto:
+          questionid:  4119
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'COM Attribute Setup Page'
+          help:  'Setup ComPort BaudRate, DataBits, StopBits, Parity and TerminalType'
+          formid:  0x1017
+          question:  0x1017 #  Optional Input
+  - form: 
+      formid:  4129 
+      title:  'Console Output Mode Select'
+      component:  
+      - label:
+          number:  0x1021  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4119 
+      title:  'COM Attribute Setup Page'
+      component:  
+      - label:
+          number:  0x1017  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4120 
+      title:  'Set COM Attributes'
+      component:  
+      - label:
+          number:  0x1018  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4108 
+      title:  'Add Boot Option'
+      component:  
+      - label:
+          number:  0x100c  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4109 
+      title:  'Add Boot Option'
+      component:  
+      - label:
+          number:  0x100d  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4111 
+      title:  'Add Driver Option Using Handle'
+      component:  
+      - label:
+          number:  0x100f  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4112 
+      title:  'Modify Driver Option Description'
+      component:  
+      - label:
+          number:  0x1010  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4105 
+      title:  'Console Input Device Select'
+      component:  
+      - label:
+          number:  0x1009  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4106 
+      title:  'Console Output Device Select'
+      component:  
+      - label:
+          number:  0x100a  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4107 
+      title:  'Console Standard Error Device Select'
+      component:  
+      - label:
+          number:  0x100b  # Number
+      - label:
+          number:  0xffff  # Number

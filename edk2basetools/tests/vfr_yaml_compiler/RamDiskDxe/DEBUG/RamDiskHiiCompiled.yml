@@ -1,0 +1,110 @@
+## DO NOT REMOVE -- YAML Mode
+include:
+- RamDiskNVData.h
+
+formset:
+  guid:  '{0x2a46715f, 0x3581, 0x4a55, { 0x8e, 0x73, 0x2b, 0x76, 0x9a, 0xaa, 0x30, 0xc5 }}'
+  help:  'Press <Enter> to add/remove RAM disks.'
+  title:  'RAM Disk Configuration'
+  classguid1:  '{0x93039971, 0x8545, 0x4b04, { 0xb4, 0x5e, 0x32, 0xeb, 0x83, 0x26, 0x4, 0xe }}'
+  component:  
+  - form: 
+      formid:  4096 
+      title:  'RAM Disk HII Main Screen'
+      component:  
+      - oneof:
+          questionid:  8196
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Disk Memory Type:'
+          help:  'Specifies type of memory to use from available memory pool in system to create a disk.'
+          opcodeflags:  0x10  # optional input
+          maximum:  1 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0x0 # Optional Input
+          component:  
+          - option:  
+              text:  'Boot Service Data'
+              flags:  16 # Optional Input
+              type:  0x0000 # Optional Input
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C4FB3440>
+          - option:  
+              text:  'Reserved'
+              flags:  0 # Optional Input
+              type:  0x0000 # Optional Input
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C4FB3440>
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - goto:
+          questionid:  1
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Create raw'
+          help:  'Create a raw RAM disk.'
+          formid:  0x2000
+          question:  0x0001 #  Optional Input
+      - goto:
+          questionid:  4097
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Create from file'
+          help:  'Create a RAM disk from a given file.'
+          formid:  0x1000
+          question:  0x1001 #  Optional Input
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - subtitle:
+          prompt:  'Created RAM disk list:'
+          flags:  0  # Optional Input
+      - label:
+          number:  0x1003  # Number
+      - label:
+          number:  0x1004  # Number
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - text:
+          help:  'Remove selected RAM disk(s)'
+          prompt:  'Remove selected RAM disk(s).'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x1002  # Optional Input, Question QuestionId
+  - form: 
+      formid:  8192 
+      title:  'Add A Raw RAM Disk'
+      component:  
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - numeric:
+          questionid:  8193
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Size (Hex):'
+          help:  'The valid RAM disk size should be multiples of the RAM disk block size.'
+          opcodeflags:  0x23  # optional input
+          maximum:  18446744073709551615 # Optional Input
+          minimum:  1 # Optional Input
+          step:  0 # Optional Input
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - text:
+          help:  'Create a new RAM disk with the given starting and ending address.'
+          prompt:  'Create & Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x2002  # Optional Input, Question QuestionId
+      - text:
+          help:  'Discard and exit.'
+          prompt:  'Discard & Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x2003  # Optional Input, Question QuestionId
