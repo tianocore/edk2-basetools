@@ -8,11 +8,11 @@ from re import T
 import copy
 import os
 import sys
-from FirmwareStorageFormat.Common import *
-from core.BiosTreeNode import *
-from core.BiosTree import *
-from core.GuidTools import GUIDTools
-from utils.FmmtLogger import FmmtLogger as logger
+from edk2basetools.FirmwareStorageFormat.Common import *
+from edk2basetools.FMMT.core.BiosTreeNode import *
+from edk2basetools.FMMT.core.BiosTree import *
+from edk2basetools.FMMT.core.GuidTools import GUIDTools
+from edk2basetools.FMMT.utils.FmmtLogger import FmmtLogger as logger
 
 ROOT_TREE = 'ROOT'
 ROOT_ELF_TREE = 'ROOT_ELF_TREE'
