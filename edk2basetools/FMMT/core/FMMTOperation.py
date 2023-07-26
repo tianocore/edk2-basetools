@@ -4,10 +4,10 @@
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
-from core.FMMTParser import *
-from core.FvHandler import *
-from utils.FvLayoutPrint import *
-from utils.FmmtLogger import FmmtLogger as logger
+from edk2basetools.FMMT.core.FMMTParser import *
+from edk2basetools.FMMT.core.FvHandler import *
+from edk2basetools.FMMT.utils.FvLayoutPrint import *
+from edk2basetools.FMMT.utils.FmmtLogger import FmmtLogger as logger
 
 global Fv_count
 Fv_count = 0

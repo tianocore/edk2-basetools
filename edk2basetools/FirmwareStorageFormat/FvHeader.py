@@ -7,7 +7,7 @@
 from ast import Str
 from struct import *
 from ctypes import *
-from FirmwareStorageFormat.Common import *
+from edk2basetools.FirmwareStorageFormat.Common import *
 
 class EFI_FV_BLOCK_MAP_ENTRY(Structure):
     _pack_ = 1

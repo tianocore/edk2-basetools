@@ -4,7 +4,7 @@
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
-from utils.FmmtLogger import FmmtLogger as logger
+from edk2basetools.FMMT.utils.FmmtLogger import FmmtLogger as logger
 
 def GetFormatter(layout_format: str):
     if layout_format == 'json':
@@ -52,4 +52,4 @@ class YamlFormatter(Formatter):
 
 class HtmlFormatter(Formatter):
     def dump(self,layoutdict, layoutlist, outputfile = None):
-        TxtFormatter().dump(layoutdict, layoutlist, outputfile)
+        TxtFormatter().dump(layoutdict, layoutlist, outputfile)

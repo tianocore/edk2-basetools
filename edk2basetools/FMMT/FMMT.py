@@ -10,7 +10,7 @@
 # Import Modules
 #
 import argparse
-from core.FMMTOperation import *
+from edk2basetools.FMMT.core.FMMTOperation import *
 
 parser = argparse.ArgumentParser(description='''
 View the Binary Structure of FD/FV/Ffs/Section, and Delete/Extract/Add/Replace a Ffs from/into a FV.
