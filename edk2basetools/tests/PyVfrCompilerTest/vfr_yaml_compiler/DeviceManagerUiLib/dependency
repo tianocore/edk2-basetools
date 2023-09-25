@@ -1,0 +1,19 @@
+
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\DeviceManagerUiLib\DeviceManagerUiLib\DEBUG\DeviceManagerVfr.Vfr.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\DeviceManagerUiLib\DeviceManagerUiLib\DEBUG\DeviceManagerVfr.Vfr.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\DeviceManagerUiLib\DeviceManagerUiLib\OUTPUT\AutoGen.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\DeviceManagerUiLib\DeviceManagerUiLib\OUTPUT\AutoGen.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\DeviceManagerUiLib\DeviceManagerUiLib\OUTPUT\DeviceManager.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\DeviceManagerUiLib\DeviceManagerUiLib\OUTPUT\DeviceManager.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\DeviceManagerUiLib\DeviceManagerUiLib\OUTPUT\DeviceManagerVfr.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\DeviceManagerUiLib\DeviceManagerUiLib\OUTPUT\DeviceManagerVfr.c.deps
+!ENDIF
+
+               

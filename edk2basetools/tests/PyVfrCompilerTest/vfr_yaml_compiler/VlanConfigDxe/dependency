@@ -1,0 +1,27 @@
+
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\DEBUG\VlanConfig.vfr.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\DEBUG\VlanConfig.vfr.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\AutoGen.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\AutoGen.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\ComponentName.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\ComponentName.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\VlanConfig.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\VlanConfig.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\VlanConfigDriver.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\VlanConfigDriver.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\VlanConfigImpl.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\VlanConfigDxe\VlanConfigDxe\OUTPUT\VlanConfigImpl.c.deps
+!ENDIF
+
+               

@@ -1,0 +1,59 @@
+formset:
+  classguid: '{0x93039971, 0x8545, 0x4b04, {0xb4, 0x5e, 0x32, 0xeb, 0x83, 0x26, 0x4, 0xe}}'
+  component:
+  - varstore:
+      guid: '{0xd79df6b0, 0xef44, 0x43bd, {0x97, 0x97, 0x43, 0xe9, 0x3b, 0xcf, 0x5f, 0xa8}}'
+      name: VlanNvData
+      type: VLAN_CONFIGURATION
+      varid: 1
+  - form:
+      component:
+      - goto:
+          flags: INTERACTIVE
+          formid: 1
+          help: STRING_TOKEN(0x0013)
+          key: 12288
+          prompt: STRING_TOKEN(0x0012)
+      formid: 2
+      title: STRING_TOKEN(0x0004)
+  - form:
+      component:
+      - subtitle:
+          text: STRING_TOKEN(0x0006)
+      - numeric:
+          help: STRING_TOKEN(0x0008)
+          maximum: 4094
+          minimum: 0
+          prompt: STRING_TOKEN(0x0007)
+          varid: VlanNvData.VlanId
+      - numeric:
+          help: STRING_TOKEN(0x000A)
+          maximum: 7
+          minimum: 0
+          prompt: STRING_TOKEN(0x0009)
+          varid: VlanNvData.Priority
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x000C)
+          key: 4096
+          prompt: STRING_TOKEN(0x000B)
+      - subtitle:
+          text: STRING_TOKEN(0x0011)
+      - subtitle:
+          text: STRING_TOKEN(0x000D)
+      - label:
+          number: 1
+      - label:
+          number: 65535
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x0010)
+          key: 8192
+          prompt: STRING_TOKEN(0x000F)
+      formid: 1
+      title: STRING_TOKEN(0x0004)
+  guid: '{0xd79df6b0, 0xef44, 0x43bd, {0x97, 0x97, 0x43, 0xe9, 0x3b, 0xcf, 0x5f, 0xa8}}'
+  help: STRING_TOKEN(0x0003)
+  title: STRING_TOKEN(0x0002)
+include:
+- VlanConfigNvData.h

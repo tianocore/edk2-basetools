@@ -1,0 +1,29 @@
+{
+    "LanguageDef": [
+        [
+            "en-US",
+            "English"
+        ],
+        [
+            "fr-FR",
+            "Fran\u00e7ais"
+        ]
+    ],
+    "UniString": {
+        "en-US": {
+            "$LANGUAGE_NAME": "en-US",
+            "$PRINTABLE_LANGUAGE_NAME": "English",
+            "STR_BM_BANNER": "Boot Manager",
+            "STR_BOOT_MANAGER_HELP": "This selection will take you to the Boot Manager",
+            "STR_HELP_FOOTER": "Use the <\u2191> and <\u2193> keys to choose a boot option, the <Enter> key to select a boot option, and the <Esc> key to exit the Boot Manager Menu.",
+            "STR_AND": " and ",
+            "STR_BOOT_OPTION_BANNER": "Boot Manager Menu",
+            "STR_ANY_KEY_CONTINUE": "Press any key to continue...",
+            "STR_LAST_STRING": ""
+        },
+        "fr-FR": {
+            "$LANGUAGE_NAME": "fr-FR",
+            "$PRINTABLE_LANGUAGE_NAME": "Fran\u00e7ais"
+        }
+    }
+}

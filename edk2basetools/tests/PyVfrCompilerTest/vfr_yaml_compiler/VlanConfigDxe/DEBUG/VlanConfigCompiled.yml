@@ -1,0 +1,82 @@
+## DO NOT REMOVE -- YAML Mode
+include:
+- VlanConfigNvData.h
+
+formset:
+  guid:  '{0xd79df6b0, 0xef44, 0x43bd, { 0x97, 0x97, 0x43, 0xe9, 0x3b, 0xcf, 0x5f, 0xa8 }}'
+  help:  'VLAN configuration for this network device'
+  title:  'VLAN Configuration'
+  classguid1:  '{0x93039971, 0x8545, 0x4b04, { 0xb4, 0x5e, 0x32, 0xeb, 0x83, 0x26, 0x4, 0xe }}'
+  component:  
+  - varstore:
+      guid:  '{0xd79df6b0, 0xef44, 0x43bd, { 0x97, 0x97, 0x43, 0xe9, 0x3b, 0xcf, 0x5f, 0xa8 }}'
+      varid:  0x0001 # Optional Input
+      size:  104 # Need to Compute
+      name:  VlanNvData
+  - form: 
+      formid:  2 
+      title:  'VLAN Configuration'
+      component:  
+      - goto:
+          questionid:  12288
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Enter Configuration Menu'
+          help:  'Press ENTER to enter configuration menu for VLAN configuration.'
+          formid:  0x1
+          question:  0x3000 #  Optional Input
+  - form: 
+      formid:  1 
+      title:  'VLAN Configuration'
+      component:  
+      - subtitle:
+          prompt:  'Create new VLAN'
+          flags:  0  # Optional Input
+      - numeric:
+          position:  'VLAN_CONFIG_FORM_SET_GUID.VLAN_CONFIGURATION_FORM_ID.VlanNvData.VlanId' # for reference
+          questionid:  1
+          varstoreid:  1  #  Optional Input
+          varname:  0  # Question VarName
+          varoffset:  0  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  '  VLAN ID'
+          help:  'VLAN ID of new VLAN or existing VLAN, valid value is 0~4094'
+          opcodeflags:  0x11  # optional input
+          maximum:  4094 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0 # Optional Input
+      - numeric:
+          position:  'VLAN_CONFIG_FORM_SET_GUID.VLAN_CONFIGURATION_FORM_ID.VlanNvData.Priority' # for reference
+          questionid:  2
+          varstoreid:  1  #  Optional Input
+          varname:  2  # Question VarName
+          varoffset:  2  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  '  Priority'
+          help:  '802.1Q Priority, valid value is 0~7'
+          opcodeflags:  0x10  # optional input
+          maximum:  7 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0 # Optional Input
+      - text:
+          help:  'Create a new VLAN or update existing VLAN'
+          prompt:  'Add VLAN'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x1000  # Optional Input, Question QuestionId
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - subtitle:
+          prompt:  'Configured VLAN List'
+          flags:  0  # Optional Input
+      - label:
+          number:  0x1  # Number
+      - label:
+          number:  0xffff  # Number
+      - text:
+          help:  'Remove selected VLANs'
+          prompt:  'Remove VLAN'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x2000  # Optional Input, Question QuestionId
