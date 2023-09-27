@@ -4,9 +4,8 @@
 # Copyright (c) 2022-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
+
 import re
-import json
-import subprocess
 import Common.EdkLogger as EdkLogger
 from antlr4 import *
 from pathlib import Path
@@ -49,6 +48,7 @@ class Options:
         self.UniStrDefFileName = None
         self.YamlOutputFileName = None
         self.UniStrDisplayFile = None
+
 
 class KV:
     def __init__(self, Key, Value) -> None:
@@ -156,7 +156,6 @@ class PreProcessDB:
         self._ParseDefines(FileName, UniDict)
         return UniDict
 
-
     def _GetVfrDicts(self):
         VfrDict = {}
         if self.Options.LanuchVfrCompiler:
@@ -166,12 +165,12 @@ class PreProcessDB:
 
     def _IsDigit(self, String):
         return String.isdigit() or (
-            String.startswith(('0x', '0X'))
+            String.startswith(("0x", "0X"))
             and all(char in "0123456789ABCDEFabcdef" for char in String[2:])
         )
 
     def _ToDigit(self, String):
-        if String.startswith(('0x','0X')):
+        if String.startswith(("0x", "0X")):
             return int(String, 16)
         return int(String)
 

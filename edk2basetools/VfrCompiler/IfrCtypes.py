@@ -4,11 +4,8 @@
 # Copyright (c) 2022-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
-# import uuid
-from re import A, X
+
 from ctypes import *
-from telnetlib import X3PAD
-from tkinter import YView
 from struct import *
 from enum import Enum
 
@@ -123,6 +120,7 @@ BasicTypes = [
     EFI_IFR_TYPE_NUM_SIZE_64,
 ]
 BasicCInts = [c_uint64, c_uint32, c_uint16, c_uint8, c_ubyte, c_ushort]
+
 
 class EFI_GUID(Structure):
     _pack_ = 1

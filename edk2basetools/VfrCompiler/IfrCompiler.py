@@ -4,6 +4,7 @@
 # Copyright (c) 2022-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
+
 import os
 import sys
 import argparse
@@ -27,6 +28,7 @@ from VfrCompiler.IfrFormPkg import (
     gIfrFormId,
 )
 from VfrCompiler.IfrError import gVfrErrorHandle
+
 
 class COMPILER_RUN_STATUS(Enum):
     STATUS_STARTED = 0
@@ -189,33 +191,36 @@ class CmdParser:
             HasVFRPPLine = False
             self.Options.IncludePaths = []
             MakeFile = Path(self.Options.OutputDirectory).parent / "Makefile"
-            with MakeFile.open(mode="r") as File:
-                for Line in File:
-                    if Line.find("INC =  \\") != -1:
-                        IsInCludePathLine = True
-                        continue
-                    if Line.find("VFRPP = ") != -1:
-                        HasVFRPPLine = True
-                        self.Options.VFRPP = Line.split("=")[1].strip()
-                        continue
-                    if IsInCludePathLine:
-                        Line = Line.lstrip().rstrip(" \\\n\r")
-                        if Line.startswith("/IC"):
-                            InCludePath = Line.replace("/IC", "C", 1)
-                            self.Options.IncludePaths.append(InCludePath)
-                        elif Line.startswith("/Ic"):
-                            InCludePath = Line.replace("/Ic", "C", 1)
-                            self.Options.IncludePaths.append(InCludePath)
-                        elif Line.startswith("/I$(WORKSPACE)"):
-                            InCludePath = Line.replace("/I$(WORKSPACE)", self.Options.Workspace, 1)
-                            self.Options.IncludePaths.append(InCludePath)
-                        elif Line.startswith("/I$(DEBUG_DIR)"):
-                            InCludePath = self.Options.DebugDirectory
-                            self.Options.IncludePaths.append(InCludePath)
-                        elif HasVFRPPLine is False:
-                            IsInCludePathLine = False
-                        else:
-                            break
+            if MakeFile.exists():
+                with MakeFile.open(mode="r") as File:
+                    for Line in File:
+                        if Line.find("INC =  \\") != -1:
+                            IsInCludePathLine = True
+                            continue
+                        if Line.find("VFRPP = ") != -1:
+                            HasVFRPPLine = True
+                            self.Options.VFRPP = Line.split("=")[1].strip()
+                            continue
+                        if IsInCludePathLine:
+                            Line = Line.lstrip().rstrip(" \\\n\r")
+                            if Line.startswith("/IC"):
+                                InCludePath = Line.replace("/IC", "C", 1)
+                                self.Options.IncludePaths.append(InCludePath)
+                            elif Line.startswith("/Ic"):
+                                InCludePath = Line.replace("/Ic", "C", 1)
+                                self.Options.IncludePaths.append(InCludePath)
+                            elif Line.startswith("/I$(WORKSPACE)"):
+                                InCludePath = Line.replace(
+                                    "/I$(WORKSPACE)", self.Options.Workspace, 1
+                                )
+                                self.Options.IncludePaths.append(InCludePath)
+                            elif Line.startswith("/I$(DEBUG_DIR)"):
+                                InCludePath = self.Options.DebugDirectory
+                                self.Options.IncludePaths.append(InCludePath)
+                            elif HasVFRPPLine is False:
+                                IsInCludePathLine = False
+                            else:
+                                break
 
         if Args.OldOutputDirectory:
             self.Options.OldOutputDirectory = Args.OldOutputDirectory
@@ -351,40 +356,54 @@ class CmdParser:
         if self.Options.BaseFileName is None:
             return -1
         if self.Options.LanuchVfrCompiler:
-            self.Options.PkgOutputFileName = str(Path(self.Options.OutputDirectory) / f"PyVfr_{self.Options.BaseFileName}.hpk")
+            self.Options.PkgOutputFileName = str(
+                Path(self.Options.OutputDirectory) / f"PyVfr_{self.Options.BaseFileName}.hpk"
+            )
         return 0
 
     def SetCOutputFileName(self):
         if self.Options.BaseFileName is None:
             return -1
         if self.Options.LanuchVfrCompiler:
-            self.Options.COutputFileName = str(Path(self.Options.DebugDirectory) / f"PyVfr_{self.Options.BaseFileName}.c")
+            self.Options.COutputFileName = str(
+                Path(self.Options.DebugDirectory) / f"PyVfr_{self.Options.BaseFileName}.c"
+            )
         return 0
 
     def SetPreprocessorOutputFileName(self):
         if self.Options.BaseFileName is None:
             return -1
-        self.Options.CProcessedVfrFileName = str(Path(self.Options.OutputDirectory) / f"{self.Options.BaseFileName}.i")
+        self.Options.CProcessedVfrFileName = str(
+            Path(self.Options.OutputDirectory) / f"{self.Options.BaseFileName}.i"
+        )
         return 0
 
     def SetRecordListFileName(self):
         if self.Options.BaseFileName is None:
             return -1
         if self.Options.LanuchVfrCompiler:
-            self.Options.RecordListFileName = str(Path(self.Options.DebugDirectory) / f"PyVfr_{self.Options.BaseFileName}.lst")
+            self.Options.RecordListFileName = str(
+                Path(self.Options.DebugDirectory) / f"PyVfr_{self.Options.BaseFileName}.lst"
+            )
         return 0
 
     def SetSourceYamlFileName(self):
         if self.Options.BaseFileName is None:
             return -1
-        self.Options.YamlFileName = str(Path(self.Options.DebugDirectory) / f"{self.Options.BaseFileName}.yml")
-        self.Options.YamlOutputFileName = str(Path(self.Options.DebugDirectory) / f"{self.Options.BaseFileName}Compiled.yml")
+        self.Options.YamlFileName = str(
+            Path(self.Options.DebugDirectory) / f"{self.Options.BaseFileName}.yml"
+        )
+        self.Options.YamlOutputFileName = str(
+            Path(self.Options.DebugDirectory) / f"{self.Options.BaseFileName}Compiled.yml"
+        )
         return 0
 
     def SetJsonFileName(self):
         if self.Options.BaseFileName is None:
             return -1
-        self.Options.JsonFileName = str(Path(self.Options.DebugDirectory) / f"{self.Options.BaseFileName}.json")
+        self.Options.JsonFileName = str(
+            Path(self.Options.DebugDirectory) / f"{self.Options.BaseFileName}.json"
+        )
         return 0
 
     def FindIncludeHeaderFile(self, Start, Name):

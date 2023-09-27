@@ -4,6 +4,7 @@
 # Copyright (c) 2022-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
+
 import Common.EdkLogger as EdkLogger
 from VfrCompiler.IfrCtypes import EFI_GUID
 from Common.BuildToolError import PARAMETER_INVALID
@@ -29,6 +30,7 @@ GUID_BUFFER_VALUE_LEN = 11
 def EFI_ERROR(A):
     return A < 0
 
+
 # Converts a string to an EFI_GUID.
 def StringToGuid(AsciiGuidBuffer: str, GuidBuffer: EFI_GUID):
     Data4 = [0] * 8
@@ -36,14 +38,19 @@ def StringToGuid(AsciiGuidBuffer: str, GuidBuffer: EFI_GUID):
         return EFI_INVALID_PARAMETER
     Index = 0
     while Index < ASCII_GUID_BUFFER_MAX_INDEX:
-        if Index == ASCII_GUID_BUFFER_INDEX_1 or Index == ASCII_GUID_BUFFER_INDEX_2 or Index == ASCII_GUID_BUFFER_INDEX_3 or Index == ASCII_GUID_BUFFER_INDEX_4:
+        if (
+            Index == ASCII_GUID_BUFFER_INDEX_1
+            or Index == ASCII_GUID_BUFFER_INDEX_2
+            or Index == ASCII_GUID_BUFFER_INDEX_3
+            or Index == ASCII_GUID_BUFFER_INDEX_4
+        ):
             if AsciiGuidBuffer[Index] != "-":
                 break
         elif (
-                (AsciiGuidBuffer[Index] >= "0" and AsciiGuidBuffer[Index] <= "9")
-                or (AsciiGuidBuffer[Index] >= "a" and AsciiGuidBuffer[Index] <= "f")
-                or (AsciiGuidBuffer[Index] >= "A" and AsciiGuidBuffer[Index] <= "F")
-            ):
+            (AsciiGuidBuffer[Index] >= "0" and AsciiGuidBuffer[Index] <= "9")
+            or (AsciiGuidBuffer[Index] >= "a" and AsciiGuidBuffer[Index] <= "f")
+            or (AsciiGuidBuffer[Index] >= "A" and AsciiGuidBuffer[Index] <= "F")
+        ):
             Index += 1
             continue
         else:

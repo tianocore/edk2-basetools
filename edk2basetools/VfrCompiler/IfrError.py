@@ -4,9 +4,11 @@
 # Copyright (c) 2022-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
+
 from enum import Enum
 from Common import EdkLogger
 from Common.BuildToolError import *
+
 
 class VfrReturnCode(Enum):
     VFR_RETURN_SUCCESS = 0
@@ -112,14 +114,25 @@ class VfrErrorHandle:
                 break
         if WarningMsg != "":
             if self.WarningAsError:
-                EdkLogger.error("VfrCompiler", WarningCode.value, WarningMsg, self.InputFileName, LineNum, "warning treated as error")
-            EdkLogger.warn("VfrCompiler", WarningCode.value, self.InputFileName, LineNum, TokenValue)
+                EdkLogger.error(
+                    "VfrCompiler",
+                    WarningCode.value,
+                    WarningMsg,
+                    self.InputFileName,
+                    LineNum,
+                    "warning treated as error",
+                )
+            EdkLogger.warn(
+                "VfrCompiler", WarningCode.value, self.InputFileName, LineNum, TokenValue
+            )
 
     def PrintMsg(self, LineNum, MsgType="Error", ErrorMsg=None, TokenValue=None):
         if MsgType == "Warning":
             EdkLogger.verbose(ErrorMsg)
         else:
-            EdkLogger.error("VfrCompiler", FORMAT_INVALID, ErrorMsg, self.InputFileName, LineNum, TokenValue)
+            EdkLogger.error(
+                "VfrCompiler", FORMAT_INVALID, ErrorMsg, self.InputFileName, LineNum, TokenValue
+            )
 
     def HandleError(self, ErrorCode, LineNum=None, TokenValue=None):
         if self.vfrErrorMessage is None:
@@ -130,7 +143,9 @@ class VfrErrorHandle:
                 ErrorMsg = self.vfrErrorMessage[Key]
                 break
         if ErrorMsg != "":
-            EdkLogger.error("VfrCompiler", ErrorCode.value, ErrorMsg, self.InputFileName, LineNum, TokenValue)
+            EdkLogger.error(
+                "VfrCompiler", ErrorCode.value, ErrorMsg, self.InputFileName, LineNum, TokenValue
+            )
             return 1
         return 0
 

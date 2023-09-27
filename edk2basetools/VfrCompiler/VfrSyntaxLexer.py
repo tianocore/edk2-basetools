@@ -1,18 +1,15 @@
 # Generated from VfrSyntax.g4 by ANTLR 4.7.2
+
+import sys
 from antlr4 import *
 from io import StringIO
 from typing import TextIO
-import sys
-
-
-
 from VfrCompiler.IfrCtypes import *
 from VfrCompiler.IfrFormPkg import *
 from VfrCompiler.IfrUtility import *
 from VfrCompiler.IfrTree import *
 from VfrCompiler.IfrError import *
 from VfrCompiler.IfrPreProcess import *
-
 
 
 def serializedATN():

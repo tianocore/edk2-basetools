@@ -1,12 +1,11 @@
 # Generated from VfrSyntax.g4 by ANTLR 4.7.2
 # encoding: utf-8
+
+import os
+import sys
 from antlr4 import *
 from io import StringIO
 from typing import TextIO
-import sys
-
-import os
-
 from VfrCompiler.IfrCtypes import *
 from VfrCompiler.IfrFormPkg import *
 from VfrCompiler.IfrUtility import *

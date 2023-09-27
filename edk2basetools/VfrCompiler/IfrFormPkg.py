@@ -4,6 +4,7 @@
 # Copyright (c) 2022-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
+
 from VfrCompiler.IfrCtypes import *
 from VfrCompiler.IfrUtility import *
 from VfrCompiler.IfrError import VfrReturnCode
@@ -17,6 +18,7 @@ class OpNode:
     def __init__(self, Size, Scope):
         self.Size = Size
         self.Scope = Scope
+
 
 gOpcodeSizesScopeTable = [
     OpNode(0, 0),  # EFI_IFR_INVALID - 0x00
@@ -136,6 +138,8 @@ class ASSIGN_FLAG(Enum):
 
 VALUE_TYPE_ONE = 1
 VALUE_TYPE_TWO = 2
+
+
 class SPendingAssign:
     def __init__(self, Key, ValAddr, LineNo, Msg, Type=0):
         self.Key = Key
@@ -251,7 +255,9 @@ class FormPkg:
             if pNode.Flag == ASSIGN_FLAG.PENDING:
                 Info = EFI_VARSTORE_INFO()
                 VarStr = pNode.Key
-                QId, ReturnCode = lVfrQuestionDB.RegisterQuestion(None, VarStr, EFI_QUESTION_ID_INVALID, gFormPkg)
+                QId, ReturnCode = lVfrQuestionDB.RegisterQuestion(
+                    None, VarStr, EFI_QUESTION_ID_INVALID, gFormPkg
+                )
                 if ReturnCode != VfrReturnCode.VFR_RETURN_SUCCESS:
                     gVfrErrorHandle.HandleError(ReturnCode, pNode.LineNo, pNode.Key)
                     return ReturnList, ReturnCode
@@ -259,16 +265,22 @@ class FormPkg:
                 # printf("Undefined Question name is %s and Id is 0x%x\n", VarStr, QId);
                 # endif
                 # Get Question Info, framework vfr VarName == StructName
-                ArrayIdx, s, FName, ReturnCode = lVfrVarDataTypeDB.ExtractFieldNameAndArrary(VarStr, 0)
+                ArrayIdx, s, FName, ReturnCode = lVfrVarDataTypeDB.ExtractFieldNameAndArrary(
+                    VarStr, 0
+                )
                 if ReturnCode != VfrReturnCode.VFR_RETURN_SUCCESS:
-                    gVfrErrorHandle.PrintMsg(pNode.LineNo, "Error", "Var string is not the valid C variable", pNode.Key)
+                    gVfrErrorHandle.PrintMsg(
+                        pNode.LineNo, "Error", "Var string is not the valid C variable", pNode.Key
+                    )
                     return ReturnList, ReturnCode
 
                 # Get VarStoreType
                 Info.VarStoreId, ReturnCode = lVfrDataStorage.GetVarStoreId(FName)
 
                 if ReturnCode != VfrReturnCode.VFR_RETURN_SUCCESS:
-                    gVfrErrorHandle.PrintMsg(pNode.LineNo, "Error", "Var Store Type is not defined", FName)
+                    gVfrErrorHandle.PrintMsg(
+                        pNode.LineNo, "Error", "Var Store Type is not defined", FName
+                    )
                     return ReturnList, ReturnCode
 
                 VarStoreType = lVfrDataStorage.GetVarStoreType(Info.VarStoreId)
@@ -277,9 +289,14 @@ class FormPkg:
                 else:
                     if VarStoreType == EFI_VFR_VARSTORE_TYPE.EFI_VFR_VARSTORE_EFI:
                         ReturnCode = lVfrDataStorage.GetEfiVarStoreInfo(Info)
-                    elif VarStoreType == EFI_VFR_VARSTORE_TYPE.EFI_VFR_VARSTORE_BUFFER or VarStoreType == EFI_VFR_VARSTORE_TYPE.EFI_VFR_VARSTORE_BUFFER_BITS:
+                    elif (
+                        VarStoreType == EFI_VFR_VARSTORE_TYPE.EFI_VFR_VARSTORE_BUFFER
+                        or VarStoreType == EFI_VFR_VARSTORE_TYPE.EFI_VFR_VARSTORE_BUFFER_BITS
+                    ):
                         VarStr = pNode.Key
-                        SName, ReturnCode = lVfrDataStorage.GetBufferVarStoreDataTypeName(Info.VarStoreId)
+                        SName, ReturnCode = lVfrDataStorage.GetBufferVarStoreDataTypeName(
+                            Info.VarStoreId
+                        )
                         if ReturnCode == VfrReturnCode.VFR_RETURN_SUCCESS:
                             NewStr = SName + "." + VarStr[s:]
                             (
@@ -509,7 +526,9 @@ class IfrOpHeader:
             self.OpHeader.OpCode = OpCode
 
             self.OpHeader.Length = gOpcodeSizesScopeTable[OpCode].Size if Length == 0 else Length
-            self.OpHeader.Scope = 1 if (gOpcodeSizesScopeTable[OpCode].Scope + gScopeCount > 0) else 0
+            self.OpHeader.Scope = (
+                1 if (gOpcodeSizesScopeTable[OpCode].Scope + gScopeCount > 0) else 0
+            )
 
     def GetLength(self):
         return self.OpHeader.Length
@@ -641,7 +660,9 @@ class IfrOneOfOption(IfrLine, IfrOpHeader):
     def __init__(self, ValueType, ValueList):
         Nums = len(ValueList)
         self.OneOfOption = Refine_EFI_IFR_ONE_OF_OPTION(ValueType, Nums)
-        IfrOpHeader.__init__(self, self.OneOfOption.Header, EFI_IFR_ONE_OF_OPTION_OP, sizeof(self.OneOfOption))
+        IfrOpHeader.__init__(
+            self, self.OneOfOption.Header, EFI_IFR_ONE_OF_OPTION_OP, sizeof(self.OneOfOption)
+        )
         self.OneOfOption.Flags = 0
         self.OneOfOption.Option = EFI_STRING_ID_INVALID
         self.OneOfOption.Type = EFI_IFR_TYPE_OTHER
@@ -731,7 +752,11 @@ class IfrOneOfOption(IfrLine, IfrOpHeader):
             LFlags = _FLAG_CLEAR(LFlags, EFI_IFR_TYPE_OTHER)
             self.OneOfOption.Flags |= EFI_IFR_TYPE_OTHER
 
-        return VfrReturnCode.VFR_RETURN_SUCCESS if LFlags == 0 else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        return (
+            VfrReturnCode.VFR_RETURN_SUCCESS
+            if LFlags == 0
+            else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        )
 
     def GetInfo(self):
         return self.OneOfOption
@@ -779,7 +804,9 @@ class IfrSubClass(IfrLine, IfrOpHeader):
         self,
     ):
         self.SubClass = EFI_IFR_GUID_SUBCLASS()
-        IfrOpHeader.__init__(self, self.SubClass.Header, EFI_IFR_GUID_OP, sizeof(EFI_IFR_GUID_SUBCLASS))
+        IfrOpHeader.__init__(
+            self, self.SubClass.Header, EFI_IFR_GUID_OP, sizeof(EFI_IFR_GUID_SUBCLASS)
+        )
         self.SubClass.ExtendOpCode = EFI_IFR_EXTEND_OP_SUBCLASS
         self.SubClass.Guid = EFI_IFR_TIANO_GUID
         self.SubClass.SubClass = EFI_SETUP_APPLICATION_SUBCLASS
@@ -829,7 +856,9 @@ class IfrVarStore(IfrLine, IfrOpHeader):
     def __init__(self, TypeName, StoreName):
         Nums = len(StoreName)
         self.Varstore = Refine_EFI_IFR_VARSTORE(Nums)
-        IfrOpHeader.__init__(self, self.Varstore.Header, EFI_IFR_VARSTORE_OP, sizeof(self.Varstore) + 1)
+        IfrOpHeader.__init__(
+            self, self.Varstore.Header, EFI_IFR_VARSTORE_OP, sizeof(self.Varstore) + 1
+        )
         self.Varstore.VarStoreId = EFI_VARSTORE_ID_INVALID
         self.Varstore.Size = 0
         ArrayType = c_ubyte * (Nums)
@@ -862,7 +891,9 @@ class IfrVarStoreEfi(IfrLine, IfrOpHeader):
     def __init__(self, TypeName, StoreName):
         Nums = len(StoreName)
         self.VarStoreEfi = Refine_EFI_IFR_VARSTORE_EFI(Nums)
-        IfrOpHeader.__init__(self, self.VarStoreEfi.Header, EFI_IFR_VARSTORE_EFI_OP, sizeof(self.VarStoreEfi) + 1)
+        IfrOpHeader.__init__(
+            self, self.VarStoreEfi.Header, EFI_IFR_VARSTORE_EFI_OP, sizeof(self.VarStoreEfi) + 1
+        )
         self.VarStoreEfi.VarStoreId = EFI_VAROFFSET_INVALID
         self.VarStoreEfi.Size = 0
         ArrayType = c_ubyte * (Nums)
@@ -1061,7 +1092,9 @@ class IfrBanner(IfrLine, IfrOpHeader):
 class IfrVarEqName(IfrLine, IfrOpHeader):
     def __init__(self, QuestionId, NameId):
         self.VarEqName = EFI_IFR_GUID_VAREQNAME()
-        IfrOpHeader.__init__(self, self.VarEqName.Header, EFI_IFR_GUID_OP, sizeof(EFI_IFR_GUID_VAREQNAME))
+        IfrOpHeader.__init__(
+            self, self.VarEqName.Header, EFI_IFR_GUID_OP, sizeof(EFI_IFR_GUID_VAREQNAME)
+        )
         self.VarEqName.ExtendOpCode = EFI_IFR_EXTEND_OP_VAREQNAME
         self.VarEqName.Guid = EFI_IFR_FRAMEWORK_GUID
         self.VarEqName.QuestionId = QuestionId
@@ -1074,7 +1107,9 @@ class IfrVarEqName(IfrLine, IfrOpHeader):
 class IfrTimeout(IfrLine, IfrOpHeader):
     def __init__(self, Timeout=0):
         self.Timeout = EFI_IFR_GUID_TIMEOUT()
-        IfrOpHeader.__init__(self, self.Timeout.Header, EFI_IFR_GUID_OP, sizeof(EFI_IFR_GUID_TIMEOUT))
+        IfrOpHeader.__init__(
+            self, self.Timeout.Header, EFI_IFR_GUID_OP, sizeof(EFI_IFR_GUID_TIMEOUT)
+        )
         self.Timeout.ExtendOpCode = EFI_IFR_EXTEND_OP_TIMEOUT
         self.Timeout.Guid = EFI_IFR_TIANO_GUID
         self.Timeout.TimeOut = Timeout
@@ -1150,7 +1185,11 @@ class IfrSubtitle(IfrLine, IfrOpHeader, IfrStatementHeader):
         if Result:
             self.Subtitle.Flags |= EFI_IFR_FLAGS_HORIZONTAL
 
-        return VfrReturnCode.VFR_RETURN_SUCCESS if Flags == 0 else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        return (
+            VfrReturnCode.VFR_RETURN_SUCCESS
+            if Flags == 0
+            else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        )
 
     def SetFlagsStream(self, FlagsStream):
         self.FlagsStream = FlagsStream
@@ -1264,7 +1303,11 @@ class IfrQuestionHeader(IfrStatementHeader):
         if Ret:
             self.QHeader.Flags |= EFI_IFR_FLAG_OPTIONS_ONLY
 
-        return VfrReturnCode.VFR_RETURN_SUCCESS if Flags == 0 else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        return (
+            VfrReturnCode.VFR_RETURN_SUCCESS
+            if Flags == 0
+            else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        )
 
     def UpdateIfrQuestionHeader(self, qHeader):
         self.QHeader = qHeader
@@ -1475,7 +1518,11 @@ class IfrOrderedList(IfrLine, IfrBaseInfo, IfrOpHeader, IfrQuestionHeader):
         if Ret:
             self.OrderedList.Flags |= EFI_IFR_NO_EMPTY_SET
 
-        return VfrReturnCode.VFR_RETURN_SUCCESS if LFlags == 0 else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        return (
+            VfrReturnCode.VFR_RETURN_SUCCESS
+            if LFlags == 0
+            else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        )
 
 
 class IfrString(IfrLine, IfrBaseInfo, IfrOpHeader, IfrQuestionHeader):
@@ -1503,7 +1550,11 @@ class IfrString(IfrLine, IfrBaseInfo, IfrOpHeader, IfrQuestionHeader):
         if Ret:
             self.Str.Flags |= EFI_IFR_STRING_MULTI_LINE
 
-        return VfrReturnCode.VFR_RETURN_SUCCESS if LFlags == 0 else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        return (
+            VfrReturnCode.VFR_RETURN_SUCCESS
+            if LFlags == 0
+            else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        )
 
     def SetMinSize(self, MinSize):
         self.Str.MinSize = MinSize
@@ -1535,7 +1586,13 @@ class IfrPassword(IfrLine, IfrBaseInfo, IfrOpHeader, IfrQuestionHeader):
 
 
 class IfrDefault(IfrLine, IfrOpHeader):
-    def __init__(self, ValueType, ValueList, DefaultId=EFI_HII_DEFAULT_CLASS_STANDARD, Type=EFI_IFR_TYPE_OTHER):
+    def __init__(
+        self,
+        ValueType,
+        ValueList,
+        DefaultId=EFI_HII_DEFAULT_CLASS_STANDARD,
+        Type=EFI_IFR_TYPE_OTHER,
+    ):
         Nums = len(ValueList)
         self.Default = Refine_EFI_IFR_DEFAULT(ValueType, Nums)
         IfrOpHeader.__init__(self, self.Default.Header, EFI_IFR_DEFAULT_OP, sizeof(self.Default))
@@ -1582,7 +1639,9 @@ class IfrDefault(IfrLine, IfrOpHeader):
 class IfrDefault2(IfrLine, IfrOpHeader):
     def __init__(self, DefaultId=EFI_HII_DEFAULT_CLASS_STANDARD, Type=EFI_IFR_TYPE_OTHER):
         self.Default = EFI_IFR_DEFAULT_2()
-        IfrOpHeader.__init__(self, self.Default.Header, EFI_IFR_DEFAULT_OP, sizeof(EFI_IFR_DEFAULT_2))
+        IfrOpHeader.__init__(
+            self, self.Default.Header, EFI_IFR_DEFAULT_OP, sizeof(EFI_IFR_DEFAULT_2)
+        )
         self.Default.Type = Type
         self.Default.DefaultId = DefaultId
 
@@ -1630,6 +1689,7 @@ class IfrInconsistentIf2(IfrLine, IfrOpHeader):
 
     def SetFlagsStream(self, Flag):
         self.FlagsStream = Flag
+
     def GetInfo(self):
         return self.InconsistentIf
 
@@ -1815,7 +1875,11 @@ class IfrDate(IfrLine, IfrBaseInfo, IfrOpHeader, IfrQuestionHeader):
         if Ret:
             self.Date.Flags |= QF_DATE_STORAGE_WAKEUP
 
-        return VfrReturnCode.VFR_RETURN_SUCCESS if LFlags == 0 else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        return (
+            VfrReturnCode.VFR_RETURN_SUCCESS
+            if LFlags == 0
+            else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        )
 
 
 class IfrTime(IfrLine, IfrBaseInfo, IfrOpHeader, IfrQuestionHeader):
@@ -1876,7 +1940,11 @@ class IfrTime(IfrLine, IfrBaseInfo, IfrOpHeader, IfrQuestionHeader):
         if Ret:
             self.Time.Flags |= QF_TIME_STORAGE_WAKEUP
 
-        return VfrReturnCode.VFR_RETURN_SUCCESS if LFlags == 0 else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        return (
+            VfrReturnCode.VFR_RETURN_SUCCESS
+            if LFlags == 0
+            else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        )
 
 
 class IfrNumeric(IfrLine, IfrBaseInfo, IfrOpHeader, IfrQuestionHeader, IfrMinMaxStepData):
@@ -2006,7 +2074,11 @@ class IfrCheckBox(IfrLine, IfrBaseInfo, IfrOpHeader, IfrQuestionHeader):
         if Ret:
             self.CheckBox.Flags |= EFI_IFR_CHECKBOX_DEFAULT_MFG
 
-        return VfrReturnCode.VFR_RETURN_SUCCESS if LFlags == 0 else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        return (
+            VfrReturnCode.VFR_RETURN_SUCCESS
+            if LFlags == 0
+            else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        )
 
 
 class IfrResetButton(IfrLine, IfrOpHeader, IfrStatementHeader):
@@ -2277,7 +2349,11 @@ class IfrSpan(IfrLine, IfrOpHeader):
             if Ret:
                 self.Span.Flags |= EFI_IFR_FLAGS_FIRST_NON_MATCHING
 
-        return VfrReturnCode.VFR_RETURN_SUCCESS if LFlags == 0 else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        return (
+            VfrReturnCode.VFR_RETURN_SUCCESS
+            if LFlags == 0
+            else VfrReturnCode.VFR_RETURN_FLAGS_UNSUPPORTED
+        )
 
     def GetInfo(self):
         return self.Span
@@ -2291,7 +2367,6 @@ class IfrBitWiseAnd(IfrLine, IfrOpHeader):
 
     def GetInfo(self):
         return self.BitWiseAnd
-
 
 
 class IfrAdd(IfrLine, IfrOpHeader):
@@ -2433,7 +2508,9 @@ class IfrEqIdVal(IfrLine, IfrOpHeader):
 class IfrEqIdList(IfrLine, IfrOpHeader):
     def __init__(self, LineNo, Nums, ValueList=None):
         self.EqIdVList = Refine_EFI_IFR_EQ_ID_VAL_LIST(Nums)
-        IfrOpHeader.__init__(self, self.EqIdVList.Header, EFI_IFR_EQ_ID_VAL_LIST_OP, sizeof(self.EqIdVList))
+        IfrOpHeader.__init__(
+            self, self.EqIdVList.Header, EFI_IFR_EQ_ID_VAL_LIST_OP, sizeof(self.EqIdVList)
+        )
         self.SetLineNo(LineNo)
         self.EqIdVList.QuestionId = EFI_QUESTION_ID_INVALID
         self.EqIdVList.ListLength = 0
@@ -2568,8 +2645,9 @@ class IfrQuestionRef2(IfrLine, IfrOpHeader):
 class IfrQuestionRef3(IfrLine, IfrOpHeader):
     def __init__(self, LineNo):
         self.QuestionRef3 = EFI_IFR_QUESTION_REF3()
-        IfrOpHeader.__init__(self, self.QuestionRef3.Header, \
-            EFI_IFR_QUESTION_REF3_OP, sizeof(EFI_IFR_QUESTION_REF3))
+        IfrOpHeader.__init__(
+            self, self.QuestionRef3.Header, EFI_IFR_QUESTION_REF3_OP, sizeof(EFI_IFR_QUESTION_REF3)
+        )
         self.SetLineNo(LineNo)
 
     def GetHeader(self):
@@ -2582,8 +2660,12 @@ class IfrQuestionRef3(IfrLine, IfrOpHeader):
 class IfrQuestionRef3_2(IfrLine, IfrOpHeader):
     def __init__(self, LineNo):
         self.QuestionRef3_2 = EFI_IFR_QUESTION_REF3_2()
-        IfrOpHeader.__init__(self, self.QuestionRef3_2.Header, \
-            EFI_IFR_QUESTION_REF3_OP, sizeof(EFI_IFR_QUESTION_REF3_2))
+        IfrOpHeader.__init__(
+            self,
+            self.QuestionRef3_2.Header,
+            EFI_IFR_QUESTION_REF3_OP,
+            sizeof(EFI_IFR_QUESTION_REF3_2),
+        )
         self.SetLineNo(LineNo)
         self.QuestionRef3_2.DevicePath = EFI_STRING_ID_INVALID
 
@@ -2600,8 +2682,12 @@ class IfrQuestionRef3_2(IfrLine, IfrOpHeader):
 class IfrQuestionRef3_3(IfrLine, IfrOpHeader):
     def __init__(self, LineNo):
         self.QuestionRef3_3 = EFI_IFR_QUESTION_REF3_3()
-        IfrOpHeader.__init__(self, self.QuestionRef3_3.Header, \
-            EFI_IFR_QUESTION_REF3_OP, sizeof(EFI_IFR_QUESTION_REF3_3))
+        IfrOpHeader.__init__(
+            self,
+            self.QuestionRef3_3.Header,
+            EFI_IFR_QUESTION_REF3_OP,
+            sizeof(EFI_IFR_QUESTION_REF3_3),
+        )
         self.SetLineNo(LineNo)
         self.QuestionRef3_3.DevicePath = EFI_STRING_ID_INVALID
         self.QuestionRef3_3.Guid = EFI_GUID(0, 0, 0, GuidArray(0, 0, 0, 0, 0, 0, 0, 0))
