@@ -2434,6 +2434,15 @@ class BuildReport(object):
 
                                 # Remove un defined macros
                                 compile_command["command"] = re.sub(r"\$\(.*?\)", "", build_command)
+
+                                # Use source relative path to reduce redundancy
+                                try:
+                                    source_rel_path = Path(source.Path).relative_to(source.Dir)
+                                except ValueError:
+                                    source_rel_path = Path(source.Path)
+
+                                compile_command["command"] += " " + str(source_rel_path)
+
                                 compile_commands.append(compile_command)
 
                 # Create output folder if doesn't exist
@@ -2456,4 +2465,3 @@ class BuildReport(object):
 # This acts like the main() function for the script, unless it is 'import'ed into another script.
 if __name__ == '__main__':
     pass
-
