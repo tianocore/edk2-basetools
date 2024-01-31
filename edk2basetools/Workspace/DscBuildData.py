@@ -37,6 +37,8 @@ from functools import reduce
 from edk2basetools.Common.Misc import SaveFileOnChange
 from edk2basetools.Workspace.BuildClassObject import PlatformBuildClassObject, StructurePcd, PcdClassObject, ModuleBuildClassObject
 from collections import OrderedDict, defaultdict
+import json
+import shutil
 
 def _IsFieldValueAnArray (Value):
     Value = Value.strip()
@@ -56,6 +58,7 @@ def _IsFieldValueAnArray (Value):
 
 PcdValueInitName = 'PcdValueInit'
 PcdValueCommonName = 'PcdValueCommon'
+StructuredPcdsDataName = 'StructuredPcdsData.json'
 
 PcdMainCHeader = '''
 /**
@@ -2750,12 +2753,77 @@ class DscBuildData(PlatformBuildClassObject):
                 ccflags.add(item)
             i +=1
         return ccflags
+
+    def GetStructurePcdSet (self, OutputValueFile):
+        if not os.path.isfile(OutputValueFile):
+            EdkLogger.error("GetStructurePcdSet", FILE_NOT_FOUND, ExtraData=OutputValueFile)
+            return []
+        File = open (OutputValueFile, 'r')
+        FileBuffer = File.readlines()
+        File.close()
+
+        #start update structure pcd final value
+        StructurePcdSet = []
+        for Pcd in FileBuffer:
+            PcdValue = Pcd.split ('|')
+            PcdInfo = PcdValue[0].split ('.')
+            StructurePcdSet.append((PcdInfo[0], PcdInfo[1], PcdInfo[2], PcdInfo[3], PcdValue[2].strip()))
+        return StructurePcdSet
+
     def GenerateByteArrayValue (self, StructuredPcds):
         #
         # Generate/Compile/Run C application to determine if there are any flexible array members
         #
         if not StructuredPcds:
             return
+
+        StructuredPcdsData = {}
+
+        for PcdName in StructuredPcds:
+            Pcd = StructuredPcds[PcdName]
+            TokenSpaceGuidCName = Pcd.TokenSpaceGuidCName
+            TokenCName = Pcd.TokenCName
+
+            # Create a key using TokenSpaceGuidCName and TokenCName
+            StructuredPcdsData[f"{TokenSpaceGuidCName}_{TokenCName}"] = {
+                "DefaultValueFromDec": Pcd.DefaultValueFromDec,
+                "DefaultValues": Pcd.DefaultValues,
+                "PcdFieldValueFromComm": Pcd.PcdFieldValueFromComm,
+                "PcdFieldValueFromFdf": Pcd.PcdFieldValueFromFdf,
+                "DefaultFromDSC": Pcd.DefaultFromDSC
+            }
+
+        #
+        # If the output path doesn't exists then create it
+        #
+        if not os.path.exists(self.OutputPath):
+            os.makedirs(self.OutputPath)
+
+        StructuredPcdsDataPath = os.path.join(self.OutputPath, self._Arch, StructuredPcdsDataName)
+        PcdRecordOutputValueFile = os.path.join(self.OutputPath, self._Arch, 'Output.txt')
+
+        if not os.path.exists(os.path.dirname(StructuredPcdsDataPath)):
+            os.makedirs(os.path.dirname(StructuredPcdsDataPath))
+        #
+        # Check if the StructuredPcdsData.json exists or not
+        # if exits then it might be a incremental build then check if the StructuredPcdsData has been changed or not.
+        # if changed then proceed further, if not changed then return the stored data from earlier build
+        #
+        if os.path.isfile(StructuredPcdsDataPath):
+            with open(StructuredPcdsDataPath, 'r') as file:
+                StoredStructuredPcdsData = json.load(file)
+                if StructuredPcdsData == StoredStructuredPcdsData:
+                    return self.GetStructurePcdSet(PcdRecordOutputValueFile)
+                else:
+                    # update the record as PCD Input has been changed in incremental build
+                    with open(StructuredPcdsDataPath, 'w') as file:
+                        json.dump(StructuredPcdsData, file, indent=2)
+        else:
+            #
+            # 1st build, create the StructuredPcdsData.json
+            #
+            with open(StructuredPcdsDataPath, 'w') as file:
+                json.dump(StructuredPcdsData, file, indent=2)
 
         InitByteValue = ""
         CApp = PcdMainCHeader
@@ -2832,8 +2900,6 @@ class DscBuildData(PlatformBuildClassObject):
 
         CApp = CApp + PcdMainCEntry + '\n'
 
-        if not os.path.exists(self.OutputPath):
-            os.makedirs(self.OutputPath)
         CAppBaseFileName = os.path.join(self.OutputPath, PcdValueInitName)
         SaveFileOnChange(CAppBaseFileName + '.c', CApp, False)
 
@@ -3042,17 +3108,10 @@ class DscBuildData(PlatformBuildClassObject):
             if returncode != 0:
                 EdkLogger.warn('Build', COMMAND_FAILURE, 'Can not collect output from command: %s\n%s\n%s\n' % (Command, StdOut, StdErr))
 
+        # Copy update output file for each Arch
+        shutil.copyfile(OutputValueFile, PcdRecordOutputValueFile)
         #start update structure pcd final value
-        File = open (OutputValueFile, 'r')
-        FileBuffer = File.readlines()
-        File.close()
-
-        StructurePcdSet = []
-        for Pcd in FileBuffer:
-            PcdValue = Pcd.split ('|')
-            PcdInfo = PcdValue[0].split ('.')
-            StructurePcdSet.append((PcdInfo[0], PcdInfo[1], PcdInfo[2], PcdInfo[3], PcdValue[2].strip()))
-        return StructurePcdSet
+        return self.GetStructurePcdSet(OutputValueFile)
 
     @staticmethod
     def NeedUpdateOutput(OutputFile, ValueCFile, StructureInput):
