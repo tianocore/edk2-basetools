@@ -2790,7 +2790,8 @@ class DscBuildData(PlatformBuildClassObject):
                 "DefaultValues": Pcd.DefaultValues,
                 "PcdFieldValueFromComm": Pcd.PcdFieldValueFromComm,
                 "PcdFieldValueFromFdf": Pcd.PcdFieldValueFromFdf,
-                "DefaultFromDSC": Pcd.DefaultFromDSC
+                "DefaultFromDSC": Pcd.DefaultFromDSC,
+                "PcdFiledValueFromDscComponent": Pcd.PcdFiledValueFromDscComponent
             }
 
         #
