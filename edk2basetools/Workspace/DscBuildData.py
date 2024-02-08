@@ -6,6 +6,9 @@
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 #
 
+
+
+## SAMPLE PR TO TEST THE CI
 ## Platform build information from DSC file
 #
 #  This class is used to retrieve information stored in database and convert them
