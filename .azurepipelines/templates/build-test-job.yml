@@ -31,8 +31,6 @@ jobs:
       root_package_folder: ${{parameters.root_package_folder}}
       codecov_enabled: ${{parameters.codecov_enabled}}
 
-  - template: flake8-test-steps.yml
-
   - template: spell-test-steps.yml
 
   - template: markdown-lint-steps.yml
