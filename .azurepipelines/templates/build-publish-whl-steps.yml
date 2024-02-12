@@ -1,6 +1,6 @@
-# File flake8-test-steps.yml
+# File build-publish-whl-steps.yml
 #
-# template file to run flake8 and if error publish log
+# template file to build a wheel and publish to PyPI
 #
 # Copyright (c) 2019, Microsoft Corporation
 # SPDX-License-Identifier: BSD-2-Clause-Patent
@@ -31,4 +31,4 @@ steps:
     externalFeeds: ${{parameters.pypi_auth_feed}}
 
 - script: 'twine upload -r ${{parameters.pypi_auth_feed}} --config-file $(PYPIRC_PATH) dist/*'
-  displayName: 'Publish to pypi'
+  displayName: 'Publish to PyPI'
