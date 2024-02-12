@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools", "setuptools_scm[toml]"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edk2-basetools"
+maintainers = [
+  {name = "Liming Gao", email = "gaoliming@byosoft.com.cn"},
+  {name = "Rebecca Cran", email = "rebecca@bsdio.com"}
+]
+authors = [{name = "TianoCore EDK2-BaseTools Team", email = "devel@edk2.groups.io"}]
+dynamic = ["version"]
+description = "Python BaseTools supporting UEFI EDK2 firmware development"
+readme = {file = "readme.md", content-type = "text/markdown"}
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+dependencies = [
+  "edk2-pytool-library>=0.20.0",
+  "antlr4-python3-runtime==4.7.1"
+]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: BSD+Patent",
+  "Operating System :: OS Independent",
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers"
+]
+
+[project.urls]
+homepage = "https://github.com/tianocore/edk2-basetools"
+issues = "https://github.com/tianocore/edk2-basetools/issues"
+
+[project.optional-dependencies]
+publish = [
+    "setuptools",
+    "build"
+]
+
+[project.scripts]
+edk2_build = "edk2basetools.build.build:Main"
+edk2_ecc = "edk2basetools.Ecc.EccMain:Main"
+Trim = "edk2basetools.Trim.Trim:Main"
+Split = "edk2basetools.Split.Split:main"
+PatchPcdValue = "edk2basetools.PatchPcdValue.PatchPcdValue:Main"
+GenFds = "edk2basetools.GenFds.GenFds:main"
+BPDG = "edk2basetools.BPDG.BPDG:main"
+AmlToC = "edk2basetools.AmlToC.AmlToC:Main"
+
+# The following tools are commented out because the code needs
+# fixed.
+# AutoGen = "edk2basetools.AutoGen.AutoGen:main"
+# GenerateCapsule = "edk2basetools.Capsule.GenerateCapsule:main"
+# FMMT = "edk2basetools.FMMT.FMMT:Main"
+# GenPatchPcdTable = "edk2basetools.GenPatchPcdTable.GenPatchPcdTable:main"
+# Pkcs7Sign = "edk2basetools.Pkcs7Sign.Pkcs7Sign:main"
+# Rsa2048Sha256Sign = "edk2basetools.Rsa2048Sha256Sign.Rsa2048Sha256Sign:main"
+# TargetTool = "edk2basetools.TargetTool.TargetTool:main"
+# UPT = "edk2basetools.UPT.UPT:Main"
+
+[tool.setuptools_scm]
+
+[tool.coverage.run]
+include = ["edk2basetools/*"]
