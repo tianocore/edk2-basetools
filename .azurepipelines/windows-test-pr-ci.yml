@@ -18,4 +18,4 @@ jobs:
     vm_image: 'windows-latest'
     root_package_folder: "edk2basetools"
     name: 'windows'
-    codecov_enabled: true
+    codecov_enabled: false
