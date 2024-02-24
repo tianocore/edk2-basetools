@@ -60,5 +60,8 @@ AmlToC = "edk2basetools.AmlToC.AmlToC:Main"
 
 [tool.setuptools_scm]
 
+[tool.setuptools]
+py-modules = ["edk2basetools"]
+
 [tool.coverage.run]
 include = ["edk2basetools/*"]
