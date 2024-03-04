@@ -1,0 +1,31 @@
+
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\DEBUG\FrontPageVfr.Vfr.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\DEBUG\FrontPageVfr.Vfr.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\AutoGen.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\AutoGen.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\FrontPage.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\FrontPage.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\FrontPageCustomizedUi.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\FrontPageCustomizedUi.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\FrontPageCustomizedUiSupport.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\FrontPageCustomizedUiSupport.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\FrontPageVfr.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\FrontPageVfr.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\String.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\OUTPUT\String.c.deps
+!ENDIF
+
+               

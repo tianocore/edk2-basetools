@@ -1,0 +1,59 @@
+defines:
+  DEVICE_MANAGER_FORM_ID: 4096
+  FORMSET_GUID: '{0x3ebfa8e6, 0x511d, 0x4b5b, {0xa9, 0x5f, 0xfb, 0x38, 0x26, 0xf, 0x1c, 0x27}}'
+  LABEL_DEVICES_LIST: 4352
+  LABEL_END: 65535
+  LABEL_NETWORK_DEVICE_ID: 4354
+  LABEL_NETWORK_DEVICE_LIST_ID: 4353
+  NETWORK_DEVICE_FORM_ID: 4098
+  NETWORK_DEVICE_LIST_FORM_ID: 4097
+formset:
+  classguid: '{0xe58809f8, 0xfbc1, 0x48e2, {0x88, 0x3a, 0xa3, 0xf, 0xdc, 0x4b, 0x44, 0x1e}}'
+  component:
+  - form:
+      component:
+      - subtitle:
+          text: STRING_TOKEN(0x0004)
+      - label:
+          number: 4352
+      - label:
+          number: 65535
+      - subtitle:
+          text: STRING_TOKEN(0x0006)
+      - subtitle:
+          text: STRING_TOKEN(0x0006)
+      - subtitle:
+          text: STRING_TOKEN(0x0007)
+      formid: 4096
+      title: STRING_TOKEN(0x0002)
+  - form:
+      component:
+      - subtitle:
+          text: STRING_TOKEN(0x000D)
+      - label:
+          number: 4353
+      - label:
+          number: 65535
+      - subtitle:
+          text: STRING_TOKEN(0x0006)
+      - subtitle:
+          text: STRING_TOKEN(0x0007)
+      formid: 4097
+      title: STRING_TOKEN(0x000C)
+  - form:
+      component:
+      - subtitle:
+          text: STRING_TOKEN(0x000A)
+      - label:
+          number: 4354
+      - label:
+          number: 65535
+      - subtitle:
+          text: STRING_TOKEN(0x0006)
+      - subtitle:
+          text: STRING_TOKEN(0x0007)
+      formid: 4098
+      title: STRING_TOKEN(0x0009)
+  guid: '{0x3ebfa8e6, 0x511d, 0x4b5b, {0xa9, 0x5f, 0xfb, 0x38, 0x26, 0xf, 0x1c, 0x27}}'
+  help: STRING_TOKEN(0x0003)
+  title: STRING_TOKEN(0x0002)
