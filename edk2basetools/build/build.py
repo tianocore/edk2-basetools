@@ -46,6 +46,7 @@ from edk2basetools.Common.MultipleWorkspace import MultipleWorkspace as mws
 from edk2basetools.Common.BuildToolError import *
 from edk2basetools.Common.DataType import *
 import edk2basetools.Common.EdkLogger as EdkLogger
+import locale
 
 from edk2basetools.Workspace.WorkspaceDatabase import BuildDB
 
@@ -181,14 +182,16 @@ def NormFile(FilePath, Workspace):
 # @param  ExitFlag  The flag used to indicate stopping reading
 #
 def ReadMessage(From, To, ExitFlag,MemTo=None):
+    (_, encoding) = locale.getdefaultlocale()
     while True:
         # read one line a time
         Line = From.readline()
         # empty string means "end"
         if Line is not None and Line != b"":
-            LineStr = Line.rstrip().decode(encoding='utf-8', errors='ignore')
+            LineStr = Line.rstrip().decode(encoding, errors='ignore')
             if MemTo is not None:
-                if "Note: including file:" ==  LineStr.lstrip()[:21]:
+                if "Note: including file:" ==  LineStr.lstrip()[:21] or\
+                 "注意: 包含文件: " ==  LineStr.lstrip()[:10]:
                     MemTo.append(LineStr)
                 else:
                     To(LineStr)
