@@ -153,7 +153,7 @@ class GUIDTools:
                 config_data = fd.readlines()
             for line in config_data:
                 try:
-                    if not line.startswith("#"):
+                    if not line.startswith("#") and line.strip():
                         guid, short_name, command = line.split()
                         new_format_guid = struct2stream(ModifyGuidFormat(guid.strip()))
                         self.tooldef[new_format_guid] = GUIDTool(
