@@ -1,0 +1,36 @@
+## DO NOT REMOVE -- YAML Mode
+formset:
+  guid:  '{0x847bc3fe, 0xb974, 0x446d, { 0x94, 0x49, 0x5a, 0xd5, 0x41, 0x2e, 0x99, 0x3b }}'
+  help:  'This selection will take you to the Boot Manager'
+  title:  'Boot Manager'
+  classguid1:  '{0xe58809f8, 0xfbc1, 0x48e2, { 0x88, 0x3a, 0xa3, 0xf, 0xdc, 0x4b, 0x44, 0x1e }}'
+  component:  
+  - form: 
+      formid:  4096 
+      title:  'Boot Manager'
+      component:  
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - subtitle:
+          prompt:  'Boot Manager Menu'
+          flags:  0  # Optional Input
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - text:
+          condition:  'suppressif TRUE'
+          help:  ''
+          prompt:  ''
+          flags:  4  # Optional Input, Question Flags
+          key:  0x1212  # Optional Input, Question QuestionId
+      - label:
+          number:  0x0  # Number
+      - label:
+          number:  0x1  # Number
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - subtitle:
+          prompt:  'Use the <↑> and <↓> keys to choose a boot option, the <Enter> key to select a boot option, and the <Esc> key to exit the Boot Manager Menu.'
+          flags:  0  # Optional Input

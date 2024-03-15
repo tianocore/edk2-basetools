@@ -1,0 +1,62 @@
+formset:
+  classguid: '{0xfe561596, 0xe6bf, 0x41a6, {0x83, 0x76, 0xc7, 0x2b, 0x71, 0x98, 0x74, 0xd0}}'
+  component:
+  - form:
+      component:
+      - label:
+          number: 4096
+      - label:
+          number: 65535
+      formid: 4096
+      title: STRING_TOKEN(0x0003)
+  - form:
+      component:
+      - string:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x0009)
+          key: 8193
+          maxsize: 20
+          minsize: 2
+          prompt: STRING_TOKEN(0x0008)
+      - subtitle:
+          text: STRING_TOKEN(0x0002)
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x000A)
+          key: 8194
+          prompt: STRING_TOKEN(0x000A)
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x000B)
+          key: 8195
+          prompt: STRING_TOKEN(0x000B)
+      formid: 8192
+      title: STRING_TOKEN(0x0006)
+  - form:
+      component:
+      - string:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x000F)
+          key: 12289
+          maxsize: 20
+          minsize: 2
+          prompt: STRING_TOKEN(0x000E)
+      - subtitle:
+          text: STRING_TOKEN(0x0002)
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x0010)
+          key: 12290
+          prompt: STRING_TOKEN(0x0010)
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x0011)
+          key: 12291
+          prompt: STRING_TOKEN(0x0011)
+      formid: 12288
+      title: STRING_TOKEN(0x0007)
+  guid: '{0xfe561596, 0xe6bf, 0x41a6, {0x83, 0x76, 0xc7, 0x2b, 0x71, 0x98, 0x74, 0xd0}}'
+  help: STRING_TOKEN(0x0002)
+  title: STRING_TOKEN(0x0003)
+include:
+- FormGuid.h

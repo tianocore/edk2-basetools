@@ -1,0 +1,42 @@
+{
+    "LanguageDef": [
+        [
+            "en-US",
+            "English"
+        ],
+        [
+            "fr-FR",
+            "Fran\u00e7ais"
+        ]
+    ],
+    "UniString": {
+        "en-US": {
+            "$LANGUAGE_NAME": "en-US",
+            "$PRINTABLE_LANGUAGE_NAME": "English",
+            "STR_EDKII_MENU_TITLE": "Device Manager",
+            "STR_EDKII_MENU_HELP": "This selection will take you to the Device Manager",
+            "STR_DEVICES_LIST": "Devices List",
+            "STR_DISK_DEVICE": "Disk Devices",
+            "STR_VIDEO_DEVICE": "Video Devices",
+            "STR_NETWORK_DEVICE": "Network Devices",
+            "STR_INPUT_DEVICE": "Input Devices",
+            "STR_ON_BOARD_DEVICE": "Motherboard Devices",
+            "STR_OTHER_DEVICE": "Other Devices",
+            "STR_MISSING_STRING": "Missing String",
+            "STR_EMPTY_STRING": "",
+            "STR_EXIT_STRING": "Press ESC to exit.",
+            "STR_FORM_NETWORK_DEVICE_TITLE_HEAD": "Network Device",
+            "STR_FORM_NETWORK_DEVICE_TITLE": "Network Device",
+            "STR_FORM_NETWORK_DEVICE_HELP": "Network Device Help...",
+            "STR_NETWORK_DEVICE_STRING": "Network Device",
+            "STR_FORM_NETWORK_DEVICE_LIST_HELP": "Select the network device according the MAC address",
+            "STR_FORM_NETWORK_DEVICE_LIST_TITLE": "Network Device List",
+            "STR_NETWORK_DEVICE_LIST_STRING": "Network Device List",
+            "STR_NETWORK_DEVICE_HELP": "Network Device"
+        },
+        "fr-FR": {
+            "$LANGUAGE_NAME": "fr-FR",
+            "$PRINTABLE_LANGUAGE_NAME": "Fran\u00e7ais"
+        }
+    }
+}

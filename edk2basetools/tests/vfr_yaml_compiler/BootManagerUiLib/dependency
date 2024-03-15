@@ -1,0 +1,19 @@
+
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\BootManagerUiLib\BootManagerUiLib\DEBUG\BootManagerVfr.Vfr.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\BootManagerUiLib\BootManagerUiLib\DEBUG\BootManagerVfr.Vfr.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\BootManagerUiLib\BootManagerUiLib\OUTPUT\AutoGen.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\BootManagerUiLib\BootManagerUiLib\OUTPUT\AutoGen.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\BootManagerUiLib\BootManagerUiLib\OUTPUT\BootManager.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\BootManagerUiLib\BootManagerUiLib\OUTPUT\BootManager.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\BootManagerUiLib\BootManagerUiLib\OUTPUT\BootManagerVfr.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Library\BootManagerUiLib\BootManagerUiLib\OUTPUT\BootManagerVfr.c.deps
+!ENDIF
+
+               

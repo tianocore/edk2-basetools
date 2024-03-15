@@ -1,0 +1,37 @@
+formset:
+  component:
+  - varstore:
+      guid: '{0x7235c51c, 0xc80, 0x4cab, {0x87, 0xac, 0x3b, 0x8, 0x4a, 0x63, 0x4, 0xb1}}'
+      name: MainFormState
+      type: MAIN_FORM_STATE
+      varid: 1
+  - form:
+      component:
+      - string:
+          flags: READ_ONLY
+          help: STRING_TOKEN(0x0006)
+          maxsize: 16
+          minsize: 0
+          prompt: STRING_TOKEN(0x0005)
+          questionid: 1
+          varid: MainFormState.CurrentPreferredResolution
+      - label:
+          number: 1
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x0009)
+          key: 3
+          prompt: STRING_TOKEN(0x0009)
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x000A)
+          key: 4
+          prompt: STRING_TOKEN(0x000A)
+      formid: 1
+      title: STRING_TOKEN(0x0004)
+  guid: '{0x7235c51c, 0xc80, 0x4cab, {0x87, 0xac, 0x3b, 0x8, 0x4a, 0x63, 0x4, 0xb1}}'
+  help: STRING_TOKEN(0x0003)
+  title: STRING_TOKEN(0x0002)
+include:
+- Guid/OvmfPlatformConfig.h
+- Platform.h

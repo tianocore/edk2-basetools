@@ -1,0 +1,51 @@
+## DO NOT REMOVE -- YAML Mode
+formset:
+  guid:  '{0x9e0c30bc, 0x3f06, 0x4ba6, { 0x82, 0x88, 0x9, 0x17, 0x9b, 0x85, 0x5d, 0xbe }}'
+  help:  ''
+  title:  'Front Page'
+  classguid1:  '{0x9e0c30bc, 0x3f06, 0x4ba6, { 0x82, 0x88, 0x9, 0x17, 0x9b, 0x85, 0x5d, 0xbe }}'
+  component:  
+  - form: 
+      formid:  4096 
+      title:  'Front Page'
+      component:  
+      - banner:
+          title:  3
+          line:  1
+          align:  0
+      - banner:
+          title:  4
+          line:  2
+          align:  0
+      - banner:
+          title:  5
+          line:  2
+          align:  0
+      - banner:
+          title:  7
+          line:  3
+          align:  0
+      - banner:
+          title:  6
+          line:  3
+          align:  0
+      - banner:
+          title:  14
+          line:  4
+          align:  0
+      - banner:
+          title:  15
+          line:  4
+          align:  0
+      - banner:
+          title:  16
+          line:  5
+          align:  0
+      - banner:
+          title:  17
+          line:  5
+          align:  0
+      - label:
+          number:  0x1000  # Number
+      - label:
+          number:  0xffff  # Number

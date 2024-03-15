@@ -1,0 +1,393 @@
+defines:
+  EFI_NETWORK_DEVICE_CLASS: 4
+formset:
+  component:
+  - varstore:
+      guid: '{0x4b47d616, 0xa8d6, 0x4552, {0x9d, 0x44, 0xcc, 0xad, 0x2e, 0xf, 0x4c, 0xf9}}'
+      name: ISCSI_CONFIG_IFR_NVDATA
+      type: ISCSI_CONFIG_IFR_NVDATA
+      varid: 26214
+  - form:
+      component:
+      - string:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x0007)
+          key: 257
+          maxsize: 223
+          minsize: 4
+          prompt: STRING_TOKEN(0x0006)
+          varid: ISCSI_CONFIG_IFR_NVDATA.InitiatorName
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      - goto:
+          flags: INTERACTIVE
+          formid: 2
+          help: STRING_TOKEN(0x000E)
+          key: 270
+          prompt: STRING_TOKEN(0x000E)
+      - label:
+          number: 36864
+      - label:
+          number: 65535
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      - goto:
+          flags: INTERACTIVE
+          formid: 5
+          help: STRING_TOKEN(0x0011)
+          key: 278
+          prompt: STRING_TOKEN(0x0010)
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      - goto:
+          flags: INTERACTIVE
+          formid: 4
+          help: STRING_TOKEN(0x0012)
+          key: 272
+          prompt: STRING_TOKEN(0x0012)
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      formid: 1
+      title: STRING_TOKEN(0x0004)
+  - form:
+      component:
+      - label:
+          number: 12288
+      - label:
+          number: 65535
+      formid: 2
+      title: STRING_TOKEN(0x0005)
+  - form:
+      component:
+      - label:
+          number: 16384
+      - label:
+          number: 65535
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x003B)
+          key: 273
+          prompt: STRING_TOKEN(0x003B)
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x003C)
+          key: 274
+          prompt: STRING_TOKEN(0x003C)
+      formid: 4
+      title: STRING_TOKEN(0x0012)
+  - form:
+      component:
+      - label:
+          number: 20480
+      - label:
+          number: 65535
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x003B)
+          key: 276
+          prompt: STRING_TOKEN(0x003B)
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x003C)
+          key: 277
+          prompt: STRING_TOKEN(0x003C)
+      formid: 5
+      title: STRING_TOKEN(0x0010)
+  - form:
+      component:
+      - string:
+          flags: READ_ONLY
+          help: STRING_TOKEN(0x0009)
+          key: 275
+          maxsize: 12
+          minsize: 0
+          prompt: STRING_TOKEN(0x0008)
+          varid: ISCSI_CONFIG_IFR_NVDATA.AttemptName
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      - oneof:
+          component:
+          - option:
+              flags: DEFAULT
+              text: STRING_TOKEN(0x0015)
+              value: 0
+          - option:
+              flags: 0
+              text: STRING_TOKEN(0x0016)
+              value: 1
+          - option:
+              flags: 0
+              text: STRING_TOKEN(0x0017)
+              value: 2
+          help: STRING_TOKEN(0x0014)
+          prompt: STRING_TOKEN(0x0013)
+          varid: ISCSI_CONFIG_IFR_NVDATA.Enabled
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      - oneof:
+          component:
+          - option:
+              flags: INTERACTIVE
+              text: STRING_TOKEN(0x001A)
+              value: 0
+          - option:
+              flags: INTERACTIVE
+              text: STRING_TOKEN(0x001B)
+              value: 1
+          - option:
+              flags: INTERACTIVE
+              text: STRING_TOKEN(0x001C)
+              value: 2
+          help: STRING_TOKEN(0x0019)
+          prompt: STRING_TOKEN(0x0018)
+          questionid: 284
+          varid: ISCSI_CONFIG_IFR_NVDATA.IpMode
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      - numeric:
+          flags: 0
+          help: STRING_TOKEN(0x000B)
+          maximum: 16
+          minmum: 0
+          prompt: STRING_TOKEN(0x000A)
+          step: 0
+          varid: ISCSI_CONFIG_IFR_NVDATA.ConnectRetryCount
+      - numeric:
+          component:
+          - default:
+              value: 1000
+          flags: 0
+          help: STRING_TOKEN(0x000D)
+          maximum: 20000
+          minmum: 100
+          prompt: STRING_TOKEN(0x000C)
+          step: 0
+          varid: ISCSI_CONFIG_IFR_NVDATA.ConnectTimeout
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      - string:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x003E)
+          key: 286
+          maxsize: 12
+          minsize: 6
+          prompt: STRING_TOKEN(0x003D)
+          varid: ISCSI_CONFIG_IFR_NVDATA.IsId
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      - suppressif:
+          component:
+          - checkbox:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x002C)
+              prompt: STRING_TOKEN(0x002C)
+              varid: ISCSI_CONFIG_IFR_NVDATA.InitiatorInfoFromDhcp
+          expression: ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG
+      - suppressif:
+          component:
+          - grayoutif:
+              component:
+              - string:
+                  flags: INTERACTIVE
+                  help: STRING_TOKEN(0x0024)
+                  key: 259
+                  maxsize: 15
+                  minsize: 7
+                  prompt: STRING_TOKEN(0x0021)
+                  varid: ISCSI_CONFIG_IFR_NVDATA.LocalIp
+              - string:
+                  flags: INTERACTIVE
+                  help: STRING_TOKEN(0x0024)
+                  key: 260
+                  maxsize: 15
+                  minsize: 7
+                  prompt: STRING_TOKEN(0x0022)
+                  varid: ISCSI_CONFIG_IFR_NVDATA.SubnetMask
+              - string:
+                  flags: INTERACTIVE
+                  help: STRING_TOKEN(0x0024)
+                  key: 261
+                  maxsize: 15
+                  minsize: 7
+                  prompt: STRING_TOKEN(0x0023)
+                  varid: ISCSI_CONFIG_IFR_NVDATA.Gateway
+              expression: ideqval ISCSI_CONFIG_IFR_NVDATA.InitiatorInfoFromDhcp == 0x01
+          expression: ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_IP6 OR        ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG
+      - suppressif:
+          component:
+          - subtitle:
+              text: STRING_TOKEN(0x003A)
+          expression: ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG
+      - suppressif:
+          component:
+          - checkbox:
+              flags: 0
+              help: STRING_TOKEN(0x002D)
+              prompt: STRING_TOKEN(0x002D)
+              varid: ISCSI_CONFIG_IFR_NVDATA.TargetInfoFromDhcp
+          expression: ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG OR        ideqval ISCSI_CONFIG_IFR_NVDATA.InitiatorInfoFromDhcp == 0x00
+      - suppressif:
+          component:
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x0026)
+              key: 268
+              maxsize: 223
+              minsize: 4
+              prompt: STRING_TOKEN(0x0025)
+              varid: ISCSI_CONFIG_IFR_NVDATA.TargetName
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x0028)
+              key: 262
+              maxsize: 255
+              minsize: 0
+              prompt: STRING_TOKEN(0x0027)
+              varid: ISCSI_CONFIG_IFR_NVDATA.TargetIp
+          - numeric:
+              flags: 0
+              help: STRING_TOKEN(0x0029)
+              maximum: 65535
+              minmum: 0
+              prompt: STRING_TOKEN(0x0029)
+              step: 0
+              varid: ISCSI_CONFIG_IFR_NVDATA.TargetPort
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x002B)
+              key: 269
+              maxsize: 20
+              minsize: 1
+              prompt: STRING_TOKEN(0x002A)
+              varid: ISCSI_CONFIG_IFR_NVDATA.BootLun
+          expression: ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG OR        ideqval ISCSI_CONFIG_IFR_NVDATA.TargetInfoFromDhcp == 0x01
+      - suppressif:
+          component:
+          - subtitle:
+              text: STRING_TOKEN(0x003A)
+          expression: ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG
+      - oneof:
+          component:
+          - option:
+              flags: 0
+              text: STRING_TOKEN(0x001F)
+              value: 1
+          - option:
+              flags: DEFAULT
+              text: STRING_TOKEN(0x0020)
+              value: 0
+          help: STRING_TOKEN(0x001E)
+          prompt: STRING_TOKEN(0x001D)
+          questionid: 285
+          varid: ISCSI_CONFIG_IFR_NVDATA.AuthenticationType
+      - suppressif:
+          component:
+          - oneof:
+              component:
+              - option:
+                  flags: 0
+                  text: STRING_TOKEN(0x0030)
+                  value: 0
+              - option:
+                  flags: DEFAULT
+                  text: STRING_TOKEN(0x0031)
+                  value: 1
+              help: STRING_TOKEN(0x002F)
+              prompt: STRING_TOKEN(0x002E)
+              varid: ISCSI_CONFIG_IFR_NVDATA.CHAPType
+          expression: NOT ideqval ISCSI_CONFIG_IFR_NVDATA.AuthenticationType == ISCSI_AUTH_TYPE_CHAP
+      - suppressif:
+          component:
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x0032)
+              key: 263
+              maxsize: 126
+              minsize: 0
+              prompt: STRING_TOKEN(0x0032)
+              varid: ISCSI_CONFIG_IFR_NVDATA.CHAPName
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x0034)
+              key: 264
+              maxsize: 16
+              minsize: 12
+              prompt: STRING_TOKEN(0x0033)
+              varid: ISCSI_CONFIG_IFR_NVDATA.CHAPSecret
+          expression: NOT ideqval ISCSI_CONFIG_IFR_NVDATA.AuthenticationType == ISCSI_AUTH_TYPE_CHAP
+      - suppressif:
+          component:
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x0035)
+              key: 265
+              maxsize: 126
+              minsize: 0
+              prompt: STRING_TOKEN(0x0035)
+              varid: ISCSI_CONFIG_IFR_NVDATA.ReverseCHAPName
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x0034)
+              key: 266
+              maxsize: 16
+              minsize: 12
+              prompt: STRING_TOKEN(0x0036)
+              varid: ISCSI_CONFIG_IFR_NVDATA.ReverseCHAPSecret
+          expression: NOT ideqval ISCSI_CONFIG_IFR_NVDATA.AuthenticationType == ISCSI_AUTH_TYPE_CHAP OR        NOT ideqval ISCSI_CONFIG_IFR_NVDATA.CHAPType == ISCSI_CHAP_MUTUAL
+      - suppressif:
+          component:
+          - string:
+              help: STRING_TOKEN(0x003F)
+              maxsize: 96
+              minsize: 0
+              prompt: STRING_TOKEN(0x003F)
+              varid: ISCSI_CONFIG_IFR_NVDATA.ISCSIMacAddr
+          - string:
+              help: STRING_TOKEN(0x0043)
+              maxsize: 96
+              minsize: 0
+              prompt: STRING_TOKEN(0x0043)
+              varid: ISCSI_CONFIG_IFR_NVDATA.ISCSIAttemptOrder
+          - string:
+              help: STRING_TOKEN(0x0040)
+              maxsize: 96
+              minsize: 0
+              prompt: STRING_TOKEN(0x0040)
+              varid: ISCSI_CONFIG_IFR_NVDATA.ISCSIAddAttemptList
+          - string:
+              help: STRING_TOKEN(0x0041)
+              maxsize: 96
+              minsize: 0
+              prompt: STRING_TOKEN(0x0041)
+              varid: ISCSI_CONFIG_IFR_NVDATA.ISCSIDeleteAttemptList
+          - string:
+              flags: READ_ONLY
+              help: STRING_TOKEN(0x0042)
+              maxsize: 96
+              minsize: 0
+              prompt: STRING_TOKEN(0x0042)
+              varid: ISCSI_CONFIG_IFR_NVDATA.ISCSIDisplayAttemptList
+          - label:
+              number: 24576
+          - label:
+              number: 65535
+          expression: 'TRUE'
+      - subtitle:
+          text: STRING_TOKEN(0x003A)
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x0039)
+          key: 271
+          prompt: STRING_TOKEN(0x0038)
+      - goto:
+          flags: 0
+          formid: 1
+          help: STRING_TOKEN(0x0037)
+          prompt: STRING_TOKEN(0x0037)
+      formid: 3
+      title: STRING_TOKEN(0x000F)
+  guid: '{0x4b47d616, 0xa8d6, 0x4552, {0x9d, 0x44, 0xcc, 0xad, 0x2e, 0xf, 0x4c, 0xf9}}'
+  help: STRING_TOKEN(0x0003)
+  title: STRING_TOKEN(0x0002)
+include:
+- IScsiConfigNVDataStruc.h

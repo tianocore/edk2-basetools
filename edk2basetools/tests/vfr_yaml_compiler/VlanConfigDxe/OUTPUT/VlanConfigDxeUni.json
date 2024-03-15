@@ -1,0 +1,32 @@
+{
+    "LanguageDef": [
+        [
+            "en-US",
+            "English"
+        ]
+    ],
+    "UniString": {
+        "en-US": {
+            "$LANGUAGE_NAME": "en-US",
+            "$PRINTABLE_LANGUAGE_NAME": "English",
+            "STR_VLAN_FORM_SET_TITLE": "VLAN Configuration",
+            "STR_VLAN_FORM_SET_TITLE_HELP": "VLAN configuration for this network device",
+            "STR_VLAN_FORM_TITLE": "VLAN Configuration",
+            "STR_VLAN_FORM_HELP": "VLAN Configuration Help",
+            "STR_VLAN_CREATE_VLAN": "Create new VLAN",
+            "STR_VLAN_VID_PROMPT": "  VLAN ID",
+            "STR_VLAN_VID_HELP": "VLAN ID of new VLAN or existing VLAN, valid value is 0~4094",
+            "STR_VLAN_PRIORITY_PROMPT": "  Priority",
+            "STR_VLAN_PRIORITY_HELP": "802.1Q Priority, valid value is 0~7",
+            "STR_VLAN_ADD_VLAN_PROMPT": "Add VLAN",
+            "STR_VLAN_ADD_VLAN_HELP": "Create a new VLAN or update existing VLAN",
+            "STR_VLAN_VLAN_LIST": "Configured VLAN List",
+            "STR_VLAN_VLAN_LIST_HELP": "Select for remove",
+            "STR_VLAN_REMOVE_VLAN_PROMPT": "Remove VLAN",
+            "STR_VLAN_REMOVE_VLAN_HELP": "Remove selected VLANs",
+            "STR_VLAN_NULL_STRING": "",
+            "STR_GET_CURRENT_SETTING": "Enter Configuration Menu",
+            "STR_GET_CURRENT_SETTING_HELP": "Press ENTER to enter configuration menu for VLAN configuration."
+        }
+    }
+}
