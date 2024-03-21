@@ -4,12 +4,12 @@
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
-from FirmwareStorageFormat.Common import *
-from core.BinaryFactoryProduct import ParserEntry
-from core.BiosTreeNode import *
-from core.BiosTree import *
-from core.GuidTools import *
-from utils.FmmtLogger import FmmtLogger as logger
+from edk2basetools.FirmwareStorageFormat.Common import *
+from edk2basetools.FMMT.core.BinaryFactoryProduct import ParserEntry
+from edk2basetools.FMMT.core.BiosTreeNode import *
+from edk2basetools.FMMT.core.BiosTree import *
+from edk2basetools.FMMT.core.GuidTools import *
+from edk2basetools.FMMT.utils.FmmtLogger import FmmtLogger as logger
 
 class FMMTParser:
     def __init__(self, name: str, TYPE: str) -> None:
