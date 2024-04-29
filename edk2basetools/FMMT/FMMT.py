@@ -153,8 +153,10 @@ def main():
             fmmt.Shrink(args.ShrinkFv[0], args.ShrinkFv[1])
         else:
             parser.print_help()
+            status=2
     except Exception as e:
         print(e)
+        status=1
 
     return status
 
