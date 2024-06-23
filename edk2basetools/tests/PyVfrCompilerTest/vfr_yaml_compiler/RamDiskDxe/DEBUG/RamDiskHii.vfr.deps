@@ -1,0 +1,5 @@
+c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\DEBUG\RamDiskHii.c: \
+"c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\DEBUG\RamDiskDxeStrDefs.h" \
+"c:\users\mliang2x\workspace\edk2\mdemodulepkg\universal\disk\ramdiskdxe\RamDiskNVData.h" \
+"c:\users\mliang2x\workspace\edk2\MdePkg\Include\Guid/HiiPlatformSetupFormset.h" \
+"c:\users\mliang2x\workspace\edk2\MdeModulePkg\Include\Guid/RamDiskHii.h"

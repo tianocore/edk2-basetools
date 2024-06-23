@@ -1,0 +1,574 @@
+## DO NOT REMOVE -- YAML Mode
+include:
+- IScsiConfigNVDataStruc.h
+
+formset:
+  guid:  '{0x4b47d616, 0xa8d6, 0x4552, { 0x9d, 0x44, 0xcc, 0xad, 0x2e, 0xf, 0x4c, 0xf9 }}'
+  help:  'Configure the iSCSI parameters.'
+  title:  'iSCSI Configuration'
+  component:  
+  - varstore:
+      guid:  '{0x4b47d616, 0xa8d6, 0x4552, { 0x9d, 0x44, 0xcc, 0xad, 0x2e, 0xf, 0x4c, 0xf9 }}'
+      varid:  0x6666 # Optional Input
+      size:  17724 # Need to Compute
+      name:  ISCSI_CONFIG_IFR_NVDATA
+  - form: 
+      formid:  1 
+      title:  'iSCSI Configuration'
+      component:  
+      - string:
+          position:  'ISCSI_CONFIG_GUID.FORMID_MAIN_FORM.ISCSI_CONFIG_IFR_NVDATA.InitiatorName' # for reference
+          questionid:  257
+          varstoreid:  26214  #  Optional Input
+          varname:  0  # Question VarName
+          varoffset:  0  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'iSCSI Initiator Name'
+          help:  'The worldwide unique name of iSCSI Initiator. Only IQN format is accepted.'
+          opcodeflags:  0x0  # optional input
+          minsize:  4 
+          maxsize:  223 
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - goto:
+          questionid:  270
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Add an Attempt'
+          help:  'Add an Attempt'
+          formid:  0x2
+          question:  0x010e #  Optional Input
+      - label:
+          number:  0x9000  # Number
+      - label:
+          number:  0xffff  # Number
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - goto:
+          questionid:  278
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Delete Attempts'
+          help:  'Delete one or more attempts'
+          formid:  0x5
+          question:  0x0116 #  Optional Input
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - goto:
+          questionid:  272
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Change Attempt Order'
+          help:  'Change Attempt Order'
+          formid:  0x4
+          question:  0x0110 #  Optional Input
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+  - form: 
+      formid:  2 
+      title:  'MAC Selection'
+      component:  
+      - label:
+          number:  0x3000  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  4 
+      title:  'Change Attempt Order'
+      component:  
+      - label:
+          number:  0x4000  # Number
+      - label:
+          number:  0xffff  # Number
+      - text:
+          help:  'Commit Changes and Exit'
+          prompt:  'Commit Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x0111  # Optional Input, Question QuestionId
+      - text:
+          help:  'Discard Changes and Exit'
+          prompt:  'Discard Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x0112  # Optional Input, Question QuestionId
+  - form: 
+      formid:  5 
+      title:  'Delete Attempts'
+      component:  
+      - label:
+          number:  0x5000  # Number
+      - label:
+          number:  0xffff  # Number
+      - text:
+          help:  'Commit Changes and Exit'
+          prompt:  'Commit Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x0114  # Optional Input, Question QuestionId
+      - text:
+          help:  'Discard Changes and Exit'
+          prompt:  'Discard Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x0115  # Optional Input, Question QuestionId
+  - form: 
+      formid:  3 
+      title:  'Attempt Configuration'
+      component:  
+      - string:
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.AttemptName' # for reference
+          questionid:  1
+          varstoreid:  26214  #  Optional Input
+          varname:  448  # Question VarName
+          varoffset:  448  # Question VarOffset
+          questionflags:  1 # Optional Input 
+          prompt:  'iSCSI Attempt Name'
+          help:  'The human name defined for this attempt.'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  12 
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - oneof:
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.Enabled' # for reference
+          questionid:  2
+          varstoreid:  26214  #  Optional Input
+          varname:  472  # Question VarName
+          varoffset:  472  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'iSCSI Mode'
+          help:  'Disabled, Enabled, Enabled for MPIO'
+          opcodeflags:  0x10  # optional input
+          maximum:  2 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0x0 # Optional Input
+          component:  
+          - option:  
+              text:  'Disabled'
+              flags:  16 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.Enabled.Option0' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C509F740>
+          - option:  
+              text:  'Enabled'
+              flags:  0 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.Enabled.Option1' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C509F740>
+          - option:  
+              text:  'Enabled for MPIO'
+              flags:  0 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.Enabled.Option2' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C509F740>
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - oneof:
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.IpMode' # for reference
+          questionid:  284
+          varstoreid:  26214  #  Optional Input
+          varname:  473  # Question VarName
+          varoffset:  473  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Internet Protocol'
+          help:  'Initiator IP address is system assigned in IP6 mode. In Autoconfigure mode, iSCSI driver will attempt to connect iSCSI target via IPv4 stack, if failed then attempt IPv6 stack.'
+          opcodeflags:  0x10  # optional input
+          maximum:  2 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0x0 # Optional Input
+          component:  
+          - option:  
+              text:  'IP4'
+              flags:  0 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.IpMode.Option0' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C509F740>
+          - option:  
+              text:  'IP6'
+              flags:  0 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.IpMode.Option1' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C509F740>
+          - option:  
+              text:  'Autoconfigure'
+              flags:  0 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.IpMode.Option2' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C509F740>
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - numeric:
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.ConnectRetryCount' # for reference
+          questionid:  3
+          varstoreid:  26214  #  Optional Input
+          varname:  474  # Question VarName
+          varoffset:  474  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Connection Retry Count'
+          help:  'The minimum value is 0 and the maximum is 16. 0 means no retry.'
+          opcodeflags:  0x10  # optional input
+          maximum:  16 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0 # Optional Input
+      - numeric:
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.ConnectTimeout' # for reference
+          questionid:  4
+          varstoreid:  26214  #  Optional Input
+          varname:  476  # Question VarName
+          varoffset:  476  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Connection Establishing Timeout'
+          help:  'The timeout value in milliseconds. The minimum value is 100 milliseconds and the maximum is 20 seconds.'
+          opcodeflags:  0x11  # optional input
+          maximum:  20000 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0 # Optional Input
+          component:  
+          - default:
+              defaultId:  0
+              type:  1
+              value:  1000
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - string:
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.IsId' # for reference
+          questionid:  286
+          varstoreid:  26214  #  Optional Input
+          varname:  2874  # Question VarName
+          varoffset:  2874  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'ISID'
+          help:  'OUI-format ISID in 6 bytes, default value are derived from MAC address. Only last 3 bytes are configurable. Example: update 0ABBCCDDEEFF to 0ABBCCF07901 by input F07901.'
+          opcodeflags:  0x0  # optional input
+          minsize:  6 
+          maxsize:  12 
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - checkbox:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.InitiatorInfoFromDhcp' # for reference
+          questionid:  5
+          varstoreid:  26214  #  Optional Input
+          varname:  478  # Question VarName
+          varoffset:  478  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Enable DHCP'
+          help:  'Enable DHCP'
+          opcodeflags:  0x0  # optional input
+      - string:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_IP6 OR        ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG | grayoutif ideqval ISCSI_CONFIG_IFR_NVDATA.InitiatorInfoFromDhcp == 0x01'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.LocalIp' # for reference
+          questionid:  259
+          varstoreid:  26214  #  Optional Input
+          varname:  480  # Question VarName
+          varoffset:  480  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '  Initiator IP Address'
+          help:  'Enter IP address in dotted-decimal notation.'
+          opcodeflags:  0x0  # optional input
+          minsize:  7 
+          maxsize:  15 
+      - string:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_IP6 OR        ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG | grayoutif ideqval ISCSI_CONFIG_IFR_NVDATA.InitiatorInfoFromDhcp == 0x01'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.SubnetMask' # for reference
+          questionid:  260
+          varstoreid:  26214  #  Optional Input
+          varname:  512  # Question VarName
+          varoffset:  512  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '  Initiator Subnet Mask'
+          help:  'Enter IP address in dotted-decimal notation.'
+          opcodeflags:  0x0  # optional input
+          minsize:  7 
+          maxsize:  15 
+      - string:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_IP6 OR        ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG | grayoutif ideqval ISCSI_CONFIG_IFR_NVDATA.InitiatorInfoFromDhcp == 0x01'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.Gateway' # for reference
+          questionid:  261
+          varstoreid:  26214  #  Optional Input
+          varname:  544  # Question VarName
+          varoffset:  544  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '  Gateway'
+          help:  'Enter IP address in dotted-decimal notation.'
+          opcodeflags:  0x0  # optional input
+          minsize:  7 
+          maxsize:  15 
+      - subtitle:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG'
+          prompt:  ''
+          flags:  0  # Optional Input
+      - checkbox:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG OR        ideqval ISCSI_CONFIG_IFR_NVDATA.InitiatorInfoFromDhcp == 0x00'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.TargetInfoFromDhcp' # for reference
+          questionid:  6
+          varstoreid:  26214  #  Optional Input
+          varname:  479  # Question VarName
+          varoffset:  479  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Get target info via DHCP'
+          help:  'Get target info via DHCP'
+          opcodeflags:  0x0  # optional input
+      - string:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG OR        ideqval ISCSI_CONFIG_IFR_NVDATA.TargetInfoFromDhcp == 0x01'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.TargetName' # for reference
+          questionid:  268
+          varstoreid:  26214  #  Optional Input
+          varname:  576  # Question VarName
+          varoffset:  576  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '  Target Name'
+          help:  'The worldwide unique name of the target. Only iqn. format is accepted.'
+          opcodeflags:  0x0  # optional input
+          minsize:  4 
+          maxsize:  223 
+      - string:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG OR        ideqval ISCSI_CONFIG_IFR_NVDATA.TargetInfoFromDhcp == 0x01'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.TargetIp' # for reference
+          questionid:  262
+          varstoreid:  26214  #  Optional Input
+          varname:  1024  # Question VarName
+          varoffset:  1024  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '  Target Address'
+          help:  'Enter Target address in IPv4,IPv6 or URL format.You need to configure DNS server address in advance if input a URL string.'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  255 
+      - numeric:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG OR        ideqval ISCSI_CONFIG_IFR_NVDATA.TargetInfoFromDhcp == 0x01'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.TargetPort' # for reference
+          questionid:  7
+          varstoreid:  26214  #  Optional Input
+          varname:  1534  # Question VarName
+          varoffset:  1534  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  '  Target Port'
+          help:  '  Target Port'
+          opcodeflags:  0x11  # optional input
+          maximum:  65535 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0 # Optional Input
+      - string:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG OR        ideqval ISCSI_CONFIG_IFR_NVDATA.TargetInfoFromDhcp == 0x01'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.BootLun' # for reference
+          questionid:  269
+          varstoreid:  26214  #  Optional Input
+          varname:  1536  # Question VarName
+          varoffset:  1536  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '  Boot LUN'
+          help:  'Hexadecimal representation of the LU number. Examples are: 4752-3A4F-6b7e-2F99, 6734-9-156f-127, 4186-9'
+          opcodeflags:  0x0  # optional input
+          minsize:  1 
+          maxsize:  20 
+      - subtitle:
+          condition:  'suppressif ideqval ISCSI_CONFIG_IFR_NVDATA.IpMode == IP_MODE_AUTOCONFIG'
+          prompt:  ''
+          flags:  0  # Optional Input
+      - oneof:
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.AuthenticationType' # for reference
+          questionid:  285
+          varstoreid:  26214  #  Optional Input
+          varname:  1578  # Question VarName
+          varoffset:  1578  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Authentication Type'
+          help:  'Authentication method: CHAP, Kerberos, or None'
+          opcodeflags:  0x10  # optional input
+          maximum:  1 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0x0 # Optional Input
+          component:  
+          - option:  
+              text:  'CHAP'
+              flags:  0 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.AuthenticationType.Option0' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C50569C0>
+          - option:  
+              text:  'None'
+              flags:  16 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.AuthenticationType.Option1' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C50569C0>
+      - oneof:
+          condition:  'suppressif NOT ideqval ISCSI_CONFIG_IFR_NVDATA.AuthenticationType == ISCSI_AUTH_TYPE_CHAP'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.CHAPType' # for reference
+          questionid:  8
+          varstoreid:  26214  #  Optional Input
+          varname:  1579  # Question VarName
+          varoffset:  1579  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  '  CHAP Type'
+          help:  'None, One way CHAP or mutual CHAP'
+          opcodeflags:  0x10  # optional input
+          maximum:  1 # Optional Input
+          minimum:  0 # Optional Input
+          step:  0x0 # Optional Input
+          component:  
+          - option:  
+              text:  'One way'
+              flags:  0 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.CHAPType.Option0' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C50569C0>
+          - option:  
+              text:  'Mutual'
+              flags:  16 # Optional Input
+              type:  0x0000 # Optional Input
+              position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.CHAPType.Option1' # for reference
+              value:  <VfrCompiler.IfrCtypes.c_ubyte_Array_1 object at 0x000001D6C50569C0>
+      - string:
+          condition:  'suppressif NOT ideqval ISCSI_CONFIG_IFR_NVDATA.AuthenticationType == ISCSI_AUTH_TYPE_CHAP'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.CHAPName' # for reference
+          questionid:  263
+          varstoreid:  26214  #  Optional Input
+          varname:  1580  # Question VarName
+          varoffset:  1580  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '    CHAP Name'
+          help:  '    CHAP Name'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  126 
+      - string:
+          condition:  'suppressif NOT ideqval ISCSI_CONFIG_IFR_NVDATA.AuthenticationType == ISCSI_AUTH_TYPE_CHAP'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.CHAPSecret' # for reference
+          questionid:  264
+          varstoreid:  26214  #  Optional Input
+          varname:  1834  # Question VarName
+          varoffset:  1834  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '    CHAP Secret'
+          help:  'The minimum length is 12 bytes and the maximum length is 16 bytes.'
+          opcodeflags:  0x0  # optional input
+          minsize:  12 
+          maxsize:  16 
+      - string:
+          condition:  'suppressif NOT ideqval ISCSI_CONFIG_IFR_NVDATA.AuthenticationType == ISCSI_AUTH_TYPE_CHAP OR        NOT ideqval ISCSI_CONFIG_IFR_NVDATA.CHAPType == ISCSI_CHAP_MUTUAL'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.ReverseCHAPName' # for reference
+          questionid:  265
+          varstoreid:  26214  #  Optional Input
+          varname:  1868  # Question VarName
+          varoffset:  1868  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '    Reverse CHAP Name'
+          help:  '    Reverse CHAP Name'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  126 
+      - string:
+          condition:  'suppressif NOT ideqval ISCSI_CONFIG_IFR_NVDATA.AuthenticationType == ISCSI_AUTH_TYPE_CHAP OR        NOT ideqval ISCSI_CONFIG_IFR_NVDATA.CHAPType == ISCSI_CHAP_MUTUAL'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.ReverseCHAPSecret' # for reference
+          questionid:  266
+          varstoreid:  26214  #  Optional Input
+          varname:  2122  # Question VarName
+          varoffset:  2122  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  '    Reverse CHAP Secret'
+          help:  'The minimum length is 12 bytes and the maximum length is 16 bytes.'
+          opcodeflags:  0x0  # optional input
+          minsize:  12 
+          maxsize:  16 
+      - string:
+          condition:  'suppressif TRUE'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.ISCSIMacAddr' # for reference
+          questionid:  9
+          varstoreid:  26214  #  Optional Input
+          varname:  2900  # Question VarName
+          varoffset:  2900  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Configure the mac address for the attempt'
+          help:  'Configure the mac address for the attempt'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  96 
+      - string:
+          condition:  'suppressif TRUE'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.ISCSIAttemptOrder' # for reference
+          questionid:  10
+          varstoreid:  26214  #  Optional Input
+          varname:  3092  # Question VarName
+          varoffset:  3092  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'New Attempt Order'
+          help:  'New Attempt Order'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  96 
+      - string:
+          condition:  'suppressif TRUE'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.ISCSIAddAttemptList' # for reference
+          questionid:  11
+          varstoreid:  26214  #  Optional Input
+          varname:  3284  # Question VarName
+          varoffset:  3284  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Add Attempts'
+          help:  'Add Attempts'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  96 
+      - string:
+          condition:  'suppressif TRUE'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.ISCSIDeleteAttemptList' # for reference
+          questionid:  12
+          varstoreid:  26214  #  Optional Input
+          varname:  3476  # Question VarName
+          varoffset:  3476  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Delete Attempts'
+          help:  'Delete Attempts'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  96 
+      - string:
+          condition:  'suppressif TRUE'
+          position:  'ISCSI_CONFIG_GUID.FORMID_ATTEMPT_FORM.ISCSI_CONFIG_IFR_NVDATA.ISCSIDisplayAttemptList' # for reference
+          questionid:  13
+          varstoreid:  26214  #  Optional Input
+          varname:  3668  # Question VarName
+          varoffset:  3668  # Question VarOffset
+          questionflags:  1 # Optional Input 
+          prompt:  'Display Attempts'
+          help:  'Display Attempts'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  96 
+      - label:
+          condition:  'suppressif TRUE'
+          number:  0x6000  # Number
+      - label:
+          condition:  'suppressif TRUE'
+          number:  0xffff  # Number
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - text:
+          help:  'Must reboot system manually for changes to take place.'
+          prompt:  'Save Changes'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x010f  # Optional Input, Question QuestionId
+      - goto:
+          questionid:  14
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  0 # Optional Input 
+          prompt:  'Back to Previous Page'
+          help:  'Back to Previous Page'
+          formid:  0x1
+          question:  0x000e #  Optional Input

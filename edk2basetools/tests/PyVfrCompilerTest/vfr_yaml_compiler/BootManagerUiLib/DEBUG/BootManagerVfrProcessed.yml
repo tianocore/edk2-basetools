@@ -1,0 +1,37 @@
+defines:
+  BOOT_MANAGER_FORM_ID: 4096
+  FORMSET_GUID: '{0x847bc3fe, 0xb974, 0x446d, {0x94, 0x49, 0x5a, 0xd5, 0x41, 0x2e, 0x99, 0x3b}}'
+  LABEL_BOOT_OPTION: 0
+  LABEL_BOOT_OPTION_END: 1
+formset:
+  classguid: '{0xe58809f8, 0xfbc1, 0x48e2, {0x88, 0x3a, 0xa3, 0xf, 0xdc, 0x4b, 0x44, 0x1e}}'
+  component:
+  - form:
+      component:
+      - subtitle:
+          text: STRING_TOKEN(0x0007)
+      - subtitle:
+          text: STRING_TOKEN(0x0005)
+      - subtitle:
+          text: STRING_TOKEN(0x0007)
+      - suppressif:
+          component:
+          - text:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x0007)
+              key: 4626
+              prompt: STRING_TOKEN(0x0007)
+          expression: 'TRUE'
+      - label:
+          number: 0
+      - label:
+          number: 1
+      - subtitle:
+          text: STRING_TOKEN(0x0007)
+      - subtitle:
+          text: STRING_TOKEN(0x0004)
+      formid: 4096
+      title: STRING_TOKEN(0x0002)
+  guid: '{0x847bc3fe, 0xb974, 0x446d, {0x94, 0x49, 0x5a, 0xd5, 0x41, 0x2e, 0x99, 0x3b}}'
+  help: STRING_TOKEN(0x0003)
+  title: STRING_TOKEN(0x0002)

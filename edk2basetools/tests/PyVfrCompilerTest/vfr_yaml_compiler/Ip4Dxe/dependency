@@ -1,0 +1,67 @@
+
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\DEBUG\Ip4Config2.vfr.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\DEBUG\Ip4Config2.vfr.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\AutoGen.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\AutoGen.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\ComponentName.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\ComponentName.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Common.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Common.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Config2.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Config2.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Config2Impl.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Config2Impl.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Config2Nv.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Config2Nv.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Driver.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Driver.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Icmp.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Icmp.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4If.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4If.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Igmp.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Igmp.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Impl.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Impl.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Input.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Input.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Option.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Option.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Output.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Output.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Route.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\NetworkPkg\Ip4Dxe\Ip4Dxe\OUTPUT\Ip4Route.c.deps
+!ENDIF
+
+               
