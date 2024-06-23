@@ -1,0 +1,74 @@
+## DO NOT REMOVE -- YAML Mode
+include:
+- FormGuid.h
+
+formset:
+  guid:  '{0xfe561596, 0xe6bf, 0x41a6, { 0x83, 0x76, 0xc7, 0x2b, 0x71, 0x98, 0x74, 0xd0 }}'
+  help:  ' '
+  title:  'File Explorer'
+  classguid1:  '{0xfe561596, 0xe6bf, 0x41a6, { 0x83, 0x76, 0xc7, 0x2b, 0x71, 0x98, 0x74, 0xd0 }}'
+  component:  
+  - form: 
+      formid:  4096 
+      title:  'File Explorer'
+      component:  
+      - label:
+          number:  0x1000  # Number
+      - label:
+          number:  0xffff  # Number
+  - form: 
+      formid:  8192 
+      title:  'Create a new file'
+      component:  
+      - string:
+          questionid:  8193
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'File Name'
+          help:  'Please input a name for the new file'
+          opcodeflags:  0x0  # optional input
+          minsize:  2 
+          maxsize:  20 
+      - subtitle:
+          prompt:  ' '
+          flags:  0  # Optional Input
+      - text:
+          help:  'Create File and Exit'
+          prompt:  'Create File and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x2002  # Optional Input, Question QuestionId
+      - text:
+          help:  'Discard Create and Exit'
+          prompt:  'Discard Create and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x2003  # Optional Input, Question QuestionId
+  - form: 
+      formid:  12288 
+      title:  'Create a new folder'
+      component:  
+      - string:
+          questionid:  12289
+          varstoreid:  0  #  Optional Input
+          varname:  65535  # Question VarName
+          varoffset:  65535  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Folder Name'
+          help:  'Please input a name for the new folder'
+          opcodeflags:  0x0  # optional input
+          minsize:  2 
+          maxsize:  20 
+      - subtitle:
+          prompt:  ' '
+          flags:  0  # Optional Input
+      - text:
+          help:  'Create Folder and Exit'
+          prompt:  'Create Folder and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x3002  # Optional Input, Question QuestionId
+      - text:
+          help:  'Discard Create and Exit'
+          prompt:  'Discard Create and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x3003  # Optional Input, Question QuestionId
