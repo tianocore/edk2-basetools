@@ -16,7 +16,7 @@ license = {file = "LICENSE"}
 requires-python = ">=3.10"
 dependencies = [
   "edk2-pytool-library>=0.20.0",
-  "antlr4-python3-runtime==4.7.1"
+  "antlr4-python3-runtime>=4.7.1"
 ]
 
 classifiers = [
