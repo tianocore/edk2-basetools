@@ -11,8 +11,8 @@ import shutil
 import sys
 import tempfile
 import uuid
-from FirmwareStorageFormat.Common import *
-from utils.FmmtLogger import FmmtLogger as logger
+from edk2basetools.FirmwareStorageFormat.Common import *
+from edk2basetools.FMMT.utils.FmmtLogger import FmmtLogger as logger
 import subprocess
 
 def ExecuteCommand(cmd: list) -> None:
