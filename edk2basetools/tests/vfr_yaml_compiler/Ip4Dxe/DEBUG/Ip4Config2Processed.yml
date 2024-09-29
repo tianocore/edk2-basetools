@@ -1,0 +1,74 @@
+defines:
+  EFI_NETWORK_DEVICE_CLASS: 4
+formset:
+  class: 4
+  component:
+  - varstore:
+      guid: '{0x9b942747, 0x154e, 0x4d29, {0xa4, 0x36, 0xbf, 0x71, 0x0, 0xc8, 0xb5, 0x3b}}'
+      name: IP4_CONFIG2_IFR_NVDATA
+      type: IP4_CONFIG2_IFR_NVDATA
+  - form:
+      component:
+      - checkbox:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x0007)
+          prompt: STRING_TOKEN(0x0006)
+          varid: IP4_CONFIG2_IFR_NVDATA.Configure
+      - suppressif:
+          component:
+          - checkbox:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x0008)
+              prompt: STRING_TOKEN(0x0008)
+              varid: IP4_CONFIG2_IFR_NVDATA.DhcpEnable
+          expression: ideqval IP4_CONFIG2_IFR_NVDATA.Configure == 0x00
+      - suppressif:
+          component:
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x000A)
+              key: 258
+              maxsize: 15
+              minsize: 7
+              prompt: STRING_TOKEN(0x0009)
+              varid: IP4_CONFIG2_IFR_NVDATA.StationAddress
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x000C)
+              key: 259
+              maxsize: 15
+              minsize: 7
+              prompt: STRING_TOKEN(0x000B)
+              varid: IP4_CONFIG2_IFR_NVDATA.SubnetMask
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x000E)
+              key: 260
+              maxsize: 15
+              minsize: 7
+              prompt: STRING_TOKEN(0x000D)
+              varid: IP4_CONFIG2_IFR_NVDATA.GatewayAddress
+          - string:
+              flags: INTERACTIVE
+              help: STRING_TOKEN(0x0010)
+              key: 261
+              maxsize: 255
+              minsize: 7
+              prompt: STRING_TOKEN(0x000F)
+              varid: IP4_CONFIG2_IFR_NVDATA.DnsAddress
+          expression: ideqval IP4_CONFIG2_IFR_NVDATA.DhcpEnable == 0x01 OR ideqval IP4_CONFIG2_IFR_NVDATA.Configure == 0x00
+      - subtitle:
+          text: STRING_TOKEN(0x0012)
+      - text:
+          flags: INTERACTIVE
+          help: STRING_TOKEN(0x0011)
+          key: 262
+          prompt: STRING_TOKEN(0x0011)
+      formid: 1
+      title: STRING_TOKEN(0x0004)
+  guid: '{0x9b942747, 0x154e, 0x4d29, {0xa4, 0x36, 0xbf, 0x71, 0x0, 0xc8, 0xb5, 0x3b}}'
+  help: STRING_TOKEN(0x0003)
+  subclass: 3
+  title: STRING_TOKEN(0x0002)
+include:
+- Ip4NvData.h

@@ -1,0 +1,43 @@
+## DO NOT REMOVE -- YAML Mode
+include:
+- Guid/OvmfPlatformConfig.h
+- Platform.h
+
+formset:
+  guid:  '{0x7235c51c, 0xc80, 0x4cab, { 0x87, 0xac, 0x3b, 0x8, 0x4a, 0x63, 0x4, 0xb1 }}'
+  help:  'Change various OVMF platform settings.'
+  title:  'OVMF Platform Configuration'
+  component:  
+  - varstore:
+      guid:  '{0x7235c51c, 0xc80, 0x4cab, { 0x87, 0xac, 0x3b, 0x8, 0x4a, 0x63, 0x4, 0xb1 }}'
+      varid:  0x0001 # Optional Input
+      size:  36 # Need to Compute
+      name:  MainFormState
+  - form: 
+      formid:  1 
+      title:  'OVMF Settings'
+      component:  
+      - string:
+          position:  'OVMF_PLATFORM_CONFIG_GUID.FORMID_MAIN_FORM.MainFormState.CurrentPreferredResolution' # for reference
+          questionid:  1
+          varstoreid:  1  #  Optional Input
+          varname:  0  # Question VarName
+          varoffset:  0  # Question VarOffset
+          questionflags:  1 # Optional Input 
+          prompt:  'Preferred Resolution at Next Boot'
+          help:  'The preferred resolution of the Graphics Console at next boot. It might be unset, or even invalid (hence ignored) wrt. the video RAM size.'
+          opcodeflags:  0x0  # optional input
+          minsize:  0 
+          maxsize:  16 
+      - label:
+          number:  0x1  # Number
+      - text:
+          help:  'Commit Changes and Exit'
+          prompt:  'Commit Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x0003  # Optional Input, Question QuestionId
+      - text:
+          help:  'Discard Changes and Exit'
+          prompt:  'Discard Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x0004  # Optional Input, Question QuestionId

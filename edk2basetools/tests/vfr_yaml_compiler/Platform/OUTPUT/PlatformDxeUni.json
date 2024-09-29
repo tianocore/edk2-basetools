@@ -1,0 +1,23 @@
+{
+    "LanguageDef": [
+        [
+            "en-US",
+            "English"
+        ]
+    ],
+    "UniString": {
+        "en-US": {
+            "$LANGUAGE_NAME": "en-US",
+            "$PRINTABLE_LANGUAGE_NAME": "English",
+            "STR_FORMSET_TITLE": "OVMF Platform Configuration",
+            "STR_FORMSET_HELP": "Change various OVMF platform settings.",
+            "STR_MAIN_FORM_TITLE": "OVMF Settings",
+            "STR_RES_CUR": "Preferred Resolution at Next Boot",
+            "STR_RES_CUR_HELP": "The preferred resolution of the Graphics Console at next boot. It might be unset, or even invalid (hence ignored) wrt. the video RAM size.",
+            "STR_RES_NEXT": "Change Preferred Resolution for Next Boot",
+            "STR_RES_NEXT_HELP": "You can specify a new preference for the Graphics Console here. The list is filtered against the video RAM size.",
+            "STR_SAVE_EXIT": "Commit Changes and Exit",
+            "STR_DISCARD_EXIT": "Discard Changes and Exit"
+        }
+    }
+}

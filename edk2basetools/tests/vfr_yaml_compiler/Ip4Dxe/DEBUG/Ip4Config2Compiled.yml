@@ -1,0 +1,105 @@
+## DO NOT REMOVE -- YAML Mode
+include:
+- Ip4NvData.h
+
+formset:
+  guid:  '{0x9b942747, 0x154e, 0x4d29, { 0xa4, 0x36, 0xbf, 0x71, 0x0, 0xc8, 0xb5, 0x3b }}'
+  help:  'Configure network parameters.'
+  title:  'IPv4 Network Configuration'
+      class:  4
+  subclass:  3
+  component:  
+  - varstore:
+      guid:  '{0x9b942747, 0x154e, 0x4d29, { 0xa4, 0x36, 0xbf, 0x71, 0x0, 0xc8, 0xb5, 0x3b }}'
+      varid:  0x0001 # Optional Input
+      size:  608 # Need to Compute
+      name:  IP4_CONFIG2_IFR_NVDATA
+  - form: 
+      formid:  1 
+      title:  ''
+      component:  
+      - checkbox:
+          position:  'IP4_CONFIG2_NVDATA_GUID.FORMID_MAIN_FORM.IP4_CONFIG2_IFR_NVDATA.Configure' # for reference
+          questionid:  1
+          varstoreid:  1  #  Optional Input
+          varname:  0  # Question VarName
+          varoffset:  0  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Configured'
+          help:  'Indicate whether network address configured successfully or not.'
+          opcodeflags:  0x0  # optional input
+      - checkbox:
+          condition:  'suppressif ideqval IP4_CONFIG2_IFR_NVDATA.Configure == 0x00'
+          position:  'IP4_CONFIG2_NVDATA_GUID.FORMID_MAIN_FORM.IP4_CONFIG2_IFR_NVDATA.DhcpEnable' # for reference
+          questionid:  2
+          varstoreid:  1  #  Optional Input
+          varname:  1  # Question VarName
+          varoffset:  1  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Enable DHCP'
+          help:  'Enable DHCP'
+          opcodeflags:  0x0  # optional input
+      - string:
+          condition:  'suppressif ideqval IP4_CONFIG2_IFR_NVDATA.DhcpEnable == 0x01 OR ideqval IP4_CONFIG2_IFR_NVDATA.Configure == 0x00'
+          position:  'IP4_CONFIG2_NVDATA_GUID.FORMID_MAIN_FORM.IP4_CONFIG2_IFR_NVDATA.StationAddress' # for reference
+          questionid:  258
+          varstoreid:  1  #  Optional Input
+          varname:  2  # Question VarName
+          varoffset:  2  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Local IP Address'
+          help:  'Enter IP address in dotted-decimal notation. Example: 192.168.10.12
+'
+          opcodeflags:  0x0  # optional input
+          minsize:  7 
+          maxsize:  15 
+      - string:
+          condition:  'suppressif ideqval IP4_CONFIG2_IFR_NVDATA.DhcpEnable == 0x01 OR ideqval IP4_CONFIG2_IFR_NVDATA.Configure == 0x00'
+          position:  'IP4_CONFIG2_NVDATA_GUID.FORMID_MAIN_FORM.IP4_CONFIG2_IFR_NVDATA.SubnetMask' # for reference
+          questionid:  259
+          varstoreid:  1  #  Optional Input
+          varname:  34  # Question VarName
+          varoffset:  34  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Local NetMask'
+          help:  'Enter NetMask in dotted-decimal notation. Example: 255.255.255.0
+'
+          opcodeflags:  0x0  # optional input
+          minsize:  7 
+          maxsize:  15 
+      - string:
+          condition:  'suppressif ideqval IP4_CONFIG2_IFR_NVDATA.DhcpEnable == 0x01 OR ideqval IP4_CONFIG2_IFR_NVDATA.Configure == 0x00'
+          position:  'IP4_CONFIG2_NVDATA_GUID.FORMID_MAIN_FORM.IP4_CONFIG2_IFR_NVDATA.GatewayAddress' # for reference
+          questionid:  260
+          varstoreid:  1  #  Optional Input
+          varname:  66  # Question VarName
+          varoffset:  66  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Local Gateway'
+          help:  'Enter Gateway in dotted-decimal notation. Example: 192.168.10.1
+'
+          opcodeflags:  0x0  # optional input
+          minsize:  7 
+          maxsize:  15 
+      - string:
+          condition:  'suppressif ideqval IP4_CONFIG2_IFR_NVDATA.DhcpEnable == 0x01 OR ideqval IP4_CONFIG2_IFR_NVDATA.Configure == 0x00'
+          position:  'IP4_CONFIG2_NVDATA_GUID.FORMID_MAIN_FORM.IP4_CONFIG2_IFR_NVDATA.DnsAddress' # for reference
+          questionid:  261
+          varstoreid:  1  #  Optional Input
+          varname:  98  # Question VarName
+          varoffset:  98  # Question VarOffset
+          questionflags:  4 # Optional Input 
+          prompt:  'Local DNS Servers'
+          help:  'Enter DNS Servers in dotted-decimal notation. Example: 192.168.10.8 192.168.10.9
+'
+          opcodeflags:  0x0  # optional input
+          minsize:  7 
+          maxsize:  255 
+      - subtitle:
+          prompt:  ''
+          flags:  0  # Optional Input
+      - text:
+          help:  'Save Changes and Exit'
+          prompt:  'Save Changes and Exit'
+          flags:  4  # Optional Input, Question Flags
+          key:  0x0106  # Optional Input, Question QuestionId

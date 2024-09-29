@@ -1,0 +1,38 @@
+{
+    "LanguageDef": [
+        [
+            "en-US",
+            "English"
+        ],
+        [
+            "fr-FR",
+            "Fran\u00e7ais"
+        ]
+    ],
+    "UniString": {
+        "en-US": {
+            "$LANGUAGE_NAME": "en-US",
+            "$PRINTABLE_LANGUAGE_NAME": "English",
+            "STR_NULL_STRING": " ",
+            "STR_FILE_EXPLORER_TITLE": "File Explorer",
+            "STR_NEW_FILE": "***NEW FILE***",
+            "STR_NEW_FILE_HELP": "This menu used to create a new file in current directory, jump to next page to name the new file",
+            "STR_ADD_NEW_FILE_TITLE": "Create a new file",
+            "STR_ADD_NEW_FOLDER_TITLE": "Create a new folder",
+            "STR_NEW_FILE_NAME_PROMPT": "File Name",
+            "STR_NEW_FILE_NAME_HELP": "Please input a name for the new file",
+            "STR_CREATE_FILE_AND_EXIT": "Create File and Exit",
+            "STR_NO_CREATE_FILE_AND_EXIT": "Discard Create and Exit",
+            "STR_NEW_FOLDER": "***NEW FOLDER***",
+            "STR_NEW_FOLDER_HELP": "This menu used to create a new folder in current directory, jump to next page to name the new folder",
+            "STR_NEW_FOLDER_NAME_PROMPT": "Folder Name",
+            "STR_NEW_FOLDER_NAME_HELP": "Please input a name for the new folder",
+            "STR_CREATE_FOLDER_AND_EXIT": "Create Folder and Exit",
+            "STR_NO_CREATE_FOLDER_AND_EXIT": "Discard Create and Exit"
+        },
+        "fr-FR": {
+            "$LANGUAGE_NAME": "fr-FR",
+            "$PRINTABLE_LANGUAGE_NAME": "Fran\u00e7ais"
+        }
+    }
+}
