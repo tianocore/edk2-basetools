@@ -1,0 +1,55 @@
+defines:
+  FORMSET_GUID: '{0x9e0c30bc, 0x3f06, 0x4ba6, {0x82, 0x88, 0x9, 0x17, 0x9b, 0x85, 0x5d, 0xbe}}'
+  FRONT_PAGE_FORM_ID: 4096
+  LABEL_END: 65535
+  LABEL_FRONTPAGE_INFORMATION: 4096
+formset:
+  classguid: '{0x9e0c30bc, 0x3f06, 0x4ba6, {0x82, 0x88, 0x9, 0x17, 0x9b, 0x85, 0x5d, 0xbe}}'
+  component:
+  - form:
+      component:
+      - banner:
+          align: left
+          line: 1
+          title: STRING_TOKEN(0x0003)
+      - banner:
+          align: left
+          line: 2
+          title: STRING_TOKEN(0x0004)
+      - banner:
+          align: right
+          line: 2
+          title: STRING_TOKEN(0x0005)
+      - banner:
+          align: left
+          line: 3
+          title: STRING_TOKEN(0x0007)
+      - banner:
+          align: right
+          line: 3
+          title: STRING_TOKEN(0x0006)
+      - banner:
+          align: left
+          line: 4
+          title: STRING_TOKEN(0x000E)
+      - banner:
+          align: right
+          line: 4
+          title: STRING_TOKEN(0x000F)
+      - banner:
+          align: left
+          line: 5
+          title: STRING_TOKEN(0x0010)
+      - banner:
+          align: right
+          line: 5
+          title: STRING_TOKEN(0x0011)
+      - label:
+          number: 4096
+      - label:
+          number: 65535
+      formid: 4096
+      title: STRING_TOKEN(0x0002)
+  guid: '{0x9e0c30bc, 0x3f06, 0x4ba6, {0x82, 0x88, 0x9, 0x17, 0x9b, 0x85, 0x5d, 0xbe}}'
+  help: STRING_TOKEN(0x000C)
+  title: STRING_TOKEN(0x0002)

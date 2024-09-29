@@ -1,0 +1,43 @@
+
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\DEBUG\RamDiskHii.vfr.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\DEBUG\RamDiskHii.vfr.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\AutoGen.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\AutoGen.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDisk.asl.trim.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDisk.asl.trim.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDisk.i.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDisk.i.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskBlockIo.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskBlockIo.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskDriver.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskDriver.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskFileExplorer.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskFileExplorer.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskHii.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskHii.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskImpl.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskImpl.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskProtocol.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\MdeModulePkg\Universal\Disk\RamDiskDxe\RamDiskDxe\OUTPUT\RamDiskProtocol.c.deps
+!ENDIF
+
+               

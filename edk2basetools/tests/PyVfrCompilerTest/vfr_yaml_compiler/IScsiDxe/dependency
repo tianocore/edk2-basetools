@@ -1,0 +1,67 @@
+
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\DEBUG\IScsiConfigVfr.vfr.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\DEBUG\IScsiConfigVfr.vfr.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\AutoGen.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\AutoGen.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\ComponentName.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\ComponentName.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiAuthenticationInfo.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiAuthenticationInfo.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiCHAP.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiCHAP.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiConfig.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiConfig.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiConfigVfr.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiConfigVfr.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiDhcp.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiDhcp.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiDhcp6.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiDhcp6.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiDns.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiDns.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiDriver.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiDriver.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiExtScsiPassThru.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiExtScsiPassThru.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiIbft.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiIbft.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiInitiatorName.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiInitiatorName.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiMisc.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiMisc.c.deps
+!ENDIF
+
+!IF EXIST(c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiProto.c.deps)
+!INCLUDE c:\users\mliang2x\workspace\edk2\Build\OvmfX64\DEBUG_VS2015x86\X64\NetworkPkg\IScsiDxe\IScsiDxe\OUTPUT\IScsiProto.c.deps
+!ENDIF
+
+               

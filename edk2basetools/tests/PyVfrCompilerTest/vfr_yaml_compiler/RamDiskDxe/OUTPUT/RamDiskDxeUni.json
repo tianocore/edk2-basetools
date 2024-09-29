@@ -1,0 +1,38 @@
+{
+    "LanguageDef": [
+        [
+            "en-US",
+            "English"
+        ]
+    ],
+    "UniString": {
+        "en-US": {
+            "$LANGUAGE_NAME": "en-US",
+            "$PRINTABLE_LANGUAGE_NAME": "English",
+            "STR_FORM_SET_TITLE": "RAM Disk Configuration",
+            "STR_FORM_SET_TITLE_HELP": "Press <Enter> to add/remove RAM disks.",
+            "STR_MAIN_FORM_TITLE": "RAM Disk HII Main Screen",
+            "STR_RAM_DISK_NULL_STRING": "",
+            "STR_RAM_DISK_LIST_TEXT": "Created RAM disk list:",
+            "STR_RAM_DISK_LIST_HELP": "Select for remove",
+            "STR_GOTO_ADD_RAW_FORM": "Create raw",
+            "STR_GOTO_ADD_RAW_FORM_HELP": "Create a raw RAM disk.",
+            "STR_GOTO_ADD_FROM_FILE_FORM": "Create from file",
+            "STR_GOTO_ADD_FROM_FILE_FORM_HELP": "Create a RAM disk from a given file.",
+            "STR_REMOVE_SEL_HELP": "Remove selected RAM disk(s)",
+            "STR_REMOVE_SEL_TEXT": "Remove selected RAM disk(s).",
+            "STR_ADD_RAW_FORM_TITLE": "Add A Raw RAM Disk",
+            "STR_ADD_RAW_FORM_SUBTITLE_TEXT": " ",
+            "STR_SIZE_PROMPT": "Size (Hex):",
+            "STR_SIZE_HELP": "The valid RAM disk size should be multiples of the RAM disk block size.",
+            "STR_MEMORY_TYPE_PROMPT": "Disk Memory Type:",
+            "STR_MEMORY_TYPE_HELP": "Specifies type of memory to use from available memory pool in system to create a disk.",
+            "STR_RAM_DISK_BOOT_SERVICE_DATA_MEMORY": "Boot Service Data",
+            "STR_RAM_DISK_RESERVED_MEMORY": "Reserved",
+            "STR_CREATE_AND_EXIT_HELP": "Create a new RAM disk with the given starting and ending address.",
+            "STR_CREATE_AND_EXIT_PROMPT": "Create & Exit",
+            "STR_DISCARD_AND_EXIT_HELP": "Discard and exit.",
+            "STR_DISCARD_AND_EXIT_PROMPT": "Discard & Exit"
+        }
+    }
+}

@@ -1,0 +1,1 @@
+c:\users\mliang2x\workspace\edk2\Build\Ovmf3264\DEBUG_VS2015x86\X64\MdeModulePkg\Application\UiApp\UiApp\Makefile
