@@ -5,11 +5,11 @@
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
 import os
-from core.BiosTree import *
-from core.GuidTools import GUIDTools
-from core.BiosTreeNode import *
-from FirmwareStorageFormat.Common import *
-from utils.FmmtLogger import FmmtLogger as logger
+from edk2basetools.FMMT.core.BiosTree import *
+from edk2basetools.FMMT.core.GuidTools import GUIDTools
+from edk2basetools.FMMT.core.BiosTreeNode import *
+from edk2basetools.FirmwareStorageFormat.Common import *
+from edk2basetools.FMMT.utils.FmmtLogger import FmmtLogger as logger
 
 EFI_FVB2_ERASE_POLARITY = 0x00000800
 

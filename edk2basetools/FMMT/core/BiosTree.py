@@ -5,8 +5,8 @@
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
 import collections
-from FirmwareStorageFormat.Common import *
-from utils.FmmtLogger import FmmtLogger as logger
+from edk2basetools.FirmwareStorageFormat.Common import *
+from edk2basetools.FMMT.utils.FmmtLogger import FmmtLogger as logger
 
 ROOT_TREE = 'ROOT'
 ROOT_FV_TREE = 'ROOT_FV_TREE'

@@ -4,12 +4,12 @@
 # Copyright (c) 2021-, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
-from FirmwareStorageFormat.UPLHeader import *
-from FirmwareStorageFormat.FvHeader import *
-from FirmwareStorageFormat.FfsFileHeader import *
-from FirmwareStorageFormat.SectionHeader import *
-from FirmwareStorageFormat.Common import *
-from utils.FmmtLogger import FmmtLogger as logger
+from edk2basetools.FirmwareStorageFormat.UPLHeader import *
+from edk2basetools.FirmwareStorageFormat.FvHeader import *
+from edk2basetools.FirmwareStorageFormat.FfsFileHeader import *
+from edk2basetools.FirmwareStorageFormat.SectionHeader import *
+from edk2basetools.FirmwareStorageFormat.Common import *
+from edk2basetools.FMMT.utils.FmmtLogger import FmmtLogger as logger
 import uuid
 
 SectionHeaderType = {

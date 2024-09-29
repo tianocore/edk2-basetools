@@ -6,7 +6,7 @@
 ##
 from struct import *
 from ctypes import *
-from FirmwareStorageFormat.Common import *
+from edk2basetools.FirmwareStorageFormat.Common import *
 
 EFI_COMMON_SECTION_HEADER_LEN = 4
 EFI_COMMON_SECTION_HEADER2_LEN = 8
