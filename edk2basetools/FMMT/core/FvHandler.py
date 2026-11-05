@@ -632,7 +632,7 @@ class FvHandler:
             else:
                 Used_Size = Delete_Fv.Data.Size - Add_Free_Space
                 New_Free_Space = Add_Free_Space
-            New_Free_Space_Info = FfsNode(Add_Free_Space * b'\xff')
+            New_Free_Space_Info = FreeSpaceNode(Add_Free_Space * b'\xff')
             New_Free_Space_Info.Data = Add_Free_Space * b'\xff'
             New_Ffs_Tree = BIOSTREE(New_Free_Space_Info.Name)
             New_Ffs_Tree.type = FFS_FREE_SPACE
